@@ -50,6 +50,15 @@ public class DistanceCalculator {
     }
 
     /**
+     * Obtiene el tipo de distancia utilizado.
+     * 
+     * @return El tipo de distancia (EUCLIDEAN, MANHATTAN, etc.)
+     */
+    public DistanceType getDistanceType() {
+        return this.distanceType;
+    }
+
+    /**
      * Calcula la distancia global entre dos conjuntos de respuestas.
      * Esta es la función principal que usarás para comparar dos "individuos".
      */
