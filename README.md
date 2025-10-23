@@ -11,6 +11,7 @@ the whole directory structure that will allow to install your project along with
 
 
 More info
+.bin files are being ignored by git.
 
 
 Gradle application plugin
