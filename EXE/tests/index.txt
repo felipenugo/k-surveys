@@ -1,0 +1,1 @@
+El directorio tests contiene los ejecutables para probar los juegos de prueba.

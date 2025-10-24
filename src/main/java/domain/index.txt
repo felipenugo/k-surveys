@@ -1,0 +1,3 @@
+El directorio domain representa la capa de dominio de la aplicacion.
+Se comunica con la capa de presentacion (ViewsControllers) a traves de los Controllers.
+Se comunica con la capa de datos (Repositories) a traves de los Services.

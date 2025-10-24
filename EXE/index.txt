@@ -1,0 +1,3 @@
+El directorio EXE contiene todos los ejecutables para probar las clases o funcionalidades implementadas y juegos de
+prueba.
+En la tercera entrega habrá que aumentar documentacion.

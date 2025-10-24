@@ -1,3 +1,14 @@
-.gradle
-.idea
+FONTS/.gradle
+FONTS/.idea
 build
+build/
+*.class
+*.bin
+out/
+wrapper/
+native/
+jdks/
+daemon/
+caches/
+.idea/
+.gradle/

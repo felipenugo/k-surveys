@@ -1,11 +1,11 @@
-package edu.upc.prop.clusterxx;
+package appMain;
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 public class Main {
   public static void main(String[] args) {
     System.out.println("Hello world!");
-    new Gson();
+   // new Gson();
 
     Main divisioner = new Main();
     System.out.println("Dividing 10 by 2 is " + divisioner.division(10,2));
