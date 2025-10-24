@@ -1,4 +1,4 @@
-package domain.entities;
+package domain.model;
 
 public class User {
     private final String USERNAME; // identifier for user

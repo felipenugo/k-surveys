@@ -11,7 +11,12 @@ the whole directory structure that will allow to install your project along with
 
 
 More info
-.bin files are being ignored by git.
+Los archivos .bin son ignorados por git, para cambiar esto modificar el archivo .gitignore.
+Todos los directorios tienen que contener un fichero index.txt (formato texto plano y sin accentuar)
+describiendo el directorio y todos sus ficheros.
+El index.txt de la raiz del proyecto contiene los nombres y emails de los desarrolladores.
+Todos los ficheros .txt tienen que ser ortografiamente correctos y sin accentuar.
+
 
 
 Gradle application plugin

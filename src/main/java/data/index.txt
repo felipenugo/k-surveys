@@ -1,0 +1,2 @@
+El directorio data representa la capa de datos de la aplicacion.
+Se comunica con la capa de dominio (Services) a traves de los Repositories.

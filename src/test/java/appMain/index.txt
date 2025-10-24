@@ -1,0 +1,1 @@
+El directorio appMain contiene la clase principal para probar los juegos de prueba.

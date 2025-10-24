@@ -1,0 +1,1 @@
+El directorio styles contiene los archivos CSS para dar estilo a la aplicacion.

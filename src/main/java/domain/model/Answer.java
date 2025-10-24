@@ -1,4 +1,4 @@
-package domain.entities;
+package domain.model;
 
 public class Answer {
     private int id;
@@ -26,12 +26,15 @@ public class Answer {
     public int getId() {
         return id;
     }
+
     public int getResponseId() {
         return RESPONSE_ID;
     }
+
     public int getQuestionId() {
         return QUESTION_ID;
     }
+
     public String getAnswerText() {
         return answerText;
     }

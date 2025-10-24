@@ -1,5 +1,5 @@
-.gradle
-.idea
+FONTS/.gradle
+FONTS/.idea
 build
 build/
 *.class

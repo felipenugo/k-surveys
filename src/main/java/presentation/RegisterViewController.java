@@ -1,4 +1,4 @@
 package presentation;
 
-public class SurveyController {
+public class RegisterViewController {
 }

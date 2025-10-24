@@ -1,0 +1,22 @@
+// Multiple index entries coudld be created in the future for accesing answers by users
+[
+  {
+    "SurveyId": 1,
+    "responses": [
+      {
+        "respondent": "pedro",
+        "answers": {
+          "101": "A",
+          "102": "B"
+        }
+      },
+      {
+        "respondent": "pablo",
+        "answers": {
+          "101": "B",
+          "102": "A"
+        }
+      }
+    ]
+  }
+]

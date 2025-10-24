@@ -1,7 +1,6 @@
-package appMain;
-
 import static org.junit.Assert.assertEquals;
 
+import appMain.Main;
 import org.junit.Test;
 
 

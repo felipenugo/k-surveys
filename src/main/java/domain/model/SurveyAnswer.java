@@ -2,7 +2,7 @@ package domain.model;
 
 import java.util.ArrayList;
 
-public class Response {
+public class SurveyAnswer {
     private int id;
     private final int SURVEY_ID;
     private final String RESPONDER_USERNAME;
@@ -10,7 +10,7 @@ public class Response {
     private ArrayList<Answer> answers;
 
     // Constructor without id for new responses
-    public Response(int surveyId, String responderUsername) {
+    public SurveyAnswer(int surveyId, String responderUsername) {
         this.id = -1; // id will be set when checked from database
         this.SURVEY_ID = surveyId;
         this.RESPONDER_USERNAME = responderUsername;
@@ -18,7 +18,7 @@ public class Response {
     }
 
     // Constructor with id checked from database
-    public Response(int id, int surveyId, String responderUsername) {
+    public SurveyAnswer(int id, int surveyId, String responderUsername) {
         this.id = id;
         this.SURVEY_ID = surveyId;
         this.RESPONDER_USERNAME = responderUsername;
