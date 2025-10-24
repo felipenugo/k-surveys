@@ -1,0 +1,1 @@
+El directorio data-base contiene los archivos json y csv para guardar los datos de manera local.

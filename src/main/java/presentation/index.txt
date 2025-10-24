@@ -1,0 +1,2 @@
+El directorio presentation representa la capa de presentacion de la apliacacion.
+Se comunica con la capa de dominio (Controllers) a traves de los ViewsControllers.
