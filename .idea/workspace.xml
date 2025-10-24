@@ -6,34 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="0cae1287-1e51-42c6-b932-5e5ddb6a3c81" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradlePOC-1.0-SNAPSHOT/bin/GradlePOC" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/GradlePOC-1.0-SNAPSHOT/bin/GradlePOC" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradlePOC-1.0-SNAPSHOT/bin/GradlePOC.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/GradlePOC-1.0-SNAPSHOT/bin/GradlePOC.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradlePOC-1.0-SNAPSHOT/lib/GradlePOC-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/GradlePOC-1.0-SNAPSHOT/lib/GradlePOC-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GradlePOC-1.0-SNAPSHOT/lib/gson-2.8.9.jar" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/GradlePOC-1.0-SNAPSHOT/lib/gson-2.8.9.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/GradlePOC-1.0-SNAPSHOT.tar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/distributions/GradlePOC-1.0-SNAPSHOT.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/GradlePOC-1.0-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/GradlePOC" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/scripts/GradlePOC.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/jar/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/gradlew" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/gradlew.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/appMain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/data/SurveyRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/data/SurveyRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entities/Answer.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/entities/Answer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entities/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/entities/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entities/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/entities/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entities/Survey.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/entities/Survey.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/entities/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/domain/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/domain/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/presentation/SurveyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/main/java/presentation/SurveyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/edu.upc.prop.clusterxx/TestDivisionShould.java" beforeDir="false" afterPath="$PROJECT_DIR$/FONTS/src/test/java/appMain/TestDivisionShould.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.8/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +77,7 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.Mainn.executor": "Run",
+    "Application.appMain.Main.executor": "Run",
     "Gradle.Build FormsApp.executor": "Run",
     "Gradle.FormsApp [:Main.main()].executor": "Run",
     "Gradle.FormsApp [:app.Main.main()].executor": "Run",
@@ -117,7 +92,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.github.copilot.settings.keymap.KeymapConfigurable"
+    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -196,6 +171,40 @@
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Autodetect">
+      <module name="FormsApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="tests" factoryName="Doctests">
+      <module name="FormsApp" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
       <method v="2" />
     </configuration>
     <recent_temporary>

@@ -4,3 +4,11 @@ build
 build/
 *.class
 *.bin
+out/
+wrapper/
+native/
+jdks/
+daemon/
+caches/
+.idea/
+.gradle/
