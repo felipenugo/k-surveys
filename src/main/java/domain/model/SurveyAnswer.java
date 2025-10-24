@@ -1,6 +1,4 @@
-package domain.entities;
-
-import domain.entities.Answer;
+package domain.model;
 
 import java.util.ArrayList;
 

@@ -2,12 +2,12 @@ plugins {
     id 'java'
     id 'application'
 }
-
-group = 'edu.upc.prop.clusterxx'
+// Indicates the package that contains the main class
+group = 'appMain'
 version = '1.0-SNAPSHOT'
 
 ext {
-    javaMainClass = 'edu.upc.prop.clusterxx.Main'
+    javaMainClass = 'appMain.Main'
 }
 
 application {
@@ -31,7 +31,6 @@ java {
 repositories {
     mavenCentral()
 }
-
 dependencies {
     // this is just an example of importing an external library, you do not need to use it in your project
     implementation 'com.google.code.gson:gson:2.8.9'

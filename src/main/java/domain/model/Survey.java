@@ -1,5 +1,4 @@
 package domain.entities;
-import domain.entities.Question;
 import java.util.ArrayList;
 
 public class Survey {

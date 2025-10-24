@@ -1,8 +1,9 @@
-package edu.upc.prop.clusterxx;
+package appMain;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import Main;
+
 
 public class TestDivisionShould {
   @Test
