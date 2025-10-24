@@ -1,0 +1,12 @@
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Introduzca [Usuario] [Contraseña] [Contraseña]
+Formato incorrecto.
+
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Saliendo de la aplicación.
