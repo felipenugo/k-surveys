@@ -1,4 +1,4 @@
-package edu.upc.prop.clusterxx;
+package data;
 
 import java.util.*;
 
