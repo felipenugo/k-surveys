@@ -1,6 +1,7 @@
-package edu.upc.prop.clusterxx;
+package domain.controller;
 
 import data.StubPersistencia;
+import domain.model.Usuario;
 
 /**
  * Controlador de dominio encargado de gestionar la sesión de usuario en la aplicación.
