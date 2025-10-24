@@ -1,0 +1,15 @@
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Introduzca [Usuario] [Contraseña] [Contraseña]
+Usuario registrado con éxito.
+
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Introduzca [Usuario] [Contraseña]
+Nombre o contraseña incorrectos.
+
+Saliendo de la aplicacion.

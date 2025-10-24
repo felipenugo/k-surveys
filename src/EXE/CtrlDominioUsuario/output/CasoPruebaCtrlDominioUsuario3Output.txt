@@ -1,0 +1,11 @@
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Introduzca un comando valido.
+
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Saliendo de la aplicación.

@@ -1,0 +1,12 @@
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Introduzca [Usuario] [Contraseña] [Contraseña]
+Error en los parámetros: Las contraseñas no coinciden.
+
+REGISTRAR - Registrar usuario.
+LOG_IN - Iniciar sesión.
+EXIT - Salir de la aplicacion.
+
+Saliendo de la aplicación.
