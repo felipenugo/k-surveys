@@ -1,3 +1,5 @@
+package exclude;
+
 import static org.junit.Assert.assertEquals;
 
 import appMain.Main;

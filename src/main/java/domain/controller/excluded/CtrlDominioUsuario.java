@@ -1,6 +1,6 @@
-package domain.controller;
+package domain.controller.excluded;
 
-import data.StubPersistencia;
+import data.stub.StubPersistencia;
 import domain.model.Usuario;
 
 /**

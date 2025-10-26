@@ -1,4 +1,4 @@
-package edu.upc.prop.clusterxx;
+package exclude;
 
 import org.junit.Before;
 import org.junit.Test;
