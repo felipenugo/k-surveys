@@ -55,6 +55,8 @@ public class SessionDriver {
                 default -> {
                     System.out.println("Login de " + username + " con éxito.");
                     System.out.println("Sesión iniciada.");
+                    System.out.println("Estamos en obras :-(");
+                    System.out.println("---CERRANDO SESIÓN---");
                     return;
                 }
             }

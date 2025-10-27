@@ -6,7 +6,7 @@ import java.util.Map;
 import domain.model.User;
 
 public class UserRepository {
-    private final Map<String, User> users;
+    private final Map<String, User> users; // <username, User>
 
     public UserRepository() {
         users = new HashMap<>();

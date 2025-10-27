@@ -1,37 +1,29 @@
 package domain.model;
 
-import java.lang.reflect.Type;
+import domain.model.enums.TypeQuestion;
 
 public class Question {
-    private int questionId; // identifier for question
-    private int surveyId; // identifier to the survey to which it belongs
+    // Attributes
+    private int questionIndex; // identifier with surveyId
+    private final String SURVEY_ID; // identifier to the survey to which it belongs
     private TypeQuestion typeQuestion; // can be MULTIPLE_CHOICE or TEXTUAL
     private String questionText;
 
-    // Constructor without id for new questions
-    public Question( int surveyId) {
-        this.questionId = -1; // id will be set when checked from database
-        this.surveyId = surveyId;
+    // Constructor
+    public Question(int questionIndex, String SURVEY_ID) {
+        this.questionIndex = questionIndex;
+        this.SURVEY_ID = SURVEY_ID;
         this.typeQuestion = TypeQuestion.TEXTUAL; // textual by default, can be changed later
-        this.questionText = "";
-    }
-
-    // Constructor with id checked from database
-    public Question(int questionId, int surveyId) {
-        this.questionId = questionId;
-        this.surveyId = surveyId;
-        this.typeQuestion = TypeQuestion.TEXTUAL; // textual by default, can be changed later
-
         this.questionText = "";
     }
 
     // Getters
-    public int getQuestionId() {
-        return questionId;
+    public int getQuestionIndex() {
+        return questionIndex;
     }
 
-    public int getSurveyId() {
-        return surveyId;
+    public String getSURVEY_ID() {
+        return SURVEY_ID;
     }
 
     public TypeQuestion getTypeQuestion() {
@@ -43,6 +35,11 @@ public class Question {
     }
 
     // Setters
+
+    public void setQuestionIndex(int questionIndex) {
+        this.questionIndex = questionIndex;
+    }
+
     public void setTypeQuestion(TypeQuestion typeQuestion) {
         this.typeQuestion = typeQuestion;
     }

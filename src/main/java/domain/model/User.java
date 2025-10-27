@@ -1,19 +1,26 @@
 package domain.model;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.Map;
 
 public class User {
+    // Attributes
     private final String USERNAME; // identifier for user
     private String email; // could allow changing email in the future
     private String password; // could be improved in the future for real security
-    private ArrayList<Integer> surveysId;
+    private Set<String> createdSurveysId; // allows accessing surveys almost directly with the username in database
+    private Map<String, Set<String>> respondedSurveys; // <surveyId, <responseId1, responseId2, ...>>
+
 
     // Constructor
     public User(String USERNAME, String email, String password) {
         this.USERNAME = USERNAME;
         this.email = email;
         this.password = password;
-        this.surveysId = new ArrayList<>();
+        this.createdSurveysId = new HashSet<>();
+        this.respondedSurveys = new HashMap<>();
     }
 
     // Getters
@@ -39,7 +46,4 @@ public class User {
         this.password = newPassword;
     }
 
-    public ArrayList<Integer> getSurveysId() {
-        return surveysId;
-    }
 }
