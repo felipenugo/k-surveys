@@ -3,17 +3,13 @@ package presentation.drivers;
 import java.util.Scanner;
 
 import domain.controller.UserController;
-import domain.service.UserService;
-import data.UserRepository;
 
 public class SessionDriver {
     private final Scanner sc = new Scanner(System.in);
     private final UserController userController;
 
-    public SessionDriver() {
-        UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
-        this.userController = new UserController(userService);
+    public SessionDriver(UserController userController) {
+        this.userController = userController;
     }
 
     public void handleRegister() {
