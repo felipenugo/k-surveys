@@ -11,9 +11,8 @@ public class UserController {
         this.service = service;
     }
 
-    public boolean registerUser(String username, String email, String password) {
-        User user = new User(username, email, password);
-        return service.registerUser(user);
+    public void registerUser(String username, String email, String password) {
+         service.registerUser(username, email, password);
     }
 
     public String loginUser(String username, String password) {

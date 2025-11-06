@@ -20,6 +20,7 @@ public class UserRepository {
         users.remove(username);
     }
 
+    // existsUser method must be used before calling this method to avoid NullPointerException
     public User getUser(String username) {
         return users.get(username);
     }

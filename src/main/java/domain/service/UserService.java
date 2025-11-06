@@ -1,5 +1,7 @@
 package domain.service;
 
+import domain.exception.RegisterException;
+
 import domain.model.User;
 import data.UserRepository;
 
@@ -10,11 +12,31 @@ public class UserService {
         this.repository = repository;
     }
 
-    public boolean registerUser(User user) {
-        if (repository.existsUser(user.getUsername())) // use UserAlreadyExistsException (subclass of Exception) in the future
-            return false;
-        repository.addUser(user);
-        return true;
+    private boolean isInputBlank(String text){
+        return text == null || text.trim().isEmpty();
+    }
+
+    public void registerUser(String username, String email, String password) {
+        // Input Validation
+        if(isInputBlank(username))
+            throw new RegisterException("El campo nombre de usuario es obligatorio y no puede estar vacío.");
+
+        if(isInputBlank(email))
+            throw new RegisterException("El campo email es obligatorio y no puede estar vacío.");
+
+        if(isInputBlank(password))
+            throw new RegisterException("El campo contraseña es obligatorioy no puede estar vacío");
+
+        // Business Rules Validation
+        if(!email.contains("@gmail.com"))
+            throw new RegisterException("El formato del email debe terminar en @gmail.com.");
+
+        if(repository.existsUser(username))
+            throw new RegisterException("El usuario " + username + " ya existe. Por favor escoge otro nombre de usuario.");
+
+        // Registration
+        User newUser = new User(username, email, password);
+        repository.addUser(newUser);
     }
 
     public String loginUser(String username, String password) {
