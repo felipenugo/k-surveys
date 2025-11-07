@@ -39,7 +39,7 @@ public class DriverMain {
             displayWelcomeOptions();
             String option = sc.nextLine();
             switch (option) {
-                case "1" -> sessionDriver.handleLogin();
+                case "1" -> sessionDriver.driverLogin();
 
                 case "2" -> sessionDriver.driverRegister();
 

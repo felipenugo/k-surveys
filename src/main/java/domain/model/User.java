@@ -63,7 +63,7 @@ public class User {
         this.createdSurveysId.remove(surveyId);
     }
 
-    public boolean existsCreatedSurveyId(String surveyId) {
+    public boolean hasCreatedSurveyId(String surveyId) {
         return this.createdSurveysId.contains(surveyId);
     }
 
@@ -78,7 +78,7 @@ public class User {
         this.respondedSurveysId.putIfAbsent(surveyId, new HashSet<>());
     }
 
-    public void deleteRespondedSurveyIdEntry(String surveyId) {
+    public void removeRespondedSurveyIdEntry(String surveyId) {
         this.respondedSurveysId.remove(surveyId);
     }
 
@@ -87,7 +87,7 @@ public class User {
     }
 
     // responseId management within a surveyId entry
-    public void addResponseIdToSurvey(String surveyId, String responseId) {
+    public void addResponseId(String surveyId, String responseId) {
         this.respondedSurveysId.get(surveyId).add(responseId);
     }
 
@@ -95,11 +95,11 @@ public class User {
         return this.respondedSurveysId.get(surveyId);
     }
 
-    public void deleteResponseIdFromSurvey(String surveyId, String responseId) {
+    public void removeResponseId(String surveyId, String responseId) {
         this.respondedSurveysId.get(surveyId).remove(responseId);
     }
 
-    public boolean existsResponseIdInSurvey(String surveyId, String responseId) {
+    public boolean hasResponseId(String surveyId, String responseId) {
         return this.respondedSurveysId.containsKey(surveyId) && this.respondedSurveysId.get(surveyId).contains(responseId);
     }
 

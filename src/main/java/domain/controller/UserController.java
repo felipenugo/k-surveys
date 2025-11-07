@@ -1,35 +1,43 @@
 package domain.controller;
 
+import domain.exception.LogInException;
 import domain.model.User;
 import domain.service.UserService;
 
 public class UserController {
 
-    private final UserService service;
+    private final UserService userService;
+    private String usernameLoggedIn;
+    private boolean loggedIn;
 
-    public UserController(UserService service) {
-        this.service = service;
+    public UserController(UserService userService) {
+        this.userService = userService;
+        this.usernameLoggedIn = null;
+        this.loggedIn = false;
     }
 
     public void registerUser(String username, String email, String password) {
-         service.registerUser(username, email, password);
+        userService.registerUser(username, email, password);
     }
 
-    public String loginUser(String username, String password) {
-        return service.loginUser(username, password);
-    }
-
-    public void logoutUser(String username) {
-        String result = service.logoutUser(username);
-        switch (result) {
-            case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
-            case "success" -> System.out.println("El usuario " + username + " ha cerrado sesión con éxito.");
+    public void loginUser(String username, String password) {
+        if (this.loggedIn) {
+            throw new LogInException("El usuario " + this.usernameLoggedIn + " ya ha iniciado sesión. Por favor, cierra sesión antes de iniciar sesión con otra cuenta.");
         }
+        userService.verifyCredentials(username, password);
+        this.usernameLoggedIn = username; // not executed if exception in loginUser is thrown
+        this.loggedIn = true;
+    }
 
+    public void logoutUser() {
+        if(!this.loggedIn)
+            throw new LogInException("Ningún usuario ha iniciado sesión.");
+        this.usernameLoggedIn = null;
+        this.loggedIn = false;
     }
 
     public void deleteUser(String username) {
-        boolean success = service.deleteUser(username);
+        boolean success = userService.deleteUser(username);
         if (success)
             System.out.println("El usuario " + username + " ha sido eliminado con éxito.");
         else
@@ -37,7 +45,7 @@ public class UserController {
     }
 
     public void updateUserEmail(String username, String oldEmail, String newEmail) {
-        String result = service.updateUserEmail(username, oldEmail, newEmail);
+        String result = userService.updateUserEmail(username, oldEmail, newEmail);
         switch (result) {
             case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
             case "incorrect_email" -> System.out.println("El email " + oldEmail + " es incorrecto.");
@@ -47,7 +55,7 @@ public class UserController {
     }
 
     public void changePassword(String username, String email, String password, String newPassword) {
-        String result = service.changePassword(username, email, password, newPassword);
+        String result = userService.changePassword(username, email, password, newPassword);
         switch (result) {
             case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
             case "incorrect_email" -> System.out.println("El email " + email + " es incorrecto.");

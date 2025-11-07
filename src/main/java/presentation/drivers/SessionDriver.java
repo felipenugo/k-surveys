@@ -2,6 +2,7 @@ package presentation.drivers;
 
 import java.util.Scanner;
 
+import domain.exception.LogInException;
 import domain.exception.RegisterException;
 
 import domain.controller.UserController;
@@ -21,6 +22,14 @@ public class SessionDriver {
         return sc.nextLine();
     }
 
+    private String displayLoginErrorMenu() {
+        System.out.println("1. Intentar inciar sesión de nuevo.");
+        System.out.println("2. Registrarse.");
+        System.out.println("3. Volver al menú principal.");
+        System.out.print("Opción: ");
+        return sc.nextLine();
+    }
+
     public void driverRegister() {
         boolean exitRegister = false;
         System.out.println("--- REGISTRO DE USUARIO ---");
@@ -36,8 +45,8 @@ public class SessionDriver {
                 System.out.println("--- REGISTRÁNDOSE ---");
                 userController.registerUser(username, email, password);
                 System.out.println("El usuario " + username + " se ha registrado con éxito.");
-                handleLogin(); // login exceptions will be handled in this method
                 exitRegister = true;
+                driverLogin(); // login exceptions will be handled in this method
             } catch (RegisterException e) {
                 System.out.println("Error: " + e.getMessage());
                 boolean exitErrorMenu = false;
@@ -55,35 +64,52 @@ public class SessionDriver {
         } while (!exitRegister);
     }
 
-    public void handleLogin() {
-        String option;
-        System.out.println("--- INICIANDO SESIÓN ---");
+    public void driverLogin() {
+        boolean exitLogin = false;
+        System.out.println("--- INICIO DE SESIÓN ---");
         do {
-
-            System.out.println("Introduce tu nombre de usuario.");
+            System.out.print("Introduce tu nombre de usuario:");
             String username = sc.nextLine();
-            System.out.println("Introduce tu contraseña");
+            System.out.print("Introduce tu contraseña:");
             String password = sc.nextLine();
-            switch (userController.loginUser(username, password)) {
-                case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
-                case "incorrect_password" -> System.out.println("La contraseña " + password + " no es válida.");
-                default -> {
-                    System.out.println("Inicio de sesión de " + username + " con éxito.");
-                    System.out.println("Sesión iniciada.");
-                    System.out.println("Estamos en obras :-(");
-                    System.out.println("--- CERRANDO SESIÓN ---");
-                    return;
+
+            try {
+                System.out.println("--- INICIANDO SESIÓN ---");
+                userController.loginUser(username, password);
+                System.out.println("Inicio de sesión correcto.");
+                System.out.println("Bienvenido " + username);
+                System.out.println("Estamos en obras :-(");
+                driverLogout(username);
+                exitLogin = true;
+            } catch (LogInException e) {
+                System.out.println("Error: " + e.getMessage());
+                boolean exitErrorMenu = false;
+                while (!exitErrorMenu) {
+                    switch (displayLoginErrorMenu()) {
+                        case "1" -> exitErrorMenu = true;
+                        case "2" -> {
+                            exitErrorMenu = true;
+                            exitLogin = true;
+                            driverRegister();
+                        }
+                        case "3" -> {
+                            exitErrorMenu = true;
+                            exitLogin = true;
+                        }
+                        default -> System.out.println("Opción no válida. Selecciona una opcion del menu.");
+                    }
                 }
             }
-            System.out.println("1. Intentar de nuevo.");
-            System.out.println("2. Registrarse.");
-            System.out.println("3. Volver al menú principal.");
-            option = sc.nextLine();
-            if (option.equals("2")) {
-                driverRegister();
-                return;
-            }
+        } while (!exitLogin);
+    }
 
-        } while (!option.equals("3"));
+    public void driverLogout(String username) {
+        System.out.println("--- CERRANDO SESIÓN ---");
+        try {
+            userController.logoutUser();
+            System.out.println("Sesión cerrada, hasta pronto " + username + ".");
+        } catch (LogInException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 }
