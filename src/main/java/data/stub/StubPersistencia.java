@@ -1,4 +1,4 @@
-package data;
+package data.stub;
 
 import java.util.*;
 

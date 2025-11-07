@@ -1,10 +1,8 @@
-package edu.upc.prop.clusterxx;
-
-import java.util.Scanner;
+package presentation.drivers;
 
 public class DriverCtrlDominioUsuario {
     public static void main(String[] args) {
-        CtrlDominioUsuario ctrlDominioUsuario = new CtrlDominioUsuario();
+       /* CtrlDominioUsuario ctrlDominioUsuario = new CtrlDominioUsuario();
         Scanner scanner = new Scanner(System.in);
         boolean exit = false;
         boolean sesion = false;
@@ -71,6 +69,6 @@ public class DriverCtrlDominioUsuario {
         else {
             System.out.println("LOG_OUT - Cerrar sesión.");
             System.out.println();
-        }
+        }*/
     }
 }

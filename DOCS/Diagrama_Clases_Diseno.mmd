@@ -76,8 +76,8 @@ direction LR
         - isSingleText: Boolean
         + ChoiceQuestion(prompt: String, required: Boolean, options: Set~String~)
         + getOptions(): Set~String~
-        + addOption(option: String): void
-        + removeOption(option: String): boolean
+        + addOption(optionQuestion: String): void
+        + removeOption(optionQuestion: String): boolean
         + getMaxSelections(): Integer
         + setMaxSelections(max: Integer): void
         + getMinSelections(): Integer
