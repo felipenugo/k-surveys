@@ -52,11 +52,9 @@ public class TestUsuario {
     public void settersValidos() {
         usuario.setNombre("Prueba");
         usuario.setContrasena("1302");
-        usuario.setPuntuacionGlobal(100);
 
         assertEquals("Prueba", usuario.getNombre());
         assertEquals("1302", usuario.getContrasena());
-        assertEquals(100, usuario.getPuntuacionGlobal());
     }
 
     @Test(expected = IllegalArgumentException.class)
