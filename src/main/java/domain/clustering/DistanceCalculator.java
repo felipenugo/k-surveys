@@ -1,4 +1,4 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
 import java.util.HashMap;
 import java.util.List;
@@ -63,6 +63,16 @@ public class DistanceCalculator {
         return this.distanceType;
     }
 
+    /*
+     * NOTA: Los siguientes métodos están comentados temporalmente porque dependen
+     * de clases que aún no han sido implementadas (ResponseSet, Question, Response, etc.).
+     * Una vez que esas clases existan, estos métodos deberán ser descomentados.
+     * 
+     * Mientras tanto, los algoritmos de clustering usan el método
+     * calculateVectorDistance(Object[], Object[]) que no tiene dependencias externas.
+     */
+    
+    /*
     /**
      * Calcula la distancia global entre dos conjuntos de respuestas (dos puntos de datos reales).
      * Esta es la función principal usada por K-Medoids.
@@ -349,5 +359,88 @@ public class DistanceCalculator {
 
         // Normaliza la diferencia de caracteres a [0, 1]
         return (double) charDiff / maxLen;
+    }
+    */
+    
+    // ========== MÉTODOS PARA CLUSTERING DIRECTO ==========
+    
+    /**
+     * Calcula la distancia entre dos vectores de características (Object[]).
+     * Este método es usado por los algoritmos de clustering (KMeans, KMedoids, etc.)
+     * cuando trabajan con matrices de datos numéricas.
+     * 
+     * <p>Soporta distancias Euclidiana y Manhattan según el tipo configurado.</p>
+     * 
+     * @param vector1 Primer vector de características (debe contener Number)
+     * @param vector2 Segundo vector de características (debe contener Number)
+     * @return La distancia entre los dos vectores
+     * @throws IllegalArgumentException Si los vectores tienen longitudes diferentes
+     *                                  o contienen valores no numéricos
+     */
+    public double calculateVectorDistance(Object[] vector1, Object[] vector2) {
+        if (vector1 == null || vector2 == null) {
+            throw new IllegalArgumentException("Los vectores no pueden ser null");
+        }
+        
+        if (vector1.length != vector2.length) {
+            throw new IllegalArgumentException(
+                "Los vectores deben tener la misma longitud: " + 
+                vector1.length + " vs " + vector2.length
+            );
+        }
+        
+        if (vector1.length == 0) {
+            return 0.0;
+        }
+        
+        double sum = 0.0;
+        
+        for (int i = 0; i < vector1.length; i++) {
+            if (!(vector1[i] instanceof Number) || !(vector2[i] instanceof Number)) {
+                throw new IllegalArgumentException(
+                    "Los elementos del vector en posición " + i + 
+                    " deben ser numéricos (Number)"
+                );
+            }
+            
+            double val1 = ((Number) vector1[i]).doubleValue();
+            double val2 = ((Number) vector2[i]).doubleValue();
+            double diff = val1 - val2;
+            
+            if (this.distanceType == DistanceType.MANHATTAN) {
+                sum += Math.abs(diff);
+            } else {
+                // Por defecto EUCLIDEAN
+                sum += diff * diff;
+            }
+        }
+        
+        // Para Euclidiana, devolver la raíz cuadrada
+        if (this.distanceType == DistanceType.EUCLIDEAN) {
+            return Math.sqrt(sum);
+        }
+        
+        // Para Manhattan, devolver la suma directamente
+        return sum;
+    }
+    
+    /**
+     * Calcula la distancia entre dos vectores usando el tipo de distancia especificado.
+     * Método de conveniencia que permite sobrescribir el tipo de distancia configurado.
+     * 
+     * @param vector1 Primer vector
+     * @param vector2 Segundo vector
+     * @param type Tipo de distancia a usar (EUCLIDEAN, MANHATTAN, COSINE)
+     * @return La distancia entre los vectores
+     */
+    public double calculateVectorDistance(Object[] vector1, Object[] vector2, DistanceType type) {
+        DistanceType originalType = this.distanceType;
+        this.distanceType = type;
+        
+        try {
+            return calculateVectorDistance(vector1, vector2);
+        } finally {
+            this.distanceType = originalType;
+        }
     }
 }

@@ -1,4 +1,4 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
 import java.util.ArrayList;
 import java.util.HashMap; // Importado
@@ -32,24 +32,35 @@ import domain.model.response.TextualResponse;
  * 4. Repite hasta convergencia o alcanzar el máximo de iteraciones.
  */
 public class KMeans implements ClusteringAlgorithm {
-
+    
+    // ========== ATRIBUTOS ==========
+    
     private int maxIterations;
     private double tolerance;
     private long randomSeed;
     private Random random;
-
+    
+    // ========== CONSTRUCTORES ==========
+    
     /**
      * Constructor con parámetros personalizados.
      * * @param maxIterations Número máximo de iteraciones permitidas.
      * @param tolerance     Umbral de convergencia (cambio mínimo en centroides).
      */
     public KMeans(int maxIterations, double tolerance) {
+        if (maxIterations <= 0) {
+            throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
+        }
+        if (tolerance < 0) {
+            throw new IllegalArgumentException("tolerance no puede ser negativa");
+        }
+        
         this.maxIterations = maxIterations;
         this.tolerance = tolerance;
         this.randomSeed = System.currentTimeMillis();
         this.random = new Random(randomSeed);
     }
-
+    
     /**
      * Constructor con valores por defecto (100 iteraciones, tolerancia 1e-4).
      */
