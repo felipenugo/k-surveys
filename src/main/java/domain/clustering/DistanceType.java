@@ -1,21 +1,8 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
-/**
- * Enumera los tipos de cálculo de distancia global que se pueden utilizar.
- */
+/** Tipos de distancia: EUCLIDEAN, MANHATTAN, COSINE. */
 public enum DistanceType {
-    /**
-     * Distancia Euclídea: sqrt(sum( (d_i)^2 ))
-     */
-    EUCLIDEAN,
-
-    /**
-     * Distancia de Manhattan: sum( |d_i| )
-     */
-    MANHATTAN,
-
-    /**
-     * Distancia del Coseno: Mide el ángulo entre dos vectores.
-     */
-    COSINE
+    EUCLIDEAN,   // sqrt(sum(d_i²))
+    MANHATTAN,   // sum(|d_i|)
+    COSINE       // Ángulo entre vectores
 }

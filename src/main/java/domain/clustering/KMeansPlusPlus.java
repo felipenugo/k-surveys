@@ -3,11 +3,11 @@ package domain.clustering;
 import java.util.Random;
 
 /**
- * Algoritmo K-Means: particiona datos en k clusters minimizando distancias.
- * Inicializa centroides aleatoriamente, asigna puntos al más cercano y recalcula centroides.
- * Rápido pero sensible a inicialización.
+ * K-Means++ con inicialización inteligente de centroides.
+ * Elige centroides lejanos entre sí (probabilidad proporcional a distancia²).
+ * Mejor calidad y convergencia más rápida que K-Means estándar.
  */
-public class KMeans implements ClusteringAlgorithm {
+public class KMeansPlusPlus implements ClusteringAlgorithm {
     
     // ========== ATRIBUTOS ==========
     
@@ -18,10 +18,8 @@ public class KMeans implements ClusteringAlgorithm {
     
     // ========== CONSTRUCTORES ==========
     
-    /**
-     * Constructor con parámetros personalizados.
-     */
-    public KMeans(int maxIterations, double tolerance) {
+    /** Constructor con parámetros personalizados. */
+    public KMeansPlusPlus(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
         }
@@ -35,16 +33,13 @@ public class KMeans implements ClusteringAlgorithm {
         this.random = new Random(randomSeed);
     }
     
-    /**
-     * Constructor con valores por defecto: maxIterations=100, tolerance=1e-4.
-     */
-    public KMeans() {
+    /** Constructor con valores por defecto: maxIterations=100, tolerance=1e-4. */
+    public KMeansPlusPlus() {
         this(100, 1e-4);
     }
     
     // ========== MÉTODOS PÚBLICOS ==========
     
-    /** Establece semilla aleatoria para reproducibilidad. */
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
@@ -52,13 +47,14 @@ public class KMeans implements ClusteringAlgorithm {
     
     @Override
     public String getName() {
-        return "K-Means";
+        return "K-Means++";
     }
     
     @Override
     public String getDescription() {
-        return "Algoritmo K-Means clásico que particiona los datos en k clusters " +
-               "minimizando la suma de las distancias cuadradas dentro de cada cluster.";
+        return "Variante mejorada de K-Means con inicialización inteligente de centroides. " +
+               "Selecciona centroides que están lejanos entre sí, mejorando la calidad " +
+               "de los clusters y reduciendo la sensibilidad a la inicialización aleatoria.";
     }
     
     @Override
@@ -80,41 +76,33 @@ public class KMeans implements ClusteringAlgorithm {
         // Inicializar resultados
         ClusterResults results = new ClusterResults(k, numPoints, numFeatures);
         
-        // Copiar datos a la matriz de resultados
+        // Copiar datos
         for (int i = 0; i < numPoints; i++) {
             results.setResponseData(i, dataMatrix[i]);
         }
         
-        // 1. Inicializar centroides aleatoriamente
-        Object[][] centroids = initializeCentroids(dataMatrix, k);
+        // 1. Inicializar centroides con K-Means++
+        Object[][] centroids = initializeCentroidsPlusPlus(dataMatrix, k, distance);
         
         // Variables para el bucle iterativo
         Integer[] assignments = new Integer[numPoints];
         boolean converged = false;
         int iteration = 0;
         
-        // 2. Bucle principal del algoritmo
+        // 2. Bucle principal (igual que K-Means estándar)
         while (iteration < maxIterations && !converged) {
-            // 2.1 Asignar cada punto al centroide más cercano
             Integer[] newAssignments = assignToClusters(dataMatrix, centroids, distance);
-            
-            // 2.2 Recalcular centroides
             Object[][] newCentroids = updateCentroids(dataMatrix, newAssignments, k);
-            
-            // 2.3 Verificar convergencia
             converged = hasConverged(centroids, newCentroids);
             
-            // Actualizar para siguiente iteración
             assignments = newAssignments;
             centroids = newCentroids;
             iteration++;
         }
         
-        // 3. Guardar resultados finales
+        // 3. Guardar resultados
         for (int i = 0; i < numPoints; i++) {
             results.setClusterAssignment(i, assignments[i]);
-            
-            // Calcular distancia al centroide asignado
             double dist = calculateDistance(dataMatrix[i], centroids[assignments[i]], distance);
             results.setDistance(i, dist);
         }
@@ -131,32 +119,63 @@ public class KMeans implements ClusteringAlgorithm {
     
     // ========== MÉTODOS PRIVADOS ==========
     
-    /** Inicializa k centroides seleccionando puntos aleatorios del dataset. */
-    private Object[][] initializeCentroids(Object[][] dataMatrix, int k) {
+    /** Inicialización K-Means++: selecciona centroides lejanos entre sí. */
+    private Object[][] initializeCentroidsPlusPlus(Object[][] dataMatrix, int k, DistanceCalculator distance) {
         int numPoints = dataMatrix.length;
         int numFeatures = dataMatrix[0].length;
         Object[][] centroids = new Object[k][numFeatures];
         
-        // Seleccionar k índices aleatorios sin repetición
-        boolean[] selected = new boolean[numPoints];
-        for (int i = 0; i < k; i++) {
-            int randomIndex;
-            do {
-                randomIndex = random.nextInt(numPoints);
-            } while (selected[randomIndex]);
+        // 1. Elegir primer centroide aleatoriamente
+        int firstIndex = random.nextInt(numPoints);
+        for (int j = 0; j < numFeatures; j++) {
+            centroids[0][j] = dataMatrix[firstIndex][j];
+        }
+        
+        // Array para almacenar distancias mínimas de cada punto
+        double[] minDistances = new double[numPoints];
+        
+        // 2. Para cada centroide restante
+        for (int i = 1; i < k; i++) {
+            double totalDistance = 0.0;
             
-            selected[randomIndex] = true;
+            // Calcular distancia² de cada punto al centroide más cercano
+            for (int p = 0; p < numPoints; p++) {
+                double minDist = Double.MAX_VALUE;
+                
+                for (int c = 0; c < i; c++) {
+                    double dist = calculateDistance(dataMatrix[p], centroids[c], distance);
+                    if (dist < minDist) {
+                        minDist = dist;
+                    }
+                }
+                
+                minDistances[p] = minDist * minDist; // Distancia²
+                totalDistance += minDistances[p];
+            }
             
-            // Copiar el punto seleccionado como centroide
+            // Elegir nuevo centroide con probabilidad proporcional a distancia²
+            double randomValue = random.nextDouble() * totalDistance;
+            double cumulative = 0.0;
+            int selectedIndex = 0;
+            
+            for (int p = 0; p < numPoints; p++) {
+                cumulative += minDistances[p];
+                if (cumulative >= randomValue) {
+                    selectedIndex = p;
+                    break;
+                }
+            }
+            
+            // Copiar punto seleccionado como nuevo centroide
             for (int j = 0; j < numFeatures; j++) {
-                centroids[i][j] = dataMatrix[randomIndex][j];
+                centroids[i][j] = dataMatrix[selectedIndex][j];
             }
         }
         
         return centroids;
     }
     
-    /** Asigna cada punto al cluster con el centroide más cercano. */
+    /** Asigna cada punto al cluster más cercano. */
     private Integer[] assignToClusters(Object[][] dataMatrix, Object[][] centroids, 
                                        DistanceCalculator distance) {
         int numPoints = dataMatrix.length;
@@ -167,7 +186,6 @@ public class KMeans implements ClusteringAlgorithm {
             double minDistance = Double.MAX_VALUE;
             int closestCluster = 0;
             
-            // Encontrar el centroide más cercano
             for (int j = 0; j < k; j++) {
                 double dist = calculateDistance(dataMatrix[i], centroids[j], distance);
                 if (dist < minDistance) {
@@ -182,37 +200,32 @@ public class KMeans implements ClusteringAlgorithm {
         return assignments;
     }
     
-    /** Recalcula centroides como promedio de puntos asignados a cada cluster. */
+    /** Recalcula centroides como promedio de puntos asignados. */
     private Object[][] updateCentroids(Object[][] dataMatrix, Integer[] assignments, int k) {
         int numPoints = dataMatrix.length;
         int numFeatures = dataMatrix[0].length;
         Object[][] newCentroids = new Object[k][numFeatures];
         
-        // Inicializar sumas y contadores
         double[][] sums = new double[k][numFeatures];
         int[] counts = new int[k];
         
-        // Sumar valores de cada cluster
         for (int i = 0; i < numPoints; i++) {
             int cluster = assignments[i];
             counts[cluster]++;
             
             for (int j = 0; j < numFeatures; j++) {
-                // Asumimos que los valores son numéricos (Double)
                 if (dataMatrix[i][j] instanceof Number) {
                     sums[cluster][j] += ((Number) dataMatrix[i][j]).doubleValue();
                 }
             }
         }
         
-        // Calcular promedios
         for (int i = 0; i < k; i++) {
             if (counts[i] > 0) {
                 for (int j = 0; j < numFeatures; j++) {
                     newCentroids[i][j] = sums[i][j] / counts[i];
                 }
             } else {
-                // Cluster vacío: mantener centroide anterior o reinicializar
                 for (int j = 0; j < numFeatures; j++) {
                     newCentroids[i][j] = 0.0;
                 }
@@ -226,7 +239,6 @@ public class KMeans implements ClusteringAlgorithm {
     private boolean hasConverged(Object[][] oldCentroids, Object[][] newCentroids) {
         int k = oldCentroids.length;
         int numFeatures = oldCentroids[0].length;
-        
         double totalChange = 0.0;
         
         for (int i = 0; i < k; i++) {

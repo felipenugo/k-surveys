@@ -1,4 +1,4 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -58,10 +58,20 @@ public class DistanceCalculator {
         return this.distanceType;
     }
 
+    /*
+     * NOTA: Los siguientes métodos están comentados temporalmente porque dependen
+     * de clases que aún no han sido implementadas (ResponseSet, Question, Response, etc.).
+     * Una vez que esas clases existan, estos métodos deberán ser descomentados.
+     * 
+     * Mientras tanto, los algoritmos de clustering usan el método
+     * calculateVectorDistance(Object[], Object[]) que no tiene dependencias externas.
+     */
+    
+    /*
     /**
      * Calcula la distancia global entre dos conjuntos de respuestas.
      * Esta es la función principal que usarás para comparar dos "individuos".
-     */
+     * /
     public double calculate(ResponseSet rs1, ResponseSet rs2, List<Question> questions) {
         double totalDistance = 0.0;
         double totalDistanceSquared = 0.0;
@@ -104,7 +114,7 @@ public class DistanceCalculator {
     /**
      * Calcula la distancia desde un conjunto de respuestas a un centroide.
      * Esta es la función clave para el paso de "asignación" de k-means.
-     */
+     * /
     public double calculateToCentroid(ResponseSet rs, Centroid centroid, List<Question> questions) {
         double totalDistance = 0.0;
         double totalDistanceSquared = 0.0;
@@ -146,7 +156,7 @@ public class DistanceCalculator {
 
     /**
      * (PRIVADO) Despachador para calcular la distancia entre dos respuestas.
-     */
+     * /
     private double calculateLocal(Response r1, Response r2, Question question) {
         try {
             if (question instanceof OpenQuestion && ((OpenQuestion) question).isNumericOnly()) {
@@ -175,7 +185,7 @@ public class DistanceCalculator {
     /**
      * (PRIVADO) Despachador para calcular la distancia de una respuesta a un
      * componente del centroide.
-     */
+     * /
     private double calculateLocalToCentroid(Response r, Object cValue, Question question) {
         try {
             if (question instanceof OpenQuestion && ((OpenQuestion) question).isNumericOnly()) {
@@ -213,7 +223,7 @@ public class DistanceCalculator {
     /**
      * (PRIVADO) Distancia para preguntas numéricas.
      * Devuelve la distancia absoluta normalizada a [0, 1].
-     */
+     * /
     private double calculateNumericDistance(NumericResponse r1, NumericResponse r2, OpenQuestion question) {
         double val1 = r1.getValue();
         double val2 = r2.getValue();
@@ -228,7 +238,7 @@ public class DistanceCalculator {
 
     /**
      * (PRIVADO) Normaliza un valor a un rango [0, 1] dados un min y max.
-     */
+     * /
     private double normalizeDistance(double value, double min, double max) {
         if (max - min == 0)
             return 0.0; // Evita división por cero si max == min
@@ -238,7 +248,7 @@ public class DistanceCalculator {
     /**
      * (PRIVADO) Distancia para preguntas de elección múltiple.
      * Usa la Distancia Jaccard.
-     */
+     * /
     private double calculateChoiceDistance(ChoiceResponse r1, ChoiceResponse r2, ChoiceQuestion question) {
         Set<String> set1 = r1.getSelectedOptions();
         Set<String> set2 = r2.getSelectedOptions();
@@ -248,7 +258,7 @@ public class DistanceCalculator {
     /**
      * (PRIVADO) Calcula la Distancia Jaccard (1 - Similitud Jaccard).
      * Similitud Jaccard = |A ∩ B| / |A ∪ B|
-     */
+     * /
     private double calculateJaccardDistance(Set<String> set1, Set<String> set2) {
         if (set1.isEmpty() && set2.isEmpty()) {
             return 0.0; // Dos conjuntos vacíos son idénticos
@@ -267,7 +277,7 @@ public class DistanceCalculator {
     /**
      * (PRIVADO) Distancia para preguntas de texto libre.
      * Placeholder: usa Distancia de Levenshtein normalizada.
-     */
+     * /
     private double calculateTextDistance(String text1, String text2) {
 
         if (text1.equals(text2)) {
@@ -286,5 +296,88 @@ public class DistanceCalculator {
 
         // Normaliza la diferencia de caracteres a [0, 1]
         return (double) charDiff / maxLen;
+    }
+    */
+    
+    // ========== MÉTODOS PARA CLUSTERING DIRECTO ==========
+    
+    /**
+     * Calcula la distancia entre dos vectores de características (Object[]).
+     * Este método es usado por los algoritmos de clustering (KMeans, KMedoids, etc.)
+     * cuando trabajan con matrices de datos numéricas.
+     * 
+     * <p>Soporta distancias Euclidiana y Manhattan según el tipo configurado.</p>
+     * 
+     * @param vector1 Primer vector de características (debe contener Number)
+     * @param vector2 Segundo vector de características (debe contener Number)
+     * @return La distancia entre los dos vectores
+     * @throws IllegalArgumentException Si los vectores tienen longitudes diferentes
+     *                                  o contienen valores no numéricos
+     */
+    public double calculateVectorDistance(Object[] vector1, Object[] vector2) {
+        if (vector1 == null || vector2 == null) {
+            throw new IllegalArgumentException("Los vectores no pueden ser null");
+        }
+        
+        if (vector1.length != vector2.length) {
+            throw new IllegalArgumentException(
+                "Los vectores deben tener la misma longitud: " + 
+                vector1.length + " vs " + vector2.length
+            );
+        }
+        
+        if (vector1.length == 0) {
+            return 0.0;
+        }
+        
+        double sum = 0.0;
+        
+        for (int i = 0; i < vector1.length; i++) {
+            if (!(vector1[i] instanceof Number) || !(vector2[i] instanceof Number)) {
+                throw new IllegalArgumentException(
+                    "Los elementos del vector en posición " + i + 
+                    " deben ser numéricos (Number)"
+                );
+            }
+            
+            double val1 = ((Number) vector1[i]).doubleValue();
+            double val2 = ((Number) vector2[i]).doubleValue();
+            double diff = val1 - val2;
+            
+            if (this.distanceType == DistanceType.MANHATTAN) {
+                sum += Math.abs(diff);
+            } else {
+                // Por defecto EUCLIDEAN
+                sum += diff * diff;
+            }
+        }
+        
+        // Para Euclidiana, devolver la raíz cuadrada
+        if (this.distanceType == DistanceType.EUCLIDEAN) {
+            return Math.sqrt(sum);
+        }
+        
+        // Para Manhattan, devolver la suma directamente
+        return sum;
+    }
+    
+    /**
+     * Calcula la distancia entre dos vectores usando el tipo de distancia especificado.
+     * Método de conveniencia que permite sobrescribir el tipo de distancia configurado.
+     * 
+     * @param vector1 Primer vector
+     * @param vector2 Segundo vector
+     * @param type Tipo de distancia a usar (EUCLIDEAN, MANHATTAN, COSINE)
+     * @return La distancia entre los vectores
+     */
+    public double calculateVectorDistance(Object[] vector1, Object[] vector2, DistanceType type) {
+        DistanceType originalType = this.distanceType;
+        this.distanceType = type;
+        
+        try {
+            return calculateVectorDistance(vector1, vector2);
+        } finally {
+            this.distanceType = originalType;
+        }
     }
 }

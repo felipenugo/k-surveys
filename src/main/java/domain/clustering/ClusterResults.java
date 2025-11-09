@@ -1,270 +1,246 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
+import domain.model.Cluster;
+import domain.model.Centroid;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Encapsula los resultados de un análisis de clustering.
- * 
- * Almacena las asignaciones de cluster, distancias, centroides,
- * y proporciona métodos para consultar y manipular los resultados.
+ * Almacena resultados de clustering con objetos Cluster.
+ * Mantiene compatibilidad con arrays para algoritmos existentes.
  */
 public class ClusterResults {
     
-    private Integer[] clusterAssignments;
-    private Double[] distances;
-    private Object[][] centroidMatrix;
-    private Object[][] dataMatrix;
-    private Map<Integer, String> clusterLabels;
-    private int k;
-    private int numResponses;
-    private int numFeatures;
+    // ========== ATRIBUTOS ==========
     
-    /**
-     * Constructor.
-     * 
-     * @param k El número de clusters
-     * @param numResponses El número de respuestas/puntos
-     * @param numFeatures El número de características/dimensiones
-     */
+    private final int numClusters;
+    private final int numResponses;
+    private final int numFeatures;
+    
+    // Nueva estructura según diagrama
+    private List<Cluster> clusters;
+    
+    // Estructuras legacy para compatibilidad
+    private Integer[] clusterAssignments; // clusterAssignments[i] = cluster del punto i
+    private Double[] distances; // distances[i] = distancia del punto i a su centroide
+    private Object[][] centroidMatrix; // [numClusters][numFeatures]
+    private Object[][] dataMatrix; // [numResponses][numFeatures]
+    
+    private int iterations;
+    private boolean converged;
+    
+    // ========== CONSTRUCTOR ==========
+    
+    /** Crea contenedor de resultados. */
     public ClusterResults(int k, int numResponses, int numFeatures) {
-        this.k = k;
+        if (k <= 0) {
+            throw new IllegalArgumentException("k debe ser mayor que 0");
+        }
+        if (numResponses <= 0) {
+            throw new IllegalArgumentException("numResponses debe ser mayor que 0");
+        }
+        if (numFeatures <= 0) {
+            throw new IllegalArgumentException("numFeatures debe ser mayor que 0");
+        }
+        
+        this.numClusters = k;
         this.numResponses = numResponses;
         this.numFeatures = numFeatures;
         
+        // Inicializar clusters según diagrama
+        this.clusters = new ArrayList<>();
+        for (int i = 0; i < k; i++) {
+            this.clusters.add(new Cluster(String.valueOf(i)));
+        }
+        
+        // Mantener estructuras legacy para compatibilidad
         this.clusterAssignments = new Integer[numResponses];
         this.distances = new Double[numResponses];
         this.centroidMatrix = new Object[k][numFeatures];
         this.dataMatrix = new Object[numResponses][numFeatures];
-        this.clusterLabels = new HashMap<>();
         
-        // Inicializar etiquetas por defecto
-        for (int i = 0; i < k; i++) {
-            clusterLabels.put(i, "Cluster " + (i + 1));
-        }
+        this.iterations = 0;
+        this.converged = false;
     }
     
-    /**
-     * Establece la asignación de cluster para una respuesta.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @param clusterIndex El índice del cluster asignado
-     */
+    // ========== SETTERS ==========
+    
+    /** Establece asignación de cluster para un punto. */
     public void setClusterAssignment(int responseIndex, int clusterIndex) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
-        }
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
-        }
+        validateResponseIndex(responseIndex);
+        validateClusterIndex(clusterIndex);
         this.clusterAssignments[responseIndex] = clusterIndex;
-    }
-    
-    /**
-     * Obtiene el cluster asignado a una respuesta.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @return El índice del cluster asignado
-     */
-    public Integer getClusterForResponse(int responseIndex) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
+        
+        // Actualizar estructura de Cluster (usando responseIndex como ID temporal)
+        // Primero eliminar de cualquier cluster anterior
+        for (Cluster cluster : clusters) {
+            cluster.removeMember(String.valueOf(responseIndex));
         }
-        return this.clusterAssignments[responseIndex];
+        // Añadir al nuevo cluster
+        double distance = (distances[responseIndex] != null) ? distances[responseIndex] : 0.0;
+        clusters.get(clusterIndex).addMember(String.valueOf(responseIndex), distance);
     }
     
-    /**
-     * Establece la distancia de una respuesta a su centroide.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @param distance La distancia al centroide
-     */
+    /** Establece distancia de un punto a su centroide. */
     public void setDistance(int responseIndex, double distance) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
-        }
+        validateResponseIndex(responseIndex);
         this.distances[responseIndex] = distance;
-    }
-    
-    /**
-     * Obtiene la distancia de una respuesta a su centroide.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @return La distancia al centroide
-     */
-    public Double getDistanceForResponse(int responseIndex) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
+        
+        // Actualizar distancia en el Cluster si ya está asignado
+        if (clusterAssignments[responseIndex] != null) {
+            int clusterIndex = clusterAssignments[responseIndex];
+            // Actualizar membership (eliminar y re-añadir con nueva distancia)
+            Cluster cluster = clusters.get(clusterIndex);
+            cluster.removeMember(String.valueOf(responseIndex));
+            cluster.addMember(String.valueOf(responseIndex), distance);
         }
-        return this.distances[responseIndex];
     }
     
-    /**
-     * Establece el centroide de un cluster.
-     * 
-     * @param clusterIndex El índice del cluster
-     * @param centroid El vector centroide
-     */
+    /** Establece centroide de un cluster. */
     public void setCentroid(int clusterIndex, Object[] centroid) {
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
-        }
-        if (centroid.length != numFeatures) {
-            throw new IllegalArgumentException("El centroide debe tener " + numFeatures + " características");
+        validateClusterIndex(clusterIndex);
+        if (centroid == null || centroid.length != numFeatures) {
+            throw new IllegalArgumentException("Centroid debe tener " + numFeatures + " features");
         }
         this.centroidMatrix[clusterIndex] = centroid.clone();
-    }
-    
-    /**
-     * Obtiene el centroide de un cluster.
-     * 
-     * @param clusterIndex El índice del cluster
-     * @return El vector centroide
-     */
-    public Object[] getCentroid(int clusterIndex) {
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
+        
+        // Actualizar Centroid del Cluster
+        List<String> questionIds = new ArrayList<>();
+        for (int i = 0; i < numFeatures; i++) {
+            questionIds.add("Q" + i);
         }
-        return this.centroidMatrix[clusterIndex].clone();
+        domain.model.Centroid centroidObj = new domain.model.Centroid(questionIds);
+        for (int i = 0; i < centroid.length; i++) {
+            centroidObj.setComponent(i, centroid[i]);
+        }
+        clusters.get(clusterIndex).setCentroid(centroidObj);
     }
     
-    /**
-     * Establece los datos de una respuesta.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @param data El vector de datos
-     */
+    /** Establece datos de un punto. */
     public void setResponseData(int responseIndex, Object[] data) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
-        }
-        if (data.length != numFeatures) {
-            throw new IllegalArgumentException("Los datos deben tener " + numFeatures + " características");
+        validateResponseIndex(responseIndex);
+        if (data == null || data.length != numFeatures) {
+            throw new IllegalArgumentException("Data debe tener " + numFeatures + " features");
         }
         this.dataMatrix[responseIndex] = data.clone();
     }
     
-    /**
-     * Obtiene los datos de una respuesta.
-     * 
-     * @param responseIndex El índice de la respuesta
-     * @return El vector de datos
-     */
-    public Object[] getResponseData(int responseIndex) {
-        if (responseIndex < 0 || responseIndex >= numResponses) {
-            throw new IndexOutOfBoundsException("Índice de respuesta fuera de rango");
-        }
-        return this.dataMatrix[responseIndex].clone();
+    /** Establece número de iteraciones ejecutadas. */
+    public void setIterations(int iterations) {
+        this.iterations = iterations;
     }
     
-    /**
-     * Obtiene los índices de todas las respuestas en un cluster.
-     * 
-     * @param clusterIndex El índice del cluster
-     * @return Lista de índices de respuestas en el cluster
-     */
+    /** Establece si el algoritmo convergió. */
+    public void setConverged(boolean converged) {
+        this.converged = converged;
+    }
+    
+    // ========== GETTERS ==========
+    
+    /** Obtiene cluster asignado a un punto. */
+    public int getClusterForResponse(int responseIndex) {
+        validateResponseIndex(responseIndex);
+        return clusterAssignments[responseIndex];
+    }
+    
+    /** Obtiene distancia de un punto a su centroide. */
+    public double getDistanceForResponse(int responseIndex) {
+        validateResponseIndex(responseIndex);
+        return distances[responseIndex];
+    }
+    
+    /** Obtiene centroide de un cluster (copia). */
+    public Object[] getCentroid(int clusterIndex) {
+        validateClusterIndex(clusterIndex);
+        return centroidMatrix[clusterIndex].clone();
+    }
+    
+    /** Obtiene datos de un punto (copia). */
+    public Object[] getResponseData(int responseIndex) {
+        validateResponseIndex(responseIndex);
+        return dataMatrix[responseIndex].clone();
+    }
+    
+    /** Obtiene índices de puntos que pertenecen a un cluster. */
     public List<Integer> getResponsesInCluster(int clusterIndex) {
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
-        }
+        validateClusterIndex(clusterIndex);
+        List<Integer> members = new ArrayList<>();
         
-        List<Integer> responses = new ArrayList<>();
         for (int i = 0; i < numResponses; i++) {
             if (clusterAssignments[i] != null && clusterAssignments[i] == clusterIndex) {
-                responses.add(i);
+                members.add(i);
             }
         }
-        return responses;
+        
+        return members;
     }
     
-    /**
-     * Establece la etiqueta de un cluster.
-     * 
-     * @param clusterIndex El índice del cluster
-     * @param label La etiqueta descriptiva
-     */
-    public void setClusterLabel(int clusterIndex, String label) {
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
-        }
-        this.clusterLabels.put(clusterIndex, label);
+    public int getNumberOfClusters() { return numClusters; }
+    public int getK() { return numClusters; }
+    public int getNumberOfResponses() { return numResponses; }
+    public int getNumberOfFeatures() { return numFeatures; }
+    public int getIterations() { return iterations; }
+    public boolean hasConverged() { return converged; }
+    public boolean isConverged() { return converged; }
+    public Integer[] getClusterAssignments() { return clusterAssignments; }
+    
+    // ========== MÉTODOS NUEVOS SEGÚN DIAGRAMA ==========
+    
+    /** Obtiene lista de clusters (según diagrama). */
+    public List<Cluster> getClusters() {
+        return new ArrayList<>(clusters);
     }
     
-    /**
-     * Obtiene la etiqueta de un cluster.
-     * 
-     * @param clusterIndex El índice del cluster
-     * @return La etiqueta del cluster
-     */
-    public String getClusterLabel(int clusterIndex) {
-        if (clusterIndex < 0 || clusterIndex >= k) {
-            throw new IndexOutOfBoundsException("Índice de cluster fuera de rango");
-        }
-        return this.clusterLabels.getOrDefault(clusterIndex, "Cluster " + (clusterIndex + 1));
+    /** Obtiene un cluster específico por índice. */
+    public Cluster getCluster(int clusterIndex) {
+        validateClusterIndex(clusterIndex);
+        return clusters.get(clusterIndex);
     }
     
-    /**
-     * Obtiene el número de clusters.
-     * 
-     * @return El número de clusters
-     */
-    public int getNumberOfClusters() {
-        return this.k;
-    }
-    
-    /**
-     * Obtiene el número de respuestas.
-     * 
-     * @return El número de respuestas
-     */
-    public int getNumberOfResponses() {
-        return this.numResponses;
-    }
-    
-    /**
-     * Obtiene el número de características.
-     * 
-     * @return El número de características
-     */
-    public int getNumberOfFeatures() {
-        return this.numFeatures;
-    }
-    
-    /**
-     * Convierte los resultados a una matriz para análisis posterior.
-     * 
-     * @return Matriz con los datos completos
-     */
-    public Object[][] toMatrix() {
-        return this.dataMatrix.clone();
-    }
-    
-    /**
-     * Obtiene la matriz de centroides.
-     * 
-     * @return Matriz de centroides
-     */
+    /** Obtiene matriz completa de centroides (copia). */
     public Object[][] getCentroidMatrix() {
-        return this.centroidMatrix.clone();
+        Object[][] copy = new Object[numClusters][];
+        for (int i = 0; i < numClusters; i++) {
+            copy[i] = centroidMatrix[i].clone();
+        }
+        return copy;
     }
     
-    /**
-     * Obtiene el array de asignaciones de cluster.
-     * 
-     * @return Array de asignaciones
-     */
-    public Integer[] getClusterAssignments() {
-        return this.clusterAssignments.clone();
+    /** Obtiene matriz completa de datos (copia). */
+    public Object[][] getDataMatrix() {
+        Object[][] copy = new Object[numResponses][];
+        for (int i = 0; i < numResponses; i++) {
+            copy[i] = dataMatrix[i].clone();
+        }
+        return copy;
     }
     
-    /**
-     * Obtiene el array de distancias.
-     * 
-     * @return Array de distancias
-     */
-    public Double[] getDistances() {
-        return this.distances.clone();
+    // ========== MÉTODOS PRIVADOS ==========
+    
+    private void validateResponseIndex(int index) {
+        if (index < 0 || index >= numResponses) {
+            throw new IndexOutOfBoundsException("Response index fuera de rango: " + index);
+        }
+    }
+    
+    private void validateClusterIndex(int index) {
+        if (index < 0 || index >= numClusters) {
+            throw new IndexOutOfBoundsException("Cluster index fuera de rango: " + index);
+        }
+    }
+    
+    // ========== UTILIDADES ==========
+    
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("ClusterResults[");
+        sb.append("k=").append(numClusters);
+        sb.append(", points=").append(numResponses);
+        sb.append(", features=").append(numFeatures);
+        sb.append(", iterations=").append(iterations);
+        sb.append(", converged=").append(converged);
+        sb.append("]");
+        return sb.toString();
     }
 }
