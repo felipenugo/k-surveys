@@ -3,6 +3,8 @@ package presentation.driverMain;
 import java.util.Scanner;
 
 import domain.controller.*; // import all controllers
+import domain.model.Response;
+import domain.model.Survey;
 import domain.service.*; // import all services
 import data.*; // import all repositories
 import presentation.drivers.*; // import all drivers
@@ -23,15 +25,20 @@ public class DriverMain {
 
     public static void main(String[] var0) {
         Scanner sc = new Scanner(System.in);
-    /*SurveyController surveyController;
-    QuestionController questionController;
-    ResponseController responseController;
-    AnswerController answerController;*/
-        UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
-        UserController userController = new UserController(userService);
+        // Initialize controllers injecting survey with repository
+        UserController userController = new UserController(new UserService(new UserRepository()));
+        SurveyController surveyController = new SurveyController(new SurveyService(new SurveyRepository()));
+        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository()));
+        ResponseController responseController = new ResponseController(new ResponseService(new ResponseRepository()));
+        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository()));
 
+        // Initialize drivers passing the controllers needed
+        EditorResponseDriver editorResponseDriver = new EditorResponseDriver();
+        ReponseDriver responseDriver = new ReponseDriver(editorResponseDriver);
+        SurveyDriver surveyDriver = new SurveyDriver(surveyController, responseDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);
+        AppDriver appDriver = new AppDriver(surveyDriver);
+        sessionDriver.setAppDriver(appDriver);
 
         displayWelcomeMessage();
         boolean exit = false;

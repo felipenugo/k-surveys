@@ -112,14 +112,8 @@ public class Survey {
 
     // List<Question> methods, correct usage must be ensured by the caller
     // Multiple Choice Questions methods will be implemented in the future
-
-    // private getter
-    private int getSize() {
+    public int getSize() {
         return questions.size();
-    }
-
-    public boolean inRange(int index) {
-        return (index >= 0 && index < getSize());
     }
 
     public void addQuestion(Question question) {

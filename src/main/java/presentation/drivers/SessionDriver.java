@@ -10,9 +10,14 @@ import domain.controller.UserController;
 public class SessionDriver {
     private final Scanner sc = new Scanner(System.in);
     private final UserController userController;
+    private AppDriver appDriver;
 
     public SessionDriver(UserController userController) {
         this.userController = userController;
+    }
+
+    public void setAppDriver(AppDriver appDriver) {
+        this.appDriver = appDriver;
     }
 
     private String displayRegisterErrorMenu() {
@@ -79,6 +84,7 @@ public class SessionDriver {
                 System.out.println("Inicio de sesión correcto.");
                 System.out.println("Bienvenido " + username);
                 System.out.println("Estamos en obras :-(");
+                // appDriver.appMenu();
                 driverLogout(username);
                 exitLogin = true;
             } catch (LogInException e) {
