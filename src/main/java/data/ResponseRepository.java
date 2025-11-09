@@ -1,6 +1,8 @@
 package data;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import domain.model.MultipleChoiceAnswer;
@@ -34,6 +36,10 @@ public class ResponseRepository {
 
     public Response getResponse(String surveyId, String responseId) {
         return responses.get(surveyId).get(responseId);
+    }
+
+    public List<Response> getAllResponses(String surveyId) {
+        return new ArrayList<>(responses.get(surveyId).values());
     }
 
     public void deleteResponse(String surveyId, String responseId) {
