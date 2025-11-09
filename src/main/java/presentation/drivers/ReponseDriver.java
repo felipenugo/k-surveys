@@ -7,10 +7,12 @@ public class ReponseDriver {
         this.editorResponseDriver = editorResponseDriver;
     }
 
-    public void responseMenu(){
-        boolean exitResponseMenu  = false;
-        do{
-
-        }while(!exitResponseMenu);
+    public void responseMenu() {
+        boolean exitResponseMenu = false;
+        do {
+            System.out.println("Estamos en obras :-(");
+            exitResponseMenu = true;
+        } while (!exitResponseMenu);
+        System.out.println("--- SALIENDO DE RESPONDER ENCUESTAS ---");
     }
 }
