@@ -11,6 +11,6 @@ public class ReponseDriver {
         boolean exitResponseMenu  = false;
         do{
 
-        }while(!exitResponseMenu)
+        }while(!exitResponseMenu);
     }
 }

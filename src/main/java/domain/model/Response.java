@@ -79,7 +79,7 @@ public class Response {
         return (index >= 0 && index < getSize());
     }
 
-    // can not add or remove answers since the number of questions is fixed"
+    // can not add or remove answers since the number of questions is fixed
     public void updateAnswer(int index, Answer answer) {
         ANSWERS[index] = answer;
     }

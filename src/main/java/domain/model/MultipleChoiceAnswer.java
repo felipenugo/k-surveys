@@ -38,12 +38,8 @@ public class MultipleChoiceAnswer extends Answer {
         return selectedOptions[index];
     }
 
-    public void setOption(int index) {
-        selectedOptions[index] = true;
-    }
-
-    public void unsetOption(int index) {
-        selectedOptions[index] = false;
+    public void setOption(int index, boolean option) {
+        selectedOptions[index] = option;
     }
 
     @Override

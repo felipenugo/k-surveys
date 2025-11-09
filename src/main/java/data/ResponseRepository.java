@@ -3,7 +3,9 @@ package data;
 import java.util.HashMap;
 import java.util.Map;
 
+import domain.model.MultipleChoiceAnswer;
 import domain.model.Response;
+import domain.model.Answer;
 
 public class ResponseRepository {
     private final Map<String, Map<String, Response>> responses; // <surveyId, <responseId, Response>>
@@ -45,5 +47,15 @@ public class ResponseRepository {
     public boolean existsResponse(String surveyId, String responseId) {
         return responses.containsKey(surveyId) && responses.get(surveyId).containsKey(responseId);
     }
+
+    // Answer methods
+    public void updateAnswer(String surveyId, String responseId, int answerIndex, Answer answer) {
+        responses.get(surveyId).get(responseId).updateAnswer(answerIndex, answer);
+    }
+
+    public Answer getAnswer(String surveyId, String responseId, int answerIndex) {
+        return responses.get(surveyId).get(responseId).getAnswer(answerIndex);
+    }
+
 
 }
