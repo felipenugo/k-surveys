@@ -27,17 +27,18 @@ public class DriverMain {
         Scanner sc = new Scanner(System.in);
         // Initialize controllers injecting survey with repository
         UserController userController = new UserController(new UserService(new UserRepository()));
-        SurveyController surveyController = new SurveyController(new SurveyService(new SurveyRepository()));
-        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository()));
-        ResponseController responseController = new ResponseController(new ResponseService(new ResponseRepository()));
-        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository()));
+        SurveyController surveyController = new SurveyController(new SurveyService(new SurveyRepository(), userController));
+        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(),userController));
+        ResponseController responseController = new ResponseController(new ResponseService(new ResponseRepository(), userController));
+        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(), userController));
 
         // Initialize drivers passing the controllers needed
         EditorResponseDriver editorResponseDriver = new EditorResponseDriver();
         ReponseDriver responseDriver = new ReponseDriver(editorResponseDriver);
-        SurveyDriver surveyDriver = new SurveyDriver(surveyController, responseDriver);
+        MySurveysDriver mySurveysDriver = new MySurveysDriver();
+        SurveyDriver surveyDriver = new SurveyDriver( responseDriver, mySurveysDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);
-        AppDriver appDriver = new AppDriver(surveyDriver);
+        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver);
         sessionDriver.setAppDriver(appDriver);
 
         displayWelcomeMessage();

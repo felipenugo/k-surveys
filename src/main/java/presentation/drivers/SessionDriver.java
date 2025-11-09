@@ -81,11 +81,11 @@ public class SessionDriver {
             try {
                 System.out.println("--- INICIANDO SESIÓN ---");
                 userController.loginUser(username, password);
-                System.out.println("Inicio de sesión correcto.");
+                System.out.println("Inicio de sesión correcto!");
                 System.out.println("Bienvenido " + username);
-                System.out.println("Estamos en obras :-(");
-                // appDriver.appMenu();
-                driverLogout(username);
+                /*System.out.println("Estamos en obras :-(");
+                driverLogout(username);*/
+                appDriver.appMenu();
                 exitLogin = true;
             } catch (LogInException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -109,9 +109,10 @@ public class SessionDriver {
         } while (!exitLogin);
     }
 
-    public void driverLogout(String username) {
+    public void logout() {
         System.out.println("--- CERRANDO SESIÓN ---");
         try {
+            String username = userController.getUsernameLoggedIn();
             userController.logoutUser();
             System.out.println("Sesión cerrada, hasta pronto " + username + ".");
         } catch (LogInException e) {
