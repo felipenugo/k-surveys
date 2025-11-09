@@ -11,14 +11,8 @@ public interface ClusteringAlgorithm {
     /**
      * Ejecuta el algoritmo de clustering sobre una matriz de datos.
      * 
-     * @param dataMatrix La matriz de datos donde cada fila es un punto/observación
-     *                   y cada columna es una característica/dimensión
-     * @param k El número de clusters deseado
-     * @param distance El calculador de distancias a utilizar
-     * @return Los resultados del clustering incluyendo asignaciones y centroides
-     * @throws IllegalArgumentException si los parámetros son inválidos
      */
-    ClusterResults execute(Object[][] dataMatrix, int k, DistanceCalculator distance);
+    public List<Cluster> execute(List<ResponseSet> responseSets, List<Question> questions, int k, DistanceCalculator distance)
     
     /**
      * Obtiene el nombre del algoritmo.

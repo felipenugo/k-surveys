@@ -12,10 +12,5 @@ public enum DistanceType {
     /**
      * Distancia de Manhattan: sum( |d_i| )
      */
-    MANHATTAN,
-
-    /**
-     * Distancia del Coseno: Mide el ángulo entre dos vectores.
-     */
-    COSINE
+    MANHATTAN
 }
