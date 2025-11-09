@@ -202,26 +202,37 @@ direction LR
     }
 
     class ClusterResults {
+        - numClusters: Integer
+        - numResponses: Integer
+        - numFeatures: Integer
         - clusterAssignments: Integer[]
         - distances: Double[]
         - centroidMatrix: Object[][]
         - dataMatrix: Object[][]
-        - clusterLabels: Map~Integer, String~
+        - iterations: Integer
+        - converged: Boolean
         + ClusterResults(k: Integer, numResponses: Integer, numFeatures: Integer)
         + setClusterAssignment(responseIndex: Integer, clusterIndex: Integer): void
         + getClusterForResponse(responseIndex: Integer): Integer
+        + getClusterAssignments(): Integer[]
         + setDistance(responseIndex: Integer, distance: Double): void
         + getDistanceForResponse(responseIndex: Integer): Double
         + setCentroid(clusterIndex: Integer, centroid: Object[]): void
         + getCentroid(clusterIndex: Integer): Object[]
+        + getCentroidMatrix(): Object[][]
         + setResponseData(responseIndex: Integer, data: Object[]): void
         + getResponseData(responseIndex: Integer): Object[]
+        + getDataMatrix(): Object[][]
         + getResponsesInCluster(clusterIndex: Integer): List~Integer~
-        + setClusterLabel(clusterIndex: Integer, label: String): void
-        + getClusterLabel(clusterIndex: Integer): String
         + getNumberOfClusters(): Integer
+        + getK(): Integer
         + getNumberOfResponses(): Integer
-        + toMatrix(): Object[][]
+        + getNumberOfFeatures(): Integer
+        + getIterations(): Integer
+        + setIterations(iterations: Integer): void
+        + hasConverged(): Boolean
+        + isConverged(): Boolean
+        + setConverged(converged: Boolean): void
     }
 
     class ClusteringAlgorithm {
@@ -399,6 +410,25 @@ direction LR
         + getAvailableAlgorithms(): List~String~
     }
 
+    class CtrlDominioClustering {
+        - analysisResults: Map~String, ClusterResults~
+        - currentResult: ClusterResults
+        - currentAnalysisId: String
+        - analysisCounter: Integer
+        + CtrlDominioClustering()
+        + crearAlgoritmo(algorithmType: String, maxIterations: Integer, tolerance: Double): ClusteringAlgorithm
+        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String): String
+        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String, maxIterations: Integer, tolerance: Double): String
+        + ejecutarClustering(analysisId: String, algorithmType: String, dataMatrix: Object[][], k: Integer, maxIterations: Integer, tolerance: Double): String
+        + obtenerResultados(analysisId: String): ClusterResults
+        + obtenerResumen(analysisId: String): String
+        + obtenerInfoCluster(analysisId: String, clusterId: Integer): String
+        + listarAnalisis(): List~String~
+        + limpiarAnalisis(): void
+        + getNumeroAnalisis(): Integer
+        - generarAnalysisId(algorithmType: String): String
+    }
+
     %% ========== REPOSITORIOS ==========
     
     class QuestionSetRepository {
@@ -468,6 +498,13 @@ direction LR
     AnalysisController "1" -- "0..*" ClusteringAnalysis : manages
     AnalysisController "1" -- "1" AnalysisRepository : uses
     AnalysisController "1" -- "1" QualityMetricCalculator : uses
+    
+    %% Controlador de clustering directo
+    CtrlDominioClustering "1" -- "0..*" ClusterResults : manages
+    CtrlDominioClustering "1" ..> ClusteringAlgorithm : creates
+    CtrlDominioClustering "1" ..> KMeans : creates
+    CtrlDominioClustering "1" ..> KMeansPlusPlus : creates
+    CtrlDominioClustering "1" ..> KMedoids : creates
     
     %% Distancias
     DistanceCalculator "1" -- "1" DistanceType : uses
