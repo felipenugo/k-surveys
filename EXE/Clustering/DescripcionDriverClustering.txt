@@ -1,0 +1,460 @@
+================================================================================
+              DRIVER DE CLUSTERING - DOCUMENTACIÓN TÉCNICA
+================================================================================
+
+DESCRIPCIÓN GENERAL
+-------------------
+El DriverClustering es una interfaz de línea de comandos (CLI) diseñada para 
+probar y comparar los tres algoritmos de clustering implementados: KMeans, 
+KMeansPlusPlus y KMedoids.
+
+Permite:
+  • Generar datasets sintéticos con clusters bien definidos
+  • Cargar datos manualmente desde la entrada estándar
+  • Ejecutar algoritmos de clustering individuales
+  • Comparar los 3 algoritmos sobre el mismo dataset
+  • Visualizar resultados, distribuciones y métricas
+  • Gestionar múltiples análisis simultáneamente
+
+
+ARQUITECTURA
+------------
+El driver sigue la arquitectura de 3 capas del proyecto:
+
+  ┌──────────────────────────┐
+  │  DriverClustering.java   │  ← CAPA DE PRESENTACIÓN (CLI)
+  └──────────┬───────────────┘
+             │
+  ┌──────────▼────────────────┐
+  │ CtrlDominioClustering.java│  ← CAPA DE CONTROLADOR
+  └──────────┬────────────────┘
+             │
+  ┌──────────▼────────────────┐
+  │   Algoritmos de Clustering│  ← CAPA DE DOMINIO
+  │ • KMeans                   │
+  │ • KMeansPlusPlus           │
+  │ • KMedoids                 │
+  │ • ClusterResults           │
+  └────────────────────────────┘
+
+
+EJECUCIÓN
+---------
+Compilar y ejecutar con Gradle:
+  
+  ./gradlew build
+  ./gradlew run --args="drivers.DriverClustering"
+
+O ejecutar directamente la clase compilada:
+  
+  java -cp build/classes/java/main drivers.DriverClustering
+
+
+MENÚ DE OPCIONES
+----------------
+
+╔══════════════════════ MENÚ PRINCIPAL ═══════════════════════╗
+║  1. CREAR      - Generar datos sintéticos                  ║
+║  2. CARGAR     - Cargar datos manualmente                  ║
+║  3. EJECUTAR   - Ejecutar un algoritmo de clustering       ║
+║  4. COMPARAR   - Comparar los 3 algoritmos                 ║
+║  5. VER        - Ver resultados de un análisis             ║
+║  6. INFO       - Ver información de un cluster específico  ║
+║  7. LISTAR     - Listar todos los análisis guardados       ║
+║  8. LIMPIAR    - Limpiar todos los análisis                ║
+║  0. SALIR      - Cerrar el driver                          ║
+╚═════════════════════════════════════════════════════════════╝
+
+
+DESCRIPCIÓN DE COMANDOS
+------------------------
+
+1. CREAR - Generar Datos Sintéticos
+   Crea un dataset con clusters gaussianos bien separados.
+   
+   Entradas:
+     • Nombre del dataset: identificador único
+     • Puntos por cluster: número de puntos en cada cluster
+     • Número de clusters: cuántos clusters generar
+     • Dimensiones: número de características por punto
+   
+   Ejemplo:
+     Nombre del dataset: test_3clusters
+     Número de puntos por cluster: 50
+     Número de clusters: 3
+     Número de dimensiones: 2
+
+
+2. CARGAR - Cargar Datos Manualmente
+   Permite introducir datos punto por punto desde teclado.
+   
+   Entradas:
+     • Nombre del dataset
+     • Número de puntos total
+     • Dimensiones
+     • Valores de cada punto (separados por espacios)
+   
+   Ejemplo:
+     Punto 0: 1.5 2.3
+     Punto 1: 1.8 2.1
+     Punto 2: 8.5 9.2
+
+
+3. EJECUTAR - Ejecutar Algoritmo Individual
+   Ejecuta un algoritmo sobre un dataset existente.
+   
+   Entradas:
+     • Dataset a usar
+     • Algoritmo (1=KMeans, 2=KMeansPlusPlus, 3=KMedoids)
+     • Número de clusters (k)
+     • Opcionales: maxIterations, tolerance
+   
+   Salida:
+     • Tiempo de ejecución
+     • ID del análisis generado
+     • Número de iteraciones
+     • Convergencia alcanzada
+     • Distribución de puntos por cluster
+
+
+4. COMPARAR - Comparar Algoritmos
+   Ejecuta los 3 algoritmos sobre el mismo dataset y compara resultados.
+   
+   Entradas:
+     • Dataset a usar
+     • Número de clusters (k)
+   
+   Salida:
+     • Tabla comparativa con tiempo, iteraciones, convergencia
+     • Distribución de puntos para cada algoritmo
+
+
+5. VER - Ver Resultados
+   Muestra el resumen completo de un análisis guardado.
+   
+   Entradas:
+     • ID del análisis
+   
+   Salida:
+     • Nombre del algoritmo
+     • Número de puntos y clusters
+     • Iteraciones y convergencia
+     • Distribución de puntos
+
+
+6. INFO - Información de Cluster
+   Muestra detalles de un cluster específico.
+   
+   Entradas:
+     • ID del análisis
+     • ID del cluster (0 a k-1)
+   
+   Salida:
+     • Puntos en el cluster
+     • Centroide del cluster
+     • Distancia promedio al centroide
+
+
+7. LISTAR - Listar Análisis
+   Muestra todos los análisis guardados en memoria.
+
+
+8. LIMPIAR - Limpiar Análisis
+   Elimina todos los análisis de la memoria.
+
+
+CASOS DE PRUEBA
+===============
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 1: Clusters Bien Separados (2D)
+--------------------------------------------------------------------------------
+
+Objetivo: Verificar que los 3 algoritmos identifican correctamente clusters 
+          bien diferenciados en espacio 2D.
+
+Entrada:
+  1. CREAR
+     Nombre del dataset: caso1_separados
+     Número de puntos por cluster: 30
+     Número de clusters: 3
+     Número de dimensiones: 2
+
+  2. COMPARAR
+     Dataset a usar: caso1_separados
+     Número de clusters (k): 3
+
+Resultado Esperado:
+  • Los 3 algoritmos deben converger
+  • Distribución similar entre algoritmos (~30 puntos por cluster)
+  • KMeansPlusPlus suele ser más rápido que KMeans clásico
+  • KMedoids puede tomar más iteraciones
+
+Ejemplo de Salida:
+
+╔═══════════════════════ COMPARACIÓN ═══════════════════════╗
+║ Algoritmo            ║ Tiempo (ms) ║ Iterac.    ║ Converg.   ║
+╠════════════════════════════════════════════════════════════╣
+║ KMeans               ║         45  ║          8 ║ Sí         ║
+║ KMeansPlusPlus       ║         32  ║          5 ║ Sí         ║
+║ KMedoids             ║         78  ║         12 ║ Sí         ║
+╚════════════════════════════════════════════════════════════╝
+
+--- Distribución de puntos por cluster ---
+
+KMeans:
+  Cluster 0:   29 puntos (32.2%)
+  Cluster 1:   31 puntos (34.4%)
+  Cluster 2:   30 puntos (33.3%)
+
+KMeansPlusPlus:
+  Cluster 0:   30 puntos (33.3%)
+  Cluster 1:   30 puntos (33.3%)
+  Cluster 2:   30 puntos (33.3%)
+
+KMedoids:
+  Cluster 0:   28 puntos (31.1%)
+  Cluster 1:   32 puntos (35.6%)
+  Cluster 2:   30 puntos (33.3%)
+
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 2: Alta Dimensionalidad
+--------------------------------------------------------------------------------
+
+Objetivo: Verificar el funcionamiento en espacios de alta dimensionalidad.
+
+Entrada:
+  1. CREAR
+     Nombre del dataset: caso2_5d
+     Número de puntos por cluster: 25
+     Número de clusters: 4
+     Número de dimensiones: 5
+
+  2. EJECUTAR
+     Dataset a usar: caso2_5d
+     Algoritmo (1-3): 1
+     Número de clusters (k): 4
+
+Resultado Esperado:
+  • El algoritmo debe manejar correctamente 5 dimensiones
+  • Convergencia en <100 iteraciones
+  • Distribución aproximadamente uniforme
+
+Ejemplo de Salida:
+
+⏳ Ejecutando KMeans con k=4...
+✓ Clustering ejecutado exitosamente
+  Tiempo de ejecución: 67 ms
+  ID del análisis: caso2_5d_KMeans_k4_1735840123456
+
+=== RESUMEN DEL ANÁLISIS ===
+Algoritmo: KMeans
+Número de puntos: 100
+Número de clusters: 4
+Iteraciones: 15
+Convergió: Sí
+
+=== DISTRIBUCIÓN DE CLUSTERS ===
+Cluster 0:   24 puntos (24.0%)
+Cluster 1:   26 puntos (26.0%)
+Cluster 2:   25 puntos (25.0%)
+Cluster 3:   25 puntos (25.0%)
+
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 3: Número de Clusters Variable
+--------------------------------------------------------------------------------
+
+Objetivo: Comparar el comportamiento con diferente número de clusters.
+
+Entrada:
+  1. CREAR
+     Nombre del dataset: caso3_variable
+     Número de puntos por cluster: 20
+     Número de clusters: 5
+     Número de dimensiones: 3
+
+  2. EJECUTAR (múltiples veces con k=2, 3, 5, 7)
+     k=2: Debería agrupar varios clusters reales en uno
+     k=3: Agrupación intermedia
+     k=5: Coincide con clusters reales (óptimo)
+     k=7: Sobresegmentación, algunos clusters se dividen
+
+Resultado Esperado:
+  • Con k=5 (correcto), distribución uniforme ~20 puntos/cluster
+  • Con k=2 (insuficiente), clusters grandes ~50 puntos/cluster
+  • Con k=7 (excesivo), algunos clusters pequeños
+
+Ejemplo de Salida (k=2):
+
+=== DISTRIBUCIÓN DE CLUSTERS ===
+Cluster 0:   48 puntos (48.0%)
+Cluster 1:   52 puntos (52.0%)
+
+Ejemplo de Salida (k=5):
+
+=== DISTRIBUCIÓN DE CLUSTERS ===
+Cluster 0:   20 puntos (20.0%)
+Cluster 1:   19 puntos (19.0%)
+Cluster 2:   21 puntos (21.0%)
+Cluster 3:   20 puntos (20.0%)
+Cluster 4:   20 puntos (20.0%)
+
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 4: Datos Manuales (Ejemplo Simple)
+--------------------------------------------------------------------------------
+
+Objetivo: Probar con datos manuales controlados.
+
+Entrada:
+  1. CARGAR
+     Nombre del dataset: manual_simple
+     Número de puntos: 6
+     Número de dimensiones: 2
+     Punto 0: 1 1
+     Punto 1: 1 2
+     Punto 2: 2 1
+     Punto 3: 8 8
+     Punto 4: 8 9
+     Punto 5: 9 8
+
+  2. EJECUTAR
+     Dataset a usar: manual_simple
+     Algoritmo (1-3): 2
+     Número de clusters (k): 2
+
+Resultado Esperado:
+  • Cluster 0: {0, 1, 2} (región inferior izquierda)
+  • Cluster 1: {3, 4, 5} (región superior derecha)
+  • Convergencia rápida (2-3 iteraciones)
+
+Ejemplo de Salida:
+
+=== DISTRIBUCIÓN DE CLUSTERS ===
+Cluster 0:    3 puntos (50.0%)
+Cluster 1:    3 puntos (50.0%)
+
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 5: Convergencia y Parámetros Avanzados
+--------------------------------------------------------------------------------
+
+Objetivo: Verificar el efecto de maxIterations y tolerance.
+
+Entrada:
+  1. CREAR
+     Nombre del dataset: caso5_convergencia
+     Número de puntos por cluster: 40
+     Número de clusters: 3
+     Número de dimensiones: 2
+
+  2. EJECUTAR (con parámetros avanzados)
+     Dataset a usar: caso5_convergencia
+     Algoritmo (1-3): 1
+     Número de clusters (k): 3
+     ¿Configurar parámetros avanzados? (s/n): s
+     Máximo de iteraciones [100]: 5
+     Tolerancia de convergencia [0.0001]: 0.01
+
+Resultado Esperado:
+  • Con maxIterations=5, puede no converger completamente
+  • Con tolerance=0.01 (mayor), converge más rápido pero menos preciso
+
+Ejemplo de Salida (maxIter=5):
+
+=== RESUMEN DEL ANÁLISIS ===
+Algoritmo: KMeans
+Número de puntos: 120
+Número de clusters: 3
+Iteraciones: 5
+Convergió: No
+
+
+--------------------------------------------------------------------------------
+CASO DE PRUEBA 6: Información Detallada de Cluster
+--------------------------------------------------------------------------------
+
+Objetivo: Verificar la consulta de información específica de un cluster.
+
+Entrada:
+  1. Usar cualquier análisis previo (ej: caso1_separados_KMeans_k3_...)
+  
+  2. INFO
+     ID del análisis: caso1_separados_KMeans_k3_1735840123456
+     ID del cluster: 0
+
+Resultado Esperado:
+  • Lista de puntos pertenecientes al cluster
+  • Coordenadas del centroide
+  • Distancia promedio de los puntos al centroide
+
+Ejemplo de Salida:
+
+=== INFORMACIÓN DEL CLUSTER 0 ===
+Análisis: caso1_separados_KMeans_k3_1735840123456
+Algoritmo: KMeans
+
+Puntos en el cluster: 29
+IDs de los puntos: [0, 1, 2, 3, 5, 7, 8, 9, 11, 12, ...]
+
+Centroide: [1.85, 2.13]
+
+Distancia promedio al centroide: 0.67
+
+
+NOTAS TÉCNICAS
+==============
+
+Formato de Datos
+----------------
+• Los datos se representan como Object[][] (matriz de objetos)
+• Cada fila es un punto, cada columna es una dimensión
+• Los valores deben ser numéricos (Double)
+
+Algoritmos
+----------
+• KMeans: Inicialización aleatoria, puede caer en mínimos locales
+• KMeansPlusPlus: Inicialización inteligente (D²), mejor resultado inicial
+• KMedoids: Usa puntos reales como centroides, más robusto a outliers
+
+Métricas
+--------
+• Distancia: Euclidiana (sqrt(sum((x_i - y_i)²)))
+• Convergencia: Cambio en centroides < tolerance O iteraciones >= maxIterations
+
+Rendimiento
+-----------
+• KMeansPlusPlus suele converger más rápido que KMeans
+• KMedoids es más lento (O(n²) vs O(n)) pero más robusto
+• Tiempo típico para 100 puntos, 3 clusters, 2D: 20-100ms
+
+
+ERRORES COMUNES
+===============
+
+1. "Dataset no encontrado"
+   → Verifica que hayas creado o cargado el dataset antes de usarlo
+   → Usa LISTAR para ver datasets disponibles
+
+2. "Número de clusters inválido"
+   → k debe ser > 0 y <= número de puntos
+   → Para n puntos, k típicamente entre 2 y sqrt(n)
+
+3. "No hay análisis guardados"
+   → Primero ejecuta un algoritmo con EJECUTAR o COMPARAR
+   → Los análisis se pierden al cerrar el programa
+
+4. "Algoritmo no convergió"
+   → Aumenta maxIterations (default 100)
+   → Puede ser normal con k muy grande o datos sin estructura
+
+
+AUTOR Y VERSIÓN
+===============
+Autor: Equipo de Clustering - PROP 2024/25
+Versión: 1.0
+Fecha: Enero 2025
+
+================================================================================
