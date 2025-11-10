@@ -2,21 +2,20 @@ package presentation.drivers;
 
 import domain.controller.ResponseController;
 import domain.model.*;
-import domain.controller.*;
 
 import java.util.Scanner;
 import java.util.List;
 
-public class EditorResponseDriver {
+public class EditResponseDriver {
     private final ResponseController responseController;
     private final Scanner sc = new Scanner(System.in);
 
-    public EditorResponseDriver(ResponseController responseControler)
+    public EditResponseDriver(ResponseController responseControler)
     {
         this.responseController = responseControler;
     }
 
-    private int selectEditorResponseMenu() {
+    private int selectEditResponseMenu() {
         System.out.println("--- EDITOR DE RESPUESTAS ---");
         System.out.println("1. VER PREGUNTAS.");
         System.out.println("2. RESPONDER PREGUNTA");
@@ -34,10 +33,10 @@ public class EditorResponseDriver {
         String tmp = sc.nextLine();
     }
 
-    public void editorResponseMenu(String surveyId, String responseid) {
+    public void editResponseMenu(String surveyId, String responseid) {
         boolean exit = false;
         do {
-            switch (selectEditorResponseMenu()) {
+            switch (selectEditResponseMenu()) {
                 case 1 -> System.out.println("ver preguntas");
                 case 2 -> System.out.println("responder pregunta");
                 case 3 -> System.out.println("ver mis respuestas");

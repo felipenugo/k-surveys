@@ -1,6 +1,5 @@
 package presentation.drivers;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,13 +13,13 @@ import domain.model.Survey;
 public class ResponseDriver {
     private final SurveyController surveyController;
     private final ResponseController responseController;
-    private final EditorResponseDriver editorResponseDriver;
+    private final EditResponseDriver editResponseDriver;
     private final Scanner sc = new Scanner(System.in);
 
-    public ResponseDriver(SurveyController surveyController, ResponseController responseController, EditorResponseDriver editorResponseDriver) {
+    public ResponseDriver(SurveyController surveyController, ResponseController responseController, EditResponseDriver editResponseDriver) {
         this.surveyController = surveyController;
         this.responseController = responseController;
-        this.editorResponseDriver = editorResponseDriver;
+        this.editResponseDriver = editResponseDriver;
     }
 
     public int selectResponseMenuOption() {
@@ -60,7 +59,7 @@ public class ResponseDriver {
                 System.out.print("Introduce un id para tu respuesta: ");
                 String responseId = sc.nextLine();
                 responseController.startResponse(surveyIdSelected, responseId);
-                editorResponseDriver.editorResponseMenu(surveyIdSelected, responseId);
+                editResponseDriver.editResponseMenu(surveyIdSelected, responseId);
                 exit = true;
             } catch (SurveyException | ResponseException e) {
                 System.out.println("Error: " + e.getMessage());
