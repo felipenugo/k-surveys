@@ -1,7 +1,7 @@
-package drivers;
+package presentation.drivers;
 
-import domain.controller.CtrlDominioClustering;
 import domain.clustering.ClusterResults;
+import domain.controller.CtrlDominioClustering;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -338,7 +338,7 @@ public class DriverClustering {
                 algoritmo,
                 tiempos.get(algoritmo),
                 results.getIterations(),
-                results.isConverged() ? "Sí" : "No"
+                results.hasConverged() ? "Sí" : "No"
             ));
         }
         System.out.println("╚════════════════════════════════════════════════════════════╝");

@@ -1,5 +1,8 @@
 package data.stub;
 
+import domain.model.Survey;
+import domain.model.Usuario;
+
 import java.util.*;
 
 /**
@@ -12,7 +15,7 @@ import java.util.*;
 public class StubPersistencia {
     private static StubPersistencia instancia;
     private final Map<String, Usuario> usuarios;
-    private Map<String, List<Encuesta>> encuestas;
+    private Map<String, List<Survey>> encuestas;
 
     /**
      * Constructor privado.
@@ -52,7 +55,7 @@ public class StubPersistencia {
      * @param usuario el nombre del usuario
      * @return la lista de Encuesta asociada al usuario o null si no hay encuestas
      */
-    public List<Encuesta> getEncuestasUsuario(String usuario) {
+    public List<Survey> getEncuestasUsuario(String usuario) {
         return encuestas.get(usuario);
     }
 
@@ -63,9 +66,9 @@ public class StubPersistencia {
      * </p>
      *
      * @param usuario  el nombre del usuario
-     * @param encuestas  la encuesta a agregar
+     * @param encuesta  la encuesta a agregar
      */
-    public void agregarEncuesta(String usuario, Encuesta encuesta) {
+    public void agregarEncuesta(String usuario, Survey encuesta) {
         encuestas.computeIfAbsent(usuario, k -> new ArrayList<>()).add(encuesta);
     }
     /**
@@ -78,11 +81,11 @@ public class StubPersistencia {
      * @param id      el identificador de la encuesta
      * @return la Encuesta que coincide con el id, o null si no se encuentra
      */
-    public Encuesta getEncuesta(String usuario, String id) {
-        List<Encuesta> encuestas = this.encuestas.get(usuario);
+    public Survey getEncuesta(String usuario, String id) {
+        List<Survey> encuestas = this.encuestas.get(usuario);
         if(encuestas == null) return null;
-        for(Encuesta encuesta : encuestas) {
-            if(encuesta.getId().equals(id)) {
+        for(Survey encuesta : encuestas) {
+            if(encuesta.getSURVEY_ID().equals(id)) {
                 return encuesta;
             }
         }
@@ -101,9 +104,9 @@ public class StubPersistencia {
      * @return true si la encuesta se eliminó y, si era la única, se removió la entrada del usuario; false en caso contrario
      */
     public boolean eliminarEncuesta (String usuario, String idEncuesta) {
-        List<Encuesta> encuestas = this.encuestas.get(usuario);
+        List<Survey> encuestas = this.encuestas.get(usuario);
         if (encuestas != null) {
-            encuestas.removeIf(encuesta -> encuesta.getId().equals(idEncuesta));
+            encuestas.removeIf(encuesta -> encuesta.getSURVEY_ID().equals(idEncuesta));
             if (encuestas.isEmpty()) {
                 this.encuestas.remove(usuario);
                 return true;

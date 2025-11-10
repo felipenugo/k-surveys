@@ -1,7 +1,9 @@
 package clustering;
 
+import domain.clustering.ClusterResults;
 import domain.clustering.DistanceCalculator;
 import domain.clustering.DistanceType;
+import domain.clustering.KMeansPlusPlus;
 import domain.model.MultipleChoiceAnswer;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.Question;
@@ -15,16 +17,17 @@ import org.junit.Test;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TestDistanceCalculator {
+public class TestKMeansPlusPlus {
 
-    private DistanceCalculator euclideanCalculator;
-    private DistanceCalculator manhattanCalculator;
+    private KMeansPlusPlus kmeansPlusPlus;
+    private DistanceCalculator distanceCalc;
     private List<Question> questions;
+    private List<Response> data;
 
     @Before
     public void setUp() {
-        euclideanCalculator = new DistanceCalculator(DistanceType.EUCLIDEAN);
-        manhattanCalculator = new DistanceCalculator(DistanceType.MANHATTAN);
+        kmeansPlusPlus = new KMeansPlusPlus(10, 1e-5);
+        distanceCalc = new DistanceCalculator(DistanceType.EUCLIDEAN);
 
         questions = new ArrayList<>();
         MultipleChoiceQuestion q1 = new MultipleChoiceQuestion(0, "s1");
@@ -35,6 +38,12 @@ public class TestDistanceCalculator {
         Question q2 = new Question(1, "s1");
         q2.setTypeQuestion(TypeQuestion.TEXTUAL);
         questions.add(q2);
+
+        data = new ArrayList<>();
+        data.add(createResponse("u1", new boolean[]{true, false}, "apple"));
+        data.add(createResponse("u2", new boolean[]{true, false}, "apple"));
+        data.add(createResponse("u3", new boolean[]{false, true}, "banana"));
+        data.add(createResponse("u4", new boolean[]{false, true}, "banana"));
     }
 
     private Response createResponse(String username, boolean[] choice, String text) {
@@ -50,18 +59,11 @@ public class TestDistanceCalculator {
     }
 
     @Test
-    public void testCalculateEuclidean() {
-        Response r1 = createResponse("u1", new boolean[]{true, false}, "apple");
-        Response r2 = createResponse("u2", new boolean[]{false, true}, "apply");
-        double dist = euclideanCalculator.calculate(r1, r2, questions);
-        Assert.assertTrue(dist > 0);
-    }
-
-    @Test
-    public void testCalculateManhattan() {
-        Response r1 = createResponse("u1", new boolean[]{true, false}, "apple");
-        Response r2 = createResponse("u2", new boolean[]{false, true}, "apply");
-        double dist = manhattanCalculator.calculate(r1, r2, questions);
-        Assert.assertTrue(dist > 0);
+    public void testKMeansPlusPlusExecute() {
+        ClusterResults results = kmeansPlusPlus.execute(data, questions, 2, distanceCalc);
+        Assert.assertNotNull(results);
+        Assert.assertEquals(2, results.getClusters().size());
+        Assert.assertTrue(results.hasConverged());
+        Assert.assertEquals(4, results.getNumberOfResponses());
     }
 }

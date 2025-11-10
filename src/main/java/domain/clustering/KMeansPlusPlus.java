@@ -1,24 +1,26 @@
 package domain.clustering;
 
+import domain.model.Answer;
+import domain.model.MultipleChoiceAnswer;
+import domain.model.MultipleChoiceQuestion;
+import domain.model.Question;
+import domain.model.Response;
+import domain.model.TextualAnswer;
+import domain.model.enums.TypeQuestion;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
-/**
- * K-Means++ con inicialización inteligente de centroides.
- * Elige centroides lejanos entre sí (probabilidad proporcional a distancia²).
- * Mejor calidad y convergencia más rápida que K-Means estándar.
- */
 public class KMeansPlusPlus implements ClusteringAlgorithm {
-    
-    // ========== ATRIBUTOS ==========
-    
+
     private int maxIterations;
     private double tolerance;
     private long randomSeed;
     private Random random;
-    
-    // ========== CONSTRUCTORES ==========
-    
-    /** Constructor con parámetros personalizados. */
+
     public KMeansPlusPlus(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
@@ -26,236 +28,308 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         if (tolerance < 0) {
             throw new IllegalArgumentException("tolerance no puede ser negativa");
         }
-        
         this.maxIterations = maxIterations;
         this.tolerance = tolerance;
         this.randomSeed = System.currentTimeMillis();
         this.random = new Random(randomSeed);
     }
-    
-    /** Constructor con valores por defecto: maxIterations=100, tolerance=1e-4. */
+
     public KMeansPlusPlus() {
         this(100, 1e-4);
     }
-    
-    // ========== MÉTODOS PÚBLICOS ==========
-    
+
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
     }
-    
+
     @Override
     public String getName() {
         return "K-Means++";
     }
-    
+
     @Override
     public String getDescription() {
-        return "Variante mejorada de K-Means con inicialización inteligente de centroides. " +
-               "Selecciona centroides que están lejanos entre sí, mejorando la calidad " +
-               "de los clusters y reduciendo la sensibilidad a la inicialización aleatoria.";
+        return "Variante mejorada de K-Means con inicialización inteligente de centroides.";
     }
-    
+
     @Override
-    public ClusterResults execute(Object[][] dataMatrix, int k, DistanceCalculator distance) {
-        // Validaciones
-        if (dataMatrix == null || dataMatrix.length == 0) {
-            throw new IllegalArgumentException("La matriz de datos no puede ser nula o vacía");
+    public ClusterResults execute(List<Response> responses, List<Question> questions, int k,
+                                 DistanceCalculator distance) {
+        if (responses == null || responses.isEmpty()) {
+            throw new IllegalArgumentException("Los datos (responses) no pueden ser nulos o vacíos");
         }
-        if (k <= 0 || k > dataMatrix.length) {
+        if (k <= 0 || k > responses.size()) {
             throw new IllegalArgumentException("k debe estar entre 1 y el número de puntos");
         }
-        if (distance == null) {
-            throw new IllegalArgumentException("DistanceCalculator no puede ser null");
-        }
-        
-        int numPoints = dataMatrix.length;
-        int numFeatures = dataMatrix[0].length;
-        
-        // Inicializar resultados
-        ClusterResults results = new ClusterResults(k, numPoints, numFeatures);
-        
-        // Copiar datos
-        for (int i = 0; i < numPoints; i++) {
-            results.setResponseData(i, dataMatrix[i]);
-        }
-        
-        // 1. Inicializar centroides con K-Means++
-        Object[][] centroids = initializeCentroidsPlusPlus(dataMatrix, k, distance);
-        
-        // Variables para el bucle iterativo
+
+        int numPoints = responses.size();
+
+        // 1. Initialize centroids using K-Means++ logic
+        List<Centroid> centroids = initializeCentroidsPlusPlus(responses, questions, k, distance);
+
         Integer[] assignments = new Integer[numPoints];
         boolean converged = false;
         int iteration = 0;
-        
-        // 2. Bucle principal (igual que K-Means estándar)
+
+        // 2. Main loop (same as K-Means)
         while (iteration < maxIterations && !converged) {
-            Integer[] newAssignments = assignToClusters(dataMatrix, centroids, distance);
-            Object[][] newCentroids = updateCentroids(dataMatrix, newAssignments, k);
-            converged = hasConverged(centroids, newCentroids);
-            
+            Integer[] newAssignments = assignToClusters(responses, questions, centroids, distance);
+            List<Centroid> newCentroids = updateCentroids(responses, questions, newAssignments, k, distance);
+            converged = hasConverged(centroids, newCentroids, questions, distance);
             assignments = newAssignments;
             centroids = newCentroids;
             iteration++;
         }
-        
-        // 3. Guardar resultados
-        for (int i = 0; i < numPoints; i++) {
-            results.setClusterAssignment(i, assignments[i]);
-            double dist = calculateDistance(dataMatrix[i], centroids[assignments[i]], distance);
-            results.setDistance(i, dist);
-        }
-        
-        for (int i = 0; i < k; i++) {
-            results.setCentroid(i, centroids[i]);
-        }
-        
-        results.setIterations(iteration);
-        results.setConverged(converged);
-        
-        return results;
+
+        // 3. Create final clusters
+        List<Cluster> finalClusters = createClusters(responses, questions, assignments, centroids, distance);
+        return new ClusterResults(finalClusters, iteration, converged);
     }
-    
-    // ========== MÉTODOS PRIVADOS ==========
-    
-    /** Inicialización K-Means++: selecciona centroides lejanos entre sí. */
-    private Object[][] initializeCentroidsPlusPlus(Object[][] dataMatrix, int k, DistanceCalculator distance) {
-        int numPoints = dataMatrix.length;
-        int numFeatures = dataMatrix[0].length;
-        Object[][] centroids = new Object[k][numFeatures];
+
+    private List<Centroid> initializeCentroidsPlusPlus(List<Response> responses, List<Question> questions, int k, DistanceCalculator distance) {
+        List<Centroid> centroids = new ArrayList<>();
         
-        // 1. Elegir primer centroide aleatoriamente
-        int firstIndex = random.nextInt(numPoints);
-        for (int j = 0; j < numFeatures; j++) {
-            centroids[0][j] = dataMatrix[firstIndex][j];
-        }
-        
-        // Array para almacenar distancias mínimas de cada punto
-        double[] minDistances = new double[numPoints];
-        
-        // 2. Para cada centroide restante
-        for (int i = 1; i < k; i++) {
+        int firstIndex = random.nextInt(responses.size());
+        centroids.add(createCentroidFromResponse(responses.get(firstIndex), questions));
+
+        double[] minDistances = new double[responses.size()];
+
+        while (centroids.size() < k) {
             double totalDistance = 0.0;
-            
-            // Calcular distancia² de cada punto al centroide más cercano
-            for (int p = 0; p < numPoints; p++) {
-                double minDist = Double.MAX_VALUE;
-                
-                for (int c = 0; c < i; c++) {
-                    double dist = calculateDistance(dataMatrix[p], centroids[c], distance);
-                    if (dist < minDist) {
-                        minDist = dist;
-                    }
+
+            for (int i = 0; i < responses.size(); i++) {
+                Response r = responses.get(i);
+                double minSqDist = Double.MAX_VALUE;
+                for (Centroid c : centroids) {
+                    double dist = distance.calculateToCentroid(r, c, questions);
+                    minSqDist = Math.min(minSqDist, dist * dist);
                 }
-                
-                minDistances[p] = minDist * minDist; // Distancia²
-                totalDistance += minDistances[p];
+                minDistances[i] = minSqDist;
+                totalDistance += minSqDist;
             }
-            
-            // Elegir nuevo centroide con probabilidad proporcional a distancia²
+
             double randomValue = random.nextDouble() * totalDistance;
             double cumulative = 0.0;
-            int selectedIndex = 0;
-            
-            for (int p = 0; p < numPoints; p++) {
-                cumulative += minDistances[p];
+            int selectedIndex = -1;
+
+            for (int i = 0; i < responses.size(); i++) {
+                cumulative += minDistances[i];
                 if (cumulative >= randomValue) {
-                    selectedIndex = p;
+                    selectedIndex = i;
                     break;
                 }
             }
             
-            // Copiar punto seleccionado como nuevo centroide
-            for (int j = 0; j < numFeatures; j++) {
-                centroids[i][j] = dataMatrix[selectedIndex][j];
+            if (selectedIndex != -1) {
+                 centroids.add(createCentroidFromResponse(responses.get(selectedIndex), questions));
+            } else {
+                 int fallbackIndex = random.nextInt(responses.size());
+                 centroids.add(createCentroidFromResponse(responses.get(fallbackIndex), questions));
             }
         }
-        
         return centroids;
     }
     
-    /** Asigna cada punto al cluster más cercano. */
-    private Integer[] assignToClusters(Object[][] dataMatrix, Object[][] centroids, 
-                                       DistanceCalculator distance) {
-        int numPoints = dataMatrix.length;
-        int k = centroids.length;
-        Integer[] assignments = new Integer[numPoints];
-        
-        for (int i = 0; i < numPoints; i++) {
+    public static Centroid createCentroidFromResponse(Response r, List<Question> questions) {
+        int numQuestions = questions.size();
+        Centroid c = new Centroid(numQuestions);
+        for (int i = 0; i < numQuestions; i++) {
+            Question q = questions.get(i);
+            Answer a = r.getAnswer(q.getQuestionIndex());
+            Object value = getAnswerValue(a, q);
+            c.setComponent(i, value);
+        }
+        return c;
+    }
+
+    public static boolean isAnswered(Answer a) {
+        if (a == null) return false;
+        if (a instanceof MultipleChoiceAnswer) {
+            for (boolean b : ((MultipleChoiceAnswer) a).getSelectedOptions()) {
+                if (b) return true;
+            }
+            return false;
+        }
+        if (a instanceof TextualAnswer) {
+            String text = ((TextualAnswer) a).getAnswerText();
+            return text != null && !text.isEmpty();
+        }
+        return false;
+    }
+
+    public static Object getAnswerValue(Answer a, Question q) {
+        if (!isAnswered(a)) return null;
+        try {
+            if (q instanceof MultipleChoiceQuestion) {
+                boolean[] val = ((MultipleChoiceAnswer) a).getSelectedOptions();
+                double[] valAsDouble = new double[val.length];
+                for (int i = 0; i < val.length; ++i) valAsDouble[i] = val[i] ? 1.0 : 0.0;
+                return valAsDouble;
+            } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
+                return ((TextualAnswer) a).getAnswerText();
+            }
+        } catch (Exception e) {
+            return null;
+        }
+        return null;
+    }
+
+    private Integer[] assignToClusters(List<Response> responses, List<Question> questions,
+                                       List<Centroid> centroids, DistanceCalculator distance) {
+        Integer[] assignments = new Integer[responses.size()];
+        for (int i = 0; i < responses.size(); i++) {
+            Response r = responses.get(i);
             double minDistance = Double.MAX_VALUE;
-            int closestCluster = 0;
-            
-            for (int j = 0; j < k; j++) {
-                double dist = calculateDistance(dataMatrix[i], centroids[j], distance);
-                if (dist < minDistance) {
-                    minDistance = dist;
-                    closestCluster = j;
+            int bestCluster = -1;
+            for (int j = 0; j < centroids.size(); j++) {
+                double d = distance.calculateToCentroid(r, centroids.get(j), questions);
+                if (d < minDistance) {
+                    minDistance = d;
+                    bestCluster = j;
                 }
             }
-            
-            assignments[i] = closestCluster;
+            assignments[i] = bestCluster;
         }
-        
         return assignments;
     }
-    
-    /** Recalcula centroides como promedio de puntos asignados. */
-    private Object[][] updateCentroids(Object[][] dataMatrix, Integer[] assignments, int k) {
-        int numPoints = dataMatrix.length;
-        int numFeatures = dataMatrix[0].length;
-        Object[][] newCentroids = new Object[k][numFeatures];
-        
-        double[][] sums = new double[k][numFeatures];
-        int[] counts = new int[k];
-        
-        for (int i = 0; i < numPoints; i++) {
-            int cluster = assignments[i];
-            counts[cluster]++;
-            
-            for (int j = 0; j < numFeatures; j++) {
-                if (dataMatrix[i][j] instanceof Number) {
-                    sums[cluster][j] += ((Number) dataMatrix[i][j]).doubleValue();
-                }
+
+    private List<Centroid> updateCentroids(List<Response> responses, List<Question> questions,
+                                           Integer[] assignments, int k, DistanceCalculator distance) {
+        int numQuestions = questions.size();
+        List<Centroid> newCentroids = new ArrayList<>();
+        Map<Integer, double[][]> choiceSums = new HashMap<>();
+        Map<Integer, Map<Integer, List<String>>> textValues = new HashMap<>();
+        int[] clusterSizes = new int[k];
+
+        for (int i = 0; i < responses.size(); i++) {
+            int clusterIdx = assignments[i];
+            if (clusterIdx == -1) continue;
+            clusterSizes[clusterIdx]++;
+            Response r = responses.get(i);
+            for (int qIdx = 0; qIdx < numQuestions; qIdx++) {
+                Question q = questions.get(qIdx);
+                Answer a = r.getAnswer(q.getQuestionIndex());
+                if (!isAnswered(a)) continue;
+                try {
+                    if (q instanceof MultipleChoiceQuestion) {
+                        choiceSums.putIfAbsent(clusterIdx, new double[numQuestions][]);
+                        boolean[] val = ((MultipleChoiceAnswer) a).getSelectedOptions();
+                        int numOptions = val.length;
+                        if (choiceSums.get(clusterIdx)[qIdx] == null) {
+                            choiceSums.get(clusterIdx)[qIdx] = new double[numOptions];
+                        }
+                        for (int optIdx = 0; optIdx < numOptions; optIdx++) {
+                            if (val[optIdx]) {
+                                choiceSums.get(clusterIdx)[qIdx][optIdx] += 1.0;
+                            }
+                        }
+                    } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
+                        textValues.putIfAbsent(clusterIdx, new HashMap<>());
+                        textValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
+                        textValues.get(clusterIdx).get(qIdx).add(((TextualAnswer) a).getAnswerText());
+                    }
+                } catch (Exception e) { /* Ignore */ }
             }
         }
-        
-        for (int i = 0; i < k; i++) {
-            if (counts[i] > 0) {
-                for (int j = 0; j < numFeatures; j++) {
-                    newCentroids[i][j] = sums[i][j] / counts[i];
-                }
-            } else {
-                for (int j = 0; j < numFeatures; j++) {
-                    newCentroids[i][j] = 0.0;
+
+        for (int cIdx = 0; cIdx < k; cIdx++) {
+            Centroid c = new Centroid(numQuestions);
+            int size = clusterSizes[cIdx];
+            if (size > 0) {
+                for (int qIdx = 0; qIdx < numQuestions; qIdx++) {
+                    Question q = questions.get(qIdx);
+                    if (q instanceof MultipleChoiceQuestion) {
+                        double[][] cSums = choiceSums.get(cIdx);
+                        if (cSums != null && cSums[qIdx] != null) {
+                            int numOptions = cSums[qIdx].length;
+                            double[] avgOptions = new double[numOptions];
+                            for (int optIdx = 0; optIdx < numOptions; optIdx++) {
+                                avgOptions[optIdx] = cSums[qIdx][optIdx] / size;
+                            }
+                            c.setComponent(qIdx, avgOptions);
+                        }
+                    } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
+                        Map<Integer, List<String>> clusterTexts = textValues.get(cIdx);
+                        if (clusterTexts != null && clusterTexts.get(qIdx) != null) {
+                            String medoidText = findTextMedoid(clusterTexts.get(qIdx), distance);
+                            c.setComponent(qIdx, medoidText);
+                        }
+                    }
                 }
             }
+            newCentroids.add(c);
         }
-        
         return newCentroids;
     }
-    
-    /** Verifica convergencia comparando cambio en centroides contra tolerancia. */
-    private boolean hasConverged(Object[][] oldCentroids, Object[][] newCentroids) {
-        int k = oldCentroids.length;
-        int numFeatures = oldCentroids[0].length;
-        double totalChange = 0.0;
-        
-        for (int i = 0; i < k; i++) {
-            for (int j = 0; j < numFeatures; j++) {
-                if (oldCentroids[i][j] instanceof Number && newCentroids[i][j] instanceof Number) {
-                    double oldVal = ((Number) oldCentroids[i][j]).doubleValue();
-                    double newVal = ((Number) newCentroids[i][j]).doubleValue();
-                    totalChange += Math.abs(newVal - oldVal);
+
+    private boolean hasConverged(List<Centroid> oldCentroids, List<Centroid> newCentroids, List<Question> questions, DistanceCalculator distance) {
+        double totalMovement = 0.0;
+        for (int i = 0; i < oldCentroids.size(); i++) {
+            Centroid oldC = oldCentroids.get(i);
+            Centroid newC = newCentroids.get(i);
+            double centroidDiff = 0.0;
+            for (int qIdx = 0; qIdx < questions.size(); qIdx++) {
+                Object oldComp = oldC.getComponent(qIdx);
+                Object newComp = newC.getComponent(qIdx);
+                if (oldComp == null || newComp == null) {
+                    if (oldComp != newComp) centroidDiff += 1.0;
+                    continue;
+                }
+                try {
+                    if (oldComp instanceof double[]) {
+                        double[] oldV = (double[]) oldComp;
+                        double[] newV = (double[]) newComp;
+                        centroidDiff += distance.euclideanDistance(oldV, newV);
+                    } else if (oldComp instanceof String) {
+                        centroidDiff += distance.calculateTextDistance((String) oldComp, (String) newComp);
+                    }
+                } catch (Exception e) {
+                    centroidDiff += 1.0;
                 }
             }
+            totalMovement += centroidDiff;
         }
-        
-        return totalChange < tolerance;
+        return totalMovement < tolerance;
     }
-    
-    /** Calcula distancia entre dos puntos usando DistanceCalculator. */
-    private double calculateDistance(Object[] point1, Object[] point2, DistanceCalculator distance) {
-        return distance.calculateVectorDistance(point1, point2);
+
+    private String findTextMedoid(List<String> texts, DistanceCalculator distance) {
+        if (texts == null || texts.isEmpty()) return null;
+        double minTotalDistance = Double.MAX_VALUE;
+        String bestMedoid = texts.get(0);
+        for (String candidate : texts) {
+            double currentTotalDistance = 0.0;
+            for (String other : texts) {
+                currentTotalDistance += distance.calculateTextDistance(candidate, other);
+            }
+            if (currentTotalDistance < minTotalDistance) {
+                minTotalDistance = currentTotalDistance;
+                bestMedoid = candidate;
+            }
+        }
+        return bestMedoid;
+    }
+
+    private List<Cluster> createClusters(List<Response> responses, List<Question> questions,
+                                         Integer[] assignments, List<Centroid> centroids,
+                                         DistanceCalculator distance) {
+        int k = centroids.size();
+        List<Cluster> finalClusters = new ArrayList<>();
+        Map<Integer, Cluster> clusterMap = new HashMap<>();
+        for (int i = 0; i < k; i++) {
+            Cluster cluster = new Cluster("cluster_" + (i + 1));
+            cluster.setCentroid(centroids.get(i));
+            finalClusters.add(cluster);
+            clusterMap.put(i, cluster);
+        }
+        for (int i = 0; i < responses.size(); i++) {
+            Integer clusterIndex = assignments[i];
+            if (clusterIndex == -1) continue;
+            Response r = responses.get(i);
+            Cluster cluster = clusterMap.get(clusterIndex);
+            double distToCentroid = distance.calculateToCentroid(r, cluster.getCentroid(), questions);
+            cluster.addMember(r, distToCentroid);
+        }
+        return finalClusters;
     }
 }

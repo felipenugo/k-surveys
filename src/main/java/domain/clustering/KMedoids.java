@@ -1,26 +1,23 @@
 package domain.clustering;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import domain.model.Question;
+import domain.model.Response;
 
-/**
- * K-Medoids: usa puntos reales del dataset como centros (medoides).
- * Más robusto a outliers que K-Means, funciona con distancias no euclidianas.
- * Más lento (O(n²)) pero mejor para datos categóricos o con ruido.
- */
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
+
 public class KMedoids implements ClusteringAlgorithm {
-    
-    // ========== ATRIBUTOS ==========
-    
+
     private int maxIterations;
     private double tolerance;
     private long randomSeed;
     private Random random;
-    
-    // ========== CONSTRUCTORES ==========
-    
-    /** Constructor con parámetros personalizados. */
+
     public KMedoids(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
@@ -28,210 +25,184 @@ public class KMedoids implements ClusteringAlgorithm {
         if (tolerance < 0) {
             throw new IllegalArgumentException("tolerance no puede ser negativa");
         }
-        
         this.maxIterations = maxIterations;
         this.tolerance = tolerance;
         this.randomSeed = System.currentTimeMillis();
         this.random = new Random(randomSeed);
     }
-    
-    /** Constructor con valores por defecto: maxIterations=100, tolerance=1e-4. */
+
     public KMedoids() {
         this(100, 1e-4);
     }
-    
-    // ========== MÉTODOS PÚBLICOS ==========
-    
+
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
     }
-    
+
     @Override
     public String getName() {
         return "K-Medoids";
     }
-    
+
     @Override
     public String getDescription() {
-        return "Algoritmo K-Medoids que utiliza puntos reales del dataset como " +
-               "representantes de clusters. Más robusto a outliers que K-Means " +
-               "y funciona mejor con distancias no euclidianas y datos categóricos.";
+        return "Algoritmo K-Medoids que utiliza puntos reales del dataset como representantes de clusters.";
     }
-    
+
     @Override
-    public ClusterResults execute(Object[][] dataMatrix, int k, DistanceCalculator distance) {
-        // Validaciones
-        if (dataMatrix == null || dataMatrix.length == 0) {
-            throw new IllegalArgumentException("La matriz de datos no puede ser nula o vacía");
+    public ClusterResults execute(List<Response> responses, List<Question> questions, int k,
+                                 DistanceCalculator distance) {
+        if (responses == null || responses.isEmpty()) {
+            throw new IllegalArgumentException("Los datos (responses) no pueden ser nulos o vacíos");
         }
-        if (k <= 0 || k > dataMatrix.length) {
+        if (k <= 0 || k > responses.size()) {
             throw new IllegalArgumentException("k debe estar entre 1 y el número de puntos");
         }
-        if (distance == null) {
-            throw new IllegalArgumentException("DistanceCalculator no puede ser null");
-        }
-        
-        int numPoints = dataMatrix.length;
-        int numFeatures = dataMatrix[0].length;
-        
-        // Inicializar resultados
-        ClusterResults results = new ClusterResults(k, numPoints, numFeatures);
-        
-        // Copiar datos
-        for (int i = 0; i < numPoints; i++) {
-            results.setResponseData(i, dataMatrix[i]);
-        }
-        
-        // 1. Inicializar medoides (índices de puntos reales)
-        int[] medoidIndices = initializeMedoids(dataMatrix, k);
-        
-        // Variables para el bucle iterativo
-        Integer[] assignments = new Integer[numPoints];
+
+        // 1. Initialize medoids (indices of actual responses)
+        int[] medoidIndices = initializeMedoids(responses.size(), k);
+
+        Integer[] assignments = new Integer[responses.size()];
         boolean converged = false;
         int iteration = 0;
         double previousCost = Double.MAX_VALUE;
-        
-        // 2. Bucle principal
+
+        // 2. Main loop
         while (iteration < maxIterations && !converged) {
-            // 2.1 Asignar cada punto al medoide más cercano
-            assignments = assignToClusters(dataMatrix, medoidIndices, distance);
-            
-            // 2.2 Actualizar medoides (seleccionar mejor punto de cada cluster)
-            int[] newMedoidIndices = updateMedoids(dataMatrix, assignments, k, distance);
-            
-            // 2.3 Calcular costo total y verificar convergencia
-            double currentCost = calculateTotalCost(dataMatrix, assignments, newMedoidIndices, distance);
-            converged = Math.abs(previousCost - currentCost) < tolerance;
+            // 2.1 Assign each point to the nearest medoid
+            assignments = assignToClusters(responses, questions, medoidIndices, distance);
+
+            // 2.2 Update medoids
+            int[] newMedoidIndices = updateMedoids(responses, questions, assignments, k, distance);
+
+            // 2.3 Check for convergence
+            double currentCost = calculateTotalCost(responses, questions, assignments, newMedoidIndices, distance);
+            if (Math.abs(previousCost - currentCost) < tolerance) {
+                converged = true;
+            }
             
             previousCost = currentCost;
             medoidIndices = newMedoidIndices;
             iteration++;
         }
-        
-        // 3. Guardar resultados finales
-        for (int i = 0; i < numPoints; i++) {
-            results.setClusterAssignment(i, assignments[i]);
-            double dist = distance.calculateVectorDistance(dataMatrix[i], dataMatrix[medoidIndices[assignments[i]]]);
-            results.setDistance(i, dist);
-        }
-        
-        // Los "centroides" son los medoides (puntos reales)
-        for (int i = 0; i < k; i++) {
-            results.setCentroid(i, dataMatrix[medoidIndices[i]]);
-        }
-        
-        results.setIterations(iteration);
-        results.setConverged(converged);
-        
-        return results;
+
+        // 3. Create final clusters
+        List<Cluster> finalClusters = createClusters(responses, questions, assignments, medoidIndices, distance);
+        return new ClusterResults(finalClusters, iteration, converged);
     }
-    
-    // ========== MÉTODOS PRIVADOS ==========
-    
-    /** Inicializa k medoides seleccionando puntos aleatorios. */
-    private int[] initializeMedoids(Object[][] dataMatrix, int k) {
-        int numPoints = dataMatrix.length;
+
+    private int[] initializeMedoids(int numPoints, int k) {
         int[] medoidIndices = new int[k];
-        boolean[] selected = new boolean[numPoints];
-        
+        Set<Integer> chosenIndices = new HashSet<>();
         for (int i = 0; i < k; i++) {
             int randomIndex;
             do {
                 randomIndex = random.nextInt(numPoints);
-            } while (selected[randomIndex]);
-            
-            selected[randomIndex] = true;
+            } while (chosenIndices.contains(randomIndex));
+            chosenIndices.add(randomIndex);
             medoidIndices[i] = randomIndex;
         }
-        
         return medoidIndices;
     }
-    
-    /** Asigna cada punto al medoide más cercano. */
-    private Integer[] assignToClusters(Object[][] dataMatrix, int[] medoidIndices, 
-                                       DistanceCalculator distance) {
-        int numPoints = dataMatrix.length;
-        int k = medoidIndices.length;
-        Integer[] assignments = new Integer[numPoints];
-        
-        for (int i = 0; i < numPoints; i++) {
+
+    private Integer[] assignToClusters(List<Response> responses, List<Question> questions,
+                                       int[] medoidIndices, DistanceCalculator distance) {
+        Integer[] assignments = new Integer[responses.size()];
+        for (int i = 0; i < responses.size(); i++) {
             double minDistance = Double.MAX_VALUE;
-            int closestCluster = 0;
-            
-            for (int j = 0; j < k; j++) {
-                double dist = distance.calculateVectorDistance(dataMatrix[i], dataMatrix[medoidIndices[j]]);
-                if (dist < minDistance) {
-                    minDistance = dist;
-                    closestCluster = j;
+            int bestCluster = -1;
+            for (int j = 0; j < medoidIndices.length; j++) {
+                Response medoid = responses.get(medoidIndices[j]);
+                double d = distance.calculate(responses.get(i), medoid, questions);
+                if (d < minDistance) {
+                    minDistance = d;
+                    bestCluster = j;
                 }
             }
-            
-            assignments[i] = closestCluster;
+            assignments[i] = bestCluster;
         }
-        
         return assignments;
     }
-    
-    /** Actualiza medoides: para cada cluster, elige punto que minimiza suma de distancias. */
-    private int[] updateMedoids(Object[][] dataMatrix, Integer[] assignments, int k, 
-                                DistanceCalculator distance) {
-        int numPoints = dataMatrix.length;
+
+    private int[] updateMedoids(List<Response> responses, List<Question> questions,
+                                Integer[] assignments, int k, DistanceCalculator distance) {
         int[] newMedoidIndices = new int[k];
-        
-        // Para cada cluster
-        for (int cluster = 0; cluster < k; cluster++) {
-            // Obtener índices de puntos en este cluster
-            List<Integer> clusterPoints = new ArrayList<>();
-            for (int i = 0; i < numPoints; i++) {
-                if (assignments[i] == cluster) {
-                    clusterPoints.add(i);
+        for (int i = 0; i < k; i++) {
+            List<Integer> clusterPointIndices = new ArrayList<>();
+            for (int j = 0; j < assignments.length; j++) {
+                if (assignments[j] != null && assignments[j] == i) {
+                    clusterPointIndices.add(j);
                 }
             }
-            
-            // Si el cluster está vacío, mantener un medoide aleatorio
-            if (clusterPoints.isEmpty()) {
-                newMedoidIndices[cluster] = random.nextInt(numPoints);
+
+            if (clusterPointIndices.isEmpty()) {
+                // Re-initialize medoid for empty cluster
+                newMedoidIndices[i] = random.nextInt(responses.size());
                 continue;
             }
-            
-            // Encontrar el punto que minimiza la suma de distancias
-            int bestMedoid = clusterPoints.get(0);
-            double minTotalDistance = Double.MAX_VALUE;
-            
-            for (int candidateIdx : clusterPoints) {
-                double totalDistance = 0.0;
-                
-                // Sumar distancias a todos los puntos del cluster
-                for (int pointIdx : clusterPoints) {
-                    totalDistance += distance.calculateVectorDistance(
-                        dataMatrix[candidateIdx], 
-                        dataMatrix[pointIdx]
-                    );
+
+            double minClusterCost = Double.MAX_VALUE;
+            int bestMedoidIndex = -1;
+
+            // Find the point that minimizes the sum of distances within the cluster
+            for (int candidateIndex : clusterPointIndices) {
+                double currentCost = 0.0;
+                for (int pointIndex : clusterPointIndices) {
+                    currentCost += distance.calculate(responses.get(candidateIndex), responses.get(pointIndex), questions);
                 }
-                
-                if (totalDistance < minTotalDistance) {
-                    minTotalDistance = totalDistance;
-                    bestMedoid = candidateIdx;
+                if (currentCost < minClusterCost) {
+                    minClusterCost = currentCost;
+                    bestMedoidIndex = candidateIndex;
                 }
             }
-            
-            newMedoidIndices[cluster] = bestMedoid;
+            newMedoidIndices[i] = bestMedoidIndex;
         }
-        
         return newMedoidIndices;
     }
-    
-    /** Calcula costo total: suma de distancias de cada punto a su medoide. */
-    private double calculateTotalCost(Object[][] dataMatrix, Integer[] assignments, 
-                                     int[] medoidIndices, DistanceCalculator distance) {
+
+    private double calculateTotalCost(List<Response> responses, List<Question> questions,
+                                      Integer[] assignments, int[] medoidIndices, DistanceCalculator distance) {
         double totalCost = 0.0;
-        
-        for (int i = 0; i < dataMatrix.length; i++) {
-            int medoidIdx = medoidIndices[assignments[i]];
-            totalCost += distance.calculateVectorDistance(dataMatrix[i], dataMatrix[medoidIdx]);
+        for (int i = 0; i < responses.size(); i++) {
+            if (assignments[i] != null) {
+                int medoidIndex = medoidIndices[assignments[i]];
+                totalCost += distance.calculate(responses.get(i), responses.get(medoidIndex), questions);
+            }
         }
-        
         return totalCost;
+    }
+
+    private List<Cluster> createClusters(List<Response> responses, List<Question> questions,
+                                         Integer[] assignments, int[] medoidIndices,
+                                         DistanceCalculator distance) {
+        int k = medoidIndices.length;
+        List<Cluster> finalClusters = new ArrayList<>();
+        Map<Integer, Cluster> clusterMap = new HashMap<>();
+
+        // Create Centroid objects from the final medoids
+        List<Centroid> centroids = new ArrayList<>();
+        for (int medoidIndex : medoidIndices) {
+            centroids.add(KMeansPlusPlus.createCentroidFromResponse(responses.get(medoidIndex), questions));
+        }
+
+        for (int i = 0; i < k; i++) {
+            Cluster cluster = new Cluster("cluster_" + (i + 1));
+            cluster.setCentroid(centroids.get(i));
+            finalClusters.add(cluster);
+            clusterMap.put(i, cluster);
+        }
+
+        for (int i = 0; i < responses.size(); i++) {
+            Integer clusterIndex = assignments[i];
+            if (clusterIndex == null || clusterIndex == -1) continue;
+            Response r = responses.get(i);
+            Cluster cluster = clusterMap.get(clusterIndex);
+            if (cluster != null) {
+                double distToCentroid = distance.calculateToCentroid(r, cluster.getCentroid(), questions);
+                cluster.addMember(r, distToCentroid);
+            }
+        }
+        return finalClusters;
     }
 }

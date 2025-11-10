@@ -27,6 +27,18 @@ java {
     }
 }
 
+sourceSets {
+    main {
+        java {
+            exclude '**/excluded/**'
+        }
+    }
+    test {
+        java {
+            exclude '**/exclude/**'
+        }
+    }
+}
 
 repositories {
     mavenCentral()
