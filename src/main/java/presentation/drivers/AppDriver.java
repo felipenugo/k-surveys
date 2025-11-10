@@ -15,7 +15,7 @@ public class AppDriver {
     }
 
 
-    private int selectAppMenu() {
+    private int selectAppMenuOption() {
         System.out.println("--- K-SURVEY ---");
         System.out.println("1. RESPONDER O ANALIZAR ENCUESTAS");
         System.out.println("2. CREAR ENCUESTA");
@@ -27,7 +27,7 @@ public class AppDriver {
     public void appMenu() {
         boolean exitApp = false;
         do {
-            switch (selectAppMenu()) {
+            switch (selectAppMenuOption()) {
                 case 1 -> surveyDriver.surveyMenu();
                 case 2 -> System.out.println("createsurveyDriver.createSurveyMenu()");
                 case 3 -> {
