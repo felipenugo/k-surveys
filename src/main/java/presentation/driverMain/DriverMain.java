@@ -33,7 +33,7 @@ public class DriverMain {
         AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(), userController));
 
         // Initialize drivers passing the controllers needed
-        EditorResponseDriver editorResponseDriver = new EditorResponseDriver();
+        EditorResponseDriver editorResponseDriver = new EditorResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editorResponseDriver);
         MySurveysDriver mySurveysDriver = new MySurveysDriver();
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);

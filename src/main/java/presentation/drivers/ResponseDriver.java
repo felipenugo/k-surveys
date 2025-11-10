@@ -60,7 +60,7 @@ public class ResponseDriver {
                 System.out.print("Introduce un id para tu respuesta: ");
                 String responseId = sc.nextLine();
                 responseController.startResponse(surveyIdSelected, responseId);
-                editorResponseDriver.editorResponseMenu();
+                editorResponseDriver.editorResponseMenu(surveyIdSelected, responseId);
                 exit = true;
             } catch (SurveyException | ResponseException e) {
                 System.out.println("Error: " + e.getMessage());

@@ -1,9 +1,20 @@
 package presentation.drivers;
 
+import domain.controller.ResponseController;
+import domain.model.*;
+import domain.controller.*;
+
 import java.util.Scanner;
+import java.util.List;
 
 public class EditorResponseDriver {
+    private final ResponseController responseController;
     private final Scanner sc = new Scanner(System.in);
+
+    public EditorResponseDriver(ResponseController responseControler)
+    {
+        this.responseController = responseControler;
+    }
 
     private int selectEditorResponseMenu() {
         System.out.println("--- EDITOR DE RESPUESTAS ---");
@@ -15,7 +26,15 @@ public class EditorResponseDriver {
         return sc.nextInt();
     }
 
-    public void editorResponseMenu() {
+    public void showQuestions(String surveyid) {
+
+        List<Question> questions = responseController.getQuestions(surveyid);
+
+        System.out.println("PULSA CUALQUIER TECLA PARA SALIR.");
+        String tmp = sc.nextLine();
+    }
+
+    public void editorResponseMenu(String surveyId, String responseid) {
         boolean exit = false;
         do {
             switch (selectEditorResponseMenu()) {
