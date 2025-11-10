@@ -6,11 +6,11 @@ import java.util.Scanner;
 
 public class SurveyDriver {
     private final Scanner sc = new Scanner(System.in);
-    private final ReponseDriver reponseDriver;
+    private final ResponseDriver responseDriver;
     private final MySurveysDriver mySurveysDriver;
 
-    public SurveyDriver(ReponseDriver responseDriver, MySurveysDriver mySurveysDriver) {
-        this.reponseDriver = responseDriver;
+    public SurveyDriver(ResponseDriver responseDriver, MySurveysDriver mySurveysDriver) {
+        this.responseDriver = responseDriver;
         this.mySurveysDriver = mySurveysDriver;
     }
 
@@ -27,12 +27,12 @@ public class SurveyDriver {
         boolean exitSurveyMenu = false;
         do {
             switch (selectSurveyMenuOption()) {
-                case 1 -> reponseDriver.responseMenu();
+                case 1 -> responseDriver.responseMenu();
                 case 2 -> mySurveysDriver.mySurveysMenu();
                 case 3 -> exitSurveyMenu = true;
                 default -> System.out.println("Opción no válida. Selecciona una opción del menú.");
             }
         } while (!exitSurveyMenu);
-        System.out.println("--- VOLVIENDO AL MENÚ PRINCIPAL ---");
+        System.out.println("--- volviendo al menú principal ---");
     }
 }
