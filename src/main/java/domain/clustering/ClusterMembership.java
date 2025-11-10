@@ -1,15 +1,17 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
+
+import domain.model.Response;
 
 import java.util.Date;
 
 /**
- * Representa la membresía de un ResponseSet a un Cluster.
+ * Representa la membresía de un Response a un Cluster.
  * Es un registro simple que almacena el ID del miembro, el ID del clúster
  * y la distancia calculada a ese centroide del clúster.
  */
 public class ClusterMembership {
 
-    private final String responseSetId;
+    private final String responseId;
     private final String clusterId;
     private double distance; // Distancia al centroide
     private final Date assignmentDate;
@@ -17,24 +19,24 @@ public class ClusterMembership {
     /**
      * Constructor para crear un registro de membresía.
      *
-     * @param responseSet El ResponseSet que se une al clúster.
+     * @param response El Response que se une al clúster.
      * @param cluster     El Cluster al que se une.
-     * @param distance    La distancia calculada entre el ResponseSet y el centroide del Cluster.
+     * @param distance    La distancia calculada entre el Response y el centroide del Cluster.
      */
-    public ClusterMembership(ResponseSet responseSet, Cluster cluster, double distance) {
-        this.responseSetId = responseSet.getId();
+    public ClusterMembership(Response response, Cluster cluster, double distance) {
+        this.responseId = response.getRESPONSE_ID();
         this.clusterId = cluster.getId();
         this.distance = distance;
         this.assignmentDate = new Date(); // Asignar en el momento de la creación
     }
 
     /**
-     * Obtiene el ID del ResponseSet (miembro).
+     * Obtiene el ID del Response (miembro).
      *
      * @return El ID del miembro.
      */
     public String getResponseSetId() {
-        return responseSetId;
+        return responseId;
     }
 
     /**

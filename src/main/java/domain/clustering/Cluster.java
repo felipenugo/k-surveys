@@ -1,4 +1,6 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
+
+import domain.model.Response;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,7 +10,7 @@ import java.util.Objects;
 /**
  * Representa un clúster de datos.
  * Contiene un centroide (el centro) y una lista de miembros
- * (ResponseSets) que pertenecen a este clúster.
+ * (Responses) que pertenecen a este clúster.
  */
 public class Cluster {
 
@@ -77,22 +79,22 @@ public class Cluster {
      * Añade un nuevo miembro a este clúster.
      * Este método es llamado por el algoritmo de clustering.
      *
-     * @param responseSet El ResponseSet que se añade.
+     * @param response El Response que se añade.
      * @param distance    La distancia de este miembro al centroide.
      */
-    public void addMember(ResponseSet responseSet, double distance) {
-        ClusterMembership membership = new ClusterMembership(responseSet, this, distance);
+    public void addMember(Response response, double distance) {
+        ClusterMembership membership = new ClusterMembership(response, this, distance);
         this.members.add(membership);
     }
 
     /**
      * Elimina un miembro del clúster basado en su ID.
      *
-     * @param responseSetId El ID del ResponseSet a eliminar.
+     * @param responseId El ID del Response a eliminar.
      * @return true si el miembro fue encontrado y eliminado, false en caso contrario.
      */
-    public boolean removeMember(String responseSetId) {
-        return this.members.removeIf(member -> member.getResponseSetId().equals(responseSetId));
+    public boolean removeMember(String responseId) {
+        return this.members.removeIf(member -> member.getResponseSetId().equals(responseId));
     }
 
     /**
@@ -114,14 +116,14 @@ public class Cluster {
     }
 
     /**
-     * Comprueba si un ResponseSet (por ID) es miembro de este clúster.
+     * Comprueba si un Response (por ID) es miembro de este clúster.
      *
-     * @param responseSetId El ID del ResponseSet a comprobar.
+     * @param responseId El ID del Response a comprobar.
      * @return true si el miembro existe en este clúster, false en caso contrario.
      */
-    public boolean contains(String responseSetId) {
+    public boolean contains(String responseId) {
         for (ClusterMembership member : members) {
-            if (member.getResponseSetId().equals(responseSetId)) {
+            if (member.getResponseSetId().equals(responseId)) {
                 return true;
             }
         }

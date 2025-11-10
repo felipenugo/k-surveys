@@ -1,30 +1,30 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
+
+import domain.model.Question;
+import domain.model.Response;
+
+import java.util.List;
 
 /**
- * Interfaz que define el contrato para los algoritmos de clustering.
- * 
- * Implementa el patrón Strategy permitiendo intercambiar diferentes
- * algoritmos de clustering (K-Means, K-Means++, K-Medoids, etc.)
+ * Interfaz para algoritmos de clustering (patrón Strategy).
+ * Agrupa datos en k clusters, calcula centroides y asigna puntos.
  */
 public interface ClusteringAlgorithm {
-    
+
     /**
-     * Ejecuta el algoritmo de clustering sobre una matriz de datos.
-     * 
+     * Ejecuta el algoritmo de clustering sobre una lista de respuestas.
+     *
+     * @param responses La lista de conjuntos de respuestas (puntos de datos).
+     * @param questions    La lista de preguntas, necesaria para interpretar los datos.
+     * @param k            El número de clusters a formar.
+     * @param distance     El objeto DistanceCalculator para medir distancias.
+     * @return Un objeto ClusterResults con la lista de clusters y metadatos de la ejecución.
      */
-    public List<Cluster> execute(List<ResponseSet> responseSets, List<Question> questions, int k, DistanceCalculator distance)
-    
-    /**
-     * Obtiene el nombre del algoritmo.
-     * 
-     * @return El nombre descriptivo del algoritmo (ej. "K-Means", "K-Medoids")
-     */
+    public ClusterResults execute(List<Response> responses, List<Question> questions, int k, DistanceCalculator distance);
+
+    /** Nombre del algoritmo (ej: "K-Means"). */
     String getName();
-    
-    /**
-     * Obtiene una descripción del algoritmo.
-     * 
-     * @return Una descripción breve del algoritmo y sus características
-     */
+
+    /** Descripción del algoritmo, ventajas y limitaciones. */
     String getDescription();
 }

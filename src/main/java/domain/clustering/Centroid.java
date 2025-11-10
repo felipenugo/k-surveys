@@ -1,10 +1,8 @@
-package edu.upc.prop.clusterxx;
+package domain.clustering;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Representa el centro de un clúster (un centroide).
@@ -17,21 +15,25 @@ public class Centroid implements Cloneable {
     // Lista de valores que componen el centroide.
     // Puede contener Double, double[], o String.
     private List<Object> components;
-    
-    // Lista ordenada de los IDs de las preguntas, que coincide
-    // con el orden de los componentes.
-    private final List<String> questionIds;
+    private final int numDimensions;
 
     /**
      * Constructor.
      *
-     * @param questionIds La lista ordenada de IDs de preguntas.
+     * @param numDimensions El número de dimensiones (preguntas).
      */
-    public Centroid(List<String> questionIds) {
-        this.questionIds = Collections.unmodifiableList(new ArrayList<>(questionIds));
-        
+    public Centroid(int numDimensions) {
+        this.numDimensions = numDimensions;
         // Inicializa la lista de componentes con 'null'
-        this.components = new ArrayList<>(Collections.nCopies(questionIds.size(), null));
+        this.components = new ArrayList<>(Collections.nCopies(numDimensions, null));
+    }
+
+    /**
+     * Obtiene el número de dimensiones del centroide.
+     * @return el número de dimensiones.
+     */
+    public int getNumDimensions() {
+        return numDimensions;
     }
 
     /**
@@ -64,30 +66,6 @@ public class Centroid implements Cloneable {
     }
 
     /**
-     * Obtiene la lista ordenada de IDs de preguntas.
-     *
-     * @return Una lista inmodificable de IDs de preguntas.
-     */
-    public List<String> getQuestionIds() {
-        return questionIds;
-    }
-
-    /**
-     * Un método helper crucial para el DistanceCalculator.
-     * Devuelve un mapa que vincula el ID de cada pregunta con su
-     * valor de componente correspondiente en el centroide.
-     *
-     * @return Un mapa de String (ID de Pregunta) a Object (Valor del Componente).
-     */
-    public Map<String, Object> getComponentsAsMap() {
-        Map<String, Object> componentMap = new HashMap<>();
-        for (int i = 0; i < questionIds.size(); i++) {
-            componentMap.put(questionIds.get(i), components.get(i));
-        }
-        return componentMap;
-    }
-
-    /**
      * Crea y devuelve una copia de este centroide.
      * Esto es crucial para el bucle de K-Means (comparar oldCentroids con newCentroids).
      *
@@ -98,8 +76,6 @@ public class Centroid implements Cloneable {
         try {
             // Inicia con una clonación superficial
             Centroid cloned = (Centroid) super.clone();
-            
-            // questionIds es inmodificable, así que no necesita clonación profunda.
             
             // components ES mutable (es un ArrayList) y CONTIENE objetos mutables (double[]).
             // Necesitamos clonar la lista y su contenido mutable.

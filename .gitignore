@@ -12,3 +12,5 @@ daemon/
 caches/
 .idea/
 .gradle/
+
+bin/
