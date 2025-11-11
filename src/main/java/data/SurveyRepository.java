@@ -7,6 +7,7 @@ import java.util.List;
 
 import domain.model.Survey;
 import domain.model.Question;
+import domain.exception.SurveyException;
 
 public class SurveyRepository {
     private final Map<String, Survey> surveys; // <surveyId, Survey>, Survey contains its questions
@@ -55,8 +56,15 @@ public class SurveyRepository {
         }
         return userSurveys;
     }
-    //metodos ID surveys
+
+    //METODOS ID surveys
+
     public String generateNextSurveyId() {
+        // Verificar si hemos alcanzado el límite máximo
+        if (nextSurveyId >= Integer.MAX_VALUE) {
+            throw new SurveyException("Se ha alcanzado el límite máximo de encuestas. No se pueden crear más.");
+        }
+
         String surveyId = String.valueOf(nextSurveyId);
         nextSurveyId++; // Incrementar para la próxima encuesta
         return surveyId;
@@ -66,6 +74,9 @@ public class SurveyRepository {
         return nextSurveyId;
     }
 
+    public boolean canCreateMoreSurveys() {
+        return nextSurveyId < Integer.MAX_VALUE;
+    }
     // Question methods
     public void addQuestion(String surveyId, Question question) {
         surveys.get(surveyId).addQuestion(question);

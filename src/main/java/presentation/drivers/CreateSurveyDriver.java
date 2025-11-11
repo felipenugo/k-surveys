@@ -305,10 +305,10 @@ public class CreateSurveyDriver {
                 currentSurvey.setSurveyStatus(SurveyStatus.PUBLISHED);
                 currentSurvey.setPUBLISHED_AT();
 
-                // Guardar en el sistema (el controller asignará el ID)
+                // Guardar en el sistema (puede lanzar SurveyException si no hay más IDs)
                 surveyController.createSurvey(currentSurvey);
 
-                System.out.println("\nEncuesta guardada y publicada correctamente ✓✓✓");
+                System.out.println("\nEncuesta guardada y publicada correctamente");
 
                 if (currentSurvey.getSURVEY_ID() != null) {
                     System.out.println("ID asignado: " + currentSurvey.getSURVEY_ID());
@@ -317,8 +317,22 @@ public class CreateSurveyDriver {
                 System.out.println("Fecha de publicación: " + currentSurvey.getPUBLISHED_AT());
                 return true;
 
+            } catch (SurveyException e) {
+                // Capturar excepciones específicas del dominio
+                System.out.println("\nERROR: " + e.getMessage());
+
+                // Si es por límite de IDs, dar información adicional
+                if (e.getMessage().contains("límite máximo")) {
+                    System.out.println("El sistema ha alcanzado su capacidad máxima de encuestas.");
+                    System.out.println("Por favor, contacta con el administrador del sistema.");
+                }
+
+                return false;
+
             } catch (Exception e) {
-                System.out.println("Error al publicar la encuesta: " + e.getMessage());
+                // Capturar cualquier otra excepción inesperada
+                System.out.println("\nError inesperado al publicar la encuesta: " + e.getMessage());
+                e.printStackTrace(); // Para debugging
                 return false;
             }
         } else {
