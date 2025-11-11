@@ -3,7 +3,7 @@ package domain.service;
 import data.SurveyRepository;
 import domain.controller.UserController;
 import domain.exception.SurveyException;
-import domain.model.Survey;
+import domain.model.*;
 
 import java.util.List;
 
@@ -41,5 +41,11 @@ public class SurveyService {
     public int getNumQuestions(String surveyId) {
         checkSurveyExists(surveyId);
         return surveyRepository.getNumQuestions(surveyId);
+    }
+
+    public List<Question> getQuestions(String surveyId)
+    {
+        checkSurveyExists(surveyId);
+        return surveyRepository.getAllQuestions(surveyId);
     }
 }

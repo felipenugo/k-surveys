@@ -3,8 +3,6 @@ package presentation.driverMain;
 import java.util.Scanner;
 
 import domain.controller.*; // import all controllers
-import domain.model.Response;
-import domain.model.Survey;
 import domain.service.*; // import all services
 import data.*; // import all repositories
 import presentation.drivers.*; // import all drivers
@@ -33,8 +31,8 @@ public class DriverMain {
         AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(), userController));
 
         // Initialize drivers passing the controllers needed
-        EditorResponseDriver editorResponseDriver = new EditorResponseDriver();
-        ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editorResponseDriver);
+        EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
+        ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         MySurveysDriver mySurveysDriver = new MySurveysDriver();
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);

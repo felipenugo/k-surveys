@@ -5,6 +5,8 @@ import domain.controller.*;
 import data.*;
 import domain.exception.*;
 
+import java.util.List;
+
 public class ResponseService {
     private final ResponseRepository responseRepository;
     private final UserController userController;
@@ -32,5 +34,10 @@ public class ResponseService {
         String responderUsername = userController.getUsernameLoggedIn();
         Response response = new Response(responseId, surveyId, responderUsername, numQuestions);
         responseRepository.addResponse(surveyId, response);
+    }
+
+    public List<Question> getQuestions(String surveyId)
+    {
+        return surveyService.getQuestions(surveyId);
     }
 }
