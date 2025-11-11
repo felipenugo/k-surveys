@@ -27,6 +27,83 @@ public class SurveyService {
             throw new SurveyException("La encuesta con id " + surveyId + " no existe.");
     }
 
+    public String generateUniqueSurveyId() {
+        return surveyRepository.generateNextSurveyId();
+    }
+
+    public void createSurvey(Survey survey) {
+        checkUserLoggedin();
+
+        // Validar que la encuesta tenga título
+        if (survey.getTitle() == null || survey.getTitle().trim().isEmpty()) {
+            throw new SurveyException("El título de la encuesta no puede estar vacío.");
+        }
+
+        // Validar que la encuesta tenga descripción
+        if (survey.getDescription() == null || survey.getDescription().trim().isEmpty()) {
+            throw new SurveyException("La descripción de la encuesta no puede estar vacía.");
+        }
+
+        // Validar que la encuesta tenga al menos una pregunta
+        if (survey.getSize() == 0) {
+            throw new SurveyException("La encuesta debe tener al menos una pregunta.");
+        }
+
+        // Verificar que el creador sea el usuario logueado
+        if (!survey.getCREATOR_USERNAME().equals(userController.getLoggedUser().getUsername())) {
+            throw new SurveyException("Solo puedes crear encuestas a tu nombre.");
+        }
+
+        // Generar el ID autoincremental si no tiene uno
+        String surveyId = survey.getSURVEY_ID();
+
+        if (surveyId == null || surveyId.trim().isEmpty()) {
+            // Generar el siguiente ID autoincremental
+            surveyId = generateUniqueSurveyId();
+
+            // Crear una nueva encuesta con el ID generado (porque SURVEY_ID es final)
+            Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
+            surveyWithId.setSurveyStatus(survey.getSurveyStatus());
+            if (survey.getPUBLISHED_AT() != null) {
+                surveyWithId.setPUBLISHED_AT();
+            }
+
+            // Copiar todas las preguntas
+            for (int i = 0; i < survey.getSize(); i++) {
+                surveyWithId.addQuestion(survey.getQuestion(i));
+            }
+
+            survey = surveyWithId;
+        } else {
+            // Si ya tiene ID, verificar que no exista
+            if (surveyRepository.existsSurvey(surveyId)) {
+                throw new SurveyException("Ya existe una encuesta con el ID: " + surveyId);
+            }
+        }
+
+        // Guardar en el repositorio
+        surveyRepository.addSurvey(survey);
+    }
+
+    /**
+     * Inicializa una nueva encuesta (sin guardarla aún)
+     */
+    public Survey initializeNewSurvey(String title, String description, String creatorUsername) {
+        checkUserLoggedin();
+
+        if (title == null || title.trim().isEmpty()) {
+            throw new SurveyException("El título no puede estar vacío.");
+        }
+
+        if (description == null || description.trim().isEmpty()) {
+            throw new SurveyException("La descripción no puede estar vacía.");
+        }
+
+        // Crear encuesta sin ID (se asignará al publicar)
+        return new Survey(title, description, creatorUsername);
+    }
+
+
     // if a survey is created correctly, call ResponseService to initialize its response map
     public List<Survey> getSelectedSurveys() {
         checkUserLoggedin();

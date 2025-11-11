@@ -2,10 +2,10 @@ package presentation.driverMain;
 
 import java.util.Scanner;
 
-import domain.controller.*; // import all controllers
-import domain.service.*; // import all services
-import data.*; // import all repositories
-import presentation.drivers.*; // import all drivers
+import domain.controller.*;
+import domain.service.*;
+import data.*;
+import presentation.drivers.*;
 
 public class DriverMain {
 
@@ -20,25 +20,52 @@ public class DriverMain {
         return sc.nextInt();
     }
 
-    public static void main(String[] var0) {
-        Scanner sc = new Scanner(System.in);
-        // Initialize controllers injecting survey with repository
-        UserController userController = new UserController(new UserService(new UserRepository()));
-        SurveyService surveyService = new SurveyService(new SurveyRepository(), userController);
+    public static void main(String[] args) {
+        // Initialize repositories
+        UserRepository userRepository = new UserRepository();
+        SurveyRepository surveyRepository = new SurveyRepository();
+        QuestionRepository questionRepository = new QuestionRepository();
+        ResponseRepository responseRepository = new ResponseRepository();
+        AnswerRepository answerRepository = new AnswerRepository();
+
+        // Initialize controllers
+        UserController userController = new UserController(
+                new UserService(userRepository)
+        );
+
+        SurveyService surveyService = new SurveyService(surveyRepository, userController);
         SurveyController surveyController = new SurveyController(surveyService);
-        QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(), userController));
-        ResponseController responseController = new ResponseController(new ResponseService(new ResponseRepository(), userController, surveyService));
-        AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(), userController));
+
+        QuestionService questionService = new QuestionService(questionRepository, userController);
+        QuestionController questionController = new QuestionController(questionService);
+
+        ResponseController responseController = new ResponseController(
+                new ResponseService(responseRepository, userController, surveyService)
+        );
+
+        AnswerController answerController = new AnswerController(
+                new AnswerService(answerRepository, userController)
+        );
+
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering();
 
-        // Initialize drivers passing the controllers needed
+        // Initialize drivers
+        EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
+
+        CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(
+                surveyController,
+                userController,
+                editorQuestionDriver
+        );
+
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering, surveyController);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
+
         SessionDriver sessionDriver = new SessionDriver(userController);
-        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver);
+        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver);
         sessionDriver.setAppDriver(appDriver);
 
         boolean exit = false;
