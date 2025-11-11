@@ -58,8 +58,8 @@ public class KMeansRefactorTest {
         Response r = new Response("survey1", username, questions.size());
         
         MultipleChoiceAnswer a1 = new MultipleChoiceAnswer(0, r.getRESPONSE_ID(), 2);
-        if (choice[0]) a1.setOption(0);
-        if (choice[1]) a1.setOption(1);
+        if (choice[0]) a1.setOption(0, true);
+        if (choice[1]) a1.setOption(1, true);
         r.updateAnswer(0, a1);
 
         TextualAnswer a2 = new TextualAnswer(1, r.getRESPONSE_ID(), text);

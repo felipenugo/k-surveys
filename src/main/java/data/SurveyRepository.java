@@ -44,6 +44,16 @@ public class SurveyRepository {
         return surveys.containsKey(surveyId);
     }
 
+    public List<Survey> getSurveysByUsername(String username) {
+        List<Survey> userSurveys = new ArrayList<>();
+        for (Survey survey : surveys.values()) {
+            if (survey.getCREATOR_USERNAME().equals(username)) {
+                userSurveys.add(survey);
+            }
+        }
+        return userSurveys;
+    }
+
     // Question methods
     public void addQuestion(String surveyId, Question question) {
         surveys.get(surveyId).addQuestion(question);

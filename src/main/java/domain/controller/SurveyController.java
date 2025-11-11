@@ -23,4 +23,11 @@ public class SurveyController {
         return surveyService.getSurveysId();
     }
 
+    public Survey getSurvey(String surveyId) {
+        return surveyService.getSurvey(surveyId);
+    }
+
+    public List<Survey> getMySurveys() {
+        return surveyService.getMySurveys();
+    }
 }

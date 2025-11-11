@@ -29,11 +29,13 @@ public class DriverMain {
         QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(), userController));
         ResponseController responseController = new ResponseController(new ResponseService(new ResponseRepository(), userController, surveyService));
         AnswerController answerController = new AnswerController(new AnswerService(new AnswerRepository(), userController));
+        CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering();
 
         // Initialize drivers passing the controllers needed
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
-        MySurveysDriver mySurveysDriver = new MySurveysDriver();
+        ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering, surveyController);
+        MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);
         AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver);

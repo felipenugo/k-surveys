@@ -48,4 +48,14 @@ public class SurveyService {
         checkSurveyExists(surveyId);
         return surveyRepository.getAllQuestions(surveyId);
     }
+
+    public Survey getSurvey(String surveyId) {
+        checkSurveyExists(surveyId);
+        return surveyRepository.getSurvey(surveyId);
+    }
+
+    public List<Survey> getMySurveys() {
+        checkUserLoggedin();
+        return surveyRepository.getSurveysByUsername(userController.getLoggedUser().getUsername());
+    }
 }
