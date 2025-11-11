@@ -119,4 +119,8 @@ public class UserService {
         }
         return result;
     }
+
+    public User getUser(String username) {
+        return userRepository.getUser(username);
+    }
 }

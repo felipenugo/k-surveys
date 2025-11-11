@@ -95,4 +95,23 @@ public class Centroid implements Cloneable {
             throw new InternalError(e);
         }
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Centroid{components=[");
+        for (int i = 0; i < components.size(); i++) {
+            Object component = components.get(i);
+            if (component instanceof double[]) {
+                sb.append(java.util.Arrays.toString((double[]) component));
+            } else {
+                sb.append(component);
+            }
+            if (i < components.size() - 1) {
+                sb.append(", ");
+            }
+        }
+        sb.append("]}");
+        return sb.toString();
+    }
 }

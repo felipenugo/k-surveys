@@ -31,7 +31,7 @@ public class TestCluster {
     @Test
     public void testAddAndRemoveMember() {
         Cluster cluster = new Cluster("cluster1");
-        Response response = new Response("response1", "survey1", "user1", null, 2);
+        Response response = new Response("response1", "survey1", "user1", 2);
         cluster.addMember(response, 0.5);
 
         Assert.assertEquals(1, cluster.getSize());

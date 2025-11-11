@@ -44,6 +44,13 @@ public class UserController {
         this.loggedIn = false;
     }
 
+    public User getLoggedUser() {
+        if (!this.loggedIn) {
+            throw new LogInException("Ningún usuario ha iniciado sesión.");
+        }
+        return userService.getUser(this.usernameLoggedIn);
+    }
+
     public void deleteUser(String username) {
         boolean success = userService.deleteUser(username);
         if (success)

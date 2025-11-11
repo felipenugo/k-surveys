@@ -1,5 +1,7 @@
 package domain.controller;
 
+import data.ResponseRepository;
+import data.SurveyRepository;
 import domain.clustering.ClusterResults;
 import domain.clustering.ClusteringAlgorithm;
 import domain.clustering.DistanceCalculator;
@@ -21,29 +23,33 @@ import java.util.Map;
 public class CtrlDominioClustering {
 
     private AnalysisController analysisController;
+    private final ResponseRepository responseRepository;
+    private final SurveyRepository surveyRepository;
+
 
     public CtrlDominioClustering() {
         this.analysisController = new AnalysisController();
+        this.responseRepository = new ResponseRepository();
+        this.surveyRepository = new SurveyRepository();
     }
 
-    public String ejecutarClustering(String analisisId, String algoritmo, Object[][] data, int k, int maxIter, double tolerance) {
-        // Dummy Survey for now, as we don't have a QuestionSetController
-        Survey dummySurvey = new Survey("dummySurveyId", "Dummy Survey", "Description", "dummyUser");
+    public String ejecutarClustering(String analisisId, String algoritmo, String surveyId, int k, int maxIter, double tolerance, String distanceMetric) {
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        if (survey == null) {
+            return "Error: Survey not found.";
+        }
 
         Map<String, Object> config = new HashMap<>();
         config.put("maxIterations", maxIter);
         config.put("tolerance", tolerance);
 
-        ClusteringAnalysis analysis = analysisController.createAnalysis(dummySurvey, k, algoritmo, config);
+        ClusteringAnalysis analysis = analysisController.createAnalysis(survey, k, algoritmo, config);
 
-        List<Response> responses = new ArrayList<>();
-        for (Object[] datum : data) {
-            Response r = new Response(analisisId, analisisId, k); // This constructor is still problematic
-            responses.add(r);
-        }
+        List<Response> responses = responseRepository.getResponsesBySurveyId(surveyId);
+        List<Question> questions = survey.getQuestions();
         
-        // Need to get actual questions from the survey, but for now, use an empty list
-        analysisController.executeAnalysis(analysis.getId(), responses, new ArrayList<>(), new DistanceCalculator(DistanceType.EUCLIDEAN));
+        DistanceType distanceType = DistanceType.valueOf(distanceMetric);
+        analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType));
         
         return "Análisis " + analisisId + " ejecutado con éxito";
     }

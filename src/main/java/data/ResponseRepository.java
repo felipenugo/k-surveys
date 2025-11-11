@@ -54,6 +54,13 @@ public class ResponseRepository {
         return responses.containsKey(surveyId) && responses.get(surveyId).containsKey(responseId);
     }
 
+    public List<Response> getResponsesBySurveyId(String surveyId) {
+        if (responses.containsKey(surveyId)) {
+            return new ArrayList<>(responses.get(surveyId).values());
+        }
+        return new ArrayList<>();
+    }
+
     // Answer methods
     public void updateAnswer(String surveyId, String responseId, int answerIndex, Answer answer) {
         responses.get(surveyId).get(responseId).updateAnswer(answerIndex, answer);
