@@ -12,11 +12,17 @@ public class ResponseController {
         this.responseService = responseService;
     }
 
-    public void startResponse(String surveyId, String responseId) {
-        responseService.startResponse(surveyId, responseId);
+    public String startResponse(String surveyId) {
+        return responseService.startResponse(surveyId);
     }
 
     public List<Question> getQuestions(String surveyId) {
         return responseService.getQuestions(surveyId);
     }
+
+    public List<Answer> getAnswers(String surveyid, String responseId)
+    {
+        return responseService.getAnswers(surveyid, responseId);
+    }
 }
+

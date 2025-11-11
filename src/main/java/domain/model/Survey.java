@@ -16,10 +16,10 @@ public class Survey {
     private LocalDateTime PUBLISHED_AT;
     private SurveyStatus surveyStatus;
     private double avgRating;
+    private int views;
     private List<Question> questions;
     /*
     extra features to consider later (search filters, sorting, etc.):
-    private views;
     private responseCount;
      */
 
@@ -33,6 +33,7 @@ public class Survey {
         this.PUBLISHED_AT = null; // to be set when published
         this.surveyStatus = SurveyStatus.DRAFT;
         this.avgRating = 0.0;
+        this.views = 0;
         this.questions = new ArrayList<>();
     }
 
@@ -46,6 +47,7 @@ public class Survey {
         this.PUBLISHED_AT = null; // to be set when published
         this.surveyStatus = SurveyStatus.DRAFT;
         this.avgRating = 0.0;
+        this.views = 0;
         this.questions = new ArrayList<>();
     }
 
@@ -82,6 +84,8 @@ public class Survey {
         return avgRating;
     }
 
+    public int getViews() { return views; }
+
     public List<Question> getQuestions() {
         return questions;
     }
@@ -108,6 +112,8 @@ public class Survey {
     public void setAvgRating(double avgRating) {
         this.avgRating = avgRating;
     }
+
+    public void setViews (int views) { this.views = views;}
 
 
     // List<Question> methods, correct usage must be ensured by the caller

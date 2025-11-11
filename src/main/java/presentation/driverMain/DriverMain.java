@@ -24,6 +24,7 @@ public class DriverMain {
         Scanner sc = new Scanner(System.in);
         // Initialize controllers injecting survey with repository
         UserController userController = new UserController(new UserService(new UserRepository()));
+
         SurveyService surveyService = new SurveyService(new SurveyRepository(), userController);
         SurveyController surveyController = new SurveyController(surveyService);
         QuestionController questionController = new QuestionController(new QuestionService(new QuestionRepository(), userController));

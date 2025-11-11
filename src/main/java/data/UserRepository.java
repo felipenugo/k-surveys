@@ -44,12 +44,10 @@ public class UserRepository {
     // CreatedSurveysId methods
     public void addSurveyId(String username, String surveyId) {
         users.get(username).addCreatedSurveyId(surveyId);
-        users.get(username).addRespondedSurveyIdEntry(surveyId); // keep coherence with de double indexing
     }
 
     public void deleteSurveyId(String username, String surveyId) {
         users.get(username).removeCreatedSurveyId(surveyId);
-        users.get(username).removeRespondedSurveyIdEntry(surveyId); // keep coherence with de double indexing
     }
 
     public boolean existsSurveyId(String username, String surveyId) {
@@ -61,6 +59,15 @@ public class UserRepository {
     }
 
     //RespondedSurveysId methods
+    public void addRespondedSurveyIdEntry(String username, String surveyId) {
+        users.get(username).addRespondedSurveyIdEntry(surveyId); // keep coherence with de double indexing
+    }
+
+    public void deleteRespondedSurveyIdEntry(String username, String surveyId) {
+        users.get(username).removeRespondedSurveyIdEntry(surveyId); // keep coherence with de double indexing
+
+    }
+
     public void addResponseId(String username, String surveyId, String responseId) {
         users.get(username).addResponseId(surveyId, responseId);
     }
