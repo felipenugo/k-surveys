@@ -95,11 +95,11 @@ public class EditResponseDriver {
             List<Answer> answers = responseController.getAnswers(surveyId, responseId);
             for (Answer answer : answers) {
                 System.out.print("Índice de la pregunta: " + answer.getQUESTION_INDEX());
-                if (answer.getAnswerType() == TypeQuestion.TEXTUAL) {
+                if (answer.getTypeAnswer() == TypeQuestion.TEXTUAL) {
                     TextualAnswer ta = (TextualAnswer) answer;
                     System.out.println(" , respuesta: " + ta.getAnswerText());
                 }
-                if (answer.getAnswerType() == TypeQuestion.MULTIPLE_CHOICE) {
+                if (answer.getTypeAnswer() == TypeQuestion.MULTIPLE_CHOICE) {
                     MultipleChoiceAnswer mca = (MultipleChoiceAnswer) answer;
                     System.out.println(" , respuestas seleccionadas: " + mca.getSelectedOptions());
                 }
