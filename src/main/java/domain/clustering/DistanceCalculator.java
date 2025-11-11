@@ -257,4 +257,56 @@ public class DistanceCalculator {
             this.distanceType = originalType;
         }
     }
+
+    /**
+     * Calculates the distance between two Centroid objects.
+     *
+     * @param c1        The first Centroid.
+     * @param c2        The second Centroid.
+     * @param questions The list of questions, used to interpret centroid components.
+     * @return The calculated distance.
+     */
+    public double calculate(Centroid c1, Centroid c2, List<Question> questions) {
+        double totalDistanceSquared = 0.0;
+        double totalDistanceManhattan = 0.0;
+
+        for (int i = 0; i < questions.size(); i++) {
+            Question question = questions.get(i);
+            Object comp1 = c1.getComponent(i);
+            Object comp2 = c2.getComponent(i);
+            double weight = this.weights.getOrDefault(question.getQuestionIndex(), 1.0); // Use question index for weight
+
+            double localDist = 0.0;
+
+            // Handle null components (missing data)
+            if (comp1 == null || comp2 == null) {
+                if (comp1 != comp2) { // One is null, the other is not
+                    localDist = 1.0; // Max distance for incomparable components
+                } else { // Both are null
+                    localDist = 0.0;
+                }
+            } else {
+                // Calculate local distance based on component type
+                if (comp1 instanceof double[] && comp2 instanceof double[]) { // MultipleChoiceQuestion
+                    localDist = euclideanDistance((double[]) comp1, (double[]) comp2);
+                } else if (comp1 instanceof String && comp2 instanceof String) { // TextualQuestion
+                    localDist = calculateTextDistance((String) comp1, (String) comp2);
+                } else {
+                    // Fallback for unexpected types or mixed types, treat as max distance
+                    localDist = 1.0;
+                }
+            }
+
+            if (this.distanceType == DistanceType.MANHATTAN) {
+                totalDistanceManhattan += (localDist * weight);
+            } else {
+                totalDistanceSquared += Math.pow(localDist * weight, 2);
+            }
+        }
+
+        if (this.distanceType == DistanceType.MANHATTAN) {
+            return totalDistanceManhattan;
+        }
+        return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
+    }
 }
