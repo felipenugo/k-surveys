@@ -37,8 +37,10 @@ public class DriverMain {
         ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering, surveyController);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
+        EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver();
+        CreateSurveyDriver createsurveyDriver = new CreateSurveyDriver(surveyController, userController,editorQuestionDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);
-        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver);
+        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createsurveyDriver);
         sessionDriver.setAppDriver(appDriver);
 
         boolean exit = false;

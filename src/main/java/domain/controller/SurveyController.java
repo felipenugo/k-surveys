@@ -13,6 +13,9 @@ public class SurveyController {
 
     }
 
+    public void createSurvey(Survey survey) {
+        surveyService.createSurvey(survey);
+    }
     // In the future it'll return a selected number of surveys depending on pageNumber and pageSize
     public List<Survey> getSelectedSurveys(){
         return surveyService.getSelectedSurveys();
