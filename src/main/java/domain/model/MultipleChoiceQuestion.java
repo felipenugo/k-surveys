@@ -90,4 +90,38 @@ public class MultipleChoiceQuestion extends Question {
     public void clearOptions() {
         optionQuestions.clear();
     }
+
+
+    /**
+     * Crea una copia profunda de esta pregunta de opción múltiple
+     * Override del método copy() de la clase padre
+     * @return Una nueva instancia de MultipleChoiceQuestion con los mismos valores
+     */
+    @Override
+    public MultipleChoiceQuestion copy() {
+        MultipleChoiceQuestion copy = new MultipleChoiceQuestion(
+                this.getQuestionIndex(),
+                this.getSURVEY_ID()
+        );
+
+        // Copiar atributos de la clase padre
+        copy.setQuestionText(this.getQuestionText());
+        copy.setRequired(this.isRequired());
+
+        // Copiar atributos propios
+        copy.setMinSelections(this.minSelections);
+        copy.setMaxSelections(this.maxSelections);
+
+        // Copiar opciones (copia profunda)
+        for (OptionQuestion option : this.optionQuestions) {
+            OptionQuestion optionCopy = new OptionQuestion(
+                    option.getQuestionIndex(),
+                    option.getSurveyId()
+            );
+            optionCopy.setOptionText(option.getOptionText());
+            copy.addOption(optionCopy);
+        }
+
+        return copy;
+    }
 }

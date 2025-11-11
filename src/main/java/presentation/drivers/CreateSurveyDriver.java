@@ -2,12 +2,12 @@ package presentation.drivers;
 
 import domain.controller.SurveyController;
 import domain.controller.UserController;
-import domain.model.MultipleChoiceQuestion;
 import domain.model.Survey;
 import domain.model.Question;
+import domain.model.MultipleChoiceQuestion;
 import domain.model.enums.SurveyStatus;
-import domain.exception.SurveyException;
 import domain.model.enums.TypeQuestion;
+import domain.exception.SurveyException;
 
 import java.util.Scanner;
 
@@ -18,7 +18,10 @@ public class CreateSurveyDriver {
     private final Scanner sc = new Scanner(System.in);
     private Survey currentSurvey;
 
-    public CreateSurveyDriver(SurveyController surveyController, UserController userController, EditorQuestionDriver editorQuestionDriver) {
+    public CreateSurveyDriver(
+            SurveyController surveyController,
+            UserController userController,
+            EditorQuestionDriver editorQuestionDriver) {
         this.surveyController = surveyController;
         this.userController = userController;
         this.editorQuestionDriver = editorQuestionDriver;
@@ -26,7 +29,7 @@ public class CreateSurveyDriver {
 
     private int selectCreateSurveyMenuOption() {
         System.out.println("\n--- CREAR ENCUESTA ---");
-        System.out.println("1. VER INFO ENCUESTA CREADA");
+        System.out.println("1. VER ID ENCUESTA CREADA");
         System.out.println("2. EDITAR TÍTULO");
         System.out.println("3. EDITAR DESCRIPCIÓN");
         System.out.println("4. AÑADIR PREGUNTA");
@@ -35,7 +38,6 @@ public class CreateSurveyDriver {
         System.out.println("7. REORDENAR PREGUNTAS");
         System.out.println("8. VER TODAS LAS PREGUNTAS");
         System.out.println("9. GUARDAR, PUBLICAR Y SALIR");
-        System.out.println("0. SALIR SIN GUARDAR");
         System.out.print("Opción: ");
         return sc.nextInt();
     }
@@ -45,10 +47,13 @@ public class CreateSurveyDriver {
             // El usuario ya está logueado cuando llega aquí
             initializeNewSurvey();
 
+            if (currentSurvey == null) {
+                return; // Error al inicializar
+            }
+
             boolean exitMenu = false;
             do {
                 switch (selectCreateSurveyMenuOption()) {
-                    case 0 -> exitMenu = true;
                     case 1 -> viewSurveyId();
                     case 2 -> editTitle();
                     case 3 -> editDescription();
@@ -65,10 +70,11 @@ public class CreateSurveyDriver {
                     default -> System.out.println("Opción no válida. Selecciona una opción del menú.");
                 }
             } while (!exitMenu);
-            System.out.println("--- volviendo al menú principal ---");
 
         } catch (SurveyException e) {
-            System.out.println("Error: " + e.getMessage());
+            System.out.println("\nERROR: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("\nError inesperado: " + e.getMessage());
         }
     }
 
@@ -87,11 +93,14 @@ public class CreateSurveyDriver {
 
         String creatorUsername = userController.getUsernameLoggedIn();
 
-        // Usar el constructor sin ID (será asignado por el sistema)
-        currentSurvey = new Survey(title, description, creatorUsername);
-
-        System.out.println("\n✓ Encuesta inicializada correctamente.");
-        System.out.println("El ID será asignado al publicar.");
+        try {
+            currentSurvey = surveyController.initializeNewSurvey(title, description, creatorUsername);
+            System.out.println("\nEncuesta inicializada correctamente.");
+            System.out.println("(El ID será asignado al publicar)");
+        } catch (Exception e) {
+            System.out.println("Error al inicializar encuesta: " + e.getMessage());
+            currentSurvey = null;
+        }
     }
 
     private void viewSurveyId() {
@@ -100,7 +109,7 @@ public class CreateSurveyDriver {
         if (currentSurvey.getSURVEY_ID() != null) {
             System.out.println("ID de la encuesta: " + currentSurvey.getSURVEY_ID());
         } else {
-            System.out.println("ID: (Se asignará al publicar)");
+            System.out.println("ID: (Se asignará automáticamente al publicar)");
         }
 
         System.out.println("Título: " + currentSurvey.getTitle());
@@ -144,7 +153,7 @@ public class CreateSurveyDriver {
         try {
             int questionIndex = currentSurvey.getSize();
 
-            // Obtener el ID de la encuesta, o usar un temporal si aún no tiene
+            // Usar ID temporal si aún no tiene uno
             String surveyId = (currentSurvey.getSURVEY_ID() != null)
                     ? currentSurvey.getSURVEY_ID()
                     : "temp_" + System.currentTimeMillis();
@@ -268,10 +277,11 @@ public class CreateSurveyDriver {
             Question q = currentSurvey.getQuestion(i);
             System.out.println("\n[" + i + "] " + q.getQuestionText());
             System.out.println("    Tipo: " + q.getTypeQuestion());
+            System.out.println("    Obligatoria: " + (q.isRequired() ? "SÍ" : "NO"));
 
             if (q instanceof MultipleChoiceQuestion) {
                 MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) q;
-                System.out.println("    Selecciones requeridas: " + mcq.getMinSelections() + "-" + mcq.getMaxSelections());  // ACTUALIZADO
+                System.out.println("    Selecciones requeridas: " + mcq.getMinSelections() + "-" + mcq.getMaxSelections());
                 System.out.println("    Opciones:");
                 for (int j = 0; j < mcq.getOptions().size(); j++) {
                     System.out.println("      " + (j + 1) + ". " + mcq.getOptions().get(j).getOptionText());
@@ -309,7 +319,7 @@ public class CreateSurveyDriver {
                 currentSurvey.setSurveyStatus(SurveyStatus.PUBLISHED);
                 currentSurvey.setPUBLISHED_AT();
 
-                // Guardar en el sistema (puede lanzar SurveyException si no hay más IDs)
+                // Guardar en el sistema
                 surveyController.createSurvey(currentSurvey);
 
                 System.out.println("\nEncuesta guardada y publicada correctamente");
@@ -322,10 +332,8 @@ public class CreateSurveyDriver {
                 return true;
 
             } catch (SurveyException e) {
-                // Capturar excepciones específicas del dominio
                 System.out.println("\nERROR: " + e.getMessage());
 
-                // Si es por límite de IDs, dar información adicional
                 if (e.getMessage().contains("límite máximo")) {
                     System.out.println("El sistema ha alcanzado su capacidad máxima de encuestas.");
                     System.out.println("Por favor, contacta con el administrador del sistema.");
@@ -334,9 +342,7 @@ public class CreateSurveyDriver {
                 return false;
 
             } catch (Exception e) {
-                // Capturar cualquier otra excepción inesperada
                 System.out.println("\nError inesperado al publicar la encuesta: " + e.getMessage());
-                e.printStackTrace(); // Para debugging
                 return false;
             }
         } else {

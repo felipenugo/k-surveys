@@ -85,6 +85,24 @@ public class SurveyService {
         surveyRepository.addSurvey(survey);
     }
 
+    /**
+     * Inicializa una nueva encuesta (sin guardarla aún)
+     */
+    public Survey initializeNewSurvey(String title, String description, String creatorUsername) {
+        checkUserLoggedin();
+
+        if (title == null || title.trim().isEmpty()) {
+            throw new SurveyException("El título no puede estar vacío.");
+        }
+
+        if (description == null || description.trim().isEmpty()) {
+            throw new SurveyException("La descripción no puede estar vacía.");
+        }
+
+        // Crear encuesta sin ID (se asignará al publicar)
+        return new Survey(title, description, creatorUsername);
+    }
+
 
     // if a survey is created correctly, call ResponseService to initialize its response map
     public List<Survey> getSelectedSurveys() {

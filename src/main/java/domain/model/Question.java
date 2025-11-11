@@ -8,6 +8,7 @@ public class Question {
     private final String SURVEY_ID; // identifier to the survey to which it belongs
     private TypeQuestion typeQuestion; // can be MULTIPLE_CHOICE or TEXTUAL
     private String questionText;
+    private boolean isRequired;
 
     // Constructor
     public Question(int questionIndex, String SURVEY_ID) {
@@ -15,6 +16,8 @@ public class Question {
         this.SURVEY_ID = SURVEY_ID;
         this.typeQuestion = TypeQuestion.TEXTUAL; // textual by default, can be changed later
         this.questionText = "";
+        this.isRequired = true;
+
     }
 
     // Getters
@@ -34,6 +37,8 @@ public class Question {
         return questionText;
     }
 
+    public boolean isRequired() { return isRequired;}
+
     // Setters
 
     public void setQuestionIndex(int questionIndex) {
@@ -46,5 +51,16 @@ public class Question {
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
+    }
+
+    public void setRequired(boolean required) { this.isRequired = required;}
+
+    //Clonar
+    public Question copy() {
+        Question copy = new Question(this.questionIndex, this.SURVEY_ID);
+        copy.setQuestionText(this.questionText);
+        copy.setTypeQuestion(this.typeQuestion);
+        copy.setRequired(this.isRequired);
+        return copy;
     }
 }

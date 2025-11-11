@@ -1,12 +1,19 @@
 package presentation.drivers;
 
+import domain.controller.QuestionController;
 import domain.model.MultipleChoiceQuestion;
-import domain.model.OptionQuestion;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class EditorMultipleChoiceOptionsDriver {
     private final Scanner sc = new Scanner(System.in);
+    private final QuestionController questionController;
+
+    public EditorMultipleChoiceOptionsDriver(QuestionController questionController) {
+        this.questionController = questionController;
+    }
 
     private int selectEditOptionsMenuOption() {
         System.out.println("\n--- EDITAR OPCIONES ---");
@@ -22,19 +29,28 @@ public class EditorMultipleChoiceOptionsDriver {
         return sc.nextInt();
     }
 
-    public boolean configureInitialOptions(MultipleChoiceQuestion question) {
+    /**
+     * Crea una pregunta de opción múltiple con opciones iniciales
+     */
+    public MultipleChoiceQuestion createMultipleChoiceQuestion(
+            int questionIndex,
+            String surveyId,
+            String questionText,
+            boolean isRequired) {
+
         System.out.println("\n--- CONFIGURACIÓN DE OPCIONES ---");
 
-        // Añadir opciones iniciales primero
+        // Recoger opciones
         System.out.print("¿Cuántas opciones deseas añadir? (mínimo 2): ");
         int numOptions = sc.nextInt();
-        sc.nextLine();
+        sc.nextLine(); // Limpiar buffer
 
         if (numOptions < 2) {
             System.out.println("Se requieren al menos 2 opciones.");
-            return false;
+            return null;
         }
 
+        List<String> optionTexts = new ArrayList<>();
         for (int i = 0; i < numOptions; i++) {
             System.out.print("Introduce el texto de la opción " + (i + 1) + ": ");
             String optionText = sc.nextLine();
@@ -45,55 +61,36 @@ public class EditorMultipleChoiceOptionsDriver {
                 continue;
             }
 
-            OptionQuestion option = new OptionQuestion(question.getQuestionIndex(), question.getSURVEY_ID());
-            option.setOptionText(optionText);
-            question.addOption(option);
+            optionTexts.add(optionText);
         }
 
-
+        // Configurar selecciones
         System.out.print("\n¿Cuántas selecciones mínimas se requieren? (por defecto 1): ");
         int minSelections = sc.nextInt();
-
         if (minSelections < 1) {
             minSelections = 1;
-            System.out.println("Valor no válido. Se establecerá 1 selección mínima.");
-        }
-        if (minSelections > numOptions) {
-            minSelections = 1;
-            System.out.println("El mínimo no puede ser mayor que el número de opciones. Se establecerá 1.");
         }
 
-        try {
-            question.setMinSelections(minSelections);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Error: " + e.getMessage());
-            question.setMinSelections(1);
-        }
-
-        // Configurar máximo de selecciones
         System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto 1): ");
         int maxSelections = sc.nextInt();
-
         if (maxSelections < minSelections) {
             maxSelections = minSelections;
-            System.out.println("El máximo no puede ser menor que el mínimo. Se establecerá " + minSelections + ".");
-        }
-        if (maxSelections > numOptions) {
-            maxSelections = numOptions;
-            System.out.println("El máximo no puede ser mayor que el número de opciones. Se establecerá " + numOptions + ".");
         }
 
         try {
-            question.setMaxSelections(maxSelections);
-        } catch (IllegalArgumentException e) {
+            // Llamar al controller para crear la pregunta
+            return questionController.createMultipleChoiceQuestion(
+                    questionIndex, surveyId, questionText, isRequired,
+                    minSelections, maxSelections, optionTexts);
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
-            question.setMaxSelections(minSelections);
+            return null;
         }
-
-        return true;
     }
 
-
+    /**
+     * Menú principal para editar opciones de una pregunta de opción múltiple
+     */
     public void editOptionsMenu(MultipleChoiceQuestion question) {
         boolean exitOptionsEditor = false;
 
@@ -117,16 +114,12 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.print("\nIntroduce el texto de la nueva opción: ");
         String optionText = sc.nextLine();
 
-        if (optionText.trim().isEmpty()) {
-            System.out.println("El texto de la opción no puede estar vacío.");
-            return;
+        try {
+            questionController.addOption(question, optionText);
+            System.out.println("Opción añadida en posición " + (question.getOptions().size() - 1) + ".");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        OptionQuestion option = new OptionQuestion(question.getQuestionIndex(), question.getSURVEY_ID());
-        option.setOptionText(optionText);
-        question.addOption(option);
-
-        System.out.println("Opción añadida en posición " + (question.getOptions().size() - 1) + ".");
     }
 
     private void editOption(MultipleChoiceQuestion question) {
@@ -145,32 +138,21 @@ public class EditorMultipleChoiceOptionsDriver {
             return;
         }
 
-        OptionQuestion option = question.getOption(index);
-        System.out.println("Texto actual: " + option.getOptionText());
+        System.out.println("Texto actual: " + question.getOption(index).getOptionText());
         System.out.print("Introduce el nuevo texto: ");
         String newText = sc.nextLine();
 
-        if (newText.trim().isEmpty()) {
-            System.out.println("El texto no puede estar vacío.");
-            return;
+        try {
+            questionController.updateOption(question, index, newText);
+            System.out.println("Opción actualizada.");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        option.setOptionText(newText);
-        question.updateOption(index, option);
-
-        System.out.println("Opción actualizada.");
     }
 
     private void deleteOption(MultipleChoiceQuestion question) {
         if (question.getOptions().size() <= 2) {
             System.out.println("\nNo puedes eliminar más opciones. Se requieren al menos 2.");
-            return;
-        }
-
-        // ACTUALIZADO: Verificar que no quedarán menos opciones que minSelections
-        if (question.getOptions().size() <= question.getMinSelections()) {
-            System.out.println("\nNo puedes eliminar más opciones.");
-            System.out.println("El número de opciones no puede ser menor que las selecciones mínimas requeridas (" + question.getMinSelections() + ").");
             return;
         }
 
@@ -188,8 +170,12 @@ public class EditorMultipleChoiceOptionsDriver {
         String confirmation = sc.nextLine();
 
         if (confirmation.equalsIgnoreCase("S")) {
-            question.removeOption(index);
-            System.out.println("Opción eliminada.");
+            try {
+                questionController.removeOption(question, index);
+                System.out.println("Opción eliminada.");
+            } catch (Exception e) {
+                System.out.println("Error: " + e.getMessage());
+            }
         } else {
             System.out.println("Operación cancelada.");
         }
@@ -221,15 +207,15 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.println("Opción movida de posición " + oldIndex + " a posición " + newIndex + ".");
     }
 
-    private void changeMinSelections(MultipleChoiceQuestion question) {  // NUEVO
+    private void changeMinSelections(MultipleChoiceQuestion question) {
         System.out.println("\nSelecciones mínimas actuales: " + question.getMinSelections());
         System.out.print("Introduce el nuevo número de selecciones mínimas (1-" + question.getMaxSelections() + "): ");
         int minSelections = sc.nextInt();
 
         try {
-            question.setMinSelections(minSelections);
+            questionController.updateMinSelections(question, minSelections);
             System.out.println("Selecciones mínimas actualizadas a " + minSelections + ".");
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -240,9 +226,9 @@ public class EditorMultipleChoiceOptionsDriver {
         int maxSelections = sc.nextInt();
 
         try {
-            question.setMaxSelections(maxSelections);
+            questionController.updateMaxSelections(question, maxSelections);
             System.out.println("Selecciones máximas actualizadas a " + maxSelections + ".");
-        } catch (IllegalArgumentException e) {
+        } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
@@ -251,7 +237,7 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.println("\n========================================");
         System.out.println("       OPCIONES DE LA PREGUNTA");
         System.out.println("========================================");
-        System.out.println("Selecciones requeridas: " + question.getMinSelections() + "-" + question.getMaxSelections());  // ACTUALIZADO
+        System.out.println("Selecciones requeridas: " + question.getMinSelections() + "-" + question.getMaxSelections());
         System.out.println("----------------------------------------");
         for (int i = 0; i < question.getOptions().size(); i++) {
             System.out.println("[" + i + "] " + question.getOptions().get(i).getOptionText());
