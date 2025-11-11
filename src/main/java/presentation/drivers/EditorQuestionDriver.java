@@ -19,13 +19,22 @@ public class EditorQuestionDriver {
         System.out.println("\n--- TIPO DE PREGUNTA ---");
         System.out.println("1. PREGUNTA TEXTUAL");
         System.out.println("2. PREGUNTA DE OPCIÓN MÚLTIPLE");
-        System.out.println("3. CANCELAR");
+        System.out.println("3. PREGUNTA NUMÉRICA");
+        System.out.println("4. CANCELAR");
         System.out.print("Opción: ");
         return sc.nextInt();
     }
 
     private int selectEditTextualQuestionMenuOption() {
         System.out.println("\n--- EDITAR PREGUNTA TEXTUAL ---");
+        System.out.println("1. EDITAR TEXTO DE LA PREGUNTA");
+        System.out.println("2. GUARDAR Y SALIR");
+        System.out.print("Opción: ");
+        return sc.nextInt();
+    }
+
+    private int selectEditNumericalQuestionMenuOption() {
+        System.out.println("\n--- EDITAR PREGUNTA NUMÉRICA ---");
         System.out.println("1. EDITAR TEXTO DE LA PREGUNTA");
         System.out.println("2. GUARDAR Y SALIR");
         System.out.print("Opción: ");
@@ -41,11 +50,8 @@ public class EditorQuestionDriver {
         return sc.nextInt();
     }
 
-    /**
-     * Crea una nueva pregunta según el tipo seleccionado
-     */
     public Question createQuestion(String surveyId, int questionIndex) {
-        sc.nextLine(); // Limpiar buffer
+        sc.nextLine();
 
         System.out.println("\n========================================");
         System.out.println("       CREAR NUEVA PREGUNTA");
@@ -83,29 +89,32 @@ public class EditorQuestionDriver {
                     System.out.println("\nCreación cancelada: se requieren al menos 2 opciones.");
                 }
             }
-            case 3 -> System.out.println("\nCreación cancelada.");
+            case 3 -> {
+                question = new Question(questionIndex, surveyId);
+                question.setQuestionText(questionText);
+                question.setTypeQuestion(TypeQuestion.NUMERICAL);
+                System.out.println("\nPregunta numérica creada.");
+                System.out.println("Los usuarios deberán responder con un número válido.");
+            }
+            case 4 -> System.out.println("\nCreación cancelada.");
             default -> System.out.println("\nOpción no válida.");
         }
 
         return question;
     }
 
-    /**
-     * Edita una pregunta existente según su tipo
-     */
+
     public Question editQuestion(Question originalQuestion) {
         if (originalQuestion instanceof MultipleChoiceQuestion) {
             return editMultipleChoiceQuestion((MultipleChoiceQuestion) originalQuestion);
+        } else if (originalQuestion.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+            return editNumericalQuestion(originalQuestion);  // NUEVO
         } else {
             return editTextualQuestion(originalQuestion);
         }
     }
 
-    /**
-     * Edita una pregunta textual
-     */
     private Question editTextualQuestion(Question question) {
-        // Crear una copia de la pregunta para no modificar la original hasta confirmar
         Question editedQuestion = cloneTextualQuestion(question);
 
         boolean exitEditor = false;
@@ -126,11 +135,29 @@ public class EditorQuestionDriver {
         return editedQuestion;
     }
 
-    /**
-     * Edita una pregunta de opción múltiple
-     */
+    private Question editNumericalQuestion(Question question) {
+        Question editedQuestion = cloneTextualQuestion(question);
+        editedQuestion.setTypeQuestion(TypeQuestion.NUMERICAL);
+
+        boolean exitEditor = false;
+
+        do {
+            displayNumericalQuestionInfo(editedQuestion);
+
+            switch (selectEditNumericalQuestionMenuOption()) {
+                case 1 -> editQuestionText(editedQuestion);
+                case 2 -> {
+                    System.out.println("\nCambios guardados.");
+                    exitEditor = true;
+                }
+                default -> System.out.println("Opción no válida.");
+            }
+        } while (!exitEditor);
+
+        return editedQuestion;
+    }
+
     private Question editMultipleChoiceQuestion(MultipleChoiceQuestion question) {
-        // Crear una copia de la pregunta para no modificar la original hasta confirmar
         MultipleChoiceQuestion editedQuestion = cloneMultipleChoiceQuestion(question);
 
         boolean exitEditor = false;
@@ -163,14 +190,23 @@ public class EditorQuestionDriver {
     private void displayTextualQuestionInfo(Question question) {
         System.out.println("\n========================================");
         System.out.println("Pregunta: " + question.getQuestionText());
-        System.out.println("Tipo: " + question.getTypeQuestion());
+        System.out.println("Tipo: TEXTUAL");
+        System.out.println("========================================");
+    }
+
+    private void displayNumericalQuestionInfo(Question question) {
+        System.out.println("\n========================================");
+        System.out.println("Pregunta: " + question.getQuestionText());
+        System.out.println("Tipo: NUMÉRICA");
+        System.out.println("(Los usuarios deberán responder con un número)");
         System.out.println("========================================");
     }
 
     private void displayMultipleChoiceQuestionInfo(MultipleChoiceQuestion question) {
         System.out.println("\n========================================");
         System.out.println("Pregunta: " + question.getQuestionText());
-        System.out.println("Tipo: " + question.getTypeQuestion());
+        System.out.println("Tipo: OPCIÓN MÚLTIPLE");
+        System.out.println("Selecciones mínimas: " + question.getMinSelections());
         System.out.println("Selecciones máximas: " + question.getMaxSelections());
         System.out.println("Número de opciones: " + question.getOptions().size());
         System.out.println("========================================");
@@ -184,7 +220,7 @@ public class EditorQuestionDriver {
 
         if (!newText.trim().isEmpty()) {
             question.setQuestionText(newText);
-            System.out.println("Texto actualizado.");
+            System.out.println("✓ Texto actualizado.");
         } else {
             System.out.println("El texto no puede estar vacío.");
         }
@@ -203,6 +239,7 @@ public class EditorQuestionDriver {
                 original.getSURVEY_ID()
         );
         clone.setQuestionText(original.getQuestionText());
+        clone.setMinSelections(original.getMinSelections());
         clone.setMaxSelections(original.getMaxSelections());
 
         // Copiar opciones

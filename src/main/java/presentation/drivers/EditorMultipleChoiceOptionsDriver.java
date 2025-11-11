@@ -5,10 +5,6 @@ import domain.model.OptionQuestion;
 
 import java.util.Scanner;
 
-/**
- * Driver especializado en la gestión de opciones para preguntas de opción múltiple.
- * Este driver se encarga exclusivamente de las operaciones relacionadas con las opciones.
- */
 public class EditorMultipleChoiceOptionsDriver {
     private final Scanner sc = new Scanner(System.in);
 
@@ -18,36 +14,21 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.println("2. EDITAR OPCIÓN");
         System.out.println("3. ELIMINAR OPCIÓN");
         System.out.println("4. REORDENAR OPCIONES");
-        System.out.println("5. CAMBIAR NÚMERO DE SELECCIONES MÁXIMAS");
-        System.out.println("6. VER TODAS LAS OPCIONES");
-        System.out.println("7. VOLVER");
+        System.out.println("5. CAMBIAR SELECCIONES MÍNIMAS");
+        System.out.println("6. CAMBIAR SELECCIONES MÁXIMAS");
+        System.out.println("7. VER TODAS LAS OPCIONES");
+        System.out.println("8. VOLVER");
         System.out.print("Opción: ");
         return sc.nextInt();
     }
 
-    /**
-     * Configura las opciones iniciales de una pregunta de opción múltiple recién creada
-     * @return true si se configuraron correctamente, false si se canceló
-     */
     public boolean configureInitialOptions(MultipleChoiceQuestion question) {
         System.out.println("\n--- CONFIGURACIÓN DE OPCIONES ---");
 
-        // Configurar número de selecciones máximas
-        System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto 1): ");
-        int maxSelections = sc.nextInt();
-
-        if (maxSelections < 1) {
-            maxSelections = 1;
-            System.out.println("Valor no válido. Se establecerá 1 selección máxima.");
-        }
-        question.setMaxSelections(maxSelections);
-
-        sc.nextLine(); // Limpiar buffer
-
-        // Añadir opciones iniciales
+        // Añadir opciones iniciales primero
         System.out.print("¿Cuántas opciones deseas añadir? (mínimo 2): ");
         int numOptions = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+        sc.nextLine();
 
         if (numOptions < 2) {
             System.out.println("Se requieren al menos 2 opciones.");
@@ -60,7 +41,7 @@ public class EditorMultipleChoiceOptionsDriver {
 
             if (optionText.trim().isEmpty()) {
                 System.out.println("El texto de la opción no puede estar vacío. Intenta de nuevo.");
-                i--; // Repetir esta iteración
+                i--;
                 continue;
             }
 
@@ -69,12 +50,50 @@ public class EditorMultipleChoiceOptionsDriver {
             question.addOption(option);
         }
 
+
+        System.out.print("\n¿Cuántas selecciones mínimas se requieren? (por defecto 1): ");
+        int minSelections = sc.nextInt();
+
+        if (minSelections < 1) {
+            minSelections = 1;
+            System.out.println("Valor no válido. Se establecerá 1 selección mínima.");
+        }
+        if (minSelections > numOptions) {
+            minSelections = 1;
+            System.out.println("El mínimo no puede ser mayor que el número de opciones. Se establecerá 1.");
+        }
+
+        try {
+            question.setMinSelections(minSelections);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            question.setMinSelections(1);
+        }
+
+        // Configurar máximo de selecciones
+        System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto 1): ");
+        int maxSelections = sc.nextInt();
+
+        if (maxSelections < minSelections) {
+            maxSelections = minSelections;
+            System.out.println("El máximo no puede ser menor que el mínimo. Se establecerá " + minSelections + ".");
+        }
+        if (maxSelections > numOptions) {
+            maxSelections = numOptions;
+            System.out.println("El máximo no puede ser mayor que el número de opciones. Se establecerá " + numOptions + ".");
+        }
+
+        try {
+            question.setMaxSelections(maxSelections);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+            question.setMaxSelections(minSelections);
+        }
+
         return true;
     }
 
-    /**
-     * Menú principal para editar opciones de una pregunta de opción múltiple
-     */
+
     public void editOptionsMenu(MultipleChoiceQuestion question) {
         boolean exitOptionsEditor = false;
 
@@ -84,9 +103,10 @@ public class EditorMultipleChoiceOptionsDriver {
                 case 2 -> editOption(question);
                 case 3 -> deleteOption(question);
                 case 4 -> reorderOptions(question);
-                case 5 -> changeMaxSelections(question);
-                case 6 -> viewAllOptions(question);
-                case 7 -> exitOptionsEditor = true;
+                case 5 -> changeMinSelections(question);
+                case 6 -> changeMaxSelections(question);
+                case 7 -> viewAllOptions(question);
+                case 8 -> exitOptionsEditor = true;
                 default -> System.out.println("Opción no válida.");
             }
         } while (!exitOptionsEditor);
@@ -147,6 +167,13 @@ public class EditorMultipleChoiceOptionsDriver {
             return;
         }
 
+        // ACTUALIZADO: Verificar que no quedarán menos opciones que minSelections
+        if (question.getOptions().size() <= question.getMinSelections()) {
+            System.out.println("\nNo puedes eliminar más opciones.");
+            System.out.println("El número de opciones no puede ser menor que las selecciones mínimas requeridas (" + question.getMinSelections() + ").");
+            return;
+        }
+
         viewAllOptions(question);
         System.out.print("\nIntroduce el índice de la opción a eliminar (0-" + (question.getOptions().size() - 1) + "): ");
         int index = sc.nextInt();
@@ -191,27 +218,41 @@ public class EditorMultipleChoiceOptionsDriver {
         }
 
         question.reorderOption(oldIndex, newIndex);
-        System.out.println("pción movida de posición " + oldIndex + " a posición " + newIndex + ".");
+        System.out.println("Opción movida de posición " + oldIndex + " a posición " + newIndex + ".");
+    }
+
+    private void changeMinSelections(MultipleChoiceQuestion question) {  // NUEVO
+        System.out.println("\nSelecciones mínimas actuales: " + question.getMinSelections());
+        System.out.print("Introduce el nuevo número de selecciones mínimas (1-" + question.getMaxSelections() + "): ");
+        int minSelections = sc.nextInt();
+
+        try {
+            question.setMinSelections(minSelections);
+            System.out.println("Selecciones mínimas actualizadas a " + minSelections + ".");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
     }
 
     private void changeMaxSelections(MultipleChoiceQuestion question) {
         System.out.println("\nSelecciones máximas actuales: " + question.getMaxSelections());
-        System.out.print("Introduce el nuevo número de selecciones máximas (1-" + question.getOptions().size() + "): ");
+        System.out.print("Introduce el nuevo número de selecciones máximas (" + question.getMinSelections() + "-" + question.getOptions().size() + "): ");
         int maxSelections = sc.nextInt();
 
-        if (maxSelections < 1 || maxSelections > question.getOptions().size()) {
-            System.out.println("Valor no válido. Debe estar entre 1 y " + question.getOptions().size() + ".");
-            return;
+        try {
+            question.setMaxSelections(maxSelections);
+            System.out.println("Selecciones máximas actualizadas a " + maxSelections + ".");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
-        question.setMaxSelections(maxSelections);
-        System.out.println("✓ Selecciones máximas actualizadas a " + maxSelections + ".");
     }
 
     private void viewAllOptions(MultipleChoiceQuestion question) {
         System.out.println("\n========================================");
         System.out.println("       OPCIONES DE LA PREGUNTA");
         System.out.println("========================================");
+        System.out.println("Selecciones requeridas: " + question.getMinSelections() + "-" + question.getMaxSelections());  // ACTUALIZADO
+        System.out.println("----------------------------------------");
         for (int i = 0; i < question.getOptions().size(); i++) {
             System.out.println("[" + i + "] " + question.getOptions().get(i).getOptionText());
         }

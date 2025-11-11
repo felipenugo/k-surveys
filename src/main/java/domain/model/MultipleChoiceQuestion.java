@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MultipleChoiceQuestion extends Question {
-
+    private int minSelections;
     private int maxSelections;
     private List<OptionQuestion> optionQuestions;
 
@@ -19,6 +19,9 @@ public class MultipleChoiceQuestion extends Question {
     }
 
     // Getters
+
+    public int getMinSelections() { return minSelections; }
+
     public int getMaxSelections() {
         return maxSelections;
     }
@@ -28,7 +31,26 @@ public class MultipleChoiceQuestion extends Question {
     }
 
     // Setters
+    public void setMinSelections(int minSelections) {
+        if (minSelections < 1) {
+            throw new IllegalArgumentException("El mínimo de selecciones debe ser al menos 1.");
+        }
+        if (minSelections > this.maxSelections) {
+            throw new IllegalArgumentException("El mínimo de selecciones no puede ser mayor que el máximo.");
+        }
+        if (minSelections > this.optionQuestions.size()) {
+            throw new IllegalArgumentException("El mínimo de selecciones no puede ser mayor que el número de opciones disponibles.");
+        }
+        this.minSelections = minSelections;
+    }
+
     public void setMaxSelections(int maxSelections) {
+        if (maxSelections < this.minSelections) {
+            throw new IllegalArgumentException("El máximo de selecciones no puede ser menor que el mínimo.");
+        }
+        if (maxSelections > this.optionQuestions.size() && !this.optionQuestions.isEmpty()) {
+            throw new IllegalArgumentException("El máximo de selecciones no puede ser mayor que el número de opciones disponibles.");
+        }
         this.maxSelections = maxSelections;
     }
 

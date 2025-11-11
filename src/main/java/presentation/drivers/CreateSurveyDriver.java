@@ -2,10 +2,12 @@ package presentation.drivers;
 
 import domain.controller.SurveyController;
 import domain.controller.UserController;
+import domain.model.MultipleChoiceQuestion;
 import domain.model.Survey;
 import domain.model.Question;
 import domain.model.enums.SurveyStatus;
 import domain.exception.SurveyException;
+import domain.model.enums.TypeQuestion;
 
 import java.util.Scanner;
 
@@ -267,13 +269,15 @@ public class CreateSurveyDriver {
             System.out.println("\n[" + i + "] " + q.getQuestionText());
             System.out.println("    Tipo: " + q.getTypeQuestion());
 
-            if (q instanceof domain.model.MultipleChoiceQuestion) {
-                domain.model.MultipleChoiceQuestion mcq = (domain.model.MultipleChoiceQuestion) q;
-                System.out.println("    Selecciones máximas: " + mcq.getMaxSelections());
+            if (q instanceof MultipleChoiceQuestion) {
+                MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) q;
+                System.out.println("    Selecciones requeridas: " + mcq.getMinSelections() + "-" + mcq.getMaxSelections());  // ACTUALIZADO
                 System.out.println("    Opciones:");
                 for (int j = 0; j < mcq.getOptions().size(); j++) {
                     System.out.println("      " + (j + 1) + ". " + mcq.getOptions().get(j).getOptionText());
                 }
+            } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                System.out.println("    (Respuesta numérica requerida)");
             }
         }
         System.out.println("========================================");
