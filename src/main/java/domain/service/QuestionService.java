@@ -63,6 +63,7 @@ public class QuestionService {
             int maxSelections,
             List<String> optionTexts) {
 
+        // 1. VALIDACIONES DE DATOS DE ENTRADA (antes de crear el objeto)
         if (questionText == null || questionText.trim().isEmpty()) {
             throw new SurveyException("El texto de la pregunta no puede estar vacío.");
         }
@@ -71,6 +72,14 @@ public class QuestionService {
             throw new SurveyException("Se requieren al menos 2 opciones.");
         }
 
+        // Validar que las opciones no estén vacías
+        for (String optionText : optionTexts) {
+            if (optionText == null || optionText.trim().isEmpty()) {
+                throw new SurveyException("El texto de las opciones no puede estar vacío.");
+            }
+        }
+
+        // 2. VALIDACIONES DE SELECCIONES (con respecto al número de opciones)
         if (minSelections < 1) {
             throw new SurveyException("El mínimo de selecciones debe ser al menos 1.");
         }
@@ -79,26 +88,29 @@ public class QuestionService {
             throw new SurveyException("El máximo de selecciones no puede ser menor que el mínimo.");
         }
 
-        if (maxSelections > optionTexts.size()) {
-            throw new SurveyException("El máximo de selecciones no puede ser mayor que el número de opciones.");
+        if (minSelections > optionTexts.size()) {
+            throw new SurveyException("El mínimo de selecciones (" + minSelections + ") no puede ser mayor que el número de opciones (" + optionTexts.size() + ").");
         }
 
+        if (maxSelections > optionTexts.size()) {
+            throw new SurveyException("El máximo de selecciones (" + maxSelections + ") no puede ser mayor que el número de opciones (" + optionTexts.size() + ").");
+        }
+
+        // 3. CREAR EL OBJETO (ahora sabemos que los datos son válidos)
         MultipleChoiceQuestion mcQuestion = new MultipleChoiceQuestion(questionIndex, surveyId);
         mcQuestion.setQuestionText(questionText);
         mcQuestion.setRequired(isRequired);
-        mcQuestion.setMinSelections(minSelections);
-        mcQuestion.setMaxSelections(maxSelections);
 
-        // Añadir opciones
+        // 4. AÑADIR OPCIONES PRIMERO
         for (String optionText : optionTexts) {
-            if (optionText == null || optionText.trim().isEmpty()) {
-                throw new SurveyException("El texto de las opciones no puede estar vacío.");
-            }
-
             OptionQuestion option = new OptionQuestion(questionIndex, surveyId);
             option.setOptionText(optionText);
             mcQuestion.addOption(option);
         }
+
+        // 5. CONFIGURAR SELECCIONES (después de añadir las opciones)
+        mcQuestion.setMinSelections(minSelections);
+        mcQuestion.setMaxSelections(maxSelections);
 
         return mcQuestion;
     }

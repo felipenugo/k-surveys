@@ -29,7 +29,7 @@ public class CreateSurveyDriver {
 
     private int selectCreateSurveyMenuOption() {
         System.out.println("\n--- CREAR ENCUESTA ---");
-        System.out.println("1. VER ID ENCUESTA CREADA");
+        System.out.println("1. VER INFO ENCUESTA CREADA");
         System.out.println("2. EDITAR TÍTULO");
         System.out.println("3. EDITAR DESCRIPCIÓN");
         System.out.println("4. AÑADIR PREGUNTA");
