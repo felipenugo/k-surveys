@@ -20,20 +20,12 @@ public class DriverMain {
         return sc.nextInt();
     }
 
-    public static void main(String[] args) {
-        // Initialize repositories
-        UserRepository userRepository = new UserRepository();
-        SurveyRepository surveyRepository = new SurveyRepository();
-        QuestionRepository questionRepository = new QuestionRepository();
-        ResponseRepository responseRepository = new ResponseRepository();
-        AnswerRepository answerRepository = new AnswerRepository();
+    public static void main(String[] var0) {
+        Scanner sc = new Scanner(System.in);
+        // Initialize controllers injecting survey with repository
+        UserController userController = new UserController(new UserService(new UserRepository()));
 
-        // Initialize controllers
-        UserController userController = new UserController(
-                new UserService(userRepository)
-        );
-
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(new SurveyRepository(), userController);
         SurveyController surveyController = new SurveyController(surveyService);
 
         QuestionService questionService = new QuestionService(questionRepository, userController);
