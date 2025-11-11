@@ -3,11 +3,11 @@ plugins {
     id 'application'
 }
 // Indicates the package that contains the main class
-group = 'appMain'
+group = 'presentation.driverMain'
 version = '1.0-SNAPSHOT'
 
 ext {
-    javaMainClass = 'appMain.Main'
+    javaMainClass = 'presentation.driverMain.DriverMain'
 }
 
 application {
