@@ -16,6 +16,14 @@ public class UserController {
         this.loggedIn = false;
     }
 
+    public String getUsernameLoggedIn() {
+        return this.usernameLoggedIn;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
     public void registerUser(String username, String email, String password) {
         userService.registerUser(username, email, password);
     }
@@ -30,7 +38,7 @@ public class UserController {
     }
 
     public void logoutUser() {
-        if(!this.loggedIn)
+        if (!this.loggedIn)
             throw new LogInException("Ningún usuario ha iniciado sesión.");
         this.usernameLoggedIn = null;
         this.loggedIn = false;

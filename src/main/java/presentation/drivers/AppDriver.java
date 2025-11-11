@@ -7,48 +7,34 @@ import java.util.Scanner;
 public class AppDriver {
     private final Scanner sc = new Scanner(System.in);
     private final SurveyDriver surveyDriver;
+    private final SessionDriver sessionDriver;
 
-    public AppDriver(SurveyDriver surveyDriver) {
+    public AppDriver(SurveyDriver surveyDriver, SessionDriver sessionDriver) {
         this.surveyDriver = surveyDriver;
+        this.sessionDriver = sessionDriver;
     }
 
-    public boolean isValidOption(int firstOption, int lastOption, int option) {
-        if (option < firstOption || option > lastOption) {
-            System.out.println("Opción no válida. Selecciona una opción del menu");
-            return false;
-        } else {
-            return true;
-        }
-    }
 
-    private int selectAppMenu() {
-        boolean exit = false;
-        int option;
+    private int selectAppMenuOption() {
         System.out.println("--- K-SURVEY ---");
-        do {
-            System.out.println("1. RESPONDER ENCUESTAS");
-            System.out.println("2. ANALIZAR MIS ENCUESTAS");
-            System.out.println("3. CREAR ENCUESTA");
-            System.out.println("4. CERRAR SESIÓN");
-            System.out.print("Opcion: ");
-            option = sc.nextInt();
-            exit = isValidOption(1, 4, option);
-        } while (!exit);
-        return option;
+        System.out.println("1. RESPONDER O ANALIZAR ENCUESTAS");
+        System.out.println("2. CREAR ENCUESTA");
+        System.out.println("3. CERRAR SESIÓN");
+        System.out.print("Opcion: ");
+        return sc.nextInt();
     }
 
     public void appMenu() {
         boolean exitApp = false;
         do {
-            switch (selectAppMenu()) {
+            switch (selectAppMenuOption()) {
                 case 1 -> surveyDriver.surveyMenu();
-                case 2 -> surveyDriver.surveyMenu();
-                case 3 -> System.out.println("createsurveyDriver.createSurveyMenu()");
-                case 4 -> {
-                    System.out.println("logout");
-                    System.out.println("Volver al login");
+                case 2 -> System.out.println("createsurveyDriver.createSurveyMenu()");
+                case 3 -> {
+                    sessionDriver.logout();
                     exitApp = true;
                 }
+                default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
             }
         } while (!exitApp);
     }
