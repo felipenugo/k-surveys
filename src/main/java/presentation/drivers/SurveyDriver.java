@@ -6,52 +6,33 @@ import java.util.Scanner;
 
 public class SurveyDriver {
     private final Scanner sc = new Scanner(System.in);
-    private final SurveyController surveyController;
-    private final ReponseDriver reponseDriver;
+    private final ResponseDriver responseDriver;
+    private final MySurveysDriver mySurveysDriver;
 
-    public SurveyDriver(SurveyController surveyController, ReponseDriver responseDriver) {
-        this.surveyController = surveyController;
-        this.reponseDriver = responseDriver;
-    }
-
-    public boolean isValidOption(int firstOption, int lastOption, int option) {
-        if (option < firstOption || option > lastOption) {
-            System.out.println("Opción no válida. Selecciona una opción del menu");
-            return false;
-        } else {
-            return true;
-        }
+    public SurveyDriver(ResponseDriver responseDriver, MySurveysDriver mySurveysDriver) {
+        this.responseDriver = responseDriver;
+        this.mySurveysDriver = mySurveysDriver;
     }
 
     public int selectSurveyMenuOption() {
-        boolean exit = false;
-        int option;
         System.out.println("--- ENCUESTAS ---");
-        do {
-            System.out.println("1. RESPONDER ENCUESTA");
-            System.out.println("2. ANALIZAR MIS ENCUESTAS");
-            System.out.println("3. VOLVER AL MENÚ PRINCIPAL");
-            option = sc.nextInt();
-            exit = isValidOption(1, 3, option);
-        } while (!exit);
-        return option;
+        System.out.println("1. RESPONDER ENCUESTAS");
+        System.out.println("2. ANALIZAR MIS ENCUESTAS");
+        System.out.println("3. VOLVER AL MENÚ PRINCIPAL");
+        System.out.print("Opción: ");
+        return sc.nextInt();
     }
 
     public void surveyMenu() {
         boolean exitSurveyMenu = false;
         do {
             switch (selectSurveyMenuOption()) {
-                case 1 -> reponseDriver.responseMenu();
-
+                case 1 -> responseDriver.responseMenu();
+                case 2 -> mySurveysDriver.mySurveysMenu();
+                case 3 -> exitSurveyMenu = true;
+                default -> System.out.println("Opción no válida. Selecciona una opción del menú.");
             }
         } while (!exitSurveyMenu);
-    }
-
-    public void responseSurvey() {
-
-    }
-
-    public void analyzeSurvey() {
-
+        System.out.println("--- volviendo al menú principal ---");
     }
 }

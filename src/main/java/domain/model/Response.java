@@ -14,7 +14,7 @@ public class Response {
     private final Answer[] ANSWERS;
 
     // Constructor with id checked from database
-    public Response(String RESPONSE_ID, String SURVEY_ID, String RESPONDER_USERNAME, ResponseStatus responseStatus, int numQuestions) {
+    public Response(String RESPONSE_ID, String SURVEY_ID, String RESPONDER_USERNAME, int numQuestions) {
         this.RESPONSE_ID = RESPONSE_ID;
         this.SURVEY_ID = SURVEY_ID;
         this.RESPONDER_USERNAME = RESPONDER_USERNAME;
@@ -79,7 +79,7 @@ public class Response {
         return (index >= 0 && index < getSize());
     }
 
-    // can not add or remove answers since the number of questions is fixed"
+    // can not add or remove answers since the number of questions is fixed
     public void updateAnswer(int index, Answer answer) {
         ANSWERS[index] = answer;
     }

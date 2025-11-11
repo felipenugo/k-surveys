@@ -28,7 +28,7 @@ public class UserService {
             throw new RegisterException("El campo email es obligatorio y no puede estar vacío.");
 
         if (isInputBlank(password))
-            throw new RegisterException("El campo contraseña es obligatorio y no puede estar vacío");
+            throw new RegisterException("El campo contraseña es obligatorio y no puede estar vacío.");
 
         // Business rules validation
         if (!email.contains("@gmail.com"))

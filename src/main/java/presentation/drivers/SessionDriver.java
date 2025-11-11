@@ -47,7 +47,7 @@ public class SessionDriver {
             String password = sc.nextLine();
 
             try {
-                System.out.println("--- REGISTRÁNDOSE ---");
+                System.out.println("--- registrándose ---");
                 userController.registerUser(username, email, password);
                 System.out.println("El usuario " + username + " se ha registrado con éxito.");
                 exitRegister = true;
@@ -79,13 +79,11 @@ public class SessionDriver {
             String password = sc.nextLine();
 
             try {
-                System.out.println("--- INICIANDO SESIÓN ---");
+                System.out.println("--- iniciando sesión ---");
                 userController.loginUser(username, password);
-                System.out.println("Inicio de sesión correcto.");
+                System.out.println("Inicio de sesión correcto!");
                 System.out.println("Bienvenido " + username);
-                System.out.println("Estamos en obras :-(");
-                // appDriver.appMenu();
-                driverLogout(username);
+                appDriver.appMenu();
                 exitLogin = true;
             } catch (LogInException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -109,9 +107,10 @@ public class SessionDriver {
         } while (!exitLogin);
     }
 
-    public void driverLogout(String username) {
+    public void logout() {
         System.out.println("--- CERRANDO SESIÓN ---");
         try {
+            String username = userController.getUsernameLoggedIn();
             userController.logoutUser();
             System.out.println("Sesión cerrada, hasta pronto " + username + ".");
         } catch (LogInException e) {

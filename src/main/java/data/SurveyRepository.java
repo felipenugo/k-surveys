@@ -32,6 +32,10 @@ public class SurveyRepository {
         return new ArrayList<>(surveys.values());
     }
 
+    public List<String> getAllSurveysId(){
+        return new ArrayList<>(surveys.keySet());
+    }
+
     public void updateSurvey(String surveyId, Survey updatedSurvey) {
         surveys.put(surveyId, updatedSurvey);
     }
