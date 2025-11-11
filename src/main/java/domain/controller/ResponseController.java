@@ -2,6 +2,7 @@ package domain.controller;
 
 import domain.service.ResponseService;
 import domain.model.*;
+import domain.model.enums.*;
 
 import java.util.List;
 
@@ -20,9 +21,19 @@ public class ResponseController {
         return responseService.getQuestions(surveyId);
     }
 
-    public List<Answer> getAnswers(String surveyid, String responseId)
+    public Question getQuestion(String surveyId, int questionIndex)
     {
-        return responseService.getAnswers(surveyid, responseId);
+        return responseService.getQuestion(surveyId, questionIndex);
+    }
+
+    public List<Answer> getAnswers(String surveyId, String responseId)
+    {
+        return responseService.getAnswers(surveyId, responseId);
+    }
+
+    public Question startAnswer(String surveyId, String responseId, int questionIndex )
+    {
+        return responseService.startAnswer(surveyId, responseId, questionIndex);
     }
 }
 

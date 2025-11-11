@@ -54,6 +54,13 @@ public class SurveyService {
         return questions;
     }
 
+    public Question getQuestion(String surveyId, int questionIndex)
+    {
+        if(!existsQuestion(surveyId, questionIndex))
+            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+        return surveyRepository.getQuestion(surveyId, questionIndex);
+    }
+
     public Survey getSurvey(String surveyId) {
         checkSurveyExists(surveyId);
         return surveyRepository.getSurvey(surveyId);
@@ -62,5 +69,11 @@ public class SurveyService {
     public List<Survey> getMySurveys() {
         checkUserLoggedin();
         return surveyRepository.getSurveysByUsername(userController.getLoggedUser().getUsername());
+    }
+
+    public boolean existsQuestion(String surveyId, int questionIndex) {
+        checkSurveyExists(surveyId);
+        int numQuestions = surveyRepository.getNumQuestions(surveyId);
+        return questionIndex >= 0 && questionIndex < numQuestions;
     }
 }
