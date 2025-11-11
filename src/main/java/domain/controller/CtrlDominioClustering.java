@@ -8,6 +8,10 @@ import domain.clustering.KMeans;
 import domain.clustering.KMeansPlusPlus;
 import domain.clustering.KMedoids;
 import domain.model.Response;
+import domain.model.Survey;
+import domain.model.Question;
+import domain.clustering.ClusteringAnalysis;
+import domain.clustering.Cluster;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,66 +20,75 @@ import java.util.Map;
 
 public class CtrlDominioClustering {
 
-    private Map<String, ClusterResults> analysis = new HashMap<>();
+    private AnalysisController analysisController;
+
+    public CtrlDominioClustering() {
+        this.analysisController = new AnalysisController();
+    }
 
     public String ejecutarClustering(String analisisId, String algoritmo, Object[][] data, int k, int maxIter, double tolerance) {
+        // Dummy Survey for now, as we don't have a QuestionSetController
+        Survey dummySurvey = new Survey("dummySurveyId", "Dummy Survey", "Description", "dummyUser");
+
+        Map<String, Object> config = new HashMap<>();
+        config.put("maxIterations", maxIter);
+        config.put("tolerance", tolerance);
+
+        ClusteringAnalysis analysis = analysisController.createAnalysis(dummySurvey, k, algoritmo, config);
+
         List<Response> responses = new ArrayList<>();
         for (Object[] datum : data) {
-            Response r = new Response(analisisId, analisisId, k);
+            Response r = new Response(analisisId, analisisId, k); // This constructor is still problematic
             responses.add(r);
         }
-
-        ClusteringAlgorithm algorithm;
-        switch (algoritmo) {
-            case "KMeans":
-                algorithm = new KMeans(maxIter, tolerance);
-                break;
-            case "KMeansPlusPlus":
-                algorithm = new KMeansPlusPlus(maxIter, tolerance);
-                break;
-            case "KMedoids":
-                algorithm = new KMedoids(maxIter, tolerance);
-                break;
-            default:
-                throw new IllegalArgumentException("Algoritmo no válido");
-        }
-
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
-        ClusterResults results = algorithm.execute(responses, new ArrayList<>(), k, distance);
-        analysis.put(analisisId, results);
+        
+        // Need to get actual questions from the survey, but for now, use an empty list
+        analysisController.executeAnalysis(analysis.getId(), responses, new ArrayList<>(), new DistanceCalculator(DistanceType.EUCLIDEAN));
+        
         return "Análisis " + analisisId + " ejecutado con éxito";
     }
 
     public ClusterResults obtenerResultados(String analisisId) {
-        if (!analysis.containsKey(analisisId)) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analisisId);
+        if (analysis == null) {
             throw new IllegalArgumentException("Análisis no encontrado");
         }
-        return analysis.get(analisisId);
+        // This is a temporary solution, as ClusterResults is not directly available from ClusteringAnalysis
+        // We need to adapt ClusterResults or ClusteringAnalysis to provide this information
+        return new ClusterResults(analysis.getClusters(), analysis.getIterations(), analysis.hasConverged());
     }
 
     public String obtenerResumen(String analisisId) {
-        ClusterResults results = obtenerResultados(analisisId);
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analisisId);
+        if (analysis == null) {
+            throw new IllegalArgumentException("Análisis no encontrado");
+        }
         return "Resumen del análisis " + analisisId + ":\n" +
-                "  - Clusters: " + results.getNumberOfClusters() + "\n" +
-                "  - Iteraciones: " + results.getIterations() + "\n" +
-                "  - Convergencia: " + (results.hasConverged() ? "Sí" : "No");
+                "  - Clusters: " + analysis.getClusters().size() + "\n" +
+                "  - Iteraciones: " + analysis.getIterations() + "\n" +
+                "  - Convergencia: " + (analysis.hasConverged() ? "Sí" : "No");
     }
 
-    public String obtenerInfoCluster(String analisisId, int clusterId) {
-        ClusterResults results = obtenerResultados(analisisId);
-        if (clusterId < 0 || clusterId >= results.getNumberOfClusters()) {
-            throw new IllegalArgumentException("ID de cluster fuera de rango");
+    public String obtenerInfoCluster(String analisisId, int clusterIndex) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analisisId);
+        if (analysis == null) {
+            throw new IllegalArgumentException("Análisis con ID " + analisisId + " no encontrado.");
         }
-        return "Información del cluster " + clusterId + " del análisis " + analisisId + ":\n" +
-                "  - Puntos: " + results.getCluster(clusterId).getSize() + "\n" +
-                "  - Distancia media: " + results.getCluster(clusterId).getAverageDistance();
+        List<Cluster> clusters = analysis.getClusters();
+        if (clusterIndex < 0 || clusterIndex >= clusters.size()) {
+            throw new IllegalArgumentException("Índice de cluster fuera de rango: " + clusterIndex);
+        }
+        Cluster cluster = clusters.get(clusterIndex);
+        return "Información del cluster " + clusterIndex + " del análisis " + analisisId + ":\n" +
+                "  - Puntos: " + cluster.getSize() + "\n" +
+                "  - Distancia media: " + cluster.getAverageDistance();
     }
 
     public List<String> listarAnalisis() {
-        return new ArrayList<>(analysis.keySet());
+        return new ArrayList<>(analysisController.getAnalyses().keySet());
     }
 
     public void limpiarAnalisis() {
-        analysis.clear();
+        analysisController.clearAnalyses();
     }
 }
