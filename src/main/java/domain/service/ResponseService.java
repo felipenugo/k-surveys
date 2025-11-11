@@ -4,6 +4,7 @@ import domain.model.*;
 import domain.controller.*;
 import data.*;
 import domain.exception.*;
+import domain.model.enums.TypeQuestion;
 
 import java.util.List;
 
@@ -49,12 +50,30 @@ public class ResponseService {
         return surveyService.getQuestions(surveyId);
     }
 
-    public List<Answer> getAnswers(String surveyid, String responseId) {
-        surveyService.checkSurveyExists(surveyid);
-        checkResponseExists(surveyid, responseId);
-        List<Answer> answers = responseRepository.getAllAnswers(surveyid, responseId);
+    public Question getQuestion(String surveyId, int questionIndex) {
+        return surveyService.getQuestion(surveyId, questionIndex);
+    }
+
+
+    public List<Answer> getAnswers(String surveyId, String responseId) {
+        checkResponseExists(surveyId, responseId);
+        List<Answer> answers = responseRepository.getAllAnswers(surveyId, responseId);
         if (answers.isEmpty())
             throw new ResponseException("Todavía no has respondido ninguna pregunta.");
         return answers;
+    }
+
+    // verifies that the question exists
+    public Question startAnswer(String surveyId, String responseId, int questionIndex) {
+        checkResponseExists(surveyId, responseId);
+        Question question = surveyService.getQuestion(surveyId, questionIndex); // this verifies that the question exists in the survey
+        Answer answer; //
+        if (question.getTypeQuestion() == TypeQuestion.MULTIPLE_CHOICE) {
+            answer = new MultipleChoiceAnswer(questionIndex, responseId, ((MultipleChoiceQuestion) question).getMaxSelections());
+        } else if(question.getTypeQuestion()==TypeQuestion.TEXTUAL)
+            answer = new TextualAnswer(questionIndex, responseId);
+        else answer = new NumericalAnswer(questionIndex, responseId);
+        responseRepository.updateAnswer(surveyId, responseId, questionIndex, answer); // the answerIndex is the same as the questionIndex
+        return question;
     }
 }

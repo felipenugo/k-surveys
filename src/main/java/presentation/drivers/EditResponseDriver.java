@@ -5,9 +5,6 @@ import domain.exception.*;
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
 
-import javax.swing.text.html.Option;
-import java.lang.reflect.Type;
-import java.sql.SQLOutput;
 import java.util.Scanner;
 import java.util.List;
 
@@ -41,6 +38,28 @@ public class EditResponseDriver {
         } while (!exit);
 
         return sentResponse;
+    }
+
+    public boolean selectAnswerErrorMenu() {
+        boolean exit = false;
+        boolean exitAnswer = false;
+        do {
+            System.out.println("1. Intentar responder de nuevo.");
+            System.out.println("2. Responder otra pregunta.");
+            System.out.print("Opción: ");
+            switch (sc.nextInt()) {
+                case 1 -> {
+                    exit = true;
+                    exitAnswer = false;
+                }
+                case 2 -> {
+                    exit = true;
+                    exitAnswer = true;
+                }
+                default -> System.out.println("Opción incorrecta, selecciona una opción del menú.");
+            }
+        } while (exit = false);
+        return exitAnswer;
     }
 
     private int selectEditResponseMenu() {
@@ -90,13 +109,49 @@ public class EditResponseDriver {
         }
     }
 
-    public void editResponseMenu(String surveyId, String responseid) {
+    public void answerQuestion(String surveyId, String responseId, int questionIndex) {
+        try {
+            Question question  = responseController.startAnswer(surveyId, responseId, questionIndex);
+            String textAnswer;
+            TypeQuestion answerType = question.getTypeQuestion();
+            if (answerType == TypeQuestion.TEXTUAL) {
+                System.out.print("Introduce tu respuesta: ");
+                textAnswer = sc.nextLine();
+
+            } if(answerType == TypeQuestion.MULTIPLE_CHOICE)
+            {
+                System.out.println("Introduce el número de tus opciones separado por espacios:");
+            }
+
+
+        } catch (ResponseException | SurveyException | AnswerException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void selectAnswer(String surveyId, String responseId) {
+        boolean exit = false;
+        do {
+            try {
+
+                System.out.print("Introduce el índice de la pregunta que quieras responder:");
+                int questionIndex = sc.nextInt();
+                answerQuestion(surveyId, responseId, questionIndex);
+                exit = true;
+            } catch (AnswerException e) {
+                System.out.println("Error: " + e.getMessage());
+                exit = selectAnswerErrorMenu();
+            }
+        } while (!exit);
+    }
+
+    public void editResponseMenu(String surveyId, String responseId) {
         boolean exit = false;
         do {
             switch (selectEditResponseMenu()) {
                 case 1 -> showQuestions(surveyId);
                 case 2 -> System.out.println("responder pregunta");
-                case 3 -> showAnswers(surveyId, responseid);
+                case 3 -> showAnswers(surveyId, responseId);
                 case 4 -> exit = confirmExit();
                 default -> System.out.println("Opción no válida. Selecciona una opción del menú");
             }
