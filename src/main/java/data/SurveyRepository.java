@@ -10,9 +10,11 @@ import domain.model.Question;
 
 public class SurveyRepository {
     private final Map<String, Survey> surveys; // <surveyId, Survey>, Survey contains its questions
+    private int nextSurveyId;
 
     public SurveyRepository() {
         surveys = new HashMap<>();
+        nextSurveyId = 0;
     }
 
     // Survey methods
@@ -52,6 +54,16 @@ public class SurveyRepository {
             }
         }
         return userSurveys;
+    }
+    //metodos ID surveys
+    public String generateNextSurveyId() {
+        String surveyId = String.valueOf(nextSurveyId);
+        nextSurveyId++; // Incrementar para la próxima encuesta
+        return surveyId;
+    }
+
+    public int getNextSurveyIdValue() {
+        return nextSurveyId;
     }
 
     // Question methods

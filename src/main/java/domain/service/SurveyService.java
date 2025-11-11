@@ -27,6 +27,10 @@ public class SurveyService {
             throw new SurveyException("La encuesta con id " + surveyId + " no existe.");
     }
 
+    public String generateUniqueSurveyId() {
+        return surveyRepository.generateNextSurveyId();
+    }
+
     public void createSurvey(Survey survey) {
         checkUserLoggedin();
 
@@ -45,19 +49,36 @@ public class SurveyService {
             throw new SurveyException("La encuesta debe tener al menos una pregunta.");
         }
 
-        // Validar que la encuesta tenga un ID válido
-        if (survey.getSURVEY_ID() == null || survey.getSURVEY_ID().trim().isEmpty()) {
-            throw new SurveyException("La encuesta debe tener un ID válido.");
-        }
-
-        // Verificar que no exista ya una encuesta con ese ID
-        if (surveyRepository.existsSurvey(survey.getSURVEY_ID())) {
-            throw new SurveyException("Ya existe una encuesta con el ID: " + survey.getSURVEY_ID());
-        }
-
         // Verificar que el creador sea el usuario logueado
         if (!survey.getCREATOR_USERNAME().equals(userController.getLoggedUser().getUsername())) {
             throw new SurveyException("Solo puedes crear encuestas a tu nombre.");
+        }
+
+        // Generar el ID autoincremental si no tiene uno
+        String surveyId = survey.getSURVEY_ID();
+
+        if (surveyId == null || surveyId.trim().isEmpty()) {
+            // Generar el siguiente ID autoincremental
+            surveyId = generateUniqueSurveyId();
+
+            // Crear una nueva encuesta con el ID generado (porque SURVEY_ID es final)
+            Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
+            surveyWithId.setSurveyStatus(survey.getSurveyStatus());
+            if (survey.getPUBLISHED_AT() != null) {
+                surveyWithId.setPUBLISHED_AT();
+            }
+
+            // Copiar todas las preguntas
+            for (int i = 0; i < survey.getSize(); i++) {
+                surveyWithId.addQuestion(survey.getQuestion(i));
+            }
+
+            survey = surveyWithId;
+        } else {
+            // Si ya tiene ID, verificar que no exista
+            if (surveyRepository.existsSurvey(surveyId)) {
+                throw new SurveyException("Ya existe una encuesta con el ID: " + surveyId);
+            }
         }
 
         // Guardar en el repositorio
