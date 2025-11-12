@@ -69,10 +69,10 @@ public class ResponseService {
 
     public String startResponse(String surveyId) {
         checkUserLoggedin();
-        int numQuestions = surveyService.getNumQuestions(surveyId); // this method verify that the survey exists
+        List<Question> questions = surveyService.getQuestions(surveyId); // this method verify that the survey exists
         String responseId = getValidResponseId();
         String responderUsername = userController.getUsernameLoggedIn();
-        Response response = new Response(responseId, surveyId, responderUsername, numQuestions);
+        Response response = new Response(responseId, surveyId, responderUsername, questions);
         if (!responseRepository.existsSurveyEntry(surveyId))
             responseRepository.addSurveyEntry(surveyId);
         responseRepository.addResponse(surveyId, response);
@@ -88,11 +88,19 @@ public class ResponseService {
         return surveyService.getQuestion(surveyId, questionIndex);
     }
 
+    public boolean existsQuestionAnswered(List<Answer> answers) {
+        for (Answer a : answers)
+            if (a.getIsAnswered())
+                return true;
+        return false;
+
+    }
+
 
     public List<Answer> getAnswers(String surveyId, String responseId) {
         checkResponseExists(surveyId, responseId);
         List<Answer> answers = responseRepository.getAllAnswers(surveyId, responseId);
-        if (answers.isEmpty())
+        if (!existsQuestionAnswered(answers))
             throw new ResponseException("Todavía no has respondido ninguna pregunta.");
         return answers;
     }
