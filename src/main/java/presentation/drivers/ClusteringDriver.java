@@ -8,24 +8,38 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 
+/**
+ * Driver para ejecutar análisis de clustering desde la consola.
+ */
 public class ClusteringDriver {
 
     private final CtrlDominioClustering ctrlDominioClustering;
     private final SurveyController surveyController;
 
+    /**
+     * Constructor del driver de clustering.
+     * 
+     * @param ctrlDominioClustering Controlador de dominio de clustering
+     * @param surveyController Controlador de encuestas
+     */
     public ClusteringDriver(CtrlDominioClustering ctrlDominioClustering, SurveyController surveyController) {
         this.ctrlDominioClustering = ctrlDominioClustering;
         this.surveyController = surveyController;
     }
 
+    /**
+     * Ejecuta el menú interactivo de clustering para una encuesta.
+     * 
+     * @param surveyId ID de la encuesta a analizar
+     */
     public void run(String surveyId) {
         try {
-            System.out.println("--- Clustering Menu ---");
-            System.out.println("Select an algorithm:");
+            System.out.println("--- Menu de Clustering ---");
+            System.out.println("Selecciona un algoritmo:");
             System.out.println("1. KMeans");
             System.out.println("2. KMeans++");
             System.out.println("3. KMedoids");
-            System.out.print("Option: ");
+            System.out.print("Opcion: ");
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             String algorithmOption = reader.readLine();
             String algorithm = "";
@@ -40,17 +54,17 @@ public class ClusteringDriver {
                     algorithm = "KMedoids";
                     break;
                 default:
-                    System.out.println("Invalid option.");
+                    System.out.println("Opcion invalida.");
                     return;
             }
 
-            System.out.print("Enter the number of clusters (k): ");
+            System.out.print("Introduce el numero de clusters (k): ");
             int k = Integer.parseInt(reader.readLine());
 
-            System.out.println("Select a distance metric:");
-            System.out.println("1. Euclidean");
+            System.out.println("Selecciona una metrica de distancia:");
+            System.out.println("1. Euclidea");
             System.out.println("2. Manhattan");
-            System.out.print("Option: ");
+            System.out.print("Opcion: ");
             String distanceOption = reader.readLine();
             String distanceMetric = "";
             switch (distanceOption) {
@@ -61,7 +75,7 @@ public class ClusteringDriver {
                     distanceMetric = "MANHATTAN";
                     break;
                 default:
-                    System.out.println("Invalid option.");
+                    System.out.println("Opcion invalida.");
                     return;
             }
 

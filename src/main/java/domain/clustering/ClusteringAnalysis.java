@@ -9,6 +9,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Representa un análisis de clustering completo sobre una encuesta.
+ * Coordina la ejecución del algoritmo y almacena los resultados.
+ */
 public class ClusteringAnalysis {
     private String id;
     private String surveyId; // Corresponds to questionSetId
@@ -23,6 +27,13 @@ public class ClusteringAnalysis {
     private List<Response> responses; // Added field
     private List<Question> questions; // Added field
 
+    /**
+     * Constructor que inicializa un análisis de clustering.
+     * 
+     * @param survey Encuesta sobre la que realizar el clustering
+     * @param k Número de clusters a generar
+     * @param algorithm Algoritmo de clustering a utilizar
+     */
     public ClusteringAnalysis(Survey survey, Integer k, ClusteringAlgorithm algorithm) {
         this.id = java.util.UUID.randomUUID().toString(); // Generate a unique ID
         this.surveyId = survey.getSURVEY_ID();
@@ -38,20 +49,40 @@ public class ClusteringAnalysis {
         this.questions = new ArrayList<>(); // Initialize
     }
 
+    /**
+     * Obtiene el ID único del análisis.
+     * 
+     * @return ID del análisis
+     */
     public String getId() {
         return id;
     }
 
+    /**
+     * Obtiene el ID de la encuesta analizada.
+     * 
+     * @return ID de la encuesta
+     */
     public String getSurveyId() {
         return surveyId;
     }
 
+    /**
+     * Obtiene el número de clusters configurado.
+     * 
+     * @return Número de clusters (k)
+     */
     public Integer getK() {
         return k;
     }
 
-    // The execute method now takes a List<Response> (which is ResponseSet in the diagram)
-    // and a List<Question> (which is Question in the diagram)
+    /**
+     * Ejecuta el análisis de clustering con los datos proporcionados.
+     * 
+     * @param responses Lista de respuestas a agrupar
+     * @param questions Lista de preguntas de la encuesta
+     * @param distance Calculadora de distancia a utilizar
+     */
     public void execute(List<Response> responses, List<Question> questions, DistanceCalculator distance) {
         long startTime = System.currentTimeMillis();
         this.responses = new ArrayList<>(responses); // Store responses
@@ -66,10 +97,21 @@ public class ClusteringAnalysis {
         this.executionTime = endTime - startTime;
     }
 
+    /**
+     * Obtiene la lista de clusters resultantes.
+     * 
+     * @return Lista de clusters
+     */
     public List<Cluster> getClusters() {
         return clusters;
     }
 
+    /**
+     * Obtiene un cluster específico por su ID.
+     * 
+     * @param clusterId ID del cluster a buscar
+     * @return Cluster encontrado o null
+     */
     public Cluster getCluster(String clusterId) {
         for (Cluster cluster : clusters) {
             if (cluster.getId().equals(clusterId)) {
@@ -79,26 +121,58 @@ public class ClusteringAnalysis {
         return null; // Or throw an exception
     }
 
+    /**
+     * Indica si el algoritmo alcanzó convergencia.
+     * 
+     * @return true si convergió
+     */
     public Boolean hasConverged() {
         return converged;
     }
 
+    /**
+     * Obtiene el número de iteraciones ejecutadas.
+     * 
+     * @return Número de iteraciones
+     */
     public Integer getIterations() {
         return iterations;
     }
 
+    /**
+     * Obtiene el tiempo de ejecución en milisegundos.
+     * 
+     * @return Tiempo de ejecución
+     */
     public Long getExecutionTime() {
         return executionTime;
     }
 
+    /**
+     * Obtiene las respuestas analizadas.
+     * 
+     * @return Lista de respuestas
+     */
     public List<Response> getResponses() { // Added getter
         return responses;
     }
 
+    /**
+     * Obtiene las preguntas de la encuesta.
+     * 
+     * @return Lista de preguntas
+     */
     public List<Question> getQuestions() { // Added getter
         return questions;
     }
 
+    /**
+     * Calcula una métrica de calidad del clustering.
+     * 
+     * @param metricType Tipo de métrica a calcular
+     * @param distance Calculadora de distancia
+     * @return Valor de la métrica
+     */
     public Double calculateQuality(QualityMetricType metricType, DistanceCalculator distance) {
         QualityMetricCalculator calculator = new QualityMetricCalculator();
         switch (metricType) {
@@ -113,7 +187,11 @@ public class ClusteringAnalysis {
         }
     }
 
-    // Placeholder for exportResults
+    /**
+     * Exporta los resultados a un archivo.
+     * 
+     * @param filePath Ruta del archivo de destino
+     */
     public void exportResults(String filePath) {
         // Implementation for exporting results
     }

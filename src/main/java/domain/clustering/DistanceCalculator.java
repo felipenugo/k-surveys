@@ -13,31 +13,60 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Calculates the distance (similarity) between two Responses or
- * between a Response and a Centroid.
+ * Calculadora de distancias entre respuestas y centroides.
+ * Soporta múltiples métricas de distancia y tipos de datos (numéricos y textuales).
  */
 public class DistanceCalculator {
 
     private DistanceType distanceType;
-    private Map<Integer, Double> weights; // Use Question Index as key
+    private Map<Integer, Double> weights;
 
+    /**
+     * Constructor que establece el tipo de distancia.
+     * 
+     * @param distanceType Métrica de distancia a utilizar
+     */
     public DistanceCalculator(DistanceType distanceType) {
         this.distanceType = distanceType;
         this.weights = new HashMap<>();
     }
 
+    /**
+     * Establece el peso de una pregunta específica en el cálculo de distancia.
+     * 
+     * @param questionIndex Índice de la pregunta
+     * @param weight Peso a aplicar (mayor peso = mayor importancia)
+     */
     public void setWeight(int questionIndex, double weight) {
         this.weights.put(questionIndex, weight);
     }
 
+    /**
+     * Obtiene todos los pesos configurados.
+     * 
+     * @return Mapa de índices de pregunta a pesos
+     */
     public Map<Integer, Double> getWeights() {
         return new HashMap<>(this.weights);
     }
 
+    /**
+     * Obtiene el tipo de distancia configurado.
+     * 
+     * @return Tipo de distancia actual
+     */
     public DistanceType getDistanceType() {
         return this.distanceType;
     }
 
+    /**
+     * Calcula la distancia entre dos respuestas.
+     * 
+     * @param rs1 Primera respuesta
+     * @param rs2 Segunda respuesta
+     * @param questions Lista de preguntas para interpretar las respuestas
+     * @return Distancia calculada
+     */
     public double calculate(Response rs1, Response rs2, List<Question> questions) {
         double totalDistanceSquared = 0.0;
         double totalDistanceManhattan = 0.0;
@@ -63,6 +92,14 @@ public class DistanceCalculator {
         return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
     }
 
+    /**
+     * Calcula la distancia entre una respuesta y un centroide.
+     * 
+     * @param rs Respuesta
+     * @param centroid Centroide
+     * @param questions Lista de preguntas
+     * @return Distancia calculada
+     */
     public double calculateToCentroid(Response rs, Centroid centroid, List<Question> questions) {
         double totalDistanceSquared = 0.0;
         double totalDistanceManhattan = 0.0;
@@ -88,6 +125,12 @@ public class DistanceCalculator {
         return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
     }
 
+    /**
+     * Verifica si una respuesta ha sido contestada.
+     * 
+     * @param r Respuesta a verificar
+     * @return true si la respuesta contiene datos válidos
+     */
     private boolean isAnswered(Answer r) {
         if (r == null) return false;
         if (r instanceof MultipleChoiceAnswer) {
@@ -103,6 +146,14 @@ public class DistanceCalculator {
         return false;
     }
 
+    /**
+     * Calcula la distancia local entre dos respuestas para una pregunta.
+     * 
+     * @param r1 Primera respuesta
+     * @param r2 Segunda respuesta
+     * @param question Pregunta asociada
+     * @return Distancia local
+     */
     private double calculateLocal(Answer r1, Answer r2, Question question) {
         if (!isAnswered(r1) || !isAnswered(r2)) {
             return 1.0;
@@ -125,6 +176,14 @@ public class DistanceCalculator {
         return 0.0; // Unsupported question type
     }
 
+    /**
+     * Calcula la distancia local entre una respuesta y un componente de centroide.
+     * 
+     * @param r Respuesta
+     * @param cValue Valor del componente del centroide
+     * @param question Pregunta asociada
+     * @return Distancia local
+     */
     private double calculateLocalToCentroid(Answer r, Object cValue, Question question) {
         if (!isAnswered(r) || cValue == null) {
             return 1.0;
@@ -153,6 +212,13 @@ public class DistanceCalculator {
         return 0.0;
     }
 
+    /**
+     * Calcula la distancia de Jaccard entre dos vectores booleanos.
+     * 
+     * @param v1 Primer vector
+     * @param v2 Segundo vector
+     * @return Distancia de Jaccard (1 - similitud)
+     */
     private double calculateJaccardDistance(boolean[] v1, boolean[] v2) {
         if (v1.length != v2.length) return 1.0;
 
@@ -176,6 +242,13 @@ public class DistanceCalculator {
         return 1.0 - similarity;
     }
 
+    /**
+     * Calcula la distancia euclídea entre dos vectores numéricos.
+     * 
+     * @param v1 Primer vector
+     * @param v2 Segundo vector
+     * @return Distancia euclídea
+     */
     public double euclideanDistance(double[] v1, double[] v2) {
         if (v1.length != v2.length) return 1.0;
 
@@ -186,6 +259,13 @@ public class DistanceCalculator {
         return Math.sqrt(sumSq);
     }
 
+    /**
+     * Calcula la distancia entre dos textos usando Levenshtein normalizado.
+     * 
+     * @param text1 Primer texto
+     * @param text2 Segundo texto
+     * @return Distancia textual normalizada (0 = idénticos, 1 = completamente diferentes)
+     */
     public double calculateTextDistance(String text1, String text2) {
         if (text1 == null || text2 == null) {
             return (text1 == text2) ? 0.0 : 1.0;
@@ -200,6 +280,13 @@ public class DistanceCalculator {
         return (double) levenshtein(text1, text2) / maxLen;
     }
 
+    /**
+     * Calcula la distancia de edición de Levenshtein entre dos cadenas.
+     * 
+     * @param s1 Primera cadena
+     * @param s2 Segunda cadena
+     * @return Número mínimo de ediciones necesarias
+     */
     private int levenshtein(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
 
@@ -218,6 +305,14 @@ public class DistanceCalculator {
         return dp[s1.length()][s2.length()];
     }
     
+    /**
+     * Calcula la distancia entre dos vectores de objetos numéricos.
+     * 
+     * @param vector1 Primer vector
+     * @param vector2 Segundo vector
+     * @return Distancia calculada según el tipo configurado
+     * @throws IllegalArgumentException si los vectores no son válidos
+     */
     public double calculateVectorDistance(Object[] vector1, Object[] vector2) {
         if (vector1 == null || vector2 == null) {
             throw new IllegalArgumentException("Los vectores no pueden ser null");
@@ -248,6 +343,14 @@ public class DistanceCalculator {
         return sum;
     }
 
+    /**
+     * Calcula la distancia entre dos vectores usando un tipo de distancia específico.
+     * 
+     * @param vector1 Primer vector
+     * @param vector2 Segundo vector
+     * @param type Tipo de distancia a utilizar
+     * @return Distancia calculada
+     */
     public double calculateVectorDistance(Object[] vector1, Object[] vector2, DistanceType type) {
         DistanceType originalType = this.distanceType;
         this.distanceType = type;
