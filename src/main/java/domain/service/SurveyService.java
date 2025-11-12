@@ -158,8 +158,15 @@ public class SurveyService {
         return questionIndex >= 0 && questionIndex < numQuestions;
     }
 
-    public boolean existsSurvey(String surveyId)
-    {
+    public boolean existsSurvey(String surveyId) {
         return surveyRepository.existsSurvey(surveyId);
+    }
+
+    public void incrementResponseCount(String surveyId) {
+        checkSurveyExists(surveyId);
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        int responseCount = survey.getViews() + 1;
+        survey.setViews(responseCount);
+        surveyRepository.addSurvey(survey);
     }
 }

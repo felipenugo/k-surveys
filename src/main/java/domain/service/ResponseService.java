@@ -40,9 +40,9 @@ public class ResponseService {
             if (!s.trim().isEmpty())
                 selectedOptions.add(Integer.parseInt(s));
         }
-        if(selectedOptions.size() < minSelections)
+        if (selectedOptions.size() < minSelections)
             throw new ResponseException("Debes seleccionar como mínimo " + minSelections + " opciones.");
-        if ( selectedOptions.size() > maxSelections)
+        if (selectedOptions.size() > maxSelections)
             throw new ResponseException("Debes seleccionar como máximo " + maxSelections + " opciones");
         if (selectedOptions.last() >= numOptions)
             throw new ResponseException("Has seleccionado una opción que no existe.");
@@ -148,5 +148,9 @@ public class ResponseService {
         NumericalAnswer answer = new NumericalAnswer(questionIndex, responseId);
         answer.setAnswerNum(numAnswer);
         responseRepository.updateAnswer(surveyId, responseId, questionIndex, answer);
+    }
+
+    public void incrementResponseCount(String surveyId) {
+        surveyService.incrementResponseCount(surveyId);
     }
 }

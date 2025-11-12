@@ -99,6 +99,7 @@ public class EditResponseDriver {
     public void showAnswers(String surveyId, String responseId) {
         try {
             List<Answer> answers = responseController.getAnswers(surveyId, responseId);
+            System.out.println();
             for (Answer answer : answers) {
                 System.out.print("Índice de la pregunta: " + answer.getQUESTION_INDEX());
                 if (answer.getTypeAnswer().equals(TypeQuestion.TEXTUAL)) {
@@ -151,6 +152,7 @@ public class EditResponseDriver {
                 System.out.print("Introduce el índice de la pregunta que quieras responder:");
                 int questionIndex = sc.nextInt();
                 answerQuestion(surveyId, responseId, questionIndex);
+                System.out.println("---guardando tu respuesta a la pregunta " + questionIndex + "---");
                 exit = true;
             } catch (ResponseException | SurveyException e) {
                 System.out.println("Error: " + e.getMessage());
@@ -170,6 +172,7 @@ public class EditResponseDriver {
                 default -> System.out.println("Opción no válida. Selecciona una opción del menú");
             }
         } while (!exit);
+        responseController.incrementResponseCount(surveyId);
         System.out.println("--- enviando respuesta ---");
     }
 }

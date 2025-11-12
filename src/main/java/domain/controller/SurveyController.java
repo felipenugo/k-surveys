@@ -12,20 +12,21 @@ public class SurveyController {
         this.surveyService = surveyService;
 
     }
+
     public void createSurvey(Survey survey) {
         surveyService.createSurvey(survey);
     }
+
     public Survey initializeNewSurvey(String title, String description, String creatorUsername) {
         return surveyService.initializeNewSurvey(title, description, creatorUsername);
     }
 
     // In the future it'll return a selected number of surveys depending on pageNumber and pageSize
-    public List<Survey> getSelectedSurveys(){
+    public List<Survey> getSelectedSurveys() {
         return surveyService.getSelectedSurveys();
     }
 
-    public List<String> getSurveysId()
-    {
+    public List<String> getSurveysId() {
         return surveyService.getSurveysId();
     }
 
@@ -37,8 +38,11 @@ public class SurveyController {
         return surveyService.getMySurveys();
     }
 
-    public boolean existsSurvey(String surveyId)
-    {
+    public boolean existsSurvey(String surveyId) {
         return surveyService.existsSurvey(surveyId);
+    }
+
+    public void incrementResponseCount(String surveyId) {
+        surveyService.incrementResponseCount(surveyId);
     }
 }

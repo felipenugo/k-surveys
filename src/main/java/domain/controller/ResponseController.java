@@ -40,5 +40,10 @@ public class ResponseController {
     public void updateAnswer(String surveyId, String responseId, int questionIndex, Double numericalAnswer) {
         responseService.updateAnswer(surveyId, responseId, questionIndex, numericalAnswer);
     }
+
+    public void  incrementResponseCount(String surveyid)
+    {
+        responseService.incrementResponseCount(surveyid);
+    }
 }
 
