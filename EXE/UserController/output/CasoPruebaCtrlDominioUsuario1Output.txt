@@ -1,0 +1,33 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 2
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: ARNAU
+Introduce tu email: ARNAU@fib.upc.edu
+Introduce tu contraseña: 1302
+--- registrándose ---
+El usuario ARNAU se ha registrado con éxito.
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:ARNAU
+Introduce tu contraseña:1302
+--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido ARNAU
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 3
+--- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto ARNAU.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 3
+--- SALIENDO DE K-SURVEY ---
+-----------------------------------
