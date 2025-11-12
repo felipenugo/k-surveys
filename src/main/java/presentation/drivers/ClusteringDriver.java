@@ -48,7 +48,7 @@ public class ClusteringDriver {
                     algorithm = "KMeans";
                     break;
                 case "2":
-                    algorithm = "KMeans++";
+                    algorithm = "KMeansPlusPlus";
                     break;
                 case "3":
                     algorithm = "KMedoids";
