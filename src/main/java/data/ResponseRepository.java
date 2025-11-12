@@ -23,12 +23,12 @@ public class ResponseRepository {
         this.lastResponseId = lastResponseId;
     }
 
-    // when a new survey is created, its response map must be initialized
-    // SurveyService will call ResponseService -> ResponseRepository to do this
+    // this method will be called the first time a user responds a survey
     public void addSurveyEntry(String surveyId) {
         responses.putIfAbsent(surveyId, new HashMap<>());
     }
 
+    // this method will be called when a survey is deleted in order tu remove all its responses
     public void deleteSurveyEntry(String surveyId) {
         responses.remove(surveyId);
     }
@@ -38,6 +38,7 @@ public class ResponseRepository {
     }
 
     public void addResponse(String surveyId, Response response) {
+        addSurveyEntry(surveyId);
         responses.get(surveyId).putIfAbsent(response.getRESPONSE_ID(), response);
         setLastResponseId(response.getRESPONSE_ID());
     }

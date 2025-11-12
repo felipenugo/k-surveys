@@ -43,6 +43,7 @@ public class ResponseDriver {
             System.out.println("id: " + survey.getSURVEY_ID() + ", título: " + survey.getTitle() + ", autor: " + survey.getCREATOR_USERNAME() + ": views: " + survey.getViews());
             System.out.println("descripción: " + survey.getDescription() + "\n");
         }
+        String cleanBuffer = sc.nextLine();
     }
 
     public void selectSurvey() {
@@ -51,12 +52,12 @@ public class ResponseDriver {
             try {
                 var surveys = surveyController.getSelectedSurveys();
                 showSurveys(surveys);
-                System.out.print("Selecciona una encuesta: ");
+                System.out.print("Selecciona el id de una encuesta: ");
                 String surveyIdSelected = sc.nextLine();
                 String responseId = responseController.startResponse(surveyIdSelected);
                 editResponseDriver.editResponseMenu(surveyIdSelected, responseId);
                 exit = true;
-            } catch (SurveyException | ResponseException e) {
+            } catch ( SurveyException | ResponseException e) {
                 System.out.println("Error: " + e.getMessage());
                 boolean exitErrorMenu = false;
                 do {
