@@ -60,7 +60,7 @@ public class EditResponseDriver {
                 }
                 default -> System.out.println("Opción incorrecta, selecciona una opción del menú.");
             }
-        } while (exit = false);
+        } while (!exit);
         return exitAnswer;
     }
 
@@ -103,13 +103,21 @@ public class EditResponseDriver {
             System.out.println();
             for (Answer answer : answers) {
                 System.out.print("Índice de la pregunta: " + answer.getQUESTION_INDEX());
-                if (answer.getTypeAnswer().equals(TypeQuestion.TEXTUAL)) {
-                    TextualAnswer ta = (TextualAnswer) answer;
-                    System.out.println(" , respuesta: " + ta.getAnswerText());
-                }
                 if (answer.getTypeAnswer().equals(TypeQuestion.MULTIPLE_CHOICE)) {
                     MultipleChoiceAnswer mca = (MultipleChoiceAnswer) answer;
                     System.out.println(" , respuestas seleccionadas: " + Arrays.toString(mca.getSelectedOptions()));
+                }
+                else if(!answer.getIsAnswered()){
+                    System.out.println(", no respondida");
+                }
+                else if (answer.getTypeAnswer().equals(TypeQuestion.TEXTUAL)) {
+                    TextualAnswer ta = (TextualAnswer) answer;
+                    System.out.println(" , respuesta: " + ta.getAnswerText());
+                }
+                else {
+                    //Numerical Answer
+                    NumericalAnswer na = (NumericalAnswer) answer;
+                    System.out.println(", respuesta: " + na.getAnswerNum());
                 }
             }
         } catch (ResponseException e) {
@@ -138,7 +146,7 @@ public class EditResponseDriver {
             responseController.updateAnswer(surveyId, responseId, questionIndex, multipleChoiceAnswer, answerType);
         } else {
             // NumericalAnswer
-            System.out.println("Introduce el número de tu respuesta");
+            System.out.print("Introduce el número de tu respuesta:");
             if(!sc.hasNextDouble())
             {
                 String cleanBuffer = sc.nextLine();
@@ -162,7 +170,11 @@ public class EditResponseDriver {
                 exit = true;
             } catch (ResponseException | SurveyException e) {
                 System.out.println("Error: " + e.getMessage());
+                sc.nextLine();
                 exit = selectAnswerErrorMenu();
+            }catch(InputMismatchException e)
+            {
+                System.out.println("El formato tiene que ser númerico. Utiliza el punto (.) para decimales.");;
             }
         } while (!exit);
     }
