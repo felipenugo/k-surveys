@@ -27,6 +27,12 @@ public class SurveyService {
             throw new SurveyException("La encuesta con id " + surveyId + " no existe.");
     }
 
+    public void checkQuestionExists(String surveyId, int questionIndex) {
+
+        if (!existsQuestion(surveyId, questionIndex))
+            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+    }
+
     // if a survey is created correctly, call ResponseService to initialize its response map
     public List<Survey> getSelectedSurveys() {
         checkUserLoggedin();
@@ -54,10 +60,8 @@ public class SurveyService {
         return questions;
     }
 
-    public Question getQuestion(String surveyId, int questionIndex)
-    {
-        if(!existsQuestion(surveyId, questionIndex))
-            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+    public Question getQuestion(String surveyId, int questionIndex) {
+        checkQuestionExists(surveyId, questionIndex);
         return surveyRepository.getQuestion(surveyId, questionIndex);
     }
 

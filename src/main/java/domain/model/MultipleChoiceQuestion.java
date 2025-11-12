@@ -27,6 +27,8 @@ public class MultipleChoiceQuestion extends Question {
         return optionQuestions;
     }
 
+    public int getOptionsSize(){return optionQuestions.size();}
+
     // Setters
     public void setMaxSelections(int maxSelections) {
         this.maxSelections = maxSelections;

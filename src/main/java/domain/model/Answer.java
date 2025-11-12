@@ -36,7 +36,7 @@ public abstract class Answer {
 
     // Setters
 
-    public void setIsAnswered(boolean isAnswered) {
+    protected void setIsAnswered(boolean isAnswered) {
         this.isAnswered = isAnswered;
     }
 

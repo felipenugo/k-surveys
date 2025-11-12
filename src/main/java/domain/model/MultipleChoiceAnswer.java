@@ -39,6 +39,11 @@ public class MultipleChoiceAnswer extends Answer {
         super.setIsAnswered(true);
     }
 
+    public void setOptions(boolean[] options) {
+        for (int i = 0; i < selectedOptions.length; i++)
+            setOption(i, options[i]);
+    }
+
     @Override
     public void clearAnswer() {
         for (int i = 0; i < maxOptions; i++) {
