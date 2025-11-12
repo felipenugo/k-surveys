@@ -38,13 +38,14 @@ public class TestDistanceCalculator {
     }
 
     private Response createResponse(String username, boolean[] choice, String text) {
-        Response r = new Response("s1", username, questions.size());
+        Response r = new Response("s1", username, questions);
         MultipleChoiceAnswer a1 = new MultipleChoiceAnswer(0, r.getRESPONSE_ID(), 2);
         if (choice[0]) a1.setOption(0, true);
         if (choice[1]) a1.setOption(1, true);
         r.updateAnswer(0, a1);
 
-        TextualAnswer a2 = new TextualAnswer(1, r.getRESPONSE_ID(), text);
+        TextualAnswer a2 = new TextualAnswer(1, r.getRESPONSE_ID());
+        a2.setAnswerText(text);
         r.updateAnswer(1, a2);
         return r;
     }

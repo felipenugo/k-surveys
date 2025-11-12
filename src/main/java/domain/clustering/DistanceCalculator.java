@@ -1,11 +1,6 @@
 package domain.clustering;
 
-import domain.model.Answer;
-import domain.model.MultipleChoiceAnswer;
-import domain.model.MultipleChoiceQuestion;
-import domain.model.Question;
-import domain.model.Response;
-import domain.model.TextualAnswer;
+import domain.model.*;
 import domain.model.enums.TypeQuestion;
 
 import java.util.HashMap;
@@ -23,7 +18,7 @@ public class DistanceCalculator {
 
     /**
      * Constructor que establece el tipo de distancia.
-     * 
+     *
      * @param distanceType Métrica de distancia a utilizar
      */
     public DistanceCalculator(DistanceType distanceType) {
@@ -33,7 +28,7 @@ public class DistanceCalculator {
 
     /**
      * Establece el peso de una pregunta específica en el cálculo de distancia.
-     * 
+     *
      * @param questionIndex Índice de la pregunta
      * @param weight Peso a aplicar (mayor peso = mayor importancia)
      */
@@ -43,7 +38,7 @@ public class DistanceCalculator {
 
     /**
      * Obtiene todos los pesos configurados.
-     * 
+     *
      * @return Mapa de índices de pregunta a pesos
      */
     public Map<Integer, Double> getWeights() {
@@ -52,7 +47,7 @@ public class DistanceCalculator {
 
     /**
      * Obtiene el tipo de distancia configurado.
-     * 
+     *
      * @return Tipo de distancia actual
      */
     public DistanceType getDistanceType() {
@@ -61,7 +56,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia entre dos respuestas.
-     * 
+     *
      * @param rs1 Primera respuesta
      * @param rs2 Segunda respuesta
      * @param questions Lista de preguntas para interpretar las respuestas
@@ -94,7 +89,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia entre una respuesta y un centroide.
-     * 
+     *
      * @param rs Respuesta
      * @param centroid Centroide
      * @param questions Lista de preguntas
@@ -127,7 +122,7 @@ public class DistanceCalculator {
 
     /**
      * Verifica si una respuesta ha sido contestada.
-     * 
+     *
      * @param r Respuesta a verificar
      * @return true si la respuesta contiene datos válidos
      */
@@ -143,12 +138,15 @@ public class DistanceCalculator {
             String text = ((TextualAnswer) r).getAnswerText();
             return text != null && !text.isEmpty();
         }
+        if (r instanceof NumericalAnswer) {
+            return ((NumericalAnswer) r).getAnswerNum() != null;
+        }
         return false;
     }
 
     /**
      * Calcula la distancia local entre dos respuestas para una pregunta.
-     * 
+     *
      * @param r1 Primera respuesta
      * @param r2 Segunda respuesta
      * @param question Pregunta asociada
@@ -169,6 +167,12 @@ public class DistanceCalculator {
                 String s1 = ((TextualAnswer) r1).getAnswerText();
                 String s2 = ((TextualAnswer) r2).getAnswerText();
                 return calculateTextDistance(s1, s2);
+            } else if (question.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                Double v1 = ((NumericalAnswer) r1).getAnswerNum();
+                Double v2 = ((NumericalAnswer) r2).getAnswerNum();
+                // TODO: This distance is not normalized. For better results, normalize this value
+                // to the 0-1 range based on the min/max values of all answers for this question.
+                return Math.abs(v1 - v2);
             }
         } catch (Exception e) {
             return 1.0; // Casting error
@@ -178,7 +182,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia local entre una respuesta y un componente de centroide.
-     * 
+     *
      * @param r Respuesta
      * @param cValue Valor del componente del centroide
      * @param question Pregunta asociada
@@ -205,6 +209,10 @@ public class DistanceCalculator {
                 String s_point = ((TextualAnswer) r).getAnswerText();
                 String s_centroid_medoid = (String) cValue;
                 return calculateTextDistance(s_point, s_centroid_medoid);
+            } else if (question.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                double pointVal = ((NumericalAnswer) r).getAnswerNum();
+                double centroidVal = (Double) cValue;
+                return Math.abs(pointVal - centroidVal); // Simple absolute difference
             }
         } catch (Exception e) {
             return 1.0; // Casting error
@@ -214,7 +222,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia de Jaccard entre dos vectores booleanos.
-     * 
+     *
      * @param v1 Primer vector
      * @param v2 Segundo vector
      * @return Distancia de Jaccard (1 - similitud)
@@ -244,7 +252,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia euclídea entre dos vectores numéricos.
-     * 
+     *
      * @param v1 Primer vector
      * @param v2 Segundo vector
      * @return Distancia euclídea
@@ -261,7 +269,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia entre dos textos usando Levenshtein normalizado.
-     * 
+     *
      * @param text1 Primer texto
      * @param text2 Segundo texto
      * @return Distancia textual normalizada (0 = idénticos, 1 = completamente diferentes)
@@ -282,7 +290,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia de edición de Levenshtein entre dos cadenas.
-     * 
+     *
      * @param s1 Primera cadena
      * @param s2 Segunda cadena
      * @return Número mínimo de ediciones necesarias
@@ -304,10 +312,10 @@ public class DistanceCalculator {
         }
         return dp[s1.length()][s2.length()];
     }
-    
+
     /**
      * Calcula la distancia entre dos vectores de objetos numéricos.
-     * 
+     *
      * @param vector1 Primer vector
      * @param vector2 Segundo vector
      * @return Distancia calculada según el tipo configurado
@@ -345,7 +353,7 @@ public class DistanceCalculator {
 
     /**
      * Calcula la distancia entre dos vectores usando un tipo de distancia específico.
-     * 
+     *
      * @param vector1 Primer vector
      * @param vector2 Segundo vector
      * @param type Tipo de distancia a utilizar
@@ -394,6 +402,8 @@ public class DistanceCalculator {
                     localDist = euclideanDistance((double[]) comp1, (double[]) comp2);
                 } else if (comp1 instanceof String && comp2 instanceof String) { // TextualQuestion
                     localDist = calculateTextDistance((String) comp1, (String) comp2);
+                } else if (comp1 instanceof Double && comp2 instanceof Double) { // NumericalQuestion
+                    localDist = Math.abs((Double) comp1 - (Double) comp2);
                 } else {
                     // Fallback for unexpected types or mixed types, treat as max distance
                     localDist = 1.0;

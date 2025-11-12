@@ -3,28 +3,25 @@ package domain.model;
 import domain.model.enums.TypeQuestion;
 
 public class NumericalAnswer extends Answer {
-    // Attributes
-    private double answerNum;
+    private Double answerNum;
 
     public NumericalAnswer(int questionIndex, String responseId) {
         super(questionIndex, responseId, TypeQuestion.NUMERICAL);
-        this.answerNum = -1;
+        this.answerNum = null;
     }
 
-    // Getters
-
-    public double getAnswerNum() {
+    public Double getAnswerNum() {
         return answerNum;
     }
 
-    //Setters
-    public void setAnswerNum(double answerNum) {
+    public void setAnswerNum(Double answerNum) {
         this.answerNum = answerNum;
-        super.setIsAnswered(true);
+        super.setIsAnswered(answerNum != null);
     }
 
     @Override
     public void clearAnswer() {
+        this.answerNum = null;
         super.setIsAnswered(false);
     }
 }

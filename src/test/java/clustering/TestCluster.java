@@ -6,6 +6,8 @@ import domain.model.Response;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 public class TestCluster {
 
     @Test
@@ -31,7 +33,7 @@ public class TestCluster {
     @Test
     public void testAddAndRemoveMember() {
         Cluster cluster = new Cluster("cluster1");
-        Response response = new Response("response1", "survey1", "user1", 2);
+        Response response = new Response("response1", "survey1", "user1", new ArrayList<>());
         cluster.addMember(response, 0.5);
 
         Assert.assertEquals(1, cluster.getSize());
@@ -45,8 +47,8 @@ public class TestCluster {
     @Test
     public void testGetAverageDistance() {
         Cluster cluster = new Cluster("cluster1");
-        Response r1 = new Response("s1", "u1", 1);
-        Response r2 = new Response("s1", "u2", 1);
+        Response r1 = new Response("s1", "u1", new ArrayList<>());
+        Response r2 = new Response("s1", "u2", new ArrayList<>());
         cluster.addMember(r1, 0.5);
         cluster.addMember(r2, 1.5);
 

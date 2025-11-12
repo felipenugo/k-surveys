@@ -13,8 +13,8 @@ public class SurveyController {
 
     }
 
-    public void createSurvey(Survey survey) {
-        surveyService.createSurvey(survey);
+    public Survey createSurvey(Survey survey) {
+        return surveyService.createSurvey(survey);
     }
 
     public Survey initializeNewSurvey(String title, String description, String creatorUsername) {
