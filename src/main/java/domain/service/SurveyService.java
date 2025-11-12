@@ -104,10 +104,19 @@ public class SurveyService {
     }
 
 
+    public void checkQuestionExists(String surveyId, int questionIndex) {
+
+        if (!existsQuestion(surveyId, questionIndex))
+            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+    }
+
     // if a survey is created correctly, call ResponseService to initialize its response map
     public List<Survey> getSelectedSurveys() {
         checkUserLoggedin();
-        return surveyRepository.getAllSurveys();
+        List<Survey> surveys = surveyRepository.getAllSurveys();
+        if (surveys.isEmpty())
+            throw new SurveyException("No hay encuestas creadas todavía.");
+        return surveys;
     }
 
     public List<String> getSurveysId() {
@@ -120,10 +129,17 @@ public class SurveyService {
         return surveyRepository.getNumQuestions(surveyId);
     }
 
-    public List<Question> getQuestions(String surveyId)
-    {
+    public List<Question> getQuestions(String surveyId) {
         checkSurveyExists(surveyId);
-        return surveyRepository.getAllQuestions(surveyId);
+        List<Question> questions = surveyRepository.getAllQuestions(surveyId);
+        if (questions.isEmpty())
+            throw new SurveyException("La encuesta con id " + surveyId + " no tiene preguntas.");
+        return questions;
+    }
+
+    public Question getQuestion(String surveyId, int questionIndex) {
+        checkQuestionExists(surveyId, questionIndex);
+        return surveyRepository.getQuestion(surveyId, questionIndex);
     }
 
     public Survey getSurvey(String surveyId) {
@@ -134,5 +150,11 @@ public class SurveyService {
     public List<Survey> getMySurveys() {
         checkUserLoggedin();
         return surveyRepository.getSurveysByUsername(userController.getLoggedUser().getUsername());
+    }
+
+    public boolean existsQuestion(String surveyId, int questionIndex) {
+        checkSurveyExists(surveyId);
+        int numQuestions = surveyRepository.getNumQuestions(surveyId);
+        return questionIndex >= 0 && questionIndex < numQuestions;
     }
 }

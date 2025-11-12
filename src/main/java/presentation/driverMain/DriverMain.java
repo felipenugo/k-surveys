@@ -29,9 +29,7 @@ public class DriverMain {
         AnswerRepository answerRepository = new AnswerRepository();
 
         // Initialize controllers
-        UserController userController = new UserController(
-                new UserService(userRepository)
-        );
+        UserController userController = new UserController(new UserService(userRepository) );
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController);
         SurveyController surveyController = new SurveyController(surveyService);

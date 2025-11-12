@@ -1,9 +1,6 @@
 package data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import domain.model.MultipleChoiceAnswer;
 import domain.model.Response;
@@ -11,9 +8,19 @@ import domain.model.Answer;
 
 public class ResponseRepository {
     private final Map<String, Map<String, Response>> responses; // <surveyId, <responseId, Response>>
+    private String lastResponseId;
 
     public ResponseRepository() {
         responses = new HashMap<>();
+        lastResponseId = "0";
+    }
+
+    public String getLastResponseId() {
+        return lastResponseId;
+    }
+
+    public void setLastResponseId(String lastResponseId) {
+        this.lastResponseId = lastResponseId;
     }
 
     // when a new survey is created, its response map must be initialized
@@ -32,6 +39,7 @@ public class ResponseRepository {
 
     public void addResponse(String surveyId, Response response) {
         responses.get(surveyId).putIfAbsent(response.getRESPONSE_ID(), response);
+        setLastResponseId(response.getRESPONSE_ID());
     }
 
     public Response getResponse(String surveyId, String responseId) {
@@ -68,6 +76,10 @@ public class ResponseRepository {
 
     public Answer getAnswer(String surveyId, String responseId, int answerIndex) {
         return responses.get(surveyId).get(responseId).getAnswer(answerIndex);
+    }
+
+    public List<Answer> getAllAnswers(String surveyId, String responseId) {
+        return Arrays.asList(responses.get(surveyId).get(responseId).getANSWERS());
     }
 
 

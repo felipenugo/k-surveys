@@ -1,5 +1,6 @@
 package domain.service;
 
+import domain.controller.UserController;
 import domain.exception.LogInException;
 import domain.exception.RegisterException;
 
@@ -10,10 +11,10 @@ import javax.security.auth.login.LoginException;
 
 public class UserService {
     private final UserRepository userRepository;
-
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
 
     private boolean isInputBlank(String text) {
         return text == null || text.trim().isEmpty();
@@ -54,6 +55,11 @@ public class UserService {
             throw new LogInException("El usuario " + username + " no existe.");
         if (!userRepository.getUser(username).getPassword().equals(password))
             throw new LogInException("La contraseña es incorrecta.");
+    }
+
+    public void addResponseId(String username, String surveyId, String responseId) {
+        userRepository.addRespondedSurveyIdEntry(username, surveyId);
+        userRepository.addResponseId(username, surveyId, responseId);
     }
 
     public void loginUser(String username, String password) {
