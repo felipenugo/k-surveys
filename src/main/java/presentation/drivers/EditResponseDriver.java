@@ -6,6 +6,7 @@ import domain.model.*;
 import domain.model.enums.TypeQuestion;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.List;
 
@@ -138,6 +139,11 @@ public class EditResponseDriver {
         } else {
             // NumericalAnswer
             System.out.println("Introduce el número de tu respuesta");
+            if(!sc.hasNextDouble())
+            {
+                String cleanBuffer = sc.nextLine();
+                throw new ResponseException("El formato tiene que ser númerico. Utiliza el punto (.) para decimales.");
+            }
             Double numericalAnswer = sc.nextDouble();
             responseController.updateAnswer(surveyId, responseId, questionIndex, numericalAnswer);
 
