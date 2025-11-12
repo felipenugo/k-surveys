@@ -32,6 +32,9 @@ public class Response {
             } else if (answerType.equals(TypeQuestion.MULTIPLE_CHOICE)) {
                 MultipleChoiceAnswer answer = new MultipleChoiceAnswer(i, RESPONSE_ID, ((MultipleChoiceQuestion) questions.get(i)).getOptionsSize());
                 ANSWERS[i] = answer;
+            } else if (answerType.equals(TypeQuestion.NUMERICAL)) {
+                NumericalAnswer answer = new NumericalAnswer(i, RESPONSE_ID);
+                ANSWERS[i] = answer;
             } else {
                 TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);
                 ANSWERS[i] = answer;
@@ -54,6 +57,9 @@ public class Response {
                 ANSWERS[i] = answer;
             } else if (answerType.equals(TypeQuestion.MULTIPLE_CHOICE)) {
                 MultipleChoiceAnswer answer = new MultipleChoiceAnswer(i, RESPONSE_ID, ((MultipleChoiceQuestion) questions.get(i)).getOptionsSize());
+                ANSWERS[i] = answer;
+            } else if (answerType.equals(TypeQuestion.NUMERICAL)) {
+                NumericalAnswer answer = new NumericalAnswer(i, RESPONSE_ID);
                 ANSWERS[i] = answer;
             } else {
                 TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);

@@ -31,7 +31,7 @@ public class SurveyService {
         return surveyRepository.generateNextSurveyId();
     }
 
-    public void createSurvey(Survey survey) {
+    public Survey createSurvey(Survey survey) {
         checkUserLoggedin();
 
         // Validar que la encuesta tenga título
@@ -83,6 +83,7 @@ public class SurveyService {
 
         // Guardar en el repositorio
         surveyRepository.addSurvey(survey);
+        return survey;
     }
 
     /**

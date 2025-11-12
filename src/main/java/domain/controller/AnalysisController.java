@@ -9,8 +9,6 @@ import domain.clustering.KMeansPlusPlus;
 import domain.clustering.KMedoids;
 import domain.clustering.QualityMetricCalculator;
 import domain.clustering.QualityMetricType;
-import domain.clustering.QualityMetricCalculator;
-import domain.clustering.QualityMetricType;
 import domain.model.Survey;
 import domain.model.Response; // This is the ResponseSet in the diagram
 import domain.model.Question; // This is the Question in the diagram
@@ -80,22 +78,40 @@ public class AnalysisController {
         if (analysis == null) {
             throw new IllegalArgumentException("Analysis with ID " + id + " not found.");
         }
-        // This will require passing the DistanceCalculator to the QualityMetricCalculator
-        // For now, returning a placeholder
-        return 0.0;
+        return analysis.calculateQuality(metricType);
     }
 
     public boolean deleteAnalysis(String id) {
         return analyses.remove(id) != null;
     }
 
-    // Placeholder for determineOptimalK
-    public Integer determineOptimalK(Survey survey, Integer minK, Integer maxK) {
-        // Implementation for determining optimal K
-        return 0;
+    public Integer determineOptimalK(List<Response> responses, List<Question> questions, Survey survey, Integer minK, Integer maxK) {
+        if (responses == null || responses.isEmpty() || minK <= 1 || maxK <= minK || maxK > responses.size()) {
+            throw new IllegalArgumentException("Invalid parameters for determining optimal K.");
+        }
+
+        double bestScore = -1.0;
+        int optimalK = minK;
+
+        // Use robust defaults for the analysis
+        ClusteringAlgorithm algorithm = new KMeansPlusPlus();
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+
+        for (int k = minK; k <= maxK; k++) {
+            ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, algorithm);
+            analysis.execute(responses, questions, distance);
+            
+            if (analysis.hasConverged()) {
+                double score = analysis.calculateQuality(QualityMetricType.SILHOUETTE);
+                if (score > bestScore) {
+                    bestScore = score;
+                    optimalK = k;
+                }
+            }
+        }
+        return optimalK;
     }
 
-    // Placeholder for exportResults
     public void exportResults(String id, String filePath) {
         ClusteringAnalysis analysis = analyses.get(id);
         if (analysis == null) {

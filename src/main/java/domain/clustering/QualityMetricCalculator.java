@@ -38,7 +38,7 @@ public class QualityMetricCalculator {
         // Map response IDs to their cluster for quick lookup
         Map<String, Cluster> responseToClusterMap = clusters.stream()
                 .flatMap(cluster -> cluster.getMembers().stream()
-                        .map(member -> Map.entry(member.getResponseSetId(), cluster)))
+                        .map(member -> Map.entry(member.getResponseId(), cluster)))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
 
@@ -105,7 +105,7 @@ public class QualityMetricCalculator {
             Centroid clusterCentroid = cluster.getCentroid();
             for (ClusterMembership member : cluster.getMembers()) {
                 Response response = allResponses.stream()
-                        .filter(r -> r.getRESPONSE_ID().equals(member.getResponseSetId()))
+                        .filter(r -> r.getRESPONSE_ID().equals(member.getResponseId()))
                         .findFirst().orElse(null);
                 if (response != null) {
                     double dist = distance.calculateToCentroid(response, clusterCentroid, questions);
@@ -149,7 +149,7 @@ public class QualityMetricCalculator {
             int memberCount = 0;
             for (ClusterMembership member : cluster.getMembers()) {
                 Response response = allResponses.stream()
-                        .filter(r -> r.getRESPONSE_ID().equals(member.getResponseSetId()))
+                        .filter(r -> r.getRESPONSE_ID().equals(member.getResponseId()))
                         .findFirst().orElse(null);
                 if (response != null) {
                     sumDistances += distance.calculateToCentroid(response, centroid, questions);
@@ -236,8 +236,8 @@ public class QualityMetricCalculator {
         double sumDistances = 0.0;
         int count = 0;
         for (ClusterMembership member : members) {
-            if (!member.getResponseSetId().equals(response.getRESPONSE_ID())) {
-                Response otherResponse = responseMap.get(member.getResponseSetId());
+            if (!member.getResponseId().equals(response.getRESPONSE_ID())) {
+                Response otherResponse = responseMap.get(member.getResponseId());
                 if (otherResponse != null) {
                     sumDistances += distance.calculate(response, otherResponse, questions);
                     count++;
@@ -269,7 +269,7 @@ public class QualityMetricCalculator {
                 double sumDistances = 0.0;
                 int count = 0;
                 for (ClusterMembership member : otherCluster.getMembers()) {
-                    Response otherResponse = responseMap.get(member.getResponseSetId());
+                    Response otherResponse = responseMap.get(member.getResponseId());
                     if (otherResponse != null) {
                         sumDistances += distance.calculate(response, otherResponse, questions);
                         count++;

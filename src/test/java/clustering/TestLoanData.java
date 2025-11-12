@@ -68,9 +68,10 @@ public class TestLoanData {
             int responseId = 0;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(cvsSplitBy);
-                Response r = new Response(String.valueOf(responseId++), "loan-survey", "user" + responseId, questions.size());
+                Response r = new Response(String.valueOf(responseId++), "loan-survey", "user" + responseId, questions);
                 for (int i = 0; i < values.length; i++) {
-                    TextualAnswer a = new TextualAnswer(i, r.getRESPONSE_ID(), values[i]);
+                    TextualAnswer a = new TextualAnswer(i, r.getRESPONSE_ID());
+                    a.setAnswerText(values[i]);
                     r.updateAnswer(i, a);
                 }
                 data.add(r);
@@ -93,7 +94,7 @@ public class TestLoanData {
         Assert.assertEquals(data.size(), analysis.getResponses().size());
 
         // Calculate quality
-        double quality = analysis.calculateQuality(QUALITY_TYPE, distanceCalc);
+        double quality = analysis.calculateQuality(QUALITY_TYPE);
 
         // Write results to file
         try (FileWriter writer = new FileWriter("clustering_results.txt")) {
@@ -114,7 +115,7 @@ public class TestLoanData {
                 writer.write("Centroid: " + cluster.getCentroid().toString() + "\n");
                 writer.write("Responses:\n");
                 for (ClusterMembership member : cluster.getMembers()) {
-                    Optional<Response> response = data.stream().filter(r -> r.getRESPONSE_ID().equals(member.getResponseSetId())).findFirst();
+                    Optional<Response> response = data.stream().filter(r -> r.getRESPONSE_ID().equals(member.getResponseId())).findFirst();
                     response.ifPresent(r -> {
                         try {
                             writer.write("- " + r.getRESPONSE_ID() + "\n");
