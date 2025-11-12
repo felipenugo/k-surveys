@@ -109,8 +109,9 @@ public class QuestionService {
         }
 
         // 5. CONFIGURAR SELECCIONES (después de añadir las opciones)
-        mcQuestion.setMinSelections(minSelections);
         mcQuestion.setMaxSelections(maxSelections);
+        mcQuestion.setMinSelections(minSelections);
+
 
         return mcQuestion;
     }
