@@ -73,6 +73,8 @@ public class ResponseService {
         String responseId = getValidResponseId();
         String responderUsername = userController.getUsernameLoggedIn();
         Response response = new Response(responseId, surveyId, responderUsername, numQuestions);
+        if (!responseRepository.existsSurveyEntry(surveyId))
+            responseRepository.addSurveyEntry(surveyId);
         responseRepository.addResponse(surveyId, response);
         userController.addResponseId(responderUsername, surveyId, responseId); // this keeps the coherence with the double index
         return responseId;

@@ -79,7 +79,7 @@ public class EditResponseDriver {
             MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) question;
             List<OptionQuestion> options = mcq.getOptions();
             for (int i = 0; i < options.size(); i++) {
-                System.out.println("--Opción" + i + ". " + options.get(i).getOptionText());
+                System.out.println("--Opción " + i + ". " + options.get(i).getOptionText());
             }
         }
     }
