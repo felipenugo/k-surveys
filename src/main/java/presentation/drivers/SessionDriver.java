@@ -35,10 +35,16 @@ public class SessionDriver {
         return sc.nextLine();
     }
 
+    public void clearTerminal() {
+        for (int i = 0; i < 50; i++)
+            System.out.println();
+    }
+
     public void driverRegister() {
         boolean exitRegister = false;
-        System.out.println("--- REGISTRO DE USUARIO ---");
+        clearTerminal();
         do {
+            System.out.println("--- REGISTRO DE USUARIO ---");
             System.out.print("Introduce tu nombre de usuario: ");
             String username = sc.nextLine();
             System.out.print("Introduce tu email: ");
@@ -71,8 +77,9 @@ public class SessionDriver {
 
     public void driverLogin() {
         boolean exitLogin = false;
-        System.out.println("--- INICIO DE SESIÓN ---");
+        clearTerminal();
         do {
+        System.out.println("--- INICIO DE SESIÓN ---");
             System.out.print("Introduce tu nombre de usuario:");
             String username = sc.nextLine();
             System.out.print("Introduce tu contraseña:");

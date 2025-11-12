@@ -40,7 +40,7 @@ public class ResponseDriver {
 
     public void showSurveys(List<Survey> surveys) {
         for (Survey survey : surveys) {
-            System.out.println("id: " + survey.getSURVEY_ID() + ", título: " + survey.getTitle() + ", autor: " + survey.getCREATOR_USERNAME() + ": views: " + survey.getViews());
+            System.out.println("id: " + survey.getSURVEY_ID() + ", título: " + survey.getTitle() + ", autor: " + survey.getCREATOR_USERNAME() + ", número de respuestas: " + survey.getViews());
             System.out.println("descripción: " + survey.getDescription() + "\n");
         }
         String cleanBuffer = sc.nextLine();
