@@ -20,7 +20,7 @@ public class EditResponseDriver {
     public boolean confirmExit() {
         boolean sentResponse = false, exit = false;
         do {
-            System.out.println("¿estás seguro de que quieres enviar tu respuesta? no podrás volver a modificarla.");
+            System.out.println("¿Estás seguro de que quieres enviar tu respuesta? No podrás volver a modificarla.");
             System.out.println("1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA");
             System.out.println("2. QUIERO SEGUIR EDITANDO MI RESPUESTA");
             System.out.print("Opción: ");
@@ -87,8 +87,10 @@ public class EditResponseDriver {
     public void showQuestions(String surveyid) {
         try {
             List<Question> questions = responseController.getQuestions(surveyid);
-            for (Question question : questions)
+            for (Question question : questions) {
+                System.out.println(); // line jump
                 showQuestion(question);
+            }
         } catch (ResponseException | SurveyException e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -116,8 +118,11 @@ public class EditResponseDriver {
     public void answerQuestion(String surveyId, String responseId, int questionIndex) {
         Question question = responseController.startAnswer(surveyId, responseId, questionIndex);
         TypeQuestion answerType = question.getTypeQuestion();
+        System.out.println("-Pregunta a responder-");
+        showQuestion(question);
         if (answerType.equals(TypeQuestion.TEXTUAL)) {
             System.out.print("Introduce el texto de tu respuesta: ");
+            String cleanBuffer = sc.nextLine();
             String textAnswer = sc.nextLine();
             responseController.updateAnswer(surveyId, responseId, questionIndex, textAnswer, answerType);
 
@@ -126,7 +131,7 @@ public class EditResponseDriver {
             int maxOptions = ((MultipleChoiceQuestion) question).getMaxSelections();
             System.out.println("Introduce el número de tus opciones separadas por espacios, mínimo " + minOptions + " máximo " + maxOptions + ".");
             System.out.print("Opciones seleccionadas: ");
-
+            String cleanBuffer = sc.nextLine();
             String multipleChoiceAnswer = sc.nextLine();
             responseController.updateAnswer(surveyId, responseId, questionIndex, multipleChoiceAnswer, answerType);
         } else {

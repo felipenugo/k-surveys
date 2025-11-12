@@ -27,6 +27,12 @@ public class AppDriver {
         return sc.nextInt();
     }
 
+    public void clearTerminal()
+    {
+        for(int i =0;i< 50; i++)
+            System.out.println();
+    }
+
     public void appMenu() {
         boolean exitApp = false;
         do {
