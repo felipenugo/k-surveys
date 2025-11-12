@@ -45,19 +45,19 @@ public class CtrlDominioClustering {
     /**
      * Ejecuta un análisis de clustering sobre una encuesta.
      * 
-     * @param analisisId ID del análisis a crear
+     * @param analisisId ID del análisis a crear (no usado, se genera automáticamente)
      * @param algoritmo Nombre del algoritmo (KMeans, KMeans++, KMedoids)
      * @param surveyId ID de la encuesta
      * @param k Número de clusters
      * @param maxIter Iteraciones máximas
      * @param tolerance Tolerancia de convergencia
      * @param distanceMetric Métrica de distancia (EUCLIDEAN, MANHATTAN)
-     * @return Mensaje de resultado
+     * @return ID real del análisis ejecutado
      */
     public String ejecutarClustering(String analisisId, String algoritmo, String surveyId, int k, int maxIter, double tolerance, String distanceMetric) {
         Survey survey = surveyRepository.getSurvey(surveyId);
         if (survey == null) {
-            return "Error: Encuesta no encontrada.";
+            return null;
         }
 
         Map<String, Object> config = new HashMap<>();
@@ -72,7 +72,7 @@ public class CtrlDominioClustering {
         DistanceType distanceType = DistanceType.valueOf(distanceMetric);
         analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType));
         
-        return "Análisis " + analisisId + " ejecutado con éxito";
+        return analysis.getId();
     }
 
     /**
