@@ -31,7 +31,7 @@ public class ResponseService {
         return num.toString().trim().isEmpty();
     }
 
-    public boolean[] getOptionsSelected(String input, int maxSelections, int numOptions) {
+    public boolean[] getOptionsSelected(String input, int minSelections, int maxSelections, int numOptions) {
         if (!input.matches("[0-9\\s]+"))
             throw new ResponseException("Las opciones tienen que ser las opciones marcadas separadas por espacios.");
         String[] optionsStr = input.trim().split("\\s+");
@@ -40,8 +40,10 @@ public class ResponseService {
             if (!s.trim().isEmpty())
                 selectedOptions.add(Integer.parseInt(s));
         }
-        if (selectedOptions.size() > maxSelections)
-            throw new ResponseException("El máximo número de opciones son " + maxSelections);
+        if(selectedOptions.size() < minSelections)
+            throw new ResponseException("Debes seleccionar como mínimo " + minSelections + " opciones.");
+        if ( selectedOptions.size() > maxSelections)
+            throw new ResponseException("Debes seleccionar como máximo " + maxSelections + " opciones");
         if (selectedOptions.last() >= numOptions)
             throw new ResponseException("Has seleccionado una opción que no existe.");
         boolean[] result = new boolean[numOptions];
@@ -131,7 +133,7 @@ public class ResponseService {
         } else {
             // Multiple choice answer
             MultipleChoiceQuestion mcQuestion = (MultipleChoiceQuestion) surveyService.getQuestion(surveyId, questionIndex);
-            boolean[] optionsSelected = getOptionsSelected(strAnswer, mcQuestion.getMaxSelections(), mcQuestion.getOptionsSize());
+            boolean[] optionsSelected = getOptionsSelected(strAnswer, mcQuestion.getMinSelections(), mcQuestion.getMaxSelections(), mcQuestion.getOptionsSize());
             MultipleChoiceAnswer answer = new MultipleChoiceAnswer(questionIndex, responseId, mcQuestion.getMaxSelections());
             answer.setOptions(optionsSelected);
             responseRepository.updateAnswer(surveyId, responseId, questionIndex, answer);

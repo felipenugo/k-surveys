@@ -66,7 +66,7 @@ public class MySurveysDriver {
         System.out.print("Select a survey to run the clustering algorithm on: ");
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String surveyId = reader.readLine();
-        if (surveyController.getSurvey(surveyId) != null) {
+         if(surveyController.existsSurvey(surveyId)){
             clusteringDriver.run(surveyId);
         } else {
             System.out.println("Invalid survey ID.");

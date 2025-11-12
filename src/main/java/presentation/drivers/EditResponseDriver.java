@@ -122,7 +122,11 @@ public class EditResponseDriver {
             responseController.updateAnswer(surveyId, responseId, questionIndex, textAnswer, answerType);
 
         } else if (answerType.equals(TypeQuestion.MULTIPLE_CHOICE)) {
-            System.out.println("Introduce el número de como máximo " + ((MultipleChoiceQuestion) question).getMaxSelections() + " opciones  separadas por espacios:");
+            int minOptions = ((MultipleChoiceQuestion) question).getMinSelections();
+            int maxOptions = ((MultipleChoiceQuestion) question).getMaxSelections();
+            System.out.println("Introduce el número de tus opciones separadas por espacios, mínimo " + minOptions + " máximo " + maxOptions + ".");
+            System.out.print("Opciones seleccionadas: ");
+
             String multipleChoiceAnswer = sc.nextLine();
             responseController.updateAnswer(surveyId, responseId, questionIndex, multipleChoiceAnswer, answerType);
         } else {

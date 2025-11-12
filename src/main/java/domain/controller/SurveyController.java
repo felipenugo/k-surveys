@@ -36,4 +36,9 @@ public class SurveyController {
     public List<Survey> getMySurveys() {
         return surveyService.getMySurveys();
     }
+
+    public boolean existsSurvey(String surveyId)
+    {
+        return surveyService.existsSurvey(surveyId);
+    }
 }

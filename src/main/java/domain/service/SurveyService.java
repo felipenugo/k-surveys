@@ -151,4 +151,9 @@ public class SurveyService {
         int numQuestions = surveyRepository.getNumQuestions(surveyId);
         return questionIndex >= 0 && questionIndex < numQuestions;
     }
+
+    public boolean existsSurvey(String surveyId)
+    {
+        return surveyRepository.existsSurvey(surveyId);
+    }
 }
