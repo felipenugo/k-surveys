@@ -27,10 +27,10 @@ public class CtrlDominioClustering {
     private final SurveyRepository surveyRepository;
 
 
-    public CtrlDominioClustering() {
+    public CtrlDominioClustering(ResponseRepository responseRepository, SurveyRepository surveyRepository) {
         this.analysisController = new AnalysisController();
-        this.responseRepository = new ResponseRepository();
-        this.surveyRepository = new SurveyRepository();
+        this.responseRepository = responseRepository;
+        this.surveyRepository = surveyRepository;
     }
 
     public String ejecutarClustering(String analisisId, String algoritmo, String surveyId, int k, int maxIter, double tolerance, String distanceMetric) {

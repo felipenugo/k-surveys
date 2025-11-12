@@ -45,7 +45,7 @@ public class DriverMain {
                 new AnswerService(answerRepository, userController)
         );
 
-        CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering();
+        CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Initialize drivers
         EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
