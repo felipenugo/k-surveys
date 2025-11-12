@@ -20,7 +20,7 @@ public class EditResponseDriver {
     public boolean confirmExit() {
         boolean sentResponse = false, exit = false;
         do {
-            System.out.println("¿ESTÁS SEGURO DE QUE QUIERES ENVIAR TU RESPUESTA? NO PODRÁS VOLVER A MODIFICARLA.");
+            System.out.println("¿estás seguro de que quieres enviar tu respuesta? no podrás volver a modificarla.");
             System.out.println("1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA");
             System.out.println("2. QUIERO SEGUIR EDITANDO MI RESPUESTA");
             System.out.print("Opción: ");

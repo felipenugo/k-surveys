@@ -1,8 +1,11 @@
 package domain.model;
 
 import domain.model.enums.ResponseStatus;
+import domain.model.enums.TypeQuestion;
+import org.w3c.dom.Text;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class Response {
     // Attributes
@@ -14,24 +17,51 @@ public class Response {
     private final Answer[] ANSWERS;
 
     // Constructor with id checked from database
-    public Response(String RESPONSE_ID, String SURVEY_ID, String RESPONDER_USERNAME, int numQuestions) {
+    public Response(String RESPONSE_ID, String SURVEY_ID, String RESPONDER_USERNAME, List<Question> questions) {
         this.RESPONSE_ID = RESPONSE_ID;
         this.SURVEY_ID = SURVEY_ID;
         this.RESPONDER_USERNAME = RESPONDER_USERNAME;
         this.responseStatus = ResponseStatus.DRAFT;
         SUBMITTED_AT = null;
-        ANSWERS = new Answer[numQuestions];
+        ANSWERS = new Answer[questions.size()];
+        for (int i = 0; i < questions.size(); i++) {
+            TypeQuestion answerType = questions.get(i).getTypeQuestion();
+            if (answerType.equals(TypeQuestion.TEXTUAL)) {
+                TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);
+                ANSWERS[i] = answer;
+            } else if (answerType.equals(TypeQuestion.MULTIPLE_CHOICE)) {
+                MultipleChoiceAnswer answer = new MultipleChoiceAnswer(i, RESPONSE_ID, ((MultipleChoiceQuestion) questions.get(i)).getOptionsSize());
+                ANSWERS[i] = answer;
+            } else {
+                TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);
+                ANSWERS[i] = answer;
+            }
+        }
     }
 
     // Constructor without id for new responses
-    public Response(String SURVEY_ID, String RESPONDER_USERNAME, int numQuestions) {
+    public Response(String SURVEY_ID, String RESPONDER_USERNAME, List<Question> questions) {
         this.RESPONSE_ID = null;
         this.SURVEY_ID = SURVEY_ID;
         this.RESPONDER_USERNAME = RESPONDER_USERNAME;
         this.responseStatus = ResponseStatus.DRAFT;
         SUBMITTED_AT = null;
-        ANSWERS = new Answer[numQuestions];
+        ANSWERS = new Answer[questions.size()];
+        for (int i = 0; i < questions.size(); i++) {
+            TypeQuestion answerType = questions.get(i).getTypeQuestion();
+            if (answerType.equals(TypeQuestion.TEXTUAL)) {
+                TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);
+                ANSWERS[i] = answer;
+            } else if (answerType.equals(TypeQuestion.MULTIPLE_CHOICE)) {
+                MultipleChoiceAnswer answer = new MultipleChoiceAnswer(i, RESPONSE_ID, ((MultipleChoiceQuestion) questions.get(i)).getOptionsSize());
+                ANSWERS[i] = answer;
+            } else {
+                TextualAnswer answer = new TextualAnswer(i, RESPONSE_ID);
+                ANSWERS[i] = answer;
+            }
+        }
     }
+
 
     // Getters
     public String getRESPONSE_ID() {
@@ -84,7 +114,10 @@ public class Response {
         ANSWERS[index] = answer;
     }
 
-    public void clearAnswer(){};
+    public void clearAnswer() {
+    }
+
+    ;
 
     public Answer getAnswer(int index) {
         return ANSWERS[index];
