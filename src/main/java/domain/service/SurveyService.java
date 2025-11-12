@@ -131,10 +131,8 @@ public class SurveyService {
         return questions;
     }
 
-    public Question getQuestion(String surveyId, int questionIndex)
-    {
-        if(!existsQuestion(surveyId, questionIndex))
-            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+    public Question getQuestion(String surveyId, int questionIndex) {
+        checkQuestionExists(surveyId, questionIndex);
         return surveyRepository.getQuestion(surveyId, questionIndex);
     }
 

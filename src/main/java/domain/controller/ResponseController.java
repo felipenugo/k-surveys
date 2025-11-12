@@ -21,19 +21,24 @@ public class ResponseController {
         return responseService.getQuestions(surveyId);
     }
 
-    public Question getQuestion(String surveyId, int questionIndex)
-    {
+    public Question getQuestion(String surveyId, int questionIndex) {
         return responseService.getQuestion(surveyId, questionIndex);
     }
 
-    public List<Answer> getAnswers(String surveyId, String responseId)
-    {
+    public List<Answer> getAnswers(String surveyId, String responseId) {
         return responseService.getAnswers(surveyId, responseId);
     }
 
-    public Question startAnswer(String surveyId, String responseId, int questionIndex )
-    {
+    public Question startAnswer(String surveyId, String responseId, int questionIndex) {
         return responseService.startAnswer(surveyId, responseId, questionIndex);
+    }
+
+    public void updateAnswer(String surveyId, String responseId, int questionIndex, String strAnswer, TypeQuestion typeAnswer) {
+        responseService.updateAnswer(surveyId, responseId, questionIndex, strAnswer, typeAnswer);
+    }
+
+    public void updateAnswer(String surveyId, String responseId, int questionIndex, Double numericalAnswer) {
+        responseService.updateAnswer(surveyId, responseId, questionIndex, numericalAnswer);
     }
 }
 
