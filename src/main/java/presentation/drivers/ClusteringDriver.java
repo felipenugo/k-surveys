@@ -99,8 +99,10 @@ public class ClusteringDriver {
 
             // Exportación automática
             try {
-                String path = ctrlDominioClustering.exportarAnalisis(analysisId);
-                System.out.println("Resultados exportados automáticamente a: " + path);
+                System.out.print("Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): ");
+                String path = reader.readLine();
+                String absolutePath = ctrlDominioClustering.exportarAnalisis(analysisId, path);
+                System.out.println("Resultados exportados automáticamente a: " + absolutePath);
             } catch (IOException e) {
                 System.out.println("Error al exportar los resultados: " + e.getMessage());
             }

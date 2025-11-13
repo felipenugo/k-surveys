@@ -22,10 +22,17 @@ public class DriverMain {
 
     public static void main(String[] var0) {
         Scanner sc = new Scanner(System.in);
-        // Initialize controllers injecting survey with repository
-        UserController userController = new UserController(new UserService(new UserRepository()));
+        // Initialize repositories
+        UserRepository userRepository = new UserRepository();
+        SurveyRepository surveyRepository = new SurveyRepository();
+        QuestionRepository questionRepository = new QuestionRepository();
+        ResponseRepository responseRepository = new ResponseRepository();
+        AnswerRepository answerRepository = new AnswerRepository();
 
-        SurveyService surveyService = new SurveyService(new SurveyRepository(), userController);
+        // Initialize controllers injecting survey with repository
+        UserController userController = new UserController(new UserService(userRepository));
+
+        SurveyService surveyService = new SurveyService(surveyRepository, userController);
         SurveyController surveyController = new SurveyController(surveyService);
 
         QuestionService questionService = new QuestionService(questionRepository, userController);
@@ -40,7 +47,6 @@ public class DriverMain {
         );
 
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
-        CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Initialize drivers
         EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
@@ -53,7 +59,6 @@ public class DriverMain {
 
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
-        ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);

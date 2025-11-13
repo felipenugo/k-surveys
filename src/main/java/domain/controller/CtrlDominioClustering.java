@@ -82,24 +82,24 @@ public class CtrlDominioClustering {
      * @return Ruta del archivo guardado.
      * @throws IOException si ocurre un error de E/S.
      */
-    public String exportarAnalisis(String analysisId) throws IOException {
+    public String exportarAnalisis(String analysisId, String filePath) throws IOException {
         ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
         if (analysis == null) {
             throw new IllegalArgumentException("Analysis with ID " + analysisId + " not found.");
         }
 
         String results = analysis.exportResults();
-        File exportsDir = new File("./exports");
-        if (!exportsDir.exists()) {
-            exportsDir.mkdirs();
+        File file = new File(filePath);
+        File parentDir = file.getParentFile();
+        if (parentDir != null && !parentDir.exists()) {
+            parentDir.mkdirs();
         }
 
-        String filePath = "./exports/analysis-" + analysisId + ".txt";
-        try (FileWriter writer = new FileWriter(filePath)) {
+        try (FileWriter writer = new FileWriter(file)) {
             writer.write(results);
         }
 
-        return new File(filePath).getAbsolutePath();
+        return file.getAbsolutePath();
     }
 
     /**
