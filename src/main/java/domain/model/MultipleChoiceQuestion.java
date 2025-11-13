@@ -15,6 +15,7 @@ public class MultipleChoiceQuestion extends Question {
         super(questionIndex, surveyId);
         this.setTypeQuestion(TypeQuestion.MULTIPLE_CHOICE);
         this.maxSelections = 1; // default value
+        this.minSelections = 1; // default value
         this.optionQuestions = new ArrayList<>();
     }
 
@@ -111,7 +112,6 @@ public class MultipleChoiceQuestion extends Question {
         copy.setRequired(this.isRequired());
 
         // Copiar atributos propios
-        copy.setMinSelections(this.minSelections);
         copy.setMaxSelections(this.maxSelections);
 
         // Copiar opciones (copia profunda)
@@ -123,6 +123,7 @@ public class MultipleChoiceQuestion extends Question {
             optionCopy.setOptionText(option.getOptionText());
             copy.addOption(optionCopy);
         }
+        copy.setMinSelections(this.minSelections);
 
         return copy;
     }
