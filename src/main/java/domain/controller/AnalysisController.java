@@ -112,14 +112,6 @@ public class AnalysisController {
         return optimalK;
     }
 
-    public void exportResults(String id, String filePath) {
-        ClusteringAnalysis analysis = analyses.get(id);
-        if (analysis == null) {
-            throw new IllegalArgumentException("Analysis with ID " + id + " not found.");
-        }
-        analysis.exportResults(filePath);
-    }
-
     public List<String> getAvailableAlgorithms() {
         List<String> available = new ArrayList<>();
         available.add("KMeans");
