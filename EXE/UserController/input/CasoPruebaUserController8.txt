@@ -1,0 +1,17 @@
+REGISTRARSE (2)
+MARC 
+marc@gmail.com
+1234
+INICIAR SESIÓN
+MARC 
+1234
+Volver al menú principal. (3)
+REGISTRARSE (2)
+MARC 
+marc@fib.upc.edu
+1222
+INICIAR SESIÓN
+MARC 
+1222
+Volver al menú principal. (2)
+SALIR (3)

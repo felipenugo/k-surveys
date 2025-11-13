@@ -1,0 +1,23 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 2
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: ARNAU
+Introduce tu email:
+Introduce tu contraseña: 1301
+--- registrándose ---
+Error: El campo email es obligatorio y no puede estar vacío.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: 2
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 3
+--- SALIENDO DE K-SURVEY ---
+-----------------------------------
