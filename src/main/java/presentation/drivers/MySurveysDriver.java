@@ -21,11 +21,11 @@ public class MySurveysDriver {
     public void mySurveysMenu() {
         boolean exitMySurvey = false;
         do {
-            System.out.println("--- MY SURVEYS ---");
-            System.out.println("1. List my surveys");
-            System.out.println("2. Run clustering algorithm");
-            System.out.println("3. Back");
-            System.out.print("Option: ");
+            System.out.println("--- MIS ENCUESTAS ---");
+            System.out.println("1. Listar mis encuestas");
+            System.out.println("2. Ejecutar algoritmo de clustering");
+            System.out.println("3. Atrás");
+            System.out.print("Opción: ");
             try {
                 BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
                 String option = reader.readLine();
@@ -40,20 +40,20 @@ public class MySurveysDriver {
                         exitMySurvey = true;
                         break;
                     default:
-                        System.out.println("Invalid option.");
+                        System.out.println("Opción no válida.");
                         break;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
             }
         } while (!exitMySurvey);
-        System.out.println("--- EXITING MY SURVEYS ---");
+        System.out.println("--- SALIENDO DE MIS ENCUESTAS ---");
     }
 
     private void listMySurveys() {
         List<Survey> surveys = surveyController.getMySurveys();
         if (surveys.isEmpty()) {
-            System.out.println("You have no surveys.");
+            System.out.println("No tienes encuestas.");
         } else {
             for (Survey survey : surveys) {
                 System.out.println(survey.getSURVEY_ID() + " - " + survey.getTitle());
@@ -62,14 +62,6 @@ public class MySurveysDriver {
     }
 
     private void runClustering() throws IOException {
-        listMySurveys();
-        System.out.print("Select a survey to run the clustering algorithm on: ");
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        String surveyId = reader.readLine();
-        if (surveyController.getSurvey(surveyId) != null) {
-            clusteringDriver.run(surveyId);
-        } else {
-            System.out.println("Invalid survey ID.");
-        }
+        clusteringDriver.run();
     }
 }

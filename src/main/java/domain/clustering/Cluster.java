@@ -94,7 +94,7 @@ public class Cluster {
      * @return true si el miembro fue encontrado y eliminado, false en caso contrario.
      */
     public boolean removeMember(String responseId) {
-        return this.members.removeIf(member -> member.getResponseSetId().equals(responseId));
+        return this.members.removeIf(member -> member.getResponseId().equals(responseId));
     }
 
     /**
@@ -123,7 +123,7 @@ public class Cluster {
      */
     public boolean contains(String responseId) {
         for (ClusterMembership member : members) {
-            if (member.getResponseSetId().equals(responseId)) {
+            if (member.getResponseId().equals(responseId)) {
                 return true;
             }
         }

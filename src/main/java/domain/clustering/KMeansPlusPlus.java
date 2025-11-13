@@ -1,11 +1,6 @@
 package domain.clustering;
 
-import domain.model.Answer;
-import domain.model.MultipleChoiceAnswer;
-import domain.model.MultipleChoiceQuestion;
-import domain.model.Question;
-import domain.model.Response;
-import domain.model.TextualAnswer;
+import domain.model.*;
 import domain.model.enums.TypeQuestion;
 
 import java.util.ArrayList;
@@ -14,6 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Implementación del algoritmo K-Means++ con inicialización inteligente de centroides.
+ * Mejora K-Means estándar seleccionando centroides iniciales más dispersos.
+ */
 public class KMeansPlusPlus implements ClusteringAlgorithm {
 
     private int maxIterations;
@@ -21,6 +20,13 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
     private long randomSeed;
     private Random random;
 
+    /**
+     * Constructor con parámetros personalizados.
+     *
+     * @param maxIterations Número máximo de iteraciones permitidas
+     * @param tolerance Umbral de convergencia
+     * @throws IllegalArgumentException si los parámetros no son válidos
+     */
     public KMeansPlusPlus(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
@@ -34,10 +40,19 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         this.random = new Random(randomSeed);
     }
 
+    /**
+     * Constructor por defecto con valores estándar.
+     * Configura 100 iteraciones máximas y tolerancia de 1e-4.
+     */
     public KMeansPlusPlus() {
         this(100, 1e-4);
     }
 
+    /**
+     * Establece la semilla aleatoria para reproducibilidad.
+     *
+     * @param seed Semilla para el generador de números aleatorios
+     */
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
@@ -87,9 +102,19 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return new ClusterResults(finalClusters, iteration, converged);
     }
 
+    /**
+     * Inicializa centroides usando el algoritmo K-Means++.
+     * Selecciona centroides con probabilidad proporcional a su distancia al centroide más cercano.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param k Número de clusters
+     * @param distance Calculadora de distancia
+     * @return Lista de centroides inicializados
+     */
     private List<Centroid> initializeCentroidsPlusPlus(List<Response> responses, List<Question> questions, int k, DistanceCalculator distance) {
         List<Centroid> centroids = new ArrayList<>();
-        
+
         int firstIndex = random.nextInt(responses.size());
         centroids.add(createCentroidFromResponse(responses.get(firstIndex), questions));
 
@@ -120,7 +145,7 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
                     break;
                 }
             }
-            
+
             if (selectedIndex != -1) {
                  centroids.add(createCentroidFromResponse(responses.get(selectedIndex), questions));
             } else {
@@ -130,7 +155,14 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         }
         return centroids;
     }
-    
+
+    /**
+     * Crea un centroide a partir de una respuesta.
+     *
+     * @param r Respuesta base
+     * @param questions Lista de preguntas
+     * @return Centroide creado
+     */
     public static Centroid createCentroidFromResponse(Response r, List<Question> questions) {
         int numQuestions = questions.size();
         Centroid c = new Centroid(numQuestions);
@@ -143,6 +175,12 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return c;
     }
 
+    /**
+     * Verifica si una respuesta ha sido contestada.
+     *
+     * @param a Respuesta a verificar
+     * @return true si la respuesta contiene datos válidos
+     */
     public static boolean isAnswered(Answer a) {
         if (a == null) return false;
         if (a instanceof MultipleChoiceAnswer) {
@@ -155,9 +193,19 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
             String text = ((TextualAnswer) a).getAnswerText();
             return text != null && !text.isEmpty();
         }
+        if (a instanceof NumericalAnswer) {
+            return ((NumericalAnswer) a).getAnswerNum() != null;
+        }
         return false;
     }
 
+    /**
+     * Extrae el valor numérico o textual de una respuesta.
+     *
+     * @param a Respuesta a procesar
+     * @param q Pregunta asociada
+     * @return Valor de la respuesta (double[] o String)
+     */
     public static Object getAnswerValue(Answer a, Question q) {
         if (!isAnswered(a)) return null;
         try {
@@ -168,6 +216,8 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
                 return valAsDouble;
             } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
                 return ((TextualAnswer) a).getAnswerText();
+            } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                return ((NumericalAnswer) a).getAnswerNum();
             }
         } catch (Exception e) {
             return null;
@@ -175,6 +225,15 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return null;
     }
 
+    /**
+     * Asigna cada respuesta al cluster más cercano.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param centroids Lista de centroides
+     * @param distance Calculadora de distancia
+     * @return Array de asignaciones de cluster
+     */
     private Integer[] assignToClusters(List<Response> responses, List<Question> questions,
                                        List<Centroid> centroids, DistanceCalculator distance) {
         Integer[] assignments = new Integer[responses.size()];
@@ -194,12 +253,23 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return assignments;
     }
 
+    /**
+     * Recalcula los centroides basándose en las asignaciones actuales.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param k Número de clusters
+     * @param distance Calculadora de distancia
+     * @return Lista de centroides actualizados
+     */
     private List<Centroid> updateCentroids(List<Response> responses, List<Question> questions,
                                            Integer[] assignments, int k, DistanceCalculator distance) {
         int numQuestions = questions.size();
         List<Centroid> newCentroids = new ArrayList<>();
         Map<Integer, double[][]> choiceSums = new HashMap<>();
         Map<Integer, Map<Integer, List<String>>> textValues = new HashMap<>();
+        Map<Integer, Map<Integer, List<Double>>> numericalValues = new HashMap<>();
         int[] clusterSizes = new int[k];
 
         for (int i = 0; i < responses.size(); i++) {
@@ -228,6 +298,10 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
                         textValues.putIfAbsent(clusterIdx, new HashMap<>());
                         textValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
                         textValues.get(clusterIdx).get(qIdx).add(((TextualAnswer) a).getAnswerText());
+                    } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                        numericalValues.putIfAbsent(clusterIdx, new HashMap<>());
+                        numericalValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
+                        numericalValues.get(clusterIdx).get(qIdx).add(((NumericalAnswer) a).getAnswerNum());
                     }
                 } catch (Exception e) { /* Ignore */ }
             }
@@ -255,6 +329,13 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
                             String medoidText = findTextMedoid(clusterTexts.get(qIdx), distance);
                             c.setComponent(qIdx, medoidText);
                         }
+                    } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                        Map<Integer, List<Double>> clusterNumericals = numericalValues.get(cIdx);
+                        if (clusterNumericals != null && clusterNumericals.get(qIdx) != null) {
+                            List<Double> numbers = clusterNumericals.get(qIdx);
+                            double sum = numbers.stream().mapToDouble(Double::doubleValue).sum();
+                            c.setComponent(qIdx, sum / numbers.size());
+                        }
                     }
                 }
             }
@@ -263,6 +344,15 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return newCentroids;
     }
 
+    /**
+     * Verifica si el algoritmo ha convergido.
+     *
+     * @param oldCentroids Centroides de la iteración anterior
+     * @param newCentroids Centroides de la iteración actual
+     * @param questions Lista de preguntas
+     * @param distance Calculadora de distancia
+     * @return true si la diferencia es menor que la tolerancia
+     */
     private boolean hasConverged(List<Centroid> oldCentroids, List<Centroid> newCentroids, List<Question> questions, DistanceCalculator distance) {
         double totalMovement = 0.0;
         for (int i = 0; i < oldCentroids.size(); i++) {
@@ -283,6 +373,8 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
                         centroidDiff += distance.euclideanDistance(oldV, newV);
                     } else if (oldComp instanceof String) {
                         centroidDiff += distance.calculateTextDistance((String) oldComp, (String) newComp);
+                    } else if (oldComp instanceof Double) {
+                        centroidDiff += Math.abs((Double) oldComp - (Double) newComp);
                     }
                 } catch (Exception e) {
                     centroidDiff += 1.0;
@@ -293,6 +385,13 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return totalMovement < tolerance;
     }
 
+    /**
+     * Encuentra el medoide (texto más representativo) en un conjunto de textos.
+     *
+     * @param texts Lista de textos
+     * @param distance Calculadora de distancia
+     * @return El texto medoide
+     */
     private String findTextMedoid(List<String> texts, DistanceCalculator distance) {
         if (texts == null || texts.isEmpty()) return null;
         double minTotalDistance = Double.MAX_VALUE;
@@ -310,6 +409,16 @@ public class KMeansPlusPlus implements ClusteringAlgorithm {
         return bestMedoid;
     }
 
+    /**
+     * Crea la estructura final de clusters con sus miembros.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param centroids Lista de centroides
+     * @param distance Calculadora de distancia
+     * @return Lista de objetos Cluster
+     */
     private List<Cluster> createClusters(List<Response> responses, List<Question> questions,
                                          Integer[] assignments, List<Centroid> centroids,
                                          DistanceCalculator distance) {

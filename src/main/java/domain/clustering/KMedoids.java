@@ -11,6 +11,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Implementación del algoritmo K-Medoids (PAM - Partitioning Around Medoids).
+ * Utiliza puntos reales del dataset como centros de clusters en lugar de promedios.
+ */
 public class KMedoids implements ClusteringAlgorithm {
 
     private int maxIterations;
@@ -18,6 +22,13 @@ public class KMedoids implements ClusteringAlgorithm {
     private long randomSeed;
     private Random random;
 
+    /**
+     * Constructor con parámetros personalizados.
+     * 
+     * @param maxIterations Número máximo de iteraciones permitidas
+     * @param tolerance Umbral de convergencia basado en el coste total
+     * @throws IllegalArgumentException si los parámetros no son válidos
+     */
     public KMedoids(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
@@ -31,10 +42,19 @@ public class KMedoids implements ClusteringAlgorithm {
         this.random = new Random(randomSeed);
     }
 
+    /**
+     * Constructor por defecto con valores estándar.
+     * Configura 100 iteraciones máximas y tolerancia de 1e-4.
+     */
     public KMedoids() {
         this(100, 1e-4);
     }
 
+    /**
+     * Establece la semilla aleatoria para reproducibilidad.
+     * 
+     * @param seed Semilla para el generador de números aleatorios
+     */
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
@@ -92,6 +112,13 @@ public class KMedoids implements ClusteringAlgorithm {
         return new ClusterResults(finalClusters, iteration, converged);
     }
 
+    /**
+     * Inicializa medoides seleccionando k índices de respuestas aleatorias.
+     * 
+     * @param numPoints Número total de puntos
+     * @param k Número de clusters
+     * @return Array de índices de medoides
+     */
     private int[] initializeMedoids(int numPoints, int k) {
         int[] medoidIndices = new int[k];
         Set<Integer> chosenIndices = new HashSet<>();
@@ -106,6 +133,15 @@ public class KMedoids implements ClusteringAlgorithm {
         return medoidIndices;
     }
 
+    /**
+     * Asigna cada respuesta al medoide más cercano.
+     * 
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param medoidIndices Índices de los medoides actuales
+     * @param distance Calculadora de distancia
+     * @return Array de asignaciones de cluster
+     */
     private Integer[] assignToClusters(List<Response> responses, List<Question> questions,
                                        int[] medoidIndices, DistanceCalculator distance) {
         Integer[] assignments = new Integer[responses.size()];
@@ -125,6 +161,16 @@ public class KMedoids implements ClusteringAlgorithm {
         return assignments;
     }
 
+    /**
+     * Actualiza los medoides seleccionando el punto que minimiza el coste dentro de cada cluster.
+     * 
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param k Número de clusters
+     * @param distance Calculadora de distancia
+     * @return Array de nuevos índices de medoides
+     */
     private int[] updateMedoids(List<Response> responses, List<Question> questions,
                                 Integer[] assignments, int k, DistanceCalculator distance) {
         int[] newMedoidIndices = new int[k];
@@ -161,6 +207,16 @@ public class KMedoids implements ClusteringAlgorithm {
         return newMedoidIndices;
     }
 
+    /**
+     * Calcula el coste total de la configuración actual.
+     * 
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param medoidIndices Índices de los medoides
+     * @param distance Calculadora de distancia
+     * @return Suma de distancias de todos los puntos a sus medoides
+     */
     private double calculateTotalCost(List<Response> responses, List<Question> questions,
                                       Integer[] assignments, int[] medoidIndices, DistanceCalculator distance) {
         double totalCost = 0.0;
@@ -173,6 +229,16 @@ public class KMedoids implements ClusteringAlgorithm {
         return totalCost;
     }
 
+    /**
+     * Crea la estructura final de clusters con sus miembros.
+     * 
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param medoidIndices Índices de los medoides finales
+     * @param distance Calculadora de distancia
+     * @return Lista de objetos Cluster
+     */
     private List<Cluster> createClusters(List<Response> responses, List<Question> questions,
                                          Integer[] assignments, int[] medoidIndices,
                                          DistanceCalculator distance) {

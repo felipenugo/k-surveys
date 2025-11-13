@@ -51,6 +51,10 @@ public class UserController {
         return userService.getUser(this.usernameLoggedIn);
     }
 
+    public void addResponseId(String username, String surveyId, String responseId){
+        userService.addResponseId(username, surveyId, responseId);
+    }
+
     public void deleteUser(String username) {
         boolean success = userService.deleteUser(username);
         if (success)

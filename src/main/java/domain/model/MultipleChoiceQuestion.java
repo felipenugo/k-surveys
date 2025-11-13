@@ -30,6 +30,8 @@ public class MultipleChoiceQuestion extends Question {
         return optionQuestions;
     }
 
+    public int getOptionsSize(){return optionQuestions.size();}
+
     // Setters
     public void setMinSelections(int minSelections) {
         if (minSelections < 1) {

@@ -9,16 +9,12 @@ public class MultipleChoiceAnswer extends Answer {
 
     // Constructor
     public MultipleChoiceAnswer(int questionIndex, String responseId, int maxOptions) {
-        super(questionIndex, responseId);
+        super(questionIndex, responseId, TypeQuestion.MULTIPLE_CHOICE);
         this.maxOptions = maxOptions;
         this.selectedOptions = new boolean[maxOptions];
     }
 
     // Getters
-    @Override
-    public TypeQuestion getAnswerType() {
-        return TypeQuestion.MULTIPLE_CHOICE;
-    }
 
     public int getMaxOptions() {
         return maxOptions;
@@ -40,6 +36,12 @@ public class MultipleChoiceAnswer extends Answer {
 
     public void setOption(int index, boolean option) {
         selectedOptions[index] = option;
+        super.setIsAnswered(true);
+    }
+
+    public void setOptions(boolean[] options) {
+        for (int i = 0; i < selectedOptions.length; i++)
+            setOption(i, options[i]);
     }
 
     @Override
@@ -47,5 +49,6 @@ public class MultipleChoiceAnswer extends Answer {
         for (int i = 0; i < maxOptions; i++) {
             selectedOptions[i] = false;
         }
+        super.setIsAnswered(false);
     }
 }

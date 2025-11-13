@@ -35,7 +35,7 @@ public class ClusterMembership {
      *
      * @return El ID del miembro.
      */
-    public String getResponseSetId() {
+    public String getResponseId() {
         return responseId;
     }
 
