@@ -58,7 +58,7 @@ public class DriverMain {
 
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
-        ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering, surveyController);
+        ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
 

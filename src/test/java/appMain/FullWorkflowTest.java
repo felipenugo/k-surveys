@@ -189,7 +189,11 @@ public class FullWorkflowTest {
 
                     // Export results
                     String filePath = String.format("build/clustering_reports/alg_%s_dist_%s_k_%d.txt", algorithmName, distanceType, k);
-                    analysisController.exportResults(analysis.getId(), filePath);
+                    try (java.io.FileWriter writer = new java.io.FileWriter(filePath)) {
+                        writer.write(completedAnalysis.exportResults());
+                    } catch (java.io.IOException e) {
+                        e.printStackTrace();
+                    }
                     File file = new File(filePath);
                     assertTrue("Export file should be created", file.exists());
                     assertTrue("Export file should not be empty", file.length() > 0);
