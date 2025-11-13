@@ -40,6 +40,7 @@ public class DriverMain {
         );
 
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
+        CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Initialize drivers
         EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
@@ -52,6 +53,7 @@ public class DriverMain {
 
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
+        ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);

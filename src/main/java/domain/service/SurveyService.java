@@ -105,6 +105,12 @@ public class SurveyService {
     }
 
 
+    public void checkQuestionExists(String surveyId, int questionIndex) {
+
+        if (!existsQuestion(surveyId, questionIndex))
+            throw new SurveyException("La pregunta con índice " + questionIndex + " no existe en esta encuesta.");
+    }
+
     // if a survey is created correctly, call ResponseService to initialize its response map
     public List<Survey> getSelectedSurveys() {
         checkUserLoggedin();
