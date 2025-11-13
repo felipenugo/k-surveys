@@ -43,7 +43,7 @@ public class EditorMultipleChoiceOptionsDriver {
         // Recoger opciones
         System.out.print("¿Cuántas opciones deseas añadir? (mínimo 2): ");
         int numOptions = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+
 
         if (numOptions < 2) {
             System.out.println("Se requieren al menos 2 opciones.");
@@ -110,7 +110,7 @@ public class EditorMultipleChoiceOptionsDriver {
     }
 
     private void addOption(MultipleChoiceQuestion question) {
-        sc.nextLine(); // Limpiar buffer
+
         System.out.print("\nIntroduce el texto de la nueva opción: ");
         String optionText = sc.nextLine();
 
@@ -131,7 +131,7 @@ public class EditorMultipleChoiceOptionsDriver {
         viewAllOptions(question);
         System.out.print("\nIntroduce el índice de la opción a editar (0-" + (question.getOptions().size() - 1) + "): ");
         int index = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+
 
         if (!question.inRange(index)) {
             System.out.println("Índice no válido.");
@@ -159,7 +159,7 @@ public class EditorMultipleChoiceOptionsDriver {
         viewAllOptions(question);
         System.out.print("\nIntroduce el índice de la opción a eliminar (0-" + (question.getOptions().size() - 1) + "): ");
         int index = sc.nextInt();
-        sc.nextLine(); // Limpiar buffer
+
 
         if (!question.inRange(index)) {
             System.out.println("Índice no válido.");

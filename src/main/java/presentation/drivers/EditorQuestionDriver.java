@@ -59,7 +59,7 @@ public class EditorQuestionDriver {
      * Crea una nueva pregunta según el tipo seleccionado
      */
     public Question createQuestion(String surveyId, int questionIndex) {
-        sc.nextLine(); // Limpiar buffer
+
 
         System.out.println("\n========================================");
         System.out.println("       CREAR NUEVA PREGUNTA");
@@ -221,7 +221,7 @@ public class EditorQuestionDriver {
         System.out.println("\nEstado actual: " + currentStatus);
         System.out.print("¿Cambiar a " + (question.isRequired() ? "OPCIONAL" : "OBLIGATORIA") + "? (S/N): ");
 
-        sc.nextLine(); // Limpiar buffer
+
         String response = sc.nextLine().trim();
 
         if (response.equalsIgnoreCase("S")) {
@@ -266,7 +266,7 @@ public class EditorQuestionDriver {
     }
 
     private void editQuestionText(Question question) {
-        sc.nextLine(); // Limpiar buffer
+
         System.out.println("\nTexto actual: " + question.getQuestionText());
         System.out.print("Introduce el nuevo texto de la pregunta: ");
         String newText = sc.nextLine();

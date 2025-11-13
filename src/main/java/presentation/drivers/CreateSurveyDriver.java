@@ -79,7 +79,7 @@ public class CreateSurveyDriver {
     }
 
     private void initializeNewSurvey() {
-        sc.nextLine(); // Limpiar buffer
+
 
         System.out.println("\n========================================");
         System.out.println("       CREANDO NUEVA ENCUESTA");
@@ -122,7 +122,7 @@ public class CreateSurveyDriver {
     }
 
     private void editTitle() {
-        sc.nextLine(); // Limpiar buffer
+
         System.out.println("\nTítulo actual: " + currentSurvey.getTitle());
         System.out.print("Introduce el nuevo título: ");
         String newTitle = sc.nextLine();
@@ -136,7 +136,7 @@ public class CreateSurveyDriver {
     }
 
     private void editDescription() {
-        sc.nextLine(); // Limpiar buffer
+
         System.out.println("\nDescripción actual: " + currentSurvey.getDescription());
         System.out.print("Introduce la nueva descripción: ");
         String newDescription = sc.nextLine();
@@ -210,7 +210,7 @@ public class CreateSurveyDriver {
             return;
         }
 
-        sc.nextLine(); // Limpiar buffer
+
         System.out.print("¿Estás seguro de que deseas eliminar esta pregunta? (S/N): ");
         String confirmation = sc.nextLine();
 
@@ -300,7 +300,7 @@ public class CreateSurveyDriver {
             return false;
         }
 
-        sc.nextLine(); // Limpiar buffer
+
         System.out.println("\n========================================");
         System.out.println("       RESUMEN DE LA ENCUESTA");
         System.out.println("========================================");
