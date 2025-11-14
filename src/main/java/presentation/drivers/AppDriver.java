@@ -1,11 +1,12 @@
 package presentation.drivers;
 
 import domain.controller.*;
+import presentation.driverMain.DriverMain;
 
 import java.util.Scanner;
 
 public class AppDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final SurveyDriver surveyDriver;
     private final CreateSurveyDriver createsurveyDriver;
     private final SessionDriver sessionDriver;
@@ -24,7 +25,9 @@ public class AppDriver {
         System.out.println("2. CREAR ENCUESTA");
         System.out.println("3. CERRAR SESIÓN");
         System.out.print("Opcion: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public void clearTerminal()

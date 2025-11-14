@@ -8,6 +8,7 @@ import domain.model.MultipleChoiceQuestion;
 import domain.model.enums.SurveyStatus;
 import domain.model.enums.TypeQuestion;
 import domain.exception.SurveyException;
+import presentation.driverMain.DriverMain;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class CreateSurveyDriver {
     private final SurveyController surveyController;
     private final UserController userController;
     private final EditorQuestionDriver editorQuestionDriver;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private Survey currentSurvey;
 
     public CreateSurveyDriver(
@@ -39,7 +40,9 @@ public class CreateSurveyDriver {
         System.out.println("8. VER TODAS LAS PREGUNTAS");
         System.out.println("9. GUARDAR, PUBLICAR Y SALIR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public void createSurveyMenu() {
@@ -180,6 +183,7 @@ public class CreateSurveyDriver {
         viewAllQuestions();
         System.out.print("\nIntroduce el índice de la pregunta a editar (0-" + (currentSurvey.getSize() - 1) + "): ");
         int index = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
 
         if (index < 0 || index >= currentSurvey.getSize()) {
             System.out.println("Índice no válido.");
@@ -204,6 +208,7 @@ public class CreateSurveyDriver {
         viewAllQuestions();
         System.out.print("\nIntroduce el índice de la pregunta a eliminar (0-" + (currentSurvey.getSize() - 1) + "): ");
         int index = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
 
         if (index < 0 || index >= currentSurvey.getSize()) {
             System.out.println("Índice no válido.");
@@ -237,8 +242,10 @@ public class CreateSurveyDriver {
         viewAllQuestions();
         System.out.print("\nIntroduce el índice de la pregunta a mover: ");
         int oldIndex = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
         System.out.print("Introduce la nueva posición: ");
         int newIndex = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
 
         if (oldIndex < 0 || oldIndex >= currentSurvey.getSize() ||
                 newIndex < 0 || newIndex >= currentSurvey.getSize()) {

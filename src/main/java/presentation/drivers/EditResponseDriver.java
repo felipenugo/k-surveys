@@ -4,6 +4,7 @@ import domain.controller.ResponseController;
 import domain.exception.*;
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
+import presentation.driverMain.DriverMain;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class EditResponseDriver {
     private final ResponseController responseController;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
 
     public EditResponseDriver(ResponseController responseControler) {
         this.responseController = responseControler;
@@ -25,7 +26,9 @@ public class EditResponseDriver {
             System.out.println("1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA");
             System.out.println("2. QUIERO SEGUIR EDITANDO MI RESPUESTA");
             System.out.print("Opción: ");
-            switch (sc.nextInt()) {
+            int option = sc.nextInt();
+            sc.nextLine(); // Consumir el salto de línea
+            switch (option) {
                 case 1 -> {
                     exit = true;
                     sentResponse = true;
@@ -49,7 +52,9 @@ public class EditResponseDriver {
             System.out.println("1. Intentar responder de nuevo.");
             System.out.println("2. Responder otra pregunta.");
             System.out.print("Opción: ");
-            switch (sc.nextInt()) {
+            int option = sc.nextInt();
+            sc.nextLine(); // Consumir el salto de línea
+            switch (option) {
                 case 1 -> {
                     exit = true;
                     exitAnswer = false;
@@ -71,7 +76,9 @@ public class EditResponseDriver {
         System.out.println("3. VER MIS RESPUESTAS");
         System.out.println("4. ENVIAR RESPUESTA");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public void showQuestion(Question question) {
@@ -132,7 +139,6 @@ public class EditResponseDriver {
         showQuestion(question);
         if (answerType.equals(TypeQuestion.TEXTUAL)) {
             System.out.print("Introduce el texto de tu respuesta: ");
-            String cleanBuffer = sc.nextLine();
             String textAnswer = sc.nextLine();
             responseController.updateAnswer(surveyId, responseId, questionIndex, textAnswer, answerType);
 
@@ -141,7 +147,6 @@ public class EditResponseDriver {
             int maxOptions = ((MultipleChoiceQuestion) question).getMaxSelections();
             System.out.println("Introduce el número de tus opciones separadas por espacios, mínimo " + minOptions + " máximo " + maxOptions + ".");
             System.out.print("Opciones seleccionadas: ");
-            String cleanBuffer = sc.nextLine();
             String multipleChoiceAnswer = sc.nextLine();
             responseController.updateAnswer(surveyId, responseId, questionIndex, multipleChoiceAnswer, answerType);
         } else {
@@ -149,10 +154,10 @@ public class EditResponseDriver {
             System.out.print("Introduce el número de tu respuesta:");
             if(!sc.hasNextDouble())
             {
-                String cleanBuffer = sc.nextLine();
                 throw new ResponseException("El formato tiene que ser númerico. Utiliza el punto (.) para decimales.");
             }
             Double numericalAnswer = sc.nextDouble();
+            sc.nextLine(); // Consumir el salto de línea
             responseController.updateAnswer(surveyId, responseId, questionIndex, numericalAnswer);
 
         }
@@ -165,12 +170,12 @@ public class EditResponseDriver {
 
                 System.out.print("Introduce el índice de la pregunta que quieras responder:");
                 int questionIndex = sc.nextInt();
+                sc.nextLine(); // Consumir el salto de línea
                 answerQuestion(surveyId, responseId, questionIndex);
                 System.out.println("---guardando tu respuesta a la pregunta " + questionIndex + "---");
                 exit = true;
             } catch (ResponseException | SurveyException e) {
                 System.out.println("Error: " + e.getMessage());
-                sc.nextLine();
                 exit = selectAnswerErrorMenu();
             }catch(InputMismatchException e)
             {

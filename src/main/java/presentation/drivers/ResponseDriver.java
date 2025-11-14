@@ -10,12 +10,13 @@ import domain.exception.SurveyException;
 
 import domain.controller.SurveyController;
 import domain.model.Survey;
+import presentation.driverMain.DriverMain;
 
 public class ResponseDriver {
     private final SurveyController surveyController;
     private final ResponseController responseController;
     private final EditResponseDriver editResponseDriver;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
 
     public ResponseDriver(SurveyController surveyController, ResponseController responseController, EditResponseDriver editResponseDriver) {
         this.surveyController = surveyController;
@@ -28,14 +29,18 @@ public class ResponseDriver {
         System.out.println("1. SELECCIONAR UNA ENCUESTA PARA RESPONDER");
         System.out.println("2. VOLVER ATRÁS");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     private int selectErrorMenuOption() {
         System.out.println("1. Intentar de nuevo");
         System.out.println("2. Volver atrás");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public void showSurveys(List<Survey> surveys) {
@@ -43,7 +48,6 @@ public class ResponseDriver {
             System.out.println("id: " + survey.getSURVEY_ID() + ", título: " + survey.getTitle() + ", autor: " + survey.getCREATOR_USERNAME() + ", número de preguntas: " + survey.getSize());
             System.out.println("descripción: " + survey.getDescription() + ", número de respuestas: " + survey.getViews()+ "\n");
         }
-        String cleanBuffer = sc.nextLine();
     }
 
     public void selectSurvey() {

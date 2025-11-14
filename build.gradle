@@ -43,3 +43,36 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     testImplementation('junit:junit:4.13.1')
 }
+
+// Task para ejecutar con redirección de archivos usando exec
+task runWithFiles(type: JavaExec) {
+    group = 'application'
+    description = 'Run the main class with optional input/output file redirection'
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = javaMainClass
+    
+    // Configure input from file
+    if (project.hasProperty('inputFile')) {
+        def inputFilePath = project.property('inputFile')
+        def inputFile = file(inputFilePath)
+        if (inputFile.exists()) {
+            standardInput = inputFile.newInputStream()
+        } else {
+            println "Warning: Input file '${inputFilePath}' not found"
+        }
+    } else {
+        standardInput = System.in
+    }
+    
+    // Configure output to file
+    if (project.hasProperty('outputFile')) {
+        def outputFilePath = project.property('outputFile')
+        def outputFile = file(outputFilePath)
+        standardOutput = outputFile.newOutputStream()
+    }
+}
+
+// Configure the standard run task
+run {
+    standardInput = System.in
+}

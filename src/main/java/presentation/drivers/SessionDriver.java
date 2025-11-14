@@ -6,9 +6,10 @@ import domain.exception.LogInException;
 import domain.exception.RegisterException;
 
 import domain.controller.UserController;
+import presentation.driverMain.DriverMain;
 
 public class SessionDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final UserController userController;
     private AppDriver appDriver;
 

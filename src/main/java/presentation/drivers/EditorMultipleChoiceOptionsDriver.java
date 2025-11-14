@@ -2,13 +2,14 @@ package presentation.drivers;
 
 import domain.controller.QuestionController;
 import domain.model.MultipleChoiceQuestion;
+import presentation.driverMain.DriverMain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EditorMultipleChoiceOptionsDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final QuestionController questionController;
 
     public EditorMultipleChoiceOptionsDriver(QuestionController questionController) {
@@ -26,7 +27,9 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.println("7. VER TODAS LAS OPCIONES");
         System.out.println("8. VOLVER");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     /**
@@ -43,6 +46,7 @@ public class EditorMultipleChoiceOptionsDriver {
         // Recoger opciones
         System.out.print("¿Cuántas opciones deseas añadir? (mínimo 2): ");
         int numOptions = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
 
 
         if (numOptions < 2) {
@@ -67,6 +71,7 @@ public class EditorMultipleChoiceOptionsDriver {
         // Configurar selecciones
         System.out.print("\n¿Cuántas selecciones mínimas se requieren? (por defecto 1): ");
         int minSelections = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
         if (minSelections < 1) {
             minSelections = 1;
         }
@@ -74,6 +79,7 @@ public class EditorMultipleChoiceOptionsDriver {
         int maxSelections = numOptions;
         System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto " + (maxSelections) + "): ");
         maxSelections = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
         if (maxSelections < minSelections) {
             maxSelections = minSelections;
         }
