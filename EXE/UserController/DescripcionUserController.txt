@@ -12,7 +12,6 @@ Ficheros de datos necesarios:
     Ninguno.
 
 Valores estudiados:
-    Se utiliza un enfoque de caja negra ya que no es necesario conocer la implementacion de CtrlDominioUsuario
     -Registro exitoso con usuario, correo y contraseña validos.
     -Inicio de sesion con usuario y contraseña validos.
     -Inicio de sesión con usuario inexistente.

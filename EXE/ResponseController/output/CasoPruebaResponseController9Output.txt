@@ -1,0 +1,52 @@
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: 1
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: 1
+id: 0, título: Viva PROP, autor: arnau, número de preguntas: 1
+descripción: PROP es lo mejor, número de respuestas: 2
+
+id: 1, título: Prueba, autor: arnau, número de preguntas: 3
+descripción: Prueba, número de respuestas: 2
+
+Selecciona el id de una encuesta: 1
+--- EDITOR DE RESPUESTAS ---
+1. VER PREGUNTAS.
+2. RESPONDER PREGUNTA
+3. VER MIS RESPUESTAS
+4. ENVIAR RESPUESTA
+Opción: 3
+Error: Todavía no has respondido ninguna pregunta.
+--- EDITOR DE RESPUESTAS ---
+1. VER PREGUNTAS.
+2. RESPONDER PREGUNTA
+3. VER MIS RESPUESTAS
+4. ENVIAR RESPUESTA
+Opción: 2
+Introduce el índice de la pregunta que quieras responder:1
+-Pregunta a responder-
+Índice: 1, pregunta: Prueba opcion Multiple
+--Opción 0. OK
+--Opción 1. No OK
+Introduce el número de tus opciones separadas por espacios, mínimo 1 máximo 1.
+Opciones seleccionadas: 0
+---guardando tu respuesta a la pregunta 1---
+--- EDITOR DE RESPUESTAS ---
+1. VER PREGUNTAS.
+2. RESPONDER PREGUNTA
+3. VER MIS RESPUESTAS
+4. ENVIAR RESPUESTA
+Opción: 3
+
+Índice de la pregunta: 0, no respondida
+Índice de la pregunta: 1 , respuestas seleccionadas: [true]
+Índice de la pregunta: 2, no respondida
+--- EDITOR DE RESPUESTAS ---
+1. VER PREGUNTAS.
+2. RESPONDER PREGUNTA
+3. VER MIS RESPUESTAS
+4. ENVIAR RESPUESTA

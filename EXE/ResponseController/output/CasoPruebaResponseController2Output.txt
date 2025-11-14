@@ -1,0 +1,19 @@
+Inicio de sesión correcto!
+Bienvenido arnau
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 1
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: 1
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: 1
+Error: No hay encuestas creadas todavía.
+1. Intentar de nuevo
+2. Volver atrás

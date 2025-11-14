@@ -1,0 +1,52 @@
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 2
+
+
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta:
+Introduce la descripción de la encuesta:
+Error al inicializar encuesta: El título no puede estar vacío.
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 2
+
+
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Prueba
+Introduce la descripción de la encuesta:
+Error al inicializar encuesta: La descripción no puede estar vacía.
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 2
+
+
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Prueba
+Introduce la descripción de la encuesta: Prueba
+
+Encuesta inicializada correctamente.
+(El ID será asignado al publicar)
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR

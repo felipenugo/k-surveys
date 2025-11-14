@@ -1,0 +1,12 @@
+CREAR ENCUESTA (2)
+Prueba
+Prueba
+AÑADIR PREGUNTA (4)
+Prueba Num
+S
+PREGUNTA NUMÉRICA (3)
+AÑADIR PREGUNTA (4)
+Prueba NUM
+S
+CANCELAR (4)
+

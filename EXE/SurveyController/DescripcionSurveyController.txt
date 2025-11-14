@@ -1,0 +1,122 @@
+Objeto de la prueba:
+    -Casos de uso probados:
+        -Crear Encuesta
+	-Editar Encuesta
+	-Exportar Encuesta
+	((((((((Crear una nueva encuesta
+
+Editar título
+
+Editar descripción
+
+Añadir pregunta
+
+Editar pregunta
+
+Eliminar pregunta
+
+Reordenar preguntas
+
+Visualizar preguntas
+
+Guardar y publicar encuesta )))))))))
+    -Clases probadas:
+        - CreateSurveyDriver
+	- EditorQuestionDriver
+	- SurveyController
+	- QuestionService
+	- SurveyService
+	- Modelos: Survey, Question, MultipleChoiceQuestion, OptionQuestiony TypeQuestion
+
+Ficheros de datos necesarios:
+    Ninguno.
+    El repositorio interno (SurveyRepository, UserRepository) es suficiente para la ejecución de pruebas.
+
+Valores estudiados:
+    -Crear una encuesta válida, en caso de que el título o la descripción sean vacíos el sistema no crea la encuesta.
+    -Editar título, editar descripción y ver info encuesta creada.
+    -Añadir pregunta textual válida, ver comportamiento en caso de añadir pregunta textual vacía.
+    -Añadir pregunta MultipleChoice válida, ver comportamiento en caso de usar formatos inválidos.
+    -Añadir pregunta numérica válida, ver comportamiento en caso de cancelar.
+    -Editar pregunta válida, ver comportamiento editar pregunta con índice inválido. 
+    -Cancelar eliminación e eliminar pregunta válida. 
+    -Reordenar pregunta válida, reordenar con índices fuera de rango y reordenar preguntando mover a misma posición.
+    -Ver todas las preguntas, ver comportamiento si aún no hay preguntas creadas para esa encuesta.
+    -Ver comportamiento publicar sin preguntas y publicar encuesta válida.
+   
+
+Efectos estudiados:
+   ✔ Integridad de la encuesta
+	Se respetan todas las reglas de validación antes de publicar:
+		- título no vacío
+		- descripción no vacía
+		- mínimo 1 pregunta
+		- coherencia pregunta/opciones
+		- índices ordenados correctamente
+
+   ✔ Manejo correcto de excepciones
+	- SurveyException
+	- InputMismatchException
+	- Validaciones internas de QuestionService y SurveyService
+
+   ✔ Flujo completo de interacción
+	- Menús mostrados correctamente
+	- Bucles de interacción no se rompen
+	- Se permiten reintentos donde corresponde
+	- Retorno al menú principal cuando procede
+
+Operativa:
+   El programa ofrece el siguiente menú al crear una encuesta:
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+
+Procedimiento para garantizar el funcionamiento
+	- Ejecutar la aplicación con un usuario logueado.
+	- Seleccionar la opción “CREAR ENCUESTA”.
+	- Introducir título y descripción válidos.
+
+Validar los siguientes flujos:
+
+1. Información de encuesta
+Visualización correcta de: título, descripción, creador, estado, número de preguntas, fecha de creación, ID (si ya publicado).
+
+2. Añadir preguntas
+Se debe verificar:
+   ✔ Creación de cada tipo de pregunta.
+   ✔ Errores cuando los datos son inválidos.
+   ✔ Actualización de índices.
+
+3. Editar preguntas
+	-Editar texto
+	-Cambiar obligatoriedad
+	-Modificar opciones de MultipleChoice
+	-Cambiar min/max selections
+	-Validación correcta de índices
+
+4. Eliminar preguntas
+	-Confirmación requerida
+	-Reindexación tras la eliminación
+
+5. Reordenar preguntas
+	-Mover una pregunta a cualquier posición válida
+	-Actualización correcta de los índices
+	-Detección de índices no válidos
+
+6. Publicación
+El sistema debe verificar:
+   ✔ No se puede publicar sin preguntas.
+   ✔ Confirmación del usuario antes de publicar.
+   ✔ Asignación correcta de:
+	  - ID
+	  - estado = PUBLISHED
+	  - PUBLISHED_AT
+   ✔ Al finalizar, se debe regresar al menú principal.

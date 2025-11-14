@@ -1,0 +1,16 @@
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: 1
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: 1
+id: 0, título: Viva PROP, autor: arnau, número de preguntas: 1
+descripción: PROP es lo mejor, número de respuestas: 1
+
+Selecciona el id de una encuesta: 1000
+Error: La encuesta con id 1000 no existe.
+1. Intentar de nuevo
+2. Volver atrás
