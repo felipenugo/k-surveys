@@ -9,18 +9,50 @@ import domain.model.OptionQuestion;
 import domain.model.enums.TypeQuestion;
 
 import java.util.List;
-
+/**
+ * Servicio responsable de gestionar la lógica de negocio relacionada con la creación
+ * y modificación de preguntas dentro de una encuesta.
+ *
+ * Este servicio permite crear preguntas de distintos tipos (textuales, numéricas
+ * y de opción múltiple) y actualizar sus atributos siguiendo las reglas establecidas.
+ * También se encarga de validar la corrección de los datos introducidos.
+ *
+ * Cualquier error de validación o regla incumplida se comunica mediante
+ * {@link SurveyException}.
+ *
+ * El servicio no accede directamente a encuestas ni respuestas: únicamente
+ * manipula objetos {@link Question} y {@link MultipleChoiceQuestion}.
+ */
 public class QuestionService {
+    /** Repositorio para almacenar preguntas. */
     private final QuestionRepository questionRepository;
+    /** Controlador del usuario para futuras validaciones de permisos. */
     private final UserController userController;
 
+      /**
+     * Crea una instancia del servicio de preguntas.
+     *
+     * @param questionRepository repositorio de preguntas
+     * @param userController controlador de usuario (por si se requieren permisos)
+     */
     public QuestionService(QuestionRepository questionRepository, UserController userController) {
         this.questionRepository = questionRepository;
         this.userController = userController;
     }
 
+   // ───────────────────────────────────────────────
+    // Creación de preguntas
+    // ───────────────────────────────────────────────
+
     /**
-     * Crea una nueva pregunta textual
+     * Crea una nueva pregunta de tipo textual.
+     *
+     * @param questionIndex índice de la pregunta dentro de la encuesta
+     * @param surveyId identificador de la encuesta
+     * @param questionText texto de la pregunta
+     * @param isRequired indica si la pregunta es obligatoria
+     * @return la pregunta creada
+     * @throws SurveyException si el texto está vacío
      */
     public Question createTextualQuestion(int questionIndex, String surveyId, String questionText, boolean isRequired) {
         if (questionText == null || questionText.trim().isEmpty()) {
@@ -36,7 +68,14 @@ public class QuestionService {
     }
 
     /**
-     * Crea una nueva pregunta numérica
+     * Crea una nueva pregunta numérica.
+     *
+     * @param questionIndex índice de la pregunta dentro de la encuesta
+     * @param surveyId identificador de la encuesta
+     * @param questionText texto de la pregunta
+     * @param isRequired indica si la pregunta es obligatoria
+     * @return la pregunta creada
+     * @throws SurveyException si el texto está vacío
      */
     public Question createNumericalQuestion(int questionIndex, String surveyId, String questionText, boolean isRequired) {
         if (questionText == null || questionText.trim().isEmpty()) {
@@ -52,7 +91,30 @@ public class QuestionService {
     }
 
     /**
-     * Crea una nueva pregunta de opción múltiple
+     * Crea una nueva pregunta de tipo opción múltiple.
+     *
+     * Valida:
+     * <ul>
+     *     <li>Que el texto de la pregunta no esté vacío.</li>
+     *     <li>Que existan al menos dos opciones.</li>
+     *     <li>Que el texto de cada opción sea válido.</li>
+     *     <li>Que los valores minSelections y maxSelections sean coherentes:</li>
+     *     <ul>
+     *         <li>minSelections ≥ 1</li>
+     *         <li>maxSelections ≥ minSelections</li>
+     *         <li>Ambos ≤ número de opciones</li>
+     *     </ul>
+     * </ul>
+     *
+     * @param questionIndex índice dentro de la encuesta
+     * @param surveyId id de la encuesta
+     * @param questionText texto de la pregunta
+     * @param isRequired si es obligatoria
+     * @param minSelections número mínimo de selecciones permitidas
+     * @param maxSelections número máximo de selecciones permitidas
+     * @param optionTexts lista de textos de las opciones
+     * @return objeto {@link MultipleChoiceQuestion} completo
+     * @throws SurveyException si algún valor es inválido
      */
     public MultipleChoiceQuestion createMultipleChoiceQuestion(
             int questionIndex,
@@ -115,8 +177,16 @@ public class QuestionService {
         return mcQuestion;
     }
 
+    // ───────────────────────────────────────────────
+    // Modificaciones de preguntas
+    // ───────────────────────────────────────────────
+
     /**
-     * Actualiza el texto de una pregunta
+     * Actualiza el texto de una pregunta.
+     *
+     * @param question pregunta a modificar
+     * @param newText nuevo texto
+     * @throws SurveyException si el texto es inválido
      */
     public void updateQuestionText(Question question, String newText) {
         if (newText == null || newText.trim().isEmpty()) {
@@ -125,15 +195,22 @@ public class QuestionService {
         question.setQuestionText(newText);
     }
 
-    /**
-     * Cambia el estado de obligatoriedad de una pregunta
+     /**
+     * Alterna el estado de obligatoriedad de una pregunta.
+     *
+     * @param question pregunta a modificar
      */
     public void toggleRequiredStatus(Question question) {
         question.setRequired(!question.isRequired());
     }
 
     /**
-     * Añade una opción a una pregunta de opción múltiple
+     * Añade una opción a una pregunta de opción múltiple/**
+     * Añade una nueva opción a una pregunta de tipo Multiple Choice.
+     *
+     * @param question pregunta de opción múltiple
+     * @param optionText texto de la nueva opción
+     * @throws SurveyException si el texto es inválido
      */
     public void addOption(MultipleChoiceQuestion question, String optionText) {
         if (optionText == null || optionText.trim().isEmpty()) {
@@ -146,7 +223,12 @@ public class QuestionService {
     }
 
     /**
-     * Actualiza una opción existente
+     * Actualiza el texto de una opción existente.
+     *
+     * @param question pregunta a modificar
+     * @param index índice de opción
+     * @param newText nuevo texto
+     * @throws SurveyException si el índice es inválido o el texto vacío
      */
     public void updateOption(MultipleChoiceQuestion question, int index, String newText) {
         if (!question.inRange(index)) {
@@ -163,7 +245,17 @@ public class QuestionService {
     }
 
     /**
-     * Elimina una opción
+     * Elimina una opción de una pregunta de opción múltiple.
+     *
+     * Validaciones:
+     * <ul>
+     *     <li>No se pueden tener menos de 2 opciones.</li>
+     *     <li>No se pueden tener menos opciones que minSelections.</li>
+     *     <li>El índice debe ser válido.</li>
+     * </ul>
+     *
+     * @param question pregunta a modificar
+     * @param index índice de opción a eliminar
      */
     public void removeOption(MultipleChoiceQuestion question, int index) {
         if (question.getOptions().size() <= 2) {
@@ -182,7 +274,9 @@ public class QuestionService {
     }
 
     /**
-     * Actualiza las selecciones mínimas
+     * Actualiza el mínimo de selecciones permitidas.
+     *
+     * @throws SurveyException si el valor es inválido
      */
     public void updateMinSelections(MultipleChoiceQuestion question, int minSelections) {
         try {
@@ -193,7 +287,9 @@ public class QuestionService {
     }
 
     /**
-     * Actualiza las selecciones máximas
+     * Actualiza el máximo de selecciones permitidas.
+     *
+     * @throws SurveyException si el valor es inválido
      */
     public void updateMaxSelections(MultipleChoiceQuestion question, int maxSelections) {
         try {
