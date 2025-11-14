@@ -147,6 +147,8 @@ public class EditorMultipleChoiceOptionsDriver {
 
         System.out.println("Texto actual: " + question.getOption(index).getOptionText());
         System.out.print("Introduce el nuevo texto: ");
+
+        sc.nextLine();
         String newText = sc.nextLine();
 
         try {
