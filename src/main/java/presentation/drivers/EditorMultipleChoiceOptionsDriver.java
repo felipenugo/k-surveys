@@ -71,8 +71,9 @@ public class EditorMultipleChoiceOptionsDriver {
             minSelections = 1;
         }
 
-        System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto 1): ");
-        int maxSelections = sc.nextInt();
+        int maxSelections = numOptions;
+        System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto " + (maxSelections) + "): ");
+        maxSelections = sc.nextInt();
         if (maxSelections < minSelections) {
             maxSelections = minSelections;
         }
