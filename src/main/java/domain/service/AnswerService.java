@@ -28,7 +28,7 @@ import domain.model.User;
  * {@link UserController}.
  */
 public class AnswerService {
-     /** Repositorio encargado de almacenar respuestas individuales. */
+    /** Repositorio encargado de almacenar respuestas individuales. */
     private final AnswerRepository answerRepository;
     /** Controlador para verificar permisos y estado del usuario. */
     private final UserController userController;
