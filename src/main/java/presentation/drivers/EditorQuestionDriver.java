@@ -25,7 +25,9 @@ public class EditorQuestionDriver {
         System.out.println("3. PREGUNTA NUMÉRICA");
         System.out.println("4. CANCELAR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     private int selectEditTextualQuestionMenuOption() {
@@ -34,7 +36,9 @@ public class EditorQuestionDriver {
         System.out.println("2. CAMBIAR SI ES OBLIGATORIA");
         System.out.println("3. GUARDAR Y SALIR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     private int selectEditNumericalQuestionMenuOption() {
@@ -43,7 +47,9 @@ public class EditorQuestionDriver {
         System.out.println("2. CAMBIAR SI ES OBLIGATORIA");
         System.out.println("3. GUARDAR Y SALIR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     private int selectEditMultipleChoiceQuestionMenuOption() {
@@ -53,7 +59,9 @@ public class EditorQuestionDriver {
         System.out.println("3. CAMBIAR SI ES OBLIGATORIA");
         System.out.println("4. GUARDAR Y SALIR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     /**

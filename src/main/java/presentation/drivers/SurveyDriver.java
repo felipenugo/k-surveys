@@ -21,7 +21,9 @@ public class SurveyDriver {
         System.out.println("2. ANALIZAR MIS ENCUESTAS");
         System.out.println("3. VOLVER AL MENÚ PRINCIPAL");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public void surveyMenu() {

@@ -27,7 +27,9 @@ public class EditorMultipleChoiceOptionsDriver {
         System.out.println("7. VER TODAS LAS OPCIONES");
         System.out.println("8. VOLVER");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     /**
@@ -44,6 +46,7 @@ public class EditorMultipleChoiceOptionsDriver {
         // Recoger opciones
         System.out.print("¿Cuántas opciones deseas añadir? (mínimo 2): ");
         int numOptions = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
 
 
         if (numOptions < 2) {
@@ -68,12 +71,14 @@ public class EditorMultipleChoiceOptionsDriver {
         // Configurar selecciones
         System.out.print("\n¿Cuántas selecciones mínimas se requieren? (por defecto 1): ");
         int minSelections = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
         if (minSelections < 1) {
             minSelections = 1;
         }
 
         System.out.print("¿Cuántas selecciones máximas permitirás? (por defecto 1): ");
         int maxSelections = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
         if (maxSelections < minSelections) {
             maxSelections = minSelections;
         }
