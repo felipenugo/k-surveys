@@ -1,2 +1,2 @@
-CERRAR SESIÓN
-SALIR (3)
+4
+3

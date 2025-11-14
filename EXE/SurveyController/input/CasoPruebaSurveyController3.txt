@@ -1,10 +1,8 @@
-CREAR ENCUESTA (2)
+2
 Prueba
 Prueba
-AÑADIR PREGUNTA (4)
+4
 Prueba textual
 S
-PREGUNTA TEXTUAL (1)
-AÑADIR PREGUNTA (4)
-null
-
+1
+4

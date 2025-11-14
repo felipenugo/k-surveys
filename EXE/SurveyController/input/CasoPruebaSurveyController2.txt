@@ -1,8 +1,8 @@
-CREAR ENCUESTA (2)
+2
 Prueba
 Prueba
-EDITAR TÍTULO (2)
+2
 Prueba editado
-EDITAR DESCRIPCIÓN (3)
+3
 Prueba editado
-VER INFO ENCUESTA CREADA (1)
+1
