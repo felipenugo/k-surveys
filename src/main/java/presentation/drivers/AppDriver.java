@@ -1,11 +1,12 @@
 package presentation.drivers;
 
 import domain.controller.*;
+import presentation.driverMain.DriverMain;
 
 import java.util.Scanner;
 
 public class AppDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final SurveyDriver surveyDriver;
     private final CreateSurveyDriver createsurveyDriver;
     private final SessionDriver sessionDriver;

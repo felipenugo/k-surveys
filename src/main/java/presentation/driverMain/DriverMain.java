@@ -9,19 +9,26 @@ import presentation.drivers.*;
 
 public class DriverMain {
 
+    // Scanner estático compartido por toda la aplicación
+    private static final Scanner sc = new Scanner(System.in);
+
+    public static Scanner getScanner() {
+        return sc;
+    }
+
     public static int selectWelcomeMenuOption() {
-        Scanner sc = new Scanner(System.in);
         System.out.println("-----------------------------------");
         System.out.println("--- BIENVENIDO A K-SURVEY ---");
         System.out.println("1. INICIAR SESIÓN");
         System.out.println("2. REGISTRARSE");
         System.out.println("3. SALIR");
         System.out.print("Opción: ");
-        return sc.nextInt();
+        int option = sc.nextInt();
+        sc.nextLine(); // Consumir el salto de línea
+        return option;
     }
 
     public static void main(String[] var0) {
-        Scanner sc = new Scanner(System.in);
         // Initialize repositories
         UserRepository userRepository = new UserRepository();
         SurveyRepository surveyRepository = new SurveyRepository();

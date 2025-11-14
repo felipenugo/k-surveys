@@ -2,13 +2,14 @@ package presentation.drivers;
 
 import domain.controller.QuestionController;
 import domain.model.MultipleChoiceQuestion;
+import presentation.driverMain.DriverMain;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class EditorMultipleChoiceOptionsDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final QuestionController questionController;
 
     public EditorMultipleChoiceOptionsDriver(QuestionController questionController) {

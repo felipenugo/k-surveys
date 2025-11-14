@@ -10,12 +10,13 @@ import domain.exception.SurveyException;
 
 import domain.controller.SurveyController;
 import domain.model.Survey;
+import presentation.driverMain.DriverMain;
 
 public class ResponseDriver {
     private final SurveyController surveyController;
     private final ResponseController responseController;
     private final EditResponseDriver editResponseDriver;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
 
     public ResponseDriver(SurveyController surveyController, ResponseController responseController, EditResponseDriver editResponseDriver) {
         this.surveyController = surveyController;

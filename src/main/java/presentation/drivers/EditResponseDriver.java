@@ -4,6 +4,7 @@ import domain.controller.ResponseController;
 import domain.exception.*;
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
+import presentation.driverMain.DriverMain;
 
 import java.util.Arrays;
 import java.util.InputMismatchException;
@@ -12,7 +13,7 @@ import java.util.List;
 
 public class EditResponseDriver {
     private final ResponseController responseController;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
 
     public EditResponseDriver(ResponseController responseControler) {
         this.responseController = responseControler;

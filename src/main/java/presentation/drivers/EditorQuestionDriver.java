@@ -4,11 +4,12 @@ import domain.controller.QuestionController;
 import domain.model.Question;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.enums.TypeQuestion;
+import presentation.driverMain.DriverMain;
 
 import java.util.Scanner;
 
 public class EditorQuestionDriver {
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private final EditorMultipleChoiceOptionsDriver optionsDriver;
     private final QuestionController questionController;
 

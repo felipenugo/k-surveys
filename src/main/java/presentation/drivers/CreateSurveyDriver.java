@@ -8,6 +8,7 @@ import domain.model.MultipleChoiceQuestion;
 import domain.model.enums.SurveyStatus;
 import domain.model.enums.TypeQuestion;
 import domain.exception.SurveyException;
+import presentation.driverMain.DriverMain;
 
 import java.util.Scanner;
 
@@ -15,7 +16,7 @@ public class CreateSurveyDriver {
     private final SurveyController surveyController;
     private final UserController userController;
     private final EditorQuestionDriver editorQuestionDriver;
-    private final Scanner sc = new Scanner(System.in);
+    private final Scanner sc = DriverMain.getScanner();
     private Survey currentSurvey;
 
     public CreateSurveyDriver(
