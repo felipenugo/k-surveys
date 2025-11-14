@@ -167,7 +167,9 @@ public class EditorMultipleChoiceOptionsDriver {
 
         viewAllOptions(question);
         System.out.print("\nIntroduce el índice de la opción a eliminar (0-" + (question.getOptions().size() - 1) + "): ");
+
         int index = sc.nextInt();
+        sc.nextLine();
 
 
         if (!question.inRange(index)) {
