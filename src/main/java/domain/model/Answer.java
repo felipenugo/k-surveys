@@ -36,7 +36,7 @@ public abstract class Answer {
     public Answer(int QUESTION_INDEX, String RESPONSE_ID, TypeQuestion typeAnswer) {
         this.QUESTION_INDEX = QUESTION_INDEX;
         this.RESPONSE_ID = RESPONSE_ID;
-        this.typeAnswer = typeAnswer; // textual by default
+        this.typeAnswer = typeAnswer;
         this.isAnswered = false;
     }
 
