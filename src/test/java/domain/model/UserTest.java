@@ -1,14 +1,12 @@
-package exclude;
+package domain.model;
 
 import org.junit.Before;
 import org.junit.Test;
 
-import domain.model.User;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
 
-public class TestUser {
+public class UserTest {
 
     private User usuario;
 
