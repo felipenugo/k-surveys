@@ -18,11 +18,14 @@ public class TextualAnswerTest {
 
     @Test
     public void testTextualAnswerCreation(){
+        // Verificamos los atributos heredados
         assertNotNull(textualAnswer);
         assertEquals(QUESTION_INDEX, textualAnswer.getQUESTION_INDEX());
         assertEquals(RESPONSE_ID, textualAnswer.getResponseId());
         assertEquals(TypeQuestion.TEXTUAL, textualAnswer.getTypeAnswer());
         assertFalse(textualAnswer.getIsAnswered());
+
+        // Verificamos los atributos propios de la subclase
         assertEquals("", textualAnswer.getAnswerText());
     }
 

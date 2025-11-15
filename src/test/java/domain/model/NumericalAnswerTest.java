@@ -19,10 +19,14 @@ public class NumericalAnswerTest {
 
     @Test
     public void testNumericalAnswerCreation() {
+        // Verificamos los atributos heredados
         assertNotNull(numericalAnswer);
         assertEquals(QUESTION_INDEX, numericalAnswer.getQUESTION_INDEX());
         assertEquals(RESPONSE_ID, numericalAnswer.getResponseId());
         assertEquals(TypeQuestion.NUMERICAL, numericalAnswer.getTypeAnswer());
+        assertFalse(numericalAnswer.getIsAnswered());
+
+        // Verificamos los atributos propios de la subclase
         assertFalse(numericalAnswer.getIsAnswered());
         assertNull(numericalAnswer.getAnswerNum());
     }
