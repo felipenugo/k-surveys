@@ -20,8 +20,6 @@ import domain.service.UserService;
  * Se utilizan instancias reales de {@link UserService} y {@link UserRepository},
  * siguiendo el estilo PROP (sin mocks). Se validan los principales flujos:
  * registro, login, logout y eliminación de usuarios.
- * 
- * @author Arnau
  */
 public class TestUserController {
 
