@@ -226,10 +226,10 @@ public class Response {
      /**
      * Elimina el contenido de todas las respuestas.
      * 
-     * Actualmente no implementa lógica específica, pero se reserva para
-     * futuras versiones donde se desee limpiar las respuestas del usuario.
+     * @param index índice de la respuesta a borrar
      */
-    public void clearAnswer() {
+    public void clearAnswer(int index) {
+        ANSWERS[index].clearAnswer();
     }
 
     ;
