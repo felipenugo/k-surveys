@@ -67,6 +67,48 @@ public class QualityMetricCalculator {
     }
 
     /**
+     * Calculates the Silhouette Coefficient for a single cluster.
+     *
+     * @param cluster    The cluster for which to calculate the score.
+     * @param analysis   The ClusteringAnalysis object.
+     * @param distance   The DistanceCalculator.
+     * @return The average Silhouette score for the cluster.
+     */
+    public Double calculateSilhouetteForCluster(Cluster cluster, ClusteringAnalysis analysis, DistanceCalculator distance) {
+        List<Cluster> allClusters = analysis.getClusters();
+        List<Response> allResponses = analysis.getResponses();
+        List<Question> questions = analysis.getQuestions();
+
+        if (allClusters.size() <= 1 || cluster.getMembers().isEmpty()) {
+            return 0.0;
+        }
+
+        double totalSilhouette = 0.0;
+        int responseCount = 0;
+
+        Map<String, Response> responseMap = allResponses.stream()
+                .collect(Collectors.toMap(Response::getRESPONSE_ID, r -> r));
+
+        for (ClusterMembership member : cluster.getMembers()) {
+            Response response = responseMap.get(member.getResponseId());
+            if (response == null) continue;
+
+            double ai = calculateCohesion(response, cluster, distance, questions, responseMap);
+            double bi = calculateSeparation(response, allClusters, cluster, distance, questions, responseMap);
+
+            if (ai == 0.0 && bi == 0.0) {
+                continue;
+            }
+
+            double silhouette = (bi - ai) / Math.max(ai, bi);
+            totalSilhouette += silhouette;
+            responseCount++;
+        }
+
+        return responseCount > 0 ? totalSilhouette / responseCount : 0.0;
+    }
+
+    /**
      * Calculates the Calinski-Harabasz Index for a clustering analysis.
      * This index is a ratio of the between-cluster dispersion to the within-cluster dispersion.
      * Higher values generally indicate better clustering.
