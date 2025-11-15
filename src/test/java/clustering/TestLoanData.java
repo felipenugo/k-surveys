@@ -18,10 +18,10 @@ import java.util.Optional;
 public class TestLoanData {
 
     // --- CONFIGURABLE PARAMETERS ---
-    private static final int K = 3;
+    private static final int K = 2;
     private static final DistanceType DISTANCE_TYPE = DistanceType.EUCLIDEAN;
     private static final QualityMetricType QUALITY_TYPE = QualityMetricType.SILHOUETTE;
-    private static final String ALGORITHM = "KMeans"; // Options: "KMeans", "KMeansPlusPlus", "KMedoids"
+    private static final String ALGORITHM = "KMedoids"; // Options: "KMeans", "KMeansPlusPlus", "KMedoids"
     // --------------------------------
 
     private ClusteringAlgorithm clusteringAlgorithm;
@@ -98,34 +98,7 @@ public class TestLoanData {
 
         // Write results to file
         try (FileWriter writer = new FileWriter("clustering_results.txt")) {
-            writer.write("Clustering Results\n");
-            writer.write("==================\n\n");
-            writer.write("Configuration:\n");
-            writer.write("- Algorithm: " + ALGORITHM + "\n");
-            writer.write("- K: " + K + "\n");
-            writer.write("- Distance Type: " + DISTANCE_TYPE + "\n");
-            writer.write("- Quality Metric: " + QUALITY_TYPE + "\n\n");
-
-            writer.write("Clustering Quality:\n");
-            writer.write("- " + QUALITY_TYPE + ": " + quality + "\n\n");
-
-            for (Cluster cluster : analysis.getClusters()) {
-                writer.write("Cluster " + cluster.getId() + "\n");
-                writer.write("----------\n");
-                writer.write("Centroid: " + cluster.getCentroid().toString() + "\n");
-                writer.write("Responses:\n");
-                for (ClusterMembership member : cluster.getMembers()) {
-                    Optional<Response> response = data.stream().filter(r -> r.getRESPONSE_ID().equals(member.getResponseId())).findFirst();
-                    response.ifPresent(r -> {
-                        try {
-                            writer.write("- " + r.getRESPONSE_ID() + "\n");
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-                    });
-                }
-                writer.write("\n");
-            }
+            writer.write(analysis.exportResults());
         }
     }
 }

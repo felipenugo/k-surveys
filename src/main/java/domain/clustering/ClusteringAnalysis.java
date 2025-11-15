@@ -245,6 +245,25 @@ public class ClusteringAnalysis {
         sb.append("- Iterations: ").append(iterations).append("\n");
         sb.append("- Execution Time: ").append(executionTime).append(" ms\n\n");
 
+        // Add general quality metrics
+        sb.append("Overall Quality Metrics:\n");
+        try {
+            sb.append(String.format("- Silhouette Score: %.4f\n", calculateQuality(QualityMetricType.SILHOUETTE)));
+        } catch (IllegalStateException e) {
+            sb.append("- Silhouette Score: Not available (").append(e.getMessage()).append(")\n");
+        }
+        try {
+            sb.append(String.format("- Calinski-Harabasz Score: %.4f\n", calculateQuality(QualityMetricType.CALINSKI_HARABASZ)));
+        } catch (IllegalStateException e) {
+            sb.append("- Calinski-Harabasz Score: Not available (").append(e.getMessage()).append(")\n");
+        }
+        try {
+            sb.append(String.format("- Davies-Bouldin Score: %.4f\n", calculateQuality(QualityMetricType.DAVIES_BOULDIN)));
+        } catch (IllegalStateException e) {
+            sb.append("- Davies-Bouldin Score: Not available (").append(e.getMessage()).append(")\n");
+        }
+        sb.append("\n");
+
         sb.append("Clusters (").append(clusters.size()).append("):\n");
         sb.append("-----------------------------\n");
         for (Cluster cluster : clusters) {
