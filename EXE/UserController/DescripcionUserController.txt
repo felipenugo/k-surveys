@@ -12,14 +12,14 @@ Ficheros de datos necesarios:
     Ninguno.
 
 Valores estudiados:
-    -Registro exitoso con usuario, correo y contraseña validos.
-    -Inicio de sesion con usuario y contraseña validos.
-    -Inicio de sesión con usuario inexistente.
+    -Registro exitoso con usuario, correo y contrasena validos.
+    -Inicio de sesion con usuario y contrasena validos.
+    -Inicio de sesion con usuario inexistente.
     -Comportamiento al escoger una opcion no elegible
     -Registro invalido con correo fuera de formato.
     -Registro invalido con campo correo vacio.
-    -Inicio de sesion invalido con usuario o contraseña vacio.
-    -Inicio de sesion con usuario y contraseña errados.
+    -Inicio de sesion invalido con usuario o contrasena vacio.
+    -Inicio de sesion con usuario y contrasena errados.
     -Registro invalido con usuario ya existente.
     -Cierre correcto de sesion.
 
@@ -31,20 +31,20 @@ Efectos estudiados:
 
 Operativa:
     El programa muestra los comandos disponibles por consola:
-        -INICIAR SESIÓN - Iniciar sesión.
+        -INICIAR SESION - Iniciar sesion.
         -REGISTRARSE - Registrar usuario.
-        -CERRAR SESIÓN - Cerrar sesión.
-        -Intentar inciar sesión de nuevo.
+        -CERRAR SESION - Cerrar sesion.
+        -Intentar inciar sesion de nuevo.
         -Volver al menú principal.
         -SALIR - Salir de la aplicacion.
 
     Para garantizar el funcionamiento:
         1. Ejecute el ejecutable.
         2. Al principio solo podra usar los comandos:
-            -INICIAR SESIÓN [USUARIO] [CONTRASEÑA]
-            -REGISTRARSE [USUARIO] [CORREO] [CONTRASEÑA]
+            -INICIAR SESION [USUARIO] [CONTRASENA]
+            -REGISTRARSE [USUARIO] [CORREO] [CONTRASENA]
             -SALIR 
-        3. Si se hace INICIAR SESIÓN valido.
+        3. Si se hace INICIAR SESION valido.
         4. Solo se podra usar el comando:
-            -CERRAR SESIÓN
+            -CERRAR SESION
         5. Repite comandos hasta que quieras salir.
