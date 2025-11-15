@@ -201,6 +201,27 @@ public class ClusteringAnalysis {
     }
 
     /**
+     * Calculates a quality metric for a specific cluster.
+     *
+     * @param cluster    The cluster to evaluate.
+     * @param metricType The type of metric to calculate.
+     * @return The value of the metric for the cluster.
+     */
+    public Double getClusterQuality(Cluster cluster, QualityMetricType metricType) {
+        if (this.distance == null) {
+            throw new IllegalStateException("Analysis has not been executed yet.");
+        }
+        QualityMetricCalculator calculator = new QualityMetricCalculator();
+        switch (metricType) {
+            case SILHOUETTE:
+                return calculator.calculateSilhouetteForCluster(cluster, this, this.distance);
+            default:
+                // Other metrics might not be applicable on a per-cluster basis
+                return 0.0;
+        }
+    }
+
+    /**
      * Exporta los resultados a un archivo de texto.
      *
      * @return Un String con el contenido del reporte.
@@ -229,6 +250,13 @@ public class ClusteringAnalysis {
         for (Cluster cluster : clusters) {
             sb.append("\nCluster ").append(cluster.getId()).append(" (Size: ").append(cluster.getSize()).append(")\n");
             sb.append("----------\n");
+            // Calculate and display Silhouette score for the cluster
+            try {
+                double silhouette = getClusterQuality(cluster, QualityMetricType.SILHOUETTE);
+                sb.append(String.format("Silhouette Score: %.4f\n", silhouette));
+            } catch (Exception e) {
+                sb.append("Silhouette Score: Not available\n");
+            }
             sb.append("Centroid: ").append(cluster.getCentroid().toString()).append("\n");
             sb.append("Member Response IDs:\n");
             for (ClusterMembership member : cluster.getMembers()) {

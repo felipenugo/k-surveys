@@ -119,6 +119,8 @@ public class CtrlDominioClustering {
         sb.append("--------------------------------------------------\n");
 
         try {
+            // Overall metrics
+            sb.append("Métricas Generales:\n");
             Double silhouette = analysis.calculateQuality(QualityMetricType.SILHOUETTE);
             sb.append(String.format("- Coeficiente de Silhouette: %.4f\n", silhouette));
 
@@ -127,6 +129,14 @@ public class CtrlDominioClustering {
 
             Double davies = analysis.calculateQuality(QualityMetricType.DAVIES_BOULDIN);
             sb.append(String.format("- Índice de Davies-Bouldin: %.4f\n", davies));
+
+            // Per-cluster metrics
+            sb.append("\nMétricas por Cluster:\n");
+            for (Cluster cluster : analysis.getClusters()) {
+                Double clusterSilhouette = analysis.getClusterQuality(cluster, QualityMetricType.SILHOUETTE);
+                sb.append(String.format("- Cluster %s (Tamaño: %d): Coeficiente de Silhouette = %.4f\n",
+                        cluster.getId(), cluster.getSize(), clusterSilhouette));
+            }
 
         } catch (IllegalStateException e) {
             return "Error: El análisis no ha sido ejecutado o no contiene datos suficientes.";
