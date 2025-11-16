@@ -1,3 +1,13 @@
+Temporary folder: Holding files and folders excluded from the final project deliverable.
+
+This folder contains moved items that are not part of the final distribution. Examples include:
+- src/          (original Java sources; now moved to temp to avoid duplication with FONT/)
+- DOCS/         (original documentation backup; DOC/ contains operational docs)
+- FONTS/        (older FONT folder) - kept as a backup
+- run-cli.sh, run-cli.md (CLI wrappers not needed; kept for reference)
+- root index/input/output and other temporary md/txt artifacts
+
+If you want any of these items restored to the main project later, move them out of this folder.
 Huertes Montes, Victor
 Llagostera Garcia, Yeray
 Nuñez Gomez, Felipe Arturo
