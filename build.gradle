@@ -30,6 +30,9 @@ java {
 sourceSets {
     main {
         java {
+            // Use FONT directory as the primary source directory so the repo's layout
+            // follows the provided template (FONT contains the Java source code).
+            srcDirs = ['FONT']
             exclude '**/excluded/**'
         }
     }
@@ -43,6 +46,17 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     testImplementation('junit:junit:4.13.1')
 }
+
+// Task to copy compiled .class files to EXE/classes so they match the template structure
+task copyClassesToExe(type: Copy) {
+    dependsOn classes
+    from('build/classes/java/main')
+    into('EXE/classes')
+    include('**/*.class')
+}
+
+// Ensure the task runs on assemble if desired
+assemble.dependsOn(copyClassesToExe)
 
 // Task para ejecutar con redirección de archivos usando exec
 task runWithFiles(type: JavaExec) {

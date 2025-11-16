@@ -1,0 +1,19 @@
+package domain.controller;
+
+import java.util.List;
+import domain.model.Survey;
+import domain.service.SurveyService;
+
+public class SurveyController {
+    private final SurveyService surveyService;
+
+    public SurveyController(SurveyService surveyService) { this.surveyService = surveyService; }
+    public Survey createSurvey(Survey survey) { return surveyService.createSurvey(survey); }
+    public Survey initializeNewSurvey(String title, String description, String creatorUsername) { return surveyService.initializeNewSurvey(title, description, creatorUsername); }
+    public List<Survey> getSelectedSurveys() { return surveyService.getSelectedSurveys(); }
+    public List<String> getSurveysId() { return surveyService.getSurveysId(); }
+    public Survey getSurvey(String surveyId) { return surveyService.getSurvey(surveyId); }
+    public List<Survey> getMySurveys() { return surveyService.getMySurveys(); }
+    public boolean existsSurvey(String surveyId) { return surveyService.existsSurvey(surveyId); }
+    public void incrementResponseCount(String surveyId) { surveyService.incrementResponseCount(surveyId); }
+}

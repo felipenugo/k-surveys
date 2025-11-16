@@ -1,0 +1,7 @@
+Exceptions used across domain services and controllers.
+
+Files:
+- LogInException.java: Thrown on login-related errors.
+- RegisterException.java: Thrown on registration/validation errors.
+- ResponseException.java: Thrown on response creation/validation issues.
+- SurveyException.java: Thrown when survey creation or manipulation fails.

@@ -1,0 +1,522 @@
+---
+config:
+  theme: redux
+  look: neo
+---
+classDiagram
+direction LR
+    %% ========== CAPA DE DOMINIO ==========
+    
+    class User {
+        - id: String
+        - username: String
+        - email: String
+        - passwordHash: String
+        - createdAt: Date
+        + User(username: String, email: String, password: String)
+        + getId(): String
+        + getUsername(): String
+        + getEmail(): String
+        + setEmail(email: String): void
+        + changePassword(oldPassword: String, newPassword: String): boolean
+        + validatePassword(password: String): boolean
+    }
+
+    %% ========== CONJUNTOS DE PREGUNTAS ==========
+    
+    class QuestionSet {
+        - id: String
+        - title: String
+        - description: String
+        - draft: Boolean
+        - creationDate: Date
+        - creatorId: String
+        - questions: List~Question~
+        + QuestionSet(title: String, description: String, creator: User)
+        + getId(): String
+        + getTitle(): String
+        + setTitle(title: String): void
+        + getDescription(): String
+        + setDescription(description: String): void
+        + isDraft(): Boolean
+        + publish(): void
+        + addQuestion(question: Question): void
+        + removeQuestion(questionId: String): boolean
+        + getQuestion(questionId: String): Question
+        + getQuestions(): List~Question~
+        + reorderQuestions(newOrder: List~String~): void
+        + exportToFile(filePath: String): void
+    }
+
+    class Question {
+        <<abstract>>
+        - id: String
+        - prompt: String
+        - required: Boolean
+        - order: Integer
+        - questionSetId: String
+        + Question(prompt: String, required: Boolean)
+        + getId(): String
+        + getPrompt(): String
+        + setPrompt(prompt: String): void
+        + isRequired(): Boolean
+        + setRequired(required: Boolean): void
+        + getOrder(): Integer
+        + setOrder(order: Integer): void
+        + validate(response: Response): boolean*
+        + createEmptyResponse(): Response*
+        + clone(): Question*
+    }
+
+    class ChoiceQuestion {
+        - options: Set~String~
+        - maxSelections: Integer
+        - minSelections: Integer
+        - allowCustomOption: Boolean
+        - isSingleText: Boolean
+        + ChoiceQuestion(prompt: String, required: Boolean, options: Set~String~)
+        + getOptions(): Set~String~
+        + addOption(optionQuestion: String): void
+        + removeOption(optionQuestion: String): boolean
+        + getMaxSelections(): Integer
+        + setMaxSelections(max: Integer): void
+        + getMinSelections(): Integer
+        + setMinSelections(min: Integer): void
+        + setAsSingleTextInput(): void
+        + isSingleTextInput(): Boolean
+        + validate(response: Response): boolean
+        + createEmptyResponse(): ChoiceResponse
+    }
+
+    class OpenQuestion {
+        - maxLength: Integer
+        - allowedPattern: String
+        - onlyNumbers: Boolean
+        - minValue: Double
+        - maxValue: Double
+        - allowDecimals: Boolean
+        + OpenQuestion(prompt: String, required: Boolean)
+        + getMaxLength(): Integer
+        + setMaxLength(maxLength: Integer): void
+        + setAllowedPattern(pattern: String): void
+        + isNumericOnly(): Boolean
+        + setNumericConstraints(onlyNumbers: Boolean, min: Double, max: Double, decimals: Boolean): void
+        + getMinValue(): Double
+        + getMaxValue(): Double
+        + allowsDecimals(): Boolean
+        + validate(response: Response): boolean
+        + createEmptyResponse(): Response
+    }
+
+    %% ========== RESPUESTAS ==========
+    
+    class ResponseSet {
+        - id: String
+        - questionSetId: String
+        - userId: String
+        - submissionDate: Date
+        - isComplete: Boolean
+        - responses: Map~String, Response~
+        + ResponseSet(questionSet: QuestionSet, user: User)
+        + getId(): String
+        + getQuestionSetId(): String
+        + getUserId(): String
+        + getSubmissionDate(): Date
+        + isComplete(): Boolean
+        + addResponse(questionId: String, response: Response): void
+        + getResponse(questionId: String): Response
+        + getAllResponses(): List~Response~
+        + validate(): boolean
+        + submit(): void
+        + toVector(): Vector~Object~
+    }
+
+    class Response {
+        <<abstract>>
+        - id: String
+        - questionId: String
+        - answered: Boolean
+        - timestamp: Date
+        + Response(questionId: String)
+        + getId(): String
+        + getQuestionId(): String
+        + isAnswered(): Boolean
+        + setAnswered(answered: Boolean): void
+        + getValue(): Object*
+        + setValue(value: Object): void*
+        + isEmpty(): boolean
+        + clone(): Response*
+    }
+
+    class TextResponse {
+        - values: Set~String~
+        + TextResponse(questionId: String)
+        + getValues(): Set~String~
+        + addValue(value: String): void
+        + removeValue(value: String): void
+        + clearValues(): void
+        + getValue(): Set~String~
+        + setValue(values: Set~String~): void
+        + clone(): Response
+        + getSingleValue(): String
+    }
+
+    class NumericResponse {
+        - values: Set~Double~
+        + NumericResponse(questionId: String)
+        + getValues(): Set~Double~
+        + addValue(value: Double): void
+        + removeValue(value: Double): void
+        + clearValues(): void
+        + getValue(): Set~Double~
+        + setValue(values: Set~Double~): void
+        + clone(): Response
+        + getValuesAsInteger(): Set~Integer~
+    }
+
+    %% ========== CLUSTERING ==========
+    
+    class ClusteringAnalysis {
+        - id: String
+        - questionSetId: String
+        - k: Integer
+        - algorithmType: String
+        - executionDate: Date
+        - converged: Boolean
+        - iterations: Integer
+        - executionTime: Long
+        - results: ClusterResults
+        - algorithm: ClusteringAlgorithm
+        + ClusteringAnalysis(questionSet: QuestionSet, k: Integer, algorithm: ClusteringAlgorithm)
+        + getId(): String
+        + getK(): Integer
+        + execute(dataMatrix: Object[][]): void
+        + getResults(): ClusterResults
+        + getClusters(): List~Cluster~
+        + getCluster(clusterId: String): Cluster
+        + hasConverged(): Boolean
+        + getIterations(): Integer
+        + getExecutionTime(): Long
+        + calculateQuality(metricType: QualityMetricType): Double
+        + exportResults(filePath: String): void
+    }
+
+    class ClusterResults {
+        - numClusters: Integer
+        - numResponses: Integer
+        - numFeatures: Integer
+        - clusterAssignments: Integer[]
+        - distances: Double[]
+        - centroidMatrix: Object[][]
+        - dataMatrix: Object[][]
+        - iterations: Integer
+        - converged: Boolean
+        + ClusterResults(k: Integer, numResponses: Integer, numFeatures: Integer)
+        + setClusterAssignment(responseIndex: Integer, clusterIndex: Integer): void
+        + getClusterForResponse(responseIndex: Integer): Integer
+        + getClusterAssignments(): Integer[]
+        + setDistance(responseIndex: Integer, distance: Double): void
+        + getDistanceForResponse(responseIndex: Integer): Double
+        + setCentroid(clusterIndex: Integer, centroid: Object[]): void
+        + getCentroid(clusterIndex: Integer): Object[]
+        + getCentroidMatrix(): Object[][]
+        + setResponseData(responseIndex: Integer, data: Object[]): void
+        + getResponseData(responseIndex: Integer): Object[]
+        + getDataMatrix(): Object[][]
+        + getResponsesInCluster(clusterIndex: Integer): List~Integer~
+        + getNumberOfClusters(): Integer
+        + getK(): Integer
+        + getNumberOfResponses(): Integer
+        + getNumberOfFeatures(): Integer
+        + getIterations(): Integer
+        + setIterations(iterations: Integer): void
+        + hasConverged(): Boolean
+        + isConverged(): Boolean
+        + setConverged(converged: Boolean): void
+    }
+
+    class ClusteringAlgorithm {
+        <<interface>>
+        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults*
+        + getName(): String
+        + getDescription(): String
+    }
+
+    class KMeans {
+        - maxIterations: Integer
+        - tolerance: Double
+        - randomSeed: Long
+        + KMeans(maxIterations: Integer, tolerance: Double)
+        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + getName(): String
+        - initializeCentroids(dataMatrix: Object[][], k: Integer): Object[][]
+        - assignToClusters(dataMatrix: Object[][], centroids: Object[][], distance: DistanceCalculator): Integer[]
+        - updateCentroids(dataMatrix: Object[][], assignments: Integer[], k: Integer): Object[][]
+        - hasConverged(oldCentroids: Object[][], newCentroids: Object[][]): boolean
+    }
+
+    class KMeansPlusPlus {
+        - maxIterations: Integer
+        - tolerance: Double
+        - randomSeed: Long
+        + KMeansPlusPlus(maxIterations: Integer, tolerance: Double)
+        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + getName(): String
+        - initializeCentroidsPlusPlus(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): Object[][]
+    }
+
+    class KMedoids {
+        - maxIterations: Integer
+        - tolerance: Double
+        - randomSeed: Long
+        + KMedoids(maxIterations: Integer, tolerance: Double)
+        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + getName(): String
+        - initializeMedoids(dataMatrix: Object[][], k: Integer): Integer[]
+        - findBestMedoid(dataMatrix: Object[][], clusterIndices: List~Integer~, distance: DistanceCalculator): Integer
+    }
+
+    class Cluster {
+        - id: String
+        - label: String
+        - centroid: Centroid
+        - members: List~ClusterMembership~
+        + Cluster(id: String)
+        + getId(): String
+        + getLabel(): String
+        + setLabel(label: String): void
+        + getCentroid(): Centroid
+        + setCentroid(centroid: Centroid): void
+        + addMember(responseSet: ResponseSet, distance: Double): void
+        + removeMember(responseSetId: String): boolean
+        + getMembers(): List~ClusterMembership~
+        + getSize(): Integer
+        + contains(responseSetId: String): boolean
+        + getAverageDistance(): Double
+        + updateCentroid(questions: List~Question~): void
+    }
+
+    class Centroid {
+        - components: List~Object~
+        - questionIds: List~String~
+        + Centroid(questionIds: List~String~)
+        + getComponents(): List~Object~
+        + setComponent(index: Integer, value: Object): void
+        + getQuestionIds(): List~String~
+        + distanceTo(responseSet: ResponseSet, calculator: DistanceCalculator): Double
+        + clone(): Centroid
+    }
+
+    class ClusterMembership {
+        - responseSetId: String
+        - clusterId: String
+        - distance: Double
+        - assignmentDate: Date
+        + ClusterMembership(responseSet: ResponseSet, cluster: Cluster, distance: Double)
+        + getResponseSetId(): String
+        + getClusterId(): String
+        + getDistance(): Double
+        + setDistance(distance: Double): void
+    }
+
+    %% ========== DISTANCIAS (SIMPLIFICADO) ==========
+    
+    class DistanceCalculator {
+        - distanceType: DistanceType
+        - weights: Map~String, Double~
+        + DistanceCalculator(distanceType: DistanceType)
+        + calculate(rs1: ResponseSet, rs2: ResponseSet, questions: List~Question~): Double
+        + calculateToCentroid(rs: ResponseSet, centroid: Centroid, questions: List~Question~): Double
+        + setWeight(questionId: String, weight: Double): void
+        + getWeights(): Map~String, Double~
+        - calculateLocal(r1: Response, r2: Response, question: Question): Double
+        - calculateNumericDistance(r1: NumericResponse, r2: NumericResponse, question: OpenQuestion): Double
+        - calculateChoiceDistance(r1: ChoiceResponse, r2: ChoiceResponse, question: ChoiceQuestion): Double
+        - calculateJaccardDistance(set1: Set~String~, set2: Set~String~): Double
+        - calculateTextDistance(text1: String, text2: String): Double
+        - normalizeDistance(distance: Double, minDist: Double, maxDist: Double): Double
+    }
+
+    class DistanceType {
+        <<enumeration>>
+        MANHATTAN
+        EUCLIDEAN
+        COSINE
+    }
+
+    %% ========== MÉTRICAS DE CALIDAD ==========
+    
+    class QualityMetricCalculator {
+        + calculateSilhouette(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
+        + calculateCalinskiHarabasz(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
+        + calculateDaviesBouldin(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
+        + interpretScore(metricType: QualityMetricType, score: Double): String
+        - calculateCohesion(responseSet: ResponseSet, cluster: Cluster, distance: DistanceCalculator): Double
+        - calculateSeparation(responseSet: ResponseSet, clusters: List~Cluster~, distance: DistanceCalculator): Double
+    }
+
+    class QualityMetricType {
+        <<enumeration>>
+        SILHOUETTE
+        CALINSKI_HARABASZ
+        DAVIES_BOULDIN
+    }
+
+    %% ========== CONTROLADORES (GESTIÓN) ==========
+    
+    class QuestionSetController {
+        - questionSets: Map~String, QuestionSet~
+        - repository: QuestionSetRepository
+        + createQuestionSet(title: String, description: String, creator: User): QuestionSet
+        + createQuestion(type: String, prompt: String, config: Map~String, Object~): Question
+        + getQuestionSet(id: String): QuestionSet
+        + getAllQuestionSets(): List~QuestionSet~
+        + updateQuestionSet(questionSet: QuestionSet): boolean
+        + deleteQuestionSet(id: String): boolean
+        + publishQuestionSet(id: String): boolean
+        + importFromFile(filePath: String, creator: User): QuestionSet
+        + exportToFile(id: String, filePath: String): void
+    }
+
+    class ResponseController {
+        - responseSets: Map~String, ResponseSet~
+        - repository: ResponseSetRepository
+        + createResponseSet(questionSet: QuestionSet, user: User): ResponseSet
+        + createResponse(question: Question): Response
+        + getResponseSet(id: String): ResponseSet
+        + getResponseSetsByQuestionSet(questionSetId: String): List~ResponseSet~
+        + getResponseSetsByUser(userId: String): List~ResponseSet~
+        + updateResponseSet(responseSet: ResponseSet): boolean
+        + deleteResponseSet(id: String): boolean
+        + submitResponseSet(id: String): boolean
+        + importFromFile(questionSetId: String, filePath: String): List~ResponseSet~
+    }
+
+    class AnalysisController {
+        - analyses: Map~String, ClusteringAnalysis~
+        - repository: AnalysisRepository
+        - metricCalculator: QualityMetricCalculator
+        - responseController: ResponseController
+        + createAnalysis(questionSet: QuestionSet, k: Integer, algorithmType: String, config: Map~String, Object~): ClusteringAnalysis
+        + createAlgorithm(type: String, config: Map~String, Object~): ClusteringAlgorithm
+        + convertResponsesToMatrix(responseSets: List~ResponseSet~, questions: List~Question~): Object[][]
+        + getAnalysis(id: String): ClusteringAnalysis
+        + getAnalysesByQuestionSet(questionSetId: String): List~ClusteringAnalysis~
+        + executeAnalysis(id: String): void
+        + calculateQuality(id: String, metricType: QualityMetricType): Double
+        + deleteAnalysis(id: String): boolean
+        + determineOptimalK(questionSet: QuestionSet, minK: Integer, maxK: Integer): Integer
+        + exportResults(id: String, filePath: String): void
+        + getAvailableAlgorithms(): List~String~
+    }
+
+    class CtrlDominioClustering {
+        - analysisResults: Map~String, ClusterResults~
+        - currentResult: ClusterResults
+        - currentAnalysisId: String
+        - analysisCounter: Integer
+        + CtrlDominioClustering()
+        + crearAlgoritmo(algorithmType: String, maxIterations: Integer, tolerance: Double): ClusteringAlgorithm
+        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String): String
+        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String, maxIterations: Integer, tolerance: Double): String
+        + ejecutarClustering(analysisId: String, algorithmType: String, dataMatrix: Object[][], k: Integer, maxIterations: Integer, tolerance: Double): String
+        + obtenerResultados(analysisId: String): ClusterResults
+        + obtenerResumen(analysisId: String): String
+        + obtenerInfoCluster(analysisId: String, clusterId: Integer): String
+        + listarAnalisis(): List~String~
+        + limpiarAnalisis(): void
+        + getNumeroAnalisis(): Integer
+        - generarAnalysisId(algorithmType: String): String
+    }
+
+    %% ========== REPOSITORIOS ==========
+    
+    class QuestionSetRepository {
+        <<interface>>
+        + save(questionSet: QuestionSet): void
+        + findById(id: String): QuestionSet
+        + findAll(): List~QuestionSet~
+        + update(questionSet: QuestionSet): void
+        + delete(id: String): void
+    }
+
+    class ResponseSetRepository {
+        <<interface>>
+        + save(responseSet: ResponseSet): void
+        + findById(id: String): ResponseSet
+        + findByQuestionSetId(questionSetId: String): List~ResponseSet~
+        + findByUserId(userId: String): List~ResponseSet~
+        + update(responseSet: ResponseSet): void
+        + delete(id: String): void
+    }
+
+    class AnalysisRepository {
+        <<interface>>
+        + save(analysis: ClusteringAnalysis): void
+        + findById(id: String): ClusteringAnalysis
+        + findByQuestionSetId(questionSetId: String): List~ClusteringAnalysis~
+        + update(analysis: ClusteringAnalysis): void
+        + delete(id: String): void
+    }
+
+    %% ========== RELACIONES DE HERENCIA ==========
+    
+    Question <|-- ChoiceQuestion
+    Question <|-- OpenQuestion
+    
+    Response <|-- TextResponse
+    Response <|-- NumericResponse
+    
+    ClusteringAlgorithm <|.. KMeans
+    ClusteringAlgorithm <|.. KMeansPlusPlus
+    ClusteringAlgorithm <|.. KMedoids
+
+    %% ========== RELACIONES DE ASOCIACIÓN ==========
+    
+    %% Gestión de QuestionSets
+    QuestionSet "1" *-- "1..*" Question
+    QuestionSet "1" -- "1" User : createdBy
+    QuestionSetController "1" -- "0..*" QuestionSet : manages
+    QuestionSetController "1" -- "1" QuestionSetRepository : uses
+    
+    %% Gestión de respuestas
+    ResponseSet "1" *-- "0..*" Response
+    ResponseSet "1" -- "1" QuestionSet : responseTo
+    ResponseSet "1" -- "1" User : submittedBy
+    Response "1" -- "1" Question : answersTo
+    ResponseController "1" -- "0..*" ResponseSet : manages
+    ResponseController "1" -- "1" ResponseSetRepository : uses
+    
+    %% Análisis y clustering
+    ClusteringAnalysis "1" -- "1" QuestionSet : analyzes
+    ClusteringAnalysis "1" -- "1" ClusteringAlgorithm : uses
+    ClusteringAnalysis "1" *-- "1" ClusterResults : produces
+    ClusterResults "1" -- "1..*" Cluster : references
+    Cluster "1" *-- "1" Centroid : has
+    Cluster "1" *-- "0..*" ClusterMembership : contains
+    ClusterMembership "1" -- "1" ResponseSet : assigns
+    AnalysisController "1" -- "0..*" ClusteringAnalysis : manages
+    AnalysisController "1" -- "1" AnalysisRepository : uses
+    AnalysisController "1" -- "1" QualityMetricCalculator : uses
+    
+    %% Controlador de clustering directo
+    CtrlDominioClustering "1" -- "0..*" ClusterResults : manages
+    CtrlDominioClustering "1" ..> ClusteringAlgorithm : creates
+    CtrlDominioClustering "1" ..> KMeans : creates
+    CtrlDominioClustering "1" ..> KMeansPlusPlus : creates
+    CtrlDominioClustering "1" ..> KMedoids : creates
+    
+    %% Distancias
+    DistanceCalculator "1" -- "1" DistanceType : uses
+    KMeans "1" -- "1" DistanceCalculator : uses
+    KMeansPlusPlus "1" -- "1" DistanceCalculator : uses
+    KMedoids "1" -- "1" DistanceCalculator : uses
+    
+    %% Métricas
+    QualityMetricCalculator "1" -- "1" QualityMetricType : calculates
+
+    %% ========== NOTAS DE DISEÑO ==========
+    %% note for ChoiceQuestion "isSingleText=true simula\nun campo de texto libre"
+    %% note for OpenQuestion "onlyNumbers=true espera\nNumericResponse, sino ChoiceResponse"
+    %% note for QualityMetricCalculator "Clase de utilidad que calcula\nmúltiples métricas sin jerarquía"
+    %% note for ClusteringAlgorithm "Patrón Strategy para\nintercambiar algoritmos"

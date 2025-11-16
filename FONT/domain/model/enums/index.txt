@@ -1,0 +1,6 @@
+Enums used by domain model classes.
+
+Files:
+- TypeQuestion.java: Enum for the question type (MULTIPLE_CHOICE, TEXTUAL, NUMERICAL, etc.).
+- SurveyStatus.java: Enum for the lifecycle state of a Survey (DRAFT, PUBLISHED, CLOSED, etc.).
+- ResponseStatus.java: Enum for response states (SAVED, SUBMITTED, INVALID, etc.).

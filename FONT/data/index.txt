@@ -1,0 +1,8 @@
+Data layer: repository classes that provide persistence for domain objects.
+
+Files:
+- AnswerRepository.java: CRUD and storage utilities for Answer objects.
+- QuestionRepository.java: CRUD and access for Question objects and question bank.
+- ResponseRepository.java: CRUD and lookup of Response objects for surveys.
+- SurveyRepository.java: Persistence for Survey entities.
+- UserRepository.java: Persistence and lookup for User entities.

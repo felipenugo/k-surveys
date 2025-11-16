@@ -1,0 +1,5 @@
+Presentation layer: interactive drivers and the main driver entry point.
+
+Subfolders:
+- driverMain: Contains the main driver that sets up and launches the application.
+- drivers: Individual drivers that act as CLI drivers for features (surveys, responses, users, etc.).

@@ -1,0 +1,13 @@
+Drivers that exercise the domain using a simple interactive CLI; each driver corresponds to a different feature/test.
+
+Files:
+- AppDriver.java: Contains the top-level application driver that invokes feature drivers.
+- ClusteringDriver.java: Driver that runs clustering-related demos/test-cases.
+- CreateSurveyDriver.java: Demo for survey creation flows.
+- EditResponseDriver.java: Demo for editing responses.
+- EditorMultipleChoiceOptionsDriver.java: Helper/editor for MC options.
+- EditorQuestionDriver.java: Question creation and editing driver.
+- MySurveysDriver.java: Driver to list and manage user's surveys.
+- ResponseDriver.java: Adds and inspects responses.
+- SessionDriver.java: Driver to simulate user sessions.
+- SurveyDriver.java: Driver to inspect and run surveys.

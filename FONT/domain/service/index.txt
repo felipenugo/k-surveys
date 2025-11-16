@@ -1,0 +1,8 @@
+Domain services: Provide business logic and validations for domain entities.
+
+Files:
+- UserService.java: Handles user-related business rules (login, register, edit profile).
+- SurveyService.java: Business rules for creating and managing surveys.
+- QuestionService.java: Business rules for adding and validating questions.
+- AnswerService.java: Business logic for handling different answer types.
+- ResponseService.java: Handles creation and validation of responses.

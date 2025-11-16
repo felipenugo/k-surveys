@@ -1,0 +1,10 @@
+Domain controllers: provide facade-like methods that use services and repositories to implement use cases.
+
+Files:
+- AnalysisController.java: High-level controller that orchestrates clustering analyses.
+- AnswerController.java: Controller for managing answers and answer validation.
+- CtrlDominioClustering.java: Domain controller for clustering-related workflows.
+- QuestionController.java: Controller to manage questions and operations on questions.
+- ResponseController.java: Controller to manage responses and related validation.
+- SurveyController.java: Controller to manage surveys, creation, and lifecycle.
+- UserController.java: Controller for user registration, login, and profile operations.

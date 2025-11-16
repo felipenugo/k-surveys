@@ -1,0 +1,3 @@
+El directorio FONT contiene el código fuente y ejemplos de la aplicación.
+
+Este directorio es una copia de FONTS/ (para mantener compatibilidad con plantillas) y no afecta a la compilación Gradle, cuyo código fuente se sigue encontrando en src/main/java.

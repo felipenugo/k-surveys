@@ -1,0 +1,8 @@
+Domain layer: models, exceptions, services and clustering components.
+
+Subfolders:
+- clustering: Clustering algorithms and analysis helpers.
+- controller: Domain-level controllers that coordinate services and repositories.
+- exception: Domain-specific checked/unchecked exceptions used throughout the domain.
+- model: Domain model classes (Survey, Question, Response, User, Answer, etc.).
+- service: Domain services that implement business logic and validation.

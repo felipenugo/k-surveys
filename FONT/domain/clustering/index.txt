@@ -1,0 +1,16 @@
+Clustering: clustering algorithms, metrics, distance calculator and analysis classes.
+
+Files:
+- Centroid.java: Represents a centroid in clustering algorithms.
+- Cluster.java: Holds cluster members and centroid reference.
+- ClusterMembership.java: Represents the association of a Response with a Cluster.
+- ClusterResults.java: Wrapper containing cluster results and evaluation metrics.
+- ClusteringAlgorithm.java: Interface/abstract class for clustering algorithms.
+- ClusteringAnalysis.java: High-level analysis orchestration and metadata.
+- DistanceCalculator.java: Helper to compute distances using configured DistanceType.
+- DistanceType.java: Enum of available distance metrics (EUCLIDEAN, MANHATTAN).
+- KMeans.java: KMeans clustering implementation.
+- KMeansPlusPlus.java: KMeans++ seeding variant.
+- KMedoids.java: KMedoids algorithm implementation.
+- QualityMetricCalculator.java: Computes quality metrics such as silhouette.
+- QualityMetricType.java: Enum for different metric types (SILHOUETTE, CALINSKI_HARABASZ, DAVIES_BOULDIN)

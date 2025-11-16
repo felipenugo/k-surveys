@@ -19,5 +19,13 @@ Todos los ficheros .txt tienen que ser ortografiamente correctos y sin accentuar
 
 
 
+Proyecto reorganizado para tener un layout similar a la plantilla Java-A3C-PROP-Ejemplo.
+
+Estructura relevante:
+- DATA/: Archivos de datos y ejemplos (ej., loan-test.csv, input.txt, output.txt)
+- DOC/: Documentación del proyecto (copiado desde DOCS/)
+- EXE/: Recursos y despliegues ejecutables
+- FONT/: Código fuente (informativo). El código fuente compilable sigue estando en src/main/java.
+
 Gradle application plugin
 https://docs.gradle.org/current/userguide/application_plugin.html

@@ -1,0 +1,12 @@
+Domain model objects representing core entities in the system (Survey, Question, Response, etc.).
+
+Files:
+- User.java: User entity storing user credentials and metadata.
+- Survey.java: Represents a survey with metadata and questions.
+- Question.java: Base class for questions; concrete subtypes follow.
+- MultipleChoiceQuestion.java, OptionQuestion.java, etc.: Question subtypes.
+- Answer.java: Base class for answers; concrete subtypes include MultipleChoice/Numerical/Textual.
+- Response.java: Represents a user's responses to a survey.
+
+Subfolders:
+- enums: contains domain-specific enums like TypeQuestion, SurveyStatus, ResponseStatus.
