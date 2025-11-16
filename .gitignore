@@ -12,3 +12,5 @@ caches/
 .gradle/
 bin/
 !EXE/**
+!FONT/gradle/wrapper/
+!FONT/gradle/wrapper/**

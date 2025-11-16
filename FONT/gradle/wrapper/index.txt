@@ -1,0 +1,6 @@
+Wrapper de Gradle.
+Archivos necesarios para ejecutar Gradle sin instalación previa.
+
+Archivos:
+- gradle-wrapper.jar: Ejecutable del wrapper
+- gradle-wrapper.properties: Configuración del wrapper (versión, distribución)
