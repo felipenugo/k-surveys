@@ -8,236 +8,226 @@ direction LR
     %% ========== CAPA DE DOMINIO ==========
     
     class User {
-        - id: String
         - username: String
         - email: String
-        - passwordHash: String
-        - createdAt: Date
+        - password: String
+        - createdSurveysId: Set~String~
+        - respondedSurveysId: Map~String, Set~String~~
         + User(username: String, email: String, password: String)
-        + getId(): String
         + getUsername(): String
         + getEmail(): String
         + setEmail(email: String): void
-        + changePassword(oldPassword: String, newPassword: String): boolean
-        + validatePassword(password: String): boolean
+        + getPassword(): String
+        + setPassword(password: String): void
+        + getCreatedSurveysId(): Set~String~
+        + getRespondedSurveysId(): Map~String, Set~String~~
+        + addCreatedSurvey(surveyId: String): void
+        + removeCreatedSurvey(surveyId: String): void
+        + addRespondedSurvey(surveyId: String, responseId: String): void
+        + removeRespondedSurvey(surveyId: String, responseId: String): void
     }
 
-    %% ========== CONJUNTOS DE PREGUNTAS ==========
+    %% ========== ENCUESTAS Y PREGUNTAS ==========
     
-    class QuestionSet {
-        - id: String
+    class Survey {
+        - SURVEY_ID: String
         - title: String
         - description: String
-        - draft: Boolean
-        - creationDate: Date
-        - creatorId: String
+        - CREATOR_USERNAME: String
+        - CREATED_AT: LocalDateTime
+        - PUBLISHED_AT: LocalDateTime
+        - surveyStatus: SurveyStatus
+        - avgRating: Double
+        - views: Integer
         - questions: List~Question~
-        + QuestionSet(title: String, description: String, creator: User)
-        + getId(): String
+        + Survey(surveyId: String, title: String, description: String, creatorUsername: String)
+        + Survey(title: String, description: String, creatorUsername: String)
+        + getSURVEY_ID(): String
         + getTitle(): String
         + setTitle(title: String): void
         + getDescription(): String
         + setDescription(description: String): void
-        + isDraft(): Boolean
-        + publish(): void
-        + addQuestion(question: Question): void
-        + removeQuestion(questionId: String): boolean
-        + getQuestion(questionId: String): Question
+        + getCreatorUsername(): String
+        + getCreatedAt(): LocalDateTime
+        + getPublishedAt(): LocalDateTime
+        + getSurveyStatus(): SurveyStatus
+        + setSurveyStatus(status: SurveyStatus): void
+        + getAvgRating(): Double
+        + setAvgRating(rating: Double): void
+        + getViews(): Integer
+        + incrementViews(): void
         + getQuestions(): List~Question~
-        + reorderQuestions(newOrder: List~String~): void
-        + exportToFile(filePath: String): void
+        + addQuestion(question: Question): void
+        + removeQuestion(questionIndex: Integer): void
+        + getQuestion(questionIndex: Integer): Question
+        + reorderQuestions(newOrder: List~Integer~): void
     }
 
     class Question {
-        <<abstract>>
-        - id: String
-        - prompt: String
-        - required: Boolean
-        - order: Integer
-        - questionSetId: String
-        + Question(prompt: String, required: Boolean)
-        + getId(): String
-        + getPrompt(): String
-        + setPrompt(prompt: String): void
+        - questionIndex: Integer
+        - SURVEY_ID: String
+        - typeQuestion: TypeQuestion
+        - questionText: String
+        - isRequired: Boolean
+        + Question(questionIndex: Integer, surveyId: String)
+        + getQuestionIndex(): Integer
+        + getSURVEY_ID(): String
+        + getTypeQuestion(): TypeQuestion
+        + setTypeQuestion(type: TypeQuestion): void
+        + getQuestionText(): String
+        + setQuestionText(text: String): void
         + isRequired(): Boolean
         + setRequired(required: Boolean): void
-        + getOrder(): Integer
-        + setOrder(order: Integer): void
-        + validate(response: Response): boolean*
-        + createEmptyResponse(): Response*
-        + clone(): Question*
     }
 
-    class ChoiceQuestion {
-        - options: Set~String~
-        - maxSelections: Integer
+    class MultipleChoiceQuestion {
         - minSelections: Integer
-        - allowCustomOption: Boolean
-        - isSingleText: Boolean
-        + ChoiceQuestion(prompt: String, required: Boolean, options: Set~String~)
-        + getOptions(): Set~String~
-        + addOption(optionQuestion: String): void
-        + removeOption(optionQuestion: String): boolean
-        + getMaxSelections(): Integer
-        + setMaxSelections(max: Integer): void
+        - maxSelections: Integer
+        - optionQuestions: List~OptionQuestion~
+        + MultipleChoiceQuestion(questionIndex: Integer, surveyId: String)
         + getMinSelections(): Integer
         + setMinSelections(min: Integer): void
-        + setAsSingleTextInput(): void
-        + isSingleTextInput(): Boolean
-        + validate(response: Response): boolean
-        + createEmptyResponse(): ChoiceResponse
+        + getMaxSelections(): Integer
+        + setMaxSelections(max: Integer): void
+        + getOptions(): List~OptionQuestion~
+        + getOptionsSize(): Integer
+        + addOption(option: OptionQuestion): void
+        + removeOption(optionIndex: Integer): void
+        + getOption(optionIndex: Integer): OptionQuestion
     }
 
-    class OpenQuestion {
-        - maxLength: Integer
-        - allowedPattern: String
-        - onlyNumbers: Boolean
-        - minValue: Double
-        - maxValue: Double
-        - allowDecimals: Boolean
-        + OpenQuestion(prompt: String, required: Boolean)
-        + getMaxLength(): Integer
-        + setMaxLength(maxLength: Integer): void
-        + setAllowedPattern(pattern: String): void
-        + isNumericOnly(): Boolean
-        + setNumericConstraints(onlyNumbers: Boolean, min: Double, max: Double, decimals: Boolean): void
-        + getMinValue(): Double
-        + getMaxValue(): Double
-        + allowsDecimals(): Boolean
-        + validate(response: Response): boolean
-        + createEmptyResponse(): Response
+    class OptionQuestion {
+        - questionIndex: Integer
+        - surveyId: String
+        - optionText: String
+        + OptionQuestion(questionIndex: Integer, surveyId: String)
+        + getQuestionIndex(): Integer
+        + getSurveyId(): String
+        + getOptionText(): String
+        + setOptionText(text: String): void
+        + setQuestionIndex(index: Integer): void
     }
 
     %% ========== RESPUESTAS ==========
     
-    class ResponseSet {
-        - id: String
-        - questionSetId: String
-        - userId: String
-        - submissionDate: Date
-        - isComplete: Boolean
-        - responses: Map~String, Response~
-        + ResponseSet(questionSet: QuestionSet, user: User)
-        + getId(): String
-        + getQuestionSetId(): String
-        + getUserId(): String
-        + getSubmissionDate(): Date
-        + isComplete(): Boolean
-        + addResponse(questionId: String, response: Response): void
-        + getResponse(questionId: String): Response
-        + getAllResponses(): List~Response~
-        + validate(): boolean
-        + submit(): void
-        + toVector(): Vector~Object~
-    }
-
     class Response {
+        - RESPONSE_ID: String
+        - SURVEY_ID: String
+        - RESPONDER_USERNAME: String
+        - responseStatus: ResponseStatus
+        - SUBMITTED_AT: LocalDateTime
+        - ANSWERS: Answer[]
+        + Response(responseId: String, surveyId: String, responderUsername: String, questions: List~Question~)
+        + Response(surveyId: String, responderUsername: String, questions: List~Question~)
+        + getRESPONSE_ID(): String
+        + getSURVEY_ID(): String
+        + getRESPONDER_USERNAME(): String
+        + getResponseStatus(): ResponseStatus
+        + setResponseStatus(status: ResponseStatus): void
+        + getSUBMITTED_AT(): LocalDateTime
+        + setSUBMITTED_AT(time: LocalDateTime): void
+        + getANSWERS(): Answer[]
+        + getAnswer(questionIndex: Integer): Answer
+        + setAnswer(questionIndex: Integer, answer: Answer): void
+        + isComplete(): Boolean
+        + submit(): void
+        + toVector(): Object[]
+    }
+
+    class Answer {
         <<abstract>>
-        - id: String
-        - questionId: String
-        - answered: Boolean
-        - timestamp: Date
-        + Response(questionId: String)
-        + getId(): String
-        + getQuestionId(): String
-        + isAnswered(): Boolean
-        + setAnswered(answered: Boolean): void
-        + getValue(): Object*
-        + setValue(value: Object): void*
-        + isEmpty(): boolean
-        + clone(): Response*
+        - QUESTION_INDEX: Integer
+        - RESPONSE_ID: String
+        - typeAnswer: TypeQuestion
+        - isAnswered: Boolean
+        + Answer(questionIndex: Integer, responseId: String, typeAnswer: TypeQuestion)
+        + getQUESTION_INDEX(): Integer
+        + getResponseId(): String
+        + getTypeAnswer(): TypeQuestion
+        + getIsAnswered(): Boolean
+        + setIsAnswered(answered: Boolean): void
+        + clearAnswer(): void*
     }
 
-    class TextResponse {
-        - values: Set~String~
-        + TextResponse(questionId: String)
-        + getValues(): Set~String~
-        + addValue(value: String): void
-        + removeValue(value: String): void
-        + clearValues(): void
-        + getValue(): Set~String~
-        + setValue(values: Set~String~): void
-        + clone(): Response
-        + getSingleValue(): String
+    class TextualAnswer {
+        - answerText: String
+        + TextualAnswer(questionIndex: Integer, responseId: String)
+        + getAnswerText(): String
+        + setAnswerText(text: String): void
+        + clearAnswer(): void
     }
 
-    class NumericResponse {
-        - values: Set~Double~
-        + NumericResponse(questionId: String)
-        + getValues(): Set~Double~
-        + addValue(value: Double): void
-        + removeValue(value: Double): void
-        + clearValues(): void
-        + getValue(): Set~Double~
-        + setValue(values: Set~Double~): void
-        + clone(): Response
-        + getValuesAsInteger(): Set~Integer~
+    class NumericalAnswer {
+        - answerNum: Double
+        + NumericalAnswer(questionIndex: Integer, responseId: String)
+        + getAnswerNum(): Double
+        + setAnswerNum(value: Double): void
+        + clearAnswer(): void
+    }
+
+    class MultipleChoiceAnswer {
+        - maxOptions: Integer
+        - selectedOptions: Boolean[]
+        + MultipleChoiceAnswer(questionIndex: Integer, responseId: String, maxOptions: Integer)
+        + getMaxOptions(): Integer
+        + getSelectedOptions(): Boolean[]
+        + selectOption(optionIndex: Integer): void
+        + deselectOption(optionIndex: Integer): void
+        + isOptionSelected(optionIndex: Integer): Boolean
+        + getSelectedCount(): Integer
+        + clearAnswer(): void
     }
 
     %% ========== CLUSTERING ==========
     
     class ClusteringAnalysis {
         - id: String
-        - questionSetId: String
+        - surveyId: String
         - k: Integer
         - algorithmType: String
-        - executionDate: Date
+        - analysisDate: LocalDateTime
         - converged: Boolean
         - iterations: Integer
         - executionTime: Long
-        - results: ClusterResults
+        - clusters: List~Cluster~
         - algorithm: ClusteringAlgorithm
-        + ClusteringAnalysis(questionSet: QuestionSet, k: Integer, algorithm: ClusteringAlgorithm)
+        - responses: List~Response~
+        - questions: List~Question~
+        - distance: DistanceCalculator
+        + ClusteringAnalysis(survey: Survey, k: Integer, algorithm: ClusteringAlgorithm)
         + getId(): String
+        + getSurveyId(): String
         + getK(): Integer
-        + execute(dataMatrix: Object[][]): void
-        + getResults(): ClusterResults
+        + getAnalysisDate(): LocalDateTime
+        + execute(responses: List~Response~, questions: List~Question~, distance: DistanceCalculator): void
         + getClusters(): List~Cluster~
         + getCluster(clusterId: String): Cluster
         + hasConverged(): Boolean
         + getIterations(): Integer
         + getExecutionTime(): Long
         + calculateQuality(metricType: QualityMetricType): Double
-        + exportResults(filePath: String): void
+        + getClusterQuality(cluster: Cluster, metricType: QualityMetricType): Double
+        + exportResults(): String
     }
 
     class ClusterResults {
-        - numClusters: Integer
-        - numResponses: Integer
-        - numFeatures: Integer
-        - clusterAssignments: Integer[]
-        - distances: Double[]
-        - centroidMatrix: Object[][]
-        - dataMatrix: Object[][]
+        - clusters: List~Cluster~
         - iterations: Integer
         - converged: Boolean
-        + ClusterResults(k: Integer, numResponses: Integer, numFeatures: Integer)
-        + setClusterAssignment(responseIndex: Integer, clusterIndex: Integer): void
-        + getClusterForResponse(responseIndex: Integer): Integer
-        + getClusterAssignments(): Integer[]
-        + setDistance(responseIndex: Integer, distance: Double): void
-        + getDistanceForResponse(responseIndex: Integer): Double
-        + setCentroid(clusterIndex: Integer, centroid: Object[]): void
-        + getCentroid(clusterIndex: Integer): Object[]
-        + getCentroidMatrix(): Object[][]
-        + setResponseData(responseIndex: Integer, data: Object[]): void
-        + getResponseData(responseIndex: Integer): Object[]
-        + getDataMatrix(): Object[][]
-        + getResponsesInCluster(clusterIndex: Integer): List~Integer~
+        + ClusterResults(clusters: List~Cluster~, iterations: Integer, converged: Boolean)
+        + getClusters(): List~Cluster~
+        + getCluster(clusterIndex: Integer): Cluster
         + getNumberOfClusters(): Integer
         + getK(): Integer
         + getNumberOfResponses(): Integer
-        + getNumberOfFeatures(): Integer
         + getIterations(): Integer
-        + setIterations(iterations: Integer): void
         + hasConverged(): Boolean
-        + isConverged(): Boolean
-        + setConverged(converged: Boolean): void
+        + getClusterAssignments(): Integer[]
     }
 
     class ClusteringAlgorithm {
         <<interface>>
-        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults*
+        + execute(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): ClusterResults*
         + getName(): String
         + getDescription(): String
     }
@@ -247,12 +237,13 @@ direction LR
         - tolerance: Double
         - randomSeed: Long
         + KMeans(maxIterations: Integer, tolerance: Double)
-        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + execute(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): ClusterResults
         + getName(): String
-        - initializeCentroids(dataMatrix: Object[][], k: Integer): Object[][]
-        - assignToClusters(dataMatrix: Object[][], centroids: Object[][], distance: DistanceCalculator): Integer[]
-        - updateCentroids(dataMatrix: Object[][], assignments: Integer[], k: Integer): Object[][]
-        - hasConverged(oldCentroids: Object[][], newCentroids: Object[][]): boolean
+        + getDescription(): String
+        - initializeCentroids(responses: List~Response~, k: Integer): List~Centroid~
+        - assignToClusters(responses: List~Response~, centroids: List~Centroid~, distance: DistanceCalculator): void
+        - updateCentroids(clusters: List~Cluster~, questions: List~Question~): void
+        - hasConverged(oldCentroids: List~Centroid~, newCentroids: List~Centroid~): Boolean
     }
 
     class KMeansPlusPlus {
@@ -260,9 +251,10 @@ direction LR
         - tolerance: Double
         - randomSeed: Long
         + KMeansPlusPlus(maxIterations: Integer, tolerance: Double)
-        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + execute(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): ClusterResults
         + getName(): String
-        - initializeCentroidsPlusPlus(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): Object[][]
+        + getDescription(): String
+        - initializeCentroidsPlusPlus(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): List~Centroid~
     }
 
     class KMedoids {
@@ -270,10 +262,11 @@ direction LR
         - tolerance: Double
         - randomSeed: Long
         + KMedoids(maxIterations: Integer, tolerance: Double)
-        + execute(dataMatrix: Object[][], k: Integer, distance: DistanceCalculator): ClusterResults
+        + execute(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): ClusterResults
         + getName(): String
-        - initializeMedoids(dataMatrix: Object[][], k: Integer): Integer[]
-        - findBestMedoid(dataMatrix: Object[][], clusterIndices: List~Integer~, distance: DistanceCalculator): Integer
+        + getDescription(): String
+        - initializeMedoids(responses: List~Response~, k: Integer): List~Integer~
+        - findBestMedoid(responses: List~Response~, clusterIndices: List~Integer~, distance: DistanceCalculator): Integer
     }
 
     class Cluster {
@@ -287,72 +280,70 @@ direction LR
         + setLabel(label: String): void
         + getCentroid(): Centroid
         + setCentroid(centroid: Centroid): void
-        + addMember(responseSet: ResponseSet, distance: Double): void
-        + removeMember(responseSetId: String): boolean
+        + addMember(response: Response, distance: Double): void
+        + removeMember(responseId: String): Boolean
         + getMembers(): List~ClusterMembership~
         + getSize(): Integer
-        + contains(responseSetId: String): boolean
+        + contains(responseId: String): Boolean
         + getAverageDistance(): Double
-        + updateCentroid(questions: List~Question~): void
     }
 
     class Centroid {
         - components: List~Object~
-        - questionIds: List~String~
-        + Centroid(questionIds: List~String~)
+        + Centroid()
+        + Centroid(components: List~Object~)
         + getComponents(): List~Object~
+        + setComponents(components: List~Object~): void
         + setComponent(index: Integer, value: Object): void
-        + getQuestionIds(): List~String~
-        + distanceTo(responseSet: ResponseSet, calculator: DistanceCalculator): Double
+        + getComponent(index: Integer): Object
+        + size(): Integer
+        + distanceTo(response: Response, questions: List~Question~, calculator: DistanceCalculator): Double
         + clone(): Centroid
     }
 
     class ClusterMembership {
-        - responseSetId: String
+        - responseId: String
         - clusterId: String
         - distance: Double
-        - assignmentDate: Date
-        + ClusterMembership(responseSet: ResponseSet, cluster: Cluster, distance: Double)
-        + getResponseSetId(): String
+        + ClusterMembership(response: Response, cluster: Cluster, distance: Double)
+        + getResponseId(): String
         + getClusterId(): String
         + getDistance(): Double
         + setDistance(distance: Double): void
     }
 
-    %% ========== DISTANCIAS (SIMPLIFICADO) ==========
+    %% ========== DISTANCIAS ==========
     
     class DistanceCalculator {
         - distanceType: DistanceType
-        - weights: Map~String, Double~
         + DistanceCalculator(distanceType: DistanceType)
-        + calculate(rs1: ResponseSet, rs2: ResponseSet, questions: List~Question~): Double
-        + calculateToCentroid(rs: ResponseSet, centroid: Centroid, questions: List~Question~): Double
-        + setWeight(questionId: String, weight: Double): void
-        + getWeights(): Map~String, Double~
-        - calculateLocal(r1: Response, r2: Response, question: Question): Double
-        - calculateNumericDistance(r1: NumericResponse, r2: NumericResponse, question: OpenQuestion): Double
-        - calculateChoiceDistance(r1: ChoiceResponse, r2: ChoiceResponse, question: ChoiceQuestion): Double
-        - calculateJaccardDistance(set1: Set~String~, set2: Set~String~): Double
-        - calculateTextDistance(text1: String, text2: String): Double
+        + calculate(r1: Response, r2: Response, questions: List~Question~): Double
+        + calculateToCentroid(response: Response, centroid: Centroid, questions: List~Question~): Double
+        - calculateAnswerDistance(a1: Answer, a2: Answer, question: Question): Double
+        - calculateNumericDistance(a1: NumericalAnswer, a2: NumericalAnswer): Double
+        - calculateTextualDistance(a1: TextualAnswer, a2: TextualAnswer): Double
+        - calculateMultipleChoiceDistance(a1: MultipleChoiceAnswer, a2: MultipleChoiceAnswer): Double
         - normalizeDistance(distance: Double, minDist: Double, maxDist: Double): Double
     }
 
     class DistanceType {
         <<enumeration>>
-        MANHATTAN
         EUCLIDEAN
+        MANHATTAN
         COSINE
     }
 
     %% ========== MÉTRICAS DE CALIDAD ==========
     
     class QualityMetricCalculator {
-        + calculateSilhouette(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
-        + calculateCalinskiHarabasz(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
-        + calculateDaviesBouldin(analysis: ClusteringAnalysis, distance: DistanceCalculator): Double
+        + QualityMetricCalculator()
+        + calculateSilhouette(analysis: ClusteringAnalysis): Double
+        + calculateCalinskiHarabasz(analysis: ClusteringAnalysis): Double
+        + calculateDaviesBouldin(analysis: ClusteringAnalysis): Double
+        + calculateClusterSilhouette(cluster: Cluster, allClusters: List~Cluster~, distance: DistanceCalculator, responses: List~Response~, questions: List~Question~): Double
         + interpretScore(metricType: QualityMetricType, score: Double): String
-        - calculateCohesion(responseSet: ResponseSet, cluster: Cluster, distance: DistanceCalculator): Double
-        - calculateSeparation(responseSet: ResponseSet, clusters: List~Cluster~, distance: DistanceCalculator): Double
+        - calculateCohesion(cluster: Cluster, distance: DistanceCalculator, responses: List~Response~, questions: List~Question~): Double
+        - calculateSeparation(cluster: Cluster, otherClusters: List~Cluster~, distance: DistanceCalculator, responses: List~Response~, questions: List~Question~): Double
     }
 
     class QualityMetricType {
@@ -362,110 +353,181 @@ direction LR
         DAVIES_BOULDIN
     }
 
+    %% ========== ENUMERACIONES ==========
+    
+    class SurveyStatus {
+        <<enumeration>>
+        DRAFT
+        PUBLISHED
+        CLOSED
+    }
+
+    class ResponseStatus {
+        <<enumeration>>
+        DRAFT
+        SUBMITTED
+    }
+
+    class TypeQuestion {
+        <<enumeration>>
+        TEXTUAL
+        MULTIPLE_CHOICE
+        NUMERICAL
+    }
+
     %% ========== CONTROLADORES (GESTIÓN) ==========
     
-    class QuestionSetController {
-        - questionSets: Map~String, QuestionSet~
-        - repository: QuestionSetRepository
-        + createQuestionSet(title: String, description: String, creator: User): QuestionSet
-        + createQuestion(type: String, prompt: String, config: Map~String, Object~): Question
-        + getQuestionSet(id: String): QuestionSet
-        + getAllQuestionSets(): List~QuestionSet~
-        + updateQuestionSet(questionSet: QuestionSet): boolean
-        + deleteQuestionSet(id: String): boolean
-        + publishQuestionSet(id: String): boolean
-        + importFromFile(filePath: String, creator: User): QuestionSet
-        + exportToFile(id: String, filePath: String): void
+    class SurveyController {
+        - surveyService: SurveyService
+        + SurveyController(surveyService: SurveyService)
+        + createSurvey(survey: Survey): Survey
+        + initializeNewSurvey(title: String, description: String, creatorUsername: String): Survey
+        + getSelectedSurveys(): List~Survey~
+        + getSurveysId(): List~String~
+        + getSurvey(surveyId: String): Survey
+        + getMySurveys(): List~Survey~
+        + existsSurvey(surveyId: String): Boolean
+        + incrementResponseCount(surveyId: String): void
+    }
+
+    class QuestionController {
+        - questionService: QuestionService
+        + QuestionController(questionService: QuestionService)
+        + createQuestion(question: Question): Question
+        + createMultipleChoiceQuestion(questionIndex: Integer, surveyId: String): MultipleChoiceQuestion
+        + getQuestion(surveyId: String, questionIndex: Integer): Question
+        + updateQuestion(question: Question): void
+        + deleteQuestion(surveyId: String, questionIndex: Integer): void
     }
 
     class ResponseController {
-        - responseSets: Map~String, ResponseSet~
-        - repository: ResponseSetRepository
-        + createResponseSet(questionSet: QuestionSet, user: User): ResponseSet
-        + createResponse(question: Question): Response
-        + getResponseSet(id: String): ResponseSet
-        + getResponseSetsByQuestionSet(questionSetId: String): List~ResponseSet~
-        + getResponseSetsByUser(userId: String): List~ResponseSet~
-        + updateResponseSet(responseSet: ResponseSet): boolean
-        + deleteResponseSet(id: String): boolean
-        + submitResponseSet(id: String): boolean
-        + importFromFile(questionSetId: String, filePath: String): List~ResponseSet~
+        - responseService: ResponseService
+        + ResponseController(responseService: ResponseService)
+        + createResponse(response: Response): Response
+        + initializeNewResponse(surveyId: String, responderUsername: String, questions: List~Question~): Response
+        + getResponse(responseId: String): Response
+        + getResponsesBySurveyId(surveyId: String): List~Response~
+        + getResponsesByUser(username: String): List~Response~
+        + updateResponse(response: Response): void
+        + deleteResponse(responseId: String): void
+        + submitResponse(responseId: String): void
+    }
+
+    class AnswerController {
+        - answerService: AnswerService
+        + AnswerController(answerService: AnswerService)
+        + createAnswer(answer: Answer): Answer
+        + getAnswer(responseId: String, questionIndex: Integer): Answer
+        + updateAnswer(answer: Answer): void
+        + clearAnswer(responseId: String, questionIndex: Integer): void
+    }
+
+    class UserController {
+        - userService: UserService
+        + UserController(userService: UserService)
+        + registerUser(user: User): User
+        + loginUser(username: String, password: String): User
+        + getUser(username: String): User
+        + updateUser(user: User): void
+        + deleteUser(username: String): void
     }
 
     class AnalysisController {
         - analyses: Map~String, ClusteringAnalysis~
-        - repository: AnalysisRepository
         - metricCalculator: QualityMetricCalculator
-        - responseController: ResponseController
-        + createAnalysis(questionSet: QuestionSet, k: Integer, algorithmType: String, config: Map~String, Object~): ClusteringAnalysis
+        + AnalysisController()
+        + createAnalysis(survey: Survey, k: Integer, algorithmType: String, config: Map~String, Object~): ClusteringAnalysis
         + createAlgorithm(type: String, config: Map~String, Object~): ClusteringAlgorithm
-        + convertResponsesToMatrix(responseSets: List~ResponseSet~, questions: List~Question~): Object[][]
         + getAnalysis(id: String): ClusteringAnalysis
-        + getAnalysesByQuestionSet(questionSetId: String): List~ClusteringAnalysis~
-        + executeAnalysis(id: String): void
+        + getAnalysesByQuestionSet(surveyId: String): List~ClusteringAnalysis~
+        + executeAnalysis(id: String, responses: List~Response~, questions: List~Question~, distance: DistanceCalculator): void
         + calculateQuality(id: String, metricType: QualityMetricType): Double
-        + deleteAnalysis(id: String): boolean
-        + determineOptimalK(questionSet: QuestionSet, minK: Integer, maxK: Integer): Integer
-        + exportResults(id: String, filePath: String): void
+        + deleteAnalysis(id: String): Boolean
         + getAvailableAlgorithms(): List~String~
     }
 
     class CtrlDominioClustering {
-        - analysisResults: Map~String, ClusterResults~
-        - currentResult: ClusterResults
-        - currentAnalysisId: String
-        - analysisCounter: Integer
-        + CtrlDominioClustering()
-        + crearAlgoritmo(algorithmType: String, maxIterations: Integer, tolerance: Double): ClusteringAlgorithm
-        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String): String
-        + ejecutarClustering(dataMatrix: Object[][], k: Integer, algorithmType: String, maxIterations: Integer, tolerance: Double): String
-        + ejecutarClustering(analysisId: String, algorithmType: String, dataMatrix: Object[][], k: Integer, maxIterations: Integer, tolerance: Double): String
-        + obtenerResultados(analysisId: String): ClusterResults
-        + obtenerResumen(analysisId: String): String
-        + obtenerInfoCluster(analysisId: String, clusterId: Integer): String
+        - analysisController: AnalysisController
+        - responseRepository: ResponseRepository
+        - surveyRepository: SurveyRepository
+        + CtrlDominioClustering(responseRepository: ResponseRepository, surveyRepository: SurveyRepository)
+        + runAnalysis(algorithmName: String, surveyId: String, k: Integer, maxIter: Integer, tolerance: Double, distanceMetric: String): String
+        + exportarAnalisis(analysisId: String, filePath: String): String
+        + obtenerMetricasCalidad(analysisId: String): String
+        + determinarKOptimo(surveyId: String, minK: Integer, maxK: Integer, algorithmName: String): Integer
         + listarAnalisis(): List~String~
-        + limpiarAnalisis(): void
-        + getNumeroAnalisis(): Integer
-        - generarAnalysisId(algorithmType: String): String
+        + obtenerResumenAnalisis(analysisId: String): String
+        + obtenerInfoCluster(analysisId: String, clusterId: String): String
     }
 
     %% ========== REPOSITORIOS ==========
     
-    class QuestionSetRepository {
-        <<interface>>
-        + save(questionSet: QuestionSet): void
-        + findById(id: String): QuestionSet
-        + findAll(): List~QuestionSet~
-        + update(questionSet: QuestionSet): void
-        + delete(id: String): void
+    class SurveyRepository {
+        - surveys: Map~String, Survey~
+        - nextSurveyId: Integer
+        + SurveyRepository()
+        + addSurvey(survey: Survey): void
+        + deleteSurvey(surveyId: String): void
+        + getSurvey(surveyId: String): Survey
+        + getAllSurveys(): List~Survey~
+        + getAllSurveysId(): List~String~
+        + updateSurvey(surveyId: String, updatedSurvey: Survey): void
+        + existsSurvey(surveyId: String): Boolean
+        + generateSurveyId(): String
     }
 
-    class ResponseSetRepository {
-        <<interface>>
-        + save(responseSet: ResponseSet): void
-        + findById(id: String): ResponseSet
-        + findByQuestionSetId(questionSetId: String): List~ResponseSet~
-        + findByUserId(userId: String): List~ResponseSet~
-        + update(responseSet: ResponseSet): void
-        + delete(id: String): void
+    class QuestionRepository {
+        - questions: Map~String, Question~
+        + QuestionRepository()
+        + addQuestion(question: Question): void
+        + deleteQuestion(surveyId: String, questionIndex: Integer): void
+        + getQuestion(surveyId: String, questionIndex: Integer): Question
+        + getQuestionsBySurveyId(surveyId: String): List~Question~
+        + updateQuestion(question: Question): void
     }
 
-    class AnalysisRepository {
-        <<interface>>
-        + save(analysis: ClusteringAnalysis): void
-        + findById(id: String): ClusteringAnalysis
-        + findByQuestionSetId(questionSetId: String): List~ClusteringAnalysis~
-        + update(analysis: ClusteringAnalysis): void
-        + delete(id: String): void
+    class ResponseRepository {
+        - responses: Map~String, Response~
+        - nextResponseId: Integer
+        + ResponseRepository()
+        + addResponse(response: Response): void
+        + deleteResponse(responseId: String): void
+        + getResponse(responseId: String): Response
+        + getResponsesBySurveyId(surveyId: String): List~Response~
+        + getResponsesByUsername(username: String): List~Response~
+        + getAllResponses(): List~Response~
+        + updateResponse(response: Response): void
+        + generateResponseId(): String
+    }
+
+    class AnswerRepository {
+        - answers: Map~String, Answer~
+        + AnswerRepository()
+        + addAnswer(answer: Answer): void
+        + deleteAnswer(responseId: String, questionIndex: Integer): void
+        + getAnswer(responseId: String, questionIndex: Integer): Answer
+        + getAnswersByResponseId(responseId: String): List~Answer~
+        + updateAnswer(answer: Answer): void
+    }
+
+    class UserRepository {
+        - users: Map~String, User~
+        + UserRepository()
+        + addUser(user: User): void
+        + deleteUser(username: String): void
+        + getUser(username: String): User
+        + getAllUsers(): List~User~
+        + updateUser(user: User): void
+        + existsUser(username: String): Boolean
     }
 
     %% ========== RELACIONES DE HERENCIA ==========
     
-    Question <|-- ChoiceQuestion
-    Question <|-- OpenQuestion
+    Question <|-- MultipleChoiceQuestion
     
-    Response <|-- TextResponse
-    Response <|-- NumericResponse
+    Answer <|-- TextualAnswer
+    Answer <|-- NumericalAnswer
+    Answer <|-- MultipleChoiceAnswer
     
     ClusteringAlgorithm <|.. KMeans
     ClusteringAlgorithm <|.. KMeansPlusPlus
@@ -473,38 +535,49 @@ direction LR
 
     %% ========== RELACIONES DE ASOCIACIÓN ==========
     
-    %% Gestión de QuestionSets
-    QuestionSet "1" *-- "1..*" Question
-    QuestionSet "1" -- "1" User : createdBy
-    QuestionSetController "1" -- "0..*" QuestionSet : manages
-    QuestionSetController "1" -- "1" QuestionSetRepository : uses
+    %% Gestión de Surveys
+    Survey "1" -- "1" User : createdBy
+    Survey "1" *-- "1..*" Question : contains
+    SurveyController "1" -- "0..*" Survey : manages
+    SurveyController "1" -- "1" SurveyRepository : uses
+    
+    %% Preguntas de opción múltiple
+    MultipleChoiceQuestion "1" *-- "0..*" OptionQuestion : has
+    QuestionController "1" -- "0..*" Question : manages
+    QuestionController "1" -- "1" QuestionRepository : uses
     
     %% Gestión de respuestas
-    ResponseSet "1" *-- "0..*" Response
-    ResponseSet "1" -- "1" QuestionSet : responseTo
-    ResponseSet "1" -- "1" User : submittedBy
-    Response "1" -- "1" Question : answersTo
-    ResponseController "1" -- "0..*" ResponseSet : manages
-    ResponseController "1" -- "1" ResponseSetRepository : uses
+    Response "1" *-- "0..*" Answer : contains
+    Response "1" -- "1" Survey : responseTo
+    Response "1" -- "1" User : submittedBy
+    Answer "1" -- "1" Question : answersTo
+    ResponseController "1" -- "0..*" Response : manages
+    ResponseController "1" -- "1" ResponseRepository : uses
+    
+    %% Gestión de respuestas individuales
+    AnswerController "1" -- "0..*" Answer : manages
+    AnswerController "1" -- "1" AnswerRepository : uses
+    
+    %% Gestión de usuarios
+    UserController "1" -- "0..*" User : manages
+    UserController "1" -- "1" UserRepository : uses
     
     %% Análisis y clustering
-    ClusteringAnalysis "1" -- "1" QuestionSet : analyzes
+    ClusteringAnalysis "1" -- "1" Survey : analyzes
     ClusteringAnalysis "1" -- "1" ClusteringAlgorithm : uses
-    ClusteringAnalysis "1" *-- "1" ClusterResults : produces
+    ClusteringAnalysis "1" *-- "0..*" Cluster : contains
+    ClusteringAnalysis "1" -- "0..1" ClusterResults : produces
     ClusterResults "1" -- "1..*" Cluster : references
     Cluster "1" *-- "1" Centroid : has
     Cluster "1" *-- "0..*" ClusterMembership : contains
-    ClusterMembership "1" -- "1" ResponseSet : assigns
+    ClusterMembership "1" -- "1" Response : assigns
     AnalysisController "1" -- "0..*" ClusteringAnalysis : manages
-    AnalysisController "1" -- "1" AnalysisRepository : uses
     AnalysisController "1" -- "1" QualityMetricCalculator : uses
     
     %% Controlador de clustering directo
-    CtrlDominioClustering "1" -- "0..*" ClusterResults : manages
-    CtrlDominioClustering "1" ..> ClusteringAlgorithm : creates
-    CtrlDominioClustering "1" ..> KMeans : creates
-    CtrlDominioClustering "1" ..> KMeansPlusPlus : creates
-    CtrlDominioClustering "1" ..> KMedoids : creates
+    CtrlDominioClustering "1" -- "1" AnalysisController : uses
+    CtrlDominioClustering "1" -- "1" ResponseRepository : uses
+    CtrlDominioClustering "1" -- "1" SurveyRepository : uses
     
     %% Distancias
     DistanceCalculator "1" -- "1" DistanceType : uses
@@ -516,7 +589,10 @@ direction LR
     QualityMetricCalculator "1" -- "1" QualityMetricType : calculates
 
     %% ========== NOTAS DE DISEÑO ==========
-    %% note for ChoiceQuestion "isSingleText=true simula\nun campo de texto libre"
-    %% note for OpenQuestion "onlyNumbers=true espera\nNumericResponse, sino ChoiceResponse"
-    %% note for QualityMetricCalculator "Clase de utilidad que calcula\nmúltiples métricas sin jerarquía"
-    %% note for ClusteringAlgorithm "Patrón Strategy para\nintercambiar algoritmos"
+    %% note for MultipleChoiceQuestion "Hereda de Question y contiene lista de OptionQuestion"
+    %% note for Answer "Clase abstracta para respuestas individuales a preguntas"
+    %% note for Response "Contiene array de Answer, una por cada pregunta de la encuesta"
+    %% note for QualityMetricCalculator "Clase de utilidad que calcula múltiples métricas sin jerarquía"
+    %% note for ClusteringAlgorithm "Patrón Strategy para intercambiar algoritmos"
+    %% note for CtrlDominioClustering "Controlador especializado que usa AnalysisController internamente"
+    %% note for SurveyRepository "Repositorios son clases concretas, no interfaces"

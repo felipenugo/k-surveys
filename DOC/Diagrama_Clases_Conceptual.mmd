@@ -7,87 +7,108 @@ classDiagram
 direction LR
     %% ========== USUARIOS ==========
     class User {
-        - id: String
         - username: String
         - email: String
+        - password: String
+        - createdSurveysId: Set~String~
+        - respondedSurveysId: Map~String, Set~String~~
     }
 
-    %% ========== CONJUNTOS DE PREGUNTAS ==========
-    class QuestionSet {
-        - id: String
+    %% ========== CONJUNTOS DE PREGUNTAS (ENCUESTAS) ==========
+    class Survey {
+        - surveyId: String
         - title: String
         - description: String
-        - draft: Boolean
-        - creationDate: Date
+        - creatorUsername: String
+        - createdAt: LocalDateTime
+        - publishedAt: LocalDateTime
+        - surveyStatus: SurveyStatus
+        - avgRating: Double
+        - views: Integer
+        - questions: List~Question~
     }
 
     class Question {
-        <<abstract>>
-        - id: String
-        - prompt: String
-        - required: Boolean
-        - order: Integer
+        - questionIndex: Integer
+        - surveyId: String
+        - typeQuestion: TypeQuestion
+        - questionText: String
+        - isRequired: Boolean
     }
 
-    class ChoiceQuestion {
-        - options: Set~String~
-        - maxSelections: Integer
+    class MultipleChoiceQuestion {
         - minSelections: Integer
+        - maxSelections: Integer
+        - optionQuestions: List~OptionQuestion~
     }
 
-    class OpenQuestion {
-        - maxLength: Integer
-        - onlyNumbers: Boolean
-        - minValue: Double
-        - maxValue: Double
+    class OptionQuestion {
+        - questionIndex: Integer
+        - surveyId: String
+        - optionText: String
     }
 
     %% ========== RESPUESTAS ==========
-    class ResponseSet {
-        - id: String
-        - submissionDate: Date
-        - isComplete: Boolean
-    }
-
     class Response {
+        - responseId: String
+        - surveyId: String
+        - responderUsername: String
+        - responseStatus: ResponseStatus
+        - submittedAt: LocalDateTime
+        - answers: Answer[]
+    }
+
+    class Answer {
         <<abstract>>
-        - id: String
-        - answered: Boolean
+        - questionIndex: Integer
+        - responseId: String
+        - typeAnswer: TypeQuestion
+        - isAnswered: Boolean
     }
 
-    class TextResponse {
-        - values: Set~String~
+    class TextualAnswer {
+        - answerText: String
     }
 
-    class NumericResponse {
-        - values: Set~Double~
+    class NumericalAnswer {
+        - answerNum: Double
+    }
+
+    class MultipleChoiceAnswer {
+        - maxOptions: Integer
+        - selectedOptions: Boolean[]
     }
 
     %% ========== CLUSTERING Y ANÁLISIS ==========
     class ClusteringAnalysis {
         - id: String
+        - surveyId: String
         - k: Integer
         - algorithmType: String
-        - executionDate: Date
+        - analysisDate: LocalDateTime
         - converged: Boolean
         - iterations: Integer
-        - qualityScore: Double
+        - executionTime: Long
+        - clusters: List~Cluster~
     }
 
     class ClusterResults {
-        - clusterAssignments: Integer[]
-        - distances: Double[]
-        - centroidMatrix: Object[][]
-        - dataMatrix: Object[][]
-        + getClusterForResponse(responseIndex: Integer): Integer
-        + getDistanceForResponse(responseIndex: Integer): Double
-        + getCentroid(clusterIndex: Integer): Object[]
-        + getResponseData(responseIndex: Integer): Object[]
-        + getResponsesInCluster(clusterIndex: Integer): Integer[]
+        - clusters: List~Cluster~
+        - iterations: Integer
+        - converged: Boolean
+        + getClusters(): List~Cluster~
+        + getCluster(clusterIndex: Integer): Cluster
+        + getNumberOfClusters(): Integer
+        + getNumberOfResponses(): Integer
+        + getIterations(): Integer
+        + hasConverged(): Boolean
     }
 
     class ClusteringAlgorithm {
         <<interface>>
+        + execute(responses: List~Response~, questions: List~Question~, k: Integer, distance: DistanceCalculator): ClusterResults
+        + getName(): String
+        + getDescription(): String
     }
 
     class KMeans {
@@ -110,6 +131,7 @@ direction LR
         - id: String
         - label: String
         - centroid: Centroid
+        - members: List~ClusterMembership~
     }
 
     class Centroid {
@@ -117,15 +139,52 @@ direction LR
     }
 
     class ClusterMembership {
+        - responseId: String
+        - clusterId: String
         - distance: Double
     }
 
+    %% ========== ENUMERACIONES ==========
+    class SurveyStatus {
+        <<enumeration>>
+        DRAFT
+        PUBLISHED
+        CLOSED
+    }
+
+    class ResponseStatus {
+        <<enumeration>>
+        DRAFT
+        SUBMITTED
+    }
+
+    class TypeQuestion {
+        <<enumeration>>
+        TEXTUAL
+        MULTIPLE_CHOICE
+        NUMERICAL
+    }
+
+    class DistanceType {
+        <<enumeration>>
+        EUCLIDEAN
+        MANHATTAN
+        COSINE
+    }
+
+    class QualityMetricType {
+        <<enumeration>>
+        SILHOUETTE
+        CALINSKI_HARABASZ
+        DAVIES_BOULDIN
+    }
+
     %% ========== RELACIONES DE HERENCIA ==========
-    Question <|-- ChoiceQuestion
-    Question <|-- OpenQuestion
+    Question <|-- MultipleChoiceQuestion
     
-    Response <|-- TextResponse
-    Response <|-- NumericResponse
+    Answer <|-- TextualAnswer
+    Answer <|-- NumericalAnswer
+    Answer <|-- MultipleChoiceAnswer
     
     ClusteringAlgorithm <|.. KMeans
     ClusteringAlgorithm <|.. KMeansPlusPlus
@@ -133,45 +192,51 @@ direction LR
 
     %% ========== RELACIONES DE ASOCIACIÓN ==========
     
-    %% Usuario crea conjuntos de preguntas
-    User "1" -- "0..*" QuestionSet : creates >
+    %% Usuario crea encuestas
+    User "1" -- "0..*" Survey : creates >
     
     %% Usuario responde
-    User "1" -- "0..*" ResponseSet : submits >
+    User "1" -- "0..*" Response : submits >
     
-    %% QuestionSet contiene preguntas
-    QuestionSet "1" *-- "1..*" Question : contains >
+    %% Survey contiene preguntas
+    Survey "1" *-- "1..*" Question : contains >
     
-    %% QuestionSet recibe respuestas
-    QuestionSet "1" -- "0..*" ResponseSet : receives >
+    %% Survey recibe respuestas
+    Survey "1" -- "0..*" Response : receives >
     
-    %% ResponseSet contiene respuestas
-    ResponseSet "1" *-- "0..*" Response : contains >
+    %% MultipleChoiceQuestion contiene opciones
+    MultipleChoiceQuestion "1" *-- "0..*" OptionQuestion : has >
+    
+    %% Response contiene respuestas individuales
+    Response "1" *-- "0..*" Answer : contains >
     
     %% Respuesta corresponde a una pregunta
-    Response "0..*" -- "1" Question : answersTo >
+    Answer "0..*" -- "1" Question : answersTo >
     
-    %% Análisis se realiza sobre un QuestionSet
-    QuestionSet "1" -- "0..*" ClusteringAnalysis : analyzedBy >
+    %% Análisis se realiza sobre una Survey
+    Survey "1" -- "0..*" ClusteringAnalysis : analyzedBy >
     
     %% Análisis usa un algoritmo
     ClusteringAnalysis "1" -- "1" ClusteringAlgorithm : uses >
     
-    %% Análisis produce resultados matriciales
-    ClusteringAnalysis "1" *-- "1" ClusterResults : produces >
+    %% Análisis contiene clusters
+    ClusteringAnalysis "1" *-- "1..*" Cluster : contains >
+    
+    %% Análisis produce resultados
+    ClusteringAnalysis "1" -- "1" ClusterResults : produces >
     
     %% Resultados referencian clusters
     ClusterResults "1" -- "1..*" Cluster : references >
     
-    %% Cluster tiene centroide embebido
+    %% Cluster tiene centroide
     Cluster "1" *-- "1" Centroid : has >
     
-    %% Asignación de ResponseSets a Clusters
-    ResponseSet "0..*" -- "0..1" ClusterMembership : assignedVia >
+    %% Asignación de Responses a Clusters
+    Response "0..*" -- "0..1" ClusterMembership : assignedVia >
     Cluster "1" -- "0..*" ClusterMembership : contains >
 
     %% ========== NOTAS ==========
-    %% note for ChoiceQuestion "Puede tener una sola opción\npara simular texto libre"
-    %% note for OpenQuestion "Si onlyNumbers=true,\nse espera NumericResponse"
-    %% note for ClusteringAnalysis "qualityScore almacena\nla métrica principal (ej: Silhouette)"
+    %% note for MultipleChoiceQuestion "Contiene opciones definidas en OptionQuestion"
+    %% note for Answer "Respuestas individuales a preguntas específicas"
+    %% note for Response "Contiene todas las respuestas de un usuario a una encuesta"
     %% note for ClusteringAlgorithm "Patrón Strategy para\nintercambiar algoritmos"
