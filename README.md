@@ -11,11 +11,10 @@ the whole directory structure that will allow to install your project along with
 
 
 More info
-Los archivos .bin son ignorados por git, para cambiar esto modificar el archivo .gitignore.
-Todos los directorios tienen que contener un fichero index.txt (formato texto plano y sin accentuar)
-describiendo el directorio y todos sus ficheros.
-El index.txt de la raiz del proyecto contiene los nombres y emails de los desarrolladores.
-Todos los ficheros .txt tienen que ser ortografiamente correctos y sin accentuar.
+Los archivos .bin son ignorados por git; para cambiar esto modificar el archivo .gitignore.
+Todos los directorios tienen que contener un fichero index.txt en español describiendo el directorio y todos sus ficheros.
+El index.txt de la raíz del proyecto contiene los nombres y emails de los desarrolladores.
+Los ficheros .txt deben ser ortográficamente correctos (acentuación aceptada en español).
 
 
 
@@ -25,7 +24,7 @@ Estructura relevante:
 - DATA/: Archivos de datos y ejemplos (ej., loan-test.csv, input.txt, output.txt)
 - DOC/: Documentación del proyecto (copiado desde DOCS/)
 - EXE/: Recursos y despliegues ejecutables
-- FONT/: Código fuente (informativo). El código fuente compilable sigue estando en src/main/java.
+- FONT/: Código fuente (contiene las fuentes Java compilables). Nota: el antiguo `src/` fue movido a `temp/` como copia de seguridad.
 
 Gradle application plugin
 https://docs.gradle.org/current/userguide/application_plugin.html
