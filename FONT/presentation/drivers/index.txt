@@ -1,4 +1,4 @@
-Controladores que interactúan con la capa de dominio usando una interfaz de línea de comandos (CLI); cada controlador corresponde a una funcionalidad o caso de prueba.
+Controladores que interactúan con la capa de dominio usando una interfaz de línea de comandos; cada controlador corresponde a una funcionalidad o caso de prueba.
 
 Archivos:
 - AppDriver.java: Controlador principal que orquesta y llama a los controladores de funcionalidad.
