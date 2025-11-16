@@ -1,4 +1,0 @@
-El directorio data representa la capa de datos de la aplicación.
-Se comunica con la capa de dominio (servicios) a través de los repositorios.
-Las clases se encargan del acceso a los datos y no contienen lógica de negocio.
-Las validaciones y reglas de negocio se encuentran en la capa de dominio.

@@ -1,0 +1,7 @@
+Tests unitarios del proyecto.
+Código fuente de las pruebas unitarias en Java.
+
+Carpetas:
+- appMain/: Tests de la aplicación principal
+- clustering/: Tests de algoritmos de clustering
+- domain/: Tests del dominio (controllers, models, clustering)

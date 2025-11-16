@@ -1,0 +1,70 @@
+Objeto de la prueba:
+    -Casos de uso probados:
+        -Editar Respuestas
+        -Enviar Respuestas
+        -Seleccionar encuesta para responder
+        -Mostrar preguntas
+        -Responder pregunta (textual, múltiple opción, numérica)
+        -Ver respuestas
+        -Enviar respuesta
+        -Volver atrás
+    -Clases probadas:
+        -ResponseController
+        -SurveyController (solo lectura de encuestas)
+        -EditResponseDriver
+        -ResponseDriver
+        -Modelos: Question, Answer, TextualAnswer, MultipleChoiceAnswer, NumericalAnswer
+
+Ficheros de datos necesarios:
+    Ninguno.
+    El repositorio interno (SurveyRepository, ResponseRepository, UserRepository) es suficiente para la ejecución de pruebas.
+
+IMPORTANTE: Todos los tests de ResponseDriver incluyen registro+login al inicio.
+El flujo es: Registro → Login automático → Responder Encuestas
+
+Valores estudiados:
+    -El sistema lista las encuestas creadas de manera correcta para poder escoger una y responderla.
+    -Seleccionar encuesta válida.
+    -Seleccionar encuesta inexistente.
+    -Comportamiento al escoger una opción no elegible.
+    -Muestra todas las preguntas de la encuesta correctamente.
+    -Funcionamiento correcto de respuesta a todo tipo de preguntas + correcto funcionamiento de enviar respuesta.
+    -Funcionamiento incorrecto de respuesta a todo tipo de preguntas.
+    -Correcto funcionamiento de VER MIS RESPUESTAS, en caso de no haber respuestas lo dice. En caso contrario las lista.
+
+Efectos estudiados:
+    Transiciones del estado de la respuesta
+        - Inicio de respuesta
+        - Responder preguntas
+        - Guardar respuestas
+        - Enviar respuesta (finalizar)
+
+    Manejo correcto de errores y excepciones:
+        - SurveyException
+        - ResponseException
+        - InputMismatchException
+
+    Flujo completo de la aplicación mediante entrada por consola, verificando que:
+        - Los menús funcionan correctamente
+        - Los bucles de interacción no se rompen
+        - Se permiten reintentos cuando procede
+        - Se vuelve a los menús superiores cuando corresponde
+
+Operativa:
+    El programa muestra los comandos disponibles para gestionar respuestas:
+        Desde ResponseDriver:
+            1. Seleccionar encuesta para responder
+            2. Volver atrás
+
+        Desde EditResponseDriver:
+            1. Ver mis respuestas
+            2. Responder pregunta
+            3. Ver estado de respuestas
+            4. Enviar respuesta
+            0. Volver atrás
+
+    Para garantizar el funcionamiento:
+        1. Ejecute el driver.
+        2. Seleccione una encuesta para responder.
+        3. Use las opciones del menú para responder preguntas.
+        4. Envíe la respuesta cuando esté completa.

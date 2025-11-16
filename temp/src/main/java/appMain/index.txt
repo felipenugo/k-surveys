@@ -1,5 +1,0 @@
-El directorio appMain contiene el punto de entrada (si existe) y clases auxiliares para ejecución local y pruebas.
-
-Archivos:
-- Main.java: Clase de arranque de la aplicación (si presente en el proyecto original).
-- Otros drivers de ejemplo y clases para pruebas locales.

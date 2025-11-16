@@ -1,5 +1,3 @@
-FONT/.gradle
-FONT/.idea
 build
 build/
 *.class
@@ -12,5 +10,5 @@ daemon/
 caches/
 .idea/
 .gradle/
-
 bin/
+!EXE/**

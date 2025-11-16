@@ -1,1 +1,5 @@
-El directorio DOCS contiene la documentacion del proyecto.
+El directorio DOC contiene la documentación del proyecto.
+
+javadoc/                        Documentación JavaDoc generada con diagramas UML (generar con: cd FONT && ./gradlew javadoc)
+Diagrama_Clases_Conceptual.mmd  Diagrama de clases conceptual en formato Mermaid
+Diagrama_Clases_Diseno.mmd      Diagrama de clases de diseño en formato Mermaid

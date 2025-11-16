@@ -11,6 +11,10 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+/**
+ * Implementación del algoritmo K-Means con enfoque híbrido.
+ * Utiliza centroides numéricos para preguntas de opción múltiple y medoides para preguntas textuales.
+ */
 public class KMeans implements ClusteringAlgorithm {
 
     private int maxIterations;
@@ -18,6 +22,13 @@ public class KMeans implements ClusteringAlgorithm {
     private long randomSeed;
     private Random random;
 
+    /**
+     * Constructor con parámetros personalizados.
+     *
+     * @param maxIterations Número máximo de iteraciones permitidas
+     * @param tolerance Umbral de convergencia
+     * @throws IllegalArgumentException si los parámetros no son válidos
+     */
     public KMeans(int maxIterations, double tolerance) {
         if (maxIterations <= 0) {
             throw new IllegalArgumentException("maxIterations debe ser mayor que 0");
@@ -31,10 +42,19 @@ public class KMeans implements ClusteringAlgorithm {
         this.random = new Random(randomSeed);
     }
 
+    /**
+     * Constructor por defecto con valores estándar.
+     * Configura 100 iteraciones máximas y tolerancia de 1e-4.
+     */
     public KMeans() {
         this(100, 1e-4);
     }
 
+    /**
+     * Establece la semilla aleatoria para reproducibilidad.
+     *
+     * @param seed Semilla para el generador de números aleatorios
+     */
     public void setRandomSeed(long seed) {
         this.randomSeed = seed;
         this.random = new Random(seed);
@@ -81,6 +101,14 @@ public class KMeans implements ClusteringAlgorithm {
         return new ClusterResults(finalClusters, iteration, converged);
     }
 
+    /**
+     * Inicializa centroides seleccionando k respuestas aleatorias.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param k Número de clusters
+     * @return Lista de centroides inicializados
+     */
     private List<Centroid> initializeCentroids(List<Response> responses, List<Question> questions, int k) {
         List<Centroid> centroids = new ArrayList<>();
         int numQuestions = questions.size();
@@ -104,6 +132,12 @@ public class KMeans implements ClusteringAlgorithm {
         return centroids;
     }
 
+    /**
+     * Verifica si una respuesta ha sido contestada.
+     *
+     * @param a Respuesta a verificar
+     * @return true si la respuesta contiene datos válidos
+     */
     private boolean isAnswered(Answer a) {
         if (a == null) return false;
         if (a instanceof MultipleChoiceAnswer) {
@@ -122,8 +156,16 @@ public class KMeans implements ClusteringAlgorithm {
         return false;
     }
 
+    /**
+     * Extrae el valor numérico o textual de una respuesta.
+     *
+     * @param a Respuesta a procesar
+     * @param q Pregunta asociada
+     * @return Valor de la respuesta (double[] o String)
+     */
     private Object getAnswerValue(Answer a, Question q) {
         if (!isAnswered(a)) return null;
+
         try {
             if (q instanceof MultipleChoiceQuestion) {
                 boolean[] val = ((MultipleChoiceAnswer) a).getSelectedOptions();
@@ -141,6 +183,15 @@ public class KMeans implements ClusteringAlgorithm {
         return null;
     }
 
+    /**
+     * Asigna cada respuesta al cluster más cercano.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param centroids Lista de centroides
+     * @param distance Calculadora de distancia
+     * @return Array de asignaciones de cluster
+     */
     private Integer[] assignToClusters(List<Response> responses, List<Question> questions,
                                        List<Centroid> centroids, DistanceCalculator distance) {
         Integer[] assignments = new Integer[responses.size()];
@@ -160,6 +211,16 @@ public class KMeans implements ClusteringAlgorithm {
         return assignments;
     }
 
+    /**
+     * Recalcula los centroides basándose en las asignaciones actuales.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param k Número de clusters
+     * @param distance Calculadora de distancia
+     * @return Lista de centroides actualizados
+     */
     private List<Centroid> updateCentroids(List<Response> responses, List<Question> questions,
                                            Integer[] assignments, int k, DistanceCalculator distance) {
         int numQuestions = questions.size();
@@ -180,6 +241,7 @@ public class KMeans implements ClusteringAlgorithm {
                 Question q = questions.get(qIdx);
                 Answer a = r.getAnswer(q.getQuestionIndex());
                 if (!isAnswered(a)) continue;
+
                 try {
                     if (q instanceof MultipleChoiceQuestion) {
                         choiceSums.putIfAbsent(clusterIdx, new double[numQuestions][]);
@@ -202,7 +264,7 @@ public class KMeans implements ClusteringAlgorithm {
                         numericalValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
                         numericalValues.get(clusterIdx).get(qIdx).add(((NumericalAnswer) a).getAnswerNum());
                     }
-                } catch (Exception e) { }
+                } catch (Exception e) { /* Ignorar este dato si hay error */ }
             }
         }
 
@@ -244,6 +306,15 @@ public class KMeans implements ClusteringAlgorithm {
         return newCentroids;
     }
 
+    /**
+     * Verifica si el algoritmo ha convergido.
+     *
+     * @param oldCentroids Centroides de la iteración anterior
+     * @param newCentroids Centroides de la iteración actual
+     * @param questions Lista de preguntas
+     * @param distance Calculadora de distancia
+     * @return true si la diferencia es menor que la tolerancia
+     */
     private boolean hasConverged(List<Centroid> oldCentroids, List<Centroid> newCentroids, List<Question> questions, DistanceCalculator distance) {
         double totalMovement = 0.0;
         for (int i = 0; i < oldCentroids.size(); i++) {
@@ -253,27 +324,37 @@ public class KMeans implements ClusteringAlgorithm {
             for (int qIdx = 0; qIdx < questions.size(); qIdx++) {
                 Object oldComp = oldC.getComponent(qIdx);
                 Object newComp = newC.getComponent(qIdx);
+
                 if (oldComp == null || newComp == null) {
                     if (oldComp != newComp) centroidDiff += 1.0;
                     continue;
                 }
                 try {
-                    if (oldComp instanceof double[]) {
+                    if (oldComp instanceof double[]) { // Choice
                         double[] oldV = (double[]) oldComp;
                         double[] newV = (double[]) newComp;
                         centroidDiff += distance.euclideanDistance(oldV, newV);
-                    } else if (oldComp instanceof String) {
+                    } else if (oldComp instanceof String) { // Text
                         centroidDiff += distance.calculateTextDistance((String) oldComp, (String) newComp);
-                    } else if (oldComp instanceof Double) {
+                    } else if (oldComp instanceof Double) { // Numerical
                         centroidDiff += Math.abs((Double) oldComp - (Double) newComp);
                     }
-                } catch (Exception e) { centroidDiff += 1.0; }
+                } catch (Exception e) {
+                    centroidDiff += 1.0;
+                }
             }
             totalMovement += centroidDiff;
         }
         return totalMovement < tolerance;
     }
 
+    /**
+     * Encuentra el medoide (texto más representativo) en un conjunto de textos.
+     *
+     * @param texts Lista de textos
+     * @param distance Calculadora de distancia
+     * @return El texto medoide
+     */
     private String findTextMedoid(List<String> texts, DistanceCalculator distance) {
         if (texts == null || texts.isEmpty()) return null;
         double minTotalDistance = Double.MAX_VALUE;
@@ -291,6 +372,16 @@ public class KMeans implements ClusteringAlgorithm {
         return bestMedoid;
     }
 
+    /**
+     * Crea la estructura final de clusters con sus miembros.
+     *
+     * @param responses Lista de respuestas
+     * @param questions Lista de preguntas
+     * @param assignments Asignaciones de cluster
+     * @param centroids Lista de centroides
+     * @param distance Calculadora de distancia
+     * @return Lista de objetos Cluster
+     */
     private List<Cluster> createClusters(List<Response> responses, List<Question> questions,
                                          Integer[] assignments, List<Centroid> centroids,
                                          DistanceCalculator distance) {

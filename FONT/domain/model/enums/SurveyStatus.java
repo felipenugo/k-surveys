@@ -1,3 +1,10 @@
 package domain.model.enums;
 
-public enum SurveyStatus { DRAFT, PUBLISHED, CLOSED }
+/**
+ * Estados posibles de una encuesta: borrador, publicada o cerrada.
+ */
+public enum SurveyStatus {
+    DRAFT,
+    PUBLISHED,
+    CLOSED
+}

@@ -1,0 +1,15 @@
+Tests de SurveyDriver - Creación y gestión de encuestas.
+
+Archivos:
+- DescripcionSurveyDriver.txt: Documentación detallada de los casos de uso
+- input/test1_crear_encuesta_vacia.txt: Crear encuesta con campos vacíos y validación
+- input/test2_editar_titulo_descripcion.txt: Editar título y descripción de encuesta
+- input/test3_anadir_pregunta_textual.txt: Añadir pregunta textual válida e inválida
+- input/test4_anadir_pregunta_multiple_choice.txt: Añadir pregunta de múltiple opción con validaciones
+- input/test5_anadir_pregunta_numerica.txt: Añadir pregunta numérica
+- input/test6_editar_pregunta.txt: Editar preguntas con índices válidos e inválidos
+- input/test7_eliminar_pregunta.txt: Cancelar y confirmar eliminación de preguntas
+- input/test8_reordenar_preguntas.txt: Reordenar preguntas con diferentes índices
+- input/test9_ver_preguntas.txt: Ver lista de preguntas antes y después de añadir
+- input/test10_publicar_encuesta.txt: Publicar encuesta con y sin preguntas
+- output/: Archivos de salida generados por los tests

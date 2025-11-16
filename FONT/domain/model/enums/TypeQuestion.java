@@ -1,3 +1,10 @@
 package domain.model.enums;
 
-public enum TypeQuestion { MULTIPLE_CHOICE, TEXTUAL, NUMERICAL }
+/**
+ * Tipos de preguntas disponibles: opción múltiple, textual o numérica.
+ */
+public enum TypeQuestion  {
+    MULTIPLE_CHOICE,
+    TEXTUAL,
+    NUMERICAL
+}

@@ -1,1 +1,0 @@
-El directorio img contiene las imagenes utilizadas en la aplicacion.

@@ -1,0 +1,2 @@
+Tests de modelos de dominio.
+Pruebas unitarias de las entidades y modelos del dominio.

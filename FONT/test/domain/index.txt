@@ -1,0 +1,7 @@
+Tests del dominio.
+Pruebas unitarias de la lógica de dominio.
+
+Carpetas:
+- clustering/: Tests de clustering de dominio
+- controller/: Tests de controladores
+- model/: Tests de modelos de dominio

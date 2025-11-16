@@ -287,4 +287,89 @@ public class EditorQuestionDriver {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+    /**
+     * Método main para pruebas independientes del EditorQuestionDriver.
+     * Permite probar la creación y edición de preguntas.
+     */
+    public static void main(String[] args) {
+        // Inicializar repositorios
+        data.UserRepository userRepository = new data.UserRepository();
+        data.QuestionRepository questionRepository = new data.QuestionRepository();
+        data.SurveyRepository surveyRepository = new data.SurveyRepository();
+        
+        // Inicializar servicios
+        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.controller.UserController userController = new domain.controller.UserController(userService);
+        domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
+        
+        // Inicializar controladores
+        domain.controller.QuestionController questionController = new domain.controller.QuestionController(questionService);
+        domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
+        
+        // Crear driver
+        EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
+        
+        System.out.println("=== PRUEBA EDITORQUESTIONDRIVER ===");
+        System.out.println("Este driver permite crear y editar preguntas para encuestas.");
+        System.out.println("Nota: Para usar esta funcionalidad necesitas tener un usuario logueado y una encuesta creada.\n");
+        
+        // Simular login
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce tu nombre de usuario: ");
+        String username = scanner.nextLine();
+        System.out.print("Introduce tu contraseña: ");
+        String password = scanner.nextLine();
+        
+        try {
+            userController.loginUser(username, password);
+            System.out.println("Login exitoso.\n");
+            
+            // Solicitar ID de encuesta para crear preguntas
+            System.out.print("Introduce el ID de la encuesta donde crear preguntas: ");
+            String surveyId = scanner.nextLine();
+            
+            // Verificar que la encuesta existe
+            if (surveyController.getSurvey(surveyId) != null) {
+                boolean continuar = true;
+                int questionIndex = 0;
+                
+                while (continuar) {
+                    System.out.println("\n--- MENÚ DE PRUEBA ---");
+                    System.out.println("1. Crear nueva pregunta");
+                    System.out.println("2. Editar pregunta existente");
+                    System.out.println("0. Salir");
+                    System.out.print("Opción: ");
+                    
+                    String opcion = scanner.nextLine();
+                    
+                    switch (opcion) {
+                        case "1" -> {
+                            Question newQuestion = editorQuestionDriver.createQuestion(surveyId, questionIndex);
+                            if (newQuestion != null) {
+                                System.out.println("Pregunta creada exitosamente.");
+                                questionIndex++;
+                            }
+                        }
+                        case "2" -> {
+                            System.out.println("Funcionalidad de edición disponible dentro del flujo de creación de encuestas.");
+                            System.out.println("Esta es una prueba simplificada del driver.");
+                        }
+                        case "0" -> continuar = false;
+                        default -> System.out.println("Opción no válida.");
+                    }
+                }
+            } else {
+                System.out.println("La encuesta con ID '" + surveyId + "' no existe.");
+            }
+            
+        } catch (domain.exception.LogInException e) {
+            System.out.println("Error al iniciar sesión: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        scanner.close();
+    }
 }

@@ -1,0 +1,2 @@
+Tests de clustering a nivel de dominio.
+Pruebas de integración de los algoritmos de clustering con el dominio.

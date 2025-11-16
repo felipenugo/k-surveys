@@ -1,0 +1,16 @@
+index.txt for AppDriver tests
+
+Tests de AppDriver - Menú principal de la aplicación.
+
+Archivos:
+- DescripcionAppDriver.txt: Documentación detallada de los casos de uso
+- input/test1_logout.txt: Test de cierre de sesión
+- input/test1_responder_encuestas.txt: Acceder al módulo de responder/analizar encuestas
+- input/test2_crear_encuesta.txt: Acceder al módulo de crear encuestas
+- input/test2_create_survey.txt: Crear encuesta desde el menú principal
+- input/test3_cerrar_sesion.txt: Cerrar sesión correctamente
+- input/test3_view_surveys.txt: Ver encuestas disponibles
+- input/test4_invalid_option.txt: Opción inválida del menú
+- input/test4_opcion_invalida.txt: Comportamiento con opción inválida
+- output/: Archivos de salida generados por los tests
+

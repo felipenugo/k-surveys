@@ -255,4 +255,87 @@ public class EditorMultipleChoiceOptionsDriver {
         }
         System.out.println("========================================");
     }
+
+    /**
+     * Método main para pruebas independientes del EditorMultipleChoiceOptionsDriver.
+     * Permite probar la creación y edición de preguntas de opción múltiple.
+     */
+    public static void main(String[] args) {
+        // Inicializar repositorios
+        data.UserRepository userRepository = new data.UserRepository();
+        data.QuestionRepository questionRepository = new data.QuestionRepository();
+        data.SurveyRepository surveyRepository = new data.SurveyRepository();
+        
+        // Inicializar servicios
+        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.controller.UserController userController = new domain.controller.UserController(userService);
+        domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
+        
+        // Inicializar controladores
+        domain.controller.QuestionController questionController = new domain.controller.QuestionController(questionService);
+        domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
+        
+        // Crear driver
+        EditorMultipleChoiceOptionsDriver optionsDriver = new EditorMultipleChoiceOptionsDriver(questionController);
+        
+        System.out.println("=== PRUEBA EDITORMULTIPLECHOICEOPTIONSDRIVER ===");
+        System.out.println("Este driver permite crear y editar preguntas de opción múltiple.");
+        System.out.println("Nota: Para usar esta funcionalidad necesitas tener un usuario logueado y una encuesta creada.\n");
+        
+        // Simular login
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Introduce tu nombre de usuario: ");
+        String username = scanner.nextLine();
+        System.out.print("Introduce tu contraseña: ");
+        String password = scanner.nextLine();
+        
+        try {
+            userController.loginUser(username, password);
+            System.out.println("Login exitoso.\n");
+            
+            // Solicitar ID de encuesta para crear preguntas
+            System.out.print("Introduce el ID de la encuesta donde crear preguntas: ");
+            String surveyId = scanner.nextLine();
+            
+            // Verificar que la encuesta existe
+            if (surveyController.getSurvey(surveyId) != null) {
+                System.out.println("\n--- CREAR PREGUNTA DE OPCIÓN MÚLTIPLE ---");
+                System.out.print("Introduce el texto de la pregunta: ");
+                String questionText = scanner.nextLine();
+                
+                System.out.print("¿La pregunta es obligatoria? (S/N): ");
+                boolean isRequired = scanner.nextLine().equalsIgnoreCase("S");
+                
+                // Crear pregunta de opción múltiple
+                MultipleChoiceQuestion newQuestion = optionsDriver.createMultipleChoiceQuestion(
+                    0, surveyId, questionText, isRequired);
+                
+                if (newQuestion != null) {
+                    System.out.println("\n¡Pregunta de opción múltiple creada exitosamente!");
+                    System.out.println("Texto: " + newQuestion.getQuestionText());
+                    System.out.println("Opciones: " + newQuestion.getOptions().size());
+                    System.out.println("Selecciones: " + newQuestion.getMinSelections() + "-" + newQuestion.getMaxSelections());
+                    
+                    // Preguntar si desea editar las opciones
+                    System.out.print("\n¿Deseas editar las opciones? (S/N): ");
+                    if (scanner.nextLine().equalsIgnoreCase("S")) {
+                        optionsDriver.editOptionsMenu(newQuestion);
+                        System.out.println("\nEdición completada.");
+                    }
+                } else {
+                    System.out.println("\nNo se pudo crear la pregunta.");
+                }
+            } else {
+                System.out.println("La encuesta con ID '" + surveyId + "' no existe.");
+            }
+            
+        } catch (domain.exception.LogInException e) {
+            System.out.println("Error al iniciar sesión: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        
+        scanner.close();
+    }
 }

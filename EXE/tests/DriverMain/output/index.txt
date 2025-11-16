@@ -1,0 +1,8 @@
+Archivos de salida generados de los tests del DriverMain.
+
+Archivos:
+- output1.txt: Salida del test1_register_and_exit.txt (registro y salida)
+- output2.txt: Salida del test2_register_login_logout.txt (registro, login y logout)
+- output3.txt: Salida del test3_login_create_survey_logout.txt (login, crear encuesta y logout)
+- output4.txt: Salida del test4_multiple_users.txt (múltiples usuarios)
+- output5.txt: Salida del test5_invalid_option.txt (opciones inválidas)

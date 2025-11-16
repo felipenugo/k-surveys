@@ -1,1 +1,0 @@
-El directorio cache contiene archivos temporales para mejorar el rendimiento de la base de datos.

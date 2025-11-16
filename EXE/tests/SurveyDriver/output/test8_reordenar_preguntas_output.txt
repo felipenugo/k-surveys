@@ -1,0 +1,110 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: --- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: -----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+	at presentation.driverMain.DriverMain.selectWelcomeMenuOption(DriverMain.java:26)
+	at presentation.driverMain.DriverMain.main(DriverMain.java:79)

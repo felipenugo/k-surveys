@@ -1,3 +1,9 @@
 package domain.model.enums;
 
-public enum ResponseStatus { DRAFT, SUBMITTED }
+/**
+ * Estados posibles de una respuesta: borrador o enviada.
+ */
+public enum ResponseStatus {
+    DRAFT,
+    SUBMITTED
+}

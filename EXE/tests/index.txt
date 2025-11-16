@@ -1,1 +1,22 @@
-El directorio tests contiene los ejecutables para probar los juegos de prueba.
+Juegos de prueba del proyecto organizados por driver.
+Cada carpeta contiene archivos de entrada y salida esperada para testing.
+
+Estructura:
+- SessionDriver/: Tests de autenticación (login, registro, logout) - 8 tests
+- ClusteringDriver/: Tests de algoritmos de clustering (KMeans, KMeans++, KMedoids) - 3 tests
+- SurveyDriver/: Tests de creación y gestión de encuestas - 10 tests
+- ResponseDriver/: Tests de responder y editar respuestas - 9 tests
+- MySurveysDriver/: Tests de visualización de encuestas propias - 3 tests
+- AppDriver/: Tests del menú principal de la aplicación - 4 tests
+- DriverMain/: Tests de integración completa del sistema
+
+Cada carpeta de driver contiene:
+- Descripcion[Driver].txt: Documentación detallada del driver y casos probados
+- index.txt: Lista de casos de prueba
+- input/: Archivos de entrada (.txt)
+- output/: Archivos de salida generados
+
+Para ejecutar tests:
+  make run INPUT=tests/[Driver]/input/[test].txt OUTPUT=tests/[Driver]/output/[output].txt
+  make test
+

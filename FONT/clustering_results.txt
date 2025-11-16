@@ -1,0 +1,73 @@
+Clustering Analysis Results
+=============================
+
+Configuration:
+- Analysis ID: a2343bbb-7c24-4ece-afec-234370d5d085
+- Survey ID: null
+- Algorithm: K-Medoids
+- K: 2
+- Distance Type: EUCLIDEAN
+
+Execution Stats:
+- Converged: Yes
+- Iterations: 3
+- Execution Time: 7 ms
+
+Overall Quality Metrics:
+- Silhouette Score: 0,1167
+- Calinski-Harabasz Score: 33,8482
+- Davies-Bouldin Score: 1,5854
+
+Clusters (2):
+-----------------------------
+
+Cluster cluster_1 (Size: 19)
+----------
+Silhouette Score: 0,1604
+Centroid: Centroid{components=[LP001135, Female, No, 0, Not Graduate, No, 3765, 0, 125, 360, 1, Urban]}
+Member Response IDs:
+- 0
+- 4
+- 6
+- 9
+- 10
+- 12
+- 14
+- 15
+- 19
+- 21
+- 22
+- 23
+- 25
+- 29
+- 30
+- 32
+- 33
+- 35
+- 38
+
+Cluster cluster_2 (Size: 20)
+----------
+Silhouette Score: 0,0751
+Centroid: Centroid{components=[LP001183, Male, Yes, 2, Graduate, No, 6250, 820, 192, 360, 1, Urban]}
+Member Response IDs:
+- 1
+- 2
+- 3
+- 5
+- 7
+- 8
+- 11
+- 13
+- 16
+- 17
+- 18
+- 20
+- 24
+- 26
+- 27
+- 28
+- 31
+- 34
+- 36
+- 37

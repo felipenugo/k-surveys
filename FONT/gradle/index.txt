@@ -1,0 +1,5 @@
+Configuración de Gradle.
+Archivos de configuración del wrapper de Gradle.
+
+Carpetas:
+- wrapper/: Archivos del wrapper de Gradle

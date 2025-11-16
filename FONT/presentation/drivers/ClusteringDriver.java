@@ -286,4 +286,28 @@ public class ClusteringDriver {
                 return null;
         }
     }
+
+    /**
+     * Método main para pruebas independientes del ClusteringDriver.
+     * Permite probar algoritmos de clustering de forma directa.
+     */
+    public static void main(String[] args) {
+        // Inicializar repositorios
+        data.SurveyRepository surveyRepository = new data.SurveyRepository();
+        data.ResponseRepository responseRepository = new data.ResponseRepository();
+        
+        // Inicializar controlador de clustering
+        domain.controller.CtrlDominioClustering clusteringController = 
+            new domain.controller.CtrlDominioClustering(responseRepository, surveyRepository);
+        
+        // Crear driver de clustering
+        ClusteringDriver clusteringDriver = new ClusteringDriver(clusteringController);
+        
+        System.out.println("=== PRUEBA CLUSTERINGDRIVER ===");
+        System.out.println("Este driver permite ejecutar análisis de clustering sobre encuestas.");
+        System.out.println("Nota: Necesitas tener encuestas con respuestas en el sistema.\n");
+        
+        // Ejecutar el menú principal
+        clusteringDriver.run();
+    }
 }

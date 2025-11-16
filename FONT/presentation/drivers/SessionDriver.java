@@ -58,7 +58,7 @@ public class SessionDriver {
                 userController.registerUser(username, email, password);
                 System.out.println("El usuario " + username + " se ha registrado con éxito.");
                 exitRegister = true;
-                driverLogin(); // login exceptions will be handled in this method
+                driverLogin(); // las excepciones de login se manejarán en este método
             } catch (RegisterException e) {
                 System.out.println("Error: " + e.getMessage());
                 boolean exitErrorMenu = false;

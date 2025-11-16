@@ -1,0 +1,266 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario TestUserResponse1 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserResponse1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: 
+Encuesta inicializada correctamente.
+(El ID será asignado al publicar)
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+========================================
+       CREAR NUEVA PREGUNTA
+========================================
+Introduce el texto de la pregunta: ¿Esta pregunta es obligatoria? (S/N, por defecto S): 
+--- TIPO DE PREGUNTA ---
+1. PREGUNTA TEXTUAL
+2. PREGUNTA DE OPCIÓN MÚLTIPLE
+3. PREGUNTA NUMÉRICA
+4. CANCELAR
+Opción: 
+Pregunta textual creada.
+Pregunta añadida correctamente en posición 0.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+========================================
+       RESUMEN DE LA ENCUESTA
+========================================
+Título: Viva PROP
+Descripción: PROP es lo mejor
+Creador: TestUserResponse1
+Número de preguntas: 1
+========================================
+
+¿Estás seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): Publicación cancelada. Puedes seguir editando.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+========================================
+ID: (Se asignará automáticamente al publicar)
+Título: Viva PROP
+Descripción: PROP es lo mejor
+Creador: TestUserResponse1
+Estado: DRAFT
+Número de preguntas: 1
+Fecha de creación: 2025-11-16T19:47:33.153093632
+========================================
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+========================================
+ID: (Se asignará automáticamente al publicar)
+Título: Viva PROP
+Descripción: PROP es lo mejor
+Creador: TestUserResponse1
+Estado: DRAFT
+Número de preguntas: 1
+Fecha de creación: 2025-11-16T19:47:33.153093632
+========================================
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+Descripción actual: PROP es lo mejor
+Introduce la nueva descripción: Descripción actualizada.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+Descripción actual: 3
+Introduce la nueva descripción: Descripción actualizada.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+Error inesperado: null
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+	at presentation.drivers.AppDriver.selectAppMenuOption(AppDriver.java:28)
+	at presentation.drivers.AppDriver.appMenu(AppDriver.java:42)
+	at presentation.drivers.SessionDriver.driverLogin(SessionDriver.java:94)
+	at presentation.drivers.SessionDriver.driverRegister(SessionDriver.java:61)
+	at presentation.driverMain.DriverMain.main(DriverMain.java:81)

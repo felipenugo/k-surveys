@@ -1,0 +1,42 @@
+Objeto de la prueba:
+    -Casos de uso probados:
+        -Listar mis encuestas
+        -Ejecutar algoritmo de clustering sobre encuesta propia
+        -Visualizar resultados de clustering
+    -Clases probadas:
+        -MySurveysDriver
+        -SurveyController
+        -ClusteringDriver
+        -CtrlDominioClustering
+
+Ficheros de datos necesarios:
+    Ninguno.
+    El repositorio interno (SurveyRepository, UserRepository) es suficiente para la ejecución de pruebas.
+
+IMPORTANTE: Todos los tests de MySurveysDriver incluyen registro+login al inicio.
+El flujo es: Registro → Login automático → Mis Encuestas
+
+Valores estudiados:
+    -Listar encuestas del usuario autenticado.
+    -Comportamiento cuando el usuario no tiene encuestas.
+    -Ejecutar clustering sobre encuestas propias.
+    -Navegación correcta entre menús.
+    -Integración con ClusteringDriver.
+
+Efectos estudiados:
+    Visualización correcta de encuestas propias.
+    Filtrado por usuario autenticado.
+    Integración con módulo de clustering.
+    Flujo de navegación en menús.
+
+Operativa:
+    El programa muestra los comandos disponibles:
+        1. Listar mis encuestas
+        2. Ejecutar algoritmo de clustering
+        3. Atrás
+
+    Para garantizar el funcionamiento:
+        1. El usuario debe estar autenticado.
+        2. Ejecute el driver de MySurveys.
+        3. Seleccione una opción del menú.
+        4. Revise los resultados mostrados.

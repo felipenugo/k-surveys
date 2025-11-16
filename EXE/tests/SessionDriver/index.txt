@@ -1,0 +1,13 @@
+Tests de SessionDriver - Gestión de sesiones y autenticación.
+
+Archivos:
+- DescripcionSessionDriver.txt: Documentación detallada de los casos de uso
+- input/test1_register_and_exit.txt: Registro exitoso con usuario, correo y contraseña válidos
+- input/test2_login_nonexistent_user.txt: Inicio de sesión con usuario inexistente
+- input/test3_invalid_option.txt: Comportamiento al escoger opción no elegible
+- input/test4_invalid_email_format.txt: Registro inválido con correo fuera de formato
+- input/test5_empty_email.txt: Registro inválido con campo correo vacío
+- input/test6_empty_password.txt: Inicio de sesión inválido con contraseña vacía
+- input/test7_wrong_password.txt: Inicio de sesión con contraseña errónea
+- input/test8_duplicate_user.txt: Registro inválido con usuario ya existente
+- output/: Archivos de salida generados por los tests

@@ -1,0 +1,2 @@
+Tests de controladores de dominio.
+Pruebas unitarias de los controladores que coordinan la lógica de negocio.

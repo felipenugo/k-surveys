@@ -1,3 +1,0 @@
-El directorio domain representa la capa de dominio de la aplicación.
-Se comunica con la capa de presentación a través de los controladores de presentación.
-Se comunica con la capa de datos (repositorios) a través de los servicios.

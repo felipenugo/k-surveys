@@ -29,14 +29,14 @@ public class DriverMain {
     }
 
     public static void main(String[] var0) {
-        // Initialize repositories
+        // Inicializar repositorios
         UserRepository userRepository = new UserRepository();
         SurveyRepository surveyRepository = new SurveyRepository();
         QuestionRepository questionRepository = new QuestionRepository();
         ResponseRepository responseRepository = new ResponseRepository();
         AnswerRepository answerRepository = new AnswerRepository();
 
-        // Initialize controllers injecting survey with repository
+        // Inicializar controladores inyectando servicio con repositorio
         UserController userController = new UserController(new UserService(userRepository));
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController);
@@ -55,7 +55,7 @@ public class DriverMain {
 
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        // Initialize drivers
+        // Inicializar drivers
         EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
 
         CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(

@@ -1,0 +1,243 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario user1 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido user1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto user1.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario user2 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido user2
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto user2.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

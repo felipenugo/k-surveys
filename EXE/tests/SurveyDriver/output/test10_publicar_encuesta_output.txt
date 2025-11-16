@@ -1,0 +1,82 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: --- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at presentation.drivers.SessionDriver.displayRegisterErrorMenu(SessionDriver.java:28)
+	at presentation.drivers.SessionDriver.driverRegister(SessionDriver.java:66)
+	at presentation.driverMain.DriverMain.main(DriverMain.java:81)

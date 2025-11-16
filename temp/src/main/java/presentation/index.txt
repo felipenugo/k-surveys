@@ -1,2 +1,0 @@
-El directorio presentation representa la capa de presentación de la aplicación.
-Se comunica con la capa de dominio a través de los controladores de presentación.

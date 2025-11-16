@@ -1,0 +1,5 @@
+Tests del DriverMain - driver principal del sistema.
+
+Carpetas:
+- input/: Archivos de entrada para los tests
+- output/: Archivos de salida generados por los tests

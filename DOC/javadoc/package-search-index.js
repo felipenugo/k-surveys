@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"data"},{"l":"domain.clustering"},{"l":"domain.controller"},{"l":"domain.exception"},{"l":"domain.model"},{"l":"domain.model.enums"},{"l":"domain.service"},{"l":"presentation.driverMain"},{"l":"presentation.drivers"}];updateSearchResults();

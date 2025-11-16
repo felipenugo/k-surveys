@@ -1,0 +1,168 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario TestUser1 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUser1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: Error al inicializar encuesta: El título no puede estar vacío.
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: Error al inicializar encuesta: La descripción no puede estar vacía.
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: 
+Encuesta inicializada correctamente.
+(El ID será asignado al publicar)
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opción: 
+Error inesperado: null
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1602)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
+	at presentation.drivers.AppDriver.selectAppMenuOption(AppDriver.java:28)
+	at presentation.drivers.AppDriver.appMenu(AppDriver.java:42)
+	at presentation.drivers.SessionDriver.driverLogin(SessionDriver.java:94)
+	at presentation.drivers.SessionDriver.driverRegister(SessionDriver.java:61)
+	at presentation.driverMain.DriverMain.main(DriverMain.java:81)

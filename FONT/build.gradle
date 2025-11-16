@@ -1,0 +1,166 @@
+plugins {
+    id 'java'
+    id 'application'
+}
+
+group = 'presentation.driverMain'
+version = '1.0-SNAPSHOT'
+
+ext {
+    javaMainClass = 'presentation.driverMain.DriverMain'
+}
+
+application {
+    mainClassName = javaMainClass
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': javaMainClass
+    }
+    from sourceSets.main.output
+    destinationDirectory = file('../EXE')
+    archiveFileName = 'FormsApp.jar'
+}
+
+// Apply a specific Java toolchain to ease working on different environments.
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['.']
+            exclude '**/test/**'
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+        resources {
+            srcDirs = ['test/resources']
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+configurations {
+    umlDoclet
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.8.9'
+    testImplementation('junit:junit:4.13.1')
+    // UML Doclet para generar diagramas UML en JavaDoc
+    umlDoclet 'nl.talsmasoftware:umldoclet:2.1.0'
+}
+
+// Copy compiled classes to EXE/classes
+task copyClasses(type: Copy) {
+    dependsOn classes
+    from 'build/classes/java/main'
+    into '../EXE/classes'
+}
+
+// Configure the run task
+run {
+    standardInput = System.in
+}
+
+// Make jar task also copy classes
+jar.dependsOn copyClasses
+
+// Create individual driver JARs
+['SessionDriver', 'AppDriver', 'SurveyDriver', 'CreateSurveyDriver', 
+ 'MySurveysDriver', 'ResponseDriver', 'ClusteringDriver'].each { driver ->
+    tasks.create("jar${driver}", Jar) {
+        dependsOn copyClasses
+        archiveBaseName = driver
+        archiveVersion = ''
+        destinationDirectory = file('../EXE/drivers')
+        manifest {
+            attributes 'Main-Class': "presentation.drivers.${driver}"
+        }
+        from sourceSets.main.output
+    }
+}
+
+// Build all driver JARs
+task buildDriverJars {
+    dependsOn 'jarSessionDriver', 'jarAppDriver', 'jarSurveyDriver', 
+              'jarCreateSurveyDriver', 'jarMySurveysDriver', 
+              'jarResponseDriver', 'jarClusteringDriver'
+    doLast {
+        println "Driver JARs creados en EXE/drivers/"
+    }
+}
+
+// Override assembleDist from application plugin
+distributions {
+    main {
+        contents {
+            from('../EXE') {
+                include 'FormsApp.jar'
+            }
+            from('../DATA') {
+                into 'DATA'
+            }
+        }
+    }
+}
+
+// JavaDoc configuration
+javadoc {
+    source = sourceSets.main.allJava
+    classpath = configurations.compileClasspath
+    destinationDir = file('../DOC/javadoc')
+    
+    options {
+        encoding = 'UTF-8'
+        charSet = 'UTF-8'
+        author = true
+        version = true
+        links = [
+            'https://docs.oracle.com/en/java/javase/21/docs/api/'
+        ]
+        addStringOption('Xdoclint:none', '-quiet')
+        windowTitle = 'FormsApp Documentation'
+        docTitle = 'FormsApp API Documentation'
+        header = '<b>FormsApp</b>'
+        
+        // Configuración UMLDoclet para generar diagramas UML
+        doclet = 'nl.talsmasoftware.umldoclet.UMLDoclet'
+        docletpath = configurations.umlDoclet.files as List
+        addBooleanOption 'createPumlFiles'
+        addStringOption 'umlImageFormat', 'svg'
+    }
+    
+    doLast {
+        println "JavaDoc generado en ../DOC/javadoc/"
+    }
+}
+
+// Task to generate JavaDoc and open it
+task openJavadoc {
+    dependsOn javadoc
+    doLast {
+        def javadocIndex = file('../DOC/javadoc/index.html')
+        if (javadocIndex.exists()) {
+            println "Abriendo JavaDoc en el navegador..."
+            if (System.properties['os.name'].toLowerCase().contains('windows')) {
+                exec { commandLine 'cmd', '/c', "start ${javadocIndex.absolutePath}" }
+            } else if (System.properties['os.name'].toLowerCase().contains('mac')) {
+                exec { commandLine 'open', javadocIndex.absolutePath }
+            } else {
+                exec { commandLine 'xdg-open', javadocIndex.absolutePath }
+            }
+        }
+    }
+}

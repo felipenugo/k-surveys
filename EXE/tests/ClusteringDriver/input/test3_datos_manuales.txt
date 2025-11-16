@@ -1,0 +1,37 @@
+2
+TestUserClustering3
+testuserclustering3@gmail.com
+1234
+TestUserClustering3
+1234
+2
+Test Clustering Survey 3
+Survey for clustering analysis 3
+4
+Question 3
+S
+1
+9
+1
+2
+2
+2
+manual_test
+6
+2
+1 1
+1 2
+2 1
+8 8
+8 9
+9 8
+3
+manual_test
+2
+2
+n
+0
+3
+3
+3
+3

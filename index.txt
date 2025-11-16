@@ -1,8 +1,0 @@
-Raíz del proyecto: información de los desarrolladores del proyecto.
-
-Desarrolladores:
-- Huertes Montes, Victor <victor.huertes@estudiantat.upc.edu>
-- Llagostera Garcia, Yeray <yeray.llagostera@estudiantat.upc.edu>
-- Nuñez Gomez, Felipe Arturo <felipe.arturo.nunez@estudiantat.upc.edu>
-- Pons Cardet, Arnau <arnau.pons.cardet@estudiantat.upc.edu>
-- Rodriguez Uribe, Kiara Kristin <kiara.kristin.rodriguez@estudiantat.upc.edu>

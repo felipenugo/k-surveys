@@ -1,4 +1,0 @@
-El directorio service representa la capa de servicios dentro de la capa de dominio de la aplicacion.
-Esta capa se encarga de implementar la logica de negocio y las reglas de la aplicacion.
-Los servicios interactuan con los repositorios para acceder a los datos y realizar operaciones.
-

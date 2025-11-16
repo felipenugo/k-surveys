@@ -1,1 +1,0 @@
-El directorio DOCS contiene la documentacion del proyecto.

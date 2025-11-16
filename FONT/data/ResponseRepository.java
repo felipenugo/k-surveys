@@ -8,39 +8,11 @@ import domain.model.Answer;
 
 /**
  * Repositorio encargado de almacenar en memoria todas las respuestas del sistema.
- *
- * Este repositorio utiliza una estructura de doble indexación:
- * <pre>
- *     responses : Map<surveyId, Map<responseId, Response>>
- * </pre>
- * lo cual permite acceder de manera eficiente tanto a todas las respuestas de una
- * encuesta como a una respuesta específica.
- *
- * Funcionalidades principales:
- * <ul>
- *     <li>Gestión completa de respuestas: añadir, consultar, actualizar y eliminar.</li>
- *     <li>Mantenimiento del último identificador de respuesta para generar IDs únicos.</li>
- *     <li>Gestión estructurada de respuestas asociadas a encuestas.</li>
- *     <li>Manipulación directa de los objetos Answer dentro de una respuesta.</li>
- * </ul>
- *
- * Notas importantes:
- * <ul>
- *     <li>Este repositorio <b>no realiza validaciones de negocio</b>
- *         (p. ej. si la encuesta existe, si el usuario está logueado,
- *         si la pregunta es válida, etc.).</li>
- *     <li>Las validaciones se realizan en {@code ResponseService}
- *         y en {@code SurveyService}.</li>
- *     <li>Antes de acceder al mapa de respuestas de una encuesta, es
- *         responsabilidad de la capa de servicio verificar que ésta existe
- *         mediante {@link #existsSurveyEntry(String)}.</li>
- * </ul>
- *
- * Este repositorio actúa únicamente como capa de persistencia en memoria
- * (in-memory persistence layer).
+ * Utiliza una estructura Map&lt;surveyId, Map&lt;responseId, Response&gt;&gt; para indexación eficiente.
+ * No realiza validaciones de negocio; actúa como capa de persistencia en memoria.
  */
 public class ResponseRepository {
-    /** Estructura <surveyId, <responseId, Response>> */
+    /** Estructura &lt;surveyId, &lt;responseId, Response&gt;&gt; */
     private final Map<String, Map<String, Response>> responses; // <surveyId, <responseId, Response>>
     /** Último identificador asignado para respuestas. */
     private String lastResponseId;

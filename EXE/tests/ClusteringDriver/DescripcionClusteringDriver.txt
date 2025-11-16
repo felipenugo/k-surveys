@@ -1,0 +1,58 @@
+Objeto de la prueba:
+    -Casos de uso probados:
+        -Ejecutar análisis de clustering
+        -Generar datasets sintéticos
+        -Cargar datos manualmente
+        -Comparar algoritmos (KMeans, KMeans++, KMedoids)
+        -Encontrar K óptima
+        -Evaluar análisis existente
+        -Visualizar resultados de clustering
+    -Clases probadas:
+        -ClusteringDriver
+        -CtrlDominioClustering
+        -KMeans
+        -KMeansPlusPlus
+        -KMedoids
+        -ClusterResults
+
+Ficheros de datos necesarios:
+    Ninguno.
+    Se pueden generar datasets sintéticos o introducir datos manualmente.
+
+IMPORTANTE: Todos los tests de ClusteringDriver incluyen registro+login al inicio.
+El flujo es: Registro → Login automático → Clustering
+
+Valores estudiados:
+    -Generación correcta de datasets con clusters bien separados.
+    -Ejecución de análisis con diferentes algoritmos (KMeans, KMeans++, KMedoids).
+    -Comparación de rendimiento entre algoritmos.
+    -Entrada manual de datos para clustering.
+    -Visualización de resultados y métricas (silhouette, inertia).
+    -Búsqueda de K óptima para una encuesta.
+    -Evaluación de análisis existentes.
+    -Manejo de diferentes valores de K.
+
+Efectos estudiados:
+    -Correcta agrupación de datos en clusters.
+    -Métricas de calidad de clustering (silhouette score, inertia).
+    -Comparación objetiva entre algoritmos.
+    -Manejo de errores en entradas inválidas.
+    -Flujo completo de análisis de clustering.
+
+Operativa:
+    El programa muestra los comandos disponibles para clustering:
+        1. Ejecutar un nuevo análisis
+        2. Evaluar un análisis existente
+        3. Encontrar la K óptima para una encuesta
+        4. Ver resultados de un análisis
+        5. Salir
+
+    Opciones para crear datasets:
+        1. Generar dataset sintético
+        2. Introducir datos manualmente
+
+    Para garantizar el funcionamiento:
+        1. Ejecute el driver de clustering.
+        2. Seleccione una opción del menú principal.
+        3. Siga las instrucciones para crear datasets o cargar análisis.
+        4. Revise los resultados y métricas generadas.

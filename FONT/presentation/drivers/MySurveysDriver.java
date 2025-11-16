@@ -64,4 +64,50 @@ public class MySurveysDriver {
     private void runClustering() throws IOException {
         clusteringDriver.run();
     }
+
+    /**
+     * Método main para pruebas independientes del MySurveysDriver.
+     * Permite probar la visualización de encuestas propias y clustering.
+     */
+    public static void main(String[] args) {
+        // Inicializar repositorios
+        data.UserRepository userRepository = new data.UserRepository();
+        data.SurveyRepository surveyRepository = new data.SurveyRepository();
+        data.ResponseRepository responseRepository = new data.ResponseRepository();
+        
+        // Inicializar servicios
+        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.controller.UserController userController = new domain.controller.UserController(userService);
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
+        
+        // Inicializar controladores
+        domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
+        domain.controller.CtrlDominioClustering clusteringController = new domain.controller.CtrlDominioClustering(responseRepository, surveyRepository);
+        
+        // Inicializar drivers
+        ClusteringDriver clusteringDriver = new ClusteringDriver(clusteringController);
+        MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
+        
+        System.out.println("=== PRUEBA MYSURVEYSDRIVER ===");
+        System.out.println("Nota: Para usar esta funcionalidad necesitas tener un usuario logueado.");
+        System.out.println("Por favor, inicia sesión primero.\n");
+        
+        // Simular login
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Introduce tu nombre de usuario: ");
+        String username = scanner.nextLine();
+        System.out.print("Introduce tu contraseña: ");
+        String password = scanner.nextLine();
+        
+        try {
+            userController.loginUser(username, password);
+            System.out.println("Login exitoso. Accediendo a tus encuestas...\n");
+            mySurveysDriver.mySurveysMenu();
+        } catch (domain.exception.LogInException e) {
+            System.out.println("Error al iniciar sesión: " + e.getMessage());
+            System.out.println("Debes registrarte primero o verificar tus credenciales.");
+        }
+        
+        scanner.close();
+    }
 }

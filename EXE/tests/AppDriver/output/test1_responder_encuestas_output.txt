@@ -1,0 +1,66 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Error: El usuario 3 no existe.
+1. Intentar inciar sesión de nuevo.
+2. Registrarse.
+3. Volver al menú principal.
+Opción: Exception in thread "main" java.util.NoSuchElementException: No line found
+	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
+	at presentation.drivers.SessionDriver.displayLoginErrorMenu(SessionDriver.java:36)
+	at presentation.drivers.SessionDriver.driverLogin(SessionDriver.java:100)
+	at presentation.driverMain.DriverMain.main(DriverMain.java:80)

@@ -1,0 +1,8 @@
+Tests de ClusteringDriver - Algoritmos de clustering y análisis de datos.
+
+Archivos:
+- DescripcionClusteringDriver.txt: Documentación detallada de los casos de uso
+- input/test1_clusters_separados.txt: Dataset sintético con clusters bien separados, ejecuta KMeans
+- input/test2_comparacion_algoritmos.txt: Compara los 3 algoritmos (KMeans, KMeans++, KMedoids)
+- input/test3_datos_manuales.txt: Introduce datos manualmente y ejecuta análisis
+- output/: Archivos de salida generados por los tests

@@ -1,1 +1,0 @@
-El directorio java contiene el código fuente de la aplicación.

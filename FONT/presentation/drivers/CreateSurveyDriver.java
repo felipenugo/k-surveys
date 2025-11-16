@@ -357,4 +357,51 @@ public class CreateSurveyDriver {
             return false;
         }
     }
+
+    /**
+     * Método main para pruebas independientes del CreateSurveyDriver.
+     * Permite probar la creación de encuestas.
+     */
+    public static void main(String[] args) {
+        // Inicializar repositorios
+        data.UserRepository userRepository = new data.UserRepository();
+        data.SurveyRepository surveyRepository = new data.SurveyRepository();
+        data.QuestionRepository questionRepository = new data.QuestionRepository();
+        
+        // Inicializar servicios
+        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.controller.UserController userController = new domain.controller.UserController(userService);
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
+        domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
+        
+        // Inicializar controladores
+        domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
+        domain.controller.QuestionController questionController = new domain.controller.QuestionController(questionService);
+        
+        // Inicializar drivers
+        EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
+        CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(surveyController, userController, editorQuestionDriver);
+        
+        System.out.println("=== PRUEBA CREATESURVEYDRIVER ===");
+        System.out.println("Nota: Para crear encuestas necesitas tener un usuario logueado.");
+        System.out.println("Por favor, inicia sesión primero.\n");
+        
+        // Simular login
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Introduce tu nombre de usuario: ");
+        String username = scanner.nextLine();
+        System.out.print("Introduce tu contraseña: ");
+        String password = scanner.nextLine();
+        
+        try {
+            userController.loginUser(username, password);
+            System.out.println("Login exitoso. Accediendo al menú de creación de encuestas...\n");
+            createSurveyDriver.createSurveyMenu();
+        } catch (domain.exception.LogInException e) {
+            System.out.println("Error al iniciar sesión: " + e.getMessage());
+            System.out.println("Debes registrarte primero o verificar tus credenciales.");
+        }
+        
+        scanner.close();
+    }
 }
