@@ -1,13 +1,13 @@
-Drivers que interactúan con la capa de dominio usando una interfaz CLI; cada driver corresponde a una funcionalidad o caso de prueba.
+Controladores que interactúan con la capa de dominio usando una interfaz de línea de comandos (CLI); cada controlador corresponde a una funcionalidad o caso de prueba.
 
 Archivos:
-- AppDriver.java: Driver principal que orquesta y llama a los drivers de funcionalidad.
-- ClusteringDriver.java: Driver que ejecuta demostraciones y casos de prueba relacionados con clustering.
+- AppDriver.java: Controlador principal que orquesta y llama a los controladores de funcionalidad.
+- ClusteringDriver.java: Controlador que ejecuta demostraciones y casos de prueba relacionados con clustering.
 - CreateSurveyDriver.java: Ejemplo para el flujo de creación de encuestas.
 - EditResponseDriver.java: Ejemplo para editar respuestas.
 - EditorMultipleChoiceOptionsDriver.java: Editor de opciones para preguntas de opción múltiple.
-- EditorQuestionDriver.java: Driver para crear y editar preguntas.
-- MySurveysDriver.java: Driver para listar y gestionar encuestas de un usuario.
+- EditorQuestionDriver.java: Controlador para crear y editar preguntas.
+- MySurveysDriver.java: Controlador para listar y gestionar encuestas de un usuario.
 - ResponseDriver.java: Añade e inspecciona respuestas.
 - SessionDriver.java: Simula sesiones de usuario para pruebas.
-- SurveyDriver.java: Driver para inspeccionar y ejecutar encuestas.
+- SurveyDriver.java: Controlador para inspeccionar y ejecutar encuestas.
