@@ -1,1 +1,1 @@
-El directorio main contiene el directorio java que es el source root de la aplicacion.
+El directorio main contiene el directorio java que es la raíz de fuentes de la aplicación.

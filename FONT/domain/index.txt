@@ -1,8 +1,8 @@
-Domain layer: models, exceptions, services and clustering components.
+Capa de dominio: modelos, excepciones, servicios y componentes de clustering.
 
-Subfolders:
-- clustering: Clustering algorithms and analysis helpers.
-- controller: Domain-level controllers that coordinate services and repositories.
-- exception: Domain-specific checked/unchecked exceptions used throughout the domain.
-- model: Domain model classes (Survey, Question, Response, User, Answer, etc.).
-- service: Domain services that implement business logic and validation.
+Subcarpetas:
+- clustering: Algoritmos de clustering y utilidades de análisis.
+- controller: Controladores de dominio que coordinan servicios y repositorios.
+- exception: Excepciones específicas del dominio utilizadas por toda la capa.
+- model: Clases del modelo de dominio (Survey, Question, Response, User, Answer, etc.).
+- service: Servicios del dominio que implementan la lógica de negocio y la validación.

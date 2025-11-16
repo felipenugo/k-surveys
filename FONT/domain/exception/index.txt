@@ -1,7 +1,7 @@
-Exceptions used across domain services and controllers.
+Excepciones utilizadas en servicios y controladores del dominio.
 
-Files:
-- LogInException.java: Thrown on login-related errors.
-- RegisterException.java: Thrown on registration/validation errors.
-- ResponseException.java: Thrown on response creation/validation issues.
-- SurveyException.java: Thrown when survey creation or manipulation fails.
+Archivos:
+- LogInException.java: Lanzada en errores relacionados con el inicio de sesión.
+- RegisterException.java: Lanzada en errores de registro/validación.
+- ResponseException.java: Lanzada en problemas de creación/validación de respuestas.
+- SurveyException.java: Lanzada cuando la creación o manipulación de encuestas falla.

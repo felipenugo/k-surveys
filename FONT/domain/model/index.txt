@@ -1,12 +1,12 @@
-Domain model objects representing core entities in the system (Survey, Question, Response, etc.).
+Objetos del modelo de dominio que representan entidades principales del sistema (Survey, Question, Response, etc.).
 
-Files:
-- User.java: User entity storing user credentials and metadata.
-- Survey.java: Represents a survey with metadata and questions.
-- Question.java: Base class for questions; concrete subtypes follow.
-- MultipleChoiceQuestion.java, OptionQuestion.java, etc.: Question subtypes.
-- Answer.java: Base class for answers; concrete subtypes include MultipleChoice/Numerical/Textual.
-- Response.java: Represents a user's responses to a survey.
+Archivos:
+- User.java: Entidad User que almacena credenciales y metadatos.
+- Survey.java: Representa una encuesta con metadatos y preguntas.
+- Question.java: Clase base para preguntas; sus subtipos concretos siguen.
+- MultipleChoiceQuestion.java, OptionQuestion.java, etc.: Subtipos de pregunta.
+- Answer.java: Clase base para respuestas; subtipos concretos incluyen MultipleChoice, Numerical, Textual.
+- Response.java: Representa las respuestas de un usuario a una encuesta.
 
-Subfolders:
-- enums: contains domain-specific enums like TypeQuestion, SurveyStatus, ResponseStatus.
+Subcarpetas:
+- enums: Contiene enumeraciones del dominio como TypeQuestion, SurveyStatus, ResponseStatus.

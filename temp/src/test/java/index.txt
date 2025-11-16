@@ -1,2 +1,2 @@
-El directorio java es el source root de los juegos de prueba.
-Los tests unitarios no necesitan documentación extra.
+El directorio java es la raíz de fuentes de los tests de los juegos de prueba.
+Los tests unitarios no requieren documentación adicional.

@@ -1,1 +1,1 @@
-El directorio resources  contiene los archivos para guardar los datos de manera local, ficheros css e imagenes.
+El directorio resources contiene los archivos para guardar datos de manera local, ficheros CSS e imágenes.

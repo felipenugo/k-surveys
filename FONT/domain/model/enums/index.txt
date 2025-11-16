@@ -1,6 +1,6 @@
-Enums used by domain model classes.
+Enumeraciones utilizadas por las clases del modelo de dominio.
 
-Files:
-- TypeQuestion.java: Enum for the question type (MULTIPLE_CHOICE, TEXTUAL, NUMERICAL, etc.).
-- SurveyStatus.java: Enum for the lifecycle state of a Survey (DRAFT, PUBLISHED, CLOSED, etc.).
-- ResponseStatus.java: Enum for response states (SAVED, SUBMITTED, INVALID, etc.).
+Archivos:
+- TypeQuestion.java: Enumeración para el tipo de pregunta (MULTIPLE_CHOICE, TEXTUAL, NUMERIC, etc.).
+- SurveyStatus.java: Enumeración para el estado de vida de una encuesta (DRAFT, PUBLISHED, CLOSED, etc.).
+- ResponseStatus.java: Enumeración para estados de respuesta (SAVED, SUBMITTED, INVALID, etc.).

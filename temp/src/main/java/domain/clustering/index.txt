@@ -1,0 +1,6 @@
+Algoritmos y utilidades de clustering, incluyendo centróides, particiones por cluster, y cálculo de métricas de calidad.
+
+Archivos relevantes:
+- Centroid.java: Representación de un centróide para algoritmos de clustering.
+- Cluster.java: Representación de un cluster con sus miembros y centroides.
+- ClusterResults.java: Estructura que agrupa resultados del clustering y métricas.

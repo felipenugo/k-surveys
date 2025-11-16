@@ -1,8 +1,8 @@
-Data layer: repository classes that provide persistence for domain objects.
+Capa de datos: clases repositorio que proporcionan persistencia para los objetos del dominio.
 
-Files:
-- AnswerRepository.java: CRUD and storage utilities for Answer objects.
-- QuestionRepository.java: CRUD and access for Question objects and question bank.
-- ResponseRepository.java: CRUD and lookup of Response objects for surveys.
-- SurveyRepository.java: Persistence for Survey entities.
-- UserRepository.java: Persistence and lookup for User entities.
+Archivos:
+- AnswerRepository.java: Funciones CRUD y utilidades de almacenamiento para objetos Answer.
+- QuestionRepository.java: Funciones CRUD y acceso a objetos Question y al banco de preguntas.
+- ResponseRepository.java: Funciones CRUD y búsqueda de Responses asociadas a encuestas.
+- SurveyRepository.java: Persistencia para entidades Survey.
+- UserRepository.java: Persistencia y búsqueda de entidades User.

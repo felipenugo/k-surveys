@@ -1,4 +1,4 @@
-Main driver entry that launches the application.
+Entrada principal del driver que inicia la aplicación.
 
-Files:
-- DriverMain.java: The main driver class which bootstraps application presentation.
+Archivos:
+- DriverMain.java: Clase principal del driver que arranca y configura la presentación de la aplicación.
