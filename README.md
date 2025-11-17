@@ -6,11 +6,11 @@ Profesor: Ignasi Gómez-Sebastià.
 
 ## Miembros del grupo
 
-- Victor Huertes Montes ([victor.huertes@estudiantat.upc.edu]())
-- Yeray Llagostera Garcia ([yeray.llagostera@estudiantat.upc.edu]())
-- Felipe Arturo Nuñez Gomez ([felipe.arturo.nunez@estudiantat.upc.edu]())
-- Arnau Pons Cardet ([arnau.pons.cardet@estudiantat.upc.edu]())
-- Kiara Kristin Rodriguez Uribe ([kiara.kristin.rodriguez@estudiantat.upc.edu]())
+- Huertes Montes, Victor ([victor.huertes@estudiantat.upc.edu]())
+- Llagostera Garcia, Yeray ([yeray.llagostera@estudiantat.upc.edu]())
+- Nuñez Gomez, Felipe Arturo ([felipe.arturo.nunez@estudiantat.upc.edu]())
+- Pons Cardet, Arnau ([arnau.pons.cardet@estudiantat.upc.edu]())
+- Rodriguez Uribe, Kiara Kristin ([kiara.kristin.rodriguez@estudiantat.upc.edu]())
 
 ## Descripción del proyecto
 
