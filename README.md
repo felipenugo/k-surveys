@@ -1,12 +1,12 @@
 
 # PROP Grupo 32.1
-Proyecto de Programación, Grupo 32, subgrupo 32.1.
+Proyecto de Programación, Grupo 32.1.
 
 Profesor: Ignasi Gómez-Sebastià.
 
 ## Miembros del grupo
 
-- Huertes Montes, Victor ([victor.huertes@estudiantat.upc.edu]())
+- Huertes Montes, Víctor ([victor.huertes@estudiantat.upc.edu]())
 - Llagostera Garcia, Yeray ([yeray.llagostera@estudiantat.upc.edu]())
 - Nuñez Gomez, Felipe Arturo ([felipe.arturo.nunez@estudiantat.upc.edu]())
 - Pons Cardet, Arnau ([arnau.pons.cardet@estudiantat.upc.edu]())
