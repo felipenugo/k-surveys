@@ -1,4 +1,10 @@
 2
+TestUser1
+testuser1@gmail.com
+1234
+TestUser1
+1234
+2
 Prueba
 Prueba
 4
@@ -24,5 +30,11 @@ S
 OK
 
 No OK
+2
+1
+8
+9
+S
 3
-4
+3
+3

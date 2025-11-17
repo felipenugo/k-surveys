@@ -1,4 +1,10 @@
 2
+TestUser1
+testuser1@gmail.com
+1234
+TestUser1
+1234
+2
 Prueba
 Prueba
 4
@@ -9,3 +15,8 @@ S
 Prueba NUM
 S
 4
+9
+S
+3
+3
+3
