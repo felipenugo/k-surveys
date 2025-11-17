@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -53,16 +53,16 @@ OpciÃ³n:
 
 
 
---- INICIO DE SESIÃ“N ---
-Introduce tu nombre de usuario:Introduce tu contraseÃ±a:--- iniciando sesiÃ³n ---
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Error: El usuario ARNAU no existe.
-1. Intentar inciar sesiÃ³n de nuevo.
+1. Intentar inciar sesión de nuevo.
 2. Registrarse.
-3. Volver al menÃº principal.
-OpciÃ³n: -----------------------------------
+3. Volver al menú principal.
+Opción: -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

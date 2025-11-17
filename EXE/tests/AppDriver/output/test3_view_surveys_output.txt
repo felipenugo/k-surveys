@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -54,8 +54,8 @@ OpciÃ³n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÃ±a: --- registrÃ¡ndose ---
-El usuario usuario_test3 se ha registrado con Ã©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario usuario_test3 se ha registrado con éxito.
 
 
 
@@ -106,43 +106,43 @@ El usuario usuario_test3 se ha registrado con Ã©xito.
 
 
 
---- INICIO DE SESIÃ“N ---
-Introduce tu nombre de usuario:Introduce tu contraseÃ±a:--- iniciando sesiÃ³n ---
-Inicio de sesiÃ³n correcto!
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
 Bienvenido usuario_test3
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESIÃ“N
+3. CERRAR SESIÓN
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MENÃš PRINCIPAL
-OpciÃ³n: --- MIS ENCUESTAS ---
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. AtrÃ¡s
-OpciÃ³n: No tienes encuestas.
+3. Atrás
+Opción: No tienes encuestas.
 --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. AtrÃ¡s
-OpciÃ³n: --- SALIENDO DE MIS ENCUESTAS ---
+3. Atrás
+Opción: --- SALIENDO DE MIS ENCUESTAS ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MENÃš PRINCIPAL
-OpciÃ³n: --- volviendo al menÃº principal ---
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESIÃ“N
-Opcion: --- CERRANDO SESIÃ“N ---
-SesiÃ³n cerrada, hasta pronto usuario_test3.
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto usuario_test3.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------
