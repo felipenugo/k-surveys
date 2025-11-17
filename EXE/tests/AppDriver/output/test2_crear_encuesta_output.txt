@@ -140,7 +140,7 @@ Descripción: descripcion encuesta
 Creador: usuario_test1
 Estado: DRAFT
 Número de preguntas: 0
-Fecha de creación: 2025-11-17T21:43:31.047350900
+Fecha de creación: 2025-11-17T22:05:06.646343100
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -189,7 +189,7 @@ Número de preguntas: 1
 
 ¿Estás seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
 Encuesta guardada y publicada correctamente
-Fecha de publicación: 2025-11-17T21:43:31.056932100
+Fecha de publicación: 2025-11-17T22:05:06.656065200
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA

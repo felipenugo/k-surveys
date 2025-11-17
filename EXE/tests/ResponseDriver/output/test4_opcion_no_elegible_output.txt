@@ -186,7 +186,7 @@ Descripción: Test Description 4
 Creador: TestUserResponse4
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.690666200
+Fecha de creación: 2025-11-17T22:05:04.423402100
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -207,7 +207,7 @@ Descripción: Test Description 4
 Creador: TestUserResponse4
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.690666200
+Fecha de creación: 2025-11-17T22:05:04.423402100
 ========================================
 
 --- CREAR ENCUESTA ---

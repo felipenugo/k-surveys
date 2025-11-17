@@ -49,7 +49,7 @@ public class ClusteringDriver {
             System.out.print("Elige una opción: ");
 
             try {
-                String option = sc.nextLine();
+                String option = sc.nextLine().trim();
                 switch (option) {
                     case "1":
                         ejecutarNuevoAnalisis();

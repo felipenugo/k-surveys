@@ -188,7 +188,7 @@ Descripción: Prueba
 Creador: TestUser1
 Estado: DRAFT
 Número de preguntas: 0
-Fecha de creación: 2025-11-17T21:43:27.322446100
+Fecha de creación: 2025-11-17T22:05:03.152462900
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -261,7 +261,7 @@ Número de preguntas: 1
 
 ¿Estás seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
 Encuesta guardada y publicada correctamente
-Fecha de publicación: 2025-11-17T21:43:27.338138300
+Fecha de publicación: 2025-11-17T22:05:03.168673
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA

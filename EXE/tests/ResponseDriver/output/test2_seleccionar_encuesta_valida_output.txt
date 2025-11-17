@@ -186,7 +186,7 @@ Descripción: Test Description
 Creador: TestUserResponse2
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.253064500
+Fecha de creación: 2025-11-17T22:05:03.997537400
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -207,7 +207,7 @@ Descripción: Test Description
 Creador: TestUserResponse2
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.253064500
+Fecha de creación: 2025-11-17T22:05:03.997537400
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -228,7 +228,7 @@ Descripción: Test Description
 Creador: TestUserResponse2
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.253064500
+Fecha de creación: 2025-11-17T22:05:03.997537400
 ========================================
 
 --- CREAR ENCUESTA ---

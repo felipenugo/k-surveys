@@ -236,7 +236,7 @@ Descripción: Survey for clustering analysis 3
 Creador: TestUserClustering3
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:25.538792900
+Fecha de creación: 2025-11-17T22:05:01.486490300
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -257,7 +257,7 @@ Descripción: Survey for clustering analysis 3
 Creador: TestUserClustering3
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:25.538792900
+Fecha de creación: 2025-11-17T22:05:01.486490300
 ========================================
 
 --- CREAR ENCUESTA ---

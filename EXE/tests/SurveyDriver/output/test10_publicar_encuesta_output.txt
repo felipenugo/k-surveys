@@ -233,7 +233,7 @@ Número de preguntas: 3
 
 ¿Estás seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
 Encuesta guardada y publicada correctamente
-Fecha de publicación: 2025-11-17T21:43:25.768473500
+Fecha de publicación: 2025-11-17T22:05:01.683680400
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA

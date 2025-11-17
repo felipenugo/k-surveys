@@ -186,7 +186,7 @@ Descripción: PROP es lo mejor
 Creador: TestUserResponse1
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.018755200
+Fecha de creación: 2025-11-17T22:05:03.807644600
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -207,7 +207,7 @@ Descripción: PROP es lo mejor
 Creador: TestUserResponse1
 Estado: DRAFT
 Número de preguntas: 1
-Fecha de creación: 2025-11-17T21:43:28.018755200
+Fecha de creación: 2025-11-17T22:05:03.807644600
 ========================================
 
 --- CREAR ENCUESTA ---
