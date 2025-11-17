@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI覰
+1. INICIAR SESI脫N
 2. REGISTRARSE
 3. SALIR
-Opci髇: 
+Opci贸n: 
 
 
 
@@ -54,8 +54,8 @@ Opci髇:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase馻: --- registr醤dose ---
-El usuario TestUserResponse8 se ha registrado con 閤ito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase帽a: --- registr谩ndose ---
+El usuario TestUserResponse8 se ha registrado con 茅xito.
 
 
 
@@ -106,20 +106,20 @@ El usuario TestUserResponse8 se ha registrado con 閤ito.
 
 
 
---- INICIO DE SESI覰 ---
-Introduce tu nombre de usuario:Introduce tu contrase馻:--- iniciando sesi髇 ---
-Inicio de sesi髇 correcto!
+--- INICIO DE SESI脫N ---
+Introduce tu nombre de usuario:Introduce tu contrase帽a:--- iniciando sesi贸n ---
+Inicio de sesi贸n correcto!
 Bienvenido TestUserResponse8
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI覰
-Opcion: --- CERRANDO SESI覰 ---
-Sesi髇 cerrada, hasta pronto TestUserResponse8.
+3. CERRAR SESI脫N
+Opcion: --- CERRANDO SESI脫N ---
+Sesi贸n cerrada, hasta pronto TestUserResponse8.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI覰
+1. INICIAR SESI脫N
 2. REGISTRARSE
 3. SALIR
-Opci髇: --- SALIENDO DE K-SURVEY ---
+Opci贸n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

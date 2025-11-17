@@ -1,5 +1,12 @@
 El directorio DOC contiene la documentación del proyecto.
 
-javadoc/                        Documentación JavaDoc generada con diagramas UML (generar con: cd FONT && ./gradlew javadoc)
-Diagrama_Clases_Conceptual.mmd  Diagrama de clases conceptual en formato Mermaid
-Diagrama_Clases_Diseno.mmd      Diagrama de clases de diseño en formato Mermaid
+javadoc/                                Documentación JavaDoc generada con diagramas UML (generar con: cd FONT && ./gradlew javadoc)
+Diagrama_Clases_Conceptual.mmd          Diagrama de clases conceptual en formato Mermaid
+Diagrama_Clases_Diseno.mmd              Diagrama de clases de diseño en formato Mermaid
+Diagrama_Clases.png                     Diagrama de clases en formato PNG
+Diagrama_Casos_de_Uso.png               Diagrama de casos de uso en formato PNG
+Descripcion_Casos_de_Uso.pdf            Descripción de los casos de uso
+Descripcion_Clases.pdf                  Descripción de las clases
+Estructura_Drivers.pdf                  Descripción de la estructura de drivers de prueba
+Estructuras_Datos_y_Algoritmos.pdf      Documentación de estructuras de datos y algoritmos implementados
+Reparto_Clases.pdf                      Reparto de clases entre los miembros del equipo

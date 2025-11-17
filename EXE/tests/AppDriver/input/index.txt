@@ -1,7 +1,0 @@
-Archivos de entrada para tests del AppDriver.
-
-Archivos:
-- test1_logout.txt: Login y logout inmediato. Flujo: Login → Logout. Usuario: usuario_test/password_test
-- test2_create_survey.txt: Crear una encuesta simple. Flujo: Login → Crear encuesta → Logout. Encuesta: "Mi Primera Encuesta" con pregunta de respuesta corta
-- test3_view_surveys.txt: Ver encuestas disponibles. Flujo: Login → Ver encuestas → Volver → Logout. Usuario: usuario_test/password_test
-- test4_invalid_option.txt: Probar opción inválida en AppDriver. Flujo: Login → Opción inválida → Opción válida → Logout. Opción inválida: 5

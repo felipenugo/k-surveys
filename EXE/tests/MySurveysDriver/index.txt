@@ -1,8 +1,0 @@
-Tests de MySurveysDriver - Visualización y gestión de encuestas propias.
-
-Archivos:
-- DescripcionMySurveysDriver.txt: Documentación detallada de los casos de uso
-- input/test1_listar_encuestas.txt: Listar todas las encuestas del usuario autenticado
-- input/test2_ejecutar_clustering.txt: Ejecutar algoritmo de clustering sobre encuesta propia
-- input/test3_volver_atras.txt: Volver al menú anterior
-- output/: Archivos de salida generados por los tests

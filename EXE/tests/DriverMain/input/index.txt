@@ -1,8 +1,0 @@
-Archivos de entrada para tests del DriverMain.
-
-Archivos:
-- test1_register_and_exit.txt: Registrar un nuevo usuario y salir. Flujo: Registrar → Salir. Usuario: testuser1, contraseña: testpass1
-- test2_register_login_logout.txt: Registrar usuario, iniciar sesión y cerrar sesión. Flujo: Registrar → Login → Logout → Salir. Usuario: testuser2, contraseña: testpass2
-- test3_login_create_survey_logout.txt: Login, crear encuesta y salir. Flujo: Registrar → Login → Crear encuesta → Logout → Salir. Usuario: admin, contraseña: admin123. Encuesta: "Encuesta de Satisfacción" con pregunta de opción múltiple
-- test4_multiple_users.txt: Registrar múltiples usuarios y hacer login con cada uno. Flujo: Registrar user1 → Registrar user2 → Login user1 → Logout → Login user2 → Logout → Salir. Usuarios: user1/pass1 y user2/pass2
-- test5_invalid_option.txt: Probar opción inválida en menú. Flujo: Opción inválida (5) → Opción inválida (0) → Salir
