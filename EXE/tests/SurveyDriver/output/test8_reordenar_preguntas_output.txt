@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -54,57 +54,237 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: Opci√≥n no v√°lida. Selecciona una opcion del menu.
-1. Intentar registrarse de nuevo.
-2. Volver al men√∫ principal.
-Opci√≥n: -----------------------------------
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUser1 se ha registrado con Èxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
+Bienvenido TestUser1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESI”N
+Opcion: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el tÌtulo de la encuesta: Introduce la descripciÛn de la encuesta: 
+Encuesta inicializada correctamente.
+(El ID ser· asignado al publicar)
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+       CREAR NUEVA PREGUNTA
+========================================
+Introduce el texto de la pregunta: øEsta pregunta es obligatoria? (S/N, por defecto S): 
+--- TIPO DE PREGUNTA ---
+1. PREGUNTA TEXTUAL
+2. PREGUNTA DE OPCI”N M⁄LTIPLE
+3. PREGUNTA NUM…RICA
+4. CANCELAR
+OpciÛn: 
+Pregunta numÈrica creada.
+Los usuarios deber·n responder con un n˙mero v·lido.
+Pregunta aÒadida correctamente en posiciÛn 0.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+       CREAR NUEVA PREGUNTA
+========================================
+Introduce el texto de la pregunta: øEsta pregunta es obligatoria? (S/N, por defecto S): 
+--- TIPO DE PREGUNTA ---
+1. PREGUNTA TEXTUAL
+2. PREGUNTA DE OPCI”N M⁄LTIPLE
+3. PREGUNTA NUM…RICA
+4. CANCELAR
+OpciÛn: 
+Pregunta textual creada.
+Pregunta aÒadida correctamente en posiciÛn 1.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+    PREGUNTAS DE LA ENCUESTA
+========================================
+
+[0] Prueba
+    Tipo: NUMERICAL
+    Obligatoria: SÕ
+    (Respuesta numÈrica requerida)
+
+[1] prueba 2
+    Tipo: TEXTUAL
+    Obligatoria: SÕ
+========================================
+
+Introduce el Ìndice de la pregunta a mover: Introduce la nueva posiciÛn: Pregunta movida de posiciÛn 0 a posiciÛn 1.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+    PREGUNTAS DE LA ENCUESTA
+========================================
+
+[0] prueba 2
+    Tipo: TEXTUAL
+    Obligatoria: SÕ
+
+[1] Prueba
+    Tipo: NUMERICAL
+    Obligatoria: SÕ
+    (Respuesta numÈrica requerida)
+========================================
+
+Introduce el Ìndice de la pregunta a mover: Introduce la nueva posiciÛn: La pregunta ya est· en esa posiciÛn.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+    PREGUNTAS DE LA ENCUESTA
+========================================
+
+[0] prueba 2
+    Tipo: TEXTUAL
+    Obligatoria: SÕ
+
+[1] Prueba
+    Tipo: NUMERICAL
+    Obligatoria: SÕ
+    (Respuesta numÈrica requerida)
+========================================
+
+Introduce el Ìndice de la pregunta a mover: Introduce la nueva posiciÛn: Õndices no v·lidos.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+OpciÛn: 
+========================================
+       RESUMEN DE LA ENCUESTA
+========================================
+TÌtulo: Prueba
+DescripciÛn: Prueba
+Creador: TestUser1
+N˙mero de preguntas: 2
+========================================
+
+øEst·s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
+Encuesta guardada y publicada correctamente
+Fecha de publicaciÛn: 2025-11-17T18:54:52.916187700
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUser1.
+-----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: Exception in thread "main" java.util.NoSuchElementException
-	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
-	at java.base/java.util.Scanner.next(Scanner.java:1602)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
-	at presentation.driverMain.DriverMain.selectWelcomeMenuOption(DriverMain.java:26)
-	at presentation.driverMain.DriverMain.main(DriverMain.java:79)
+OpciÛn: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

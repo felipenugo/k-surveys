@@ -10,6 +10,7 @@ import domain.model.enums.TypeQuestion;
 import domain.exception.SurveyException;
 import presentation.driverMain.DriverMain;
 
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class CreateSurveyDriver {
@@ -76,6 +77,8 @@ public class CreateSurveyDriver {
 
         } catch (SurveyException e) {
             System.out.println("\nERROR: " + e.getMessage());
+        } catch (NoSuchElementException e) {
+            System.out.println("\nSe ha llegado al final de la entrada de datos.");
         } catch (Exception e) {
             System.out.println("\nError inesperado: " + e.getMessage());
         }

@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -54,14 +54,14 @@ OpciÃ³n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÃ±a: --- registrÃ¡ndose ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
 Error: El formato del email debe terminar en @gmail.com o @fib.upc.edu.
 1. Intentar registrarse de nuevo.
-2. Volver al menÃº principal.
-OpciÃ³n: -----------------------------------
+2. Volver al menú principal.
+Opción: -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

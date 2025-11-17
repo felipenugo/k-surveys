@@ -1,13 +1,13 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: OpciÃ³n no vÃ¡lida.
+Opción: Opción no válida.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

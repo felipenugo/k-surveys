@@ -76,11 +76,15 @@ public class DriverMain {
 
         boolean exit = false;
         while (!exit) {
-            switch (selectWelcomeMenuOption()) {
-                case 1 -> sessionDriver.driverLogin();
-                case 2 -> sessionDriver.driverRegister();
-                case 3 -> exit = true;
-                default -> System.out.println("Opción no válida.");
+            try {
+                switch (selectWelcomeMenuOption()) {
+                    case 1 -> sessionDriver.driverLogin();
+                    case 2 -> sessionDriver.driverRegister();
+                    case 3 -> exit = true;
+                    default -> System.out.println("Opción no válida.");
+                }
+            } catch (java.util.NoSuchElementException e) {
+                exit = true;
             }
         }
         System.out.println("--- SALIENDO DE K-SURVEY ---");

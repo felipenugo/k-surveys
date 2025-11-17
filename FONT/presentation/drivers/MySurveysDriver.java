@@ -2,16 +2,18 @@ package presentation.drivers;
 
 import domain.controller.SurveyController;
 import domain.model.Survey;
+import presentation.driverMain.DriverMain;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.List;
+import java.util.NoSuchElementException;
+import java.util.Scanner;
 
 public class MySurveysDriver {
 
     private final SurveyController surveyController;
     private final ClusteringDriver clusteringDriver;
+    private final Scanner sc = DriverMain.getScanner();
 
     public MySurveysDriver(SurveyController surveyController, ClusteringDriver clusteringDriver) {
         this.surveyController = surveyController;
@@ -27,8 +29,7 @@ public class MySurveysDriver {
             System.out.println("3. Atrás");
             System.out.print("Opción: ");
             try {
-                BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-                String option = reader.readLine();
+                String option = sc.nextLine();
                 switch (option) {
                     case "1":
                         listMySurveys();
@@ -45,6 +46,8 @@ public class MySurveysDriver {
                 }
             } catch (IOException e) {
                 e.printStackTrace();
+            } catch (NoSuchElementException e) {
+                exitMySurvey = true;
             }
         } while (!exitMySurvey);
         System.out.println("--- SALIENDO DE MIS ENCUESTAS ---");

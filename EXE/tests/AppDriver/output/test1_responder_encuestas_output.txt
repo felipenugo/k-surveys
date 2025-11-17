@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -53,14 +53,96 @@ OpciÃ³n:
 
 
 
---- INICIO DE SESIÃ“N ---
-Introduce tu nombre de usuario:Introduce tu contraseÃ±a:--- iniciando sesiÃ³n ---
-Error: El usuario 3 no existe.
-1. Intentar inciar sesiÃ³n de nuevo.
-2. Registrarse.
-3. Volver al menÃº principal.
-OpciÃ³n: Exception in thread "main" java.util.NoSuchElementException: No line found
-	at java.base/java.util.Scanner.nextLine(Scanner.java:1660)
-	at presentation.drivers.SessionDriver.displayLoginErrorMenu(SessionDriver.java:36)
-	at presentation.drivers.SessionDriver.driverLogin(SessionDriver.java:100)
-	at presentation.driverMain.DriverMain.main(DriverMain.java:80)
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario usuario_test1 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido usuario_test1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Error: No hay encuestas creadas todavía.
+1. Intentar de nuevo
+2. Volver atrás
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto usuario_test1.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

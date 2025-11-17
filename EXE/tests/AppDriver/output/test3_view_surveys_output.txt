@@ -1,12 +1,148 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: Exception in thread "main" java.util.InputMismatchException
-	at java.base/java.util.Scanner.throwFor(Scanner.java:947)
-	at java.base/java.util.Scanner.next(Scanner.java:1602)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2267)
-	at java.base/java.util.Scanner.nextInt(Scanner.java:2221)
-	at presentation.driverMain.DriverMain.selectWelcomeMenuOption(DriverMain.java:26)
-	at presentation.driverMain.DriverMain.main(DriverMain.java:79)
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario usuario_test3 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido usuario_test3
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: No tienes encuestas.
+--- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- SALIENDO DE MIS ENCUESTAS ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto usuario_test3.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

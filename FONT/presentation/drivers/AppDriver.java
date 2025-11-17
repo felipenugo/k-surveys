@@ -39,14 +39,18 @@ public class AppDriver {
     public void appMenu() {
         boolean exitApp = false;
         do {
-            switch (selectAppMenuOption()) {
-                case 1 -> surveyDriver.surveyMenu();
-                case 2 -> createsurveyDriver.createSurveyMenu();
-                case 3 -> {
-                    sessionDriver.logout();
-                    exitApp = true;
+            try {
+                switch (selectAppMenuOption()) {
+                    case 1 -> surveyDriver.surveyMenu();
+                    case 2 -> createsurveyDriver.createSurveyMenu();
+                    case 3 -> {
+                        sessionDriver.logout();
+                        exitApp = true;
+                    }
+                    default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
                 }
-                default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
+            } catch (java.util.NoSuchElementException e) {
+                exitApp = true;
             }
         } while (!exitApp);
     }

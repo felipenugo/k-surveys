@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -54,8 +54,8 @@ OpciÃ³n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÃ±a: --- registrÃ¡ndose ---
-El usuario MARC se ha registrado con Ã©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
+El usuario MARC se ha registrado con éxito.
 
 
 
@@ -106,22 +106,22 @@ El usuario MARC se ha registrado con Ã©xito.
 
 
 
---- INICIO DE SESIÃ“N ---
-Introduce tu nombre de usuario:Introduce tu contraseÃ±a:--- iniciando sesiÃ³n ---
-Inicio de sesiÃ³n correcto!
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
 Bienvenido MARC
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESIÃ“N
-Opcion: --- CERRANDO SESIÃ“N ---
-SesiÃ³n cerrada, hasta pronto MARC.
+3. CERRAR SESIÓN
+Opcion: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto MARC.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: 
+Opción: 
 
 
 
@@ -172,14 +172,14 @@ OpciÃ³n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÃ±a: --- registrÃ¡ndose ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
 Error: El usuario MARC ya existe. Por favor escoge otro nombre de usuario.
 1. Intentar registrarse de nuevo.
-2. Volver al menÃº principal.
-OpciÃ³n: -----------------------------------
+2. Volver al menú principal.
+Opción: -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÃ“N
+1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-OpciÃ³n: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------
