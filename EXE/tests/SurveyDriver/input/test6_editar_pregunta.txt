@@ -1,4 +1,10 @@
 2
+TestUser1
+testuser1@gmail.com
+1234
+TestUser1
+1234
+2
 aprobamos PROP?
 esta es una prueba pero todos deseamos empezar 2026 con PROP aprobado. Te queremos profe!
 4
@@ -35,3 +41,6 @@ S
 4
 9
 S
+3
+3
+3
