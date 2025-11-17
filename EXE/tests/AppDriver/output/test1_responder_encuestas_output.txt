@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -54,8 +54,8 @@ OpciÛn:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
-El usuario usuario_test1 se ha registrado con Èxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
+El usuario usuario_test1 se ha registrado con √©xito.
 
 
 
@@ -106,43 +106,43 @@ El usuario usuario_test1 se ha registrado con Èxito.
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido usuario_test1
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: Error: No hay encuestas creadas todavÌa.
+2. VOLVER ATR√ÅS
+Opci√≥n: Error: No hay encuestas creadas todav√≠a.
 1. Intentar de nuevo
-2. Volver atr·s
-OpciÛn: --- RESPONDER ENCUESTAS ---
+2. Volver atr√°s
+Opci√≥n: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: --- saliendo de responder encuesta ---
+2. VOLVER ATR√ÅS
+Opci√≥n: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- volviendo al men˙ principal ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- volviendo al men√∫ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
-Opcion: --- CERRANDO SESI”N ---
-SesiÛn cerrada, hasta pronto usuario_test1.
+3. CERRAR SESI√ìN
+Opcion: --- CERRANDO SESI√ìN ---
+Sesi√≥n cerrada, hasta pronto usuario_test1.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: --- SALIENDO DE K-SURVEY ---
+Opci√≥n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------
