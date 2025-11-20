@@ -34,7 +34,7 @@ public class SceneManager {
 
             Scene scene = new Scene(loader.load());
 
-            primaryStage.setTitle("Login App");
+            primaryStage.setTitle("Login");
             primaryStage.setScene(scene);
             primaryStage.show();
 
