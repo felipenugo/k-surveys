@@ -19,8 +19,9 @@ public class App extends Application {
             System.err.println("SOLUCTIÓN: Asigan un sceneManager con el método setSceneManager antes de lanzar la app.");
             System.exit(1);
         }
-        manager.setPrimaryStage(stage);
-        manager.showLogin();
+        manager.setPrimaryStage(stage); // pasar el stage
+        manager.initStage(); // inicializar los parámetros generales del stage que usaran todas las vistas
+        manager.showRegister(); // cargar primera vista
     }
 
     public static void main(String[] args) {
