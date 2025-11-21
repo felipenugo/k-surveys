@@ -1,10 +1,16 @@
 package data;
 
+import com.google.gson.Gson;
+
+import java.io.*;
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import domain.model.User;
 
 /**
@@ -13,14 +19,63 @@ import domain.model.User;
  * No realiza validaciones de negocio; actúa como capa de persistencia en memoria.
  */
 public class UserRepository {
-    /** Mapa que almacena los usuarios registrados del sistema. */
+    /**
+     * Mapa que almacena los usuarios registrados del sistema.
+     */
     private final Map<String, User> users; // <username, User>
+    /**
+     * String que almacena la dirección del fichero donde se guardan los usuarios.
+     */
+    private final String FILE_PATH;
+    /**
+     * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
+     */
+    private final Type mapType;
+    private final Gson gson;
+
+    // cargar mapa users desde el fichero resources/db/users.json
+
+    private Map<String, User> loadUsersFromJson() {
+        File file = new File(FILE_PATH);
+        if (!file.exists() || file.length() == 0) {
+            return new HashMap<>();
+        }
+        try (Reader reader = new FileReader(file)) {
+            return gson.fromJson(reader, mapType);
+        } catch (Exception e) {
+            System.err.println("Error al cargar los usuarios desde el json: " + e.getMessage());
+            System.exit(1);
+            return null;
+        }
+    }
+
+    private void saveUsersToJson() {
+        // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
+        // crea el fichero si no existe
+        /*
+        try anidado
+        try{
+        File file = new File(FILE_PATH);
+        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+         */
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            gson.toJson(users, writer);
+        } catch (Exception e) {
+            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
+            System.exit(1);
+        }
+    }
+
     /**
      * Crea un nuevo repositorio de usuarios en memoria.
      * Inicializa la estructura de almacenamiento.
      */
     public UserRepository() {
-        users = new HashMap<>();
+        this.FILE_PATH = "resources/db/users.json";
+        this.mapType = new TypeToken<Map<String, User>>() {
+        }.getType();
+        this.gson = new GsonBuilder().setPrettyPrinting().create(); // json con formato
+        this.users = loadUsersFromJson();
     }
 
     // ───────────────────────────────────────────────
@@ -34,6 +89,7 @@ public class UserRepository {
      */
     public void addUser(User user) {
         users.put(user.getUsername(), user);
+        saveUsersToJson();
     }
 
     /**
@@ -87,6 +143,7 @@ public class UserRepository {
     // ───────────────────────────────────────────────
     // Gestión de encuestas creadas por usuario
     // ───────────────────────────────────────────────
+
     /**
      * Añade una encuesta al listado de encuestas creadas por un usuario.
      *
@@ -131,6 +188,7 @@ public class UserRepository {
     // ───────────────────────────────────────────────
     // Gestión de encuestas respondidas por usuario
     // ───────────────────────────────────────────────
+
     /**
      * Añade una entrada para una encuesta respondida por un usuario.
      * Esta entrada mantiene la coherencia del doble índice entre usuario, encuesta y respuesta.
@@ -158,8 +216,8 @@ public class UserRepository {
      * Añade un responseId a las respuestas de un usuario para una encuesta específica.
      * Esta operación mantiene la coherencia del doble índice entre usuario, encuesta y respuesta.
      *
-     * @param username nombre de usuario
-     * @param surveyId id de la encuesta
+     * @param username   nombre de usuario
+     * @param surveyId   id de la encuesta
      * @param responseId id de la respuesta a añadir
      */
     public void addResponseId(String username, String surveyId, String responseId) {
@@ -170,8 +228,8 @@ public class UserRepository {
      * Elimina un responseId de las respuestas de un usuario para una encuesta específica.
      * Esta operación mantiene la coherencia del doble índice entre usuario, encuesta y respuesta.
      *
-     * @param username nombre de usuario
-     * @param surveyId id de la encuesta
+     * @param username   nombre de usuario
+     * @param surveyId   id de la encuesta
      * @param responseId id de la respuesta a eliminar
      */
     public void deleteResponseId(String username, String surveyId, String responseId) {
@@ -182,8 +240,8 @@ public class UserRepository {
      * Verifica si un responseId existe en las respuestas de un usuario para una encuesta específica.
      * Esta verificación mantiene la coherencia del doble índice entre usuario, encuesta y respuesta.
      *
-     * @param username nombre de usuario
-     * @param surveyId id de la encuesta
+     * @param username   nombre de usuario
+     * @param surveyId   id de la encuesta
      * @param responseId id de la respuesta a verificar
      * @return true si existe, false en caso contrario
      */
