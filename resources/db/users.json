@@ -4,7 +4,11 @@
     "email": "felipe@gmail.com",
     "password": "felipe",
     "createdSurveysId": [],
-    "respondedSurveysId": {}
+    "respondedSurveysId": {
+      "0": [
+        "1"
+      ]
+    }
   },
   "felipe3": {
     "USERNAME": "felipe3",
@@ -17,6 +21,48 @@
     "USERNAME": "felipe4",
     "email": "felipe4@gmail.com",
     "password": "felipe4",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe5": {
+    "USERNAME": "felipe5",
+    "email": "felipe5@gmail.com",
+    "password": "felipe5",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe6": {
+    "USERNAME": "felipe6",
+    "email": "felipe6@gmail.com",
+    "password": "felipe6",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe7": {
+    "USERNAME": "felipe7",
+    "email": "felipe7@gmail.com",
+    "password": "felipe7",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe9": {
+    "USERNAME": "felipe9",
+    "email": "felipe9@gmail.com",
+    "password": "felipe9",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe10": {
+    "USERNAME": "felipe10",
+    "email": "felipe10@gmail.com",
+    "password": "felipe10",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe11": {
+    "USERNAME": "felipe11",
+    "email": "felipe11@gmail.com",
+    "password": "felipe11",
     "createdSurveysId": [],
     "respondedSurveysId": {}
   }

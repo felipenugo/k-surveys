@@ -37,4 +37,9 @@ public class LoginViewController {
             statusLabel.setText("Error: " + e.getMessage());
         }
     }
+
+    @FXML
+    public void handleRegisterClick(ActionEvent event) {
+        sceneManager.showRegister();
+    }
 }

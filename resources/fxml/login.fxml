@@ -11,5 +11,7 @@
     <TextField fx:id="usernameField" promptText="Nombre de Usuario"/>
     <PasswordField fx:id="passwordField" promptText="Contraseña"/>
     <Button fx:id="loginButton" onAction="#handleLoginClick" text="INICIAR SESIÓN"/>
+    <Label text="¿Todavía no tienes cuenta?" />
+    <Hyperlink text="Registrate" onAction="#handleRegisterClick"/>
     <Label fx:id="statusLabel"/>
 </VBox>

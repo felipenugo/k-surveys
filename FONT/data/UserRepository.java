@@ -99,6 +99,7 @@ public class UserRepository {
      */
     public void deleteUser(String username) {
         users.remove(username);
+        saveUsersToJson();
     }
 
     /**
@@ -128,6 +129,7 @@ public class UserRepository {
      */
     public void updateUser(String username, User updatedUser) {
         users.put(username, updatedUser);
+        saveUsersToJson();
     }
 
     /**
@@ -152,6 +154,7 @@ public class UserRepository {
      */
     public void addSurveyId(String username, String surveyId) {
         users.get(username).addCreatedSurveyId(surveyId);
+        saveUsersToJson();
     }
 
     /**
@@ -162,6 +165,7 @@ public class UserRepository {
      */
     public void deleteSurveyId(String username, String surveyId) {
         users.get(username).removeCreatedSurveyId(surveyId);
+        saveUsersToJson();
     }
 
     /**
@@ -198,6 +202,7 @@ public class UserRepository {
      */
     public void addRespondedSurveyIdEntry(String username, String surveyId) {
         users.get(username).addRespondedSurveyIdEntry(surveyId); // mantener coherencia con el doble índice
+        saveUsersToJson();
     }
 
     /**
@@ -209,6 +214,7 @@ public class UserRepository {
      */
     public void deleteRespondedSurveyIdEntry(String username, String surveyId) {
         users.get(username).removeRespondedSurveyIdEntry(surveyId); // mantener coherencia con el doble índice
+        saveUsersToJson();
 
     }
 
@@ -222,6 +228,7 @@ public class UserRepository {
      */
     public void addResponseId(String username, String surveyId, String responseId) {
         users.get(username).addResponseId(surveyId, responseId);
+        saveUsersToJson();
     }
 
     /**
@@ -234,6 +241,7 @@ public class UserRepository {
      */
     public void deleteResponseId(String username, String surveyId, String responseId) {
         users.get(username).removeResponseId(surveyId, responseId);
+        saveUsersToJson();
     }
 
     /**

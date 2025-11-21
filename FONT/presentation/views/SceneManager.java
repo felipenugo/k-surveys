@@ -19,8 +19,7 @@ public class SceneManager {
         this.primaryStage = stage;
     }
 
-    private void checkLoaderAddress(FXMLLoader loader)
-    {
+    private void checkLoaderAddress(FXMLLoader loader) {
         if (loader.getLocation() == null) {
             System.err.println("FATAL: No se pudo encontrar la ruta al fichero fxml.");
             System.err.println("SOLUCIÓN: Modifica la ruta o mueve el fichero de ruta.");
@@ -28,18 +27,21 @@ public class SceneManager {
         }
     }
 
-    private void finalizeScene(FXMLLoader loader, String title) throws Exception
-    {
-        Scene scene = new Scene(loader.load());
+    private void finalizeScene(FXMLLoader loader, String title) throws Exception {
+        Scene currentScene = primaryStage.getScene();
 
-        this.primaryStage.setTitle(title);
-        this.primaryStage.setScene(scene);
-        this.primaryStage.show();
+        if (currentScene == null) {
+            currentScene = new Scene(loader.load());
+            primaryStage.setScene(currentScene);
+        } else {
+            // Reemplaza el Root con el nuevo contenido
+            currentScene.setRoot(loader.load());
+        }
+        primaryStage.setTitle(title);
     }
-    public void initStage()
-    {
-        if(this.primaryStage== null)
-        {
+
+    public void initStage() {
+        if (this.primaryStage == null) {
             System.err.println("ERROR FATAL: El stage es null");
             System.err.println("SOULUCIÓN: llamar primero a setPrimaryStage()");
             System.exit(1);
@@ -48,12 +50,13 @@ public class SceneManager {
         this.primaryStage.setResizable(true);
         this.primaryStage.setMinHeight(700);
         this.primaryStage.setMinWidth(1000);
-        double centerX = this.primaryStage.getWidth()/2;
-        double centerY = this.primaryStage.getHeight()/2;
+        double centerX = this.primaryStage.getWidth() / 2;
+        double centerY = this.primaryStage.getHeight() / 2;
         this.primaryStage.setX(centerX);
         this.primaryStage.setY(centerY);
         this.primaryStage.setMaximized(false);
 
+        this.primaryStage.show();
     }
 
     public void showLogin() {
@@ -70,8 +73,8 @@ public class SceneManager {
         }
     }
 
-    public void showRegister(){
-        try{
+    public void showRegister() {
+        try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
             checkLoaderAddress(loader); // verifica que la carga se ha hecho correctamente
 
@@ -80,8 +83,7 @@ public class SceneManager {
             loader.setController(registerViewController); // asigna el controlador de la vista al fichero fxml
 
             finalizeScene(loader, "REGISTRO");
-        }catch (Exception e)
-        {
+        } catch (Exception e) {
             System.err.println("ERROR FATAL: " + e.getMessage());
         }
     }
