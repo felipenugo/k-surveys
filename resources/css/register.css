@@ -1,3 +1,74 @@
-.root{
--fx-background-color: rgb(82, 131, 197)
+
+.root {
+    /* Fondo Degradado para la ventana */
+    -fx-background-color:
+        linear-gradient(to bottom right, #297383 0%, #5a9ca4 50%, #8bc5cd 100%);
+
+    /* Fuente y Padding Global */
+    -fx-font-family: "Segoe UI", Roboto, sans-serif;
+    -fx-padding: 20px;
+}
+
+/* ----------------------------------------------------------- */
+/* CLASE .card-register: Estilo de la tarjeta semitransparente (VBox) */
+/* ----------------------------------------------------------- */
+.card-register {
+    /* Fondo semitransparente */
+    -fx-background-color: rgba(255, 255, 255, 0.75);
+
+    /* Padding interior de la tarjeta (espacio entre el contenido y el borde) */
+    -fx-padding: 48px;
+
+    /* Control de tamaño: Esto asegura que la tarjeta no ocupe todo el StackPane,
+       permitiendo que el fondo se vea alrededor. */
+    -fx-max-width: 420px;
+    /* La altura se ajusta automáticamente al contenido */
+    -fx-max-height: 500px;
+    /* Esquinas redondeadas */
+    -fx-background-radius: 20px;
+
+    /* Sombra para efecto 3D */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 32, 0, 0, 8);
+}
+
+/* ----------------------------------------------------------- */
+/* ESTILOS DE COMPONENTES INTERNOS */
+/* ----------------------------------------------------------- */
+
+.title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1d1d1f;;
+    -fx-padding: 0 0 15px 0;
+}
+
+.label {
+    -fx-font-weight: 500;
+    -fx-text-fill: #555555;
+    -fx-font-size: 14px;
+}
+
+.input-field {
+    -fx-pref-height: 35px;
+    -fx-background-radius: 5px;
+    -fx-border-color: #cccccc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.form-group {
+    -fx-spacing: 5px;
+    -fx-padding: 0 0 10px 0;
+}
+
+.btn-primary {
+    -fx-background-color: #5a9ca4; /* Azul primario */
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5px;
+    -fx-padding: 10px 20px;
+    -fx-cursor: hand;
+}
+.btn-primary:hover {
+    -fx-background-color: #0056b3;
 }

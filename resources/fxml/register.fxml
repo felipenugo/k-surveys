@@ -1,16 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="300.0" prefWidth="400.0" spacing="15.0"
-      xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      stylesheets="/css/register.css">
-    <Label text="REGISTRATE"/>
-    <TextField fx:id="usernameField" promptText="Nombre de Usuario"/>
-    <TextField fx:id="emailField" promptText="Email de Usuario" />
-    <PasswordField fx:id="passwordField" promptText="Contraseña"/>
-    <Button fx:id="registerButton" onAction="#handleRegisterClick" text="REGISTRARSE"/>
-    <Label fx:id="statusLabel"/>
-</VBox>
+<!--
+    CORRECCIÓN DE LA ESTRUCTURA: Usamos StackPane como nodo raíz
+    para asegurar que los estilos .root (fondo) se apliquen a toda la escena
+    y centrar correctamente la tarjeta VBox.
+-->
+<StackPane alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           stylesheets="@../css/register.css"> <!-- Las hojas de estilo se aplican al nodo raíz -->
+
+    <!-- VBox interno: Esta es la tarjeta con el estilo .card-register.
+         PREF-SIZES ELIMINADOS: Ahora el tamaño se controla por CSS (max-width) y contenido. -->
+    <VBox alignment="CENTER" spacing="15.0"
+          styleClass="card-register">
+        <children>
+            <Label styleClass="title" text="REGISTRO DE USUARIO" />
+
+            <!-- Campo de Usuario -->
+            <VBox styleClass="form-group" maxWidth="300.0">
+                <Label styleClass="label" text="Nombre de Usuario:" />
+                <TextField fx:id="usernameField" styleClass="input-field" promptText="Define un nombre de usuario" />
+            </VBox>
+
+            <!-- Campo de Email -->
+            <VBox styleClass="form-group" maxWidth="300.0">
+                <Label styleClass="label" text="Email:" />
+                <TextField fx:id="emailField" styleClass="input-field" promptText="Ingresa tu email (opcional)" />
+            </VBox>
+
+            <!-- Campo de Contraseña -->
+            <VBox styleClass="form-group" maxWidth="300.0">
+                <Label styleClass="label" text="Contraseña:" />
+                <PasswordField fx:id="passwordField" styleClass="input-field" promptText="Crea una contraseña segura" />
+            </VBox>
+
+            <!-- Botón de Registro -->
+            <Button fx:id="registerButton" styleClass="btn-primary" onAction="#handleRegisterClick" text="REGISTRARSE" prefWidth="150.0">
+                <VBox.margin>
+                    <Insets top="10.0" />
+                </VBox.margin>
+            </Button>
+
+            <!-- Etiqueta de Estado -->
+            <Label fx:id="statusLabel" text="Complete los campos para registrarse." style="-fx-text-fill: #555555;" />
+
+        </children>
+    </VBox>
+</StackPane>

@@ -5,5 +5,19 @@
     "password": "felipe",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "felipe3": {
+    "USERNAME": "felipe3",
+    "email": "felipe3@gmail.com",
+    "password": "felipe3",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "felipe4": {
+    "USERNAME": "felipe4",
+    "email": "felipe4@gmail.com",
+    "password": "felipe4",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }
