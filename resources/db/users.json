@@ -65,5 +65,19 @@
     "password": "felipe11",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "f1": {
+    "USERNAME": "f1",
+    "email": "f1@gmail.com",
+    "password": "f1",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "fel": {
+    "USERNAME": "fel",
+    "email": "fel@gmail.com",
+    "password": "fel",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }

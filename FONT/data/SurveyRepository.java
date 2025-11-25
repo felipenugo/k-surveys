@@ -1,10 +1,16 @@
 package data;
 
+import java.io.*;
+import java.lang.reflect.Type;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.reflect.TypeToken;
 import domain.model.Survey;
 import domain.model.Question;
 import domain.exception.SurveyException;
@@ -17,15 +23,60 @@ import domain.exception.SurveyException;
 public class SurveyRepository {
     /** Estructura de almacenamiento en memoria: &lt;surveyId, Survey&gt;. */
     private final Map<String, Survey> surveys; // <surveyId, Survey>, Survey contiene sus preguntas
+
+    /**
+     * String que almacena la dirección del fichero donde se guardan los usuarios.
+     */
+    private final String FILE_PATH;
+    /**
+     * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
+     */
+    private final Type mapType;
+    private final Gson gson;
+
     /** Contador interno para generar IDs autoincrementales. */
     private int nextSurveyId;
+
+    private Map<String, Survey> loadSurveysFromJson() {
+        File file = new File(FILE_PATH);
+        if(!file.exists()  || file.length()==0)
+            return new HashMap<>();
+        try(Reader reader = new FileReader(file)) {
+            return gson.fromJson(reader, mapType);
+        }catch(Exception e) {
+            System.err.println("Error al cargar las encuestas desde el fichero: " + e.getMessage());
+            System.exit(1);
+            return null;
+        }
+    }
 
     /**
      * Crea un nuevo repositorio de encuestas en memoria.
      */
     public SurveyRepository() {
-        surveys = new HashMap<>();
-        nextSurveyId = 0;
+        this.FILE_PATH = "resources/db/surveys.json";
+        this.mapType = new TypeToken<Map<String, Survey>>(){}.getType();
+        // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
+        this.gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        this.surveys = loadSurveysFromJson();
+        this.nextSurveyId = 0;
+    }
+
+    private void saveSurveysToJson(){
+        // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
+        // crea el fichero si no existe
+        /*
+        try anidado
+        try{
+        File file = new File(FILE_PATH);
+        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+         */
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            gson.toJson(surveys, writer);
+        } catch (Exception e) {
+            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
+            System.exit(1);
+        }
     }
 
     // ───────────────────────────────────────────────
@@ -38,6 +89,7 @@ public class SurveyRepository {
      */
     public void addSurvey(Survey survey) {
         surveys.put(survey.getSURVEY_ID(), survey);
+        saveSurveysToJson();
     }
 
     /**
