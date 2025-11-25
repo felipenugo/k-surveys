@@ -1,10 +1,17 @@
 package data;
 
-import java.util.*;
-
-import domain.model.MultipleChoiceAnswer;
-import domain.model.Response;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import domain.model.Answer;
+import domain.model.Response;
+import domain.model.Survey;
+
+import java.io.*;
+import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
+
+import java.time.LocalDateTime;
+import java.util.*;
 
 /**
  * Repositorio encargado de almacenar en memoria todas las respuestas del sistema.
@@ -14,16 +21,59 @@ import domain.model.Answer;
 public class ResponseRepository {
     /** Estructura &lt;surveyId, &lt;responseId, Response&gt;&gt; */
     private final Map<String, Map<String, Response>> responses; // <surveyId, <responseId, Response>>
+    /**
+     * String que almacena la dirección del fichero donde se guardan los usuarios.
+     */
+    private final String FILE_PATH;
+    /**
+     * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
+     */
+    private final Type mapType;
+    private final Gson gson;
     /** Último identificador asignado para respuestas. */
     private String lastResponseId;
+
+    private Map<String, Map<String, Response>>loadResponsesFromJson() {
+        File file = new File(FILE_PATH);
+        if(!file.exists()  || file.length()==0)
+            return new HashMap<>();
+        try(Reader reader = new FileReader(file)) {
+            return gson.fromJson(reader, mapType);
+        }catch(Exception e) {
+            System.err.println("Error al cargar las encuestas desde el fichero: " + e.getMessage());
+            System.exit(1);
+            return null;
+        }
+    }
 
     /**
      * Crea un repositorio vacío para almacenar respuestas.
      * El primer identificador asignado será "0".
      */
     public ResponseRepository() {
-        responses = new HashMap<>();
-        lastResponseId = "0";
+        this.FILE_PATH = "resources/db/responses.json";
+        this.mapType = new TypeToken<Map<String, Map<String, Response>>>(){}.getType();
+        // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
+        this.gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        this.responses = new HashMap<>();
+        this.lastResponseId = "0";
+    }
+
+    private void saveResponsesToJson(){
+        // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
+        // crea el fichero si no existe
+        /*
+        try anidado
+        try{
+        File file = new File(FILE_PATH);
+        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+         */
+        try (Writer writer = new FileWriter(FILE_PATH)) {
+            gson.toJson(responses, writer);
+        } catch (Exception e) {
+            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
+            System.exit(1);
+        }
     }
 
     // ───────────────────────────────────────────────
@@ -56,6 +106,7 @@ public class ResponseRepository {
      */
     public void addSurveyEntry(String surveyId) {
         responses.putIfAbsent(surveyId, new HashMap<>());
+        saveResponsesToJson();
     }
 
     /** Elimina la entrada de una encuesta y todas sus respuestas.
@@ -64,6 +115,7 @@ public class ResponseRepository {
      */
     public void deleteSurveyEntry(String surveyId) {
         responses.remove(surveyId);
+        saveResponsesToJson();
     }
 
     /** Comprueba si existe una entrada para una encuesta.
@@ -88,6 +140,7 @@ public class ResponseRepository {
         addSurveyEntry(surveyId);
         responses.get(surveyId).putIfAbsent(response.getRESPONSE_ID(), response);
         setLastResponseId(response.getRESPONSE_ID());
+        saveResponsesToJson();
     }
 
     /** Obtiene una respuesta específica de una encuesta.
@@ -116,6 +169,7 @@ public class ResponseRepository {
      */
     public void deleteResponse(String surveyId, String responseId) {
         responses.get(surveyId).remove(responseId);
+        saveResponsesToJson();
     }
 
     /** Actualiza una respuesta existente de una encuesta.
@@ -125,6 +179,7 @@ public class ResponseRepository {
      */
     public void updateResponse(String surveyId, Response response) {
         responses.get(surveyId).put(response.getRESPONSE_ID(), response);
+        saveResponsesToJson();
     }
 
     /** Comprueba si existe una respuesta en una encuesta.
@@ -158,6 +213,7 @@ public class ResponseRepository {
         */
     public void updateAnswer(String surveyId, String responseId, int answerIndex, Answer answer) {
         responses.get(surveyId).get(responseId).updateAnswer(answerIndex, answer);
+        saveResponsesToJson();
     }
 
     /** Obtiene una respuesta específica de una encuesta.
