@@ -41,9 +41,8 @@ public class ResponseRepository {
         try(Reader reader = new FileReader(file)) {
             return gson.fromJson(reader, mapType);
         }catch(Exception e) {
-            System.err.println("Error al cargar las encuestas desde el fichero: " + e.getMessage());
-            System.exit(1);
-            return null;
+            throw new RuntimeException(
+                    "Error al cargar las encuestas desde el fichero: " + FILE_PATH, e);
         }
     }
 
@@ -59,7 +58,7 @@ public class ResponseRepository {
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .registerTypeAdapter(Answer.class, new AnswerAdapter())
                 .setPrettyPrinting().create();
-        this.responses = new HashMap<>();
+        this.responses = loadResponsesFromJson()    ;
         this.lastResponseId = "0";
     }
 

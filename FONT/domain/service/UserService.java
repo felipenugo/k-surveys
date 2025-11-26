@@ -6,6 +6,7 @@ import domain.exception.RegisterException;
 
 import domain.model.User;
 import data.UserRepository;
+import domain.utils.PasswordHasher;
 
 import javax.security.auth.login.LoginException;
 
@@ -88,7 +89,8 @@ public class UserService {
             throw new RegisterException("El usuario " + username + " ya existe. Por favor escoge otro nombre de usuario.");
 
         // Registration
-        User newUser = new User(username, email, password);
+        String passwordHash = PasswordHasher.hash(password);
+        User newUser = new User(username, email, passwordHash);
         userRepository.addUser(newUser);
     }
 
