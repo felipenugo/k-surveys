@@ -1,14 +1,11 @@
 package domain.service;
 
-import domain.controller.UserController;
 import domain.exception.LogInException;
 import domain.exception.RegisterException;
 
 import domain.model.User;
 import data.UserRepository;
 import domain.utils.PasswordHasher;
-
-import javax.security.auth.login.LoginException;
 
 /**
  * Servicio encargado de gestionar la lógica de negocio asociada a los usuarios.
@@ -122,7 +119,7 @@ public class UserService {
         // Business rules validation
         if (!userRepository.existsUser(username))
             throw new LogInException("El usuario " + username + " no existe.");
-        if (!userRepository.getUser(username).getPassword().equals(password))
+        if (!userRepository.getUser(username).getPasswordHash().equals(PasswordHasher.hash(password)))
             throw new LogInException("La contraseña es incorrecta.");
     }
     // ───────────────────────────────────────────────
@@ -156,7 +153,7 @@ public class UserService {
         String result; // can be improved by using enum before implementing errors
         if (!userRepository.existsUser(username))
             result = "user_not_exists";
-        else if (!userRepository.getUser(username).getPassword().equals(password))
+        else if (!userRepository.getUser(username).getPasswordHash().equals(password))
             result = "incorrect_password";
         else
             result = "success";
@@ -247,14 +244,14 @@ public class UserService {
             result = "user_not_exists";
         else if (!userRepository.getUser(username).getEmail().equals(email))
             result = "incorrect_email";
-        else if (!userRepository.getUser(username).getPassword().equals(oldPassword))
+        else if (!userRepository.getUser(username).getPasswordHash().equals(oldPassword))
             result = "incorrect_password";
         else if (oldPassword.equals(newPassword))
             result = "same_password";
         else {
             result = "success";
             User user = userRepository.getUser(username);
-            user.setPassword(newPassword);
+            user.setPasswordHash(newPassword);
             userRepository.updateUser(username, user);
         }
         return result;

@@ -27,7 +27,7 @@ public class User {
     /** Correo electrónico asociado al usuario. */
     private String email; // could allow changing email in the future
     /** Contraseña del usuario. */
-    private String password; // could be improved in the future for real security
+    private String passwordHash;
     /** Conjunto con los identificadores de las encuestas creadas por el usuario. */
     private final Set<String> createdSurveysId; // allows accessing surveys almost directly with the username in database
     /**
@@ -48,13 +48,13 @@ public class User {
      * 
      * @param USERNAME nombre de usuario (no puede ser nulo ni vacío)
      * @param email    correo electrónico (no puede ser nulo ni vacío)
-     * @param password contraseña (no puede ser nula ni vacía)
+     * @param passwordHash contraseña (no puede ser nula ni vacía)
      * @throws RegisterException si alguno de los parámetros es nulo o vacío
      */
-    public User(String USERNAME, String email, String password) {
+    public User(String USERNAME, String email, String passwordHash) {
         this.USERNAME = USERNAME;
         this.email = email;
-        this.password = password;
+        this.passwordHash = passwordHash;
         this.createdSurveysId = new HashSet<>();
         this.respondedSurveysId = new HashMap<>();
     }
@@ -86,9 +86,9 @@ public class User {
      * 
      * @return la contraseña
      */
-    public String getPassword() {
-        return password;
-    } // could be improved in the future for real security
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
     /**
      * Devuelve el conjunto de identificadores de encuestas creadas por el usuario.
@@ -125,8 +125,8 @@ public class User {
      * 
      * @param newPassword nueva contraseña (no puede ser nula ni vacía)
      */
-    public void setPassword(String newPassword) {
-        this.password = newPassword;
+    public void setPasswordHash(String newPassword) {
+        this.passwordHash = newPassword;
     }
 
     // ───────────────────────────────────────────────

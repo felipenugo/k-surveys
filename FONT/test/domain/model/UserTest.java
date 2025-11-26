@@ -20,14 +20,14 @@ public class UserTest {
         User usuario = new User("", "", "");
         assertEquals("", usuario.getUsername());
         assertEquals("", usuario.getEmail());
-        assertEquals("", usuario.getPassword());
+        assertEquals("", usuario.getPasswordHash());
     }
 
     @Test
     public void constructorConParametrosValidos() {
         assertEquals("arnau", usuario.getUsername());
         assertEquals("arnau@fib.upc.edu", usuario.getEmail());
-        assertEquals("1234", usuario.getPassword());
+        assertEquals("1234", usuario.getPasswordHash());
     }
 
     public void constructorNombreNull() {
@@ -56,24 +56,24 @@ public class UserTest {
     @Test
     public void constructorContrasenaNull() {
         User u = new User("Arnau", "arnau@fib.upc.edu", null);
-        assertNull(u.getPassword());
+        assertNull(u.getPasswordHash());
     }
     
     @Test
     public void constructorContrasenaVacia() {
         User u = new User("Arnau", "arnau@fib.upc.edu", "");
-        assertEquals("", u.getPassword());
+        assertEquals("", u.getPasswordHash());
     }
 
     @Test
     public void settersValidos() {
-        usuario = new User("Prueba", usuario.getEmail(), usuario.getPassword());
+        usuario = new User("Prueba", usuario.getEmail(), usuario.getPasswordHash());
         usuario.setEmail("prueba@fib.upc.edu");
-        usuario.setPassword("1302");
+        usuario.setPasswordHash("1302");
 
         assertEquals("Prueba", usuario.getUsername());
         assertEquals("prueba@fib.upc.edu", usuario.getEmail());
-        assertEquals("1302", usuario.getPassword());
+        assertEquals("1302", usuario.getPasswordHash());
     }
     @Test
     public void setNombreNull() {
@@ -101,14 +101,14 @@ public class UserTest {
 
     @Test
     public void setContrasenaNull() {
-        usuario.setPassword(null);
-        assertNull(usuario.getPassword());
+        usuario.setPasswordHash(null);
+        assertNull(usuario.getPasswordHash());
     }
 
     @Test
     public void setContrasenaVacia() {
-        usuario.setPassword("");
-        assertEquals("", usuario.getPassword());
+        usuario.setPasswordHash("");
+        assertEquals("", usuario.getPasswordHash());
     }
 
 }
