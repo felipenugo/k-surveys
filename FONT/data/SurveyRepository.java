@@ -49,10 +49,9 @@ public class SurveyRepository {
             return new HashMap<>();
         try (Reader reader = new FileReader(file)) {
             return gson.fromJson(reader, mapType);
-        } catch (Exception e) {
-            System.err.println("Error al cargar las encuestas desde el fichero: " + e.getMessage());
-            System.exit(1);
-            return null;
+        } catch(Exception e) {
+            throw new RuntimeException(
+                    "Error al cargar las encuestas desde el fichero: " + FILE_PATH, e);
         }
     }
 
@@ -83,9 +82,8 @@ public class SurveyRepository {
          */
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(surveys, writer);
-        } catch (Exception e) {
-            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
-            System.exit(1);
+        }  catch (Exception e) {
+            throw new RuntimeException("Error al guardar las encuestas en el fichero: " + FILE_PATH, e);
         }
     }
 

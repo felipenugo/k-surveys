@@ -42,7 +42,7 @@ public class ResponseRepository {
             return gson.fromJson(reader, mapType);
         }catch(Exception e) {
             throw new RuntimeException(
-                    "Error al cargar las encuestas desde el fichero: " + FILE_PATH, e);
+                    "Error al cargar las respuestas desde el fichero: " + FILE_PATH, e);
         }
     }
 
@@ -74,8 +74,7 @@ public class ResponseRepository {
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(responses, writer);
         } catch (Exception e) {
-            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
-            System.exit(1);
+            throw new RuntimeException("Error al guardar las respuestas en el fichero: " + FILE_PATH, e);
         }
     }
 

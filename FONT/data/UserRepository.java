@@ -42,10 +42,9 @@ public class UserRepository {
         }
         try (Reader reader = new FileReader(file)) {
             return gson.fromJson(reader, mapType);
-        } catch (Exception e) {
-            System.err.println("Error al cargar los usuarios desde el json: " + e.getMessage());
-            System.exit(1);
-            return null;
+        }catch(Exception e) {
+            throw new RuntimeException(
+                    "Error al cargar los usuarios desde el fichero: " + FILE_PATH, e);
         }
     }
 
@@ -60,9 +59,8 @@ public class UserRepository {
          */
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(users, writer);
-        } catch (Exception e) {
-            System.err.println("Error al guardar los usuarios en el fichero: " + e.getMessage());
-            System.exit(1);
+        }  catch (Exception e) {
+            throw new RuntimeException("Error al guardar los usuarios en el fichero: " + FILE_PATH, e);
         }
     }
 
