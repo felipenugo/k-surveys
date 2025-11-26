@@ -2,6 +2,9 @@ package domain.clustering;
 
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
+import dev.langchain4j.data.embedding.Embedding;
+import dev.langchain4j.model.embedding.AllMiniLmL6V2EmbeddingModel;
+import dev.langchain4j.model.embedding.EmbeddingModel;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,15 +17,26 @@ import java.util.Map;
 public class DistanceCalculator {
 
     private DistanceType distanceType;
+    private TextDistanceType textDistanceType;
     private Map<Integer, Double> weights;
+    private static EmbeddingModel embeddingModel;
+
+    private static EmbeddingModel getEmbeddingModel() {
+        if (embeddingModel == null) {
+            embeddingModel = new AllMiniLmL6V2EmbeddingModel();
+        }
+        return embeddingModel;
+    }
 
     /**
      * Constructor que establece el tipo de distancia.
      *
      * @param distanceType Métrica de distancia a utilizar
+     * @param textDistanceType Métrica de distancia textual a utilizar
      */
-    public DistanceCalculator(DistanceType distanceType) {
+    public DistanceCalculator(DistanceType distanceType, TextDistanceType textDistanceType) {
         this.distanceType = distanceType;
+        this.textDistanceType = textDistanceType;
         this.weights = new HashMap<>();
     }
 
@@ -52,6 +66,15 @@ public class DistanceCalculator {
      */
     public DistanceType getDistanceType() {
         return this.distanceType;
+    }
+
+    /**
+     * Obtiene el tipo de distancia textual configurado.
+     *
+     * @return Tipo de distancia textual actual
+     */
+    public TextDistanceType getTextDistanceType() {
+        return this.textDistanceType;
     }
 
     /**
@@ -282,10 +305,37 @@ public class DistanceCalculator {
             return 0.0;
         }
 
-        int maxLen = Math.max(text1.length(), text2.length());
-        if (maxLen == 0) return 0.0;
+        if (this.textDistanceType == TextDistanceType.LEVENSHTEIN) {
+            int maxLen = Math.max(text1.length(), text2.length());
+            if (maxLen == 0) return 0.0;
+            return (double) levenshtein(text1, text2) / maxLen;
+        } else if (this.textDistanceType == TextDistanceType.EMBEDDING) {
+            Embedding embedding1 = getEmbeddingModel().embed(text1).content();
+            Embedding embedding2 = getEmbeddingModel().embed(text2).content();
 
-        return (double) levenshtein(text1, text2) / maxLen;
+            float[] v1 = embedding1.vector();
+            float[] v2 = embedding2.vector();
+
+            double dotProduct = 0.0;
+            double normA = 0.0;
+            double normB = 0.0;
+            for (int i = 0; i < v1.length; i++) {
+                dotProduct += v1[i] * v2[i];
+                normA += v1[i] * v1[i];
+                normB += v2[i] * v2[i];
+            }
+
+            if (normA == 0 || normB == 0) {
+                return 1.0; // Cannot compute similarity if one vector is all zeros
+            }
+
+            double cosineSimilarity = dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+            
+            // Convert cosine similarity to a distance measure (0.0 - 1.0)
+            return (1.0 - cosineSimilarity) / 2.0;
+        } else {
+            throw new UnsupportedOperationException("Tipo de distancia textual no soportado: " + this.textDistanceType);
+        }
     }
 
     /**

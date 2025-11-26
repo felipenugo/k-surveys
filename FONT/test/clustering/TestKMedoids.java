@@ -4,6 +4,7 @@ import domain.clustering.ClusterResults;
 import domain.clustering.DistanceCalculator;
 import domain.clustering.DistanceType;
 import domain.clustering.KMedoids;
+import domain.clustering.TextDistanceType;
 import domain.model.MultipleChoiceAnswer;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.Question;
@@ -27,7 +28,7 @@ public class TestKMedoids {
     @Before
     public void setUp() {
         kmedoids = new KMedoids(10, 1e-5);
-        distanceCalc = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        distanceCalc = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         questions = new ArrayList<>();
         MultipleChoiceQuestion q1 = new MultipleChoiceQuestion(0, "s1");

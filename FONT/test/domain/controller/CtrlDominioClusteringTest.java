@@ -13,6 +13,7 @@ import domain.service.SurveyService;
 import domain.service.UserService;
 import org.junit.Before;
 import org.junit.Test;
+import domain.clustering.TextDistanceType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -84,7 +85,7 @@ public class CtrlDominioClusteringTest {
         // Paso 4: Crear Análisis KMeans
         int k = 2;
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -107,7 +108,7 @@ public class CtrlDominioClusteringTest {
 
         int k = 3;
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, new KMedoids());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -130,7 +131,7 @@ public class CtrlDominioClusteringTest {
 
         int k = 3;
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -153,7 +154,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -177,7 +178,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -199,7 +200,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -221,7 +222,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -242,7 +243,7 @@ public class CtrlDominioClusteringTest {
         responses = responseRepository.getResponsesBySurveyId(survey.getSURVEY_ID());
         assertEquals(100, responses.size());
 
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         for (int k = 2; k <= 5; k++) {
             ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, new KMeans());
@@ -267,7 +268,7 @@ public class CtrlDominioClusteringTest {
         List<DistanceType> distanceTypes = List.of(DistanceType.EUCLIDEAN, DistanceType.MANHATTAN);
 
         for (DistanceType distanceType : distanceTypes) {
-            DistanceCalculator distance = new DistanceCalculator(distanceType);
+            DistanceCalculator distance = new DistanceCalculator(distanceType, TextDistanceType.LEVENSHTEIN);
             ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
             analysis.execute(responses, questions, distance);
 
@@ -288,7 +289,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 
@@ -311,7 +312,7 @@ public class CtrlDominioClusteringTest {
         assertEquals(50, responses.size());
 
         ClusteringAnalysis analysis = new ClusteringAnalysis(survey, 2, new KMeans());
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         analysis.execute(responses, questions, distance);
 

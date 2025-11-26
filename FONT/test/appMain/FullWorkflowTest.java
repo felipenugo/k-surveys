@@ -8,6 +8,16 @@ import domain.model.enums.TypeQuestion;
 import domain.service.*;
 import org.junit.Before;
 import org.junit.Test;
+import domain.clustering.TextDistanceType;
+import data.ResponseRepository;
+import data.UserRepository;
+import data.SurveyRepository;
+import data.QuestionRepository;
+import data.AnswerRepository;
+import domain.clustering.DistanceType;
+import domain.clustering.QualityMetricType;
+import domain.clustering.ClusteringAnalysis;
+import domain.clustering.DistanceCalculator;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -170,7 +180,7 @@ public class FullWorkflowTest {
 
                     // Use AnalysisController to manage the analysis
                     ClusteringAnalysis analysis = analysisController.createAnalysis(survey, k, algorithmName, new HashMap<>());
-                    DistanceCalculator distanceCalc = new DistanceCalculator(distanceType);
+                    DistanceCalculator distanceCalc = new DistanceCalculator(distanceType, TextDistanceType.LEVENSHTEIN);
                     
                     analysisController.executeAnalysis(analysis.getId(), responses, questions, distanceCalc);
 

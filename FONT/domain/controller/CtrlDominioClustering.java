@@ -3,6 +3,7 @@ package domain.controller;
 import data.ResponseRepository;
 import data.SurveyRepository;
 import domain.clustering.*;
+import domain.clustering.TextDistanceType;
 import domain.model.Question;
 import domain.model.Response;
 import domain.model.Survey;
@@ -70,7 +71,7 @@ public class CtrlDominioClustering {
         List<Question> questions = survey.getQuestions();
 
         DistanceType distanceType = DistanceType.valueOf(distanceMetric.toUpperCase());
-        analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType));
+        analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType, TextDistanceType.LEVENSHTEIN));
 
         return analysis.getId();
     }

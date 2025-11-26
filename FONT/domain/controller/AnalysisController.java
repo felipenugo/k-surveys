@@ -9,6 +9,7 @@ import domain.clustering.KMeansPlusPlus;
 import domain.clustering.KMedoids;
 import domain.clustering.QualityMetricCalculator;
 import domain.clustering.QualityMetricType;
+import domain.clustering.TextDistanceType;
 import domain.model.Survey;
 import domain.model.Response; // This is the ResponseSet in the diagram
 import domain.model.Question; // This is the Question in the diagram
@@ -174,7 +175,7 @@ public class AnalysisController {
 
         // Use robust defaults for the analysis
         ClusteringAlgorithm algorithm = new KMeansPlusPlus();
-        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        DistanceCalculator distance = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
 
         for (int k = minK; k <= maxK; k++) {
             ClusteringAnalysis analysis = new ClusteringAnalysis(survey, k, algorithm);

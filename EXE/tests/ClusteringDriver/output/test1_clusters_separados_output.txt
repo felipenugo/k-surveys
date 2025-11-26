@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -54,8 +54,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering1 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering1 se ha registrado con Èxito.
 
 
 
@@ -106,82 +106,82 @@ El usuario TestUserClustering1 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering1
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: 
 ========================================
        CREANDO NUEVA ENCUESTA
 ========================================
-Introduce el t√≠tulo de la encuesta: Introduce la descripci√≥n de la encuesta: 
+Introduce el tÌtulo de la encuesta: Introduce la descripciÛn de la encuesta: 
 Encuesta inicializada correctamente.
-(El ID ser√° asignado al publicar)
+(El ID ser· asignado al publicar)
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR T√çTULO
-3. EDITAR DESCRIPCI√ìN
-4. A√ëADIR PREGUNTA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-Opci√≥n: 
+OpciÛn: 
 ========================================
        CREAR NUEVA PREGUNTA
 ========================================
-Introduce el texto de la pregunta: ¬øEsta pregunta es obligatoria? (S/N, por defecto S): 
+Introduce el texto de la pregunta: øEsta pregunta es obligatoria? (S/N, por defecto S): 
 --- TIPO DE PREGUNTA ---
 1. PREGUNTA TEXTUAL
-2. PREGUNTA DE OPCI√ìN M√öLTIPLE
-3. PREGUNTA NUM√âRICA
+2. PREGUNTA DE OPCI”N M⁄LTIPLE
+3. PREGUNTA NUM…RICA
 4. CANCELAR
-Opci√≥n: 
-Pregunta num√©rica creada.
-Los usuarios deber√°n responder con un n√∫mero v√°lido.
-Pregunta a√±adida correctamente en posici√≥n 0.
+OpciÛn: 
+Pregunta numÈrica creada.
+Los usuarios deber·n responder con un n˙mero v·lido.
+Pregunta aÒadida correctamente en posiciÛn 0.
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR T√çTULO
-3. EDITAR DESCRIPCI√ìN
-4. A√ëADIR PREGUNTA
+2. EDITAR TÕTULO
+3. EDITAR DESCRIPCI”N
+4. A—ADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-Opci√≥n: 
+OpciÛn: 
 ========================================
        RESUMEN DE LA ENCUESTA
 ========================================
-T√≠tulo: test cluster separado
-Descripci√≥n: es un test cluster separado
+TÌtulo: test cluster separado
+DescripciÛn: es un test cluster separado
 Creador: TestUserClustering1
-N√∫mero de preguntas: 1
+N˙mero de preguntas: 1
 ========================================
 
-¬øEst√°s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
+øEst·s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
 Encuesta guardada y publicada correctamente
-Fecha de publicaci√≥n: 2025-11-17T22:39:54.649865681
+Fecha de publicaciÛn: 2025-11-17T23:16:18.400194800
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering1.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering1.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -232,8 +232,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering2 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering2 se ha registrado con Èxito.
 
 
 
@@ -284,62 +284,62 @@ El usuario TestUserClustering2 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering2
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: id: 0, t√≠tulo: test cluster separado, autor: TestUserClustering1, n√∫mero de preguntas: 1
-descripci√≥n: es un test cluster separado, n√∫mero de respuestas: 0
+2. VOLVER ATR¡S
+OpciÛn: id: 0, tÌtulo: test cluster separado, autor: TestUserClustering1, n˙mero de preguntas: 1
+descripciÛn: es un test cluster separado, n˙mero de respuestas: 0
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
-√çndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
-Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
+Õndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
+Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
+OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-Opci√≥n: --- enviando respuesta ---
+OpciÛn: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: --- saliendo de responder encuesta ---
+2. VOLVER ATR¡S
+OpciÛn: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering2.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering2.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -390,8 +390,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering3 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering3 se ha registrado con Èxito.
 
 
 
@@ -442,62 +442,62 @@ El usuario TestUserClustering3 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering3
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: id: 0, t√≠tulo: test cluster separado, autor: TestUserClustering1, n√∫mero de preguntas: 1
-descripci√≥n: es un test cluster separado, n√∫mero de respuestas: 1
+2. VOLVER ATR¡S
+OpciÛn: id: 0, tÌtulo: test cluster separado, autor: TestUserClustering1, n˙mero de preguntas: 1
+descripciÛn: es un test cluster separado, n˙mero de respuestas: 1
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
-√çndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
-Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
+Õndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
+Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
+OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-Opci√≥n: --- enviando respuesta ---
+OpciÛn: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: --- saliendo de responder encuesta ---
+2. VOLVER ATR¡S
+OpciÛn: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering3.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering3.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -548,8 +548,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering4 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering4 se ha registrado con Èxito.
 
 
 
@@ -600,62 +600,62 @@ El usuario TestUserClustering4 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering4
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: id: 0, t√≠tulo: test cluster separado, autor: TestUserClustering1, n√∫mero de preguntas: 1
-descripci√≥n: es un test cluster separado, n√∫mero de respuestas: 2
+2. VOLVER ATR¡S
+OpciÛn: id: 0, tÌtulo: test cluster separado, autor: TestUserClustering1, n˙mero de preguntas: 1
+descripciÛn: es un test cluster separado, n˙mero de respuestas: 2
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
-√çndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
-Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
+Õndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
+Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
+OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-Opci√≥n: --- enviando respuesta ---
+OpciÛn: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: --- saliendo de responder encuesta ---
+2. VOLVER ATR¡S
+OpciÛn: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering4.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering4.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -706,8 +706,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering5 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering5 se ha registrado con Èxito.
 
 
 
@@ -758,62 +758,62 @@ El usuario TestUserClustering5 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering5
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: id: 0, t√≠tulo: test cluster separado, autor: TestUserClustering1, n√∫mero de preguntas: 1
-descripci√≥n: es un test cluster separado, n√∫mero de respuestas: 3
+2. VOLVER ATR¡S
+OpciÛn: id: 0, tÌtulo: test cluster separado, autor: TestUserClustering1, n˙mero de preguntas: 1
+descripciÛn: es un test cluster separado, n˙mero de respuestas: 3
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
-√çndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
-Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
+Õndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
+Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
+OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-Opci√≥n: --- enviando respuesta ---
+OpciÛn: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: --- saliendo de responder encuesta ---
+2. VOLVER ATR¡S
+OpciÛn: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering5.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering5.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -864,8 +864,8 @@ Opci√≥n:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
-El usuario TestUserClustering6 se ha registrado con √©xito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
+El usuario TestUserClustering6 se ha registrado con Èxito.
 
 
 
@@ -916,62 +916,62 @@ El usuario TestUserClustering6 se ha registrado con √©xito.
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering6
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: id: 0, t√≠tulo: test cluster separado, autor: TestUserClustering1, n√∫mero de preguntas: 1
-descripci√≥n: es un test cluster separado, n√∫mero de respuestas: 4
+2. VOLVER ATR¡S
+OpciÛn: id: 0, tÌtulo: test cluster separado, autor: TestUserClustering1, n˙mero de preguntas: 1
+descripciÛn: es un test cluster separado, n˙mero de respuestas: 4
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
-√çndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
-Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
+Õndice: 0, pregunta: eres del grupo 1? si es asi responde con un valor menor a 10
+Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
+OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-Opci√≥n: --- enviando respuesta ---
+OpciÛn: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR√ÅS
-Opci√≥n: --- saliendo de responder encuesta ---
+2. VOLVER ATR¡S
+OpciÛn: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering6.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering6.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: 
+OpciÛn: 
 
 
 
@@ -1021,66 +1021,66 @@ Opci√≥n:
 
 
 
---- INICIO DE SESI√ìN ---
-Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
-Inicio de sesi√≥n correcto!
+--- INICIO DE SESI”N ---
+Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
+Inicio de sesiÛn correcto!
 Bienvenido TestUserClustering1
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
+3. CERRAR SESI”N
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- MIS ENCUESTAS ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. Atr√°s
-Opci√≥n: --- Men√∫ Principal de Clustering ---
-1. Ejecutar un nuevo an√°lisis
-2. Evaluar un an√°lisis existente
-3. Encontrar la K √≥ptima para una encuesta
-4. Ver resultados de un an√°lisis
+3. Atr·s
+OpciÛn: --- Men˙ Principal de Clustering ---
+1. Ejecutar un nuevo an·lisis
+2. Evaluar un an·lisis existente
+3. Encontrar la K Ûptima para una encuesta
+4. Ver resultados de un an·lisis
 5. Salir
-Elige una opci√≥n: 
---- Ejecutar Nuevo An√°lisis ---
+Elige una opciÛn: 
+--- Ejecutar Nuevo An·lisis ---
 Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
-Opci√≥n: Introduce el n√∫mero de clusters (k): Selecciona una m√©trica de distancia (1: Euclidea, 2: Manhattan):
-Opci√≥n: Ejecutando an√°lisis... Esto puede tardar un momento.
-An√°lisis ejecutado con √©xito. ID del an√°lisis: 01446668-4dd3-44b9-9c93-25ba4e7d823a
-Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados autom√°ticamente a: /media/Almacenamiento/Universidad/00 - PROP/FormsApp/EXE/../exports/analysis.txt
+OpciÛn: Introduce el n˙mero de clusters (k): Selecciona una mÈtrica de distancia (1: Euclidea, 2: Manhattan):
+OpciÛn: Ejecutando an·lisis... Esto puede tardar un momento.
+An·lisis ejecutado con Èxito. ID del an·lisis: 1632b5d2-8cf7-43ca-968c-3e49065a45dd
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados autom·ticamente a: C:\Users\yeray\Documents\Uni\3er aÒo\PROP\FormsApp\EXE\..\exports\analysis.txt
 
---- ¬øQu√© deseas hacer con el nuevo an√°lisis? ---
-1. Ver m√©tricas de calidad
-2. Volver al men√∫ principal
-Elige una opci√≥n: --- Men√∫ Principal de Clustering ---
-1. Ejecutar un nuevo an√°lisis
-2. Evaluar un an√°lisis existente
-3. Encontrar la K √≥ptima para una encuesta
-4. Ver resultados de un an√°lisis
+--- øQuÈ deseas hacer con el nuevo an·lisis? ---
+1. Ver mÈtricas de calidad
+2. Volver al men˙ principal
+Elige una opciÛn: --- Men˙ Principal de Clustering ---
+1. Ejecutar un nuevo an·lisis
+2. Evaluar un an·lisis existente
+3. Encontrar la K Ûptima para una encuesta
+4. Ver resultados de un an·lisis
 5. Salir
-Elige una opci√≥n: Saliendo del men√∫ de clustering...
+Elige una opciÛn: Saliendo del men˙ de clustering...
 --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. Atr√°s
-Opci√≥n: --- SALIENDO DE MIS ENCUESTAS ---
+3. Atr·s
+OpciÛn: --- SALIENDO DE MIS ENCUESTAS ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN√ö PRINCIPAL
-Opci√≥n: --- volviendo al men√∫ principal ---
+3. VOLVER AL MEN⁄ PRINCIPAL
+OpciÛn: --- volviendo al men˙ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI√ìN
-Opcion: --- CERRANDO SESI√ìN ---
-Sesi√≥n cerrada, hasta pronto TestUserClustering1.
+3. CERRAR SESI”N
+Opcion: --- CERRANDO SESI”N ---
+SesiÛn cerrada, hasta pronto TestUserClustering1.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI√ìN
+1. INICIAR SESI”N
 2. REGISTRARSE
 3. SALIR
-Opci√≥n: --- SALIENDO DE K-SURVEY ---
+OpciÛn: --- SALIENDO DE K-SURVEY ---
 -----------------------------------
