@@ -11,6 +11,8 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import data.adapter.LocalDateTimeAdapter;
+import data.adapter.QuestionAdapter;
 import domain.model.Survey;
 import domain.model.Question;
 import domain.exception.SurveyException;
@@ -62,7 +64,10 @@ public class SurveyRepository {
         this.mapType = new TypeToken<Map<String, Survey>>() {
         }.getType();
         // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
-        this.gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                .registerTypeAdapter(Question.class, new QuestionAdapter())
+                .setPrettyPrinting().create();
         this.surveys = loadSurveysFromJson();
         this.nextSurveyId = 0;
     }

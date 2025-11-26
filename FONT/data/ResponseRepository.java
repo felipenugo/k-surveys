@@ -2,9 +2,10 @@ package data;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import data.adapter.AnswerAdapter;
+import data.adapter.LocalDateTimeAdapter;
 import domain.model.Answer;
 import domain.model.Response;
-import domain.model.Survey;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -54,7 +55,10 @@ public class ResponseRepository {
         this.FILE_PATH = "resources/db/responses.json";
         this.mapType = new TypeToken<Map<String, Map<String, Response>>>(){}.getType();
         // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
-        this.gson = new GsonBuilder().registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter()).setPrettyPrinting().create();
+        this.gson = new GsonBuilder()
+                .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+                .registerTypeAdapter(Answer.class, new AnswerAdapter())
+                .setPrettyPrinting().create();
         this.responses = new HashMap<>();
         this.lastResponseId = "0";
     }
