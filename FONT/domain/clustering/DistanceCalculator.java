@@ -88,6 +88,9 @@ public class DistanceCalculator {
     public double calculate(Response rs1, Response rs2, List<Question> questions) {
         double totalDistanceSquared = 0.0;
         double totalDistanceManhattan = 0.0;
+        double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
 
         for (Question question : questions) {
             int qIdx = question.getQuestionIndex();
@@ -99,6 +102,12 @@ public class DistanceCalculator {
 
             if (this.distanceType == DistanceType.MANHATTAN) {
                 totalDistanceManhattan += (localDist * weight);
+            } else if (this.distanceType == DistanceType.COSINE) {
+                double v1 = 1.0 - localDist;
+                double v2 = 1.0;
+                dotProduct += v1 * v2 * weight;
+                norm1 += v1 * v1 * weight;
+                norm2 += v2 * v2 * weight;
             } else {
                 totalDistanceSquared += Math.pow(localDist * weight, 2);
             }
@@ -106,6 +115,11 @@ public class DistanceCalculator {
 
         if (this.distanceType == DistanceType.MANHATTAN) {
             return totalDistanceManhattan;
+        }
+        if (this.distanceType == DistanceType.COSINE) {
+            if (norm1 == 0.0 || norm2 == 0.0) return 1.0;
+            double cosineSimilarity = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+            return 1.0 - cosineSimilarity;
         }
         return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
     }
@@ -121,6 +135,9 @@ public class DistanceCalculator {
     public double calculateToCentroid(Response rs, Centroid centroid, List<Question> questions) {
         double totalDistanceSquared = 0.0;
         double totalDistanceManhattan = 0.0;
+        double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
 
         for (Question question : questions) {
             int qIdx = question.getQuestionIndex();
@@ -132,6 +149,12 @@ public class DistanceCalculator {
 
             if (this.distanceType == DistanceType.MANHATTAN) {
                 totalDistanceManhattan += (localDist * weight);
+            } else if (this.distanceType == DistanceType.COSINE) {
+                double v1 = 1.0 - localDist;
+                double v2 = 1.0;
+                dotProduct += v1 * v2 * weight;
+                norm1 += v1 * v1 * weight;
+                norm2 += v2 * v2 * weight;
             } else {
                 totalDistanceSquared += Math.pow(localDist * weight, 2);
             }
@@ -139,6 +162,11 @@ public class DistanceCalculator {
 
         if (this.distanceType == DistanceType.MANHATTAN) {
             return totalDistanceManhattan;
+        }
+        if (this.distanceType == DistanceType.COSINE) {
+            if (norm1 == 0.0 || norm2 == 0.0) return 1.0;
+            double cosineSimilarity = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+            return 1.0 - cosineSimilarity;
         }
         return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
     }
@@ -382,6 +410,9 @@ public class DistanceCalculator {
             return 0.0;
         }
         double sum = 0.0;
+        double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
         for (int i = 0; i < vector1.length; i++) {
             if (!(vector1[i] instanceof Number) || !(vector2[i] instanceof Number)) {
                 throw new IllegalArgumentException("Los elementos del vector en posición " + i + " deben ser numéricos (Number)");
@@ -391,14 +422,23 @@ public class DistanceCalculator {
             double diff = val1 - val2;
             if (this.distanceType == DistanceType.MANHATTAN) {
                 sum += Math.abs(diff);
+            } else if (this.distanceType == DistanceType.COSINE) {
+                dotProduct += val1 * val2;
+                norm1 += val1 * val1;
+                norm2 += val2 * val2;
             } else {
                 sum += diff * diff;
             }
         }
-        if (this.distanceType == DistanceType.EUCLIDEAN) {
-            return Math.sqrt(sum);
+        if (this.distanceType == DistanceType.MANHATTAN) {
+            return sum;
         }
-        return sum;
+        if (this.distanceType == DistanceType.COSINE) {
+            if (norm1 == 0.0 || norm2 == 0.0) return 1.0;
+            double cosineSimilarity = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+            return 1.0 - cosineSimilarity;
+        }
+        return Math.sqrt(sum); // EUCLIDEAN by default
     }
 
     /**
@@ -430,6 +470,9 @@ public class DistanceCalculator {
     public double calculate(Centroid c1, Centroid c2, List<Question> questions) {
         double totalDistanceSquared = 0.0;
         double totalDistanceManhattan = 0.0;
+        double dotProduct = 0.0;
+        double norm1 = 0.0;
+        double norm2 = 0.0;
 
         for (int i = 0; i < questions.size(); i++) {
             Question question = questions.get(i);
@@ -462,6 +505,12 @@ public class DistanceCalculator {
 
             if (this.distanceType == DistanceType.MANHATTAN) {
                 totalDistanceManhattan += (localDist * weight);
+            } else if (this.distanceType == DistanceType.COSINE) {
+                double v1 = 1.0 - localDist;
+                double v2 = 1.0;
+                dotProduct += v1 * v2 * weight;
+                norm1 += v1 * v1 * weight;
+                norm2 += v2 * v2 * weight;
             } else {
                 totalDistanceSquared += Math.pow(localDist * weight, 2);
             }
@@ -469,6 +518,11 @@ public class DistanceCalculator {
 
         if (this.distanceType == DistanceType.MANHATTAN) {
             return totalDistanceManhattan;
+        }
+        if (this.distanceType == DistanceType.COSINE) {
+            if (norm1 == 0.0 || norm2 == 0.0) return 1.0;
+            double cosineSimilarity = dotProduct / (Math.sqrt(norm1) * Math.sqrt(norm2));
+            return 1.0 - cosineSimilarity;
         }
         return Math.sqrt(totalDistanceSquared); // EUCLIDEAN by default
     }
