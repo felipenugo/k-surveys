@@ -10,5 +10,10 @@ public enum DistanceType {
     /**
      * Distancia de Manhattan: sum( |d_i| )
      */
-    MANHATTAN
+    MANHATTAN,
+
+    /**
+     * Distancia del Coseno: 1 - (A·B / (||A|| * ||B||))
+     */
+    COSINE
 }
