@@ -6,6 +6,7 @@ import domain.exception.SurveyException;
 import domain.model.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Servicio encargado de gestionar toda la lógica de negocio relacionada con las encuestas.
@@ -313,6 +314,186 @@ public class SurveyService {
      */
     public boolean existsSurvey(String surveyId) {
         return surveyRepository.existsSurvey(surveyId);
+    }
+
+    // ───────────────────────────────────────────────
+    // CRUD Completo: UPDATE, DELETE, GET BY USER, PUBLISH
+    // ───────────────────────────────────────────────
+
+    /**
+     * Actualiza una encuesta existente (solo si es borrador).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT (solo se pueden editar borradores)
+     * - Los cambios se sincronicen con BD y JSON
+     *
+     * @param surveyId identificador de la encuesta a actualizar
+     * @param updatedSurvey encuesta con los cambios
+     * @return encuesta actualizada
+     * @throws SurveyException si la encuesta no existe, no es del usuario, o no está en DRAFT
+     */
+    public Survey updateSurvey(String surveyId, Survey updatedSurvey) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey existingSurvey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!existingSurvey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para editar esta encuesta.");
+        }
+
+        // Validar que la encuesta está en DRAFT
+        if (!existingSurvey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("Solo se pueden editar encuestas en estado borrador.");
+        }
+
+        // Validar cambios
+        if (updatedSurvey.getTitle() == null || updatedSurvey.getTitle().trim().isEmpty()) {
+            throw new SurveyException("El título no puede estar vacío.");
+        }
+        if (updatedSurvey.getDescription() == null || updatedSurvey.getDescription().trim().isEmpty()) {
+            throw new SurveyException("La descripción no puede estar vacía.");
+        }
+
+        // Actualizar los campos
+        existingSurvey.setTitle(updatedSurvey.getTitle());
+        existingSurvey.setDescription(updatedSurvey.getDescription());
+
+        // Guardar cambios
+        surveyRepository.addSurvey(existingSurvey);
+
+        System.out.println("[LOG] Encuesta " + surveyId + " actualizada por usuario " + userController.getUsernameLoggedIn());
+
+        return existingSurvey;
+    }
+
+    /**
+     * Elimina una encuesta (solo si es borrador).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT (solo se pueden eliminar borradores)
+     * - Se elimine de BD y del set de encuestas del usuario
+     * - Se sincronice el JSON del usuario
+     *
+     * @param surveyId identificador de la encuesta a eliminar
+     * @throws SurveyException si la encuesta no existe, no es del usuario, o no está en DRAFT
+     */
+    public void deleteSurvey(String surveyId) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey survey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!survey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para eliminar esta encuesta.");
+        }
+
+        // Validar que la encuesta está en DRAFT
+        if (!survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("Solo se pueden eliminar encuestas en estado borrador.");
+        }
+
+        // Eliminar de BD
+        surveyRepository.deleteSurvey(surveyId);
+
+        // Eliminar del set de encuestas del usuario
+        try {
+            userService.removeSurveyCreated(survey.getCREATOR_USERNAME(), surveyId);
+        } catch (Exception e) {
+            System.err.println("[WARNING] Error al eliminar encuesta del usuario: " + e.getMessage());
+        }
+
+        System.out.println("[LOG] Encuesta " + surveyId + " eliminada por usuario " + userController.getUsernameLoggedIn());
+    }
+
+    /**
+     * Obtiene todas las encuestas creadas por un usuario específico.
+     *
+     * Retorna solo las encuestas del usuario autenticado actualmente.
+     * Las encuestas se ordenan por más reciente primero.
+     *
+     * @param username nombre de usuario
+     * @return lista de encuestas del usuario (ordenadas por fecha descendente)
+     * @throws SurveyException si el usuario no tiene encuestas
+     */
+    public List<Survey> getSurveysByUser(String username) {
+        checkUserLoggedin();
+
+        // Validar que el usuario solicitado es el actualmente logueado
+        if (!username.equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para ver las encuestas de otro usuario.");
+        }
+
+        List<Survey> userSurveys = new ArrayList<>();
+        List<String> surveyIds = surveyRepository.getAllSurveysId();
+
+        for (String surveyId : surveyIds) {
+            Survey survey = surveyRepository.getSurvey(surveyId);
+            if (survey.getCREATOR_USERNAME().equals(username)) {
+                userSurveys.add(survey);
+            }
+        }
+
+        if (userSurveys.isEmpty()) {
+            throw new SurveyException("No tienes encuestas creadas.");
+        }
+
+        // Ordenar por fecha de creación (más reciente primero)
+        userSurveys.sort((s1, s2) -> s2.getCREATED_AT().compareTo(s1.getCREATED_AT()));
+
+        return userSurveys;
+    }
+
+    /**
+     * Publica una encuesta (cambia de DRAFT a PUBLISHED).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT
+     * - La encuesta tenga al menos una pregunta
+     *
+     * @param surveyId identificador de la encuesta a publicar
+     * @return encuesta publicada
+     * @throws SurveyException si la encuesta no puede publicarse
+     */
+    public Survey publishSurvey(String surveyId) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey survey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!survey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para publicar esta encuesta.");
+        }
+
+        // Validar que está en DRAFT
+        if (!survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("La encuesta ya ha sido publicada.");
+        }
+
+        // Validar que tiene al menos una pregunta
+        if (survey.getSize() == 0) {
+            throw new SurveyException("No se puede publicar una encuesta sin preguntas.");
+        }
+
+        // Cambiar estado a PUBLISHED
+        survey.setSurveyStatus(domain.model.enums.SurveyStatus.PUBLISHED);
+        survey.setPUBLISHED_AT();
+
+        // Guardar cambios
+        surveyRepository.addSurvey(survey);
+
+        System.out.println("[LOG] Encuesta " + surveyId + " publicada por usuario " + userController.getUsernameLoggedIn());
+
+        return survey;
     }
 
     // ───────────────────────────────────────────────

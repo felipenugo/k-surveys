@@ -147,6 +147,27 @@ public class UserService {
         System.out.println("[LOG] Encuesta " + surveyId + " registrada para usuario " + username);
     }
 
+    /**
+     * Elimina una encuesta creada del perfil del usuario.
+     *
+     * Este método sincroniza la base de datos relacional con el archivo JSON del usuario,
+     * eliminando el identificador de la encuesta de la lista de encuestas creadas.
+     *
+     * Si el usuario no existe, se lanza una excepción.
+     *
+     * @param username nombre de usuario creador de la encuesta
+     * @param surveyId identificador de la encuesta a eliminar
+     * @throws RuntimeException si el usuario no existe
+     */
+    public void removeSurveyCreated(String username, String surveyId) {
+        if (!userRepository.existsUser(username)) {
+            System.err.println("[WARNING] Usuario " + username + " no encontrado al intentar eliminar encuesta " + surveyId);
+            throw new RuntimeException("El usuario " + username + " no existe en el sistema.");
+        }
+        userRepository.deleteSurveyId(username, surveyId);
+        System.out.println("[LOG] Encuesta " + surveyId + " eliminada del perfil del usuario " + username);
+    }
+
     // ───────────────────────────────────────────────
     // Vinculación de respuestas a encuestas
     // ───────────────────────────────────────────────
