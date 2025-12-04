@@ -8,10 +8,12 @@ version = '1.0-SNAPSHOT'
 
 ext {
     javaMainClass = 'presentation.driverMain.DriverMain'
+    javafxVersion = '21'
+    javafxPlatform = 'win'
 }
 
 application {
-    mainClassName = javaMainClass
+    mainClass = javaMainClass
 }
 
 jar {
@@ -30,11 +32,29 @@ java {
     }
 }
 
+// Forzar encoding UTF-8 en compilación para evitar errores de caracteres especiales en Windows
+tasks.withType(org.gradle.api.tasks.compile.JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+// Also asegurar que las tareas de javadoc usan UTF-8
+tasks.withType(Javadoc).configureEach {
+    options.addStringOption('encoding', 'UTF-8')
+}
+
+// Arreglar dependencias de tareas
+tasks.named('compileJava').configure {
+    dependsOn 'processResources'
+}
+
 sourceSets {
     main {
         java {
             srcDirs = ['.']
             exclude '**/test/**'
+        }
+        resources {
+            srcDirs = ['../resources']
         }
     }
     test {
@@ -55,11 +75,18 @@ configurations {
     umlDoclet
 }
 
+// Dependencias
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     testImplementation('junit:junit:4.13.1')
-    // UML Doclet para generar diagramas UML en JavaDoc
     umlDoclet 'nl.talsmasoftware:umldoclet:2.1.0'
+
+    // JavaFX - todas las dependencias necesarias para Windows
+    implementation "org.openjfx:javafx-controls:${javafxVersion}:${javafxPlatform}"
+    implementation "org.openjfx:javafx-fxml:${javafxVersion}:${javafxPlatform}"
+    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${javafxPlatform}"
+    implementation "org.openjfx:javafx-base:${javafxVersion}:${javafxPlatform}"
+    implementation "org.openjfx:javafx-swing:${javafxVersion}:${javafxPlatform}"
 }
 
 // Copy compiled classes to EXE/classes
@@ -164,3 +191,59 @@ task openJavadoc {
         }
     }
 }
+
+// --- Tareas para ejecutar drivers y App individualmente desde IntelliJ/Gradle ---
+import org.gradle.api.tasks.JavaExec
+
+// DriverMain (interfaz de línea de comandos)
+tasks.register('runDriverMain', JavaExec) {
+    group = 'application'
+    description = 'Ejecuta DriverMain (interfaz CLI)'
+    mainClass = 'presentation.driverMain.DriverMain'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    })
+}
+
+// MainView (GUI con JavaFX)
+tasks.register('runMainView', JavaExec) {
+    group = 'application'
+    description = 'Ejecuta MainView (GUI con JavaFX)'
+    mainClass = 'presentation.main.MainView'
+    classpath = sourceSets.main.runtimeClasspath
+    standardInput = System.in
+    javaLauncher.set(javaToolchains.launcherFor {
+        languageVersion = JavaLanguageVersion.of(21)
+    })
+    // Configurar módulos de JavaFX correctamente
+    doFirst {
+        def javafxModulesPath = configurations.runtimeClasspath.files.findAll {
+            it.name.contains('javafx')
+        }.collect { it.absolutePath }.join(File.pathSeparator)
+
+        if (javafxModulesPath) {
+            jvmArgs = [
+                '--module-path', javafxModulesPath,
+                '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics'
+            ]
+        }
+    }
+}
+
+// Drivers individuales
+['SessionDriver', 'AppDriver', 'SurveyDriver', 'CreateSurveyDriver',
+ 'MySurveysDriver', 'ResponseDriver', 'ClusteringDriver'].each { driver ->
+    tasks.register("run${driver}", JavaExec) {
+        group = 'application'
+        description = "Ejecuta el driver ${driver}"
+        mainClass = "presentation.drivers.${driver}"
+        classpath = sourceSets.main.runtimeClasspath
+        standardInput = System.in
+        javaLauncher.set(javaToolchains.launcherFor {
+            languageVersion = JavaLanguageVersion.of(21)
+        })
+    }
+}
+
