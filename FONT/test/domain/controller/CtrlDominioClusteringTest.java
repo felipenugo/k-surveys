@@ -53,7 +53,7 @@ public class CtrlDominioClusteringTest {
         UserService userService = new UserService(userRepository);
         userController = new UserController(userService);
 
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
         ResponseService responseService = new ResponseService(responseRepository, userController, surveyService);

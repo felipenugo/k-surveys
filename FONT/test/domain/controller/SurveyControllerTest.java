@@ -34,7 +34,7 @@ public class SurveyControllerTest {
         // Inicializar servicios y controllers
         UserService userService = new UserService(userRepository);
         userController = new UserController(userService);
-        surveyService = new SurveyService(surveyRepository, userController);
+        surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
         // Asegurar logout antes de setup

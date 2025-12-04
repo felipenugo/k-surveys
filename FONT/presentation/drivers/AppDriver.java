@@ -71,7 +71,7 @@ public class AppDriver {
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         
         // Inicializar servicios (necesitan UserController)
-        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
         domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
         domain.service.ResponseService responseService = new domain.service.ResponseService(responseRepository, userController, surveyService);
         

@@ -123,6 +123,31 @@ public class UserService {
             throw new LogInException("La contraseña es incorrecta.");
     }
     // ───────────────────────────────────────────────
+    // Vinculación de encuestas creadas a usuarios
+    // ───────────────────────────────────────────────
+
+    /**
+     * Registra una encuesta creada por un usuario en su perfil.
+     *
+     * Este método sincroniza la base de datos relacional con el archivo JSON del usuario,
+     * agregando el identificador de la encuesta creada a la lista de encuestas del usuario.
+     *
+     * Si el usuario no existe, se lanza una excepción.
+     *
+     * @param username nombre de usuario creador de la encuesta
+     * @param surveyId identificador de la encuesta creada
+     * @throws RuntimeException si el usuario no existe
+     */
+    public void addSurveyCreated(String username, String surveyId) {
+        if (!userRepository.existsUser(username)) {
+            System.err.println("[WARNING] Usuario " + username + " no encontrado al intentar registrar encuesta " + surveyId);
+            throw new RuntimeException("El usuario " + username + " no existe en el sistema.");
+        }
+        userRepository.addSurveyId(username, surveyId);
+        System.out.println("[LOG] Encuesta " + surveyId + " registrada para usuario " + username);
+    }
+
+    // ───────────────────────────────────────────────
     // Vinculación de respuestas a encuestas
     // ───────────────────────────────────────────────
 

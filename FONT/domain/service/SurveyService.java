@@ -26,16 +26,20 @@ public class SurveyService {
     private final SurveyRepository surveyRepository;
     /** Controlador de usuario para validar permisos y obtener al usuario activo. */
     private final UserController userController;
+    /** Servicio de usuario para registrar encuestas creadas. */
+    private final UserService userService;
 
     /**
      * Crea una nueva instancia del servicio de encuestas.
      *
      * @param surveyRepository repositorio de encuestas
      * @param userController controlador de usuario utilizado para validar permisos
+     * @param userService servicio de usuario para registrar encuestas creadas
      */
-    public SurveyService(SurveyRepository surveyRepository, UserController userController) {
+    public SurveyService(SurveyRepository surveyRepository, UserController userController, UserService userService) {
         this.surveyRepository = surveyRepository;
         this.userController = userController;
+        this.userService = userService;
     }
 
     // ───────────────────────────────────────────────
@@ -145,6 +149,16 @@ public class SurveyService {
 
         // Guardar en el repositorio
         surveyRepository.addSurvey(survey);
+
+        // Registrar la encuesta creada en el usuario
+        try {
+            userService.addSurveyCreated(survey.getCREATOR_USERNAME(), survey.getSURVEY_ID());
+        } catch (Exception e) {
+            System.err.println("[WARNING] Error al registrar la encuesta " + survey.getSURVEY_ID() +
+                             " en el usuario " + survey.getCREATOR_USERNAME() + ": " + e.getMessage());
+            // La encuesta se crea igual, solo se registra el warning en logs
+        }
+
         return survey;
     }
 

@@ -5,5 +5,21 @@
     "passwordHash": "d04b98f48e8f8bcc15c6ae5ac050801cd6dcfd428fb5f9e65c4e16e7807340fa",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "Kiara": {
+    "USERNAME": "Kiara",
+    "email": "kiara@gmail.com",
+    "passwordHash": "1c69ae305d986dde90bb5a9d9be627d3a93e39ee94fa513177461c44e96f3ceb",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "kiara": {
+    "USERNAME": "kiara",
+    "email": "kiara@gmail.com",
+    "passwordHash": "1c69ae305d986dde90bb5a9d9be627d3a93e39ee94fa513177461c44e96f3ceb",
+    "createdSurveysId": [
+      "0"
+    ],
+    "respondedSurveysId": {}
   }
 }

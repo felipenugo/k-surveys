@@ -20,9 +20,10 @@ public class MainView {
         AnswerRepository answerRepository = new AnswerRepository();
 
         // Inicializar controladores inyectando servicio con repositorio
-        UserController userController = new UserController(new UserService(userRepository));
+        UserService userService = new UserService(userRepository);
+        UserController userController = new UserController(userService);
 
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         SurveyController surveyController = new SurveyController(surveyService);
 
         QuestionService questionService = new QuestionService(questionRepository, userController);
