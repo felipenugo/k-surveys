@@ -89,7 +89,8 @@ public class AppDriver {
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
         CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(surveyController, userController, editorQuestionDriver);
-        SessionDriver sessionDriver = new SessionDriver(userController);
+        PasswordRecoveryDriver passwordRecoveryDriver = new PasswordRecoveryDriver(userController);
+        SessionDriver sessionDriver = new SessionDriver(userController, passwordRecoveryDriver);
         AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver);
         
         // Conectar drivers

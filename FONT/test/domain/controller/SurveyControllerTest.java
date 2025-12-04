@@ -43,7 +43,7 @@ public class SurveyControllerTest {
         } catch (Exception e) {
             // No había nadie logueado, ignorar
         }
-        userController.registerUser(TEST_CREATOR, TEST_EMAIL, TEST_PASSWORD);
+        userController.registerUser(TEST_CREATOR, TEST_EMAIL, TEST_PASSWORD, "What is your pet's name?", "Fluffy");
         userController.loginUser(TEST_CREATOR, TEST_PASSWORD);
     }
 

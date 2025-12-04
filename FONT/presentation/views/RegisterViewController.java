@@ -13,6 +13,10 @@ public class RegisterViewController {
     @FXML
     private TextField emailField;
     @FXML
+    private TextField securityQuestionField;
+    @FXML
+    private TextField securityAnswerField;
+    @FXML
     private PasswordField passwordField;
     @FXML
     private Button registerButton;
@@ -35,7 +39,9 @@ public class RegisterViewController {
             String username = usernameField.getText();
             String email = emailField.getText();
             String password = passwordField.getText();
-            userController.registerUser(username, email, password);
+            String securityQuestion = securityQuestionField.getText();
+            String securityAnswer = securityAnswerField.getText();
+            userController.registerUser(username, email, password, securityQuestion, securityAnswer);
             statusLabel.setText("--- registrando usuario ---");
             sceneManager.showLogin();
         }catch (Exception e)

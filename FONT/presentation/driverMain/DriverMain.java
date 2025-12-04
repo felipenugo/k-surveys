@@ -21,7 +21,8 @@ public class DriverMain {
         System.out.println("--- BIENVENIDO A K-SURVEY ---");
         System.out.println("1. INICIAR SESIÓN");
         System.out.println("2. REGISTRARSE");
-        System.out.println("3. SALIR");
+        System.out.println("3. RECUPERAR CONTRASEÑA");
+        System.out.println("4. SALIR");
         System.out.print("Opción: ");
         int option = sc.nextInt();
         sc.nextLine(); // Consumir el salto de línea
@@ -63,14 +64,13 @@ public class DriverMain {
                 userController,
                 editorQuestionDriver
         );
-
+        PasswordRecoveryDriver passwordRecoveryDriver = new PasswordRecoveryDriver(userController);
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         ClusteringDriver clusteringDriver = new ClusteringDriver(ctrlDominioClustering);
         MySurveysDriver mySurveysDriver = new MySurveysDriver(surveyController, clusteringDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
-
-        SessionDriver sessionDriver = new SessionDriver(userController);
+        SessionDriver sessionDriver = new SessionDriver(userController, passwordRecoveryDriver);
         AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver);
         sessionDriver.setAppDriver(appDriver);
 
@@ -80,7 +80,8 @@ public class DriverMain {
                 switch (selectWelcomeMenuOption()) {
                     case 1 -> sessionDriver.driverLogin();
                     case 2 -> sessionDriver.driverRegister();
-                    case 3 -> exit = true;
+                    case 3 -> passwordRecoveryDriver.recoveryMenu();
+                    case 4 -> exit = true;
                     default -> System.out.println("Opción no válida.");
                 }
             } catch (java.util.NoSuchElementException e) {

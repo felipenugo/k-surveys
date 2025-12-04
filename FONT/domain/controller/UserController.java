@@ -79,8 +79,8 @@ public class UserController {
      * @throws domain.exception.RegisterException si los datos de entrada no son válidos
      */
 
-    public void registerUser(String username, String email, String password) {
-        userService.registerUser(username, email, password);
+    public void registerUser(String username, String email, String password, String securityQuestion, String securityAnswer) {
+        userService.registerUser(username, email, password, securityQuestion, securityAnswer);
     }
 
     /**
@@ -195,5 +195,16 @@ public class UserController {
             case "success" ->
                     System.out.println("La nueva contraseña del usuario " + username + " es " + newPassword + ".");
         }
+    }
+    public String startPasswordRecovery(String username) {
+    return userService.startPasswordRecovery(username);
+    }
+
+    public boolean verifySecurityAnswer(String username, String answer) {
+        return userService.verifySecurityAnswer(username, answer);
+    }
+
+    public void resetPassword(String username, String newPassword) {
+        userService.resetPassword(username, newPassword);
     }
 }

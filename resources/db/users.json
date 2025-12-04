@@ -5,5 +5,23 @@
     "passwordHash": "d04b98f48e8f8bcc15c6ae5ac050801cd6dcfd428fb5f9e65c4e16e7807340fa",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "arnau": {
+    "USERNAME": "arnau",
+    "email": "arnau1302@gmail.com",
+    "passwordHash": "arnau",
+    "securityQuestion": "arnau?",
+    "securityAnswer": "arnau",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "rebeca": {
+    "USERNAME": "rebeca",
+    "email": "a@gmail.com",
+    "passwordHash": "5bda3dde0b02be5bed12186118bd3dab813fb943f43fe4ad8f3f63c521cbcd42",
+    "securityQuestion": "rebevca?",
+    "securityAnswer": "rebeca",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }

@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 group = 'presentation.driverMain'
@@ -8,6 +9,12 @@ version = '1.0-SNAPSHOT'
 
 ext {
     javaMainClass = 'presentation.driverMain.DriverMain'
+    javafxVersion = '21.0.1'
+}
+
+javafx {
+    version = javafxVersion
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 application {

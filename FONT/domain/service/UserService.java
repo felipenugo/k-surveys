@@ -67,7 +67,7 @@ public class UserService {
      * 
      * @throws RegisterException si los datos son inválidos o el usuario ya existe
      */
-    public void registerUser(String username, String email, String password) {
+    public void registerUser(String username, String email, String password, String securityQuestion, String securityAnswer) {
         // Input Validation
         if (isInputBlank(username))
             throw new RegisterException("El campo nombre de usuario es obligatorio y no puede estar vacío.");
@@ -78,6 +78,12 @@ public class UserService {
         if (isInputBlank(password))
             throw new RegisterException("El campo contraseña es obligatorio y no puede estar vacío.");
 
+        if (isInputBlank(securityQuestion))
+            throw new RegisterException("El campo pregunta de seguridad es obligatorio y no puede estar vacío.");
+        
+        if (isInputBlank(securityAnswer))
+            throw new RegisterException("El campo respuesta de seguridad es obligatorio y no puede estar vacío.");
+
         // Business rules validation
         if (!email.contains("@gmail.com") && !email.contains("@fib.upc.edu"))
             throw new RegisterException("El formato del email debe terminar en @gmail.com o @fib.upc.edu.");
@@ -87,7 +93,7 @@ public class UserService {
 
         // Registration
         String passwordHash = PasswordHasher.hash(password);
-        User newUser = new User(username, email, passwordHash);
+        User newUser = new User(username, email, passwordHash, securityQuestion, securityAnswer);
         userRepository.addUser(newUser);
     }
 
@@ -244,14 +250,14 @@ public class UserService {
             result = "user_not_exists";
         else if (!userRepository.getUser(username).getEmail().equals(email))
             result = "incorrect_email";
-        else if (!userRepository.getUser(username).getPasswordHash().equals(oldPassword))
+        else if (!userRepository.getUser(username).getPasswordHash().equals(PasswordHasher.hash(oldPassword)))
             result = "incorrect_password";
         else if (oldPassword.equals(newPassword))
             result = "same_password";
         else {
             result = "success";
             User user = userRepository.getUser(username);
-            user.setPasswordHash(newPassword);
+            user.setPasswordHash(PasswordHasher.hash(newPassword));
             userRepository.updateUser(username, user);
         }
         return result;
@@ -265,5 +271,41 @@ public class UserService {
      */
     public User getUser(String username) {
         return userRepository.getUser(username);
+    }
+
+    public String startPasswordRecovery(String username) {
+    if (isInputBlank(username))
+        throw new LogInException("El campo nombre de usuario no puede estar vacío.");
+
+    if (!userRepository.existsUser(username))
+        throw new LogInException("El usuario " + username + " no existe.");
+
+    // Recuperar la pregunta secreta
+    return userRepository.getUser(username).getSecurityQuestion();
+    }
+
+    public boolean verifySecurityAnswer(String username, String answer) {
+    if (isInputBlank(answer))
+        throw new LogInException("La respuesta no puede estar vacía.");
+
+    if (!userRepository.existsUser(username))
+        throw new LogInException("El usuario " + username + " no existe.");
+
+    User user = userRepository.getUser(username);
+
+    return user.getSecurityAnswer().equalsIgnoreCase(answer.trim());
+    }
+
+    public void resetPassword(String username, String newPassword) {
+    if (isInputBlank(newPassword))
+        throw new LogInException("La nueva contraseña no puede estar vacía.");
+
+    if (!userRepository.existsUser(username))
+        throw new LogInException("El usuario " + username + " no existe.");
+
+    User user = userRepository.getUser(username);
+    user.setPasswordHash(PasswordHasher.hash(newPassword));
+
+    userRepository.updateUser(username, user);
     }
 }

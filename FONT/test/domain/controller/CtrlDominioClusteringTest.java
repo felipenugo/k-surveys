@@ -66,7 +66,7 @@ public class CtrlDominioClusteringTest {
     public void testCreateAnalysisWithKMeans() {
         // Paso 1: Registrar e Iniciar Sesión
         String username = "testUser";
-        userController.registerUser(username, "test@gmail.com", "password");
+        userController.registerUser(username, "test@gmail.com", "pass   word", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         // Paso 2: Crear Encuesta con Preguntas Mixtas
@@ -96,7 +96,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testExecuteAnalysisWithKMedoids() {
         String username = "testUser2";
-        userController.registerUser(username, "test2@gmail.com", "password");
+        userController.registerUser(username, "test2@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -119,7 +119,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testClusterDistribution() {
         String username = "testUser3";
-        userController.registerUser(username, "test3@gmail.com", "password");
+        userController.registerUser(username, "test3@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -143,7 +143,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testCentroidCalculation() {
         String username = "testUser4";
-        userController.registerUser(username, "test4@gmail.com", "password");
+        userController.registerUser(username, "test4@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -167,7 +167,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testAnalysisExecutionTime() {
         String username = "testUser5";
-        userController.registerUser(username, "test5@gmail.com", "password");
+        userController.registerUser(username, "test5@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -189,7 +189,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testExportAnalysisResults() {
         String username = "testUser6";
-        userController.registerUser(username, "test6@gmail.com", "password");
+        userController.registerUser(username, "test6@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -211,7 +211,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testAnalysisConvergence() {
         String username = "testUser7";
-        userController.registerUser(username, "test7@gmail.com", "password");
+        userController.registerUser(username, "test7@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -233,7 +233,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testDifferentKValues() {
         String username = "testUser8";
-        userController.registerUser(username, "test8@gmail.com", "password");
+        userController.registerUser(username, "test8@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -255,7 +255,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testMultipleDistanceTypes() {
         String username = "testUser9";
-        userController.registerUser(username, "test9@gmail.com", "password");
+        userController.registerUser(username, "test9@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -278,7 +278,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testClusterQualityMetrics() {
         String username = "testUser10";
-        userController.registerUser(username, "test10@gmail.com", "password");
+        userController.registerUser(username, "test10@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -301,7 +301,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testClusterMembership() {
         String username = "testUser11";
-        userController.registerUser(username, "test11@gmail.com", "password");
+        userController.registerUser(username, "test11@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -367,7 +367,7 @@ public class CtrlDominioClusteringTest {
 
         for (int i = 0; i < count; i++) {
             String responderUsername = "responder" + i;
-            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password");
+            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password", "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
 
             String responseId = responseController.startResponse(surveyId);
@@ -401,7 +401,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testRunAnalysisMethod() {
         String username = "testUserCtrl";
-        userController.registerUser(username, "testctrl@gmail.com", "password");
+        userController.registerUser(username, "testctrl@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -422,7 +422,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testExportarAnalisis() throws IOException {
         String username = "testUserExport";
-        userController.registerUser(username, "testexport@gmail.com", "password");
+        userController.registerUser(username, "testexport@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -445,7 +445,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testObtenerMetricasCalidad() {
         String username = "testUserMetrics";
-        userController.registerUser(username, "testmetrics@gmail.com", "password");
+        userController.registerUser(username, "testmetrics@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -469,7 +469,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testEncontrarKOptima() {
         String username = "testUserOptimalK";
-        userController.registerUser(username, "testoptimalk@gmail.com", "password");
+        userController.registerUser(username, "testoptimalk@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -491,7 +491,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testListarAnalisis() {
         String username = "testUserList";
-        userController.registerUser(username, "testlist@gmail.com", "password");
+        userController.registerUser(username, "testlist@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -516,7 +516,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testDeleteAnalysis() {
         String username = "testUserDelete";
-        userController.registerUser(username, "testdelete@gmail.com", "password");
+        userController.registerUser(username, "testdelete@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -541,7 +541,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testObtenerResultadosAnalisis() {
         String username = "testUserResults";
-        userController.registerUser(username, "testresults@gmail.com", "password");
+        userController.registerUser(username, "testresults@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -563,7 +563,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testMultipleAlgorithms() {
         String username = "testUserMultiAlgo";
-        userController.registerUser(username, "testmultialgo@gmail.com", "password");
+        userController.registerUser(username, "testmultialgo@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -589,7 +589,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testMultipleDistanceMetrics() {
         String username = "testUserDistMetric";
-        userController.registerUser(username, "testdistmetric@gmail.com", "password");
+        userController.registerUser(username, "testdistmetric@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -612,7 +612,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testLimpiarAnalisis() {
         String username = "testUserClear";
-        userController.registerUser(username, "testclear@gmail.com", "password");
+        userController.registerUser(username, "testclear@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -638,7 +638,7 @@ public class CtrlDominioClusteringTest {
     @Test(expected = IllegalArgumentException.class)
     public void testRunAnalysisInvalidK() {
         String username = "testUserInvalidK";
-        userController.registerUser(username, "testinvalidk@gmail.com", "password");
+        userController.registerUser(username, "testinvalidk@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -653,7 +653,7 @@ public class CtrlDominioClusteringTest {
     @Test(expected = IllegalArgumentException.class)
     public void testRunAnalysisInvalidSurveyId() {
         String username = "testUserInvalidSurvey";
-        userController.registerUser(username, "testinvalidsurvey@gmail.com", "password");
+        userController.registerUser(username, "testinvalidsurvey@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
@@ -681,7 +681,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testRunAnalysisWithDifferentIterations() {
         String username = "testUserIterations";
-        userController.registerUser(username, "testiterations@gmail.com", "password");
+        userController.registerUser(username, "testiterations@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -700,7 +700,7 @@ public class CtrlDominioClusteringTest {
     @Test
     public void testRunAnalysisWithDifferentTolerance() {
         String username = "testUserTolerance";
-        userController.registerUser(username, "testtolerance@gmail.com", "password");
+        userController.registerUser(username, "testtolerance@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
