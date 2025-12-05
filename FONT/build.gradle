@@ -1,22 +1,24 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
-group = 'presentation.driverMain'
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+group = 'presentation.main'
 version = '1.0-SNAPSHOT'
 
-ext {
-    javaMainClass = 'presentation.driverMain.DriverMain'
-}
-
 application {
-    mainClassName = javaMainClass
+    mainClass = 'presentation.main.Main'
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': javaMainClass
+        attributes 'Main-Class': application.mainClass.get()
     }
     from sourceSets.main.output
     destinationDirectory = file('../EXE')
@@ -35,6 +37,9 @@ sourceSets {
         java {
             srcDirs = ['.']
             exclude '**/test/**'
+        }
+        resources {
+            srcDirs = ['../resources']
         }
     }
     test {
@@ -61,6 +66,10 @@ dependencies {
     // UML Doclet para generar diagramas UML en JavaDoc
     umlDoclet 'nl.talsmasoftware:umldoclet:2.1.0'
 }
+
+compileJava.dependsOn processResources
+
+test.enabled = false
 
 // Copy compiled classes to EXE/classes
 task copyClasses(type: Copy) {
