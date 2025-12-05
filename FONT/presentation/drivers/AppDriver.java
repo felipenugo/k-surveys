@@ -9,22 +9,25 @@ public class AppDriver {
     private final Scanner sc = DriverMain.getScanner();
     private final SurveyDriver surveyDriver;
     private final CreateSurveyDriver createsurveyDriver;
+    private final EditSurveysDriver editSurveysDriver;
     private final SessionDriver sessionDriver;
 
 
-    public AppDriver(SurveyDriver surveyDriver, SessionDriver sessionDriver, CreateSurveyDriver createsurveyDriver) {
+    public AppDriver(SurveyDriver surveyDriver, SessionDriver sessionDriver, CreateSurveyDriver createsurveyDriver, EditSurveysDriver editSurveysDriver) {
         this.createsurveyDriver = createsurveyDriver;
+        this.editSurveysDriver = editSurveysDriver;
         this.surveyDriver = surveyDriver;
         this.sessionDriver = sessionDriver;
     }
 
 
     private int selectAppMenuOption() {
-        System.out.println("--- K-SURVEY ---");
+        System.out.println("\n--- K-SURVEY ---");
         System.out.println("1. RESPONDER O ANALIZAR ENCUESTAS");
         System.out.println("2. CREAR ENCUESTA");
-        System.out.println("3. CERRAR SESIÓN");
-        System.out.print("Opcion: ");
+        System.out.println("3. EDITAR ENCUESTAS BORRADOR");
+        System.out.println("4. CERRAR SESIÓN");
+        System.out.print("Opción: ");
         int option = sc.nextInt();
         sc.nextLine(); // Consumir el salto de línea
         return option;
@@ -43,7 +46,8 @@ public class AppDriver {
                 switch (selectAppMenuOption()) {
                     case 1 -> surveyDriver.surveyMenu();
                     case 2 -> createsurveyDriver.createSurveyMenu();
-                    case 3 -> {
+                    case 3 -> editSurveysDriver.editSurveysMenu();
+                    case 4 -> {
                         sessionDriver.logout();
                         exitApp = true;
                     }
@@ -89,9 +93,10 @@ public class AppDriver {
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
         CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(surveyController, userController, editorQuestionDriver);
+        EditSurveysDriver editSurveysDriver = new EditSurveysDriver(surveyController, userController, editorQuestionDriver);
         SessionDriver sessionDriver = new SessionDriver(userController);
-        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver);
-        
+        AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver, editSurveysDriver);
+
         // Conectar drivers
         sessionDriver.setAppDriver(appDriver);
         
@@ -102,4 +107,3 @@ public class AppDriver {
         sessionDriver.driverLogin();
     }
 }
-

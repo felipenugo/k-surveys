@@ -497,6 +497,38 @@ public class SurveyService {
     }
 
     // ───────────────────────────────────────────────
+    // Manipulación de preguntas
+    // ───────────────────────────────────────────────
+
+    /**
+     * Elimina una pregunta de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param questionIndex índice de la pregunta a eliminar
+     * @throws SurveyException si la encuesta no existe o el índice es inválido
+     */
+    public void deleteQuestion(String surveyId, int questionIndex) {
+        checkSurveyExists(surveyId);
+        checkQuestionExists(surveyId, questionIndex);
+        surveyRepository.deleteQuestion(surveyId, questionIndex);
+    }
+
+    /**
+     * Reordena una pregunta en una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param oldIndex índice actual de la pregunta
+     * @param newIndex nuevo índice para la pregunta
+     * @throws SurveyException si la encuesta no existe o los índices son inválidos
+     */
+    public void reorderQuestion(String surveyId, int oldIndex, int newIndex) {
+        checkSurveyExists(surveyId);
+        checkQuestionExists(surveyId, oldIndex);
+        checkQuestionExists(surveyId, newIndex);
+        surveyRepository.swapQuestions(surveyId, oldIndex, newIndex);
+    }
+
+    // ───────────────────────────────────────────────
     // Contador de respuestas
     // ───────────────────────────────────────────────
 

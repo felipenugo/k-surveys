@@ -122,4 +122,65 @@ public class SurveyController {
     public void incrementResponseCount(String surveyId) {
         surveyService.incrementResponseCount(surveyId);
     }
+
+    /**
+     * Obtiene todas las encuestas creadas por un usuario específico.
+     *
+     * @param username nombre del usuario
+     * @return lista de encuestas del usuario
+     */
+    public List<Survey> getSurveysByUser(String username) {
+        return surveyService.getSurveysByUser(username);
+    }
+
+    /**
+     * Actualiza una encuesta existente (solo en estado DRAFT).
+     *
+     * @param surveyId identificador de la encuesta
+     * @param updatedSurvey encuesta con los cambios
+     * @return encuesta actualizada
+     */
+    public Survey updateSurvey(String surveyId, Survey updatedSurvey) {
+        return surveyService.updateSurvey(surveyId, updatedSurvey);
+    }
+
+    /**
+     * Publica una encuesta (cambia de DRAFT a PUBLISHED).
+     *
+     * @param surveyId identificador de la encuesta
+     * @return encuesta publicada
+     */
+    public Survey publishSurvey(String surveyId) {
+        return surveyService.publishSurvey(surveyId);
+    }
+
+    /**
+     * Elimina una encuesta (solo si está en estado DRAFT).
+     *
+     * @param surveyId identificador de la encuesta
+     */
+    public void deleteSurvey(String surveyId) {
+        surveyService.deleteSurvey(surveyId);
+    }
+
+    /**
+     * Elimina una pregunta de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param questionIndex índice de la pregunta a eliminar
+     */
+    public void deleteQuestion(String surveyId, int questionIndex) {
+        surveyService.deleteQuestion(surveyId, questionIndex);
+    }
+
+    /**
+     * Reordena las preguntas de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param oldIndex índice actual de la pregunta
+     * @param newIndex nuevo índice de la pregunta
+     */
+    public void reorderQuestion(String surveyId, int oldIndex, int newIndex) {
+        surveyService.reorderQuestion(surveyId, oldIndex, newIndex);
+    }
 }

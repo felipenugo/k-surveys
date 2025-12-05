@@ -39,7 +39,7 @@ public class CreateSurveyDriver {
         System.out.println("6. ELIMINAR PREGUNTA");
         System.out.println("7. REORDENAR PREGUNTAS");
         System.out.println("8. VER TODAS LAS PREGUNTAS");
-        System.out.println("9. GUARDAR, PUBLICAR Y SALIR");
+        System.out.println("9. GUARDAR COMO BORRADOR O PUBLICAR");
         System.out.print("Opción: ");
         int option = sc.nextInt();
         sc.nextLine(); // Consumir el salto de línea
@@ -304,59 +304,121 @@ public class CreateSurveyDriver {
     }
 
     private boolean saveAndPublishSurvey() {
-        if (currentSurvey.getSize() == 0) {
-            System.out.println("\nNo puedes publicar una encuesta sin preguntas.");
-            System.out.println("Añade al menos una pregunta antes de publicar.");
-            return false;
-        }
-
-
-        System.out.println("\n========================================");
-        System.out.println("       RESUMEN DE LA ENCUESTA");
-        System.out.println("========================================");
-        System.out.println("Título: " + currentSurvey.getTitle());
-        System.out.println("Descripción: " + currentSurvey.getDescription());
-        System.out.println("Creador: " + currentSurvey.getCREATOR_USERNAME());
-        System.out.println("Número de preguntas: " + currentSurvey.getSize());
-        System.out.println("========================================");
-
-        System.out.print("\n¿Estás seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): ");
-        String confirmation = sc.nextLine();
-
-        if (confirmation.equalsIgnoreCase("S")) {
-            try {
-                // Cambiar estado a PUBLICADO
-                currentSurvey.setSurveyStatus(SurveyStatus.PUBLISHED);
-                currentSurvey.setPUBLISHED_AT();
-
-                // Guardar en el sistema
-                surveyController.createSurvey(currentSurvey);
-
-                System.out.println("\nEncuesta guardada y publicada correctamente");
-
-                if (currentSurvey.getSURVEY_ID() != null) {
-                    System.out.println("ID asignado: " + currentSurvey.getSURVEY_ID());
-                }
-
-                System.out.println("Fecha de publicación: " + currentSurvey.getPUBLISHED_AT());
-                return true;
-
-            } catch (SurveyException e) {
-                System.out.println("\nERROR: " + e.getMessage());
-
-                if (e.getMessage().contains("límite máximo")) {
-                    System.out.println("El sistema ha alcanzado su capacidad máxima de encuestas.");
-                    System.out.println("Por favor, contacta con el administrador del sistema.");
-                }
-
-                return false;
-
-            } catch (Exception e) {
-                System.out.println("\nError inesperado al publicar la encuesta: " + e.getMessage());
+        try {
+            if (currentSurvey.getSize() == 0) {
+                System.out.println("\nLa encuesta debe tener al menos una pregunta.");
                 return false;
             }
-        } else {
-            System.out.println("Publicación cancelada. Puedes seguir editando.");
+
+            System.out.println("\n========================================");
+            System.out.println("       OPCIONES DE GUARDADO");
+            System.out.println("========================================");
+            System.out.println("1. GUARDAR COMO BORRADOR (sin publicar)");
+            System.out.println("2. PUBLICAR AHORA");
+            System.out.println("3. CANCELAR");
+            System.out.print("Opción: ");
+            int option = sc.nextInt();
+            sc.nextLine();
+
+            switch (option) {
+                case 1 -> {
+                    return saveSurveyAsDraft();
+                }
+                case 2 -> {
+                    return publishNewSurvey();
+                }
+                case 3 -> {
+                    System.out.println("Operación cancelada.");
+                    return false;
+                }
+                default -> {
+                    System.out.println("Opción no válida.");
+                    return false;
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("\nError: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private boolean saveSurveyAsDraft() {
+        try {
+            System.out.println("\n========================================");
+            System.out.println("       GUARDAR COMO BORRADOR");
+            System.out.println("========================================");
+            System.out.println("Título: " + currentSurvey.getTitle());
+            System.out.println("Descripción: " + currentSurvey.getDescription());
+            System.out.println("Número de preguntas: " + currentSurvey.getSize());
+            System.out.println("========================================");
+
+            System.out.print("\n¿Confirmas guardar esta encuesta como BORRADOR? (S/N): ");
+            String confirmation = sc.nextLine();
+
+            if (confirmation.equalsIgnoreCase("S")) {
+                try {
+                    surveyController.createSurvey(currentSurvey);
+                    System.out.println("\n✓ Encuesta guardada como borrador correctamente");
+                    System.out.println("ID asignado: " + currentSurvey.getSURVEY_ID());
+                    System.out.println("Estado: BORRADOR");
+                    System.out.println("Puedes editarla más tarde desde el menú 'Editar Encuestas'");
+                    return true;
+                } catch (SurveyException e) {
+                    System.out.println("\nERROR: " + e.getMessage());
+                    if (e.getMessage().contains("límite máximo")) {
+                        System.out.println("El sistema ha alcanzado su capacidad máxima de encuestas.");
+                    }
+                    return false;
+                }
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("\nError inesperado: " + e.getMessage());
+            return false;
+        }
+    }
+
+    private boolean publishNewSurvey() {
+        try {
+            System.out.println("\n========================================");
+            System.out.println("       PUBLICAR ENCUESTA");
+            System.out.println("========================================");
+            System.out.println("Título: " + currentSurvey.getTitle());
+            System.out.println("Descripción: " + currentSurvey.getDescription());
+            System.out.println("Número de preguntas: " + currentSurvey.getSize());
+            System.out.println("========================================");
+
+            System.out.print("\n¿Estás seguro de que deseas PUBLICAR esta encuesta? ");
+            System.out.println("Una vez publicada, no podrá editarse.");
+            System.out.print("Confirma (S/N): ");
+            String confirmation = sc.nextLine();
+
+            if (confirmation.equalsIgnoreCase("S")) {
+                try {
+                    // Primero guardar como borrador
+                    surveyController.createSurvey(currentSurvey);
+                    String surveyId = currentSurvey.getSURVEY_ID();
+
+                    // Luego publicar
+                    surveyController.publishSurvey(surveyId);
+
+                    System.out.println("\n✓ Encuesta guardada y publicada correctamente");
+                    System.out.println("ID: " + surveyId);
+                    System.out.println("Estado: PUBLICADA");
+                    System.out.println("Fecha de publicación: " + currentSurvey.getPUBLISHED_AT());
+                    return true;
+
+                } catch (SurveyException e) {
+                    System.out.println("\nERROR: " + e.getMessage());
+                    if (e.getMessage().contains("límite máximo")) {
+                        System.out.println("El sistema ha alcanzado su capacidad máxima de encuestas.");
+                    }
+                    return false;
+                }
+            }
+            return false;
+        } catch (Exception e) {
+            System.out.println("\nError inesperado: " + e.getMessage());
             return false;
         }
     }
