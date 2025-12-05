@@ -68,7 +68,35 @@ public class SurveyRepository {
                 .registerTypeAdapter(Question.class, new QuestionAdapter())
                 .setPrettyPrinting().create();
         this.surveys = loadSurveysFromJson();
-        this.nextSurveyId = 0;
+
+        // Sincronizar nextSurveyId con el máximo ID existente en las encuestas guardadas
+        this.nextSurveyId = calculateNextSurveyId();
+    }
+
+    /**
+     * Calcula el siguiente ID de encuesta basándose en los IDs existentes.
+     * Busca el máximo ID numérico entre todas las encuestas y devuelve el siguiente.
+     * Si no hay encuestas, devuelve 0.
+     *
+     * @return el siguiente ID de encuesta disponible
+     */
+    private int calculateNextSurveyId() {
+        int maxId = -1;
+
+        for (String surveyId : surveys.keySet()) {
+            try {
+                int id = Integer.parseInt(surveyId);
+                if (id > maxId) {
+                    maxId = id;
+                }
+            } catch (NumberFormatException e) {
+                // Ignorar IDs no numéricos (aunque el sistema actual usa solo IDs numéricos)
+                System.err.println("[WARNING] ID de encuesta no numérico encontrado: " + surveyId);
+            }
+        }
+
+        // Retornar el siguiente ID (maxId + 1, o 0 si no hay encuestas)
+        return maxId + 1;
     }
 
     private void saveSurveysToJson() {

@@ -71,16 +71,24 @@ public class EditSurveysDriver {
             List<Survey> mySurveys = surveyController.getSurveysByUser(username);
 
             System.out.println("\n========================================");
-            System.out.println("       MIS ENCUESTAS");
+            System.out.println("       MIS ENCUESTAS (BORRADORES)");
             System.out.println("========================================");
 
+            boolean hasDraftSurveys = false;
             for (Survey survey : mySurveys) {
-                String estado = survey.getSurveyStatus().toString();
-                System.out.println("ID: " + survey.getSURVEY_ID());
-                System.out.println("Título: " + survey.getTitle());
-                System.out.println("Estado: " + estado);
-                System.out.println("Preguntas: " + survey.getSize());
-                System.out.println("----------------------------------------");
+                // Filtrar solo encuestas en estado DRAFT
+                if (survey.getSurveyStatus().equals(SurveyStatus.DRAFT)) {
+                    hasDraftSurveys = true;
+                    System.out.println("ID: " + survey.getSURVEY_ID());
+                    System.out.println("Título: " + survey.getTitle());
+                    System.out.println("Estado: " + survey.getSurveyStatus());
+                    System.out.println("Preguntas: " + survey.getSize());
+                    System.out.println("----------------------------------------");
+                }
+            }
+
+            if (!hasDraftSurveys) {
+                System.out.println("No tienes encuestas en estado borrador.");
             }
         } catch (SurveyException e) {
             System.out.println("\nERROR: " + e.getMessage());

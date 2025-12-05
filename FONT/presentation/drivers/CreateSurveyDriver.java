@@ -357,7 +357,8 @@ public class CreateSurveyDriver {
 
             if (confirmation.equalsIgnoreCase("S")) {
                 try {
-                    surveyController.createSurvey(currentSurvey);
+                    // Capturar la encuesta retornada con el ID asignado
+                    currentSurvey = surveyController.createSurvey(currentSurvey);
                     System.out.println("\n✓ Encuesta guardada como borrador correctamente");
                     System.out.println("ID asignado: " + currentSurvey.getSURVEY_ID());
                     System.out.println("Estado: BORRADOR");
@@ -396,11 +397,13 @@ public class CreateSurveyDriver {
             if (confirmation.equalsIgnoreCase("S")) {
                 try {
                     // Primero guardar como borrador
-                    surveyController.createSurvey(currentSurvey);
+                    currentSurvey = surveyController.createSurvey(currentSurvey);
                     String surveyId = currentSurvey.getSURVEY_ID();
 
                     // Luego publicar
                     surveyController.publishSurvey(surveyId);
+                    // Actualizar currentSurvey con el estado publicado
+                    currentSurvey = surveyController.getSurvey(surveyId);
 
                     System.out.println("\n✓ Encuesta guardada y publicada correctamente");
                     System.out.println("ID: " + surveyId);
