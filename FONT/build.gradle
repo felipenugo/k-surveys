@@ -4,20 +4,21 @@ plugins {
     id 'org.openjfx.javafxplugin' version '0.0.13'
 }
 
-group = 'presentation.driverMain'
-version = '1.0-SNAPSHOT'
-
-ext {
-    javaMainClass = 'presentation.driverMain.DriverMain'
+javafx {
+    version = "21"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
+group = 'presentation.main'
+version = '1.0-SNAPSHOT'
+
 application {
-    mainClassName = javaMainClass
+    mainClass = 'presentation.main.Main'
 }
 
 jar {
     manifest {
-        attributes 'Main-Class': javaMainClass
+        attributes 'Main-Class': application.mainClass.get()
     }
     from sourceSets.main.output
     destinationDirectory = file('../EXE')
@@ -41,6 +42,9 @@ sourceSets {
         java {
             srcDirs = ['.']
             exclude '**/test/**'
+        }
+        resources {
+            srcDirs = ['../resources']
         }
     }
     test {
@@ -73,6 +77,10 @@ dependencies {
     implementation 'dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2'
     testImplementation platform('dev.langchain4j:langchain4j-bom:0.32.0')
 }
+
+compileJava.dependsOn processResources
+
+test.enabled = false
 
 // Copy compiled classes to EXE/classes
 task copyClasses(type: Copy) {
