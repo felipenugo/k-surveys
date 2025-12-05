@@ -22,7 +22,7 @@ public class AppDriver {
 
 
     private int selectAppMenuOption() {
-        System.out.println("\n--- K-SURVEY ---");
+        System.out.println("--- K-SURVEY ---");
         System.out.println("1. RESPONDER O ANALIZAR ENCUESTAS");
         System.out.println("2. CREAR ENCUESTA");
         System.out.println("3. EDITAR ENCUESTAS BORRADOR");
@@ -93,8 +93,9 @@ public class AppDriver {
         ResponseDriver responseDriver = new ResponseDriver(surveyController, responseController, editResponseDriver);
         SurveyDriver surveyDriver = new SurveyDriver(responseDriver, mySurveysDriver);
         CreateSurveyDriver createSurveyDriver = new CreateSurveyDriver(surveyController, userController, editorQuestionDriver);
+        PasswordRecoveryDriver passwordRecoveryDriver = new PasswordRecoveryDriver(userController);
         EditSurveysDriver editSurveysDriver = new EditSurveysDriver(surveyController, userController, editorQuestionDriver);
-        SessionDriver sessionDriver = new SessionDriver(userController);
+        SessionDriver sessionDriver = new SessionDriver(userController, passwordRecoveryDriver);
         AppDriver appDriver = new AppDriver(surveyDriver, sessionDriver, createSurveyDriver, editSurveysDriver);
 
         // Conectar drivers
@@ -107,3 +108,4 @@ public class AppDriver {
         sessionDriver.driverLogin();
     }
 }
+

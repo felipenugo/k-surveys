@@ -92,7 +92,7 @@ public class ResponseControllerTest {
     @Test
     public void testStartResponse() {
         String username = "testUser1";
-        userController.registerUser(username, "test1@gmail.com", "password");
+        userController.registerUser(username, "test1@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -101,7 +101,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder1";
-        userController.registerUser(responderUsername, "responder1@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder1@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -116,7 +116,7 @@ public class ResponseControllerTest {
     @Test
     public void testUpdateAnswerTextual() {
         String username = "testUser2";
-        userController.registerUser(username, "test2@gmail.com", "password");
+        userController.registerUser(username, "test2@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -125,7 +125,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder2";
-        userController.registerUser(responderUsername, "responder2@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder2@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -144,7 +144,7 @@ public class ResponseControllerTest {
     @Test
     public void testUpdateAnswerNumerical() {
         String username = "testUser3";
-        userController.registerUser(username, "test3@gmail.com", "password");
+        userController.registerUser(username, "test3@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -153,7 +153,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder3";
-        userController.registerUser(responderUsername, "responder3@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder3@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -172,7 +172,7 @@ public class ResponseControllerTest {
     @Test
     public void testUpdateAnswerMultipleChoice() {
         String username = "testUser4";
-        userController.registerUser(username, "test4@gmail.com", "password");
+        userController.registerUser(username, "test4@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -181,7 +181,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder4";
-        userController.registerUser(responderUsername, "responder4@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder4@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -200,7 +200,7 @@ public class ResponseControllerTest {
     @Test
     public void testUpdateMultipleAnswers() {
         String username = "testUser5";
-        userController.registerUser(username, "test5@gmail.com", "password");
+        userController.registerUser(username, "test5@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -209,7 +209,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder5";
-        userController.registerUser(responderUsername, "responder5@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder5@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -238,7 +238,7 @@ public class ResponseControllerTest {
     @Test
     public void testGetResponse() {
         String username = "testUser6";
-        userController.registerUser(username, "test6@gmail.com", "password");
+        userController.registerUser(username, "test6@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -247,7 +247,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder6";
-        userController.registerUser(responderUsername, "responder6@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder6@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -265,7 +265,7 @@ public class ResponseControllerTest {
     @Test
     public void testGetAllResponsesByUser() {
         String username = "testUser7";
-        userController.registerUser(username, "test7@gmail.com", "password");
+        userController.registerUser(username, "test7@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -274,7 +274,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder7";
-        userController.registerUser(responderUsername, "responder7@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder7@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         // Create multiple responses
@@ -293,7 +293,7 @@ public class ResponseControllerTest {
     @Test
     public void testResponsePersistence() {
         String username = "testUser8";
-        userController.registerUser(username, "test8@gmail.com", "password");
+        userController.registerUser(username, "test8@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -302,7 +302,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder8";
-        userController.registerUser(responderUsername, "responder8@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder8@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -327,7 +327,7 @@ public class ResponseControllerTest {
     @Test
     public void testResponseUpdateAnswer() {
         String username = "testUser9";
-        userController.registerUser(username, "test9@gmail.com", "password");
+        userController.registerUser(username, "test9@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -336,7 +336,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder9";
-        userController.registerUser(responderUsername, "responder9@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder9@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -360,7 +360,7 @@ public class ResponseControllerTest {
     @Test
     public void testMultipleResponsesPerSurvey() {
         String username = "testUser10";
-        userController.registerUser(username, "test10@gmail.com", "password");
+        userController.registerUser(username, "test10@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -372,7 +372,7 @@ public class ResponseControllerTest {
             userController.logoutUser();
 
             String responderUsername = "responder" + i + "_multi";
-            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password");
+            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password" , "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
 
             String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -393,7 +393,7 @@ public class ResponseControllerTest {
     @Test
     public void testResponseWithAllAnswerTypes() {
         String username = "testUser11";
-        userController.registerUser(username, "test11@gmail.com", "password");
+        userController.registerUser(username, "test11@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -402,7 +402,7 @@ public class ResponseControllerTest {
         userController.logoutUser();
 
         String responderUsername = "responder11";
-        userController.registerUser(responderUsername, "responder11@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder11@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());

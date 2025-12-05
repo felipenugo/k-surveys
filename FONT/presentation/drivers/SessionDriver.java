@@ -12,9 +12,11 @@ public class SessionDriver {
     private final Scanner sc = DriverMain.getScanner();
     private final UserController userController;
     private AppDriver appDriver;
+    private final PasswordRecoveryDriver passwordRecoveryDriver;
 
-    public SessionDriver(UserController userController) {
+    public SessionDriver(UserController userController, PasswordRecoveryDriver passwordRecoveryDriver) {
         this.userController = userController;
+        this.passwordRecoveryDriver = passwordRecoveryDriver;
     }
 
     public void setAppDriver(AppDriver appDriver) {
@@ -31,7 +33,8 @@ public class SessionDriver {
     private String displayLoginErrorMenu() {
         System.out.println("1. Intentar inciar sesión de nuevo.");
         System.out.println("2. Registrarse.");
-        System.out.println("3. Volver al menú principal.");
+        System.out.println("3. Recuperar contraseña.");
+        System.out.println("4. Volver al menú principal.");
         System.out.print("Opción: ");
         return sc.nextLine();
     }
@@ -54,8 +57,12 @@ public class SessionDriver {
             String password = sc.nextLine();
 
             try {
+                System.out.print("Introduce tu pregunta de seguridad: ");
+                String securityQuestion = sc.nextLine();
+                System.out.print("Introduce tu respuesta de seguridad: ");
+                String securityAnswer = sc.nextLine();
+                userController.registerUser(username, email, password , securityQuestion , securityAnswer);
                 System.out.println("--- registrándose ---");
-                userController.registerUser(username, email, password);
                 System.out.println("El usuario " + username + " se ha registrado con éxito.");
                 exitRegister = true;
                 driverLogin(); // las excepciones de login se manejarán en este método
@@ -105,6 +112,11 @@ public class SessionDriver {
                             driverRegister();
                         }
                         case "3" -> {
+                            exitErrorMenu = true;
+                            exitLogin = true;
+                            passwordRecoveryDriver.recoveryMenu();
+                        }
+                        case "4" -> {
                             exitErrorMenu = true;
                             exitLogin = true;
                         }
