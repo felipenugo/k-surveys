@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'org.openjfx.javafxplugin' version '0.0.13'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
 javafx {
@@ -23,11 +23,6 @@ jar {
     from sourceSets.main.output
     destinationDirectory = file('../EXE')
     archiveFileName = 'FormsApp.jar'
-}
-
-javafx {
-    version = "21"
-    modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
