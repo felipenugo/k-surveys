@@ -1,46 +1,271 @@
-[victor@archlinux FONT]$ ./gradlew build --info
-WARNING: A restricted method in java.lang.System has been called
-WARNING: java.lang.System::load has been called by net.rubygrapefruit.platform.internal.NativeLibraryLoader in an unnamed module (file:/home/victor/.gradle/wrapper/dists/gradle-8.8-bin/dl7vupf4psengwqhwktix4v1/gradle-8.8/lib/native-platform-0.22-milestone-26.jar)
-WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
-WARNING: Restricted methods will be blocked in a future release unless native access is enabled
-
-Initialized native services in: /home/victor/.gradle/native
-Initialized jansi services in: /home/victor/.gradle/native
-Received JVM installation metadata from '/usr/lib/jvm/java-25-openjdk': {JAVA_HOME=/usr/lib/jvm/java-25-openjdk, JAVA_VERSION=25.0.1, JAVA_VENDOR=Arch Linux, RUNTIME_NAME=OpenJDK Runtime Environment, RUNTIME_VERSION=25.0.1, VM_NAME=OpenJDK 64-Bit Server VM, VM_VERSION=25.0.1, VM_VENDOR=Arch Linux, OS_ARCH=amd64}
-Found daemon DaemonInfo{pid=4137, address=[608da37b-cb07-403b-aca5-390cf5d61eb3 port:32779, addresses:[/127.0.0.1]], state=Idle, lastBusy=1764930420582, context=DefaultDaemonContext[uid=cab66ed9-174f-486e-a8a7-ef582778354c,javaHome=/home/victor/.vscode/extensions/redhat.java-1.50.0-linux-x64/jre/21.0.9-linux-x86_64,javaVersion=21,daemonRegistryDir=/home/victor/.gradle/daemon,pid=4137,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2g,-Dfile.encoding=UTF-8,-Duser.country=ES,-Duser.language=es,-Duser.variant]} however its context does not match the desired criteria.
-JVM is incompatible.
-Wanted: DaemonRequestContext{requestedJvm=25.0.1 (Arch Linux 25.0.1), jvmCriteria=null, daemonOpts=[--add-opens=java.base/java.util=ALL-UNNAMED, --add-opens=java.base/java.lang=ALL-UNNAMED, --add-opens=java.base/java.lang.invoke=ALL-UNNAMED, --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED, --add-opens=java.base/java.nio.charset=ALL-UNNAMED, --add-opens=java.base/java.net=ALL-UNNAMED, --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED, -XX:MaxMetaspaceSize=384m, -XX:+HeapDumpOnOutOfMemoryError, -Xms256m, -Xmx512m, -Dfile.encoding=UTF-8, -Duser.country=ES, -Duser.language=es, -Duser.variant], applyInstrumentationAgent=true, nativeServicesMode=ENABLED, priority=NORMAL}
-Actual: DefaultDaemonContext[uid=cab66ed9-174f-486e-a8a7-ef582778354c,javaHome=/home/victor/.vscode/extensions/redhat.java-1.50.0-linux-x64/jre/21.0.9-linux-x86_64,javaVersion=21,daemonRegistryDir=/home/victor/.gradle/daemon,pid=4137,idleTimeout=10800000,priority=NORMAL,applyInstrumentationAgent=true,nativeServicesMode=ENABLED,daemonOpts=--add-opens=java.base/java.util=ALL-UNNAMED,--add-opens=java.base/java.lang=ALL-UNNAMED,--add-opens=java.base/java.lang.invoke=ALL-UNNAMED,--add-opens=java.prefs/java.util.prefs=ALL-UNNAMED,--add-opens=java.base/java.nio.charset=ALL-UNNAMED,--add-opens=java.base/java.net=ALL-UNNAMED,--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED,-Xmx2g,-Dfile.encoding=UTF-8,-Duser.country=ES,-Duser.language=es,-Duser.variant]
-
-  Looking for a different daemon...
-The client will now receive all logging from the daemon (pid: 5588). The daemon log file: /home/victor/.gradle/daemon/8.8/daemon-5588.out.log
-Starting 10th build in daemon [uptime: 14 mins 41.561 secs, performance: 99%, GC rate: 0.00/s, heap usage: 0% of 512 MiB, non-heap usage: 11% of 384 MiB]
-Using 16 worker leases.
-Now considering [/home/victor/Documentos/Universidad/00 - PROP/FormsApp/FONT] as hierarchies to watch
-Watching the file system is configured to be enabled if available
-File system watching is active
-Starting Build
-Settings evaluated using settings file '/home/victor/Documentos/Universidad/00 - PROP/FormsApp/FONT/settings.gradle'.
-Projects loaded. Root project using build file '/home/victor/Documentos/Universidad/00 - PROP/FormsApp/FONT/build.gradle'.
-Included projects: [root project 'FormsApp']
-
-> Configure project :
-Evaluating root project 'FormsApp' using build file '/home/victor/Documentos/Universidad/00 - PROP/FormsApp/FONT/build.gradle'.
-Caching disabled for Groovy DSL script compilation (cp_proj) because:
-  Build cache is disabled
-  Not worth caching.
-Compiling build file '/home/victor/Documentos/Universidad/00 - PROP/FormsApp/FONT/build.gradle' using SubsetScriptTransformer.
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:6: error: package javafx.application does not exist
+import javafx.application.Application;
+                         ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:7: error: package javafx.stage does not exist
+import javafx.stage.Stage;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:12: error: cannot find symbol
+public class Main extends Application {
+                          ^
+  symbol: class Application
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:15: error: cannot find symbol
+    public void start(Stage primaryStage) throws IOException {
+                      ^
+  symbol:   class Stage
+  location: class Main
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\MainView.java:3: error: package javafx.application does not exist
+import javafx.application.Application;
+                         ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:3: error: package javafx.application does not exist
+import javafx.application.Application;
+                         ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:4: error: package javafx.stage does not exist
+import javafx.stage.Stage;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:6: error: cannot find symbol
+public class App extends Application {
+                         ^
+  symbol: class Application
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:4: error: package javafx.fxml does not exist
+import javafx.fxml.FXMLLoader;
+                  ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:5: error: package javafx.scene does not exist
+import javafx.scene.Scene;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:6: error: package javafx.stage does not exist
+import javafx.stage.Stage;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:15: error: cannot find symbol
+    public void start(Stage stage) {
+                      ^
+  symbol:   class Stage
+  location: class App
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:12: error: cannot find symbol
+    private Stage primaryStage;
+            ^
+  symbol:   class Stage
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:18: error: cannot find symbol
+    public void setPrimaryStage(Stage stage) {
+                                ^
+  symbol:   class Stage
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:22: error: cannot find symbol
+    private void checkLoaderAddress(FXMLLoader loader) {
+                                    ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:30: error: cannot find symbol
+    private void finalizeScene(FXMLLoader loader, String title) throws Exception {
+                               ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:4: error: package javafx.fxml does not exist
+import javafx.fxml.FXML;
+                  ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:6: error: package javafx.event does not exist
+import javafx.event.ActionEvent;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:11: error: cannot find symbol
+    private TextField usernameField;
+            ^
+  symbol:   class TextField
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:13: error: cannot find symbol
+    private PasswordField passwordField;
+            ^
+  symbol:   class PasswordField
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:15: error: cannot find symbol
+    private Button loginButton;
+            ^
+  symbol:   class Button
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:17: error: cannot find symbol
+    private Label statusLabel;
+            ^
+  symbol:   class Label
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:28: error: cannot find symbol
+    public void handleLoginClick(ActionEvent event) {
+                                 ^
+  symbol:   class ActionEvent
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:42: error: cannot find symbol
+    public void handleRegisterClick(ActionEvent event) {
+                                    ^
+  symbol:   class ActionEvent
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:5: error: package javafx.scene.control does not exist
+import javafx.scene.control.*;
+^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:5: error: package javafx.fxml does not exist
+import javafx.fxml.FXML;
+                  ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:7: error: package javafx.event does not exist
+import javafx.event.ActionEvent;
+                   ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:12: error: cannot find symbol
+    private TextField usernameField;
+            ^
+  symbol:   class TextField
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:14: error: cannot find symbol
+    private TextField emailField;
+            ^
+  symbol:   class TextField
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:16: error: cannot find symbol
+    private PasswordField passwordField;
+            ^
+  symbol:   class PasswordField
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:18: error: cannot find symbol
+    private Button registerButton;
+            ^
+  symbol:   class Button
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:20: error: cannot find symbol
+    private Label statusLabel;
+            ^
+  symbol:   class Label
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:32: error: cannot find symbol
+    public void handleRegisterClick(ActionEvent event)
+                                    ^
+  symbol:   class ActionEvent
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:6: error: package javafx.scene.control does not exist
+import javafx.scene.control.*;
+^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:10: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:12: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:14: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:16: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:27: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:41: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class LoginViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:11: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:13: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:15: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:17: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:19: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:31: error: cannot find symbol
+    @FXML
+     ^
+  symbol:   class FXML
+  location: class RegisterViewController
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:14: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:39: error: cannot find symbol
+        launch(args);
+        ^
+  symbol:   method launch(String[])
+  location: class Main
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\MainView.java:39: error: cannot find symbol
+        Application.launch(App.class, args);
+        ^
+  symbol:   variable Application
+  location: class MainView
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:14: error: method does not override or implement a method from a supertype
+    @Override
+    ^
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:28: error: cannot find symbol
+        launch(args);
+        ^
+  symbol:   method launch(String[])
+  location: class App
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:31: error: cannot find symbol
+        Scene currentScene = primaryStage.getScene();
+        ^
+  symbol:   class Scene
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:34: error: cannot find symbol
+            currentScene = new Scene(loader.load());
+                               ^
+  symbol:   class Scene
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/login.fxml"));
+            ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/login.fxml"));
+                                    ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
+            ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
+                                    ^
+  symbol:   class FXMLLoader
+  location: class SceneManager
+57 errors
 
 FAILURE: Build failed with an exception.
 
 * What went wrong:
-BUG! exception in phase 'semantic analysis' in source unit '_BuildScript_' Unsupported class file major version 69
-> Unsupported class file major version 69
+Execution failed for task ':compileJava'.
+> Compilation failed; see the compiler error output for details.
 
 * Try:
-> Run with --stacktrace option to get the stack trace.
-> Run with --debug option to get more log output.
+> Run with --info option to get more log output.
 > Run with --scan to get full insights.
-> Get more help at https://help.gradle.org.
 
-BUILD FAILED in 1s
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.8/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation. 
+
+BUILD FAILED in 2s
+2 actionable tasks: 1 executed, 1 up-to-date
