@@ -45,9 +45,12 @@ public class CtrlDominioClusteringTest {
     public void setUp() {
         // Inicializar repositorios
         UserRepository userRepository = new UserRepository();
+        userRepository.clear();
         surveyRepository = new SurveyRepository();
+        surveyRepository.clear();
         QuestionRepository questionRepository = new QuestionRepository();
         responseRepository = new ResponseRepository();
+        responseRepository.clear();
         AnswerRepository answerRepository = new AnswerRepository();
 
         // Inicializar servicios y controladores

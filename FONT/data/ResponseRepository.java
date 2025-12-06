@@ -51,18 +51,34 @@ public class ResponseRepository {
      * El primer identificador asignado será "0".
      */
     public ResponseRepository() {
-        this.FILE_PATH = "resources/db/responses.json";
+        this("DATA/db/responses.json");
+    }
+
+    /**
+     * Crea un repositorio de respuestas con un path personalizado.
+     * @param filePath ruta al archivo JSON de respuestas
+     */
+    public ResponseRepository(String filePath) {
+        this.FILE_PATH = filePath;
         this.mapType = new TypeToken<Map<String, Map<String, Response>>>(){}.getType();
         // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
         this.gson = new GsonBuilder()
                 .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
                 .registerTypeAdapter(Answer.class, new AnswerAdapter())
                 .setPrettyPrinting().create();
-        this.responses = loadResponsesFromJson()    ;
+        this.responses = loadResponsesFromJson();
         this.lastResponseId = "0";
     }
 
-    private void saveResponsesToJson(){
+    /**
+     * Elimina todas las respuestas del repositorio.
+     */
+    public void clear() {
+        responses.clear();
+        saveResponsesToJson();
+    }
+
+    private void saveResponsesToJson() {
         // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
         // crea el fichero si no existe
         /*

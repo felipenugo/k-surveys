@@ -49,7 +49,7 @@ public class TestLoanData {
         data = new ArrayList<>();
 
         // Leer el archivo CSV y crear la encuesta, preguntas y respuestas
-        String csvFile = "../DATA/loan-test.csv";
+        String csvFile = "DATA/loan-test.csv";
         String line = "";
         String cvsSplitBy = ",";
 

@@ -5,7 +5,7 @@ plugins {
 }
 
 javafx {
-    version = "21"
+    version = "21.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
 }
 
@@ -16,14 +16,36 @@ application {
     mainClass = 'presentation.main.Main'
 }
 
+// Configuración para copiar dependencias JavaFX y no-JavaFX por separado
+configurations {
+    javafxLibs
+    nonJavafxLibs
+}
+
+// Fat JAR solo con dependencias no-JavaFX
 jar {
     manifest {
-        attributes 'Main-Class': application.mainClass.get()
+        attributes 'Main-Class': 'presentation.main.MainLauncher'
     }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { 
+            !it.name.contains('javafx') 
+        }.collect { it.isDirectory() ? it : zipTree(it) }
+    }
     destinationDirectory = file('../EXE')
     archiveFileName = 'FormsApp.jar'
 }
+
+// Copiar JARs de JavaFX a EXE/lib
+task copyJavaFXLibs(type: Copy) {
+    from configurations.runtimeClasspath.filter { it.name.contains('javafx') }
+    into '../EXE/lib'
+}
+
+jar.dependsOn copyJavaFXLibs
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
@@ -39,7 +61,7 @@ sourceSets {
             exclude '**/test/**'
         }
         resources {
-            srcDirs = ['../resources']
+            srcDirs = ['../DATA']
         }
     }
     test {
@@ -47,7 +69,7 @@ sourceSets {
             srcDirs = ['test']
         }
         resources {
-            srcDirs = ['test/resources']
+            srcDirs = ['test/data']
         }
     }
 }
@@ -75,7 +97,10 @@ dependencies {
 
 compileJava.dependsOn processResources
 
-test.enabled = false
+test {
+    enabled = true
+    workingDir = file('..')
+}
 
 // Copy compiled classes to EXE/classes
 task copyClasses(type: Copy) {

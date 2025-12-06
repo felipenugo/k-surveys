@@ -59,7 +59,15 @@ public class SurveyRepository {
      * Crea un nuevo repositorio de encuestas en memoria.
      */
     public SurveyRepository() {
-        this.FILE_PATH = "resources/db/surveys.json";
+        this("DATA/db/surveys.json");
+    }
+
+    /**
+     * Crea un nuevo repositorio de encuestas con un path personalizado.
+     * @param filePath ruta al archivo JSON de encuestas
+     */
+    public SurveyRepository(String filePath) {
+        this.FILE_PATH = filePath;
         this.mapType = new TypeToken<Map<String, Survey>>() {
         }.getType();
         // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
@@ -69,6 +77,14 @@ public class SurveyRepository {
                 .setPrettyPrinting().create();
         this.surveys = loadSurveysFromJson();
         this.nextSurveyId = 0;
+    }
+
+    /**
+     * Elimina todas las encuestas del repositorio.
+     */
+    public void clear() {
+        surveys.clear();
+        saveSurveysToJson();
     }
 
     private void saveSurveysToJson() {

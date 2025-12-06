@@ -29,7 +29,9 @@ public class SurveyControllerTest {
     public void setUp() {
         // Inicializar repositorios
         surveyRepository = new SurveyRepository();
+        surveyRepository.clear();  // limpiar datos previos
         UserRepository userRepository = new UserRepository();
+        userRepository.clear();  // limpiar datos previos
 
         // Inicializar servicios y controllers
         UserService userService = new UserService(userRepository);

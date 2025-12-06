@@ -1,0 +1,38 @@
+{
+  "0": {
+    "SURVEY_ID": "0",
+    "title": "Survey 1",
+    "description": "Description 1",
+    "CREATOR_USERNAME": "testuser",
+    "CREATED_AT": "2025-12-06T22:43:26.466538309",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta 1",
+        "isRequired": true
+      }
+    ]
+  },
+  "1": {
+    "SURVEY_ID": "1",
+    "title": "Survey 2",
+    "description": "Description 2",
+    "CREATOR_USERNAME": "testuser",
+    "CREATED_AT": "2025-12-06T22:43:26.466685293",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta 2",
+        "isRequired": true
+      }
+    ]
+  }
+}
