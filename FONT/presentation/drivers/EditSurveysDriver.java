@@ -9,6 +9,9 @@ import presentation.driverMain.DriverMain;
 
 import java.util.List;
 import java.util.Scanner;
+import domain.model.Question;
+import domain.model.MultipleChoiceQuestion;
+import domain.model.enums.TypeQuestion;
 
 /**
  * Driver para editar encuestas en estado DRAFT.
@@ -127,7 +130,7 @@ public class EditSurveysDriver {
             }
 
             // Cargar la encuesta para editar
-            currentSurvey = survey;
+            currentSurvey = surveyController.getSurvey(surveyId); // cargar desde BD
             editSurveyMenu();
 
         } catch (SurveyException e) {
@@ -213,13 +216,20 @@ public class EditSurveysDriver {
         System.out.print("\nIntroduce el nuevo título: ");
         String newTitle = sc.nextLine();
 
-        if (newTitle.trim().isEmpty()) {
-            System.out.println("ERROR: El título no puede estar vacío.");
-            return;
+        if (!newTitle.trim().isEmpty()) {
+            currentSurvey.setTitle(newTitle);
+            try {
+                // Persistir el cambio inmediatamente
+                surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
+                // Recargar desde la BD para asegurar consistencia
+                currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+                System.out.println("Título actualizado y guardado.");
+            } catch (SurveyException e) {
+                System.out.println("ERROR al guardar el título: " + e.getMessage());
+            }
+        } else {
+            System.out.println("El título no puede estar vacío.");
         }
-
-        currentSurvey.setTitle(newTitle);
-        System.out.println("Título actualizado correctamente.");
     }
 
     private void editDescription() {
@@ -227,19 +237,39 @@ public class EditSurveysDriver {
         System.out.print("\nIntroduce la nueva descripción: ");
         String newDescription = sc.nextLine();
 
-        if (newDescription.trim().isEmpty()) {
-            System.out.println("ERROR: La descripción no puede estar vacía.");
-            return;
+        if (!newDescription.trim().isEmpty()) {
+            currentSurvey.setDescription(newDescription);
+            try {
+                // Persistir el cambio inmediatamente
+                surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
+                // Recargar desde la BD
+                currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+                System.out.println("Descripción actualizada y guardada.");
+            } catch (SurveyException e) {
+                System.out.println("ERROR al guardar la descripción: " + e.getMessage());
+            }
+        } else {
+            System.out.println("La descripción no puede estar vacía.");
         }
-
-        currentSurvey.setDescription(newDescription);
-        System.out.println("Descripción actualizada correctamente.");
     }
 
     private void addQuestion() {
-        editorQuestionDriver.createQuestion(currentSurvey.getSURVEY_ID(), currentSurvey.getSize());
-        // Recargar la encuesta desde el controlador para obtener cambios
-        currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+        try {
+            Question newQuestion = editorQuestionDriver.createQuestion(currentSurvey.getSURVEY_ID(), currentSurvey.getSize());
+
+            if (newQuestion == null) {
+                System.out.println("No se creó la pregunta.");
+                return;
+            }
+
+            currentSurvey.addQuestion(newQuestion);
+            surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
+
+            currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+            System.out.println("Pregunta añadida correctamente en posición " + newQuestion.getQuestionIndex() + ".");
+        } catch (Exception e) {
+            System.out.println("ERROR al añadir la pregunta: " + e.getMessage());
+        }
     }
 
     private void editQuestion() {
@@ -247,6 +277,8 @@ public class EditSurveysDriver {
             System.out.println("No hay preguntas para editar.");
             return;
         }
+
+        viewAllQuestions();
 
         System.out.print("Introduce el índice de la pregunta a editar (0 - " + (currentSurvey.getSize() - 1) + "): ");
         try {
@@ -258,9 +290,20 @@ public class EditSurveysDriver {
                 return;
             }
 
-            editorQuestionDriver.editQuestion(currentSurvey.getQuestion(index));
-            // Recargar la encuesta
-            currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+            Question original = currentSurvey.getQuestion(index);
+            // Obtener la pregunta editada del editor (no modificar original hasta confirmar)
+            Question editedQuestion = editorQuestionDriver.editQuestion(original);
+
+            if (editedQuestion != null) {
+                // Actualizar en el objeto actual y persistir
+                currentSurvey.updateQuestion(index, editedQuestion);
+                surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
+                // Recargar para asegurar que el repositorio refleja los cambios
+                currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
+                System.out.println("Pregunta actualizada correctamente.");
+            } else {
+                System.out.println("Edición cancelada o sin cambios.");
+            }
         } catch (Exception e) {
             System.out.println("ERROR: " + e.getMessage());
             sc.nextLine();
@@ -318,7 +361,57 @@ public class EditSurveysDriver {
     }
 
     private void viewAllQuestions() {
-        editorQuestionDriver.editQuestion(currentSurvey.getQuestion(0));
+        if (currentSurvey.getSize() == 0) {
+            System.out.println("No hay preguntas en esta encuesta.");
+            return;
+        }
+
+        System.out.println("\n========================================");
+        System.out.println("    PREGUNTAS DE LA ENCUESTA");
+        System.out.println("========================================");
+
+        for (int i = 0; i < currentSurvey.getSize(); i++) {
+            Question q = currentSurvey.getQuestion(i);
+            System.out.println("\n[" + i + "] " + q.getQuestionText());
+            System.out.println("    Tipo: " + q.getTypeQuestion());
+            System.out.println("    Obligatoria: " + (q.isRequired() ? "SÍ" : "NO"));
+
+            if (q instanceof MultipleChoiceQuestion) {
+                MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) q;
+                System.out.println("    Selecciones requeridas: " + mcq.getMinSelections() + "-" + mcq.getMaxSelections());
+                System.out.println("    Opciones:");
+
+                // Obtener la lista de opciones de forma segura
+                java.util.List<?> options = mcq.getOptions();
+                if (options == null || options.isEmpty()) {
+                    System.out.println("      (No hay opciones definidas)");
+                } else {
+                    // Imprimir opciones de forma robusta: pueden ser String o un objeto con getOptionText()
+                    for (int j = 0; j < options.size(); j++) {
+                        Object opt = options.get(j);
+                        String optionText = "";
+                        if (opt == null) {
+                            optionText = "(null)";
+                        } else if (opt instanceof String) {
+                            optionText = (String) opt;
+                        } else {
+                            // Intentar llamar a getOptionText() por reflexión o usar toString() como fallback
+                            try {
+                                java.lang.reflect.Method m = opt.getClass().getMethod("getOptionText");
+                                Object res = m.invoke(opt);
+                                optionText = (res != null) ? res.toString() : opt.toString();
+                            } catch (Exception e) {
+                                optionText = opt.toString();
+                            }
+                        }
+                        System.out.println("      " + (j + 1) + ". " + optionText);
+                    }
+                }
+            } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                System.out.println("    (Respuesta numérica requerida)");
+            }
+        }
+        System.out.println("========================================");
     }
 
     private boolean saveSurvey() {
@@ -342,6 +435,8 @@ public class EditSurveysDriver {
 
             if (confirmation.equalsIgnoreCase("S")) {
                 surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
+                // Recargar la encuesta para mantener consistencia con la BD
+                currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
                 System.out.println("\nEncuesta guardada correctamente.");
                 return true;
             }
@@ -372,7 +467,11 @@ public class EditSurveysDriver {
             String confirmation = sc.nextLine();
 
             if (confirmation.equalsIgnoreCase("S")) {
+                // Asegurar que los últimos cambios estén guardados
+                surveyController.updateSurvey(currentSurvey.getSURVEY_ID(), currentSurvey);
                 surveyController.publishSurvey(currentSurvey.getSURVEY_ID());
+                // Recargar para mostrar estado y fecha de publicación
+                currentSurvey = surveyController.getSurvey(currentSurvey.getSURVEY_ID());
                 System.out.println("\nEncuesta publicada correctamente.");
                 return true;
             }
@@ -408,4 +507,5 @@ public class EditSurveysDriver {
             return false;
         }
     }
+
 }

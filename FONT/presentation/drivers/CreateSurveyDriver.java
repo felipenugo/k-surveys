@@ -186,7 +186,7 @@ public class CreateSurveyDriver {
         viewAllQuestions();
         System.out.print("\nIntroduce el índice de la pregunta a editar (0-" + (currentSurvey.getSize() - 1) + "): ");
         int index = sc.nextInt();
-        sc.nextLine(); // Consumir el salto de línea
+        sc.nextLine();
 
         if (index < 0 || index >= currentSurvey.getSize()) {
             System.out.println("Índice no válido.");
