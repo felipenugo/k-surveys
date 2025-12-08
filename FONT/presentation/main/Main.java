@@ -33,7 +33,7 @@ public class Main extends Application {
 
         // 3. Controller: Connects the UI to the business logic.
         UserController userController = new UserController(userService);
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         SurveyController surveyController = new SurveyController(surveyService);
 
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.

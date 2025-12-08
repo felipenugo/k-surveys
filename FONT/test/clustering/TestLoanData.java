@@ -43,7 +43,7 @@ public class TestLoanData {
                 clusteringAlgorithm = new KMeans(10, 1e-5);
                 break;
         }
-        distanceCalc = new DistanceCalculator(DISTANCE_TYPE);
+        distanceCalc = new DistanceCalculator(DISTANCE_TYPE, TextDistanceType.LEVENSHTEIN);
 
         questions = new ArrayList<>();
         data = new ArrayList<>();

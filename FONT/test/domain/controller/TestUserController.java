@@ -30,6 +30,7 @@ public class TestUserController {
     @Before
     public void setUp() {
         userRepository = new UserRepository();  // repositorio real en memoria
+        userRepository.clear();  // limpiar datos de ejecuciones anteriores
         userService = new UserService(userRepository);
         ctrl = new UserController(userService);
     }

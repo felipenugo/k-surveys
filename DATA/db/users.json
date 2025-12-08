@@ -1,0 +1,23 @@
+{
+  "testuser": {
+    "USERNAME": "testuser",
+    "email": "test@gmail.com",
+    "passwordHash": "ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f",
+    "securityQuestion": "What is your pet\u0027s name?",
+    "securityAnswer": "Fluffy",
+    "createdSurveysId": [
+      "0",
+      "1"
+    ],
+    "respondedSurveysId": {}
+  },
+  "test": {
+    "USERNAME": "test",
+    "email": "test@gmail.com",
+    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
+    "securityQuestion": "Pregunta de seguridad por defecto",
+    "securityAnswer": "Respuesta de seguridad por defecto",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  }
+}

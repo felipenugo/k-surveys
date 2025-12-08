@@ -125,6 +125,10 @@ public class SurveyRepository {
     }
 
     private void saveSurveysToJson() {
+        File file = new File(FILE_PATH);
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+        }
         try (Writer writer = new FileWriter(FILE_PATH)) {
             // Crear objeto raíz con nextSurveyId y el mapa de encuestas
             JsonObject root = new JsonObject();
@@ -197,7 +201,7 @@ public class SurveyRepository {
     // ───────────────────────────────────────────────
 
     public SurveyRepository() {
-        this("./DATA/db/surveys.json");
+        this("../DATA/db/surveys.json");
     }
 
     /**
@@ -224,6 +228,15 @@ public class SurveyRepository {
 
         // Garantía: si sigue vacío (no encuestas), iniciar en 0
         if (this.nextSurveyId < 0) this.nextSurveyId = 0;
+    }
+
+    /**
+     * Elimina todas las encuestas del repositorio.
+     */
+    public void clear() {
+        surveys.clear();
+        this.nextSurveyId = 0;
+        saveSurveysToJson();
     }
 
     /**
