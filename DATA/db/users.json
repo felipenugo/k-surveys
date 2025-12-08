@@ -1,0 +1,26 @@
+{
+  "kiara": {
+    "USERNAME": "kiara",
+    "email": "kiara@gmail.com",
+    "passwordHash": "1c69ae305d986dde90bb5a9d9be627d3a93e39ee94fa513177461c44e96f3ceb",
+    "securityQuestion": "kiara?",
+    "securityAnswer": "si",
+    "createdSurveysId": [
+      "0"
+    ],
+    "respondedSurveysId": {}
+  },
+  "test": {
+    "USERNAME": "test",
+    "email": "test@gmail.com",
+    "passwordHash": "9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08",
+    "securityQuestion": "que es esto?",
+    "securityAnswer": "test",
+    "createdSurveysId": [],
+    "respondedSurveysId": {
+      "0": [
+        "1"
+      ]
+    }
+  }
+}
