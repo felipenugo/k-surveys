@@ -49,8 +49,8 @@ public class SceneManager {
         }
 
         primaryStage.centerOnScreen();
-        primaryStage.setMinWidth(800);
-        primaryStage.setMinHeight(600);
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(800);
         primaryStage.show();
     }
 

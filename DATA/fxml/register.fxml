@@ -1,51 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
 
-<!--
-    CORRECCIÓN DE LA ESTRUCTURA: Usamos StackPane como nodo raíz
-    para asegurar que los estilos .root (fondo) se apliquen a toda la escena
-    y centrar correctamente la tarjeta VBox.
--->
-<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/register.css">
+<StackPane styleClass="root-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+           stylesheets="/css/register.css">
 
-    <!-- VBox interno: Esta es la tarjeta con el estilo .card-register.
-         PREF-SIZES ELIMINADOS: Ahora el tamaño se controla por CSS (max-width) y contenido. -->
-    <VBox alignment="CENTER" spacing="15.0"
-          styleClass="card-register">
-        <children>
-            <Label styleClass="title" text="REGISTRO DE USUARIO" />
+    <!-- Contenedor para centrar el contenido y el espacio entre los elementos -->
+    <!-- El ancho lo definirán los hijos, espacio de 20 vertical entre ellos -->
+    <VBox alignment="CENTER" fillWidth="false" spacing="20">
 
-            <!-- Campo de Usuario -->
-            <VBox styleClass="form-group" maxWidth="300.0">
-                <Label styleClass="label" text="Nombre de Usuario:" />
-                <TextField fx:id="usernameField" styleClass="input-field" promptText="Define un nombre de usuario" />
-            </VBox>
+        <!-- CARD DE ERROR -->
+        <!-- Inicialmente, no visible, mostrará un mensaje cuando se produzca un error -->
+        <!-- No se tiene en cuenta en el layout para centrar correctamente el login y que no quede más abajo -->
+        <HBox fx:id="errorCard" alignment="CENTER_LEFT" spacing="10" styleClass="error-card" visible="false" managed="false">
+            <Label styleClass="error-icon" text="⚠"/>
+            <Label fx:id="errorLabel" styleClass="error-label" wrapText="true" HBox.hgrow="ALWAYS" text=""/>
+        </HBox>
 
-            <!-- Campo de Email -->
-            <VBox styleClass="form-group" maxWidth="300.0">
-                <Label styleClass="label" text="Email:" />
-                <TextField fx:id="emailField" styleClass="input-field" promptText="Ingresa tu email (opcional)" />
-            </VBox>
-
-            <!-- Campo de Contraseña -->
-            <VBox styleClass="form-group" maxWidth="300.0">
-                <Label styleClass="label" text="Contraseña:" />
-                <PasswordField fx:id="passwordField" styleClass="input-field" promptText="Crea una contraseña segura" />
-            </VBox>
-
-            <!-- Botón de Registro -->
-            <Button fx:id="registerButton" styleClass="btn-primary" onAction="#handleRegisterClick" text="REGISTRARSE" prefWidth="150.0">
+        <!-- CARD DE REGISTRO -->
+        <VBox alignment="CENTER" spacing="15" styleClass="register-card">
+            <Label styleClass="titulo" text="K-Surveys"/>
+            <Label styleClass="subtitulo" text="Introduce tus datos para registrarte">
                 <VBox.margin>
-                    <Insets top="10.0" />
+                    <Insets bottom="20.0"/>
+                </VBox.margin>
+            </Label>
+
+            <!-- Username -->
+            <TextField fx:id="usernameField" promptText="Introduce tu usuario" styleClass="input-field, icon-user"/>
+
+            <!-- Email -->
+            <TextField fx:id="emailField" promptText="Introduce tu correo electrónico" styleClass="input-field, icon-email"/>
+
+            <!-- Contraseña -->
+            <StackPane>
+                <TextField fx:id="passwordText" managed="false" promptText="Introduce tu contraseña"
+                           styleClass="input-field, icon-lock" visible="false"/>
+                <PasswordField fx:id="passwordField" promptText="Introduce tu contraseña"
+                               styleClass="input-field, icon-lock"/>
+            </StackPane>
+
+            <!-- Confirmar Contraseña -->
+            <StackPane>
+                <TextField fx:id="confirmPasswordText" managed="false" promptText="Confirma tu contraseña"
+                           styleClass="input-field, icon-lock" visible="false"/>
+                <PasswordField fx:id="confirmPasswordField" promptText="Confirma tu contraseña"
+                               styleClass="input-field, icon-lock"/>
+            </StackPane>
+
+            <!-- Checkbox Mostrar Contraseña -->
+            <HBox alignment="CENTER_LEFT" spacing="10">
+                <CheckBox fx:id="showPasswordCheck" text="Mostrar contraseñas" onAction="#toggleRegisterPasswords" textFill="gray"/>
+            </HBox>
+
+            <!-- Botón Registro -->
+            <Button onAction="#handleRegister" styleClass="register-button" text="REGISTRARSE">
+                <VBox.margin>
+                    <Insets top="15.0"/>
                 </VBox.margin>
             </Button>
 
-            <!-- Etiqueta de Estado -->
-            <Label fx:id="statusLabel" text="Complete los campos para registrarse." style="-fx-text-fill: #555555;" />
-
-        </children>
+            <!-- Link Login -->
+            <HBox alignment="CENTER" spacing="5" >
+                <Label text="¿Ya tienes cuenta?" textFill="gray"/>
+                <Hyperlink text="Inicia sesión" onAction="#goToLogin"/>
+            </HBox>
+        </VBox>
     </VBox>
+
 </StackPane>

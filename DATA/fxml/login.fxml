@@ -55,6 +55,7 @@
                 <Hyperlink text="Recuperar contraseña" onAction="#goToResetPassword"/>
             </HBox>
 
+            <!-- Botón Registro -->
             <Button onAction="#handleLogin" styleClass="login-button" text="INICIAR SESIÓN">
                 <VBox.margin>
                     <Insets top="15.0"/>
