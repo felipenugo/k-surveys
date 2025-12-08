@@ -80,14 +80,10 @@ public class SurveyRepository {
     }
 
     private void saveSurveysToJson() {
-        // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
-        // crea el fichero si no existe
-        /*
-        try anidado
-        try{
         File file = new File(FILE_PATH);
-        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
-         */
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+        }
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(surveys, writer);
         }  catch (Exception e) {
@@ -126,6 +122,15 @@ public class SurveyRepository {
 
         // Garantía: si sigue vacío (no encuestas), iniciar en 0
         if (this.nextSurveyId < 0) this.nextSurveyId = 0;
+    }
+
+    /**
+     * Elimina todas las encuestas del repositorio.
+     */
+    public void clear() {
+        surveys.clear();
+        this.nextSurveyId = 0;
+        saveSurveysToJson();
     }
 
     /**

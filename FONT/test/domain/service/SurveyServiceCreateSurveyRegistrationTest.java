@@ -34,14 +34,16 @@ public class SurveyServiceCreateSurveyRegistrationTest {
     @Before
     public void setUp() {
         userRepository = new UserRepository();
+        userRepository.clear();  // limpiar datos de ejecuciones anteriores
         surveyRepository = new SurveyRepository();
+        surveyRepository.clear();  // limpiar datos de ejecuciones anteriores
 
         userService = new UserService(userRepository);
         userController = new UserController(userService);
         surveyService = new SurveyService(surveyRepository, userController, userService);
 
         // Registrar y loguear usuario
-        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD);
+        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD, "Question?", "Answer");
         userController.loginUser(TEST_USERNAME, TEST_PASSWORD);
     }
 

@@ -81,12 +81,10 @@ public class ResponseRepository {
     private void saveResponsesToJson() {
         // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
         // crea el fichero si no existe
-        /*
-        try anidado
-        try{
         File file = new File(FILE_PATH);
-        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
-         */
+        if (file.getParentFile() != null) {
+            file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+        }
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(responses, writer);
         } catch (Exception e) {

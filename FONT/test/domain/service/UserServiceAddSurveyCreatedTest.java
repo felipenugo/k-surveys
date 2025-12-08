@@ -26,13 +26,14 @@ public class UserServiceAddSurveyCreatedTest {
     @Before
     public void setUp() {
         userRepository = new UserRepository();
+        userRepository.clear();  // limpiar datos de ejecuciones anteriores
         userService = new UserService(userRepository);
     }
 
     @Test
     public void testAddSurveyCreatedSuccessfully() {
         // Arrange: Crear usuario
-        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD);
+        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD, "Question?", "Answer");
 
         // Act: Agregar encuesta creada
         userService.addSurveyCreated(TEST_USERNAME, TEST_SURVEY_ID);
@@ -48,7 +49,7 @@ public class UserServiceAddSurveyCreatedTest {
     @Test
     public void testAddMultipleSurveysCreated() {
         // Arrange: Crear usuario
-        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD);
+        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD, "Question?", "Answer");
         String surveyId1 = "survey_001";
         String surveyId2 = "survey_002";
         String surveyId3 = "survey_003";
@@ -78,7 +79,7 @@ public class UserServiceAddSurveyCreatedTest {
     @Test
     public void testAddSurveyCreatedPersistenceToJson() {
         // Arrange: Crear usuario
-        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD);
+        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD, "Question?", "Answer");
         userService.addSurveyCreated(TEST_USERNAME, TEST_SURVEY_ID);
 
         // Act: Crear nuevo UserService (simulando recarga desde JSON)
@@ -94,7 +95,7 @@ public class UserServiceAddSurveyCreatedTest {
     @Test
     public void testAddSurveyCreatedWithLogging() {
         // Arrange: Crear usuario
-        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD);
+        userService.registerUser(TEST_USERNAME, TEST_EMAIL, TEST_PASSWORD, "Question?", "Answer");
 
         // Act: Agregar encuesta (el logging se ejecuta internamente)
         userService.addSurveyCreated(TEST_USERNAME, TEST_SURVEY_ID);
