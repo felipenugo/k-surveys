@@ -31,7 +31,7 @@ public class Main extends Application {
         UserController userController = new UserController(userService);
         
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.
-        primaryStage.setResizable(false);
+        primaryStage.setResizable(true);
         //SceneManager.initStage();
         SceneManager sceneManager = new SceneManager(userController);
         sceneManager.setPrimaryStage(primaryStage);
