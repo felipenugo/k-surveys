@@ -221,7 +221,7 @@ public class MultipleChoiceQuestion extends Question {
         for (OptionQuestion option : this.optionQuestions) {
             OptionQuestion optionCopy = new OptionQuestion(
                     option.getQuestionIndex(),
-                    option.getSurveyId()
+                    copy.getSURVEY_ID()
             );
             optionCopy.setOptionText(option.getOptionText());
             copy.addOption(optionCopy);

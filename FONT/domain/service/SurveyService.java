@@ -4,6 +4,7 @@ import data.SurveyRepository;
 import domain.controller.UserController;
 import domain.exception.SurveyException;
 import domain.model.*;
+import domain.model.enums.TypeQuestion;
 
 import java.util.List;
 
@@ -132,7 +133,14 @@ public class SurveyService {
 
             // Copiar todas las preguntas
             for (int i = 0; i < survey.getSize(); i++) {
-                surveyWithId.addQuestion(survey.getQuestion(i));
+                Question q = survey.getQuestion(i);
+                q.setQuestionIndex(i);
+                q.setSURVEY_ID(surveyId);
+                if(q.getTypeQuestion().equals(TypeQuestion.MULTIPLE_CHOICE))
+                {
+                    q = (MultipleChoiceQuestion)q.copy();
+                }
+                surveyWithId.addQuestion(q);
             }
 
             survey = surveyWithId;

@@ -18,7 +18,7 @@ public class Question {
     /** Índice que identifica la posición de la pregunta dentro de una encuesta. */
     private int questionIndex; // identifier with surveyId
     /** Identificador de la encuesta a la que pertenece esta pregunta. */
-    private final String SURVEY_ID; // identifier to the survey to which it belongs
+    private  String SURVEY_ID; // identifier to the survey to which it belongs
      /** Tipo de pregunta. */
     private TypeQuestion typeQuestion; // can be MULTIPLE_CHOICE or TEXTUAL
     /** Texto o enunciado de la pregunta. */
@@ -98,6 +98,11 @@ public class Question {
     // Setters
     // ───────────────────────────────────────────────
 
+    /**
+     * Estable el identificador de la encuesta a la que pertenece la pregunta.
+     * @param SURVEY_ID identificador de la encuesta
+     */
+    public void setSURVEY_ID(String SURVEY_ID) { this.SURVEY_ID = SURVEY_ID;}
     /**
      * Establece un nuevo índice para la pregunta dentro de la encuesta.
      *
