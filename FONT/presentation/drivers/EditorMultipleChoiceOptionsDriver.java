@@ -270,8 +270,8 @@ public class EditorMultipleChoiceOptionsDriver {
         domain.service.UserService userService = new domain.service.UserService(userRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
-        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
-        
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
+
         // Inicializar controladores
         domain.controller.QuestionController questionController = new domain.controller.QuestionController(questionService);
         domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);

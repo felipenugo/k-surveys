@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÓN
+1. INICIAR SESIÃ“N
 2. REGISTRARSE
 3. SALIR
-Opción: 
+OpciÃ³n: 
 
 
 
@@ -54,8 +54,8 @@ Opción:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
-El usuario usuario_test4 se ha registrado con éxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÃ±a: --- registrÃ¡ndose ---
+El usuario usuario_test4 se ha registrado con Ã©xito.
 
 
 
@@ -106,25 +106,25 @@ El usuario usuario_test4 se ha registrado con éxito.
 
 
 
---- INICIO DE SESIÓN ---
-Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
-Inicio de sesión correcto!
+--- INICIO DE SESIÃ“N ---
+Introduce tu nombre de usuario:Introduce tu contraseÃ±a:--- iniciando sesiÃ³n ---
+Inicio de sesiÃ³n correcto!
 Bienvenido usuario_test4
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESIÓN
-Opcion: Opción no válida. Seleccióna una opción del menú.
+3. CERRAR SESIÃ“N
+Opcion: OpciÃ³n no vÃ¡lida. SelecciÃ³na una opciÃ³n del menÃº.
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESIÓN
-Opcion: --- CERRANDO SESIÓN ---
-Sesión cerrada, hasta pronto usuario_test4.
+3. CERRAR SESIÃ“N
+Opcion: --- CERRANDO SESIÃ“N ---
+SesiÃ³n cerrada, hasta pronto usuario_test4.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÓN
+1. INICIAR SESIÃ“N
 2. REGISTRARSE
 3. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
+OpciÃ³n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

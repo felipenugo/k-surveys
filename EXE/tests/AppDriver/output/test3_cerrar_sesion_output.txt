@@ -1,7 +1,7 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÓN
+1. INICIAR SESIÃ“N
 2. REGISTRARSE
 3. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
+OpciÃ³n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

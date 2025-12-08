@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -54,8 +54,8 @@ OpciÛn:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
-El usuario TestUserResponse2 se ha registrado con Èxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
+El usuario TestUserResponse2 se ha registrado con √©xito.
 
 
 
@@ -106,179 +106,179 @@ El usuario TestUserResponse2 se ha registrado con Èxito.
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido TestUserResponse2
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: 
 ========================================
        CREANDO NUEVA ENCUESTA
 ========================================
-Introduce el tÌtulo de la encuesta: Introduce la descripciÛn de la encuesta: 
+Introduce el t√≠tulo de la encuesta: Introduce la descripci√≥n de la encuesta: 
 Encuesta inicializada correctamente.
-(El ID ser· asignado al publicar)
+(El ID ser√° asignado al publicar)
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
        CREAR NUEVA PREGUNTA
 ========================================
-Introduce el texto de la pregunta: øEsta pregunta es obligatoria? (S/N, por defecto S): 
+Introduce el texto de la pregunta: ¬øEsta pregunta es obligatoria? (S/N, por defecto S): 
 --- TIPO DE PREGUNTA ---
 1. PREGUNTA TEXTUAL
-2. PREGUNTA DE OPCI”N M⁄LTIPLE
-3. PREGUNTA NUM…RICA
+2. PREGUNTA DE OPCI√ìN M√öLTIPLE
+3. PREGUNTA NUM√âRICA
 4. CANCELAR
-OpciÛn: 
+Opci√≥n: 
 Pregunta textual creada.
-Pregunta aÒadida correctamente en posiciÛn 0.
+Pregunta a√±adida correctamente en posici√≥n 0.
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
        RESUMEN DE LA ENCUESTA
 ========================================
-TÌtulo: Test Survey
-DescripciÛn: Test Description
+T√≠tulo: Test Survey
+Descripci√≥n: Test Description
 Creador: TestUserResponse2
-N˙mero de preguntas: 1
+N√∫mero de preguntas: 1
 ========================================
 
-øEst·s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): PublicaciÛn cancelada. Puedes seguir editando.
+¬øEst√°s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): Publicaci√≥n cancelada. Puedes seguir editando.
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
-ID: (Se asignar· autom·ticamente al publicar)
-TÌtulo: Test Survey
-DescripciÛn: Test Description
-Creador: TestUserResponse2
-Estado: DRAFT
-N˙mero de preguntas: 1
-Fecha de creaciÛn: 2025-11-17T23:16:21.604652300
-========================================
-
---- CREAR ENCUESTA ---
-1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
-5. EDITAR PREGUNTA
-6. ELIMINAR PREGUNTA
-7. REORDENAR PREGUNTAS
-8. VER TODAS LAS PREGUNTAS
-9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
-========================================
-ID: (Se asignar· autom·ticamente al publicar)
-TÌtulo: Test Survey
-DescripciÛn: Test Description
+ID: (Se asignar√° autom√°ticamente al publicar)
+T√≠tulo: Test Survey
+Descripci√≥n: Test Description
 Creador: TestUserResponse2
 Estado: DRAFT
-N˙mero de preguntas: 1
-Fecha de creaciÛn: 2025-11-17T23:16:21.604652300
+N√∫mero de preguntas: 1
+Fecha de creaci√≥n: 2025-11-17T22:39:55.849613856
 ========================================
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
-ID: (Se asignar· autom·ticamente al publicar)
-TÌtulo: Test Survey
-DescripciÛn: Test Description
+ID: (Se asignar√° autom√°ticamente al publicar)
+T√≠tulo: Test Survey
+Descripci√≥n: Test Description
 Creador: TestUserResponse2
 Estado: DRAFT
-N˙mero de preguntas: 1
-Fecha de creaciÛn: 2025-11-17T23:16:21.604652300
+N√∫mero de preguntas: 1
+Fecha de creaci√≥n: 2025-11-17T22:39:55.849613856
 ========================================
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
-DescripciÛn actual: Test Description
-Introduce la nueva descripciÛn: DescripciÛn actualizada.
+Opci√≥n: 
+========================================
+ID: (Se asignar√° autom√°ticamente al publicar)
+T√≠tulo: Test Survey
+Descripci√≥n: Test Description
+Creador: TestUserResponse2
+Estado: DRAFT
+N√∫mero de preguntas: 1
+Fecha de creaci√≥n: 2025-11-17T22:39:55.849613856
+========================================
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
-DescripciÛn actual: 3
-Introduce la nueva descripciÛn: DescripciÛn actualizada.
+Opci√≥n: 
+Descripci√≥n actual: Test Description
+Introduce la nueva descripci√≥n: Descripci√≥n actualizada.
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
+Descripci√≥n actual: 3
+Introduce la nueva descripci√≥n: Descripci√≥n actualizada.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR, PUBLICAR Y SALIR
+Opci√≥n: 
 Se ha llegado al final de la entrada de datos.
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: --- SALIENDO DE K-SURVEY ---
+Opci√≥n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

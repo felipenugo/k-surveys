@@ -6,6 +6,7 @@ import domain.exception.SurveyException;
 import domain.model.*;
 
 import java.util.List;
+import java.util.ArrayList;
 
 /**
  * Servicio encargado de gestionar toda la lógica de negocio relacionada con las encuestas.
@@ -26,16 +27,20 @@ public class SurveyService {
     private final SurveyRepository surveyRepository;
     /** Controlador de usuario para validar permisos y obtener al usuario activo. */
     private final UserController userController;
+    /** Servicio de usuario para registrar encuestas creadas. */
+    private final UserService userService;
 
     /**
      * Crea una nueva instancia del servicio de encuestas.
      *
      * @param surveyRepository repositorio de encuestas
      * @param userController controlador de usuario utilizado para validar permisos
+     * @param userService servicio de usuario para registrar encuestas creadas
      */
-    public SurveyService(SurveyRepository surveyRepository, UserController userController) {
+    public SurveyService(SurveyRepository surveyRepository, UserController userController, UserService userService) {
         this.surveyRepository = surveyRepository;
         this.userController = userController;
+        this.userService = userService;
     }
 
     // ───────────────────────────────────────────────
@@ -119,33 +124,84 @@ public class SurveyService {
         // Generar el ID autoincremental si no tiene uno
         String surveyId = survey.getSURVEY_ID();
 
+        // Siempre construiremos una nueva instancia de Survey con el ID definitivo y copiaremos
+        // todas las preguntas al objeto que realmente se va a persistir. Esto evita inconsistencias
+        // si el objeto pasado proviene de la capa de presentación con referencias incompletas.
         if (surveyId == null || surveyId.trim().isEmpty()) {
-            // Generar el siguiente ID autoincremental
             surveyId = generateUniqueSurveyId();
-
-            // Crear una nueva encuesta con el ID generado (porque SURVEY_ID es final)
-            Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
-            surveyWithId.setSurveyStatus(survey.getSurveyStatus());
-            if (survey.getPUBLISHED_AT() != null) {
-                surveyWithId.setPUBLISHED_AT();
-            }
-
-            // Copiar todas las preguntas
-            for (int i = 0; i < survey.getSize(); i++) {
-                surveyWithId.addQuestion(survey.getQuestion(i));
-            }
-
-            survey = surveyWithId;
         } else {
-            // Si ya tiene ID, verificar que no exista
+            // Si se proporcionó un ID existente, asegurarnos de que no exista ya en el repositorio
             if (surveyRepository.existsSurvey(surveyId)) {
                 throw new SurveyException("Ya existe una encuesta con el ID: " + surveyId);
             }
         }
 
+        // Crear una nueva encuesta con el ID generado o proporcionado (porque SURVEY_ID es final)
+        Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
+        surveyWithId.setSurveyStatus(survey.getSurveyStatus());
+        if (survey.getPUBLISHED_AT() != null) {
+            surveyWithId.setPUBLISHED_AT();
+        }
+
+        // Copiar todas las preguntas creando nuevas instancias con el SURVEY_ID correcto
+        for (int i = 0; i < survey.getSize(); i++) {
+            Question originalQ = survey.getQuestion(i);
+
+            if (originalQ.getTypeQuestion() == domain.model.enums.TypeQuestion.MULTIPLE_CHOICE) {
+                domain.model.MultipleChoiceQuestion origMc = (domain.model.MultipleChoiceQuestion) originalQ;
+                domain.model.MultipleChoiceQuestion mcCopy = new domain.model.MultipleChoiceQuestion(origMc.getQuestionIndex(), surveyId);
+                mcCopy.setQuestionText(origMc.getQuestionText());
+                mcCopy.setRequired(origMc.isRequired());
+
+                // Copiar opciones primero
+                if (origMc.getOptions() != null) {
+                    for (int k = 0; k < origMc.getOptions().size(); k++) {
+                        domain.model.OptionQuestion opt = origMc.getOption(k);
+                        domain.model.OptionQuestion optCopy = new domain.model.OptionQuestion(opt.getQuestionIndex(), surveyId);
+                        optCopy.setOptionText(opt.getOptionText());
+                        mcCopy.addOption(optCopy);
+                    }
+                }
+
+                // Copiar min/max seleccion después de añadir opciones (usar setters para validar)
+                try {
+                    mcCopy.setMaxSelections(origMc.getMaxSelections());
+                    mcCopy.setMinSelections(origMc.getMinSelections());
+                } catch (IllegalArgumentException e) {
+                    // Si las validaciones fallan, ajustar a valores seguros
+                    int optionsCount = mcCopy.getOptions().size();
+                    if (optionsCount >= 1) {
+                        mcCopy.setMinSelections(1);
+                        mcCopy.setMaxSelections(Math.max(1, optionsCount));
+                    } else {
+                        mcCopy.clearOptions(); // dejarlo vacío si hay inconsistencia
+                    }
+                }
+
+                surveyWithId.addQuestion(mcCopy);
+            } else {
+                // Pregunta textual o numérica: crear nueva instancia con SURVEY_ID correcto
+                Question qCopy = new Question(originalQ.getQuestionIndex(), surveyId);
+                qCopy.setQuestionText(originalQ.getQuestionText());
+                qCopy.setTypeQuestion(originalQ.getTypeQuestion());
+                qCopy.setRequired(originalQ.isRequired());
+                surveyWithId.addQuestion(qCopy);
+            }
+        }
+
         // Guardar en el repositorio
-        surveyRepository.addSurvey(survey);
-        return survey;
+        surveyRepository.addSurvey(surveyWithId);
+
+        // Registrar la encuesta creada en el usuario
+        try {
+            userService.addSurveyCreated(surveyWithId.getCREATOR_USERNAME(), surveyWithId.getSURVEY_ID());
+        } catch (Exception e) {
+            System.err.println("[WARNING] Error al registrar la encuesta " + surveyWithId.getSURVEY_ID() +
+                             " en el usuario " + surveyWithId.getCREATOR_USERNAME() + ": " + e.getMessage());
+            // La encuesta se crea igual, solo se registra el warning en logs
+        }
+
+        return surveyWithId;
     }
 
      /**
@@ -299,6 +355,269 @@ public class SurveyService {
      */
     public boolean existsSurvey(String surveyId) {
         return surveyRepository.existsSurvey(surveyId);
+    }
+
+    // ───────────────────────────────────────────────
+    // CRUD Completo: UPDATE, DELETE, GET BY USER, PUBLISH
+    // ───────────────────────────────────────────────
+
+    /**
+     * Actualiza una encuesta existente (solo si es borrador).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT (solo se pueden editar borradores)
+     * - Los cambios se sincronicen con BD y JSON
+     *
+     * @param surveyId identificador de la encuesta a actualizar
+     * @param updatedSurvey encuesta con los cambios
+     * @return encuesta actualizada
+     * @throws SurveyException si la encuesta no existe, no es del usuario, o no está en DRAFT
+     */
+    public Survey updateSurvey(String surveyId, Survey updatedSurvey) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey existingSurvey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!existingSurvey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para editar esta encuesta.");
+        }
+
+        // Validar que la encuesta está en DRAFT
+        if (!existingSurvey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("Solo se pueden editar encuestas en estado borrador.");
+        }
+
+        // Validar cambios
+        if (updatedSurvey.getTitle() == null || updatedSurvey.getTitle().trim().isEmpty()) {
+            throw new SurveyException("El título no puede estar vacío.");
+        }
+        if (updatedSurvey.getDescription() == null || updatedSurvey.getDescription().trim().isEmpty()) {
+            throw new SurveyException("La descripción no puede estar vacía.");
+        }
+
+        // Actualizar los campos básicos
+        existingSurvey.setTitle(updatedSurvey.getTitle());
+        existingSurvey.setDescription(updatedSurvey.getDescription());
+
+        // --- NUEVO: sincronizar la lista completa de preguntas desde updatedSurvey ---
+        // Reemplazar las preguntas de la encuesta existente por las de updatedSurvey (copia profunda)
+        // Hacer primero una copia profunda de las preguntas recibidas PARA EVITAR problemas
+        // en el caso en que updatedSurvey sea la misma instancia que existingSurvey.
+        List<Question> updatedQuestions = new ArrayList<>();
+        if (updatedSurvey.getQuestions() != null) {
+            for (Question q : updatedSurvey.getQuestions()) {
+                // Crear copia superficial que luego se convertirá en instancia válida
+                if (q.getTypeQuestion() == domain.model.enums.TypeQuestion.MULTIPLE_CHOICE) {
+                    domain.model.MultipleChoiceQuestion origMc = (domain.model.MultipleChoiceQuestion) q;
+                    domain.model.MultipleChoiceQuestion mcCopy = new domain.model.MultipleChoiceQuestion(origMc.getQuestionIndex(), surveyId);
+                    mcCopy.setQuestionText(origMc.getQuestionText());
+                    mcCopy.setRequired(origMc.isRequired());
+
+                    if (origMc.getOptions() != null) {
+                        for (int k = 0; k < origMc.getOptions().size(); k++) {
+                            domain.model.OptionQuestion opt = origMc.getOption(k);
+                            domain.model.OptionQuestion optCopy = new domain.model.OptionQuestion(opt.getQuestionIndex(), surveyId);
+                            optCopy.setOptionText(opt.getOptionText());
+                            mcCopy.addOption(optCopy);
+                        }
+                    }
+
+                    try {
+                        mcCopy.setMaxSelections(origMc.getMaxSelections());
+                        mcCopy.setMinSelections(origMc.getMinSelections());
+                    } catch (IllegalArgumentException e) {
+                        int optionsCount = mcCopy.getOptions().size();
+                        if (optionsCount >= 1) {
+                            mcCopy.setMinSelections(1);
+                            mcCopy.setMaxSelections(Math.max(1, optionsCount));
+                        } else {
+                            mcCopy.clearOptions();
+                        }
+                    }
+
+                    updatedQuestions.add(mcCopy);
+                } else {
+                    Question qCopy = new Question(q.getQuestionIndex(), surveyId);
+                    qCopy.setQuestionText(q.getQuestionText());
+                    qCopy.setTypeQuestion(q.getTypeQuestion());
+                    qCopy.setRequired(q.isRequired());
+                    updatedQuestions.add(qCopy);
+                }
+            }
+        }
+
+        // Ahora reemplazar las preguntas de existingSurvey por las copias construidas
+        existingSurvey.clearQuestions();
+        for (Question nq : updatedQuestions) existingSurvey.addQuestion(nq);
+
+         // Guardar cambios (persistir encuesta completa con preguntas y opciones)
+         surveyRepository.addSurvey(existingSurvey);
+
+         System.out.println("[LOG] Encuesta " + surveyId + " actualizada por usuario " + userController.getUsernameLoggedIn());
+
+         return existingSurvey;
+     }
+
+    /**
+     * Elimina una encuesta (solo si es borrador).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT (solo se pueden eliminar borradores)
+     * - Se elimine de BD y del set de encuestas del usuario
+     * - Se sincronice el JSON del usuario
+     *
+     * @param surveyId identificador de la encuesta a eliminar
+     * @throws SurveyException si la encuesta no existe, no es del usuario, o no está en DRAFT
+     */
+    public void deleteSurvey(String surveyId) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey survey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!survey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para eliminar esta encuesta.");
+        }
+
+        // Validar que la encuesta está en DRAFT
+        if (!survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("Solo se pueden eliminar encuestas en estado borrador.");
+        }
+
+        // Eliminar de BD
+        surveyRepository.deleteSurvey(surveyId);
+
+        // Eliminar del set de encuestas del usuario
+        try {
+            userService.removeSurveyCreated(survey.getCREATOR_USERNAME(), surveyId);
+        } catch (Exception e) {
+            System.err.println("[WARNING] Error al eliminar encuesta del usuario: " + e.getMessage());
+        }
+
+        System.out.println("[LOG] Encuesta " + surveyId + " eliminada por usuario " + userController.getUsernameLoggedIn());
+    }
+
+    /**
+     * Obtiene todas las encuestas creadas por un usuario específico.
+     *
+     * Retorna solo las encuestas del usuario autenticado actualmente.
+     * Las encuestas se ordenan por más reciente primero.
+     *
+     * @param username nombre de usuario
+     * @return lista de encuestas del usuario (ordenadas por fecha descendente)
+     * @throws SurveyException si el usuario no tiene encuestas
+     */
+    public List<Survey> getSurveysByUser(String username) {
+        checkUserLoggedin();
+
+        // Validar que el usuario solicitado es el actualmente logueado
+        if (!username.equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para ver las encuestas de otro usuario.");
+        }
+
+        List<Survey> userSurveys = new ArrayList<>();
+        List<String> surveyIds = surveyRepository.getAllSurveysId();
+
+        for (String surveyId : surveyIds) {
+            Survey survey = surveyRepository.getSurvey(surveyId);
+            if (survey.getCREATOR_USERNAME().equals(username)) {
+                userSurveys.add(survey);
+            }
+        }
+
+        if (userSurveys.isEmpty()) {
+            throw new SurveyException("No tienes encuestas creadas.");
+        }
+
+        // Ordenar por fecha de creación (más reciente primero)
+        userSurveys.sort((s1, s2) -> s2.getCREATED_AT().compareTo(s1.getCREATED_AT()));
+
+        return userSurveys;
+    }
+
+    /**
+     * Publica una encuesta (cambia de DRAFT a PUBLISHED).
+     *
+     * Valida que:
+     * - La encuesta exista
+     * - El usuario actual sea el propietario
+     * - La encuesta esté en estado DRAFT
+     * - La encuesta tenga al menos una pregunta
+     *
+     * @param surveyId identificador de la encuesta a publicar
+     * @return encuesta publicada
+     * @throws SurveyException si la encuesta no puede publicarse
+     */
+    public Survey publishSurvey(String surveyId) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey survey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!survey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para publicar esta encuesta.");
+        }
+
+        // Validar que está en DRAFT
+        if (!survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("La encuesta ya ha sido publicada.");
+        }
+
+        // Validar que tiene al menos una pregunta
+        if (survey.getSize() == 0) {
+            throw new SurveyException("No se puede publicar una encuesta sin preguntas.");
+        }
+
+        // Cambiar estado a PUBLISHED
+        survey.setSurveyStatus(domain.model.enums.SurveyStatus.PUBLISHED);
+        survey.setPUBLISHED_AT();
+
+        // Guardar cambios
+        surveyRepository.addSurvey(survey);
+
+        System.out.println("[LOG] Encuesta " + surveyId + " publicada por usuario " + userController.getUsernameLoggedIn());
+
+        return survey;
+    }
+
+    // ───────────────────────────────────────────────
+    // Manipulación de preguntas
+    // ───────────────────────────────────────────────
+
+    /**
+     * Elimina una pregunta de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param questionIndex índice de la pregunta a eliminar
+     * @throws SurveyException si la encuesta no existe o el índice es inválido
+     */
+    public void deleteQuestion(String surveyId, int questionIndex) {
+        checkSurveyExists(surveyId);
+        checkQuestionExists(surveyId, questionIndex);
+        surveyRepository.deleteQuestion(surveyId, questionIndex);
+    }
+
+    /**
+     * Reordena una pregunta en una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param oldIndex índice actual de la pregunta
+     * @param newIndex nuevo índice para la pregunta
+     * @throws SurveyException si la encuesta no existe o los índices son inválidos
+     */
+    public void reorderQuestion(String surveyId, int oldIndex, int newIndex) {
+        checkSurveyExists(surveyId);
+        checkQuestionExists(surveyId, oldIndex);
+        checkQuestionExists(surveyId, newIndex);
+        surveyRepository.swapQuestions(surveyId, oldIndex, newIndex);
     }
 
     // ───────────────────────────────────────────────

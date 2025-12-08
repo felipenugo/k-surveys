@@ -28,6 +28,9 @@ public class User {
     private String email; // could allow changing email in the future
     /** Contraseña del usuario. */
     private String passwordHash;
+    // Campos nuevos para recuperación de contraseña
+    private String securityQuestion;
+    private String securityAnswer;
     /** Conjunto con los identificadores de las encuestas creadas por el usuario. */
     private final Set<String> createdSurveysId; // allows accessing surveys almost directly with the username in database
     /**
@@ -55,6 +58,22 @@ public class User {
         this.USERNAME = USERNAME;
         this.email = email;
         this.passwordHash = passwordHash;
+        this.securityQuestion = null;
+        this.securityAnswer = null;
+        this.createdSurveysId = new HashSet<>();
+        this.respondedSurveysId = new HashMap<>();
+    }
+
+    /**
+     * Constructor con pregunta y respuesta de seguridad.
+     */
+    public User(String USERNAME, String email, String passwordHash,
+                String securityQuestion, String securityAnswer) {
+        this.USERNAME = USERNAME;
+        this.email = email;
+        this.passwordHash = passwordHash;
+        this.securityQuestion = securityQuestion;
+        this.securityAnswer = securityAnswer;
         this.createdSurveysId = new HashSet<>();
         this.respondedSurveysId = new HashMap<>();
     }
@@ -108,6 +127,15 @@ public class User {
         return respondedSurveysId;
     }
 
+    // Getters para recuperación de contraseña
+    public String getSecurityQuestion() {
+        return securityQuestion;
+    }
+
+    public String getSecurityAnswer() {
+        return securityAnswer;
+    }
+
     // ───────────────────────────────────────────────
     // Métodos de modificación (Setters) con validación
     // ───────────────────────────────────────────────
@@ -127,6 +155,15 @@ public class User {
      */
     public void setPasswordHash(String newPassword) {
         this.passwordHash = newPassword;
+    }
+
+    // Setters para recuperación de contraseña
+    public void setSecurityQuestion(String securityQuestion) {
+        this.securityQuestion = securityQuestion;
+    }
+
+    public void setSecurityAnswer(String securityAnswer) {
+        this.securityAnswer = securityAnswer;
     }
 
     // ───────────────────────────────────────────────
