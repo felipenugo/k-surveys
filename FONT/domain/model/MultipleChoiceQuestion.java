@@ -1,5 +1,6 @@
 package domain.model;
 
+import com.google.gson.annotations.SerializedName;
 import domain.model.enums.TypeQuestion;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class MultipleChoiceQuestion extends Question {
     /** Número máximo de opciones que el usuario puede seleccionar. */
     private int maxSelections;
     /** Lista de opciones asociadas a la pregunta. */
+    @SerializedName("options")
     private List<OptionQuestion> optionQuestions = new ArrayList<>();
 
     // ───────────────────────────────────────────────

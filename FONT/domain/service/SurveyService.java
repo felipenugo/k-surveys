@@ -124,43 +124,84 @@ public class SurveyService {
         // Generar el ID autoincremental si no tiene uno
         String surveyId = survey.getSURVEY_ID();
 
+        // Siempre construiremos una nueva instancia de Survey con el ID definitivo y copiaremos
+        // todas las preguntas al objeto que realmente se va a persistir. Esto evita inconsistencias
+        // si el objeto pasado proviene de la capa de presentación con referencias incompletas.
         if (surveyId == null || surveyId.trim().isEmpty()) {
-            // Generar el siguiente ID autoincremental
             surveyId = generateUniqueSurveyId();
-
-            // Crear una nueva encuesta con el ID generado (porque SURVEY_ID es final)
-            Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
-            surveyWithId.setSurveyStatus(survey.getSurveyStatus());
-            if (survey.getPUBLISHED_AT() != null) {
-                surveyWithId.setPUBLISHED_AT();
-            }
-
-            // Copiar todas las preguntas
-            for (int i = 0; i < survey.getSize(); i++) {
-                surveyWithId.addQuestion(survey.getQuestion(i));
-            }
-
-            survey = surveyWithId;
         } else {
-            // Si ya tiene ID, verificar que no exista
+            // Si se proporcionó un ID existente, asegurarnos de que no exista ya en el repositorio
             if (surveyRepository.existsSurvey(surveyId)) {
                 throw new SurveyException("Ya existe una encuesta con el ID: " + surveyId);
             }
         }
 
+        // Crear una nueva encuesta con el ID generado o proporcionado (porque SURVEY_ID es final)
+        Survey surveyWithId = new Survey(surveyId, survey.getTitle(), survey.getDescription(), survey.getCREATOR_USERNAME());
+        surveyWithId.setSurveyStatus(survey.getSurveyStatus());
+        if (survey.getPUBLISHED_AT() != null) {
+            surveyWithId.setPUBLISHED_AT();
+        }
+
+        // Copiar todas las preguntas creando nuevas instancias con el SURVEY_ID correcto
+        for (int i = 0; i < survey.getSize(); i++) {
+            Question originalQ = survey.getQuestion(i);
+
+            if (originalQ.getTypeQuestion() == domain.model.enums.TypeQuestion.MULTIPLE_CHOICE) {
+                domain.model.MultipleChoiceQuestion origMc = (domain.model.MultipleChoiceQuestion) originalQ;
+                domain.model.MultipleChoiceQuestion mcCopy = new domain.model.MultipleChoiceQuestion(origMc.getQuestionIndex(), surveyId);
+                mcCopy.setQuestionText(origMc.getQuestionText());
+                mcCopy.setRequired(origMc.isRequired());
+
+                // Copiar opciones primero
+                if (origMc.getOptions() != null) {
+                    for (int k = 0; k < origMc.getOptions().size(); k++) {
+                        domain.model.OptionQuestion opt = origMc.getOption(k);
+                        domain.model.OptionQuestion optCopy = new domain.model.OptionQuestion(opt.getQuestionIndex(), surveyId);
+                        optCopy.setOptionText(opt.getOptionText());
+                        mcCopy.addOption(optCopy);
+                    }
+                }
+
+                // Copiar min/max seleccion después de añadir opciones (usar setters para validar)
+                try {
+                    mcCopy.setMaxSelections(origMc.getMaxSelections());
+                    mcCopy.setMinSelections(origMc.getMinSelections());
+                } catch (IllegalArgumentException e) {
+                    // Si las validaciones fallan, ajustar a valores seguros
+                    int optionsCount = mcCopy.getOptions().size();
+                    if (optionsCount >= 1) {
+                        mcCopy.setMinSelections(1);
+                        mcCopy.setMaxSelections(Math.max(1, optionsCount));
+                    } else {
+                        mcCopy.clearOptions(); // dejarlo vacío si hay inconsistencia
+                    }
+                }
+
+                surveyWithId.addQuestion(mcCopy);
+            } else {
+                // Pregunta textual o numérica: crear nueva instancia con SURVEY_ID correcto
+                Question qCopy = new Question(originalQ.getQuestionIndex(), surveyId);
+                qCopy.setQuestionText(originalQ.getQuestionText());
+                qCopy.setTypeQuestion(originalQ.getTypeQuestion());
+                qCopy.setRequired(originalQ.isRequired());
+                surveyWithId.addQuestion(qCopy);
+            }
+        }
+
         // Guardar en el repositorio
-        surveyRepository.addSurvey(survey);
+        surveyRepository.addSurvey(surveyWithId);
 
         // Registrar la encuesta creada en el usuario
         try {
-            userService.addSurveyCreated(survey.getCREATOR_USERNAME(), survey.getSURVEY_ID());
+            userService.addSurveyCreated(surveyWithId.getCREATOR_USERNAME(), surveyWithId.getSURVEY_ID());
         } catch (Exception e) {
-            System.err.println("[WARNING] Error al registrar la encuesta " + survey.getSURVEY_ID() +
-                             " en el usuario " + survey.getCREATOR_USERNAME() + ": " + e.getMessage());
+            System.err.println("[WARNING] Error al registrar la encuesta " + surveyWithId.getSURVEY_ID() +
+                             " en el usuario " + surveyWithId.getCREATOR_USERNAME() + ": " + e.getMessage());
             // La encuesta se crea igual, solo se registra el warning en logs
         }
 
-        return survey;
+        return surveyWithId;
     }
 
      /**
@@ -358,17 +399,68 @@ public class SurveyService {
             throw new SurveyException("La descripción no puede estar vacía.");
         }
 
-        // Actualizar los campos
+        // Actualizar los campos básicos
         existingSurvey.setTitle(updatedSurvey.getTitle());
         existingSurvey.setDescription(updatedSurvey.getDescription());
 
-        // Guardar cambios
-        surveyRepository.addSurvey(existingSurvey);
+        // --- NUEVO: sincronizar la lista completa de preguntas desde updatedSurvey ---
+        // Reemplazar las preguntas de la encuesta existente por las de updatedSurvey (copia profunda)
+        // Hacer primero una copia profunda de las preguntas recibidas PARA EVITAR problemas
+        // en el caso en que updatedSurvey sea la misma instancia que existingSurvey.
+        List<Question> updatedQuestions = new ArrayList<>();
+        if (updatedSurvey.getQuestions() != null) {
+            for (Question q : updatedSurvey.getQuestions()) {
+                // Crear copia superficial que luego se convertirá en instancia válida
+                if (q.getTypeQuestion() == domain.model.enums.TypeQuestion.MULTIPLE_CHOICE) {
+                    domain.model.MultipleChoiceQuestion origMc = (domain.model.MultipleChoiceQuestion) q;
+                    domain.model.MultipleChoiceQuestion mcCopy = new domain.model.MultipleChoiceQuestion(origMc.getQuestionIndex(), surveyId);
+                    mcCopy.setQuestionText(origMc.getQuestionText());
+                    mcCopy.setRequired(origMc.isRequired());
 
-        System.out.println("[LOG] Encuesta " + surveyId + " actualizada por usuario " + userController.getUsernameLoggedIn());
+                    if (origMc.getOptions() != null) {
+                        for (int k = 0; k < origMc.getOptions().size(); k++) {
+                            domain.model.OptionQuestion opt = origMc.getOption(k);
+                            domain.model.OptionQuestion optCopy = new domain.model.OptionQuestion(opt.getQuestionIndex(), surveyId);
+                            optCopy.setOptionText(opt.getOptionText());
+                            mcCopy.addOption(optCopy);
+                        }
+                    }
 
-        return existingSurvey;
-    }
+                    try {
+                        mcCopy.setMaxSelections(origMc.getMaxSelections());
+                        mcCopy.setMinSelections(origMc.getMinSelections());
+                    } catch (IllegalArgumentException e) {
+                        int optionsCount = mcCopy.getOptions().size();
+                        if (optionsCount >= 1) {
+                            mcCopy.setMinSelections(1);
+                            mcCopy.setMaxSelections(Math.max(1, optionsCount));
+                        } else {
+                            mcCopy.clearOptions();
+                        }
+                    }
+
+                    updatedQuestions.add(mcCopy);
+                } else {
+                    Question qCopy = new Question(q.getQuestionIndex(), surveyId);
+                    qCopy.setQuestionText(q.getQuestionText());
+                    qCopy.setTypeQuestion(q.getTypeQuestion());
+                    qCopy.setRequired(q.isRequired());
+                    updatedQuestions.add(qCopy);
+                }
+            }
+        }
+
+        // Ahora reemplazar las preguntas de existingSurvey por las copias construidas
+        existingSurvey.clearQuestions();
+        for (Question nq : updatedQuestions) existingSurvey.addQuestion(nq);
+
+         // Guardar cambios (persistir encuesta completa con preguntas y opciones)
+         surveyRepository.addSurvey(existingSurvey);
+
+         System.out.println("[LOG] Encuesta " + surveyId + " actualizada por usuario " + userController.getUsernameLoggedIn());
+
+         return existingSurvey;
+     }
 
     /**
      * Elimina una encuesta (solo si es borrador).

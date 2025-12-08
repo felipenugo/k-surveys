@@ -183,4 +183,12 @@ public class SurveyController {
     public void reorderQuestion(String surveyId, int oldIndex, int newIndex) {
         surveyService.reorderQuestion(surveyId, oldIndex, newIndex);
     }
+
+    /**
+     * Genera un identificador único para una nueva encuesta delegando al servicio.
+     * @return nuevo ID generado
+     */
+    public String generateUniqueSurveyId() {
+        return surveyService.generateUniqueSurveyId();
+    }
 }
