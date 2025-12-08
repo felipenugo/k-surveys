@@ -59,7 +59,7 @@ public class SurveyRepository {
      * Crea un nuevo repositorio de encuestas en memoria.
      */
     public SurveyRepository() {
-        this("DATA/db/surveys.json");
+        this("../DATA/db/surveys.json");
     }
 
     /**
