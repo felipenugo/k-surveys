@@ -1,18 +1,22 @@
 package presentation.views;
 
+import domain.controller.SurveyController;
 import domain.controller.UserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class SceneManager {
     private final UserController userController;
+    private final SurveyController surveyController;
     private Stage primaryStage;
 
-    public SceneManager(UserController userController) {
+    public SceneManager(UserController userController, SurveyController surveyController) {
         this.userController = userController;
+        this.surveyController = surveyController;
     }
 
     public void setPrimaryStage(Stage stage) {
@@ -51,6 +55,7 @@ public class SceneManager {
         primaryStage.centerOnScreen();
         primaryStage.setMinWidth(1000);
         primaryStage.setMinHeight(800);
+       // primaryStage.getIcons().add(../img/logo.png);
         primaryStage.show();
     }
 
@@ -83,7 +88,32 @@ public class SceneManager {
         }
     }
 
-    public void showMainMenu() {
+    public void showHome() {
+        try{
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/home.fxml"));
+            checkLoaderAddress(loader);
+
+            HomeViewController homeViewController = new HomeViewController(userController, surveyController, this);
+            loader.setController(homeViewController);
+
+            finalizeScene(loader, "INICIO");
+        }catch(Exception e){
+            System.err.println("ERROR FATAL: " + e.getMessage());
+        }
+
         this.primaryStage.setTitle("Main Menu");
+
+    }
+
+    public void showCreateSurvey() {
+        this.primaryStage.setTitle("Crear Encuesta");
+    }
+
+    public void showMySurveys() {
+        this.primaryStage.setTitle("Mis Encuestas");
+    }
+
+    public void showMyDrafts() {
+        this.primaryStage.setTitle("Mis Borradores");
     }
 }

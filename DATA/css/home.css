@@ -1,0 +1,211 @@
+.main-container {
+    -fx-background-color: #f4f6f9;
+}
+
+/* --------------- */
+/* --- SIDEBAR --- */
+/* --------------- */
+.side-bar {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+    -fx-min-width: 300px;
+}
+
+/* Contenedor del icono y nombre del usuario */
+.user-profile {
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+    -fx-border-width: 0 0 1 0;
+    /* Width solo al border inferior para separar el contenido horizontalmente */
+    -fx-padding: 30 20 20 20;
+    /* Arriba, derecha, abajo, izquierda */
+}
+
+/* icono con la inicial del usuario */
+.avatar-circle {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 50%;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+.username-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* BOTONES NAV */
+.nav-bar {
+    -fx-padding: 20;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-size: 14px;
+    -fx-padding: 10 15;
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-translate-y: -2;
+}
+
+.nav-btn-active {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 0 3;
+}
+
+/* BOTÓN CREAR */
+.create-btn {
+    -fx-background-color: white;
+    -fx-text-fill: #1e3c72;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.create-btn:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #1e3c72;
+}
+
+
+/* ICONOS */
+.icon {
+    -fx-padding: 10 20 10 40;
+    -fx-background-repeat: no-repeat; /* para que no repita la imagen intentado rellenar el espacio */
+    -fx-background-size: 18px;
+    -fx-background-position: 12px center;
+}
+
+.icon-home {
+    -fx-background-image: url("../img/icon/home.png");
+}
+
+.icon-survey {
+    /* Antes icon-list */
+    -fx-background-image: url("../img/icon/survey.png");
+}
+
+.icon-draft {
+    -fx-background-image: url("../img/icon/draft.png");
+}
+
+.icon-logout {
+    -fx-background-image: url("../img/icon/logout.png");
+}
+
+.icon-create {
+    /* Antes icon-plus */
+    -fx-background-image: url("../img/icon/create.png");
+}
+/* ------------------- */
+/* --- FIN SIDEBAR --- */
+/* ------------------- */
+
+.icon-search {
+    -fx-shape: "M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z";
+    -fx-background-color: #999;
+}
+
+/* CONTENIDO CENTRAL */
+.top-bar {
+    -fx-background-color: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 5, 0, 0, 2);
+}
+
+.search-box {
+    -fx-background-color: #f1f3f5;
+    -fx-background-radius: 20;
+    -fx-padding: 5 15;
+}
+
+.search-box .text-field {
+    -fx-background-color: transparent;
+    -fx-prompt-text-fill: #999;
+}
+
+/* ComboBox Filtros */
+.filter-combo {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 2;
+    /* Ajuste para el texto interno */
+}
+
+.filter-combo:hover {
+    -fx-border-color: #2a5298;
+}
+
+.scroll-pane-transparent {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane-transparent .viewport {
+    -fx-background-color: transparent;
+}
+
+/* CABECERA DE TABLA */
+.table-header {
+    -fx-padding: 0 20;
+    -fx-border-color: transparent transparent #ccc transparent;
+    /* Línea visible */
+    -fx-border-width: 0 0 1 0;
+}
+
+.th-label {
+    -fx-text-fill: #888;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.header-spacer {
+    -fx-min-width: 21px;
+    -fx-pref-width: 21px;
+}
+
+/* Empty State */
+.icon-large {
+    -fx-min-width: 50px;
+    -fx-min-height: 50px;
+    -fx-background-color: #ddd;
+}
+
+.empty-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #888;
+}
+
+.empty-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #aaa;
+}
+
+/* Paginación */
+.page-btn {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4;
+    -fx-min-width: 30px;
+}
+
+.page-btn-active {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-border-color: #2a5298;
+}
+
+.footer {
+    -fx-background-color: white;
+    -fx-border-color: #eee transparent transparent transparent;
+}

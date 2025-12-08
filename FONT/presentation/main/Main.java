@@ -1,7 +1,10 @@
 package presentation.main;
 
+import data.SurveyRepository;
 import data.UserRepository;
+import domain.controller.SurveyController;
 import domain.controller.UserController;
+import domain.service.SurveyService;
 import domain.service.UserService;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -23,23 +26,26 @@ public class Main extends Application {
         
         // 1. Repository: Handles data storage and retrieval.
         UserRepository userRepository = new UserRepository();
+        SurveyRepository surveyRepository = new SurveyRepository();
         
         // 2. Service: Contains the business logic.
         UserService userService = new UserService(userRepository);
-        
+
         // 3. Controller: Connects the UI to the business logic.
         UserController userController = new UserController(userService);
-        
+        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyController surveyController = new SurveyController(surveyService);
+
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.
-        primaryStage.setResizable(false);
+
         //SceneManager.initStage();
-        SceneManager sceneManager = new SceneManager(userController);
+        SceneManager sceneManager = new SceneManager(userController, surveyController);
         sceneManager.setPrimaryStage(primaryStage);
 
         // --- APPLICATION START ---
         // Initialize the stage and show the first scene
         sceneManager.initStage();
-        sceneManager.showLogin();
+        sceneManager.showHome();
     }
 
     public static void main(String[] args) {

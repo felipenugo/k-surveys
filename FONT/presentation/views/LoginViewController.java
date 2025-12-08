@@ -35,7 +35,7 @@ public class LoginViewController {
             String username = usernameField.getText();
             String password = passwordField.getText();
             userController.loginUser(username, password);
-            // sceneManager.showMainMenu();
+            sceneManager.showHome();
 
         } catch (Exception e) {
             errorLabel.setText(e.getMessage());

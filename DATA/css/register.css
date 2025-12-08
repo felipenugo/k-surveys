@@ -90,7 +90,7 @@
     -fx-padding: 10 100;
     -fx-background-radius: 8;
 }
-.button:hover {
+.button:hover, .button:focused {
     -fx-effect: dropshadow(three-pass-box, rgba(30, 60, 114, 0.3), 10, 0, 0, 5);
 }
 
@@ -102,6 +102,6 @@
     -fx-font-weight: bold;
 }
 
-.hyperlink:hover {
+.hyperlink:hover, .hyperlink:focused {
     -fx-underline: true;
 }
