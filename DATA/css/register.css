@@ -1,8 +1,7 @@
 
 .root {
     /* Fondo Degradado para la ventana */
-    -fx-background-color:
-        linear-gradient(to bottom right, #297383 0%, #5a9ca4 50%, #8bc5cd 100%);
+-fx-background-color: linear-gradient(to bottom right, #1e3c72ff, #2a5298);
 
     /* Fuente y Padding Global */
     -fx-font-family: "Segoe UI", Roboto, sans-serif;

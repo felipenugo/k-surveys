@@ -9,8 +9,7 @@
     para asegurar que los estilos .root (fondo) se apliquen a toda la escena
     y centrar correctamente la tarjeta VBox.
 -->
-<StackPane alignment="CENTER" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-           stylesheets="@../css/register.css"> <!-- Las hojas de estilo se aplican al nodo raíz -->
+<StackPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" stylesheets="@../css/register.css">
 
     <!-- VBox interno: Esta es la tarjeta con el estilo .card-register.
          PREF-SIZES ELIMINADOS: Ahora el tamaño se controla por CSS (max-width) y contenido. -->
