@@ -1,36 +1,34 @@
 {
   "0": {
     "SURVEY_ID": "0",
-    "title": "Survey 1",
-    "description": "Description 1",
-    "CREATOR_USERNAME": "testuser",
-    "CREATED_AT": "2025-12-06T22:43:26.466538309",
-    "surveyStatus": "DRAFT",
+    "title": "opciones jdfkl",
+    "description": "djfñaklsdjfñl",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T19:54:58.607326157",
+    "PUBLISHED_AT": "2025-12-08T19:54:58.607425561",
+    "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
     "views": 0,
     "questions": [
       {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "optionQuestions": [
+          {
+            "questionIndex": 0,
+            "surveyId": "0",
+            "optionText": "o1"
+          },
+          {
+            "questionIndex": 0,
+            "surveyId": "0",
+            "optionText": "o2"
+          }
+        ],
         "questionIndex": 0,
-        "typeQuestion": "TEXTUAL",
-        "questionText": "Pregunta 1",
-        "isRequired": true
-      }
-    ]
-  },
-  "1": {
-    "SURVEY_ID": "1",
-    "title": "Survey 2",
-    "description": "Description 2",
-    "CREATOR_USERNAME": "testuser",
-    "CREATED_AT": "2025-12-06T22:43:26.466685293",
-    "surveyStatus": "DRAFT",
-    "avgRating": 0.0,
-    "views": 0,
-    "questions": [
-      {
-        "questionIndex": 0,
-        "typeQuestion": "TEXTUAL",
-        "questionText": "Pregunta 2",
+        "SURVEY_ID": "0",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "pregunta opts",
         "isRequired": true
       }
     ]
