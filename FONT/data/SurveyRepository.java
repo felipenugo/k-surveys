@@ -197,7 +197,7 @@ public class SurveyRepository {
     // ───────────────────────────────────────────────
 
     public SurveyRepository() {
-        this("DATA/db/surveys.json");
+        this("./DATA/db/surveys.json");
     }
 
     /**
