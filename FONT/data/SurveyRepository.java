@@ -59,47 +59,15 @@ public class SurveyRepository {
         File file = new File(FILE_PATH);
         if (!file.exists() || file.length() == 0)
             return new HashMap<>();
-
         try (Reader reader = new FileReader(file)) {
-            // Parsear el JSON para comprobar si contiene nextSurveyId
-            JsonElement root = JsonParser.parseReader(reader);
-            if (root == null || root.isJsonNull()) return new HashMap<>();
-
-            JsonObject rootObj = root.getAsJsonObject();
-
-            if (rootObj.has("surveys")) {
-                // Formato nuevo
-                JsonElement nextEl = rootObj.get("nextSurveyId");
-                if (nextEl != null && !nextEl.isJsonNull()) {
-                    try {
-                        this.nextSurveyId = nextEl.getAsInt();
-                    } catch (Exception e) {
-                        // fallback en caso de formato inesperado
-                        this.nextSurveyId = calculateNextSurveyIdFromMap(rootObj.getAsJsonObject("surveys"));
-                    }
-                } else {
-                    this.nextSurveyId = calculateNextSurveyIdFromMap(rootObj.getAsJsonObject("surveys"));
-                }
-
-                // Deserializar mapa de encuestas
-                Map<String, Survey> loaded = gson.fromJson(rootObj.getAsJsonObject("surveys"), mapType);
-
-                return loaded;
-            } else {
-                // Formato antiguo: el root es directamente el mapa de encuestas
-                Map<String, Survey> loaded = gson.fromJson(rootObj, mapType);
-                // Calcular nextSurveyId a partir del contenido para ser compatible
-                this.nextSurveyId = calculateNextSurveyId(loaded);
-                return loaded;
-            }
-
-        } catch (Exception e) {
+            return gson.fromJson(reader, mapType);
+        } catch(Exception e) {
             throw new RuntimeException(
                     "Error al cargar las encuestas desde el fichero: " + FILE_PATH, e);
         }
     }
 
-    // Helper usado solo durante carga en caso de formato manual
+
     private int calculateNextSurveyId(Map<String, Survey> map) {
         int maxId = -1;
         for (String k : map.keySet()) {
@@ -111,93 +79,27 @@ public class SurveyRepository {
         return maxId + 1;
     }
 
-    // Helper para calcular next id from JsonObject surveys when loading new format
-    private int calculateNextSurveyIdFromMap(JsonObject surveysObj) {
-        int maxId = -1;
-        for (Map.Entry<String, JsonElement> e : surveysObj.entrySet()) {
-            String key = e.getKey();
-            try {
-                int id = Integer.parseInt(key);
-                if (id > maxId) maxId = id;
-            } catch (NumberFormatException ignored) {}
-        }
-        return maxId + 1;
-    }
-
     private void saveSurveysToJson() {
+        // try-with-resources -> forzar escritura inmediata (writer.flush()) y cerrar el canal de escriture (writer.close())
+        // crea el fichero si no existe
+        /*
+        try anidado
+        try{
+        File file = new File(FILE_PATH);
+        file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+         */
         try (Writer writer = new FileWriter(FILE_PATH)) {
-            // Crear objeto raíz con nextSurveyId y el mapa de encuestas
-            JsonObject root = new JsonObject();
-            root.addProperty("nextSurveyId", this.nextSurveyId);
-
-            // Construir surveys a partir del modelo (no depender de toJsonTree) para garantizar formato deseado
-            JsonObject surveysObj = new JsonObject();
-            for (Map.Entry<String, Survey> entry : surveys.entrySet()) {
-                String sid = entry.getKey();
-                Survey s = entry.getValue();
-
-                JsonObject sObj = new JsonObject();
-                sObj.addProperty("SURVEY_ID", s.getSURVEY_ID());
-                sObj.addProperty("title", s.getTitle());
-                sObj.addProperty("description", s.getDescription());
-                sObj.addProperty("CREATOR_USERNAME", s.getCREATOR_USERNAME());
-                // LocalDateTime serializado por Gson para mantener formato consistente
-                sObj.add("CREATED_AT", gson.toJsonTree(s.getCREATED_AT()));
-                if (s.getPUBLISHED_AT() != null) sObj.add("PUBLISHED_AT", gson.toJsonTree(s.getPUBLISHED_AT()));
-                sObj.addProperty("surveyStatus", s.getSurveyStatus().name());
-                sObj.addProperty("avgRating", s.getAvgRating());
-                sObj.addProperty("views", s.getViews());
-
-                // Preguntas
-                JsonArray qArr = new JsonArray();
-                List<Question> questions = s.getQuestions();
-                if (questions != null) {
-                    for (Question q : questions) {
-                        JsonObject qObj = new JsonObject();
-                        qObj.addProperty("questionIndex", q.getQuestionIndex());
-                        qObj.addProperty("SURVEY_ID", q.getSURVEY_ID());
-                        qObj.addProperty("typeQuestion", q.getTypeQuestion() != null ? q.getTypeQuestion().name() : "TEXTUAL");
-                        qObj.addProperty("questionText", q.getQuestionText());
-                        qObj.addProperty("isRequired", q.isRequired());
-
-                        if (q instanceof MultipleChoiceQuestion) {
-                            MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) q;
-                            // Forzar minChoices / maxChoices
-                            qObj.addProperty("minChoices", mcq.getMinSelections());
-                            qObj.addProperty("maxChoices", mcq.getMaxSelections());
-                            // Forzar options como array de strings
-                            JsonArray opts = new JsonArray();
-                            if (mcq.getOptions() != null) {
-                                for (OptionQuestion opt : mcq.getOptions()) {
-                                    String text = opt.getOptionText();
-                                    if (text == null) text = "";
-                                    opts.add(new JsonPrimitive(text));
-                                }
-                            }
-                            qObj.add("options", opts);
-                        }
-
-                        qArr.add(qObj);
-                    }
-                }
-
-                sObj.add("questions", qArr);
-                surveysObj.add(sid, sObj);
-            }
-
-            root.add("surveys", surveysObj);
-            gson.toJson(root, writer);
+            gson.toJson(surveys, writer);
         }  catch (Exception e) {
             throw new RuntimeException("Error al guardar las encuestas en el fichero: " + FILE_PATH, e);
         }
     }
-
     // ───────────────────────────────────────────────
     // Gestión general de encuestas
     // ───────────────────────────────────────────────
 
     public SurveyRepository() {
-        this("./DATA/db/surveys.json");
+        this("../DATA/db/surveys.json");
     }
 
     /**

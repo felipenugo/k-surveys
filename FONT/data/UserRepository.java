@@ -69,7 +69,7 @@ public class UserRepository {
      * Inicializa la estructura de almacenamiento.
      */
     public UserRepository() {
-        this("./DATA/db/users.json");
+        this("../DATA/db/users.json");
     }
 
     /**
