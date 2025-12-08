@@ -2,7 +2,6 @@ package clustering;
 
 import domain.clustering.DistanceCalculator;
 import domain.clustering.DistanceType;
-import domain.clustering.TextDistanceType;
 import domain.model.MultipleChoiceAnswer;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.Question;
@@ -24,8 +23,8 @@ public class TestDistanceCalculator {
 
     @Before
     public void setUp() {
-        euclideanCalculator = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
-        manhattanCalculator = new DistanceCalculator(DistanceType.MANHATTAN, TextDistanceType.LEVENSHTEIN);
+        euclideanCalculator = new DistanceCalculator(DistanceType.EUCLIDEAN);
+        manhattanCalculator = new DistanceCalculator(DistanceType.MANHATTAN);
 
         questions = new ArrayList<>();
         MultipleChoiceQuestion q1 = new MultipleChoiceQuestion(0, "s1");

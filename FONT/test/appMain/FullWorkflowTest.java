@@ -58,7 +58,7 @@ public class FullWorkflowTest {
         UserService userService = new UserService(userRepository);
         userController = new UserController(userService);
 
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
         
         ResponseService responseService = new ResponseService(responseRepository, userController, surveyService);
@@ -74,7 +74,7 @@ public class FullWorkflowTest {
     public void testFullWorkflow() {
         // Paso 1: Registrar e Iniciar Sesión
         String username = "testUser";
-        userController.registerUser(username, "test@gmail.com", "password");
+        userController.registerUser(username, "test@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         // Paso 2: Crear Encuesta con Preguntas Mixtas
@@ -135,7 +135,7 @@ public class FullWorkflowTest {
 
         for (int i = 0; i < count; i++) {
             String responderUsername = "responder" + i;
-            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password");
+            userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password", "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
             
             String responseId = responseController.startResponse(surveyId);

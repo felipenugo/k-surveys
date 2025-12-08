@@ -36,7 +36,7 @@ public class SurveyControllerTest {
         // Inicializar servicios y controllers
         UserService userService = new UserService(userRepository);
         userController = new UserController(userService);
-        surveyService = new SurveyService(surveyRepository, userController);
+        surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
         // Asegurar logout antes de setup
@@ -45,7 +45,7 @@ public class SurveyControllerTest {
         } catch (Exception e) {
             // No había nadie logueado, ignorar
         }
-        userController.registerUser(TEST_CREATOR, TEST_EMAIL, TEST_PASSWORD);
+        userController.registerUser(TEST_CREATOR, TEST_EMAIL, TEST_PASSWORD, "What is your pet's name?", "Fluffy");
         userController.loginUser(TEST_CREATOR, TEST_PASSWORD);
     }
 

@@ -1,5 +1,6 @@
 package domain.model;
 
+import com.google.gson.annotations.SerializedName;
 import domain.model.enums.TypeQuestion;
 
 import java.util.ArrayList;
@@ -20,7 +21,8 @@ public class MultipleChoiceQuestion extends Question {
     /** Número máximo de opciones que el usuario puede seleccionar. */
     private int maxSelections;
     /** Lista de opciones asociadas a la pregunta. */
-    private List<OptionQuestion> optionQuestions;
+    @SerializedName("options")
+    private List<OptionQuestion> optionQuestions = new ArrayList<>();
 
     // ───────────────────────────────────────────────
     // Constructor
@@ -65,10 +67,15 @@ public class MultipleChoiceQuestion extends Question {
     /**
      * Devuelve la lista de opciones asociadas a la pregunta.
      *
+     * Garantiza que nunca retorne null (inicializa la lista cuando sea necesario).
+     *
      * @return lista de opciones
      */
     public List<OptionQuestion> getOptions() {
-        return optionQuestions;
+        if (this.optionQuestions == null) {
+            this.optionQuestions = new ArrayList<>();
+        }
+        return this.optionQuestions;
     }
 
     /**
@@ -76,7 +83,7 @@ public class MultipleChoiceQuestion extends Question {
      *
      * @return número de opciones
      */
-    public int getOptionsSize(){return optionQuestions.size();}
+    public int getOptionsSize(){return getOptions().size();}
 
     // ───────────────────────────────────────────────
     // Setters
@@ -94,7 +101,7 @@ public class MultipleChoiceQuestion extends Question {
         if (minSelections > this.maxSelections) {
             throw new IllegalArgumentException("El mínimo de selecciones no puede ser mayor que el máximo.");
         }
-        if (minSelections > this.optionQuestions.size()) {
+        if (minSelections > this.getOptions().size()) {
             throw new IllegalArgumentException("El mínimo de selecciones no puede ser mayor que el número de opciones disponibles.");
         }
         this.minSelections = minSelections;
@@ -109,7 +116,7 @@ public class MultipleChoiceQuestion extends Question {
         if (maxSelections < this.minSelections) {
             throw new IllegalArgumentException("El máximo de selecciones no puede ser menor que el mínimo.");
         }
-        if (maxSelections > this.optionQuestions.size() && !this.optionQuestions.isEmpty()) {
+        if (maxSelections > this.getOptions().size() && !this.getOptions().isEmpty()) {
             throw new IllegalArgumentException("El máximo de selecciones no puede ser mayor que el número de opciones disponibles.");
         }
         this.maxSelections = maxSelections;
@@ -127,7 +134,7 @@ public class MultipleChoiceQuestion extends Question {
      * @return número de opciones disponibles
      */
     private int getSize() {
-        return optionQuestions.size();
+        return getOptions().size();
     }
 
     /**
@@ -146,7 +153,7 @@ public class MultipleChoiceQuestion extends Question {
      * @param optionQuestion opción a añadir
      */
     public void addOption(OptionQuestion optionQuestion) {
-        optionQuestions.add(optionQuestion);
+        getOptions().add(optionQuestion);
     }
 
     /**
@@ -155,7 +162,7 @@ public class MultipleChoiceQuestion extends Question {
      * @param index índice de la opción a eliminar
      */
     public void removeOption(int index) {
-        optionQuestions.remove(index);
+        getOptions().remove(index);
     }
 
     /**
@@ -165,9 +172,9 @@ public class MultipleChoiceQuestion extends Question {
      * @param newIndex nuevo índice para la opción
      */
     public void reorderOption(int oldIndex, int newIndex) {
-        OptionQuestion optionQuestion = optionQuestions.get(oldIndex);
-        optionQuestions.remove(oldIndex);
-        optionQuestions.add(newIndex, optionQuestion);
+        OptionQuestion optionQuestion = getOptions().get(oldIndex);
+        getOptions().remove(oldIndex);
+        getOptions().add(newIndex, optionQuestion);
     }
 
     /**
@@ -177,7 +184,7 @@ public class MultipleChoiceQuestion extends Question {
      * @param optionQuestion nueva opción para reemplazar la existente
      */
     public void updateOption(int index, OptionQuestion optionQuestion) {
-        optionQuestions.set(index, optionQuestion);
+        getOptions().set(index, optionQuestion);
     }
 
     /**
@@ -187,14 +194,14 @@ public class MultipleChoiceQuestion extends Question {
      * @return opción en la posición especificada
      */
     public OptionQuestion getOption(int index) {
-        return optionQuestions.get(index);
+        return getOptions().get(index);
     }
 
     /**
      * Elimina todas las opciones de la lista de opciones de la pregunta.
      */
     public void clearOptions() {
-        optionQuestions.clear();
+        getOptions().clear();
     }
 
 
@@ -214,11 +221,8 @@ public class MultipleChoiceQuestion extends Question {
         copy.setQuestionText(this.getQuestionText());
         copy.setRequired(this.isRequired());
 
-        // Copiar atributos propios
-        copy.setMaxSelections(this.maxSelections);
-
         // Copiar opciones (copia profunda)
-        for (OptionQuestion option : this.optionQuestions) {
+        for (OptionQuestion option : this.getOptions()) {
             OptionQuestion optionCopy = new OptionQuestion(
                     option.getQuestionIndex(),
                     copy.getSURVEY_ID()
@@ -226,7 +230,11 @@ public class MultipleChoiceQuestion extends Question {
             optionCopy.setOptionText(option.getOptionText());
             copy.addOption(optionCopy);
         }
-        copy.setMinSelections(this.minSelections);
+
+        // Copiar atributos propios directamente para evitar validaciones
+        // durante la clonación (ej. estados 0-0 que pueden existir en datos)
+        copy.maxSelections = this.maxSelections;
+        copy.minSelections = this.minSelections;
 
         return copy;
     }

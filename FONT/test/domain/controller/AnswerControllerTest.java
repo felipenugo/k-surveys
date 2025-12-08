@@ -51,7 +51,7 @@ public class AnswerControllerTest {
         UserService userService = new UserService(userRepository);
         userController = new UserController(userService);
 
-        SurveyService surveyService = new SurveyService(surveyRepository, userController);
+        SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
         ResponseService responseService = new ResponseService(responseRepository, userController, surveyService);
@@ -94,7 +94,7 @@ public class AnswerControllerTest {
         userController.logoutUser();
 
         String responderUsername = "testResponder";
-        userController.registerUser(responderUsername, "responder@gmail.com", "password");
+        userController.registerUser(responderUsername, "responder@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
         String responseId = responseController.startResponse(survey.getSURVEY_ID());
@@ -112,7 +112,7 @@ public class AnswerControllerTest {
     @Test
     public void testUpdateTextualAnswer() {
         String username = "testUser1";
-        userController.registerUser(username, "test1@gmail.com", "password");
+        userController.registerUser(username, "test1@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -130,7 +130,7 @@ public class AnswerControllerTest {
     @Test
     public void testUpdateNumericalAnswer() {
         String username = "testUser2";
-        userController.registerUser(username, "test2@gmail.com", "password");
+        userController.registerUser(username, "test2@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -147,7 +147,7 @@ public class AnswerControllerTest {
     @Test
     public void testUpdateMultipleChoiceAnswer() {
         String username = "testUser3";
-        userController.registerUser(username, "test3@gmail.com", "password");
+        userController.registerUser(username, "test3@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -164,7 +164,7 @@ public class AnswerControllerTest {
     @Test
     public void testUpdateMultipleAnswersPerResponse() {
         String username = "testUser4";
-        userController.registerUser(username, "test4@gmail.com", "password");
+        userController.registerUser(username, "test4@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -190,7 +190,7 @@ public class AnswerControllerTest {
     @Test
     public void testAnswerUpdate() {
         String username = "testUser5";
-        userController.registerUser(username, "test5@gmail.com", "password");
+        userController.registerUser(username, "test5@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -210,7 +210,7 @@ public class AnswerControllerTest {
     @Test
     public void testTextualAnswerPersistence() {
         String username = "testUser6";
-        userController.registerUser(username, "test6@gmail.com", "password");
+        userController.registerUser(username, "test6@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -229,7 +229,7 @@ public class AnswerControllerTest {
     @Test
     public void testNumericalAnswerPersistence() {
         String username = "testUser7";
-        userController.registerUser(username, "test7@gmail.com", "password");
+        userController.registerUser(username, "test7@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -248,7 +248,7 @@ public class AnswerControllerTest {
     @Test
     public void testMultipleResponsesWithAnswers() {
         String username = "testUser8";
-        userController.registerUser(username, "test8@gmail.com", "password");
+        userController.registerUser(username, "test8@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -267,7 +267,7 @@ public class AnswerControllerTest {
     @Test
     public void testAnswerTypes() {
         String username = "testUser9";
-        userController.registerUser(username, "test9@gmail.com", "password");
+        userController.registerUser(username, "test9@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();
@@ -290,7 +290,7 @@ public class AnswerControllerTest {
     @Test
     public void testAnswerRetrievalAfterUpdate() {
         String username = "testUser10";
-        userController.registerUser(username, "test10@gmail.com", "password");
+        userController.registerUser(username, "test10@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(username, "password");
 
         createTestSurvey();

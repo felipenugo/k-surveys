@@ -43,13 +43,13 @@ public class TestLoanData {
                 clusteringAlgorithm = new KMeans(10, 1e-5);
                 break;
         }
-        distanceCalc = new DistanceCalculator(DISTANCE_TYPE, TextDistanceType.LEVENSHTEIN);
+        distanceCalc = new DistanceCalculator(DISTANCE_TYPE);
 
         questions = new ArrayList<>();
         data = new ArrayList<>();
 
         // Leer el archivo CSV y crear la encuesta, preguntas y respuestas
-        String csvFile = "DATA/loan-test.csv";
+        String csvFile = "../DATA/loan-test.csv";
         String line = "";
         String cvsSplitBy = ",";
 

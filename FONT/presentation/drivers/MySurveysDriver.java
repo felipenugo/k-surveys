@@ -81,8 +81,8 @@ public class MySurveysDriver {
         // Inicializar servicios
         domain.service.UserService userService = new domain.service.UserService(userRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
-        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController);
-        
+        domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
+
         // Inicializar controladores
         domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
         domain.controller.CtrlDominioClustering clusteringController = new domain.controller.CtrlDominioClustering(responseRepository, surveyRepository);

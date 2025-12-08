@@ -1,4 +1,4 @@
-package test.domain.utils;
+package domain.utils;
 
 import domain.utils.PasswordHasher;
 import org.junit.Test;

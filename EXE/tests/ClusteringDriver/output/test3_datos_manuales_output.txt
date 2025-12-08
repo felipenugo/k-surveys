@@ -1,9 +1,9 @@
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -54,8 +54,8 @@ OpciÛn:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
-El usuario TestUserManual1 se ha registrado con Èxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
+El usuario TestUserManual1 se ha registrado con √©xito.
 
 
 
@@ -106,82 +106,82 @@ El usuario TestUserManual1 se ha registrado con Èxito.
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido TestUserManual1
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: 
 ========================================
        CREANDO NUEVA ENCUESTA
 ========================================
-Introduce el tÌtulo de la encuesta: Introduce la descripciÛn de la encuesta: 
+Introduce el t√≠tulo de la encuesta: Introduce la descripci√≥n de la encuesta: 
 Encuesta inicializada correctamente.
-(El ID ser· asignado al publicar)
+(El ID ser√° asignado al publicar)
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
        CREAR NUEVA PREGUNTA
 ========================================
-Introduce el texto de la pregunta: øEsta pregunta es obligatoria? (S/N, por defecto S): 
+Introduce el texto de la pregunta: ¬øEsta pregunta es obligatoria? (S/N, por defecto S): 
 --- TIPO DE PREGUNTA ---
 1. PREGUNTA TEXTUAL
-2. PREGUNTA DE OPCI”N M⁄LTIPLE
-3. PREGUNTA NUM…RICA
+2. PREGUNTA DE OPCI√ìN M√öLTIPLE
+3. PREGUNTA NUM√âRICA
 4. CANCELAR
-OpciÛn: 
-Pregunta numÈrica creada.
-Los usuarios deber·n responder con un n˙mero v·lido.
-Pregunta aÒadida correctamente en posiciÛn 0.
+Opci√≥n: 
+Pregunta num√©rica creada.
+Los usuarios deber√°n responder con un n√∫mero v√°lido.
+Pregunta a√±adida correctamente en posici√≥n 0.
 
 --- CREAR ENCUESTA ---
 1. VER INFO ENCUESTA CREADA
-2. EDITAR TÕTULO
-3. EDITAR DESCRIPCI”N
-4. A—ADIR PREGUNTA
+2. EDITAR T√çTULO
+3. EDITAR DESCRIPCI√ìN
+4. A√ëADIR PREGUNTA
 5. EDITAR PREGUNTA
 6. ELIMINAR PREGUNTA
 7. REORDENAR PREGUNTAS
 8. VER TODAS LAS PREGUNTAS
 9. GUARDAR, PUBLICAR Y SALIR
-OpciÛn: 
+Opci√≥n: 
 ========================================
        RESUMEN DE LA ENCUESTA
 ========================================
-TÌtulo: Encuesta datos manuales
-DescripciÛn: Encuesta para probar entrada manual de datos
+T√≠tulo: Encuesta datos manuales
+Descripci√≥n: Encuesta para probar entrada manual de datos
 Creador: TestUserManual1
-N˙mero de preguntas: 1
+N√∫mero de preguntas: 1
 ========================================
 
-øEst·s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
+¬øEst√°s seguro de que deseas GUARDAR y PUBLICAR esta encuesta? (S/N): 
 Encuesta guardada y publicada correctamente
-Fecha de publicaciÛn: 2025-11-17T23:16:19.007390700
+Fecha de publicaci√≥n: 2025-11-17T22:39:54.872941630
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
-Opcion: --- CERRANDO SESI”N ---
-SesiÛn cerrada, hasta pronto TestUserManual1.
+3. CERRAR SESI√ìN
+Opcion: --- CERRANDO SESI√ìN ---
+Sesi√≥n cerrada, hasta pronto TestUserManual1.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -232,8 +232,8 @@ OpciÛn:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
-El usuario TestUserManual2 se ha registrado con Èxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
+El usuario TestUserManual2 se ha registrado con √©xito.
 
 
 
@@ -284,62 +284,62 @@ El usuario TestUserManual2 se ha registrado con Èxito.
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido TestUserManual2
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: id: 0, tÌtulo: Encuesta datos manuales, autor: TestUserManual1, n˙mero de preguntas: 1
-descripciÛn: Encuesta para probar entrada manual de datos, n˙mero de respuestas: 0
+2. VOLVER ATR√ÅS
+Opci√≥n: id: 0, t√≠tulo: Encuesta datos manuales, autor: TestUserManual1, n√∫mero de preguntas: 1
+descripci√≥n: Encuesta para probar entrada manual de datos, n√∫mero de respuestas: 0
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
-Õndice: 0, pregunta: Pregunta manual
-Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
+√çndice: 0, pregunta: Pregunta manual
+Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
+Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-OpciÛn: --- enviando respuesta ---
+Opci√≥n: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: --- saliendo de responder encuesta ---
+2. VOLVER ATR√ÅS
+Opci√≥n: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- volviendo al men˙ principal ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- volviendo al men√∫ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
-Opcion: --- CERRANDO SESI”N ---
-SesiÛn cerrada, hasta pronto TestUserManual2.
+3. CERRAR SESI√ìN
+Opcion: --- CERRANDO SESI√ìN ---
+Sesi√≥n cerrada, hasta pronto TestUserManual2.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -390,8 +390,8 @@ OpciÛn:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseÒa: --- registr·ndose ---
-El usuario TestUserManual3 se ha registrado con Èxito.
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contrase√±a: --- registr√°ndose ---
+El usuario TestUserManual3 se ha registrado con √©xito.
 
 
 
@@ -442,62 +442,62 @@ El usuario TestUserManual3 se ha registrado con Èxito.
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido TestUserManual3
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- RESPONDER ENCUESTAS ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: id: 0, tÌtulo: Encuesta datos manuales, autor: TestUserManual1, n˙mero de preguntas: 1
-descripciÛn: Encuesta para probar entrada manual de datos, n˙mero de respuestas: 1
+2. VOLVER ATR√ÅS
+Opci√≥n: id: 0, t√≠tulo: Encuesta datos manuales, autor: TestUserManual1, n√∫mero de preguntas: 1
+descripci√≥n: Encuesta para probar entrada manual de datos, n√∫mero de respuestas: 1
 
 Selecciona el id de una encuesta: --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-OpciÛn: Introduce el Ìndice de la pregunta que quieras responder:-Pregunta a responder-
-Õndice: 0, pregunta: Pregunta manual
-Introduce el n˙mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
+Opci√≥n: Introduce el √≠ndice de la pregunta que quieras responder:-Pregunta a responder-
+√çndice: 0, pregunta: Pregunta manual
+Introduce el n√∫mero de tu respuesta:---guardando tu respuesta a la pregunta 0---
 --- EDITOR DE RESPUESTAS ---
 1. VER PREGUNTAS.
 2. RESPONDER PREGUNTA
 3. VER MIS RESPUESTAS
 4. ENVIAR RESPUESTA
-OpciÛn: øEst·s seguro de que quieres enviar tu respuesta? No podr·s volver a modificarla.
+Opci√≥n: ¬øEst√°s seguro de que quieres enviar tu respuesta? No podr√°s volver a modificarla.
 1. ESTOY SEGURO DE QUE QUIERO ENVIAR MI RESPUESTA
 2. QUIERO SEGUIR EDITANDO MI RESPUESTA
-OpciÛn: --- enviando respuesta ---
+Opci√≥n: --- enviando respuesta ---
 --- RESPONDER ENCUESTAS ---
 1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
-2. VOLVER ATR¡S
-OpciÛn: --- saliendo de responder encuesta ---
+2. VOLVER ATR√ÅS
+Opci√≥n: --- saliendo de responder encuesta ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- volviendo al men˙ principal ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- volviendo al men√∫ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
-Opcion: --- CERRANDO SESI”N ---
-SesiÛn cerrada, hasta pronto TestUserManual3.
+3. CERRAR SESI√ìN
+Opcion: --- CERRANDO SESI√ìN ---
+Sesi√≥n cerrada, hasta pronto TestUserManual3.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: 
+Opci√≥n: 
 
 
 
@@ -547,117 +547,117 @@ OpciÛn:
 
 
 
---- INICIO DE SESI”N ---
-Introduce tu nombre de usuario:Introduce tu contraseÒa:--- iniciando sesiÛn ---
-Inicio de sesiÛn correcto!
+--- INICIO DE SESI√ìN ---
+Introduce tu nombre de usuario:Introduce tu contrase√±a:--- iniciando sesi√≥n ---
+Inicio de sesi√≥n correcto!
 Bienvenido TestUserManual1
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
+3. CERRAR SESI√ìN
 Opcion: --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- MIS ENCUESTAS ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. Atr·s
-OpciÛn: --- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+3. Atr√°s
+Opci√≥n: --- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: 
---- Encontrar K ”ptima ---
+Elige una opci√≥n: 
+--- Encontrar K √ìptima ---
 Introduce el ID de la encuesta: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
-OpciÛn: Selecciona una mÈtrica de distancia (1: Euclidea, 2: Manhattan):
-OpciÛn: Buscando K Ûptima (k de 2 a 10)... Esto puede tardar varios minutos.
+Opci√≥n: Selecciona una m√©trica de distancia (1: Euclidea, 2: Manhattan):
+Opci√≥n: Buscando K √≥ptima (k de 2 a 10)... Esto puede tardar varios minutos.
 
---- Informe de K ”ptima ---
---- B˙squeda de K ”ptima ---
+--- Informe de K √ìptima ---
+--- B√∫squeda de K √ìptima ---
 Algoritmo: KMeans, Distancia: EUCLIDEAN
 
 k = 2 -> Coeficiente de Silhouette: 1,0000
-k = 3 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 4 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 5 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 6 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 7 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 8 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 9 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
-k = 10 -> Error al ejecutar el an·lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 3 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 4 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 5 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 6 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 7 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 8 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 9 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
+k = 10 -> Error al ejecutar el an√°lisis: Invalid number of clusters (k). It must be greater than 0 and not greater than the number of responses.
 
---- RecomendaciÛn ---
-La 'k' Ûptima recomendada es 2 (Silhouette m·s alto: 1,0000).
+--- Recomendaci√≥n ---
+La 'k' √≥ptima recomendada es 2 (Silhouette m√°s alto: 1,0000).
 
---- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+--- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: 
---- Evaluar An·lisis Existente ---
-No hay an·lisis guardados para evaluar.
---- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+Elige una opci√≥n: 
+--- Evaluar An√°lisis Existente ---
+No hay an√°lisis guardados para evaluar.
+--- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: 
---- Ejecutar Nuevo An·lisis ---
+Elige una opci√≥n: 
+--- Ejecutar Nuevo An√°lisis ---
 Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
-OpciÛn: Introduce el n˙mero de clusters (k): Selecciona una mÈtrica de distancia (1: Euclidea, 2: Manhattan):
-OpciÛn: Ejecutando an·lisis... Esto puede tardar un momento.
-An·lisis ejecutado con Èxito. ID del an·lisis: 6682cb8f-e998-4113-9512-b99b760bd3f2
-Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados autom·ticamente a: C:\Users\yeray\Documents\Uni\3er aÒo\PROP\FormsApp\EXE\..\exports\analysis.txt
+Opci√≥n: Introduce el n√∫mero de clusters (k): Selecciona una m√©trica de distancia (1: Euclidea, 2: Manhattan):
+Opci√≥n: Ejecutando an√°lisis... Esto puede tardar un momento.
+An√°lisis ejecutado con √©xito. ID del an√°lisis: 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados autom√°ticamente a: /media/Almacenamiento/Universidad/00 - PROP/FormsApp/EXE/../exports/analysis.txt
 
---- øQuÈ deseas hacer con el nuevo an·lisis? ---
-1. Ver mÈtricas de calidad
-2. Volver al men˙ principal
-Elige una opciÛn: --- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+--- ¬øQu√© deseas hacer con el nuevo an√°lisis? ---
+1. Ver m√©tricas de calidad
+2. Volver al men√∫ principal
+Elige una opci√≥n: --- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: 
---- Evaluar An·lisis Existente ---
-An·lisis disponibles (m·s recientes primero):
-1. 6682cb8f-e998-4113-9512-b99b760bd3f2
-Selecciona el n˙mero del an·lisis a evaluar: 
-Evaluando an·lisis: 6682cb8f-e998-4113-9512-b99b760bd3f2
-MÈtricas de Calidad para el An·lisis: 6682cb8f-e998-4113-9512-b99b760bd3f2
+Elige una opci√≥n: 
+--- Evaluar An√°lisis Existente ---
+An√°lisis disponibles (m√°s recientes primero):
+1. 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
+Selecciona el n√∫mero del an√°lisis a evaluar: 
+Evaluando an√°lisis: 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
+M√©tricas de Calidad para el An√°lisis: 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
 --------------------------------------------------
-MÈtricas Generales:
+M√©tricas Generales:
 - Coeficiente de Silhouette: 1,0000
-- Õndice de Calinski-Harabasz: 0,0000
-- Õndice de Davies-Bouldin: 0,0000
+- √çndice de Calinski-Harabasz: 0,0000
+- √çndice de Davies-Bouldin: 0,0000
 
-MÈtricas por Cluster:
-- Cluster cluster_1 (TamaÒo: 1): Coeficiente de Silhouette = 1,0000
-- Cluster cluster_2 (TamaÒo: 1): Coeficiente de Silhouette = 1,0000
+M√©tricas por Cluster:
+- Cluster cluster_1 (Tama√±o: 1): Coeficiente de Silhouette = 1,0000
+- Cluster cluster_2 (Tama√±o: 1): Coeficiente de Silhouette = 1,0000
 
---- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+--- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: 
---- Ver Resultados de An·lisis ---
-An·lisis disponibles (m·s recientes primero):
-1. 6682cb8f-e998-4113-9512-b99b760bd3f2
-Selecciona el n˙mero del an·lisis a ver: 
---- Resultados del An·lisis: 6682cb8f-e998-4113-9512-b99b760bd3f2 ---
+Elige una opci√≥n: 
+--- Ver Resultados de An√°lisis ---
+An√°lisis disponibles (m√°s recientes primero):
+1. 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
+Selecciona el n√∫mero del an√°lisis a ver: 
+--- Resultados del An√°lisis: 2ed7755d-8f64-44b8-838b-95bcc15f1d6d ---
 Clustering Analysis Results
 =============================
 
 Configuration:
-- Analysis ID: 6682cb8f-e998-4113-9512-b99b760bd3f2
+- Analysis ID: 2ed7755d-8f64-44b8-838b-95bcc15f1d6d
 - Survey ID: 0
 - Algorithm: K-Means
 - K: 2
@@ -690,33 +690,33 @@ Centroid: Centroid{components=[20.0]}
 Member Response IDs:
 - 2
 
---- Men˙ Principal de Clustering ---
-1. Ejecutar un nuevo an·lisis
-2. Evaluar un an·lisis existente
-3. Encontrar la K Ûptima para una encuesta
-4. Ver resultados de un an·lisis
+--- Men√∫ Principal de Clustering ---
+1. Ejecutar un nuevo an√°lisis
+2. Evaluar un an√°lisis existente
+3. Encontrar la K √≥ptima para una encuesta
+4. Ver resultados de un an√°lisis
 5. Salir
-Elige una opciÛn: Saliendo del men˙ de clustering...
+Elige una opci√≥n: Saliendo del men√∫ de clustering...
 --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
-3. Atr·s
-OpciÛn: --- SALIENDO DE MIS ENCUESTAS ---
+3. Atr√°s
+Opci√≥n: --- SALIENDO DE MIS ENCUESTAS ---
 --- ENCUESTAS ---
 1. RESPONDER ENCUESTAS
 2. ANALIZAR MIS ENCUESTAS
-3. VOLVER AL MEN⁄ PRINCIPAL
-OpciÛn: --- volviendo al men˙ principal ---
+3. VOLVER AL MEN√ö PRINCIPAL
+Opci√≥n: --- volviendo al men√∫ principal ---
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
-3. CERRAR SESI”N
-Opcion: --- CERRANDO SESI”N ---
-SesiÛn cerrada, hasta pronto TestUserManual1.
+3. CERRAR SESI√ìN
+Opcion: --- CERRANDO SESI√ìN ---
+Sesi√≥n cerrada, hasta pronto TestUserManual1.
 -----------------------------------
 --- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESI”N
+1. INICIAR SESI√ìN
 2. REGISTRARSE
 3. SALIR
-OpciÛn: --- SALIENDO DE K-SURVEY ---
+Opci√≥n: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

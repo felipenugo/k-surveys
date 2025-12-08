@@ -30,7 +30,6 @@ public class TestUserController {
     @Before
     public void setUp() {
         userRepository = new UserRepository();  // repositorio real en memoria
-        userRepository.clear();  // limpiar datos previos
         userService = new UserService(userRepository);
         ctrl = new UserController(userService);
     }
@@ -41,7 +40,7 @@ public class TestUserController {
 
     @Test
     public void testRegistrarUsuarioCorrecto() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
 
         // Comprobamos que el usuario fue guardado correctamente
         assertTrue(userRepository.existsUser("arnau"));
@@ -49,18 +48,18 @@ public class TestUserController {
 
     @Test(expected = RegisterException.class)
     public void testRegistrarUsuarioDuplicado() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "abcd");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "abcd", "What is your pet's name?", "Fluffy");
     }
 
     @Test(expected = RegisterException.class)
     public void testRegistrarUsuarioConEmailVacio() {
-        ctrl.registerUser("marc", "", "abcd");
+        ctrl.registerUser("marc", "", "abcd", "What is your pet's name?", "Fluffy");
     }
 
     @Test(expected = RegisterException.class)
     public void testRegistrarUsuarioConPasswordVacia() {
-        ctrl.registerUser("julia", "julia@fib.upc.edu", "");
+        ctrl.registerUser("julia", "julia@fib.upc.edu", "", "What is your pet's name?", "Fluffy");
     }
 
     // ───────────────────────────────
@@ -69,7 +68,7 @@ public class TestUserController {
 
     @Test
     public void testLoginCorrecto() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
         ctrl.loginUser("arnau", "1234");
 
         assertTrue(ctrl.isLoggedIn());
@@ -78,7 +77,7 @@ public class TestUserController {
 
     @Test(expected = LogInException.class)
     public void testLoginContrasenaIncorrecta() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
         ctrl.loginUser("arnau", "0000");
     }
 
@@ -94,7 +93,7 @@ public class TestUserController {
 
     @Test(expected = LogInException.class)
     public void testLoginYaLogueado() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
         ctrl.loginUser("arnau", "1234");
         ctrl.loginUser("arnau", "1234"); // segundo login → excepción
     }
@@ -105,7 +104,7 @@ public class TestUserController {
 
     @Test
     public void testLogoutCorrecto() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
         ctrl.loginUser("arnau", "1234");
         ctrl.logoutUser();
 
@@ -124,7 +123,7 @@ public class TestUserController {
 
     @Test
     public void testEliminarUsuarioCorrecto() {
-        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234");
+        ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
         ctrl.deleteUser("arnau");
 
         assertFalse(userRepository.existsUser("arnau"));
