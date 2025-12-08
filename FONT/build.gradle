@@ -1,50 +1,57 @@
 plugins {
     id 'java'
     id 'application'
+    id 'org.openjfx.javafxplugin' version '0.1.0'
 }
 
-group = 'presentation.driverMain'
+javafx {
+    version = "21.0.2"
+    modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+group = 'presentation.main'
 version = '1.0-SNAPSHOT'
 
-ext {
-    javaMainClass = 'presentation.driverMain.DriverMain'
-    javafxVersion = '21'
-    javafxPlatform = 'win'
-}
-
 application {
-    mainClass = javaMainClass
+    mainClass = 'presentation.main.Main'
 }
 
+// Configuración para copiar dependencias JavaFX y no-JavaFX por separado
+configurations {
+    javafxLibs
+    nonJavafxLibs
+}
+
+// Fat JAR solo con dependencias no-JavaFX
 jar {
     manifest {
-        attributes 'Main-Class': javaMainClass
+        attributes 'Main-Class': 'presentation.main.MainLauncher'
     }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from {
+        configurations.runtimeClasspath.findAll { 
+            !it.name.contains('javafx') 
+        }.collect { it.isDirectory() ? it : zipTree(it) }
+    }
     destinationDirectory = file('../EXE')
     archiveFileName = 'FormsApp.jar'
 }
+
+// Copiar JARs de JavaFX a EXE/lib
+task copyJavaFXLibs(type: Copy) {
+    from configurations.runtimeClasspath.filter { it.name.contains('javafx') }
+    into '../EXE/lib'
+}
+
+jar.dependsOn copyJavaFXLibs
 
 // Apply a specific Java toolchain to ease working on different environments.
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(21)
     }
-}
-
-// Forzar encoding UTF-8 en compilación para evitar errores de caracteres especiales en Windows
-tasks.withType(org.gradle.api.tasks.compile.JavaCompile).configureEach {
-    options.encoding = 'UTF-8'
-}
-
-// Also asegurar que las tareas de javadoc usan UTF-8
-tasks.withType(Javadoc).configureEach {
-    options.addStringOption('encoding', 'UTF-8')
-}
-
-// Arreglar dependencias de tareas
-tasks.named('compileJava').configure {
-    dependsOn 'processResources'
 }
 
 sourceSets {
@@ -54,7 +61,7 @@ sourceSets {
             exclude '**/test/**'
         }
         resources {
-            srcDirs = ['../resources']
+            srcDirs = ['../DATA']
         }
     }
     test {
@@ -62,7 +69,7 @@ sourceSets {
             srcDirs = ['test']
         }
         resources {
-            srcDirs = ['test/resources']
+            srcDirs = ['test/data']
         }
     }
 }
@@ -75,18 +82,24 @@ configurations {
     umlDoclet
 }
 
-// Dependencias
 dependencies {
     implementation 'com.google.code.gson:gson:2.8.9'
     testImplementation('junit:junit:4.13.1')
+    // UML Doclet para generar diagramas UML en JavaDoc
     umlDoclet 'nl.talsmasoftware:umldoclet:2.1.0'
 
-    // JavaFX - todas las dependencias necesarias para Windows
-    implementation "org.openjfx:javafx-controls:${javafxVersion}:${javafxPlatform}"
-    implementation "org.openjfx:javafx-fxml:${javafxVersion}:${javafxPlatform}"
-    implementation "org.openjfx:javafx-graphics:${javafxVersion}:${javafxPlatform}"
-    implementation "org.openjfx:javafx-base:${javafxVersion}:${javafxPlatform}"
-    implementation "org.openjfx:javafx-swing:${javafxVersion}:${javafxPlatform}"
+    // Langchain4j for AI-powered features
+    implementation platform('dev.langchain4j:langchain4j-bom:0.32.0')
+    implementation 'dev.langchain4j:langchain4j'
+    implementation 'dev.langchain4j:langchain4j-embeddings-all-minilm-l6-v2'
+    testImplementation platform('dev.langchain4j:langchain4j-bom:0.32.0')
+}
+
+compileJava.dependsOn processResources
+
+test {
+    enabled = true
+    workingDir = file('..')
 }
 
 // Copy compiled classes to EXE/classes
@@ -191,59 +204,3 @@ task openJavadoc {
         }
     }
 }
-
-// --- Tareas para ejecutar drivers y App individualmente desde IntelliJ/Gradle ---
-import org.gradle.api.tasks.JavaExec
-
-// DriverMain (interfaz de línea de comandos)
-tasks.register('runDriverMain', JavaExec) {
-    group = 'application'
-    description = 'Ejecuta DriverMain (interfaz CLI)'
-    mainClass = 'presentation.driverMain.DriverMain'
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    javaLauncher.set(javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(21)
-    })
-}
-
-// MainView (GUI con JavaFX)
-tasks.register('runMainView', JavaExec) {
-    group = 'application'
-    description = 'Ejecuta MainView (GUI con JavaFX)'
-    mainClass = 'presentation.main.MainView'
-    classpath = sourceSets.main.runtimeClasspath
-    standardInput = System.in
-    javaLauncher.set(javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(21)
-    })
-    // Configurar módulos de JavaFX correctamente
-    doFirst {
-        def javafxModulesPath = configurations.runtimeClasspath.files.findAll {
-            it.name.contains('javafx')
-        }.collect { it.absolutePath }.join(File.pathSeparator)
-
-        if (javafxModulesPath) {
-            jvmArgs = [
-                '--module-path', javafxModulesPath,
-                '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics'
-            ]
-        }
-    }
-}
-
-// Drivers individuales
-['SessionDriver', 'AppDriver', 'SurveyDriver', 'CreateSurveyDriver',
- 'MySurveysDriver', 'ResponseDriver', 'ClusteringDriver'].each { driver ->
-    tasks.register("run${driver}", JavaExec) {
-        group = 'application'
-        description = "Ejecuta el driver ${driver}"
-        mainClass = "presentation.drivers.${driver}"
-        classpath = sourceSets.main.runtimeClasspath
-        standardInput = System.in
-        javaLauncher.set(javaToolchains.launcherFor {
-            languageVersion = JavaLanguageVersion.of(21)
-        })
-    }
-}
-

@@ -1,0 +1,38 @@
+{
+  "0": {
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "responder3",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        },
+        {
+          "answerNum": 25.5,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        }
+      ]
+    }
+  }
+}

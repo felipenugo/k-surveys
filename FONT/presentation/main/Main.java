@@ -11,6 +11,11 @@ import java.io.IOException;
 
 public class Main extends Application {
 
+    private void iniStage(Stage primaryStage)
+    {
+
+    }
+
     @Override
     public void start(Stage primaryStage) throws IOException {
         // --- DEPENDENCY INJECTION ---
@@ -26,13 +31,15 @@ public class Main extends Application {
         UserController userController = new UserController(userService);
         
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.
+        primaryStage.setResizable(false);
+        //SceneManager.initStage();
         SceneManager sceneManager = new SceneManager(userController);
         sceneManager.setPrimaryStage(primaryStage);
-        
+
         // --- APPLICATION START ---
         // Initialize the stage and show the first scene
-        sceneManager.showLogin();
         sceneManager.initStage();
+        sceneManager.showLogin();
     }
 
     public static void main(String[] args) {

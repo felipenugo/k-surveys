@@ -33,7 +33,7 @@ public class UserRepository {
     private final Type mapType;
     private final Gson gson;
 
-    // cargar mapa users desde el fichero resources/db/users.json
+    // cargar mapa users desde el fichero DATA/db/users.json
 
     private Map<String, User> loadUsersFromJson() {
         File file = new File(FILE_PATH);
@@ -69,11 +69,27 @@ public class UserRepository {
      * Inicializa la estructura de almacenamiento.
      */
     public UserRepository() {
-        this.FILE_PATH = "resources/db/users.json";
+        this("../DATA/db/users.json");
+    }
+
+    /**
+     * Crea un nuevo repositorio de usuarios con un path personalizado.
+     * @param filePath ruta al archivo JSON de usuarios
+     */
+    public UserRepository(String filePath) {
+        this.FILE_PATH = filePath;
         this.mapType = new TypeToken<Map<String, User>>() {
         }.getType();
-        this.gson = new GsonBuilder().setPrettyPrinting().create(); // json con formato
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.users = loadUsersFromJson();
+    }
+
+    /**
+     * Elimina todos los usuarios del repositorio.
+     */
+    public void clear() {
+        users.clear();
+        saveUsersToJson();
     }
 
     // ───────────────────────────────────────────────

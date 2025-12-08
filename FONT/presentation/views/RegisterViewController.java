@@ -5,11 +5,7 @@ import domain.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-
-import java.awt.*;
+import javafx.scene.layout.HBox;
 
 public class RegisterViewController {
 
@@ -17,41 +13,87 @@ public class RegisterViewController {
     private TextField usernameField;
     @FXML
     private TextField emailField;
-    @FXML
-    private TextField securityQuestionField;
-    @FXML
-    private TextField securityAnswerField;
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private Button registerButton;
-    @FXML
-    private Label statusLabel;
+    // Contraseña 1
+    @FXML private PasswordField passwordField;
+    @FXML private TextField passwordText;
+
+    // Contraseña 2 (Confirmación)
+    @FXML private PasswordField confirmPasswordField;
+    @FXML private TextField confirmPasswordText;
+
+    // Checkbox y Error
+    @FXML private CheckBox showPasswordCheck;
+    @FXML private HBox errorCard;
+    @FXML private Label errorLabel;
 
     private final UserController userController;
     private final SceneManager sceneManager;
 
-    public RegisterViewController(UserController userController, SceneManager sceneManager)
-    {
+    public RegisterViewController(UserController userController, SceneManager sceneManager) {
         this.userController = userController;
         this.sceneManager = sceneManager;
     }
 
     @FXML
-    public void handleRegisterClick(ActionEvent event)
-    {
-        try{
+    public void handleRegister(ActionEvent event) {
+        try {
             String username = usernameField.getText();
             String email = emailField.getText();
-            String password = passwordField.getText();
-            String securityQuestion = securityQuestionField.getText();
-            String securityAnswer = securityAnswerField.getText();
-            userController.registerUser(username, email, password, securityQuestion, securityAnswer);
-            statusLabel.setText("--- registrando usuario ---");
+            String password = passwordField.isVisible() ? passwordField.getText() : passwordText.getText();
+            String confirmPassword = confirmPasswordField.isVisible() ? confirmPasswordField.getText() : confirmPasswordText.getText();
+            if(!password.equals(confirmPassword))
+                throw new Exception("Las contraseñas no coinciden.");
+            userController.registerUser(username, email, password);
             sceneManager.showLogin();
-        }catch (Exception e)
-        {
-            statusLabel.setText("Error: " + e.getMessage());
+        } catch (Exception e) {
+            errorLabel.setText( e.getMessage());
+            errorCard.setVisible(true);
+            errorCard.setManaged(true);
         }
+    }
+
+    @FXML
+    public void toggleRegisterPasswords() {
+        boolean show = showPasswordCheck.isSelected();
+
+        if (show) {
+            // MOSTRAR CONTRASEÑAS (Copiar texto y cambiar visibilidad)
+            passwordText.setText(passwordField.getText());
+            confirmPasswordText.setText(confirmPasswordField.getText());
+
+            // Ocultar PasswordFields
+            passwordField.setVisible(false);
+            passwordField.setManaged(false);
+            confirmPasswordField.setVisible(false);
+            confirmPasswordField.setManaged(false);
+
+            // Mostrar TextFields
+            passwordText.setVisible(true);
+            passwordText.setManaged(true);
+            confirmPasswordText.setVisible(true);
+            confirmPasswordText.setManaged(true);
+
+        } else {
+            // OCULTAR CONTRASEÑAS
+            passwordField.setText(passwordText.getText());
+            confirmPasswordField.setText(confirmPasswordText.getText());
+
+            // Ocultar TextFields
+            passwordText.setVisible(false);
+            passwordText.setManaged(false);
+            confirmPasswordText.setVisible(false);
+            confirmPasswordText.setManaged(false);
+
+            // Mostrar PasswordFields
+            passwordField.setVisible(true);
+            passwordField.setManaged(true);
+            confirmPasswordField.setVisible(true);
+            confirmPasswordField.setManaged(true);
+        }
+    }
+
+    @FXML
+    public void goToLogin(ActionEvent event) {
+        sceneManager.showLogin();
     }
 }

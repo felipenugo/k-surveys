@@ -16,7 +16,7 @@ public class SceneManager {
     }
 
     public void setPrimaryStage(Stage stage) {
-        this.primaryStage = stage;
+        primaryStage = stage;
     }
 
     private void checkLoaderAddress(FXMLLoader loader) {
@@ -40,23 +40,18 @@ public class SceneManager {
         primaryStage.setTitle(title);
     }
 
+
     public void initStage() {
-        if (this.primaryStage == null) {
+        if (primaryStage == null) {
             System.err.println("ERROR FATAL: El stage es null");
-            System.err.println("SOULUCIÓN: llamar primero a setPrimaryStage()");
+            System.err.println("SOLUCIÓN: llamar primero a setPrimaryStage()");
             System.exit(1);
         }
 
-        this.primaryStage.setResizable(true);
-        this.primaryStage.setMinHeight(700);
-        this.primaryStage.setMinWidth(1000);
-        double centerX = this.primaryStage.getWidth() / 2;
-        double centerY = this.primaryStage.getHeight() / 2;
-        this.primaryStage.setX(centerX);
-        this.primaryStage.setY(centerY);
-        this.primaryStage.setMaximized(false);
-
-        this.primaryStage.show();
+        primaryStage.centerOnScreen();
+        primaryStage.setMinWidth(1000);
+        primaryStage.setMinHeight(800);
+        primaryStage.show();
     }
 
     public void showLogin() {

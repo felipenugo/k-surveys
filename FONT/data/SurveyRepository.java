@@ -26,6 +26,8 @@ import domain.exception.SurveyException;
 
 /**
  * Repositorio encargado de almacenar y gestionar en memoria todas las encuestas del sistema.
+ * Mantiene una estructura &lt;surveyId, Survey&gt; donde cada Survey contiene sus preguntas.
+ * No realiza validaciones de negocio; actúa como capa de persistencia en memoria.
  */
 public class SurveyRepository {
     /**
@@ -33,7 +35,13 @@ public class SurveyRepository {
      */
     private final Map<String, Survey> surveys; // <surveyId, Survey>, Survey contiene sus preguntas
 
+    /**
+     * String que almacena la dirección del fichero donde se guardan los usuarios.
+     */
     private final String FILE_PATH;
+    /**
+     * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
+     */
     private final Type mapType;
     private final Gson gson;
 
@@ -188,11 +196,16 @@ public class SurveyRepository {
     // Gestión general de encuestas
     // ───────────────────────────────────────────────
 
-    /**
-     * Crea un nuevo repositorio de encuestas en memoria.
-     */
     public SurveyRepository() {
-        this.FILE_PATH = "resources/db/surveys.json";
+        this("../DATA/db/surveys.json");
+    }
+
+    /**
+     * Crea un nuevo repositorio de encuestas con un path personalizado.
+     * @param filePath ruta al archivo JSON de encuestas
+     */
+    public SurveyRepository(String filePath) {
+        this.FILE_PATH = filePath;
         this.mapType = new TypeToken<Map<String, Survey>>() {
         }.getType();
         // json con formato y adaptador para poder usar LocalDateTime que no está soportado por defecto
@@ -336,7 +349,6 @@ public class SurveyRepository {
     public boolean canCreateMoreSurveys() {
         return nextSurveyId < Integer.MAX_VALUE;
     }
-
     // ───────────────────────────────────────────────
     // Gestión de preguntas dentro de una encuesta
     // ───────────────────────────────────────────────
@@ -427,5 +439,4 @@ public class SurveyRepository {
         surveys.get(surveyId).clearQuestions();
         saveSurveysToJson();
     }
-
 }

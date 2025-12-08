@@ -1,17 +1,28 @@
 @echo off
-REM Script para ejecutar FormsApp.jar en Windows
+REM Script para ejecutar FormsApp en Windows
 
-set JAR_FILE=FormsApp.jar
+set SCRIPT_DIR=%~dp0
+set JAR_FILE=%SCRIPT_DIR%FormsApp.jar
+set LIB_DIR=%SCRIPT_DIR%lib
 
 REM Verificar si el JAR existe
-if not exist %JAR_FILE% (
-    echo ERROR: %JAR_FILE% no encontrado.
+if not exist "%JAR_FILE%" (
+    echo ERROR: FormsApp.jar no encontrado.
     echo Por favor, compila primero el proyecto:
     echo   cd ..\FONT
     echo   gradlew.bat jar
     exit /b 1
 )
 
-REM Ejecutar el JAR
+REM Verificar si existe el directorio lib con JavaFX
+if not exist "%LIB_DIR%" (
+    echo ERROR: Directorio lib\ con JavaFX no encontrado.
+    echo Por favor, recompila el proyecto:
+    echo   cd ..\FONT
+    echo   gradlew.bat jar
+    exit /b 1
+)
+
+REM Ejecutar con JavaFX en el module-path
 echo Ejecutando FormsApp...
-java -jar %JAR_FILE%
+java --module-path "%LIB_DIR%" --add-modules javafx.controls,javafx.fxml -jar "%JAR_FILE%"

@@ -2,7 +2,7 @@ Clustering Analysis Results
 =============================
 
 Configuration:
-- Analysis ID: b02d3539-335c-480a-9c90-c354470f1366
+- Analysis ID: 13ef15ae-aff9-4cae-a901-dbfcd78fd32b
 - Survey ID: null
 - Algorithm: K-Medoids
 - K: 2
@@ -11,63 +11,63 @@ Configuration:
 Execution Stats:
 - Converged: Yes
 - Iterations: 3
-- Execution Time: 54 ms
+- Execution Time: 43 ms
 
 Overall Quality Metrics:
-- Silhouette Score: 0,0370
-- Calinski-Harabasz Score: 12,6919
-- Davies-Bouldin Score: 1,7882
+- Silhouette Score: 0,1051
+- Calinski-Harabasz Score: 34,0931
+- Davies-Bouldin Score: 1,4842
 
 Clusters (2):
 -----------------------------
 
-Cluster cluster_1 (Size: 6)
+Cluster cluster_1 (Size: 22)
 ----------
-Silhouette Score: 0,0243
-Centroid: Centroid{components=[LP001107, Male, Yes, 3+, Graduate, No, 3786, 333, 126, 360, 1, Semiurban]}
-Member Response IDs:
-- 1
-- 11
-- 17
-- 21
-- 28
-- 32
-
-Cluster cluster_2 (Size: 33)
-----------
-Silhouette Score: 0,0393
-Centroid: Centroid{components=[LP001015, Male, Yes, 0, Graduate, No, 5720, 0, 110, 360, 1, Urban]}
+Silhouette Score: 0,1163
+Centroid: Centroid{components=[LP001135, Female, No, 0, Not Graduate, No, 3765, 0, 125, 360, 1, Urban]}
 Member Response IDs:
 - 0
-- 2
-- 3
 - 4
 - 5
 - 6
-- 7
-- 8
 - 9
 - 10
 - 12
-- 13
 - 14
 - 15
-- 16
-- 18
+- 17
 - 19
-- 20
+- 21
 - 22
 - 23
-- 24
 - 25
-- 26
-- 27
+- 28
 - 29
 - 30
-- 31
+- 32
 - 33
-- 34
 - 35
+- 38
+
+Cluster cluster_2 (Size: 17)
+----------
+Silhouette Score: 0,0905
+Centroid: Centroid{components=[LP001031, Male, Yes, 2, Graduate, No, 5000, 1800, 208, 360, 1, Urban]}
+Member Response IDs:
+- 1
+- 2
+- 3
+- 7
+- 8
+- 11
+- 13
+- 16
+- 18
+- 20
+- 24
+- 26
+- 27
+- 31
+- 34
 - 36
 - 37
-- 38
