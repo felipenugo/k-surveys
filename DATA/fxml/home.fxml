@@ -103,7 +103,7 @@
                         </HBox>
 
                         <!-- LISTA DE ENCUESTAS (VBOX) -->
-                        <VBox fx:id="surveysContainer" spacing="10">
+                        <VBox fx:id="surveysContainer" spacing="15">
                             <!-- AQUÍ SE INYECTAN LAS FILAS -->
                         </VBox>
 

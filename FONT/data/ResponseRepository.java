@@ -51,7 +51,7 @@ public class ResponseRepository {
      * El primer identificador asignado será "0".
      */
     public ResponseRepository() {
-        this("./DATA/db/responses.json");
+        this("./../DATA/db/responses.json");
     }
 
     /**

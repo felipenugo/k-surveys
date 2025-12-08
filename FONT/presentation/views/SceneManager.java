@@ -98,7 +98,8 @@ public class SceneManager {
 
             finalizeScene(loader, "INICIO");
         }catch(Exception e){
-            System.err.println("ERROR FATAL: " + e.getMessage());
+            System.err.println("ERROR FATAL HOME: " + e.getMessage());
+            e.printStackTrace();
         }
 
         this.primaryStage.setTitle("Main Menu");
@@ -116,4 +117,10 @@ public class SceneManager {
     public void showMyDrafts() {
         this.primaryStage.setTitle("Mis Borradores");
     }
+
+    public void showAnswerSurvey(String surveyId)
+    {
+        this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
+    }
+
 }

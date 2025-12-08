@@ -55,6 +55,8 @@ public class ResponseDriver {
         do {
             try {
                 var surveys = surveyController.getSelectedSurveys();
+                if( surveys.isEmpty())
+                    throw new SurveyException("No hay encuestas disponibles para responder.");
                 showSurveys(surveys);
                 System.out.print("Selecciona el id de una encuesta: ");
                 String surveyIdSelected = sc.nextLine();

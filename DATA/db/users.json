@@ -26,6 +26,26 @@
     "passwordHash": "2bd2d3a31934d76198acc030caca4c31965474fe5fa48f35fef79d0fd74ee1b2",
     "securityQuestion": "Pregunta de seguridad por defecto",
     "securityAnswer": "Respuesta de seguridad por defecto",
+    "createdSurveysId": [
+      "100",
+      "101",
+      "102",
+      "103",
+      "104",
+      "105",
+      "106",
+      "107",
+      "108",
+      "109"
+    ],
+    "respondedSurveysId": {}
+  },
+  "felipe1": {
+    "USERNAME": "felipe1",
+    "email": "felipe1@gmail.com",
+    "passwordHash": "576a7162db9f1c7ce93ea4128e2be4843b46a79b4f05c35416b6d7535d89b459",
+    "securityQuestion": "Pregunta de seguridad por defecto",
+    "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
     "respondedSurveysId": {}
   }

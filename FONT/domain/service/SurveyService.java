@@ -279,10 +279,7 @@ public class SurveyService {
      */
     public List<Survey> getSelectedSurveys() {
         checkUserLoggedin();
-        List<Survey> surveys = surveyRepository.getAllSurveys();
-        if (surveys.isEmpty())
-            throw new SurveyException("No hay encuestas creadas todavía.");
-        return surveys;
+        return surveyRepository.getAllSurveys();
     }
 
     /**

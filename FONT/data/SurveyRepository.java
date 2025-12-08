@@ -57,8 +57,10 @@ public class SurveyRepository {
      */
     private Map<String, Survey> loadSurveysFromJson() {
         File file = new File(FILE_PATH);
-        if (!file.exists() || file.length() == 0)
+        if (!file.exists() || file.length() == 0){
+            file.getParentFile().mkdirs();
             return new HashMap<>();
+        }
         try (Reader reader = new FileReader(file)) {
             return gson.fromJson(reader, mapType);
         } catch(Exception e) {
@@ -83,6 +85,7 @@ public class SurveyRepository {
         File file = new File(FILE_PATH);
         if (file.getParentFile() != null) {
             file.getParentFile().mkdirs(); // crea el directorio padre si no existe
+            System.err.println("El padre no existe, creado en el directorio: " + file.getParentFile().getAbsolutePath());
         }
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(surveys, writer);
@@ -95,7 +98,7 @@ public class SurveyRepository {
     // ───────────────────────────────────────────────
 
     public SurveyRepository() {
-        this("../DATA/db/surveys.json");
+        this("./../DATA/db/surveys.json");
     }
 
     /**
@@ -112,8 +115,8 @@ public class SurveyRepository {
                 .registerTypeAdapter(Question.class, new QuestionAdapter())
                 .setPrettyPrinting().create();
 
-        Map<String, Survey> loaded = loadSurveysFromJson();
-        this.surveys = (loaded != null) ? loaded : new HashMap<>();
+       // Map<String, Survey> loaded = loadSurveysFromJson();
+        this.surveys = loadSurveysFromJson();
 
         // Si nextSurveyId no fue inicializado durante la carga (archivo vacío), calcularlo
         if (this.nextSurveyId == 0 && !this.surveys.isEmpty()) {
