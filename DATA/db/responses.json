@@ -7,23 +7,22 @@
       "responseStatus": "DRAFT",
       "ANSWERS": [
         {
-          "answerText": "",
+          "answerText": "Test",
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "1",
           "typeAnswer": "TEXTUAL",
-          "isAnswered": false
+          "isAnswered": true
         },
         {
-          "answerNum": 25.5,
+          "answerNum": 21.0,
           "QUESTION_INDEX": 1,
           "RESPONSE_ID": "1",
           "typeAnswer": "NUMERICAL",
           "isAnswered": true
         },
         {
-          "maxOptions": 3,
+          "maxOptions": 2,
           "selectedOptions": [
-            false,
             false,
             false
           ],
