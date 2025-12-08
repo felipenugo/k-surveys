@@ -45,7 +45,7 @@ public class Main extends Application {
         // --- APPLICATION START ---
         // Initialize the stage and show the first scene
         sceneManager.initStage();
-        sceneManager.showHome();
+        sceneManager.showLogin();
     }
 
     public static void main(String[] args) {
