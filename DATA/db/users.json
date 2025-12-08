@@ -19,5 +19,14 @@
     "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "felipe": {
+    "USERNAME": "felipe",
+    "email": "felipe@gmail.com",
+    "passwordHash": "2bd2d3a31934d76198acc030caca4c31965474fe5fa48f35fef79d0fd74ee1b2",
+    "securityQuestion": "Pregunta de seguridad por defecto",
+    "securityAnswer": "Respuesta de seguridad por defecto",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }
