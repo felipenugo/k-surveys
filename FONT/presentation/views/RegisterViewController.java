@@ -21,6 +21,9 @@ public class RegisterViewController {
     @FXML private PasswordField confirmPasswordField;
     @FXML private TextField confirmPasswordText;
 
+    @FXML private TextField securityQuestionField;
+    @FXML private TextField securityAnswerField;
+
     // Checkbox y Error
     @FXML private CheckBox showPasswordCheck;
     @FXML private HBox errorCard;
@@ -43,8 +46,8 @@ public class RegisterViewController {
             String confirmPassword = confirmPasswordField.isVisible() ? confirmPasswordField.getText() : confirmPasswordText.getText();
             if(!password.equals(confirmPassword))
                 throw new Exception("Las contraseñas no coinciden.");
-            String question = "Pregunta de seguridad por defecto";
-            String answer = "Respuesta de seguridad por defecto";
+            String question = securityQuestionField.getText();
+            String answer = securityAnswerField.getText();
             userController.registerUser(username, email, password, question, answer);
             sceneManager.showLogin();
         } catch (Exception e) {

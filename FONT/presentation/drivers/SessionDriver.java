@@ -50,17 +50,31 @@ public class SessionDriver {
         do {
             System.out.println("--- REGISTRO DE USUARIO ---");
             System.out.print("Introduce tu nombre de usuario: ");
-            String username = sc.nextLine();
+            String username = sc.nextLine().trim();
             System.out.print("Introduce tu email: ");
-            String email = sc.nextLine();
+            String email = sc.nextLine().trim();
+
+            String password = null;
+            boolean passwordOk = false;
+
+        while (!passwordOk) {
             System.out.print("Introduce tu contraseña: ");
-            String password = sc.nextLine();
+            password = sc.nextLine().trim();
 
             try {
+                userController.validatePasswordStrength(password);
+                passwordOk = true; 
+            } 
+            catch (RegisterException e) {
+                System.out.println(e.getMessage());
+                System.out.println("Por favor, vuelve a intentarlo.\n");
+            }
+        }
+            try {
                 System.out.print("Introduce tu pregunta de seguridad: ");
-                String securityQuestion = sc.nextLine();
+                String securityQuestion = sc.nextLine().trim();
                 System.out.print("Introduce tu respuesta de seguridad: ");
-                String securityAnswer = sc.nextLine();
+                String securityAnswer = sc.nextLine().trim();
                 userController.registerUser(username, email, password , securityQuestion , securityAnswer);
                 System.out.println("--- registrándose ---");
                 System.out.println("El usuario " + username + " se ha registrado con éxito.");
@@ -89,9 +103,9 @@ public class SessionDriver {
         do {
         System.out.println("--- INICIO DE SESIÓN ---");
             System.out.print("Introduce tu nombre de usuario:");
-            String username = sc.nextLine();
+            String username = sc.nextLine().trim();
             System.out.print("Introduce tu contraseña:");
-            String password = sc.nextLine();
+            String password = sc.nextLine().trim();
 
             try {
                 System.out.println("--- iniciando sesión ---");
@@ -137,4 +151,39 @@ public class SessionDriver {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
+     public void driverDeleteAccount() {
+        System.out.println("\n--- ELIMINAR CUENTA ---");
+
+        if (!userController.isLoggedIn()) {
+            System.out.println("Debes iniciar sesión para eliminar tu cuenta.");
+            return;
+        }
+
+        String username = userController.getLoggedUser().getUsername();
+
+        System.out.print("¿Estás seguro de que quieres eliminar tu cuenta '" 
+                            + username + "'? (s/n): ");
+        String confirm = sc.nextLine().trim().toLowerCase();
+
+        if (!confirm.equals("s")) {
+            System.out.println("Operación cancelada. Tu cuenta no ha sido eliminada.");
+            return;
+        }
+
+        // Ejecutar eliminación real
+        boolean success = userController.deleteUserok(username);
+
+        if (success) {
+            System.out.println("Tu cuenta ha sido eliminada correctamente.");
+            System.out.println("Cerrar sesión...");
+
+            userController.logoutUser();
+        } else {
+            System.out.println("No se ha podido eliminar la cuenta. Es posible que ya no exista.");
+        }
+
+        System.out.println("Regresando al menú principal...");
+    }
+
 }

@@ -79,7 +79,7 @@ public class MySurveysDriver {
         data.ResponseRepository responseRepository = new data.ResponseRepository();
         
         // Inicializar servicios
-        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, responseRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
 

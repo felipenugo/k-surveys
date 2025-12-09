@@ -22,7 +22,7 @@ public class PasswordRecoveryDriver {
         try {
             // 1. Pedir username
             System.out.print("Introduce tu nombre de usuario: ");
-            String username = sc.nextLine();
+            String username = sc.nextLine().trim();
 
             // 2. Verificar que el usuario exista y obtener pregunta secreta
             String question = userController.startPasswordRecovery(username);
@@ -31,7 +31,7 @@ public class PasswordRecoveryDriver {
 
             // 3. Pedir respuesta secreta
             System.out.print("Introduce tu respuesta secreta: ");
-            String answer = sc.nextLine();
+            String answer = sc.nextLine().trim();
 
             boolean correct = userController.verifySecurityAnswer(username, answer);
 
@@ -42,7 +42,7 @@ public class PasswordRecoveryDriver {
 
             // 4. Pedir nueva contraseña
             System.out.print("Introduce tu nueva contraseña: ");
-            String newPassword = sc.nextLine();
+            String newPassword = sc.nextLine().trim();
 
             userController.resetPassword(username, newPassword);
 

@@ -23,6 +23,10 @@ public class SceneManager {
         primaryStage = stage;
     }
 
+    public Stage getPrimaryStage() {
+        return primaryStage;
+    }
+
     private void checkLoaderAddress(FXMLLoader loader) {
         if (loader.getLocation() == null) {
             System.err.println("FATAL: No se pudo encontrar la ruta al fichero fxml.");
@@ -106,6 +110,52 @@ public class SceneManager {
 
     }
 
+    public void showPasswordRecovery() {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step1.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep1Controller controller =
+                    new ResetPasswordStep1Controller(userController, this);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 1");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordRecoveryStep2(String username, String question) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step2.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep2Controller controller =
+                    new ResetPasswordStep2Controller(userController, this, username, question);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 2");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordRecoveryStep3(String username) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step3.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep3Controller controller =
+                    new ResetPasswordStep3Controller(userController, this, username);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 3");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void showCreateSurvey() {
         this.primaryStage.setTitle("Crear Encuesta");
     }
@@ -122,5 +172,27 @@ public class SceneManager {
     {
         this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
     }
+
+    public void showDeleteAccountConfirm() {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/delete_account.fxml"));
+
+            DeleteAccountViewController controller =
+                    new DeleteAccountViewController(userController, this);
+            loader.setController(controller);
+
+            // Cargar como una nueva ventana aparte
+            Scene scene = new Scene(loader.load());
+            Stage popup = new Stage();
+            popup.initStyle(StageStyle.TRANSPARENT);
+            popup.setScene(scene);
+            popup.show();
+
+        } catch (Exception e) {
+            System.err.println("ERROR al cargar delete_account.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
 
 }

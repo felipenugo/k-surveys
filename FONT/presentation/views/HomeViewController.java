@@ -431,4 +431,14 @@ public class HomeViewController implements Initializable {
             System.err.println("Error al cerrar sesión: " + e.getMessage());
         }
     }
+
+    @FXML
+    public void handleDeleteAccount(ActionEvent event) {
+        try {
+            sceneManager.showDeleteAccountConfirm(); 
+        } catch (Exception e) {
+            System.err.println("Error al navegar a eliminar cuenta: " + e.getMessage());
+        }
+    }
+
 }

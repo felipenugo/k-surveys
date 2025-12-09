@@ -5,6 +5,9 @@ import domain.exception.RegisterException;
 
 import domain.model.User;
 import data.UserRepository;
+import data.SurveyRepository;
+import data.ResponseRepository;
+import java.util.Set;
 import domain.utils.PasswordHasher;
 
 /**
@@ -23,13 +26,18 @@ import domain.utils.PasswordHasher;
 public class UserService {
     /** Repositorio encargado de almacenar y gestionar los usuarios. */
     private final UserRepository userRepository;
+    private final SurveyRepository surveyRepository;
+    private final ResponseRepository responseRepository;
+
     /**
      * Crea una nueva instancia del servicio de usuarios.
      *
      * @param userRepository repositorio donde se almacenan los usuarios
      */
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, SurveyRepository surveyRepository, ResponseRepository responseRepository) {
         this.userRepository = userRepository;
+        this.surveyRepository = surveyRepository;
+        this.responseRepository = responseRepository;
     }
 
     // ───────────────────────────────────────────────
@@ -92,6 +100,7 @@ public class UserService {
             throw new RegisterException("El usuario " + username + " ya existe. Por favor escoge otro nombre de usuario.");
 
         // Registration
+        validatePasswordStrength(password);
         String passwordHash = PasswordHasher.hash(password);
         User newUser = new User(username, email, passwordHash, securityQuestion, securityAnswer);
         userRepository.addUser(newUser);
@@ -232,83 +241,49 @@ public class UserService {
     // Eliminación y actualización de usuarios
     // ───────────────────────────────────────────────
 
-    /**
-     * Elimina un usuario si existe en el repositorio.
+     /**
+     * Elimina completamente un usuario del sistema, junto con:
+     * - Todas las encuestas que ha creado.
+     * - Todas sus respuestas a encuestas.
+     * - Todas las referencias asociadas en UserRepository.
      *
-     * @param username nombre del usuario a eliminar
-     * @return {@code true} si fue eliminado, {@code false} si no existía
+     * @param username nombre de usuario a eliminar
+     * @return true si el usuario existía y se ha eliminado, false en caso contrario
      */
-    public boolean deleteUser(String username) {
+    public boolean deleteUserok(String username) {
+
         if (!userRepository.existsUser(username))
             return false;
+
+        User user = userRepository.getUser(username);
+
+        // 1. Eliminar todas las encuestas creadas
+        for (String surveyId : user.getCreatedSurveysId()) {
+            // eliminar respuestas asociadas a esa encuesta
+            responseRepository.deleteResponsesBySurvey(surveyId);
+
+            // eliminar la encuesta en sí
+            surveyRepository.deleteSurvey(surveyId);
+        }
+
+        // 2. Eliminar todas las respuestas emitidas por el usuario
+        for (String surveyId : user.getRespondedSurveysIds()) {
+
+            Set<String> responseIds = user.getResponseIdsForSurvey(surveyId);
+
+            if (responseIds != null) {
+                for (String responseId : responseIds) {
+                    responseRepository.deleteResponse(responseId, surveyId);
+                }
+            }
+        }
+
+        // 3. Eliminar usuario de la persistencia
         userRepository.deleteUser(username);
+
         return true;
     }
-
-     /**
-     * Actualiza el email de un usuario tras validar:
-     * <ul>
-     *   <li>que el usuario existe,</li>
-     *   <li>que el email anterior coincide,</li>
-     *   <li>que el nuevo email no es igual al anterior.</li>
-     * </ul>
-     *
-     * @param username nombre del usuario
-     * @param oldEmail email actual
-     * @param newEmail nuevo email
-     * @return código de resultado ("success", "user_not_exists", "incorrect_email", "same_email")
-     */
-    public String updateUserEmail(String username, String oldEmail, String newEmail) {
-        String result;
-        if (!userRepository.existsUser(username))
-            result = "user_not_exists";
-        else if (!userRepository.getUser(username).getEmail().equals(oldEmail))
-            result = "incorrect_email";
-        else if (oldEmail.equals(newEmail))
-            result = "same_email";
-        else {
-            result = "success";
-            User user = userRepository.getUser(username);
-            user.setEmail(newEmail);
-            userRepository.updateUser(username, user);
-        }
-        return result;
-    }
-
-    /**
-     * Cambia la contraseña de un usuario tras validar:
-     * <ul>
-     *   <li>existencia del usuario,</li>
-     *   <li>coincidencia del email,</li>
-     *   <li>coincidencia de la contraseña antigua,</li>
-     *   <li>que la nueva contraseña no sea igual a la anterior.</li>
-     * </ul>
-     *
-     * @param username nombre del usuario
-     * @param email email del usuario
-     * @param oldPassword contraseña actual
-     * @param newPassword nueva contraseña
-     * @return código de resultado ("success", "user_not_exists", "incorrect_email", "incorrect_password", "same_password")
-     */
-    public String changePassword(String username, String email, String oldPassword, String newPassword) {
-        String result;
-        if (!userRepository.existsUser(username))
-            result = "user_not_exists";
-        else if (!userRepository.getUser(username).getEmail().equals(email))
-            result = "incorrect_email";
-        else if (!userRepository.getUser(username).getPasswordHash().equals(PasswordHasher.hash(oldPassword)))
-            result = "incorrect_password";
-        else if (oldPassword.equals(newPassword))
-            result = "same_password";
-        else {
-            result = "success";
-            User user = userRepository.getUser(username);
-            user.setPasswordHash(PasswordHasher.hash(newPassword));
-            userRepository.updateUser(username, user);
-        }
-        return result;
-    }
-
+    
     /**
      * Devuelve un usuario del repositorio.
      *
@@ -320,38 +295,64 @@ public class UserService {
     }
 
     public String startPasswordRecovery(String username) {
-    if (isInputBlank(username))
-        throw new LogInException("El campo nombre de usuario no puede estar vacío.");
+        if (isInputBlank(username))
+            throw new LogInException("El campo nombre de usuario no puede estar vacío.");
 
-    if (!userRepository.existsUser(username))
-        throw new LogInException("El usuario " + username + " no existe.");
+        if (!userRepository.existsUser(username))
+            throw new LogInException("El usuario " + username + " no existe.");
 
-    // Recuperar la pregunta secreta
-    return userRepository.getUser(username).getSecurityQuestion();
+        // Recuperar la pregunta secreta
+        return userRepository.getUser(username).getSecurityQuestion();
     }
 
     public boolean verifySecurityAnswer(String username, String answer) {
-    if (isInputBlank(answer))
-        throw new LogInException("La respuesta no puede estar vacía.");
+        if (isInputBlank(answer))
+            throw new LogInException("La respuesta no puede estar vacía.");
 
-    if (!userRepository.existsUser(username))
-        throw new LogInException("El usuario " + username + " no existe.");
+        if (!userRepository.existsUser(username))
+            throw new LogInException("El usuario " + username + " no existe.");
 
-    User user = userRepository.getUser(username);
+        User user = userRepository.getUser(username);
 
-    return user.getSecurityAnswer().equalsIgnoreCase(answer.trim());
+        return user.getSecurityAnswer().equalsIgnoreCase(answer.trim());
     }
 
     public void resetPassword(String username, String newPassword) {
-    if (isInputBlank(newPassword))
-        throw new LogInException("La nueva contraseña no puede estar vacía.");
+        if (isInputBlank(newPassword))
+            throw new LogInException("La nueva contraseña no puede estar vacía.");
 
-    if (!userRepository.existsUser(username))
-        throw new LogInException("El usuario " + username + " no existe.");
+        if (!userRepository.existsUser(username))
+            throw new LogInException("El usuario " + username + " no existe.");
 
-    User user = userRepository.getUser(username);
-    user.setPasswordHash(PasswordHasher.hash(newPassword));
+        User user = userRepository.getUser(username);
+        validatePasswordStrength(newPassword);
+        user.setPasswordHash(PasswordHasher.hash(newPassword));
 
-    userRepository.updateUser(username, user);
+        userRepository.updateUser(username, user);
+    }
+
+    public void validatePasswordStrength(String password) {
+    StringBuilder errors = new StringBuilder();
+
+        if (password.length() < 8)
+            errors.append("- Debe tener al menos 8 caracteres\n");
+
+        if (!password.matches(".*[A-Z].*"))
+            errors.append("- Debe contener al menos una MAYÚSCULA\n");
+
+        if (!password.matches(".*[a-z].*"))
+            errors.append("- Debe contener al menos una minúscula\n");
+
+        if (!password.matches(".*\\d.*"))
+            errors.append("- Debe contener al menos un número\n");
+
+        if (!password.matches(".*[@#$%^&+=!?.*()\\[\\]{}_-].*"))
+            errors.append("- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)\n");
+
+        if (errors.length() > 0) {
+            throw new RegisterException(
+                "La contraseña no es segura:\n" + errors
+            );
+        }
     }
 }

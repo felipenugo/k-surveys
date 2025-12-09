@@ -38,7 +38,7 @@ public class DriverMain {
         AnswerRepository answerRepository = new AnswerRepository();
 
         // Inicializar servicios y controladores inyectando servicio con repositorio
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
         UserController userController = new UserController(userService);
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);

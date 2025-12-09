@@ -55,6 +55,16 @@
                 <CheckBox fx:id="showPasswordCheck" text="Mostrar contraseñas" onAction="#toggleRegisterPasswords" textFill="gray"/>
             </HBox>
 
+            <!-- Pregunta de Seguridad -->
+            <TextField fx:id="securityQuestionField"
+                    promptText="Introduce tu pregunta de seguridad"
+                    styleClass="input-field"/>
+
+            <!-- Respuesta de Seguridad -->
+            <TextField fx:id="securityAnswerField"
+                    promptText="Introduce la respuesta de seguridad"
+                    styleClass="input-field"/>
+
             <!-- Botón Registro -->
             <Button onAction="#handleRegister" styleClass="register-button" text="REGISTRARSE">
                 <VBox.margin>
