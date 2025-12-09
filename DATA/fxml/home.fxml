@@ -20,14 +20,14 @@
 
             <!-- Perfil -->
             <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
-                <Label fx:id="avatarLabel" alignment="CENTER" text="FN" styleClass="avatar-circle"/>
-                <Label fx:id="usernameLabel" text="Felipe Núñez" styleClass="username-text"/>
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
             </HBox>
 
             <!-- Navegación -->
             <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
                 <VBox.margin>
-                    <Insets top="30.0"/>
+                    <Insets top="35.0"/>
                 </VBox.margin>
 
                 <!-- Botones que ocupan el máximo ancho posible y alineados a la izquierda -->
@@ -65,78 +65,55 @@
 
             <!-- Top Bar -->
             <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
-                <padding>
-                    <Insets bottom="15" left="30" right="30" top="15"/>
-                </padding>
+
                 <HBox alignment="CENTER_LEFT" styleClass="search-box">
                     <Region styleClass=" icon-search"/>
                     <TextField fx:id="searchField" promptText="Buscar encuestas..." HBox.hgrow="ALWAYS"/>
                 </HBox>
                 <Region HBox.hgrow="ALWAYS"/>
-                <!-- Usamos ComboBox para los menús desplegables -->
                 <ComboBox fx:id="filterCombo" promptText="Filtrar por" styleClass="filter-combo"/>
                 <ComboBox fx:id="sortCombo" promptText="Ordenar por" styleClass="filter-combo"/>
             </HBox>
 
             <!-- Scroll con Lista -->
-            <ScrollPane fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
-                <content>
-                    <VBox spacing="20">
-                        <padding>
-                            <Insets bottom="30" left="30" right="30" top="30"/>
-                        </padding>
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+                <VBox spacing="20">
 
-                        <!-- CABECERA DE TABLA -->
-                        <HBox alignment="CENTER_LEFT" styleClass="table-header">
-                            <!-- Los HBox.hgrow y minWidth deben coincidir con las celdas de las cards -->
-                            <Label text="ENCUESTA / AUTOR" styleClass="th-label" HBox.hgrow="ALWAYS"
-                                   maxWidth="Infinity"/>
+                    <!-- CABECERA DE TABLA -->
+                    <HBox alignment="CENTER_LEFT" styleClass="table-header" maxWidth="Infinity"  HBox.hgrow="ALWAYS" >
+                        <!-- Los HBox.hgrow y minWidth deben coincidir con las celdas de las cards -->
+                        <Label text="ENCUESTA / AUTOR" styleClass="th-label"
+                               minWidth="250" maxWidth="Infinity"/>
 
-                            <!-- Divisor simulado (espacio) -->
-                            <Region styleClass="header-spacer"/>
 
-                            <Label text="VISTAS" styleClass="th-label" minWidth="100" alignment="CENTER"/>
-                            <Region styleClass="header-spacer"/>
-                            <Label text="VALORACIÓN" styleClass="th-label" minWidth="140" alignment="CENTER"/>
-                            <Region styleClass="header-spacer"/>
-                            <Label text="FECHA" styleClass="th-label" minWidth="120" alignment="CENTER"/>
-                        </HBox>
 
-                        <!-- LISTA DE ENCUESTAS (VBOX) -->
-                        <VBox fx:id="surveysContainer" spacing="15">
-                            <!-- AQUÍ SE INYECTAN LAS FILAS -->
-                        </VBox>
+                        <Label text="VISTAS" styleClass="th-label" minWidth="70" alignment="CENTER" />
 
-                        <!-- Empty State -->
-                        <VBox fx:id="emptyStateBox" alignment="CENTER" spacing="10" visible="false" managed="false">
-                            <padding>
-                                <Insets top="50"/>
-                            </padding>
-                            <Region styleClass="icon-large, icon-search"/>
-                            <Label text="No se encontraron encuestas" styleClass="empty-title"/>
-                            <Label text="Intenta ajustar tus filtros de búsqueda" styleClass="empty-subtitle"/>
-                        </VBox>
+                        <Label text="VALORACIÓN" styleClass="th-label" minWidth="150" alignment="CENTER"/>
 
-                        <!-- Paginación -->
-                        <HBox alignment="CENTER" spacing="5" styleClass="pagination-container">
-                            <Button text="←" styleClass="page-btn"/>
-                            <Button text="1" styleClass="page-btn, page-btn-active"/>
-                            <Button text="2" styleClass="page-btn"/>
-                            <Button text="→" styleClass="page-btn"/>
-                        </HBox>
+                        <Label text="FECHA" styleClass="th-label" minWidth="120" alignment="CENTER"/>
+                    </HBox>
+
+                    <!-- LISTA DE ENCUESTAS (VBOX) -->
+                    <VBox fx:id="surveysContainer" spacing="15">
+                        <!-- CARDS DE ENCUESTAS -->
                     </VBox>
-                </content>
+
+                    <!-- Empty State cuándo no haya encuestas -->
+                    <VBox fx:id="emptyStateBox" styleClass="empty-state-box" alignment="CENTER" spacing="10" visible="false" managed="false">
+                        <Label text="No se encontraron encuestas" styleClass="empty-title"/>
+                        <Label text="Intenta ajustar tus filtros de búsqueda" styleClass="empty-subtitle"/>
+                    </VBox>
+
+                    <!-- Paginación -->
+                    <HBox alignment="CENTER" spacing="5" styleClass="pagination-container">
+                        <Button text="←" styleClass="page-btn"/>
+                        <Button text="1" styleClass="page-btn, page-btn-active"/>
+                        <Button text="→" styleClass="page-btn"/>
+                    </HBox>
+                </VBox>
             </ScrollPane>
         </VBox>
     </center>
-    <!--
-        <bottom>
-            <HBox alignment="CENTER" styleClass="footer" BorderPane.alignment="CENTER">
-                <padding>
-                    <Insets bottom="10" top="10"/>
-                </padding>
-                <Label text="K-Surveys © 2025" textFill="#999999"/>
-            </HBox>
-        </bottom>
-        -->
+
 </BorderPane>

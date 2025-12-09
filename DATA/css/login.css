@@ -53,7 +53,7 @@
 
 .input-field:focused {
     -fx-background-color: white;
-    -fx-border-color: #2a5298; /* morado */
+    -fx-border-color: #2a5298; /* azul */
 }
 
 
@@ -98,12 +98,10 @@
 
 /* Estilo de los Hyperlinks */
 .hyperlink {
-    -fx-text-fill: #2a5298; /* morado */
+    -fx-text-fill: #2a5298; /* azul */
     -fx-border-color: transparent;
-    -fx-underline: false;
-    -fx-font-weight: bold;
 }
 .hyperlink:focused, .hyperlink:hover{
-    -fx-underline: true;
+    -fx-font-weight: bold;
     -fx-border-width: 0 0 2 0;
 }

@@ -23,11 +23,11 @@
 .avatar-circle {
     -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-background-radius: 50%;
-    -fx-min-width: 40px;
-    -fx-min-height: 40px;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
     -fx-text-fill: white;
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
 }
 
 .username-text {
@@ -44,7 +44,7 @@
 .nav-btn {
     -fx-background-color: transparent;
     -fx-text-fill: rgba(255, 255, 255, 0.8);
-    -fx-font-size: 14px;
+    -fx-font-size: 18px;
     -fx-padding: 10 15;
 }
 
@@ -119,12 +119,13 @@
 .top-bar {
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 5, 0, 0, 2);
+    -fx-padding: 15 30;
 }
 
 .search-box {
     -fx-background-color: #f1f3f5;
     -fx-background-radius: 20;
-    -fx-padding: 5 15;
+    -fx-padding: 5 100;
 }
 
 .search-box .text-field {
@@ -139,7 +140,6 @@
     -fx-border-radius: 6;
     -fx-background-radius: 6;
     -fx-padding: 2;
-    /* Ajuste para el texto interno */
 }
 
 .filter-combo:hover {
@@ -147,7 +147,40 @@
 }
 
 /* SCROLL PANE DE ENCUESTAS */
-/* Fila de la Encuesta (Card) */
+.scroll-pane{
+    -fx-padding: 30;
+}
+/* CABECERA DE TABLA */
+.table-header {
+    -fx-padding: 0 20;
+    -fx-border-color: transparent transparent #ccc transparent;
+    /* Línea visible */
+    -fx-border-width: 0 0 1 0;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.th-label {
+    -fx-text-fill: #888;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+
+.empty-state-box{
+    -fx-padding: 100
+}
+.empty-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #888;
+}
+
+.empty-subtitle {
+    -fx-font-size: 20px;
+    -fx-text-fill: #aaa;
+}
+
+/* Estilos cards de encuestas */
 .survey-card {
     -fx-background-color: white;
     -fx-background-radius: 8;
@@ -165,30 +198,40 @@
     -fx-border-radius: 8;
 }
 
+
 /* Textos dentro de la fila */
-.row-title {
+.survey-title {
     -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-text-fill: #333;
+    -fx-wrap-text: true;
 }
 
-.row-author {
+.survey-creator {
     -fx-font-size: 12px;
     -fx-text-fill: #999;
+    -fx-wrap-text: true;
+}
+
+.col-text{
+-fx-text-fill: #666; -fx-font-size: 13px;
+-fx-wrap-text: true;
+}
+
+.col{
+    -fx-padding: 0 5;
 }
 
 /* Divisor Vertical entre columnas */
 .v-divider {
-    -fx-min-width: 1px;
-    -fx-pref-width: 1px;
-    -fx-max-width: 1px;
-    -fx-min-height: 30px;
+    -fx-min-width: 2px;
+    -fx-min-height: 25px;
     -fx-background-color: #e0e0e0;
-    -fx-margin: 0 10px;
+
 }
 
-/* Iconos SVG pequeños (Ojo, Calendario) */
-.icon-small {
+/* Iconos Ojo, Calendario */
+.col-icon {
     -fx-fill: #aaa;
     -fx-scale-x: 0.8;
     -fx-scale-y: 0.8;
@@ -215,9 +258,4 @@
     -fx-background-color: #2a5298;
     -fx-text-fill: white;
     -fx-border-color: #2a5298;
-}
-
-.footer {
-    -fx-background-color: white;
-    -fx-border-color: #eee transparent transparent transparent;
 }

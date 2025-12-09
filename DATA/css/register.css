@@ -96,12 +96,10 @@
 
 /* Estilo de los Hyperlinks */
 .hyperlink {
-    -fx-text-fill: #2a5298; /* morado */
+    -fx-text-fill: #2a5298; /* azul */
     -fx-border-color: transparent;
-    -fx-underline: false;
-    -fx-font-weight: bold;
 }
-
-.hyperlink:hover, .hyperlink:focused {
-    -fx-underline: true;
+.hyperlink:focused, .hyperlink:hover{
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 2 0;
 }

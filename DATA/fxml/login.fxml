@@ -21,7 +21,7 @@
 
         <!-- CARD DE LOGIN -->
         <VBox alignment="CENTER" spacing="15" styleClass="login-card">
-            <Label styleClass="titulo" text="K-Surveys"/>
+            <Label styleClass="titulo" text="K-SURVEYS"/>
             <Label styleClass="subtitulo" text="Introduce tus datos para iniciar sesión">
                 <VBox.margin>
                     <Insets bottom="20.0"/>
