@@ -29,7 +29,7 @@ public class Main extends Application {
         SurveyRepository surveyRepository = new SurveyRepository();
         
         // 2. Service: Contains the business logic.
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(userRepository, surveyRepository, new data.ResponseRepository());
 
         // 3. Controller: Connects the UI to the business logic.
         UserController userController = new UserController(userService);

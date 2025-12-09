@@ -48,5 +48,14 @@
     "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "arnau": {
+    "USERNAME": "arnau",
+    "email": "arnau@gmail.com",
+    "passwordHash": "496a8a4db25874f4c6de4758a57b78d778c407576e2953f4fca8e8a788ff4247",
+    "securityQuestion": "Pregunta de seguridad por defecto",
+    "securityAnswer": "Respuesta de seguridad por defecto",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }
