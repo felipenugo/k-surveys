@@ -53,6 +53,11 @@
 
                 <!-- Botón de Cerrar Sesión-->
                 <Region VBox.vgrow="ALWAYS"/>
+                <Button styleClass="nav-btn-danger, icon, icon-delete" 
+                text="Eliminar Cuenta" 
+                maxWidth="Infinity"
+                alignment="BASELINE_LEFT"
+                onAction="#handleDeleteAccount"/>
                 <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
                         alignment="BASELINE_LEFT" onAction="#handleLogout"/>
             </VBox>

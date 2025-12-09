@@ -62,6 +62,18 @@
     -fx-border-width: 0 0 0 3;
 }
 
+.nav-btn-danger {
+    -fx-background-color: #ff4b4b;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+}
+
+.nav-btn-danger:hover {
+    -fx-background-color: #e63939;
+}
+
+
 /* BOTÓN CREAR */
 .create-btn {
     -fx-background-color: white;

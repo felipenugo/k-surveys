@@ -169,6 +169,26 @@ public class UserController {
         return userService.deleteUserok(username);
     }
 
+    /**
+     * Elimina la cuenta del usuario actualmente autenticado.
+     *
+     * @return true si se eliminó correctamente.
+     */
+    public boolean deleteCurrentUser() {
+        if (!loggedIn)
+            throw new LogInException("No hay usuario autenticado.");
+
+        String username = usernameLoggedIn;
+
+        boolean ok = userService.deleteUserok(username);
+
+        if (ok) {
+            loggedIn = false;
+            usernameLoggedIn = null;
+        }
+
+        return ok;
+    }
     
     public String startPasswordRecovery(String username) {
         username = username.trim();
