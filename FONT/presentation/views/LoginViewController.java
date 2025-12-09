@@ -76,6 +76,6 @@ public class LoginViewController {
     @FXML
     public void goToResetPassword(ActionEvent e)
     {
-        sceneManager.showRegister(); // poner la vista de reset password
+        sceneManager.showPasswordRecovery(); // poner la vista de reset password
     }
 }

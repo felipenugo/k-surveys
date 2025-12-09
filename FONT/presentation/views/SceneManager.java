@@ -106,6 +106,52 @@ public class SceneManager {
 
     }
 
+    public void showPasswordRecovery() {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step1.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep1Controller controller =
+                    new ResetPasswordStep1Controller(userController, this);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 1");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordRecoveryStep2(String username, String question) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step2.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep2Controller controller =
+                    new ResetPasswordStep2Controller(userController, this, username, question);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 2");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void showPasswordRecoveryStep3(String username) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/reset_password_step3.fxml"));
+            checkLoaderAddress(loader);
+
+            ResetPasswordStep3Controller controller =
+                    new ResetPasswordStep3Controller(userController, this, username);
+            loader.setController(controller);
+
+            finalizeScene(loader, "RECUPERAR CONTRASEÑA — PASO 3");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
     public void showCreateSurvey() {
         this.primaryStage.setTitle("Crear Encuesta");
     }
