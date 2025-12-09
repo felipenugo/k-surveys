@@ -281,4 +281,7 @@ public class User {
         return this.respondedSurveysId.containsKey(surveyId) && this.respondedSurveysId.get(surveyId).contains(responseId);
     }
 
+    public Set<String> getRespondedSurveysIds() {
+        return this.respondedSurveysId.keySet();
+    }
 }

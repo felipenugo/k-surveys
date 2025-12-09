@@ -80,6 +80,12 @@ public class UserController {
      */
 
     public void registerUser(String username, String email, String password, String securityQuestion, String securityAnswer) {
+        username = username.trim();
+        email = email.trim();
+        password = password.trim();
+        securityQuestion = securityQuestion.trim();
+        securityAnswer = securityAnswer.trim();
+
         userService.registerUser(username, email, password, securityQuestion, securityAnswer);
     }
 
@@ -94,6 +100,8 @@ public class UserController {
      * @throws LogInException si las credenciales son incorrectas o ya hay una sesión activa
      */
     public void loginUser(String username, String password) {
+        username = username.trim();
+        password = password.trim();
         if (this.loggedIn) {
             throw new LogInException("El usuario " + this.usernameLoggedIn + " ya ha iniciado sesión. Por favor, cierra sesión antes de iniciar sesión con otra cuenta.");
         }
@@ -157,54 +165,30 @@ public class UserController {
      * @param username nombre del usuario a eliminar
      */
 
-    public void deleteUser(String username) {
-        boolean success = userService.deleteUser(username);
-        if (success)
-            System.out.println("El usuario " + username + " ha sido eliminado con éxito.");
-        else
-            System.out.println("El usuario " + username + " no existe.");
-    }
-     /*
-     * Métodos adicionales (comentados actualmente):
-     * - updateUserEmail(...)
-     * - changePassword(...)
-     * 
-     * En versiones futuras del sistema, estos métodos permitirán al usuario modificar
-     * su correo electrónico o contraseña de forma segura, delegando la lógica de negocio
-     * al UserService.
-     */
-
-
-    public void updateUserEmail(String username, String oldEmail, String newEmail) {
-        String result = userService.updateUserEmail(username, oldEmail, newEmail);
-        switch (result) {
-            case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
-            case "incorrect_email" -> System.out.println("El email " + oldEmail + " es incorrecto.");
-            case "same_email" -> System.out.println("El nuevo email es el mismo que el anterior");
-            case "success" -> System.out.println("El nuevo email del usuario " + username + " es " + newEmail + ".");
-        }
+    public boolean deleteUserok(String username) {
+        return userService.deleteUserok(username);
     }
 
-    public void changePassword(String username, String email, String password, String newPassword) {
-        String result = userService.changePassword(username, email, password, newPassword);
-        switch (result) {
-            case "user_not_exists" -> System.out.println("El usuario " + username + " no existe.");
-            case "incorrect_email" -> System.out.println("El email " + email + " es incorrecto.");
-            case "incorrect_password" -> System.out.println("La contraseña " + password + "no existe.");
-            case "same_password" -> System.out.println("La nueva contraseña es la misma que la anterior");
-            case "success" ->
-                    System.out.println("La nueva contraseña del usuario " + username + " es " + newPassword + ".");
-        }
-    }
+    
     public String startPasswordRecovery(String username) {
-    return userService.startPasswordRecovery(username);
+        username = username.trim();
+        return userService.startPasswordRecovery(username);
     }
 
     public boolean verifySecurityAnswer(String username, String answer) {
+        username = username.trim();
+        answer = answer.trim();
         return userService.verifySecurityAnswer(username, answer);
     }
 
     public void resetPassword(String username, String newPassword) {
+        username = username.trim();
+        newPassword = newPassword.trim();
         userService.resetPassword(username, newPassword);
     }
+
+    public void validatePasswordStrength(String password) {
+        userService.validatePasswordStrength(password);
+    }
+
 }

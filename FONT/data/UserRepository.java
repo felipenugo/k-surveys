@@ -280,4 +280,13 @@ public class UserRepository {
         return users.get(username).getResponseIdsForSurvey(surveyId);
     }
 
+    /**
+     * Obtiene todos los IDs de encuestas respondidas por un usuario.
+     *
+     * @param username nombre de usuario
+     * @return conjunto con los IDs de encuestas respondidas
+     */
+    public Set<String> getAllRespondedSurveyIds(String username) {
+        return users.get(username).getRespondedSurveysIds();
+    }
 }

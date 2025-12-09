@@ -27,6 +27,7 @@ public class AppDriver {
         System.out.println("2. CREAR ENCUESTA");
         System.out.println("3. EDITAR ENCUESTAS BORRADOR");
         System.out.println("4. CERRAR SESIÓN");
+        System.out.println("5. ELIMINAR CUENTA");
         System.out.print("Opción: ");
         int option = sc.nextInt();
         sc.nextLine(); // Consumir el salto de línea
@@ -51,6 +52,10 @@ public class AppDriver {
                         sessionDriver.logout();
                         exitApp = true;
                     }
+                    case 5 -> {
+                        sessionDriver.driverDeleteAccount();
+                        exitApp = true;
+                    }
                     default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
                 }
             } catch (java.util.NoSuchElementException e) {
@@ -71,7 +76,7 @@ public class AppDriver {
         data.QuestionRepository questionRepository = new data.QuestionRepository();
         
         // Inicializar controladores básicos
-        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, responseRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         
         // Inicializar servicios (necesitan UserController)

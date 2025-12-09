@@ -267,7 +267,7 @@ public class EditorMultipleChoiceOptionsDriver {
         data.SurveyRepository surveyRepository = new data.SurveyRepository();
         
         // Inicializar servicios
-        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, new data.ResponseRepository());
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
         domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);

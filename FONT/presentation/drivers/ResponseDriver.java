@@ -105,7 +105,7 @@ public class ResponseDriver {
         data.QuestionRepository questionRepository = new data.QuestionRepository();
         
         // Inicializar servicios
-        domain.service.UserService userService = new domain.service.UserService(userRepository);
+        domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, responseRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
         domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
         domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
