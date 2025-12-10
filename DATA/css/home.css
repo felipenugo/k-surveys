@@ -247,15 +247,62 @@
 .star.half { -fx-fill: #ffc107; -fx-opacity: 0.5; } /* Amarillo medio */
 
 /* Paginación */
-.page-btn {
+
+
+.pagination {
+    -fx-padding: 20 0 0 0; /* Espacio arriba */
+}
+
+
+/* Estilo base de los botones numéricos (ToggleButtons) */
+.pagination .number-button {
     -fx-background-color: white;
     -fx-border-color: #ddd;
     -fx-border-radius: 4;
+    -fx-background-radius: 4;
     -fx-min-width: 30px;
+    -fx-min-height: 30px;
+    -fx-text-fill: #555;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-background-insets: 0;
 }
 
-.page-btn-active {
+/* Hover en los números */
+.pagination .number-button:hover {
+    -fx-border-color: #2a5298;
+    -fx-text-fill: #2a5298;
+}
+
+/* Estilo del número SELECCIONADO (Activo) */
+.pagination .number-button:selected {
     -fx-background-color: #2a5298;
     -fx-text-fill: white;
     -fx-border-color: #2a5298;
 }
+
+/* Flechas de navegación (Izquierda/Derecha) */
+.pagination .left-arrow-button,
+.pagination .right-arrow-button {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-min-width: 30px;
+    -fx-min-height: 30px;
+}
+
+.pagination .left-arrow-button:hover,
+.pagination .right-arrow-button:hover {
+    -fx-border-color: #2a5298;
+    -fx-background-color: #f8f9fa;
+}
+
+/* Iconos de las flechas (son regiones internas) */
+.pagination .left-arrow,
+.pagination .right-arrow {
+    -fx-background-color: #555; /* Color de la flecha */
+    -fx-max-width: 8px;
+    -fx-max-height: 8px;
+}
+

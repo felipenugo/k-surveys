@@ -107,12 +107,8 @@
                     </VBox>
 
                     <!-- Paginación -->
-                    <HBox alignment="CENTER" spacing="5" styleClass="pagination-container">
-                        <Button text="←" styleClass="page-btn"/>
-                        <Button fx:id="currentPageBtn" text="" styleClass="page-btn, page-btn-active"/>
-                        <Button text="→" styleClass="page-btn"/>
-                        <Pagination fx:id="pagination"   />
-                    </HBox>
+
+                        <Pagination fx:id="pagination" styleClass="pagination" />
                 </VBox>
             </ScrollPane>
         </VBox>

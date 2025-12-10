@@ -186,7 +186,6 @@ public class HomeViewController implements Initializable {
      */
     private void updatePagination() {
         pagination.setPageCount(getNumPages());
-
     }
 
     /**
