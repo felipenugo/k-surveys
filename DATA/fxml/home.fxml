@@ -37,11 +37,13 @@
                         alignment="BASELINE_LEFT" onAction="#goToHome"/>
 
                 <!-- Botón de Mis Encuestas -->
-                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey" text="Mis Encuestas" maxWidth="Infinity"
+                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey" text="Mis Encuestas"
+                        maxWidth="Infinity"
                         alignment="BASELINE_LEFT" onAction="#goToMySurveys"/>
 
                 <!-- Botón de Mis Borradores -->
-                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores" maxWidth="Infinity"
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores"
+                        maxWidth="Infinity"
                         alignment="BASELINE_LEFT" onAction="#goToMyDrafts"/>
 
                 <!-- Botón de Crear Encuesta -->
@@ -64,9 +66,8 @@
     <center>
         <VBox styleClass="content-area" BorderPane.alignment="CENTER">
 
-            <!-- Top Bar -->
+            <!-- Búsqueda, Filtros y Ordenamiento -->
             <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
-
                 <HBox alignment="CENTER_LEFT" styleClass="search-box">
                     <Region styleClass=" icon-search"/>
                     <TextField fx:id="searchField" promptText="Buscar encuestas..." HBox.hgrow="ALWAYS"/>
@@ -81,17 +82,12 @@
                 <VBox spacing="20">
 
                     <!-- CABECERA DE TABLA -->
-                    <HBox alignment="CENTER_LEFT" styleClass="table-header" maxWidth="Infinity"  HBox.hgrow="ALWAYS" >
+                    <HBox alignment="CENTER_LEFT" styleClass="table-header" maxWidth="Infinity" HBox.hgrow="ALWAYS">
                         <!-- Los HBox.hgrow y minWidth deben coincidir con las celdas de las cards -->
                         <Label text="ENCUESTA / AUTOR" styleClass="th-label"
                                minWidth="250" maxWidth="Infinity"/>
-
-
-
-                        <Label text="VISTAS" styleClass="th-label" minWidth="70" alignment="CENTER" />
-
+                        <Label text="VISTAS" styleClass="th-label" minWidth="70" alignment="CENTER"/>
                         <Label text="VALORACIÓN" styleClass="th-label" minWidth="150" alignment="CENTER"/>
-
                         <Label text="FECHA" styleClass="th-label" minWidth="120" alignment="CENTER"/>
                     </HBox>
 
@@ -101,14 +97,14 @@
                     </VBox>
 
                     <!-- Empty State cuándo no haya encuestas -->
-                    <VBox fx:id="emptyStateBox" styleClass="empty-state-box" alignment="CENTER" spacing="10" visible="false" managed="false">
+                    <VBox fx:id="emptyStateBox" styleClass="empty-state-box" alignment="CENTER" spacing="10"
+                          visible="false" managed="false">
                         <Label text="No se encontraron encuestas" styleClass="empty-title"/>
                         <Label text="Intenta ajustar tus filtros de búsqueda" styleClass="empty-subtitle"/>
                     </VBox>
 
                     <!-- Paginación -->
-
-                        <Pagination fx:id="pagination" styleClass="pagination" />
+                    <Pagination fx:id="pagination" styleClass="pagination"/>
                 </VBox>
             </ScrollPane>
         </VBox>

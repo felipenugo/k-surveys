@@ -167,7 +167,7 @@
 
 
 .empty-state-box{
-    -fx-padding: 100
+    -fx-padding: 100 80
 }
 .empty-title {
     -fx-font-size: 28px;
@@ -264,7 +264,6 @@
     -fx-min-height: 30px;
     -fx-text-fill: #555;
     -fx-font-size: 13px;
-    -fx-cursor: hand;
     -fx-background-insets: 0;
 }
 
@@ -290,7 +289,8 @@
     -fx-background-radius: 4;
     -fx-min-width: 30px;
     -fx-min-height: 30px;
-}
+    -fx-background-insets: 0; /* Quita el borde interno */
+    }
 
 .pagination .left-arrow-button:hover,
 .pagination .right-arrow-button:hover {
