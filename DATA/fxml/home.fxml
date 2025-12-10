@@ -53,9 +53,15 @@
                         <Insets bottom="15.0"/>
                     </VBox.margin>
                 </Button>
-
-                <!-- Botón de Cerrar Sesión-->
+                <!-- empujar el contenido abajo del todo -->
                 <Region VBox.vgrow="ALWAYS"/>
+                <!-- Botón eliminar cuenta -->
+                <Button styleClass="nav-btn-danger, icon, icon-delete"
+                text="Eliminar Cuenta"
+                maxWidth="Infinity"
+                alignment="BASELINE_LEFT"
+                onAction="#handleDeleteAccount"/>
+                <!-- Botón de Cerrar Sesión-->
                 <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
                         alignment="BASELINE_LEFT" onAction="#handleLogout"/>
             </VBox>

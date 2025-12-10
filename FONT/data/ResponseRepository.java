@@ -253,5 +253,8 @@ public class ResponseRepository {
         return Arrays.asList(responses.get(surveyId).get(responseId).getANSWERS());
     }
 
-
+    public void deleteResponsesBySurvey(String surveyId) {
+        responses.remove(surveyId);
+        saveResponsesToJson();
+    }
 }
