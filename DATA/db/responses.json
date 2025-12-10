@@ -1,0 +1,18 @@
+{
+  "118": {
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "118",
+      "RESPONDER_USERNAME": "felipe",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    }
+  }
+}

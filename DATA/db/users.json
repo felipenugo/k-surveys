@@ -38,7 +38,11 @@
       "108",
       "109"
     ],
-    "respondedSurveysId": {}
+    "respondedSurveysId": {
+      "118": [
+        "1"
+      ]
+    }
   },
   "felipe1": {
     "USERNAME": "felipe1",

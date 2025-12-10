@@ -4,21 +4,37 @@
     "title": "Preferencias de Software 2025",
     "description": "Encuesta sobre las herramientas de desarrollo favoritas.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:00:00.00000000",
-    "PUBLISHED_AT": "2025-12-10T10:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:00:00",
+    "PUBLISHED_AT": "2025-12-10T10:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.5,
     "views": 150,
     "questions": [
       {
+        "minSelections": 1,
+        "maxSelections": 1,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "100",
+            "optionText": "IntelliJ IDEA"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "100",
+            "optionText": "VS Code"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "100",
+            "optionText": "Eclipse"
+          }
+        ],
         "questionIndex": 0,
         "SURVEY_ID": "100",
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Cuál es tu IDE favorito?",
-        "isRequired": true,
-        "minSelections": 1,
-        "maxSelections": 1,
-        "options": ["IntelliJ IDEA", "VS Code", "Eclipse"]
+        "isRequired": true
       },
       {
         "questionIndex": 1,
@@ -34,8 +50,8 @@
     "title": "Evaluación del Sidebar",
     "description": "Feedback sobre la usabilidad y diseño del nuevo sidebar.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:05:00.00000000",
-    "PUBLISHED_AT": "2025-12-10T11:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:05:00",
+    "PUBLISHED_AT": "2025-12-10T11:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
     "views": 0,
@@ -54,8 +70,8 @@
     "title": "Satisfacción con JavaFX",
     "description": "Mide el nivel de satisfacción con el desarrollo de UI en JavaFX.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:10:00.00000000",
-    "PUBLISHED_AT": "2025-12-08T22:30:00.00000000",
+    "CREATED_AT": "2025-12-08T20:10:00",
+    "PUBLISHED_AT": "2025-12-08T22:30:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 3.8,
     "views": 95,
@@ -74,8 +90,8 @@
     "title": "Hábitos de Code Review",
     "description": "Investigación sobre la frecuencia y herramientas usadas para Code Review.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:15:00.00000000",
-    "PUBLISHED_AT": "2025-12-08T18:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:15:00",
+    "PUBLISHED_AT": "2025-12-08T18:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 4.1,
     "views": 210,
@@ -94,21 +110,37 @@
     "title": "Preferencias de Diseño UI/UX",
     "description": "Estilos de diseño preferidos: Material, Flat o Neumorfismo.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:20:00.00000000",
-    "PUBLISHED_AT": "2025-12-07T12:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:20:00",
+    "PUBLISHED_AT": "2025-12-07T12:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
     "views": 0,
     "questions": [
       {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "104",
+            "optionText": "Material Design"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "104",
+            "optionText": "Flat Design"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "104",
+            "optionText": "Neumorfismo"
+          }
+        ],
         "questionIndex": 0,
         "SURVEY_ID": "104",
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué estilo de diseño prefieres?",
-        "isRequired": true,
-        "minSelections": 1,
-        "maxSelections": 2,
-        "options": ["Material Design", "Flat Design", "Neumorfismo"]
+        "isRequired": true
       }
     ]
   },
@@ -117,8 +149,8 @@
     "title": "Uso de Git en el Proyecto",
     "description": "Frecuencia de comandos Git avanzados.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:25:00.00000000",
-    "PUBLISHED_AT": "2025-12-09T10:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:25:00",
+    "PUBLISHED_AT": "2025-12-09T10:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.9,
     "views": 300,
@@ -137,8 +169,8 @@
     "title": "Tiempo de Desarrollo",
     "description": "Tiempo invertido en la fase de prototipado.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:30:00.00000000",
-    "PUBLISHED_AT": "2025-12-08T15:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:30:00",
+    "PUBLISHED_AT": "2025-12-08T15:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.0,
     "views": 50,
@@ -157,8 +189,8 @@
     "title": "Necesidades de Testing",
     "description": "Herramientas de unit testing más usadas.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:35:00.00000000",
-    "PUBLISHED_AT": "2025-12-08T09:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:35:00",
+    "PUBLISHED_AT": "2025-12-08T09:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
     "views": 0,
@@ -177,21 +209,42 @@
     "title": "Experiencia con Servicios REST",
     "description": "Grado de comodidad al consumir APIs REST.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:40:00.00000000",
-    "PUBLISHED_AT": "2025-12-09T09:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:40:00",
+    "PUBLISHED_AT": "2025-12-09T09:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.7,
     "views": 180,
     "questions": [
       {
+        "minSelections": 1,
+        "maxSelections": 1,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "108",
+            "optionText": "GET"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "108",
+            "optionText": "POST"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "108",
+            "optionText": "PUT"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "108",
+            "optionText": "DELETE"
+          }
+        ],
         "questionIndex": 0,
         "SURVEY_ID": "108",
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué método HTTP usas más?",
-        "isRequired": true,
-        "minSelections": 1,
-        "maxSelections": 1,
-        "options": ["GET", "POST", "PUT", "DELETE"]
+        "isRequired": true
       }
     ]
   },
@@ -200,8 +253,8 @@
     "title": "Documentación y Javadoc",
     "description": "Nivel de prioridad de la documentación de código.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-08T20:45:00.00000000",
-    "PUBLISHED_AT": "2025-12-08T10:00:00.00000000",
+    "CREATED_AT": "2025-12-08T20:45:00",
+    "PUBLISHED_AT": "2025-12-08T10:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
     "views": 0,
@@ -220,8 +273,8 @@
     "title": "Impacto de la IA en la Programación",
     "description": "Opiniones sobre Copilot y ChatGPT en el desarrollo.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-05T10:00:00.00000000",
-    "PUBLISHED_AT": "2025-12-05T10:00:00.00000000",
+    "CREATED_AT": "2025-12-05T10:00:00",
+    "PUBLISHED_AT": "2025-12-05T10:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 5.0,
     "views": 500,
@@ -240,8 +293,8 @@
     "title": "Uso de Microservicios",
     "description": "Frecuencia y herramientas para arquitecturas de microservicios.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-12-01T08:00:00.00000000",
-    "PUBLISHED_AT": "2025-12-01T08:00:00.00000000",
+    "CREATED_AT": "2025-12-01T08:00:00",
+    "PUBLISHED_AT": "2025-12-01T08:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 2.5,
     "views": 100,
@@ -260,21 +313,37 @@
     "title": "Preferencias de Bases de Datos",
     "description": "MongoDB vs PostgreSQL.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-11-28T14:30:00.00000000",
-    "PUBLISHED_AT": "2025-11-29T14:30:00.00000000",
+    "CREATED_AT": "2025-11-28T14:30:00",
+    "PUBLISHED_AT": "2025-11-29T14:30:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.2,
     "views": 75,
     "questions": [
       {
+        "minSelections": 1,
+        "maxSelections": 3,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "112",
+            "optionText": "PostgreSQL"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "112",
+            "optionText": "MongoDB"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "112",
+            "optionText": "MySQL"
+          }
+        ],
         "questionIndex": 0,
         "SURVEY_ID": "112",
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Base de datos favorita?",
-        "isRequired": true,
-        "minSelections": 1,
-        "maxSelections": 3,
-        "options": ["PostgreSQL", "MongoDB", "MySQL"]
+        "isRequired": true
       }
     ]
   },
@@ -283,8 +352,8 @@
     "title": "Frameworks Frontend",
     "description": "React, Angular o Vue?",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-11-20T11:00:00.00000000",
-    "PUBLISHED_AT": "2025-11-20T11:00:00.00000000",
+    "CREATED_AT": "2025-11-20T11:00:00",
+    "PUBLISHED_AT": "2025-11-20T11:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
     "views": 0,
@@ -303,8 +372,8 @@
     "title": "Horarios de Trabajo",
     "description": "Preferencias sobre flexibilidad y trabajo remoto.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-11-15T09:00:00.00000000",
-    "PUBLISHED_AT": "2025-11-16T09:00:00.00000000",
+    "CREATED_AT": "2025-11-15T09:00:00",
+    "PUBLISHED_AT": "2025-11-16T09:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.9,
     "views": 60,
@@ -323,8 +392,8 @@
     "title": "Feedback de Diseño Gráfico",
     "description": "Opiniones sobre la nueva paleta de colores.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-11-10T16:00:00.00000000",
-    "PUBLISHED_AT": "2025-11-10T16:00:00.00000000",
+    "CREATED_AT": "2025-11-10T16:00:00",
+    "PUBLISHED_AT": "2025-11-10T16:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 1.5,
     "views": 90,
@@ -343,21 +412,37 @@
     "title": "Gestión de Errores",
     "description": "Herramientas favoritas para monitoreo de errores.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-11-05T12:00:00.00000000",
-    "PUBLISHED_AT": "2025-11-06T12:00:00.00000000",
+    "CREATED_AT": "2025-11-05T12:00:00",
+    "PUBLISHED_AT": "2025-11-06T12:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.8,
     "views": 120,
     "questions": [
       {
+        "minSelections": 0,
+        "maxSelections": 1,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "116",
+            "optionText": "Sentry"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "116",
+            "optionText": "New Relic"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "116",
+            "optionText": "Loggly"
+          }
+        ],
         "questionIndex": 0,
         "SURVEY_ID": "116",
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué herramienta usas?",
-        "isRequired": true,
-        "minSelections": 0,
-        "maxSelections": 1,
-        "options": ["Sentry", "New Relic", "Loggly"]
+        "isRequired": true
       }
     ]
   },
@@ -366,8 +451,8 @@
     "title": "Recursos de Aprendizaje",
     "description": "Plataformas de cursos online.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-10-30T10:30:00.00000000",
-    "PUBLISHED_AT": "2025-10-30T10:30:00.00000000",
+    "CREATED_AT": "2025-10-30T10:30:00",
+    "PUBLISHED_AT": "2025-10-30T10:30:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
     "views": 0,
@@ -386,11 +471,11 @@
     "title": "Prácticas de Seguridad",
     "description": "Frecuencia de auditorías de seguridad.",
     "CREATOR_USERNAME": "felipe",
-    "CREATED_AT": "2025-10-25T11:00:00.00000000",
-    "PUBLISHED_AT": "2025-10-25T11:00:00.00000000",
+    "CREATED_AT": "2025-10-25T11:00:00",
+    "PUBLISHED_AT": "2025-10-25T11:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.2,
-    "views": 40,
+    "views": 41,
     "questions": [
       {
         "questionIndex": 0,
