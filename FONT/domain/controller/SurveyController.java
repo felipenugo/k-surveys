@@ -191,4 +191,9 @@ public class SurveyController {
     public String generateUniqueSurveyId() {
         return surveyService.generateUniqueSurveyId();
     }
+
+    public void addRating(String surveyId, double rating) {
+        surveyService.addSurveyRating(surveyId, rating);
+    }
+
 }

@@ -2,6 +2,7 @@ package presentation.views;
 
 import domain.controller.ResponseController;
 import domain.controller.UserController;
+import domain.controller.SurveyController;
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
 import javafx.event.ActionEvent;
@@ -24,16 +25,18 @@ public class AnswerSurveyViewController {
     private Survey survey;
     private final ResponseController responseController;
     private final UserController userController;
+    private final SurveyController surveyController;
     private final SceneManager sceneManager;
 
     // Guarda answers: questionIndex -> valor
     private final Map<Integer, Object> answersMap = new HashMap<>();
 
     public AnswerSurveyViewController(ResponseController responseController,
-                                      SceneManager sceneManager, UserController userController) {
+                                      SceneManager sceneManager, UserController userController, SurveyController surveyController) {
         this.responseController = responseController;
         this.sceneManager = sceneManager;
         this.userController = userController;
+        this.surveyController = surveyController;
     }
 
     public void loadSurvey(Survey survey) {
@@ -193,8 +196,15 @@ public class AnswerSurveyViewController {
             // 4 — Incrementar contador
             responseController.incrementResponseCount(survey.getSURVEY_ID());
 
-            // 5 — Volver a home
-            sceneManager.showHome();
+             // 👉 5 — MOSTRAR POPUP DE RATING
+            sceneManager.showRatingPopup(rating -> {
+
+                // Guardar rating en la encuesta
+                surveyController.addRating(survey.getSURVEY_ID(), rating);
+
+                // Volver al home
+                sceneManager.showHome();
+            });
 
         } catch (Exception e) {
             showError(e.getMessage());

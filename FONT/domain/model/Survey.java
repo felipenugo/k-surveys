@@ -34,6 +34,8 @@ public class Survey {
     private SurveyStatus surveyStatus;
     /** Calificación promedio de la encuesta basada en las respuestas recibidas. */
     private double avgRating;
+    private double totalRating = 0.0;
+    private int ratingCount = 0;
     /** Número de veces que la encuesta ha sido vista. */
     private int views;
     /** Lista de preguntas asociadas a la encuesta. */
@@ -163,6 +165,25 @@ public class Survey {
     public double getAvgRating() {
         return avgRating;
     }
+
+    public double getTotalRating() {
+        return totalRating;
+    }
+
+    public int getRatingCount() {
+        return ratingCount;
+    }
+    
+    public double getAverageRating() {
+        if (ratingCount == 0) return 0.0;
+        return totalRating / ratingCount;
+    }
+
+    public void addRating(double rating) {
+        totalRating += rating;
+        ratingCount++;
+    }
+
 
     /**
      * Devuelve el número de vistas de la encuesta.

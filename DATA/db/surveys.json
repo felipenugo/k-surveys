@@ -8,6 +8,8 @@
     "PUBLISHED_AT": "2025-12-08T20:01:30",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.5,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 150,
     "questions": [
       {
@@ -54,6 +56,8 @@
     "PUBLISHED_AT": "2025-12-08T20:05:00",
     "surveyStatus": "DRAFT",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 1,
     "questions": [
       {
@@ -74,7 +78,9 @@
     "PUBLISHED_AT": "2025-12-08T20:11:15",
     "surveyStatus": "PUBLISHED",
     "avgRating": 3.8,
-    "views": 99,
+    "totalRating": 8.0,
+    "ratingCount": 2,
+    "views": 101,
     "questions": [
       {
         "questionIndex": 0,
@@ -94,6 +100,8 @@
     "PUBLISHED_AT": "2025-12-08T20:16:45",
     "surveyStatus": "CLOSED",
     "avgRating": 4.1,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 212,
     "questions": [
       {
@@ -114,6 +122,8 @@
     "PUBLISHED_AT": "2025-12-08T20:20:00",
     "surveyStatus": "DRAFT",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -153,6 +163,8 @@
     "PUBLISHED_AT": "2025-12-08T20:26:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.9,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 302,
     "questions": [
       {
@@ -173,6 +185,8 @@
     "PUBLISHED_AT": "2025-12-08T20:31:30",
     "surveyStatus": "CLOSED",
     "avgRating": 3.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 52,
     "questions": [
       {
@@ -193,6 +207,8 @@
     "PUBLISHED_AT": "2025-12-08T20:35:00",
     "surveyStatus": "DRAFT",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -213,6 +229,8 @@
     "PUBLISHED_AT": "2025-12-08T20:41:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.7,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 180,
     "questions": [
       {
@@ -257,6 +275,8 @@
     "PUBLISHED_AT": "2025-12-08T20:45:00",
     "surveyStatus": "DRAFT",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {

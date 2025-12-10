@@ -8,6 +8,7 @@ import domain.controller.UserController;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 
 import java.io.IOException;
@@ -200,7 +201,7 @@ public class SceneManager {
 
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/answer_survey.fxml"));
             AnswerSurveyViewController controller =
-                    new AnswerSurveyViewController(responseController, this, userController);
+                    new AnswerSurveyViewController(responseController, this, userController, surveyController);
             loader.setController(controller);
 
             Parent root = loader.load();
@@ -231,6 +232,27 @@ public class SceneManager {
         } catch (Exception e) {
             System.err.println("ERROR cargando confirm_leave.fxml: " + e.getMessage());
             e.printStackTrace();
+        }
+    }
+
+    public void showRatingPopup(RatingPopupController.RatingListener listener) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rating_popup.fxml"));
+            Parent root = loader.load();
+
+            RatingPopupController controller = loader.getController();
+            controller.setListener(listener);
+
+            Stage popup = new Stage();
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.setTitle("Valoración");
+            popup.setScene(new Scene(root));
+            popup.setResizable(false);
+            popup.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error cargando popup de valoración: " + e.getMessage());
         }
     }
 }
