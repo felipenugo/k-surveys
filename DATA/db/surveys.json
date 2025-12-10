@@ -1,212 +1,271 @@
 {
-    "100": {
-      "SURVEY_ID": "100",
-      "title": "Preferencias de Software 2025",
-      "description": "Encuesta sobre las herramientas de desarrollo favoritas.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:00:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:01:30.00000000",
-      "surveyStatus": "PUBLISHED",
-      "avgRating": 4.5,
-      "views": 150,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "100",
-          "typeQuestion": "MULTIPLE_CHOICE",
-          "questionText": "¿Cuál es tu IDE favorito?",
-          "isRequired": true,
-          "options": ["IntelliJ IDEA", "VS Code", "Eclipse"]
-        },
-        {
-          "questionIndex": 1,
-          "SURVEY_ID": "100",
-          "typeQuestion": "NUMERICAL",
-          "questionText": "¿Cuántas horas programas a la semana?",
-          "isRequired": false
-        }
-      ]
-    },
-    "101": {
-      "SURVEY_ID": "101",
-      "title": "Evaluación del Sidebar",
-      "description": "Feedback sobre la usabilidad y diseño del nuevo sidebar.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:05:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:05:00.00000000",
-      "surveyStatus": "DRAFT",
-      "avgRating": 0.0,
-      "views": 0,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "101",
-          "typeQuestion": "TEXTUAL",
-          "questionText": "¿Qué cambiarías de la navegación?",
-          "isRequired": true
-        }
-      ]
-    },
-    "102": {
-      "SURVEY_ID": "102",
-      "title": "Satisfacción con JavaFX",
-      "description": "Mide el nivel de satisfacción con el desarrollo de UI en JavaFX.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:10:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:11:15.00000000",
-      "surveyStatus": "PUBLISHED",
-      "avgRating": 3.8,
-      "views": 95,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "102",
-          "typeQuestion": "NUMERICAL",
-          "questionText": "Del 1 al 5, ¿cuán flexible encuentras JavaFX CSS?",
-          "isRequired": true
-        }
-      ]
-    },
-    "103": {
-      "SURVEY_ID": "103",
-      "title": "Hábitos de Code Review",
-      "description": "Investigación sobre la frecuencia y herramientas usadas para Code Review.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:15:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:16:45.00000000",
-      "surveyStatus": "CLOSED",
-      "avgRating": 4.1,
-      "views": 210,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "103",
-          "typeQuestion": "TEXTUAL",
-          "questionText": "¿Cuál es tu herramienta de revisión favorita?",
-          "isRequired": true
-        }
-      ]
-    },
-    "104": {
-      "SURVEY_ID": "104",
-      "title": "Preferencias de Diseño UI/UX",
-      "description": "Estilos de diseño preferidos: Material, Flat o Neumorfismo.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:20:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:20:00.00000000",
-      "surveyStatus": "DRAFT",
-      "avgRating": 0.0,
-      "views": 0,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "104",
-          "typeQuestion": "MULTIPLE_CHOICE",
-          "questionText": "¿Qué estilo de diseño prefieres?",
-          "isRequired": true,
-          "options": ["Material Design", "Flat Design", "Neumorfismo"]
-        }
-      ]
-    },
-    "105": {
-      "SURVEY_ID": "105",
-      "title": "Uso de Git en el Proyecto",
-      "description": "Frecuencia de comandos Git avanzados.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:25:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:26:00.00000000",
-      "surveyStatus": "PUBLISHED",
-      "avgRating": 4.9,
-      "views": 300,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "105",
-          "typeQuestion": "TEXTUAL",
-          "questionText": "¿Cuál es el comando Git más útil para ti?",
-          "isRequired": true
-        }
-      ]
-    },
-    "106": {
-      "SURVEY_ID": "106",
-      "title": "Tiempo de Desarrollo",
-      "description": "Tiempo invertido en la fase de prototipado.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:30:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:31:30.00000000",
-      "surveyStatus": "CLOSED",
-      "avgRating": 3.0,
-      "views": 50,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "106",
-          "typeQuestion": "NUMERICAL",
-          "questionText": "¿Cuántos días tardó tu último prototipo?",
-          "isRequired": true
-        }
-      ]
-    },
-    "107": {
-      "SURVEY_ID": "107",
-      "title": "Necesidades de Testing",
-      "description": "Herramientas de unit testing más usadas.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:35:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:35:00.00000000",
-      "surveyStatus": "DRAFT",
-      "avgRating": 0.0,
-      "views": 0,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "107",
-          "typeQuestion": "TEXTUAL",
-          "questionText": "Describe tu framework de testing favorito.",
-          "isRequired": false
-        }
-      ]
-    },
-    "108": {
-      "SURVEY_ID": "108",
-      "title": "Experiencia con Servicios REST",
-      "description": "Grado de comodidad al consumir APIs REST.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:40:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:41:00.00000000",
-      "surveyStatus": "PUBLISHED",
-      "avgRating": 4.7,
-      "views": 180,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "108",
-          "typeQuestion": "MULTIPLE_CHOICE",
-          "questionText": "¿Qué método HTTP usas más?",
-          "isRequired": true,
-          "options": ["GET", "POST", "PUT", "DELETE"]
-        }
-      ]
-    },
-    "109": {
-      "SURVEY_ID": "109",
-      "title": "Documentación y Javadoc",
-      "description": "Nivel de prioridad de la documentación de código.",
-      "CREATOR_USERNAME": "felipe",
-      "CREATED_AT": "2025-12-08T20:45:00.00000000",
-      "PUBLISHED_AT": "2025-12-08T20:45:00.00000000",
-      "surveyStatus": "DRAFT",
-      "avgRating": 0.0,
-      "views": 0,
-      "questions": [
-        {
-          "questionIndex": 0,
-          "SURVEY_ID": "109",
-          "typeQuestion": "TEXTUAL",
-          "questionText": "¿Qué porcentaje de tu código documentas?",
-          "isRequired": true
-        }
-      ]
-    }
+  "100": {
+    "SURVEY_ID": "100",
+    "title": "Preferencias de Software 2025",
+    "description": "Encuesta sobre las herramientas de desarrollo favoritas.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:00:00",
+    "PUBLISHED_AT": "2025-12-08T20:01:30",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 4.5,
+    "views": 150,
+    "questions": [
+      {
+        "minSelections": 0,
+        "maxSelections": 0,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "100",
+            "optionText": "IntelliJ IDEA"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "100",
+            "optionText": "VS Code"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "100",
+            "optionText": "Eclipse"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "100",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Cuál es tu IDE favorito?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "100",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuántas horas programas a la semana?",
+        "isRequired": false
+      }
+    ]
+  },
+  "101": {
+    "SURVEY_ID": "101",
+    "title": "Evaluación del Sidebar",
+    "description": "Feedback sobre la usabilidad y diseño del nuevo sidebar.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:05:00",
+    "PUBLISHED_AT": "2025-12-08T20:05:00",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 1,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "101",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Qué cambiarías de la navegación?",
+        "isRequired": true
+      }
+    ]
+  },
+  "102": {
+    "SURVEY_ID": "102",
+    "title": "Satisfacción con JavaFX",
+    "description": "Mide el nivel de satisfacción con el desarrollo de UI en JavaFX.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:10:00",
+    "PUBLISHED_AT": "2025-12-08T20:11:15",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 3.8,
+    "views": 99,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "102",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "Del 1 al 5, ¿cuán flexible encuentras JavaFX CSS?",
+        "isRequired": true
+      }
+    ]
+  },
+  "103": {
+    "SURVEY_ID": "103",
+    "title": "Hábitos de Code Review",
+    "description": "Investigación sobre la frecuencia y herramientas usadas para Code Review.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:15:00",
+    "PUBLISHED_AT": "2025-12-08T20:16:45",
+    "surveyStatus": "CLOSED",
+    "avgRating": 4.1,
+    "views": 212,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "103",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu herramienta de revisión favorita?",
+        "isRequired": true
+      }
+    ]
+  },
+  "104": {
+    "SURVEY_ID": "104",
+    "title": "Preferencias de Diseño UI/UX",
+    "description": "Estilos de diseño preferidos: Material, Flat o Neumorfismo.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:20:00",
+    "PUBLISHED_AT": "2025-12-08T20:20:00",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "minSelections": 0,
+        "maxSelections": 0,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "104",
+            "optionText": "Material Design"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "104",
+            "optionText": "Flat Design"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "104",
+            "optionText": "Neumorfismo"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "104",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Qué estilo de diseño prefieres?",
+        "isRequired": true
+      }
+    ]
+  },
+  "105": {
+    "SURVEY_ID": "105",
+    "title": "Uso de Git en el Proyecto",
+    "description": "Frecuencia de comandos Git avanzados.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:25:00",
+    "PUBLISHED_AT": "2025-12-08T20:26:00",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 4.9,
+    "views": 302,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "105",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es el comando Git más útil para ti?",
+        "isRequired": true
+      }
+    ]
+  },
+  "106": {
+    "SURVEY_ID": "106",
+    "title": "Tiempo de Desarrollo",
+    "description": "Tiempo invertido en la fase de prototipado.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:30:00",
+    "PUBLISHED_AT": "2025-12-08T20:31:30",
+    "surveyStatus": "CLOSED",
+    "avgRating": 3.0,
+    "views": 52,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "106",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuántos días tardó tu último prototipo?",
+        "isRequired": true
+      }
+    ]
+  },
+  "107": {
+    "SURVEY_ID": "107",
+    "title": "Necesidades de Testing",
+    "description": "Herramientas de unit testing más usadas.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:35:00",
+    "PUBLISHED_AT": "2025-12-08T20:35:00",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "107",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Describe tu framework de testing favorito.",
+        "isRequired": false
+      }
+    ]
+  },
+  "108": {
+    "SURVEY_ID": "108",
+    "title": "Experiencia con Servicios REST",
+    "description": "Grado de comodidad al consumir APIs REST.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:40:00",
+    "PUBLISHED_AT": "2025-12-08T20:41:00",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 4.7,
+    "views": 180,
+    "questions": [
+      {
+        "minSelections": 0,
+        "maxSelections": 0,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "108",
+            "optionText": "GET"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "108",
+            "optionText": "POST"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "108",
+            "optionText": "PUT"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "108",
+            "optionText": "DELETE"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "108",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Qué método HTTP usas más?",
+        "isRequired": true
+      }
+    ]
+  },
+  "109": {
+    "SURVEY_ID": "109",
+    "title": "Documentación y Javadoc",
+    "description": "Nivel de prioridad de la documentación de código.",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-08T20:45:00",
+    "PUBLISHED_AT": "2025-12-08T20:45:00",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "109",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Qué porcentaje de tu código documentas?",
+        "isRequired": true
+      }
+    ]
+  }
 }

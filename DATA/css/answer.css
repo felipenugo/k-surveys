@@ -1,0 +1,77 @@
+.answer-root {
+    -fx-padding: 25;
+}
+
+.survey-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+
+.question-card {
+    -fx-background-color: white;
+    -fx-padding: 15;
+    -fx-background-radius: 10;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 8, 0.2, 0, 2);
+}
+
+.question-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+.submit-btn {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 8;
+}
+
+/* === QUESTION CARD === */
+.question-card {
+    -fx-background-color: #ffffff;
+    -fx-padding: 15px 20px;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 8, 0.15, 0, 2);
+}
+
+.question-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* === ERROR CARD (igual que Register/Login) === */
+.error-card {
+    -fx-background-color: #ffe5e5;
+    -fx-border-color: #d40000;
+    -fx-border-width: 1px;
+    -fx-background-radius: 6px;
+    -fx-border-radius: 6px;
+    -fx-padding: 10;
+}
+
+.error-label {
+    -fx-text-fill: #b30000;
+    -fx-font-size: 13px;
+}
+
+.error-icon {
+    -fx-text-fill: #d40000;
+    -fx-font-size: 16px;
+}
+
+/* === SUBMIT BUTTON === */
+.create-btn {
+    -fx-background-color: #4CAF50;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 6px;
+    -fx-padding: 10 25;
+}
+
+.create-btn:hover {
+    -fx-background-color: #43a047;
+}

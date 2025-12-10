@@ -1,5 +1,8 @@
 package presentation.views;
 
+import javafx.scene.Parent;
+import domain.model.Survey;
+import domain.controller.ResponseController;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
 import javafx.fxml.FXMLLoader;
@@ -13,10 +16,12 @@ public class SceneManager {
     private final UserController userController;
     private final SurveyController surveyController;
     private Stage primaryStage;
+    private final ResponseController responseController;
 
-    public SceneManager(UserController userController, SurveyController surveyController) {
+    public SceneManager(UserController userController, SurveyController surveyController, ResponseController responseController) {
         this.userController = userController;
         this.surveyController = surveyController;
+        this.responseController = responseController;
     }
 
     public void setPrimaryStage(Stage stage) {
@@ -168,11 +173,6 @@ public class SceneManager {
         this.primaryStage.setTitle("Mis Borradores");
     }
 
-    public void showAnswerSurvey(String surveyId)
-    {
-        this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
-    }
-
     public void showDeleteAccountConfirm() {
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/delete_account.fxml"));
@@ -194,5 +194,43 @@ public class SceneManager {
         }
     }
 
+    public void showAnswerSurvey(String surveyId) {
+        try {
+            Survey survey = surveyController.getSurvey(surveyId);
 
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/answer_survey.fxml"));
+            AnswerSurveyViewController controller =
+                    new AnswerSurveyViewController(responseController, this, userController);
+            loader.setController(controller);
+
+            Parent root = loader.load();
+            controller.loadSurvey(survey);
+
+            primaryStage.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            System.err.println("ERROR cargando vista de responder encuesta: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showConfirmLeave(Runnable onConfirm) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/confirm_leave.fxml"));
+            Parent root = loader.load();
+
+            ConfirmLeaveController controller = loader.getController();
+            controller.setOnConfirm(onConfirm);
+
+            Stage popup = new Stage();
+            popup.initStyle(StageStyle.UNDECORATED);
+            popup.initOwner(primaryStage);
+            popup.setScene(new Scene(root));
+            popup.show();
+
+        } catch (Exception e) {
+            System.err.println("ERROR cargando confirm_leave.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }
