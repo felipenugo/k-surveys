@@ -16,6 +16,8 @@
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Cuál es tu IDE favorito?",
         "isRequired": true,
+        "minSelections": 1,
+        "maxSelections": 1,
         "options": ["IntelliJ IDEA", "VS Code", "Eclipse"]
       },
       {
@@ -104,6 +106,8 @@
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué estilo de diseño prefieres?",
         "isRequired": true,
+        "minSelections": 1,
+        "maxSelections": 2,
         "options": ["Material Design", "Flat Design", "Neumorfismo"]
       }
     ]
@@ -185,6 +189,8 @@
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué método HTTP usas más?",
         "isRequired": true,
+        "minSelections": 1,
+        "maxSelections": 1,
         "options": ["GET", "POST", "PUT", "DELETE"]
       }
     ]
@@ -266,6 +272,8 @@
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Base de datos favorita?",
         "isRequired": true,
+        "minSelections": 1,
+        "maxSelections": 3,
         "options": ["PostgreSQL", "MongoDB", "MySQL"]
       }
     ]
@@ -347,6 +355,8 @@
         "typeQuestion": "MULTIPLE_CHOICE",
         "questionText": "¿Qué herramienta usas?",
         "isRequired": true,
+        "minSelections": 0,
+        "maxSelections": 1,
         "options": ["Sentry", "New Relic", "Loggly"]
       }
     ]
@@ -391,5 +401,4 @@
       }
     ]
   }
-
 }
