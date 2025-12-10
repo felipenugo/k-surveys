@@ -3,14 +3,12 @@ package presentation.views;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
 import domain.model.Survey;
+import domain.model.enums.SurveyStatus;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
@@ -27,7 +25,7 @@ import java.util.stream.Collectors;
 
 /**
  * Controlador para la vista principal de la aplicación (Home).
- *
+ * <p>
  * Se encarga de la inicialización de la UI, la gestión de la sesión del usuario,
  * el filtrado y ordenamiento de la lista de encuestas, y la creación dinámica
  * de las 'cards' de encuesta.
@@ -37,6 +35,8 @@ public class HomeViewController implements Initializable {
     private final UserController userController;
     private final SurveyController surveyController;
     private final SceneManager sceneManager;
+    private final int MAX_SURVEYS_PER_PAGE;
+    private int numSurveys;
 
     // --- VARIABLES FXML ---
     @FXML
@@ -60,25 +60,39 @@ public class HomeViewController implements Initializable {
     @FXML
     private VBox emptyStateBox;
 
+    // Pagination
+    @FXML
+    private Button prevPageBtn;
+    @FXML
+    private Button currentPageBtn;
+    @FXML
+    private Button nextPageBtn;
+    @FXML
+    private Pagination pagination;
+
     // Datos
     private List<Survey> allSurveys; // Todas las encuestas (Mock)
-    private List<Survey> currentSurveys; // Encuestas filtradas actualmente
+   // private List<Survey> currentSurveys; // Encuestas filtradas actualmente
 
     /**
      * Constructor para inyección de dependencias.
-     * @param userController Controlador de la capa de dominio para gestionar usuarios y sesión.
+     *
+     * @param userController   Controlador de la capa de dominio para gestionar usuarios y sesión.
      * @param surveyController Controlador de la capa de dominio para gestionar encuestas.
-     * @param sceneManager Gestor para la navegación entre vistas.
+     * @param sceneManager     Gestor para la navegación entre vistas.
      */
     public HomeViewController(UserController userController, SurveyController surveyController, SceneManager sceneManager) {
         this.userController = userController;
         this.surveyController = surveyController;
         this.sceneManager = sceneManager;
+        this.MAX_SURVEYS_PER_PAGE = 1;
+        this.numSurveys = 0;
     }
 
     /**
      * Obtiene las iniciales de un nombre de usuario, excluyendo espacios y convirtiéndolas a mayúsculas.
      * Por ejemplo: "felipe antonio" -> "FA"
+     *
      * @param username El nombre completo del usuario.
      * @return Las iniciales en mayúscula.
      */
@@ -92,9 +106,54 @@ public class HomeViewController implements Initializable {
     }
 
     /**
+     * Obtiene el número máximo de encuestas que se deben mostrar por página.
+     *
+     * @return El número máximo de encuestas por página.
+     */
+    private int getMAX_SURVEYS_PER_PAGE() {
+        return MAX_SURVEYS_PER_PAGE;
+    }
+
+    /**
+     * Obtiene el número total de encuestas disponibles para paginación.
+     *
+     * @return El número total de encuestas.
+     */
+    private int getNumSurveys() {
+        return numSurveys;
+    }
+
+    /**
+     * Establece el número total de encuestas disponibles para paginación.
+     * Esto se usa para calcular el número total de páginas en el control Pagination.
+     *
+     * @param numSurveys El nuevo número total de encuestas.
+     */
+    private void setNumSurveys(int numSurveys) {
+        this.numSurveys = numSurveys;
+    }
+
+    /**
+     * Devuelve la página actual cogiendo el valor del Pagination de fxml
+     * @return Número de Página actual
+     */
+    private int getCurrentPageIndex() {
+        return pagination.getCurrentPageIndex();
+    }
+
+    /**
+     * Calcula el número de páginas necesarias para mostrar todas las encuestas.
+     * @return número de páginas dependiendo de todas las encuestas que encajan con los filtros
+     */
+    private int getNumPages() {
+        return (int) Math.ceil((double) getNumSurveys() / getMAX_SURVEYS_PER_PAGE());
+    }
+
+    /**
      * Método invocado después de que un controlador ha sido cargado en su totalidad.
      * Se encarga de configurar el estado inicial de la vista.
-     * @param url La ubicación utilizada para resolver las rutas relativas para el objeto raíz, o null si la ubicación no se conoce.
+     *
+     * @param url            La ubicación utilizada para resolver las rutas relativas para el objeto raíz, o null si la ubicación no se conoce.
      * @param resourceBundle Los recursos utilizados para localizar el objeto raíz, o null si el objeto raíz no fue localizado.
      */
     @Override
@@ -107,6 +166,7 @@ public class HomeViewController implements Initializable {
             sceneManager.showLogin();
             return;
         }
+        // Asignar valor al avatar y nombre del usuario
         String username = userController.getUsernameLoggedIn();
         usernameLabel.setText(username);
         avatarLabel.setText(getInitialLetters(username));
@@ -114,8 +174,19 @@ public class HomeViewController implements Initializable {
         setFilters(); // definir eventos para buscar, filtrar y ordenar
         allSurveys = surveyController.getSelectedSurveys(); // todas las encuestas
 
-        renderSurveyList(allSurveys);
+        // aplicar los filtros y renderizar las encuestas
         applyFilters();
+
+        // pagination
+        pagination.currentPageIndexProperty().addListener((obs, oldVal, newVal) -> applyFilters());
+    }
+
+    /**
+     * Actualiza el número de páginas y si cambia pone el currentPageIndex a 1
+     */
+    private void updatePagination() {
+        pagination.setPageCount(getNumPages());
+
     }
 
     /**
@@ -130,11 +201,14 @@ public class HomeViewController implements Initializable {
         sortCombo.setValue("Más Recientes"); // valor por defecto
 
         // Listener para Filtros
-        filterCombo.valueProperty().addListener((obs, oldVal, newVal) -> applyFilters());
-        sortCombo.valueProperty().addListener((obs, oldVal, newVal) -> applyFilters());
+        filterCombo.valueProperty().addListener((obs, oldVal, newVal) ->
+                applyFilters());
+        sortCombo.valueProperty().addListener((obs, oldVal, newVal) ->
+                applyFilters());
 
         // Listener para Buscador
-        searchField.textProperty().addListener((obs, oldVal, newVal) -> applyFilters());
+        searchField.textProperty().addListener((obs, oldVal, newVal) ->
+                applyFilters());
     }
 
     /**
@@ -156,16 +230,24 @@ public class HomeViewController implements Initializable {
 
         // Filtrar y ordenar encuestas
         List<Survey> currentSurveys = allSurveys.stream()
+                .filter(s -> !s.getSurveyStatus().equals(SurveyStatus.DRAFT))
                 .filter(s -> s.getTitle().toLowerCase().contains(searchText)) // Buscador
                 .filter(s -> switch (filter) { // Combo Filtro con expresión switch
                     case "Rating > 3.5" -> s.getAvgRating() > 3.5;
-                    case "Rating > 4.0" -> s.getAvgRating() > 4.0;
+                    case "Rating > 4.5" -> s.getAvgRating() > 4.0;
                     case "Views > 50" -> s.getViews() > 50;
                     default -> true; // todas las encuestas
                 })
                 .sorted(surveyComparator)
                 .toList();
-        // Actualizar encuestas
+        // Actualizar encuestas y número de encuestas
+        this.setNumSurveys(currentSurveys.size());
+        updatePagination();
+        int startIndex = getCurrentPageIndex() * getMAX_SURVEYS_PER_PAGE();
+        int endIndex = Math.min(startIndex + getMAX_SURVEYS_PER_PAGE(), currentSurveys.size());
+        if (startIndex < 0 || startIndex >= currentSurveys.size())
+            currentSurveys = new ArrayList<>();
+        currentSurveys = currentSurveys.subList(startIndex, endIndex);
         renderSurveyList(currentSurveys);
     }
 
@@ -175,6 +257,7 @@ public class HomeViewController implements Initializable {
     /**
      * Limpia el contenedor de encuestas y lo repuebla con las cards de las encuestas proporcionadas.
      * Muestra el estado vacío (empty state) si la lista está vacía.
+     *
      * @param surveys Lista de encuestas a renderizar.
      */
     private void renderSurveyList(List<Survey> surveys) {
@@ -232,6 +315,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea la columna principal de la card que contiene el título y el creador.
+     *
      * @param s La encuesta.
      * @return Un VBox con el título y el creador.
      */
@@ -253,6 +337,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea la columna que muestra el número de vistas de la encuesta.
+     *
      * @param s La encuesta.
      * @return Un HBox con el ícono de ojo y el número de vistas.
      */
@@ -266,6 +351,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea la columna que muestra la valoración promedio de la encuesta.
+     *
      * @param s La encuesta.
      * @return Un HBox con las estrellas de valoración.
      */
@@ -277,6 +363,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea la columna que muestra la fecha de publicación de la encuesta.
+     *
      * @param s La encuesta.
      * @return Un HBox con el ícono de calendario y la fecha.
      */
@@ -290,7 +377,8 @@ public class HomeViewController implements Initializable {
 
     /**
      * Añade la columna principal seguida de las demás columnas, separadas por divisores verticales.
-     * @param card El HBox contenedor de la card.
+     *
+     * @param card    El HBox contenedor de la card.
      * @param colMain La columna principal (ya añadida).
      * @param columns Las columnas secundarias a añadir.
      */
@@ -304,6 +392,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea un separador vertical estilizado para dividir las columnas.
+     *
      * @return Un objeto Region estilizado.
      */
     private Region createVerticalDivider() {
@@ -314,7 +403,8 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea una celda HBox genérica para mostrar un ícono SVG y un texto.
-     * @param text El texto a mostrar.
+     *
+     * @param text    El texto a mostrar.
      * @param svgPath La cadena SVG que define el ícono.
      * @return Un HBox que actúa como celda de datos.
      */
@@ -334,6 +424,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Crea una celda HBox para mostrar la valoración promedio y el número.
+     *
      * @param rating La valoración promedio (double).
      * @return Un HBox con las estrellas y el número de valoración.
      */
@@ -353,6 +444,7 @@ public class HomeViewController implements Initializable {
     /**
      * Crea un HBox que contiene 5 íconos de estrellas SVG, marcando las estrellas llenas y medias
      * según la valoración proporcionada.
+     *
      * @param rating La valoración (ej. 4.5).
      * @return Un HBox con las estrellas renderizadas.
      */
@@ -380,6 +472,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Navega a la vista principal (Home) al hacer clic en el botón.
+     *
      * @param event El evento de la acción.
      */
     @FXML
@@ -390,6 +483,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Navega a la vista de Creación de Encuesta (funcionalidad no implementada en este fragmento).
+     *
      * @param event El evento de la acción.
      */
     @FXML
@@ -400,6 +494,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Navega a la vista de Mis Encuestas (funcionalidad no implementada en este fragmento).
+     *
      * @param event El evento de la acción.
      */
     @FXML
@@ -410,6 +505,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Navega a la vista de Borradores (funcionalidad no implementada en este fragmento).
+     *
      * @param event El evento de la acción.
      */
     @FXML
@@ -420,6 +516,7 @@ public class HomeViewController implements Initializable {
 
     /**
      * Cierra la sesión del usuario actual y navega a la vista de Login.
+     *
      * @param event El evento de la acción.
      */
     @FXML

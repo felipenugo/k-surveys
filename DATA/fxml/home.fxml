@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
+<?import javafx.scene.control.Pagination?>
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             stylesheets="/css/home.css">
 
@@ -108,8 +109,9 @@
                     <!-- Paginación -->
                     <HBox alignment="CENTER" spacing="5" styleClass="pagination-container">
                         <Button text="←" styleClass="page-btn"/>
-                        <Button text="1" styleClass="page-btn, page-btn-active"/>
+                        <Button fx:id="currentPageBtn" text="" styleClass="page-btn, page-btn-active"/>
                         <Button text="→" styleClass="page-btn"/>
+                        <Pagination fx:id="pagination"   />
                     </HBox>
                 </VBox>
             </ScrollPane>
