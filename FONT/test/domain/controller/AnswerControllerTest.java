@@ -48,7 +48,7 @@ public class AnswerControllerTest {
         AnswerRepository answerRepository = new AnswerRepository();
 
         // Initialize services and controllers
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(userRepository, null, null);
         userController = new UserController(userService);
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);

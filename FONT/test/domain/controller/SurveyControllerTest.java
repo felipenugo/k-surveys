@@ -34,7 +34,7 @@ public class SurveyControllerTest {
         userRepository.clear();  // limpiar datos previos
 
         // Inicializar servicios y controllers
-        UserService userService = new UserService(userRepository);
+        UserService userService = new UserService(userRepository, null, null);
         userController = new UserController(userService);
         surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
