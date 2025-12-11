@@ -203,7 +203,7 @@ public class CreateSurveyViewController implements Initializable {
                         "El borrador ha sido actualizado exitosamente.");
             }
 
-            sceneManager.showMySurveysDrafts();
+            sceneManager.showHome();
 
         } catch (Exception e) {
             showAlert(Alert.AlertType.ERROR, "Error",

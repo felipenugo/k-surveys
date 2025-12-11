@@ -8,8 +8,6 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.util.SurveyView;
 
-import java.io.IOException;
-
 public class SceneManager {
     private final UserController userController;
     private final SurveyController surveyController;
@@ -80,12 +78,11 @@ public class SceneManager {
 
     public void showRegister() {
         try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
-            checkLoaderAddress(loader); // verifica que la carga se ha hecho correctamente
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml"));
+            checkLoaderAddress(loader);
 
-            // Inicializa el controlador de la vista
             RegisterViewController registerViewController = new RegisterViewController(userController, this);
-            loader.setController(registerViewController); // asigna el controlador de la vista al fichero fxml
+            loader.setController(registerViewController);
 
             finalizeScene(loader, "REGISTRO");
         } catch (Exception e) {
@@ -186,25 +183,24 @@ public class SceneManager {
         }
     }
 
-
     public void showCreateSurvey() {
-        this.primaryStage.setTitle("Crear Encuesta");
         try {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/create-survey.fxml"));
+            checkLoaderAddress(loader);
 
             CreateSurveyViewController controller = new CreateSurveyViewController(userController, surveyController, this);
             loader.setController(controller);
 
             finalizeScene(loader, "CREAR ENCUESTA");
         } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW CREAR ENCUESTA: " + e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public void showAnswerSurvey(String surveyId) {
-        // TODO: Implementar la lógica para mostrar la vista de responder encuesta
-        System.out.println("Navegando para responder la encuesta con ID: " + surveyId);
-        // Aquí iría la lógica para cargar el FXML de responder encuesta, similar a showCreateSurvey
+    public void showAnswerSurvey(String surveyId)
+    {
+        this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
     }
 
     public void showDeleteAccountConfirm() {
@@ -228,12 +224,12 @@ public class SceneManager {
         }
     }
 
+    public void showEditSurvey(String surveyId) {
+        this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
+    }
 
-public void showEditSurvey(String surveyId) {
-    this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
-}
-
-public void showClustering(String surveyId) {
+    public void showClustering(String surveyId) {
         this.primaryStage.setTitle("Clustering de Encuestas con id: " + surveyId + "");
+    }
 }
-}
+
