@@ -395,3 +395,38 @@
     -fx-border-style: dashed;
     -fx-border-width: 2;
 }
+
+
+
+/* Indicador de edición */
+.edit-indicator {
+    -fx-padding: 0 0 10 0;
+}
+
+.editing-badge {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-background-radius: 20;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+}
+
+/* Botón Eliminar Encuesta - estilo peligro */
+.btn-delete {
+    -fx-background-color: transparent;
+    -fx-border-color: #ff4757;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #ff4757;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-delete:hover {
+    -fx-background-color: #ff4757;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(255, 71, 87, 0.4), 10, 0, 0, 3);
+}
+

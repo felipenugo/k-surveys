@@ -225,7 +225,18 @@ public class SceneManager {
     }
 
     public void showEditSurvey(String surveyId) {
-        this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/edit-survey.fxml"));
+            checkLoaderAddress(loader);
+
+            EditSurveyViewController controller = new EditSurveyViewController(userController, surveyController, this, surveyId);
+            loader.setController(controller);
+
+            finalizeScene(loader, "EDITAR ENCUESTA");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW EDITAR ENCUESTA: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void showClustering(String surveyId) {
