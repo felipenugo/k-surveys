@@ -37,7 +37,33 @@
         "isRequired": true
       },
       {
+        "minSelections": 1,
+        "maxSelections": 1,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "100",
+            "optionText": "si"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "100",
+            "optionText": "no"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "100",
+            "optionText": "casi"
+          }
+        ],
         "questionIndex": 1,
+        "SURVEY_ID": "100",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "funciona esta view?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 2,
         "SURVEY_ID": "100",
         "typeQuestion": "NUMERICAL",
         "questionText": "¿Cuántas horas programas a la semana?",
@@ -483,6 +509,26 @@
         "typeQuestion": "NUMERICAL",
         "questionText": "¿Auditorías al año?",
         "isRequired": true
+      }
+    ]
+  },
+  "119": {
+    "SURVEY_ID": "119",
+    "title": "encuesta prueba",
+    "description": "esta es una encuesta de prueba",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-11T22:16:13.531164884",
+    "PUBLISHED_AT": "2025-12-11T22:16:13.535950668",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "119",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "fasdfasdfasdfasdfasdf",
+        "isRequired": false
       }
     ]
   }

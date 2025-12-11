@@ -83,9 +83,25 @@ public class SurveyRepository {
 
     private void saveSurveysToJson() {
         File file = new File(FILE_PATH);
-        if (file.getParentFile() != null) {
-            file.getParentFile().mkdirs(); // crea el directorio padre si no existe
-            System.err.println("El padre no existe, creado en el directorio: " + file.getParentFile().getAbsolutePath());
+        File parentDir = file.getParentFile();
+
+        // 1. Comprobar que existe un directorio padre válido
+        if (parentDir != null) {
+
+            // 2. Comprobar si el directorio padre NO existe
+            if (!parentDir.exists()) {
+
+                // 3. Intentar crearlo y capturar el resultado
+                boolean created = parentDir.mkdirs();
+
+                if (created) {
+                    // Mensaje de éxito (solo si se creó)
+                    System.out.println("Directorio padre creado con éxito en: " + parentDir.getAbsolutePath());
+                } else {
+                    // Mensaje de advertencia (si falla, ej. permisos)
+                    System.err.println("ADVERTENCIA: Fallo al crear el directorio padre: " + parentDir.getAbsolutePath());
+                }
+            }
         }
         try (Writer writer = new FileWriter(FILE_PATH)) {
             gson.toJson(surveys, writer);
