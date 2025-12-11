@@ -128,6 +128,14 @@
 }
 
 /* CONTENIDO CENTRAL */
+.title{
+    -fx-font-size: 34px;
+    -fx-text-fill: #1e3c72;
+    -fx-font-weight:bold;
+     /* Arriba, derecha, abajo, izquierda */
+
+}
+
 .top-bar {
     -fx-background-color: white;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 5, 0, 0, 2);

@@ -23,16 +23,18 @@ public class CreateSurveyCard {
      * * Estructura generada: [ Título/Autor ] | [ Views ] | [ Rating ] | [ Date ]
      *
      * @param sceneManager El gestor de escenas, necesario para enlazar el evento
-     * de clic de la Card con la navegación a la vista de respuesta.
-     * @param s La encuesta (Survey) cuyos datos serán mostrados en la Card.
+     *                     de clic de la Card con la navegación a la vista de respuesta.
+     * @param s            La encuesta (Survey) cuyos datos serán mostrados en la Card.
      * @return Un HBox configurado que representa la Card de la encuesta.
      */
-    public static HBox getSurveyCard(SceneManager sceneManager, Survey s)
-    {
+    public static HBox getSurveyCard(SceneManager sceneManager, Survey s, SurveyView surveyView) {
         HBox card = new HBox();
         card.getStyleClass().add("survey-card");
-        card.setOnMouseClicked(e -> sceneManager.showAnswerSurvey(s.getSURVEY_ID()));
-
+        switch (surveyView) {
+            case HOME -> card.setOnMouseClicked(e -> sceneManager.showAnswerSurvey(s.getSURVEY_ID()));
+            case MY_SURVEYS -> card.setOnMouseClicked(e -> sceneManager.showClustering(s.getSURVEY_ID()));
+            case DRAFTS -> card.setOnMouseClicked(e -> sceneManager.showEditSurvey(s.getSURVEY_ID()));
+        }
         // Crear columnas
         VBox colMain = createMainColumn(s);
         HBox colViews = createViewsColumn(s);

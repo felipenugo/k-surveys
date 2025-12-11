@@ -13,7 +13,7 @@
 
 <?import javafx.scene.control.Pagination?>
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/home.css">
+            stylesheets="/css/surveys.css">
 
     <!--SIDEBAR -->
     <left>
@@ -57,10 +57,10 @@
                 <Region VBox.vgrow="ALWAYS"/>
                 <!-- Botón eliminar cuenta -->
                 <Button styleClass="nav-btn-danger, icon, icon-delete"
-                text="Eliminar Cuenta"
-                maxWidth="Infinity"
-                alignment="BASELINE_LEFT"
-                onAction="#handleDeleteAccount"/>
+                        text="Eliminar Cuenta"
+                        maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#handleDeleteAccount"/>
                 <!-- Botón de Cerrar Sesión-->
                 <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
                         alignment="BASELINE_LEFT" onAction="#handleLogout"/>
@@ -73,15 +73,19 @@
         <VBox styleClass="content-area" BorderPane.alignment="CENTER">
 
             <!-- Búsqueda, Filtros y Ordenamiento -->
-            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="top-bar">
-                <HBox alignment="CENTER_LEFT" styleClass="search-box">
-                    <Region styleClass=" icon-search"/>
-                    <TextField fx:id="searchField" promptText="Buscar encuestas..." HBox.hgrow="ALWAYS"/>
+            <VBox styleClass="top-bar" spacing="15.0">
+
+                <Label fx:id="centerContentTitle" text="" styleClass="title" />
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <HBox alignment="CENTER_LEFT" styleClass="search-box">
+                        <Region styleClass=" icon-search"/>
+                        <TextField fx:id="searchField" promptText="Buscar encuestas..." HBox.hgrow="ALWAYS"/>
+                    </HBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <ComboBox fx:id="filterCombo" promptText="Filtrar por" styleClass="filter-combo"/>
+                    <ComboBox fx:id="sortCombo" promptText="Ordenar por" styleClass="filter-combo"/>
                 </HBox>
-                <Region HBox.hgrow="ALWAYS"/>
-                <ComboBox fx:id="filterCombo" promptText="Filtrar por" styleClass="filter-combo"/>
-                <ComboBox fx:id="sortCombo" promptText="Ordenar por" styleClass="filter-combo"/>
-            </HBox>
+            </VBox>
 
             <!-- Scroll con Lista -->
             <ScrollPane fitToWidth="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">

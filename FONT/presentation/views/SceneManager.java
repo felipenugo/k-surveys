@@ -6,8 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
-import java.io.IOException;
+import presentation.util.SurveyView;
 
 public class SceneManager {
     private final UserController userController;
@@ -94,19 +93,49 @@ public class SceneManager {
 
     public void showHome() {
         try{
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/home.fxml"));
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/surveys.fxml"));
             checkLoaderAddress(loader);
 
-            HomeViewController homeViewController = new HomeViewController(userController, surveyController, this);
+            HomeViewController homeViewController = new HomeViewController(userController, surveyController, SurveyView.HOME, this);
             loader.setController(homeViewController);
 
             finalizeScene(loader, "INICIO");
         }catch(Exception e){
-            System.err.println("ERROR FATAL HOME: " + e.getMessage());
+            System.err.println("ERROR FATAL VIEW INICIO: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showMySurveys()
+    {
+        try{
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/surveys.fxml"));
+            checkLoaderAddress(loader);
+
+            MySurveysViewController mySurveysViewController = new MySurveysViewController(userController, surveyController, SurveyView.MY_SURVEYS, this);
+            loader.setController(mySurveysViewController);
+
+            finalizeScene(loader, "MIS ENCUESTAS");
+        }catch(Exception e){
+            System.err.println("ERROR FATAL VIEW MIS ENCUESTAS: " + e.getMessage());
             e.printStackTrace();
         }
 
-        this.primaryStage.setTitle("Main Menu");
+    }
+
+    public void showMySurveysDrafts()
+    {
+        try{
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/surveys.fxml"));
+            checkLoaderAddress(loader);
+            MySurveyDraftsViewController mySurveyDraftsViewController = new MySurveyDraftsViewController(userController, surveyController, SurveyView.DRAFTS, this);
+            loader.setController(mySurveyDraftsViewController);
+
+            finalizeScene(loader, "MIS BORRADORES");
+        }catch(Exception e){
+            System.err.println("ERROR FATAL HOME: " + e.getMessage());
+            e.printStackTrace();
+        }
 
     }
 
@@ -160,13 +189,6 @@ public class SceneManager {
         this.primaryStage.setTitle("Crear Encuesta");
     }
 
-    public void showMySurveys() {
-        this.primaryStage.setTitle("Mis Encuestas");
-    }
-
-    public void showMyDrafts() {
-        this.primaryStage.setTitle("Mis Borradores");
-    }
 
     public void showAnswerSurvey(String surveyId)
     {
@@ -193,6 +215,11 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+public void showEditSurvey(String surveyId) {
+    this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
+}
 
-
+public void showClustering(String surveyId) {
+        this.primaryStage.setTitle("Clustering de Encuestas con id: " + surveyId + "");
+}
 }

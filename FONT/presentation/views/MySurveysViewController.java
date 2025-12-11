@@ -12,13 +12,13 @@ import presentation.util.SurveyViewTitle;
 
 import java.util.function.Predicate;
 
-public class HomeViewController extends SurveysViewController {
+public class MySurveysViewController extends SurveysViewController {
     @FXML
-    private Button home;
+    private Button mySurveys;
     @FXML
     private Label centerContentTitle;
-
     private final SurveyViewTitle TITLE;
+    private String currentUsername;
 
     /**
      * Constructor para inyección de dependencias.
@@ -27,14 +27,15 @@ public class HomeViewController extends SurveysViewController {
      * @param surveyController Controlador de la capa de dominio para gestionar encuestas.
      * @param sceneManager     Gestor para la navegación entre vistas.
      */
-    public HomeViewController(UserController userController, SurveyController surveyController, SurveyView surveyView, SceneManager sceneManager) {
+    public MySurveysViewController(UserController userController, SurveyController surveyController, SurveyView surveyView, SceneManager sceneManager) {
         super(userController, surveyController, surveyView, sceneManager);
-        TITLE = SurveyViewTitle.HOME;
+        currentUsername = userController.getUsernameLoggedIn();
+        TITLE = SurveyViewTitle.MY_SURVEYS;
     }
 
     @Override
     protected void setViewActive() {
-        home.getStyleClass().add("nav-btn-active");
+        mySurveys.getStyleClass().add("nav-btn-active");
     }
 
     @Override
@@ -45,7 +46,8 @@ public class HomeViewController extends SurveysViewController {
     @Override
     protected Predicate<Survey> getFilter(String filter, String searchText) {
         return s ->
-                !s.getSurveyStatus().equals(SurveyStatus.DRAFT) &&
+                s.getCREATOR_USERNAME().equals(currentUsername) &&
+                        !s.getSurveyStatus().equals(SurveyStatus.DRAFT) &&
                         s.getTitle().toLowerCase().contains(searchText) &&
                         switch (filter) {
                             case "Rating > 3.5" -> s.getAvgRating() > 3.5;
