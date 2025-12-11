@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -11,66 +12,94 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/create-survey.css">
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
 
-    <!-- SIDEBAR (Reutilizado) -->
+    <stylesheets>
+        <String fx:value="@/css/surveys.css"/>
+        <String fx:value="@/css/create-survey.css"/>
+    </stylesheets>
+
+    <!-- SIDEBAR (mismo estilo que surveys.fxml) -->
     <left>
-        <VBox prefHeight="800.0" prefWidth="250.0" styleClass="sidebar">
-        <children>
-            <VBox alignment="CENTER" prefHeight="100.0" prefWidth="100.0" styleClass="avatar-container">
-                <children>
-                    <Label fx:id="avatarLabel" alignment="CENTER" styleClass="avatar" text="TU" />
-                    <Label fx:id="usernameLabel" styleClass="username" text="testuser" />
-                </children>
+        <VBox styleClass="side-bar">
+
+            <!-- Perfil -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
+            </HBox>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="35.0"/>
+                </VBox.margin>
+
+                <!-- Botón de Inicio -->
+                <Button fx:id="home" styleClass="nav-btn, icon, icon-home" text="Inicio" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToHome"/>
+
+                <!-- Botón de Mis Encuestas -->
+                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey" text="Mis Encuestas"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMySurveys"/>
+
+                <!-- Botón de Mis Borradores -->
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMyDrafts"/>
+
+                <!-- Botón de Crear Encuesta (activo) -->
+                <Button fx:id="createSurvey" styleClass="nav-btn, create-btn, icon, icon-create"
+                        text="Crear Encuesta" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToCreateSurvey">
+                    <VBox.margin>
+                        <Insets bottom="15.0"/>
+                    </VBox.margin>
+                </Button>
+
+                <!-- Empujar contenido abajo -->
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <!-- Botón de Cerrar Sesión -->
+                <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#handleLogout"/>
             </VBox>
-            <VBox prefHeight="200.0" prefWidth="100.0" VBox.vgrow="ALWAYS">
-                <children>
-                    <Button fx:id="home" mnemonicParsing="false" onAction="#goToHome" styleClass="nav-btn" text="Inicio" />
-                    <Button fx:id="createSurvey" mnemonicParsing="false" onAction="#goToCreateSurvey" styleClass="nav-btn" text="Crear Encuesta" />
-                    <Button fx:id="mySurveys" mnemonicParsing="false" onAction="#goToMySurveys" styleClass="nav-btn" text="Mis Encuestas" />
-                    <Button fx:id="myDrafts" mnemonicParsing="false" onAction="#goToMyDrafts" styleClass="nav-btn" text="Borradores" />
-                </children>
-            </VBox>
-            <VBox prefHeight="100.0" prefWidth="100.0">
-                <children>
-                    <Button mnemonicParsing="false" onAction="#handleLogout" styleClass="nav-btn" text="Cerrar Sesión" />
-                </children>
-            </VBox>
-        </children>
-    </VBox>
+        </VBox>
     </left>
 
     <!-- CONTENIDO CENTRAL -->
     <center>
         <VBox alignment="TOP_CENTER" styleClass="content-area" BorderPane.alignment="CENTER">
-            
-            <!-- ScrollPane Transparente -->
-            <ScrollPane fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
+
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
                 <content>
                     <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container">
                         <padding>
-                            <Insets top="30" right="30" bottom="50" left="30"/>
+                            <Insets top="40" right="40" bottom="120" left="40"/>
                         </padding>
-                        
-                        <!-- 1. HEADER DE LA ENCUESTA (Título y Descripción) -->
-                        <VBox styleClass="survey-header-card" spacing="10" maxWidth="800">
-                            <TextField fx:id="surveyTitleField" promptText="Título del Formulario" styleClass="title-input"/>
-                            <TextArea fx:id="surveyDescField" promptText="Descripción del formulario" styleClass="desc-input" 
-                                      prefRowCount="2" wrapText="true"/>
+
+                        <!-- 1. HEADER DE LA ENCUESTA -->
+                        <VBox styleClass="survey-header-card" spacing="10">
+                            <TextField fx:id="surveyTitleField"
+                                       promptText="Título del Formulario"
+                                       styleClass="title-input"/>
+                            <TextArea fx:id="surveyDescField"
+                                      promptText="Descripción del formulario (opcional)"
+                                      styleClass="desc-input"
+                                      prefRowCount="2"
+                                      wrapText="true"/>
                         </VBox>
 
                         <!-- 2. LISTA DINÁMICA DE PREGUNTAS -->
-                        <VBox fx:id="questionsContainer" spacing="20" alignment="TOP_CENTER" maxWidth="800">
-                            <!-- Las preguntas se inyectan aquí desde Java -->
+                        <VBox fx:id="questionsContainer" spacing="20" alignment="TOP_CENTER">
+                            <!-- Las preguntas se generan dinámicamente desde Java -->
                         </VBox>
 
-                        <!-- 3. BOTÓN AÑADIR PREGUNTA (Grande al final) -->
-                        <VBox styleClass="add-question-box" alignment="CENTER" maxWidth="800" onMouseClicked="#addDefaultQuestion">
+                        <!-- 3. BOTÓN AÑADIR PREGUNTA -->
+                        <VBox styleClass="add-question-box" alignment="CENTER" onMouseClicked="#addDefaultQuestion">
                             <Label text="+ AÑADIR PREGUNTA" styleClass="add-question-label"/>
                         </VBox>
 
-                        <!-- Espacio extra al final para que no se tape con la barra inferior -->
+                        <!-- Espacio extra al final -->
                         <Region minHeight="60"/>
 
                     </VBox>
@@ -79,15 +108,14 @@
         </VBox>
     </center>
 
-    <!-- BARRA INFERIOR FLOTANTE (Acciones) -->
+    <!-- BARRA INFERIOR FLOTANTE -->
     <bottom>
         <HBox styleClass="bottom-bar" alignment="CENTER_RIGHT" spacing="15" BorderPane.alignment="CENTER">
-            <padding>
-                <Insets top="15" right="40" bottom="15" left="40"/>
-            </padding>
             <Button text="Cancelar" styleClass="btn-cancel" onAction="#handleCancel"/>
+            <Button text="Guardar Borrador" styleClass="btn-draft" onAction="#handleSaveDraft"/>
             <Button text="PUBLICAR" styleClass="btn-publish" onAction="#handlePublish"/>
         </HBox>
     </bottom>
 
 </BorderPane>
+

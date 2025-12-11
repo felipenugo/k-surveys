@@ -5,10 +5,13 @@ import domain.controller.UserController;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.OptionQuestion;
 import domain.model.Question;
+import domain.model.Survey;
+import domain.model.enums.SurveyStatus;
 import domain.model.enums.TypeQuestion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.control.*;
@@ -24,6 +27,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para la vista de creación de encuestas.
+ * Gestiona la creación dinámica de preguntas, guardado como borrador y publicación.
+ */
 public class CreateSurveyViewController implements Initializable {
 
     private final UserController userController;
@@ -41,12 +48,14 @@ public class CreateSurveyViewController implements Initializable {
     // --- CAMPOS FXML FORMULARIO ---
     @FXML private TextField surveyTitleField;
     @FXML private TextArea surveyDescField;
-    @FXML private VBox questionsContainer; // Contenedor de preguntas
+    @FXML private VBox questionsContainer;
+    @FXML private ScrollPane scrollPane;
 
     // MODELO DE DATOS
     private final List<Question> questionList = new ArrayList<>();
-    
-    // Variable temporal para Drag & Drop (índice del elemento arrastrado)
+    private String currentSurveyId = null; // null = nueva encuesta
+
+    // Variable temporal para Drag & Drop
     private int draggingIndex = -1;
 
     public CreateSurveyViewController(UserController userController, SurveyController surveyController, SceneManager sceneManager) {
@@ -69,15 +78,17 @@ public class CreateSurveyViewController implements Initializable {
         avatarLabel.setText(getInitialLetters(username));
         setViewActive();
 
+        // Configurar ScrollPane
+        scrollPane.setFitToWidth(true);
+
         // Inicializar con una pregunta de texto por defecto
         addDefaultQuestion();
     }
 
-    // --- MÉTODOS AUXILIARES SIDEBAR ---
+    // =========================================
+    // MÉTODOS AUXILIARES SIDEBAR
+    // =========================================
 
-    /**
-     * Obtiene las iniciales de un nombre de usuario.
-     */
     private String getInitialLetters(String username) {
         String[] parts = username.trim().split("\\s+");
         StringBuilder result = new StringBuilder();
@@ -86,17 +97,18 @@ public class CreateSurveyViewController implements Initializable {
                 result.append(part.substring(0, 1).toUpperCase());
             }
         }
-        return result.length() > 0 ? result.toString() : "U";
+        return !result.isEmpty() ? result.toString() : "U";
     }
 
-    /**
-     * Marca el botón "Crear Encuesta" como activo en la barra lateral.
-     */
     private void setViewActive() {
+        // Quitar el estilo create-btn para que se vea como activo en lugar de como botón principal
+        createSurvey.getStyleClass().remove("create-btn");
         createSurvey.getStyleClass().add("nav-btn-active");
     }
 
-    // --- NAVEGACIÓN SIDEBAR ---
+    // =========================================
+    // NAVEGACIÓN SIDEBAR
+    // =========================================
 
     @FXML
     public void goToHome(ActionEvent event) {
@@ -105,7 +117,7 @@ public class CreateSurveyViewController implements Initializable {
 
     @FXML
     public void goToCreateSurvey(ActionEvent event) {
-        // Ya estamos en esta vista, no hacer nada
+        // Ya estamos aquí
     }
 
     @FXML
@@ -124,272 +136,531 @@ public class CreateSurveyViewController implements Initializable {
         sceneManager.showLogin();
     }
 
-    // --- ACCIONES PRINCIPALES ---
+    // =========================================
+    // ACCIONES PRINCIPALES
+    // =========================================
 
     @FXML
     public void addDefaultQuestion() {
-        // Por defecto añadimos una Textual, pero el usuario puede cambiarla con el ComboBox
         addQuestion(TypeQuestion.TEXTUAL);
     }
 
     private void addQuestion(TypeQuestion type) {
-        int index = questionList.size(); // Nuevo índice
+        int index = questionList.size();
         Question q;
-        
-        // Crear instancia según tipo (aunque inicialmente sea textual, preparamos lógica)
+
         if (type == TypeQuestion.MULTIPLE_CHOICE) {
-            q = new MultipleChoiceQuestion(index, "TEMP_ID");
-            // Añadir opciones por defecto
-            ((MultipleChoiceQuestion) q).addOption(new OptionQuestion(0, "TEMP_ID"));
-            ((MultipleChoiceQuestion) q).addOption(new OptionQuestion(1, "TEMP_ID"));
+            MultipleChoiceQuestion mcq = new MultipleChoiceQuestion(index, "TEMP_ID");
+            OptionQuestion opt1 = new OptionQuestion(0, "TEMP_ID");
+            opt1.setOptionText("Opción 1");
+            OptionQuestion opt2 = new OptionQuestion(1, "TEMP_ID");
+            opt2.setOptionText("Opción 2");
+            mcq.addOption(opt1);
+            mcq.addOption(opt2);
+            q = mcq;
         } else {
             q = new Question(index, "TEMP_ID");
             q.setTypeQuestion(type);
         }
-        
+
         questionList.add(q);
-        renderQuestions(); // Refrescar vista
-        
-        // Scroll al final (opcional, requeriría acceso al ScrollPane)
+        renderQuestions();
+
+        // Scroll al final
+        scrollPane.setVvalue(1.0);
+    }
+
+    @FXML
+    public void handleSaveDraft() {
+        String title = surveyTitleField.getText();
+        if (title == null || title.trim().isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Título Requerido",
+                    "Debes ingresar un título para guardar el borrador.");
+            surveyTitleField.getStyleClass().add("error-field");
+            return;
+        }
+        surveyTitleField.getStyleClass().remove("error-field");
+
+        // Validar preguntas
+        if (!validateQuestions()) {
+            return;
+        }
+
+        try {
+            Survey survey = buildSurvey();
+            survey.setSurveyStatus(SurveyStatus.DRAFT);
+
+            if (currentSurveyId == null) {
+                // Nueva encuesta
+                Survey created = surveyController.createSurvey(survey);
+                currentSurveyId = created.getSURVEY_ID();
+                showAlert(Alert.AlertType.INFORMATION, "Borrador Guardado",
+                        "El borrador ha sido guardado exitosamente.");
+            } else {
+                // Actualizar existente
+                surveyController.updateSurvey(currentSurveyId, survey);
+                showAlert(Alert.AlertType.INFORMATION, "Borrador Actualizado",
+                        "El borrador ha sido actualizado exitosamente.");
+            }
+
+            sceneManager.showMySurveysDrafts();
+
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error",
+                    "No se pudo guardar el borrador: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void handlePublish() {
         String title = surveyTitleField.getText();
         if (title == null || title.trim().isEmpty()) {
-            System.out.println("Error: El título es obligatorio");
-            // Aquí podrías poner un borde rojo al campo o mostrar alerta
+            showAlert(Alert.AlertType.WARNING, "Título Requerido",
+                    "Debes ingresar un título para publicar la encuesta.");
+            surveyTitleField.getStyleClass().add("error-field");
             return;
         }
-        
-        // Aquí llamarías al controlador para guardar
-        // Survey newSurvey = new Survey(title, surveyDescField.getText(), ...);
-        // newSurvey.setQuestions(questionList);
-        // surveyController.save(newSurvey);
-        
-        System.out.println("Publicando encuesta: " + title + " con " + questionList.size() + " preguntas.");
-        sceneManager.showHome();
+        surveyTitleField.getStyleClass().remove("error-field");
+
+        if (questionList.isEmpty()) {
+            showAlert(Alert.AlertType.WARNING, "Sin Preguntas",
+                    "Debes añadir al menos una pregunta.");
+            return;
+        }
+
+        // Validar preguntas
+        if (!validateQuestions()) {
+            return;
+        }
+
+        // Confirmar publicación
+        Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+        confirm.setTitle("Confirmar Publicación");
+        confirm.setHeaderText("¿Publicar encuesta?");
+        confirm.setContentText("Una vez publicada, la encuesta estará disponible para recibir respuestas.");
+
+        if (confirm.showAndWait().orElse(ButtonType.CANCEL) != ButtonType.OK) {
+            return;
+        }
+
+        try {
+            Survey survey = buildSurvey();
+
+            if (currentSurveyId == null) {
+                // Crear y publicar nueva encuesta
+                Survey created = surveyController.createSurvey(survey);
+                surveyController.publishSurvey(created.getSURVEY_ID());
+            } else {
+                // Actualizar y publicar existente
+                surveyController.updateSurvey(currentSurveyId, survey);
+                surveyController.publishSurvey(currentSurveyId);
+            }
+
+            showAlert(Alert.AlertType.INFORMATION, "Encuesta Publicada",
+                    "La encuesta ha sido publicada exitosamente.");
+            sceneManager.showHome();
+
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error",
+                    "No se pudo publicar la encuesta: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     @FXML
     public void handleCancel() {
+        if (!questionList.isEmpty() ||
+            (surveyTitleField.getText() != null && !surveyTitleField.getText().trim().isEmpty())) {
+
+            Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
+            confirm.setTitle("Confirmar Cancelación");
+            confirm.setHeaderText("¿Descartar cambios?");
+            confirm.setContentText("Perderás todos los cambios no guardados.");
+
+            if (confirm.showAndWait().orElse(ButtonType.CANCEL) != ButtonType.OK) {
+                return;
+            }
+        }
         sceneManager.showHome();
     }
 
-    // --- RENDERIZADO DINÁMICO ---
+    // =========================================
+    // CONSTRUCCIÓN Y VALIDACIÓN DE ENCUESTA
+    // =========================================
 
-    /**
-     * Reconstruye la lista visual de preguntas basándose en el modelo 'questionList'.
-     */
+    private Survey buildSurvey() {
+        String title = surveyTitleField.getText().trim();
+        String description = surveyDescField.getText() != null ? surveyDescField.getText().trim() : "";
+        String username = userController.getUsernameLoggedIn();
+
+        Survey survey;
+        if (currentSurveyId != null) {
+            survey = new Survey(currentSurveyId, title, description, username);
+        } else {
+            String newId = surveyController.generateUniqueSurveyId();
+            survey = new Survey(newId, title, description, username);
+        }
+
+        // Añadir preguntas al survey
+        for (int i = 0; i < questionList.size(); i++) {
+            Question q = questionList.get(i);
+            q.setQuestionIndex(i);
+            survey.getQuestions().add(q);
+        }
+
+        return survey;
+    }
+
+    private boolean validateQuestions() {
+        for (int i = 0; i < questionList.size(); i++) {
+            Question q = questionList.get(i);
+
+            // Validar que el texto no esté vacío si es obligatoria
+            if (q.getQuestionText() == null || q.getQuestionText().trim().isEmpty()) {
+                showAlert(Alert.AlertType.WARNING, "Pregunta Incompleta",
+                        "La pregunta #" + (i + 1) + " no tiene texto.");
+                return false;
+            }
+
+            // Validar opciones múltiples
+            if (q instanceof MultipleChoiceQuestion mcq) {
+                if (mcq.getOptions().size() < 2) {
+                    showAlert(Alert.AlertType.WARNING, "Opciones Insuficientes",
+                            "La pregunta #" + (i + 1) + " debe tener al menos 2 opciones.");
+                    return false;
+                }
+
+                // Validar que las opciones tengan texto
+                for (int j = 0; j < mcq.getOptions().size(); j++) {
+                    OptionQuestion opt = mcq.getOptions().get(j);
+                    if (opt.getOptionText() == null || opt.getOptionText().trim().isEmpty()) {
+                        showAlert(Alert.AlertType.WARNING, "Opción Vacía",
+                                "La opción #" + (j + 1) + " de la pregunta #" + (i + 1) + " está vacía.");
+                        return false;
+                    }
+                }
+
+                // Validar min/max selecciones
+                if (mcq.getMinSelections() > mcq.getMaxSelections()) {
+                    showAlert(Alert.AlertType.WARNING, "Configuración Inválida",
+                            "En la pregunta #" + (i + 1) +
+                            ", el mínimo de selecciones no puede ser mayor al máximo.");
+                    return false;
+                }
+
+                if (mcq.getMaxSelections() > mcq.getOptions().size()) {
+                    showAlert(Alert.AlertType.WARNING, "Configuración Inválida",
+                            "En la pregunta #" + (i + 1) +
+                            ", el máximo de selecciones no puede ser mayor al número de opciones.");
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void showAlert(Alert.AlertType type, String title, String content) {
+        Alert alert = new Alert(type);
+        alert.setTitle(title);
+        alert.setHeaderText(null);
+        alert.setContentText(content);
+        alert.showAndWait();
+    }
+
+    // =========================================
+    // RENDERIZADO DINÁMICO
+    // =========================================
+
     private void renderQuestions() {
         questionsContainer.getChildren().clear();
 
         for (int i = 0; i < questionList.size(); i++) {
             Question q = questionList.get(i);
-            q.setQuestionIndex(i); // Asegurar índices correctos
-            
+            q.setQuestionIndex(i);
+
             VBox card = createQuestionCard(q, i);
             questionsContainer.getChildren().add(card);
         }
     }
 
-    /**
-     * Construye la tarjeta visual para una pregunta específica.
-     */
     private VBox createQuestionCard(Question q, int index) {
         VBox card = new VBox();
         card.getStyleClass().add("question-card");
-        
-        // Configurar Drag & Drop para la tarjeta
+        card.setSpacing(10);
+
+        // Configurar Drag & Drop
         setupDragAndDrop(card, index);
 
-        // --- 1. HEADER (Handle, Input, Combo, Delete) ---
+        // --- 1. HEADER ---
         HBox header = new HBox(15);
         header.setAlignment(Pos.TOP_LEFT);
         header.getStyleClass().add("q-header-row");
 
-        // Handle
+        // Handle para arrastrar
         Label handle = new Label("⋮⋮");
         handle.getStyleClass().add("drag-handle");
         handle.setTooltip(new Tooltip("Arrastra para reordenar"));
 
-        // Input Texto Pregunta
+        // Input texto pregunta
         TextField qInput = new TextField(q.getQuestionText());
         qInput.setPromptText("Escribe tu pregunta...");
         qInput.getStyleClass().add("q-text-input");
         HBox.setHgrow(qInput, Priority.ALWAYS);
-        // Listener para actualizar modelo
         qInput.textProperty().addListener((obs, o, n) -> q.setQuestionText(n));
 
-        // ComboBox Tipo
+        // Focus listener para estilo activo
+        qInput.focusedProperty().addListener((obs, oldVal, newVal) -> {
+            if (newVal) {
+                card.getStyleClass().add("question-card-active");
+            } else {
+                card.getStyleClass().remove("question-card-active");
+            }
+        });
+
+        // ComboBox tipo de pregunta
         ComboBox<String> typeCombo = new ComboBox<>();
         typeCombo.getItems().addAll("Texto", "Opción Múltiple", "Numérica");
         typeCombo.getStyleClass().add("q-type-combo");
-        
+
         // Seleccionar valor actual
-        if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) typeCombo.setValue("Texto");
-        else if (q.getTypeQuestion() == TypeQuestion.MULTIPLE_CHOICE) typeCombo.setValue("Opción Múltiple");
-        else typeCombo.setValue("Numérica");
+        switch (q.getTypeQuestion()) {
+            case TEXTUAL -> typeCombo.setValue("Texto");
+            case MULTIPLE_CHOICE -> typeCombo.setValue("Opción Múltiple");
+            case NUMERICAL -> typeCombo.setValue("Numérica");
+        }
 
-        // Listener cambio de tipo (Transformación de objeto)
         typeCombo.valueProperty().addListener((obs, oldVal, newVal) -> changeQuestionType(index, newVal));
-
-        // Botón Borrar
-        Button deleteBtn = new Button();
-        deleteBtn.getStyleClass().add("icon-btn");
-        SVGPath trashIcon = new SVGPath();
-        trashIcon.setContent("M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z");
-        trashIcon.getStyleClass().add("trash-icon");
-        deleteBtn.setGraphic(trashIcon);
-        deleteBtn.setOnAction(e -> {
-            questionList.remove(index);
-            renderQuestions();
-        });
 
         header.getChildren().addAll(handle, qInput, typeCombo);
         card.getChildren().add(header);
 
-        // --- 2. CONTENIDO (Según Tipo) ---
+        // --- 2. CONTENIDO ---
         VBox contentArea = new VBox();
         contentArea.getStyleClass().add("q-content-area");
+        contentArea.setSpacing(10);
 
-        if (q instanceof MultipleChoiceQuestion) {
-            // Renderizar lista de opciones
-            renderOptions((MultipleChoiceQuestion) q, contentArea);
-        } else {
-            // Renderizar placeholder de texto
-            Label placeholder = new Label("Texto de respuesta del usuario");
+        if (q instanceof MultipleChoiceQuestion mcq) {
+            renderMultipleChoiceContent(mcq, contentArea);
+        } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+            Label placeholder = new Label("Respuesta numérica del usuario");
             placeholder.getStyleClass().add("text-placeholder");
             placeholder.setMaxWidth(Double.MAX_VALUE);
             contentArea.getChildren().add(placeholder);
         }
+        // Para TEXTUAL no mostramos nada (como en el HTML de ejemplo)
+
         card.getChildren().add(contentArea);
 
-        // --- 3. FOOTER (Obligatoria, Borrar) ---
-        HBox footer = new HBox(15);
+        // --- 3. FOOTER ---
+        HBox footer = new HBox(20);
         footer.getStyleClass().add("card-footer");
         footer.setAlignment(Pos.CENTER_RIGHT);
 
+        // Switch obligatoria
+        HBox switchContainer = new HBox(8);
+        switchContainer.setAlignment(Pos.CENTER_LEFT);
+        switchContainer.getStyleClass().add("switch-container");
+
         CheckBox requiredCheck = new CheckBox("Obligatoria");
         requiredCheck.setSelected(q.isRequired());
+        requiredCheck.getStyleClass().add("switch-label");
         requiredCheck.selectedProperty().addListener((obs, o, n) -> q.setRequired(n));
-        
-        // Separador vertical
-        Region sep = new Region();
-        sep.setPrefSize(1, 20);
-        sep.setStyle("-fx-background-color: #ddd;");
 
-        footer.getChildren().addAll(requiredCheck, sep, deleteBtn); // Movemos delete aquí para que cuadre con diseño
+        switchContainer.getChildren().add(requiredCheck);
+
+        // Separador
+        Region sep = new Region();
+        sep.getStyleClass().add("vertical-separator");
+
+        // Botón eliminar
+        Button deleteBtn = new Button();
+        deleteBtn.getStyleClass().addAll("icon-btn", "delete");
+        SVGPath trashIcon = new SVGPath();
+        trashIcon.setContent("M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z");
+        trashIcon.getStyleClass().add("trash-icon");
+        deleteBtn.setGraphic(trashIcon);
+        deleteBtn.setTooltip(new Tooltip("Eliminar pregunta"));
+        deleteBtn.setOnAction(e -> {
+            if (questionList.size() > 1) {
+                questionList.remove(index);
+                renderQuestions();
+            } else {
+                showAlert(Alert.AlertType.WARNING, "No Permitido",
+                        "La encuesta debe tener al menos una pregunta.");
+            }
+        });
+
+        footer.getChildren().addAll(switchContainer, sep, deleteBtn);
         card.getChildren().add(footer);
 
         return card;
     }
 
-    /**
-     * Renderiza las opciones de una pregunta de selección múltiple.
-     */
-    private void renderOptions(MultipleChoiceQuestion mcq, VBox container) {
+    private void renderMultipleChoiceContent(MultipleChoiceQuestion mcq, VBox container) {
         VBox optionsList = new VBox(10);
-        
+        optionsList.getStyleClass().add("options-list");
+
         for (int i = 0; i < mcq.getOptions().size(); i++) {
-            OptionQuestion opt = mcq.getOption(i);
-            int optIndex = i; // Efectivamente final para lambdas
+            OptionQuestion opt = mcq.getOptions().get(i);
+            int optIndex = i;
 
             HBox row = new HBox(10);
             row.setAlignment(Pos.CENTER_LEFT);
             row.getStyleClass().add("option-row");
 
-            // Icono arrastre opción (Visual por ahora)
+            // Icono drag
             Label dragOpt = new Label("⋮⋮");
-            dragOpt.setStyle("-fx-text-fill: #ddd; -fx-cursor: move;");
+            dragOpt.getStyleClass().add("option-drag");
 
-            // Radio visual (Círculo)
+            // Radio visual
             Region radio = new Region();
             radio.getStyleClass().add("radio-circle");
 
-            // Input Opción
+            // Input opción
             TextField optInput = new TextField(opt.getOptionText());
             optInput.setPromptText("Opción " + (i + 1));
             optInput.getStyleClass().add("option-input");
             HBox.setHgrow(optInput, Priority.ALWAYS);
             optInput.textProperty().addListener((obs, o, n) -> opt.setOptionText(n));
 
-            // Borrar Opción
+            // Botón eliminar opción
             Button delOpt = new Button("✕");
-            delOpt.getStyleClass().add("remove-opt-btn"); // Definir en CSS: transparente, rojo hover
+            delOpt.getStyleClass().add("remove-opt-btn");
             delOpt.setOnAction(e -> {
-                mcq.removeOption(optIndex);
-                renderQuestions(); // Re-renderizar tarjeta
+                if (mcq.getOptions().size() > 2) {
+                    mcq.removeOption(optIndex);
+                    // Ajustar max si es necesario
+                    if (mcq.getMaxSelections() > mcq.getOptions().size()) {
+                        mcq.setMaxSelections(mcq.getOptions().size());
+                    }
+                    if (mcq.getMinSelections() > mcq.getOptions().size()) {
+                        mcq.setMinSelections(mcq.getOptions().size());
+                    }
+                    renderQuestions();
+                } else {
+                    showAlert(Alert.AlertType.WARNING, "Mínimo de Opciones",
+                            "Debe haber al menos 2 opciones.");
+                }
             });
 
             row.getChildren().addAll(dragOpt, radio, optInput, delOpt);
             optionsList.getChildren().add(row);
         }
 
-        // Botón Añadir Opción
+        // Botón añadir opción
         Button addOptBtn = new Button("+ Añadir opción");
         addOptBtn.getStyleClass().add("add-option-btn");
         addOptBtn.setOnAction(e -> {
-            mcq.addOption(new OptionQuestion(mcq.getOptions().size(), "TEMP"));
+            int newIndex = mcq.getOptions().size();
+            OptionQuestion newOpt = new OptionQuestion(newIndex, "TEMP_ID");
+            newOpt.setOptionText("Opción " + (newIndex + 1));
+            mcq.addOption(newOpt);
             renderQuestions();
         });
 
         HBox addRow = new HBox(addOptBtn);
-        addRow.setPadding(new javafx.geometry.Insets(5, 0, 0, 42)); // Indentación
+        addRow.setPadding(new Insets(5, 0, 0, 42));
 
-        container.getChildren().addAll(optionsList, addRow);
+        // Configuración min/max selecciones
+        HBox selectionConfig = new HBox(20);
+        selectionConfig.getStyleClass().add("selection-config");
+        selectionConfig.setAlignment(Pos.CENTER_LEFT);
+        selectionConfig.setPadding(new Insets(15, 0, 5, 0));
+
+        // Mínimo de selecciones
+        Label minLabel = new Label("Mín. selecciones:");
+        minLabel.getStyleClass().add("selection-label");
+
+        Spinner<Integer> minSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMinSelections());
+        minSpinner.getStyleClass().add("selection-spinner");
+        minSpinner.setEditable(true);
+        minSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
+            try {
+                if (newVal <= mcq.getMaxSelections() && newVal <= mcq.getOptions().size()) {
+                    mcq.setMinSelections(newVal);
+                } else {
+                    minSpinner.getValueFactory().setValue(oldVal);
+                }
+            } catch (IllegalArgumentException e) {
+                minSpinner.getValueFactory().setValue(oldVal);
+            }
+        });
+
+        // Máximo de selecciones
+        Label maxLabel = new Label("Máx. selecciones:");
+        maxLabel.getStyleClass().add("selection-label");
+
+        Spinner<Integer> maxSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMaxSelections());
+        maxSpinner.getStyleClass().add("selection-spinner");
+        maxSpinner.setEditable(true);
+        maxSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
+            try {
+                if (newVal >= mcq.getMinSelections() && newVal <= mcq.getOptions().size()) {
+                    mcq.setMaxSelections(newVal);
+                } else {
+                    maxSpinner.getValueFactory().setValue(oldVal);
+                }
+            } catch (IllegalArgumentException e) {
+                maxSpinner.getValueFactory().setValue(oldVal);
+            }
+        });
+
+        selectionConfig.getChildren().addAll(minLabel, minSpinner, maxLabel, maxSpinner);
+
+        container.getChildren().addAll(optionsList, addRow, selectionConfig);
     }
 
-    /**
-     * Cambia el tipo de pregunta en una posición dada.
-     * Esto implica reemplazar el objeto Question por uno nuevo (si cambia de clase)
-     * o simplemente cambiar su enum (si la clase es la misma).
-     */
     private void changeQuestionType(int index, String newTypeStr) {
         Question oldQ = questionList.get(index);
         TypeQuestion newType;
-        
-        if (newTypeStr.equals("Opción Múltiple")) newType = TypeQuestion.MULTIPLE_CHOICE;
-        else if (newTypeStr.equals("Numérica")) newType = TypeQuestion.NUMERICAL;
-        else newType = TypeQuestion.TEXTUAL;
 
-        if (oldQ.getTypeQuestion() == newType) return; // No hay cambio
+        switch (newTypeStr) {
+            case "Opción Múltiple" -> newType = TypeQuestion.MULTIPLE_CHOICE;
+            case "Numérica" -> newType = TypeQuestion.NUMERICAL;
+            default -> newType = TypeQuestion.TEXTUAL;
+        }
 
-        // Crear nueva pregunta conservando datos básicos
+        if (oldQ.getTypeQuestion() == newType) return;
+
         Question newQ;
         if (newType == TypeQuestion.MULTIPLE_CHOICE) {
-            newQ = new MultipleChoiceQuestion(index, oldQ.getSURVEY_ID());
-            ((MultipleChoiceQuestion) newQ).addOption(new OptionQuestion(0, "Opción 1"));
+            MultipleChoiceQuestion mcq = new MultipleChoiceQuestion(index, "TEMP_ID");
+            OptionQuestion opt1 = new OptionQuestion(0, "TEMP_ID");
+            opt1.setOptionText("Opción 1");
+            OptionQuestion opt2 = new OptionQuestion(1, "TEMP_ID");
+            opt2.setOptionText("Opción 2");
+            mcq.addOption(opt1);
+            mcq.addOption(opt2);
+            newQ = mcq;
         } else {
-            newQ = new Question(index, oldQ.getSURVEY_ID());
+            newQ = new Question(index, "TEMP_ID");
+            newQ.setTypeQuestion(newType);
         }
-        
-        newQ.setTypeQuestion(newType);
+
         newQ.setQuestionText(oldQ.getQuestionText());
         newQ.setRequired(oldQ.isRequired());
 
-        // Reemplazar en lista
         questionList.set(index, newQ);
         renderQuestions();
     }
 
-    // ==========================================
-    // LÓGICA DRAG & DROP (REORDENAR)
-    // ==========================================
+    // =========================================
+    // DRAG & DROP (REORDENAR)
+    // =========================================
 
     private void setupDragAndDrop(Node node, int index) {
-        // 1. Iniciar arrastre
         node.setOnDragDetected(event -> {
             draggingIndex = index;
             Dragboard db = node.startDragAndDrop(TransferMode.MOVE);
             ClipboardContent content = new ClipboardContent();
-            content.putString(String.valueOf(index)); // Guardamos el índice origen
+            content.putString(String.valueOf(index));
             db.setContent(content);
             node.setOpacity(0.4);
+            node.getStyleClass().add("dragging");
             event.consume();
         });
 
-        // 2. Sobrevolar otro nodo
         node.setOnDragOver(event -> {
             if (event.getGestureSource() != node && event.getDragboard().hasString()) {
                 event.acceptTransferModes(TransferMode.MOVE);
@@ -397,15 +668,13 @@ public class CreateSurveyViewController implements Initializable {
             event.consume();
         });
 
-        // 3. Soltar
         node.setOnDragDropped(event -> {
             Dragboard db = event.getDragboard();
             boolean success = false;
             if (db.hasString()) {
                 int sourceIdx = Integer.parseInt(db.getString());
-                int targetIdx = index; // El índice del nodo donde soltamos
+                int targetIdx = index;
 
-                // Reordenar Lista
                 if (sourceIdx != targetIdx) {
                     Question item = questionList.remove(sourceIdx);
                     questionList.add(targetIdx, item);
@@ -416,11 +685,11 @@ public class CreateSurveyViewController implements Initializable {
             event.consume();
         });
 
-        // 4. Terminar (Limpieza y Repintado)
         node.setOnDragDone(event -> {
             node.setOpacity(1.0);
+            node.getStyleClass().remove("dragging");
             if (event.getTransferMode() == TransferMode.MOVE) {
-                renderQuestions(); // Refrescar UI con nuevo orden
+                renderQuestions();
             }
             event.consume();
         });
