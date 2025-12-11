@@ -212,12 +212,16 @@ public abstract class SurveysViewController implements Initializable {
         String sort = sortCombo.getValue(); // valor actual del sort
         String searchText = searchField.getText().toLowerCase(); // texto introducido en el buscador
 
-        // Comparador para Ordenamiento
+        // Comparador para Ordenamiento - usar CREATED_AT como fallback si PUBLISHED_AT es null
         Comparator<Survey> surveyComparator = switch (sort) {
-            case "Más Antiguas" -> Comparator.comparing(Survey::getPUBLISHED_AT);
+            case "Más Antiguas" -> Comparator.comparing(
+                    (Survey s) -> s.getPUBLISHED_AT() != null ? s.getPUBLISHED_AT() : s.getCREATED_AT(),
+                    Comparator.nullsLast(Comparator.naturalOrder()));
             case "Más populares" -> Comparator.comparing(Survey::getViews).reversed();
             case "Mejor Valoradas" -> Comparator.comparing(Survey::getAvgRating).reversed();
-            default -> Comparator.comparing(Survey::getPUBLISHED_AT).reversed(); // encuestas más recientes
+            default -> Comparator.comparing(
+                    (Survey s) -> s.getPUBLISHED_AT() != null ? s.getPUBLISHED_AT() : s.getCREATED_AT(),
+                    Comparator.nullsLast(Comparator.reverseOrder())); // encuestas más recientes
         };
 
         // Filtrar y ordenar encuestas

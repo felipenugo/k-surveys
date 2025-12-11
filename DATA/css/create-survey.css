@@ -1,0 +1,403 @@
+/* =========================================
+   CREATE SURVEY - ESTILOS
+   Sigue la estética de surveys.css, login.css, register.css
+   Colores principales: #1e3c72, #2a5298
+   ========================================= */
+
+/* =========================================
+   CONTENIDO PRINCIPAL (ÁREA CENTRAL)
+   ========================================= */
+
+/* ScrollPane Transparente */
+.scroll-pane-transparent {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+.scroll-pane-transparent > .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-pane-transparent > .scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.content-container {
+    -fx-alignment: top-center;
+}
+
+/* =========================================
+   HEADER DE ENCUESTA (Título y Descripción)
+   ========================================= */
+.survey-header-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-padding: 30;
+    /* Borde superior azul como en login-card */
+    -fx-border-color: #1e3c72 transparent transparent transparent;
+    -fx-border-width: 10 0 0 0;
+    -fx-border-radius: 8 8 0 0;
+    -fx-max-width: 800;
+    -fx-pref-width: 800;
+}
+
+.title-input {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #eee transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5 0 10 0;
+    -fx-prompt-text-fill: #999;
+    -fx-text-fill: #1e3c72; /* Color del título del proyecto */
+}
+.title-input:focused {
+    -fx-border-color: transparent transparent #2a5298 transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.desc-input {
+    -fx-font-size: 14px;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-text-fill: #666;
+    -fx-prompt-text-fill: #999;
+    -fx-padding: 5 0;
+}
+.desc-input:focused {
+    -fx-border-color: transparent transparent #2a5298 transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* =========================================
+   TARJETA DE PREGUNTA
+   ========================================= */
+.question-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 25;
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 0 5;
+    -fx-border-radius: 8;
+    -fx-max-width: 800;
+    -fx-pref-width: 800;
+}
+
+.question-card:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 15, 0, 0, 5);
+}
+
+.question-card-active {
+    -fx-border-color: #2a5298 transparent transparent transparent;
+    -fx-border-width: 0 0 0 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(42, 82, 152, 0.15), 15, 0, 0, 5);
+}
+
+/* HEADER DE PREGUNTA */
+.q-header-row {
+    -fx-spacing: 15;
+    -fx-alignment: top-left;
+    -fx-padding: 0 0 10 0;
+}
+
+.drag-handle {
+    -fx-text-fill: #ddd;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-cursor: move;
+    -fx-padding: 8 10 0 0;
+    -fx-rotate: 90;
+}
+.question-card:hover .drag-handle {
+    -fx-text-fill: #999;
+}
+
+/* Input de pregunta - mismo estilo que input-field */
+.q-text-input {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dddddd;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12;
+    -fx-font-size: 14px;
+    -fx-font-weight: 500;
+}
+.q-text-input:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2a5298;
+}
+
+/* ComboBox tipo - mismo estilo que filter-combo */
+.q-type-combo {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 15;
+    -fx-pref-width: 160;
+    -fx-font-size: 14px;
+}
+.q-type-combo:hover, .q-type-combo:focused {
+    -fx-border-color: #2a5298;
+}
+
+/* CONTENIDO DE PREGUNTA */
+.q-content-area {
+    -fx-padding: 10 0 20 35;
+}
+
+/* Placeholder para texto/numérico */
+.text-placeholder {
+    -fx-text-fill: #999;
+    -fx-font-style: italic;
+    -fx-padding: 10 0;
+    -fx-border-color: transparent transparent #ddd transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-border-style: dotted;
+}
+
+/* =========================================
+   OPCIONES MÚLTIPLES
+   ========================================= */
+.options-list {
+    -fx-spacing: 10;
+    -fx-padding: 10 0;
+}
+
+.option-row {
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+    -fx-padding: 5 0;
+}
+
+.option-drag {
+    -fx-text-fill: #ddd;
+    -fx-font-size: 18px;
+    -fx-cursor: move;
+}
+.option-row:hover .option-drag {
+    -fx-text-fill: #999;
+}
+
+.radio-circle {
+    -fx-min-width: 16px;
+    -fx-min-height: 16px;
+    -fx-max-width: 16px;
+    -fx-max-height: 16px;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 50;
+    -fx-border-width: 2;
+    -fx-background-color: transparent;
+}
+
+.option-input {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent transparent transparent;
+    -fx-border-width: 0 0 1 0;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+}
+.option-input:focused {
+    -fx-border-color: transparent transparent #2a5298 transparent;
+}
+.option-input:hover {
+    -fx-border-color: transparent transparent #eee transparent;
+}
+
+.remove-opt-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #ccc;
+    -fx-font-size: 18px;
+    -fx-cursor: hand;
+    -fx-padding: 0 5;
+}
+.remove-opt-btn:hover {
+    -fx-text-fill: #ff4757; /* Mismo rojo que error-card */
+}
+
+.add-option-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: #666;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 5 0;
+}
+.add-option-btn:hover {
+    -fx-text-fill: #2a5298;
+    -fx-underline: true;
+}
+
+/* Configuración Min/Max Selecciones */
+.selection-config {
+    -fx-padding: 15 0 5 0;
+    -fx-spacing: 20;
+    -fx-alignment: center-left;
+}
+
+.selection-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 13px;
+}
+
+.selection-spinner {
+    -fx-pref-width: 80;
+    -fx-font-size: 13px;
+}
+
+/* =========================================
+   FOOTER DE LA CARD
+   ========================================= */
+.card-footer {
+    -fx-border-color: #eee transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-padding: 15 0 0 0;
+    -fx-spacing: 20;
+    -fx-alignment: center-right;
+}
+
+/* Toggle/Checkbox */
+.switch-container {
+    -fx-spacing: 8;
+    -fx-alignment: center-left;
+}
+
+.switch-label {
+    -fx-text-fill: #666;
+    -fx-font-size: 13px;
+}
+
+/* Botones de acción pequeños */
+.icon-btn {
+    -fx-background-color: transparent;
+    -fx-cursor: hand;
+    -fx-padding: 8;
+    -fx-background-radius: 50;
+}
+.icon-btn:hover {
+    -fx-background-color: #f0f0f0;
+}
+.icon-btn.delete:hover {
+    -fx-background-color: #ffebeb;
+}
+
+.trash-icon {
+    -fx-fill: #666;
+}
+.icon-btn:hover .trash-icon {
+    -fx-fill: #ff4757;
+}
+
+/* Separador Vertical */
+.vertical-separator {
+    -fx-background-color: #ddd;
+    -fx-pref-width: 1;
+    -fx-pref-height: 20;
+}
+
+/* =========================================
+   BOTÓN AÑADIR PREGUNTA
+   ========================================= */
+.add-question-box {
+    -fx-background-color: white;
+    -fx-border-color: #ddd;
+    -fx-border-width: 2;
+    -fx-border-style: dashed;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 20;
+    -fx-cursor: hand;
+    -fx-max-width: 800;
+    -fx-pref-width: 800;
+}
+.add-question-box:hover {
+    -fx-background-color: #f8faff;
+    -fx-border-color: #2a5298;
+}
+
+.add-question-label {
+    -fx-text-fill: #2a5298;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* =========================================
+   BARRA INFERIOR FLOTANTE
+   ========================================= */
+.bottom-bar {
+    -fx-background-color: white;
+    -fx-border-color: #ddd transparent transparent transparent;
+    -fx-border-width: 1 0 0 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, -2);
+    -fx-padding: 15 40;
+    -fx-spacing: 15;
+    -fx-alignment: center-right;
+}
+
+/* Botón Guardar Borrador - estilo outline azul */
+.btn-draft {
+    -fx-background-color: transparent;
+    -fx-border-color: #2a5298;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #2a5298;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-draft:hover {
+    -fx-background-color: rgba(42, 82, 152, 0.1);
+    -fx-effect: dropshadow(three-pass-box, rgba(42, 82, 152, 0.3), 10, 0, 0, 3);
+}
+
+/* Botón Cancelar - estilo gris */
+.btn-cancel {
+    -fx-background-color: transparent;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #666;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-cancel:hover {
+    -fx-background-color: #f0f0f0;
+}
+
+/* Botón Publicar - estilo principal como login-button */
+.btn-publish {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 30;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.btn-publish:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(42, 82, 152, 0.7), 20, 0, 0, 5);
+}
+
+/* =========================================
+   ESTADOS DE ERROR (Validación)
+   ========================================= */
+.error-field {
+    -fx-border-color: #ff4757;
+    -fx-border-width: 2;
+}
+
+.error-text {
+    -fx-text-fill: #ff4757;
+    -fx-font-size: 12px;
+}
+
+/* Clase para arrastrar */
+.dragging {
+    -fx-opacity: 0.4;
+    -fx-border-color: #999;
+    -fx-border-style: dashed;
+    -fx-border-width: 2;
+}
+
