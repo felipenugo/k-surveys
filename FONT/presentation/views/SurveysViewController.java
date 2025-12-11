@@ -284,8 +284,7 @@ public abstract class SurveysViewController implements Initializable {
      */
     @FXML
     public void goToCreateSurvey(ActionEvent event) {
-        // sceneManager.showCreateSurvey();
-        System.out.println("Navegando a Crear Encuesta...");
+        sceneManager.showCreateSurvey();
     }
 
     /**

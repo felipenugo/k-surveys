@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import presentation.util.SurveyView;
 
+import java.io.IOException;
+
 public class SceneManager {
     private final UserController userController;
     private final SurveyController surveyController;
@@ -187,12 +189,22 @@ public class SceneManager {
 
     public void showCreateSurvey() {
         this.primaryStage.setTitle("Crear Encuesta");
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/create-survey.fxml"));
+
+            CreateSurveyViewController controller = new CreateSurveyViewController(userController, surveyController, this);
+            loader.setController(controller);
+
+            finalizeScene(loader, "CREAR ENCUESTA");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-
-    public void showAnswerSurvey(String surveyId)
-    {
-        this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
+    public void showAnswerSurvey(String surveyId) {
+        // TODO: Implementar la lógica para mostrar la vista de responder encuesta
+        System.out.println("Navegando para responder la encuesta con ID: " + surveyId);
+        // Aquí iría la lógica para cargar el FXML de responder encuesta, similar a showCreateSurvey
     }
 
     public void showDeleteAccountConfirm() {
@@ -215,6 +227,8 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+
 public void showEditSurvey(String surveyId) {
     this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
 }
