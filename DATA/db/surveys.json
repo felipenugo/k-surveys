@@ -55,10 +55,10 @@
     "CREATED_AT": "2025-12-08T20:05:00",
     "PUBLISHED_AT": "2025-12-08T20:05:00",
     "surveyStatus": "DRAFT",
-    "avgRating": 3.5,
-    "totalRating": 14.0,
-    "ratingCount": 4,
-    "views": 5,
+    "avgRating": 3.4,
+    "totalRating": 17.0,
+    "ratingCount": 5,
+    "views": 6,
     "questions": [
       {
         "questionIndex": 0,

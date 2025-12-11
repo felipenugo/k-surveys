@@ -356,6 +356,21 @@
           "isAnswered": true
         }
       ]
+    },
+    "0": {
+      "RESPONSE_ID": "0",
+      "SURVEY_ID": "101",
+      "RESPONDER_USERNAME": "arnaup",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "dshghg",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "0",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
     }
   },
   "104": {
