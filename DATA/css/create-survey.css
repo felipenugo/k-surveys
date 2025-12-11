@@ -1,12 +1,6 @@
-/* =========================================
-   CREATE SURVEY - ESTILOS
-   Sigue la estética de surveys.css, login.css, register.css
-   Colores principales: #1e3c72, #2a5298
-   ========================================= */
-
-/* =========================================
-   CONTENIDO PRINCIPAL (ÁREA CENTRAL)
-   ========================================= */
+.create-survey-pane {
+    -fx-background-color: #f4f6f9; /* Mismo fondo que surveys.css */
+}
 
 /* ScrollPane Transparente */
 .scroll-pane-transparent {
@@ -353,7 +347,7 @@
 /* Botón Cancelar - estilo gris */
 .btn-cancel {
     -fx-background-color: transparent;
-    -fx-border-color: #ddd;
+    -fx-border-color: #ccc; /* Borde gris más suave */
     -fx-border-radius: 8;
     -fx-background-radius: 8;
     -fx-text-fill: #666;
@@ -364,6 +358,7 @@
 }
 .btn-cancel:hover {
     -fx-background-color: #f0f0f0;
+    -fx-border-color: #aaa;
 }
 
 /* Botón Publicar - estilo principal como login-button */
@@ -400,4 +395,3 @@
     -fx-border-style: dashed;
     -fx-border-width: 2;
 }
-
