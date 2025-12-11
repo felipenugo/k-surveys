@@ -105,12 +105,15 @@ public class CreateSurveyCard {
 
     /**
      * Crea la columna que muestra la fecha de publicación de la encuesta.
+     * Si no está publicada (borrador), muestra la fecha de creación.
      *
      * @param s La encuesta.
      * @return Un HBox con el ícono de calendario y la fecha.
      */
     private static HBox createDateColumn(Survey s) {
-        String dateStr = s.getPUBLISHED_AT().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        // Usar PUBLISHED_AT si existe, sino usar CREATED_AT
+        java.time.LocalDateTime dateTime = s.getPUBLISHED_AT() != null ? s.getPUBLISHED_AT() : s.getCREATED_AT();
+        String dateStr = dateTime != null ? dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "Sin fecha";
         String calSvg = "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
         HBox colDate = createDataCell(dateStr, calSvg);
         colDate.setMinWidth(120);

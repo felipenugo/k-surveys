@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="/css/surveys.css, /css/create-survey.css">
+
+    <!-- SIDEBAR (mismo estilo que surveys.fxml) -->
+    <left>
+        <VBox styleClass="side-bar">
+
+            <!-- Perfil -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
+            </HBox>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="35.0"/>
+                </VBox.margin>
+
+                <!-- Botón de Inicio -->
+                <Button fx:id="home" styleClass="nav-btn, icon, icon-home" text="Inicio" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToHome"/>
+
+                <!-- Botón de Mis Encuestas -->
+                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey" text="Mis Encuestas"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMySurveys"/>
+
+                <!-- Botón de Mis Borradores -->
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMyDrafts"/>
+
+                <!-- Botón de Crear Encuesta (activo) -->
+                <Button fx:id="createSurvey" styleClass="nav-btn, create-btn, icon, icon-create"
+                        text="Crear Encuesta" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToCreateSurvey">
+                    <VBox.margin>
+                        <Insets bottom="15.0"/>
+                    </VBox.margin>
+                </Button>
+
+                <!-- Empujar contenido abajo -->
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <!-- Botón de Cerrar Sesión -->
+                <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#handleLogout"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <VBox alignment="TOP_CENTER" styleClass="content-area" BorderPane.alignment="CENTER">
+
+            <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
+                <content>
+                    <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container">
+                        <padding>
+                            <Insets top="40" right="40" bottom="120" left="40"/>
+                        </padding>
+
+                        <!-- 1. HEADER DE LA ENCUESTA -->
+                        <VBox styleClass="survey-header-card" spacing="10">
+                            <TextField fx:id="surveyTitleField"
+                                       promptText="Título del Formulario"
+                                       styleClass="title-input"/>
+                            <TextArea fx:id="surveyDescField"
+                                      promptText="Descripción del formulario (opcional)"
+                                      styleClass="desc-input"
+                                      prefRowCount="2"
+                                      wrapText="true"/>
+                        </VBox>
+
+                        <!-- 2. LISTA DINÁMICA DE PREGUNTAS -->
+                        <VBox fx:id="questionsContainer" spacing="20" alignment="TOP_CENTER">
+                            <!-- Las preguntas se generan dinámicamente desde Java -->
+                        </VBox>
+
+                        <!-- 3. BOTÓN AÑADIR PREGUNTA -->
+                        <VBox styleClass="add-question-box" alignment="CENTER" onMouseClicked="#addDefaultQuestion">
+                            <Label text="+ AÑADIR PREGUNTA" styleClass="add-question-label"/>
+                        </VBox>
+
+                        <!-- Espacio extra al final -->
+                        <Region minHeight="60"/>
+
+                    </VBox>
+                </content>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+    <!-- BARRA INFERIOR FLOTANTE -->
+    <bottom>
+        <HBox styleClass="bottom-bar" alignment="CENTER_RIGHT" spacing="15" BorderPane.alignment="CENTER">
+            <Button text="Cancelar" styleClass="btn-cancel" onAction="#handleCancel"/>
+            <Button text="Guardar Borrador" styleClass="btn-draft" onAction="#handleSaveDraft"/>
+            <Button text="PUBLICAR" styleClass="btn-publish" onAction="#handlePublish"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
