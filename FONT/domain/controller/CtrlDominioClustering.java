@@ -51,7 +51,7 @@ public class CtrlDominioClustering {
      * @param distanceMetric Métrica de distancia (EUCLIDEAN, MANHATTAN)
      * @return ID del análisis ejecutado
      */
-    public String runAnalysis(String algorithmName, String surveyId, int k, int maxIter, double tolerance, String distanceMetric) {
+    public String runAnalysis(String algorithmName, String surveyId, int k, int maxIter, double tolerance, String distanceMetric, String textDistanceMetric) {
         Survey survey = surveyRepository.getSurvey(surveyId);
         if (survey == null) {
             throw new IllegalArgumentException("Survey with ID " + surveyId + " not found.");
@@ -71,7 +71,8 @@ public class CtrlDominioClustering {
         List<Question> questions = survey.getQuestions();
 
         DistanceType distanceType = DistanceType.valueOf(distanceMetric.toUpperCase());
-        analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType, TextDistanceType.LEVENSHTEIN));
+        TextDistanceType textDistanceType = TextDistanceType.valueOf(textDistanceMetric.toUpperCase());
+        analysisController.executeAnalysis(analysis.getId(), responses, questions, new DistanceCalculator(distanceType, textDistanceType));
 
         return analysis.getId();
     }
@@ -165,7 +166,7 @@ public class CtrlDominioClustering {
 
         for (int k = 2; k <= 10; ++k) {
             try {
-                String tempAnalysisId = runAnalysis(algorithmName, surveyId, k, maxIter, tolerance, distanceMetric);
+                String tempAnalysisId = runAnalysis(algorithmName, surveyId, k, maxIter, tolerance, distanceMetric, "LEVENSHTEIN");
                 ClusteringAnalysis tempAnalysis = analysisController.getAnalysis(tempAnalysisId);
 
                 if (tempAnalysis != null) {
@@ -235,5 +236,269 @@ public class CtrlDominioClustering {
      */
     public void limpiarAnalisis() {
         analysisController.clearAnalyses();
+    }
+
+    /**
+     * Calcula el número óptimo de clusters (k) utilizando el método del codo (Elbow Method).
+     *
+     * @param surveyId ID de la encuesta.
+     * @param maxK     Número máximo de clusters a evaluar.
+     * @return El número óptimo de clusters.
+     */
+    public int calculateOptimalK(String surveyId, int maxK) {
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        if (survey == null) {
+            throw new IllegalArgumentException("Survey with ID " + surveyId + " not found.");
+        }
+        List<Response> responses = responseRepository.getResponsesBySurveyId(surveyId);
+        if (responses.isEmpty()) return 1;
+
+        int optimalK = 1;
+        double maxSilhouette = -1.0;
+
+        // Limitar maxK al número de respuestas si es menor
+        int limitK = Math.min(maxK, responses.size() - 1);
+        if (limitK < 2) return Math.min(2, responses.size()); // Al menos 2 clusters si es posible
+
+        List<Question> questions = survey.getQuestions();
+        DistanceCalculator distanceCalculator = new DistanceCalculator(DistanceType.EUCLIDEAN, TextDistanceType.LEVENSHTEIN);
+
+        for (int k = 2; k <= limitK; k++) {
+            Map<String, Object> config = new HashMap<>();
+            config.put("maxIterations", 50);
+            config.put("tolerance", 1e-4);
+
+            // Usamos KMeans para la estimación rápida
+            ClusteringAnalysis analysis = analysisController.createAnalysis(survey, k, "KMeans", config);
+            analysisController.executeAnalysis(analysis.getId(), responses, questions, distanceCalculator);
+
+            Double silhouette = analysisController.calculateSilhouette(analysis.getId(), distanceCalculator);
+
+            if (silhouette > maxSilhouette) {
+                maxSilhouette = silhouette;
+                optimalK = k;
+            }
+        }
+        return optimalK;
+    }
+
+    /**
+     * Obtiene una representación textual de las respuestas de un usuario.
+     *
+     * @param surveyId ID de la encuesta.
+     * @param responseId ID de la respuesta.
+     * @return String con las respuestas formateadas.
+     */
+    public String getResponseSummary(String surveyId, String responseId) {
+        Response response = responseRepository.getResponse(surveyId, responseId);
+        if (response == null) return "Respuesta no encontrada";
+
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < response.getSize(); i++) {
+            domain.model.Answer answer = response.getAnswer(i);
+            if (answer != null && answer.getIsAnswered()) {
+                sb.append("P").append(i + 1).append(": ").append(answer.toString()).append("; ");
+            }
+        }
+        return sb.toString();
+    }
+
+    /**
+     * Obtiene las coordenadas 2D para visualizar los clusters.
+     * Utiliza las dos primeras preguntas numéricas como ejes X e Y.
+     * Si no hay suficientes preguntas numéricas, usa un hash simple para visualización.
+     *
+     * @param analysisId ID del análisis.
+     * @param surveyId ID de la encuesta.
+     * @return Mapa de ResponseID -> Point2D (double[2])
+     */
+    public Map<String, double[]> getClusterVisualizationData(String analysisId, String surveyId) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
+        if (analysis == null) return new HashMap<>();
+
+        Map<String, double[]> points = new HashMap<>();
+        
+        // Obtener todas las respuestas del análisis
+        List<Response> allResponses = new ArrayList<>();
+        for (Cluster c : analysis.getClusters()) {
+            for (ClusterMembership member : c.getMembers()) {
+                Response r = responseRepository.getResponse(surveyId, member.getResponseId());
+                if (r != null) {
+                    allResponses.add(r);
+                }
+            }
+        }
+
+        if (allResponses.isEmpty()) return points;
+
+        // Identificar índices de preguntas numéricas
+        List<Integer> numericalIndices = new ArrayList<>();
+        Response first = allResponses.get(0);
+        for (int i = 0; i < first.getSize(); i++) {
+            if (first.getAnswer(i) instanceof domain.model.NumericalAnswer) {
+                numericalIndices.add(i);
+            }
+        }
+
+        // Generar coordenadas
+        for (Response r : allResponses) {
+            double x = 0.0;
+            double y = 0.0;
+
+            if (numericalIndices.size() >= 2) {
+                // Usar las dos primeras preguntas numéricas
+                x = getNumericalValue(r.getAnswer(numericalIndices.get(0)));
+                y = getNumericalValue(r.getAnswer(numericalIndices.get(1)));
+            } else if (numericalIndices.size() == 1) {
+                // Usar la única numérica como X y el índice como Y (jitter)
+                x = getNumericalValue(r.getAnswer(numericalIndices.get(0)));
+                y = r.getRESPONSE_ID().hashCode() % 10; 
+            } else {
+                // Fallback: Hash de respuestas textuales para dispersión
+                x = r.getRESPONSE_ID().hashCode() % 100;
+                y = (r.getRESPONSE_ID().hashCode() / 100) % 100;
+            }
+            
+            points.put(r.getRESPONSE_ID(), new double[]{x, y});
+        }
+
+        return points;
+    }
+
+    /**
+     * Obtiene las coordenadas de los centroides para visualización.
+     *
+     * @param analysisId ID del análisis.
+     * @return Mapa de ClusterID -> Coordenadas 2D (double[2])
+     */
+    public Map<String, double[]> getCentroidsVisualizationData(String analysisId) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
+        if (analysis == null) return new HashMap<>();
+
+        Map<String, double[]> centroids = new HashMap<>();
+        
+        for (Cluster c : analysis.getClusters()) {
+            Centroid centroid = c.getCentroid();
+            if (centroid != null) {
+                List<Object> components = centroid.getComponents();
+                double x = 0.0;
+                double y = 0.0;
+                
+                // Buscar las primeras dos componentes numéricas
+                int foundNumeric = 0;
+                for (Object comp : components) {
+                    if (comp instanceof Number && foundNumeric < 2) {
+                        double val = ((Number) comp).doubleValue();
+                        if (foundNumeric == 0) x = val;
+                        else y = val;
+                        foundNumeric++;
+                    }
+                }
+                
+                centroids.put(c.getId(), new double[]{x, y});
+            }
+        }
+
+        return centroids;
+    }
+
+    private double getNumericalValue(domain.model.Answer answer) {
+        if (answer instanceof domain.model.NumericalAnswer) {
+            Double val = ((domain.model.NumericalAnswer) answer).getAnswerNum();
+            return val != null ? val : 0.0;
+        }
+        return 0.0;
+    }
+
+    /**
+     * Obtiene las etiquetas de las preguntas numéricas de una encuesta.
+     *
+     * @param surveyId ID de la encuesta.
+     * @return Lista de pares [índice, etiqueta] de preguntas numéricas.
+     */
+    public List<Map.Entry<Integer, String>> getNumericalQuestionLabels(String surveyId) {
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        if (survey == null) return new ArrayList<>();
+
+        List<Map.Entry<Integer, String>> labels = new ArrayList<>();
+        List<Question> questions = survey.getQuestions();
+        
+        for (int i = 0; i < questions.size(); i++) {
+            Question q = questions.get(i);
+            // Solo añadir preguntas numéricas
+            if (q.getTypeQuestion() == domain.model.enums.TypeQuestion.NUMERICAL) {
+                final int index = i;
+                final String label = "P" + (i + 1) + ": " + q.getQuestionText();
+                labels.add(new java.util.AbstractMap.SimpleEntry<>(index, label));
+            }
+        }
+        
+        return labels;
+    }
+
+    /**
+     * Obtiene las coordenadas 2D para visualizar los clusters con dimensiones específicas.
+     *
+     * @param analysisId ID del análisis.
+     * @param surveyId ID de la encuesta.
+     * @param dimXIndex Índice de la pregunta para el eje X.
+     * @param dimYIndex Índice de la pregunta para el eje Y.
+     * @return Mapa de ResponseID -> Point2D (double[2])
+     */
+    public Map<String, double[]> getClusterVisualizationDataWithDims(String analysisId, String surveyId, int dimXIndex, int dimYIndex) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
+        if (analysis == null) return new HashMap<>();
+
+        Map<String, double[]> points = new HashMap<>();
+        
+        // Obtener todas las respuestas del análisis
+        for (Cluster c : analysis.getClusters()) {
+            for (ClusterMembership member : c.getMembers()) {
+                Response r = responseRepository.getResponse(surveyId, member.getResponseId());
+                if (r != null) {
+                    double x = getNumericalValue(r.getAnswer(dimXIndex));
+                    double y = getNumericalValue(r.getAnswer(dimYIndex));
+                    points.put(r.getRESPONSE_ID(), new double[]{x, y});
+                }
+            }
+        }
+
+        return points;
+    }
+
+    /**
+     * Obtiene las coordenadas de los centroides para dimensiones específicas.
+     *
+     * @param analysisId ID del análisis.
+     * @param dimXIndex Índice de la dimensión para el eje X.
+     * @param dimYIndex Índice de la dimensión para el eje Y.
+     * @return Mapa de ClusterID -> Coordenadas 2D (double[2])
+     */
+    public Map<String, double[]> getCentroidsVisualizationDataWithDims(String analysisId, int dimXIndex, int dimYIndex) {
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
+        if (analysis == null) return new HashMap<>();
+
+        Map<String, double[]> centroids = new HashMap<>();
+        
+        for (Cluster c : analysis.getClusters()) {
+            Centroid centroid = c.getCentroid();
+            if (centroid != null) {
+                List<Object> components = centroid.getComponents();
+                double x = 0.0;
+                double y = 0.0;
+                
+                // Obtener valores de las dimensiones específicas
+                if (dimXIndex < components.size() && components.get(dimXIndex) instanceof Number) {
+                    x = ((Number) components.get(dimXIndex)).doubleValue();
+                }
+                if (dimYIndex < components.size() && components.get(dimYIndex) instanceof Number) {
+                    y = ((Number) components.get(dimYIndex)).doubleValue();
+                }
+                
+                centroids.put(c.getId(), new double[]{x, y});
+            }
+        }
+
+        return centroids;
     }
 }

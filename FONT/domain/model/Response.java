@@ -198,7 +198,7 @@ public class Response {
      *
      * @return número de respuestas
      */
-    private int getSize() {
+    public int getSize() {
         return ANSWERS.length;
     }
 

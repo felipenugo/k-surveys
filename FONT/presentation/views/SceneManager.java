@@ -2,6 +2,7 @@ package presentation.views;
 
 import domain.controller.SurveyController;
 import domain.controller.UserController;
+import domain.controller.CtrlDominioClustering;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -11,11 +12,13 @@ import presentation.util.SurveyView;
 public class SceneManager {
     private final UserController userController;
     private final SurveyController surveyController;
+    private final CtrlDominioClustering clusteringController;
     private Stage primaryStage;
 
-    public SceneManager(UserController userController, SurveyController surveyController) {
+    public SceneManager(UserController userController, SurveyController surveyController, CtrlDominioClustering clusteringController) {
         this.userController = userController;
         this.surveyController = surveyController;
+        this.clusteringController = clusteringController;
     }
 
     public void setPrimaryStage(Stage stage) {
@@ -219,7 +222,20 @@ public void showEditSurvey(String surveyId) {
     this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
 }
 
-public void showClustering(String surveyId) {
-        this.primaryStage.setTitle("Clustering de Encuestas con id: " + surveyId + "");
-}
+    public void showClustering(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/clustering.fxml"));
+            checkLoaderAddress(loader);
+
+            ClusteringViewController controller = new ClusteringViewController(
+                userController, surveyController, clusteringController, this, surveyId
+            );
+            loader.setController(controller);
+
+            finalizeScene(loader, "CLUSTERING - Encuesta " + surveyId);
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL CLUSTERING: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

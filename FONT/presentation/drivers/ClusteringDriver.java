@@ -99,7 +99,7 @@ public class ClusteringDriver {
             if (distanceMetric == null) return;
 
             System.out.println("Ejecutando análisis... Esto puede tardar un momento.");
-            String analysisId = ctrlDominioClustering.runAnalysis(algorithm, surveyId, k, 100, 1e-4, distanceMetric);
+            String analysisId = ctrlDominioClustering.runAnalysis(algorithm, surveyId, k, 100, 1e-4, distanceMetric, "LEVENSHTEIN");
 
             if (analysisId == null) {
                 System.out.println("Error: No se pudo ejecutar el análisis. Verifica que la encuesta y las respuestas existen.");

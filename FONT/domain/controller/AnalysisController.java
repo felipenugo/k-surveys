@@ -131,6 +131,21 @@ public class AnalysisController {
     }
 
     /**
+     * Calcula el coeficiente de silueta para un análisis dado.
+     *
+     * @param analysisId ID del análisis.
+     * @param distance   Calculadora de distancia.
+     * @return El valor del coeficiente de silueta.
+     */
+    public Double calculateSilhouette(String analysisId, DistanceCalculator distance) {
+        ClusteringAnalysis analysis = analyses.get(analysisId);
+        if (analysis != null) {
+            return metricCalculator.calculateSilhouette(analysis, distance);
+        }
+        return 0.0;
+    }
+
+    /**
      * Calcula la métrica de calidad de un análisis de clustering específico.
      *
      * @param id         identificador del análisis

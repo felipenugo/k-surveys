@@ -1,4 +1,79 @@
 {
+  "300": {
+    "SURVEY_ID": "300",
+    "title": "Encuesta Completa de Prueba",
+    "description": "Encuesta con preguntas de diferentes tipos para probar clustering.",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-11T14:00:00",
+    "PUBLISHED_AT": "2025-12-11T14:00:00",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 5.0,
+    "views": 20,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "300",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuál es tu edad?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "300",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuántas horas trabajas al día?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 2,
+        "SURVEY_ID": "300",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "Del 1 al 10, ¿qué tan satisfecho estás con tu trabajo?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 3,
+        "SURVEY_ID": "300",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu profesión?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 4,
+        "SURVEY_ID": "300",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Qué te gustaría mejorar en tu vida laboral?",
+        "isRequired": false
+      }
+    ]
+  },
+  "200": {
+    "SURVEY_ID": "200",
+    "title": "Encuesta de Clustering Test",
+    "description": "Encuesta generada para probar el algoritmo de clustering.",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-11T12:00:00",
+    "PUBLISHED_AT": "2025-12-11T12:00:00",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 5.0,
+    "views": 10,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "200",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Edad?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "200",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Horas de sueño?",
+        "isRequired": true
+      }
+    ]
+  },
   "100": {
     "SURVEY_ID": "100",
     "title": "Preferencias de Software 2025",

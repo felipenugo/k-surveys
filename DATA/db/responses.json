@@ -1,4 +1,188 @@
 {
+  "300": {
+    "301": {
+      "RESPONSE_ID": "301",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "ana",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 25.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "301", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Ingeniera de Software" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "301", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más flexibilidad horaria" }
+      ]
+    },
+    "302": {
+      "RESPONSE_ID": "302",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "carlos",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 28.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "302", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Desarrollador Backend" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "302", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Mejor salario" }
+      ]
+    },
+    "303": {
+      "RESPONSE_ID": "303",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "elena",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 24.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "303", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Diseñadora UX" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "303", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Proyectos más creativos" }
+      ]
+    },
+    "304": {
+      "RESPONSE_ID": "304",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "pedro",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 45.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 10.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "304", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Director de Proyecto" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "304", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Menos reuniones" }
+      ]
+    },
+    "305": {
+      "RESPONSE_ID": "305",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "maria",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 50.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 11.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 4.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "305", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "CEO" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "305", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más tiempo libre" }
+      ]
+    },
+    "306": {
+      "RESPONSE_ID": "306",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "luis",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 22.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "306", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Estudiante" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "306", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Encontrar trabajo" }
+      ]
+    },
+    "307": {
+      "RESPONSE_ID": "307",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "sofia",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 23.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "307", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Becaria" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "307", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Aprender más" }
+      ]
+    },
+    "308": {
+      "RESPONSE_ID": "308",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "jorge",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 42.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "308", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Gerente de Ventas" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "308", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Viajar menos" }
+      ]
+    },
+    "309": {
+      "RESPONSE_ID": "309",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "carmen",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 35.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "309", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Médica" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "309", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Turnos más cortos" }
+      ]
+    },
+    "310": {
+      "RESPONSE_ID": "310",
+      "SURVEY_ID": "300",
+      "RESPONDER_USERNAME": "raul",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 30.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
+        { "QUESTION_INDEX": 2, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
+        { "QUESTION_INDEX": 3, "RESPONSE_ID": "310", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Arquitecto" },
+        { "QUESTION_INDEX": 4, "RESPONSE_ID": "310", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más reconocimiento" }
+      ]
+    }
+  },
+  "200": {
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "200",
+      "RESPONDER_USERNAME": "user1",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "1", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 20.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "1", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 }
+      ]
+    },
+    "2": {
+      "RESPONSE_ID": "2",
+      "SURVEY_ID": "200",
+      "RESPONDER_USERNAME": "user2",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "2", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 22.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "2", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.5 }
+      ]
+    },
+    "3": {
+      "RESPONSE_ID": "3",
+      "SURVEY_ID": "200",
+      "RESPONDER_USERNAME": "user3",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "3", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 50.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "3", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 }
+      ]
+    },
+    "4": {
+      "RESPONSE_ID": "4",
+      "SURVEY_ID": "200",
+      "RESPONDER_USERNAME": "user4",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "4", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 55.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "4", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.5 }
+      ]
+    },
+    "5": {
+      "RESPONSE_ID": "5",
+      "SURVEY_ID": "200",
+      "RESPONDER_USERNAME": "user5",
+      "responseStatus": "COMPLETED",
+      "ANSWERS": [
+        { "QUESTION_INDEX": 0, "RESPONSE_ID": "5", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 21.0 },
+        { "QUESTION_INDEX": 1, "RESPONSE_ID": "5", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 }
+      ]
+    }
+  },
   "118": {
     "1": {
       "RESPONSE_ID": "1",

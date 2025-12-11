@@ -55,4 +55,9 @@ public class NumericalAnswer extends Answer {
         this.answerNum = null;
         super.setIsAnswered(false);
     }
+
+    @Override
+    public String toString() {
+        return answerNum != null ? String.valueOf(answerNum) : "(sin respuesta)";
+    }
 }

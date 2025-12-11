@@ -35,7 +35,7 @@ public class MainView {
 
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        SceneManager sceneManager = new SceneManager(userController, surveyController);
+        SceneManager sceneManager = new SceneManager(userController, surveyController, ctrlDominioClustering);
         App.setGlobalSceneManager(sceneManager);
         Application.launch(App.class, args);
     }

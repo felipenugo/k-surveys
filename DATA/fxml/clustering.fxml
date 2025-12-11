@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.ScatterChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="/css/surveys.css, /css/clustering.css">
+
+    <!--SIDEBAR -->
+    <left>
+        <VBox styleClass="side-bar">
+
+            <!-- Perfil -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
+            </HBox>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="35.0"/>
+                </VBox.margin>
+
+                <!-- Botón de Inicio -->
+                <Button fx:id="home" styleClass="nav-btn, icon, icon-home" text="Inicio" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToHome"/>
+
+                <!-- Botón de Mis Encuestas -->
+                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey" text="Mis Encuestas"
+                        maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToMySurveys"/>
+
+                <!-- Botón de Mis Borradores -->
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores"
+                        maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToMyDrafts"/>
+
+                <!-- Botón de Crear Encuesta -->
+                <Button styleClass="nav-btn, create-btn, icon, icon-create" text="Crear Encuesta" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToCreateSurvey">
+                    <VBox.margin>
+                        <Insets bottom="15.0"/>
+                    </VBox.margin>
+                </Button>
+                <!-- empujar el contenido abajo del todo -->
+                <Region VBox.vgrow="ALWAYS"/>
+                <!-- Botón eliminar cuenta -->
+                <Button styleClass="nav-btn-danger, icon, icon-delete"
+                        text="Eliminar Cuenta"
+                        maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#handleDeleteAccount"/>
+                <!-- Botón de Cerrar Sesión-->
+                <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#handleLogout"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- ZONA CENTRAL -->
+    <center>
+        <VBox styleClass="content-area" BorderPane.alignment="CENTER" spacing="25">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <!-- Título -->
+            <Label text="Análisis de Clustering" styleClass="title"/>
+
+            <!-- Configuración del Análisis -->
+            <VBox spacing="20" styleClass="clustering-config-box">
+                <Label text="Configuración del Algoritmo" styleClass="clustering-section-title"/>
+                
+                <HBox spacing="30" alignment="CENTER_LEFT">
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Algoritmo" styleClass="clustering-label"/>
+                        <ComboBox fx:id="algorithmCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
+                    </VBox>
+                    
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Número de Clusters (k)" styleClass="clustering-label"/>
+                        <HBox spacing="10">
+                            <TextField fx:id="kField" prefWidth="80" promptText="Ej: 3" styleClass="clustering-text-field"/>
+                            <Button text="Auto K" onAction="#calculateOptimalK" styleClass="clustering-btn-action"/>
+                        </HBox>
+                    </VBox>
+
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Distancia Numérica" styleClass="clustering-label"/>
+                        <ComboBox fx:id="distanceCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
+                    </VBox>
+
+                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                        <Label text="Distancia Texto" styleClass="clustering-label"/>
+                        <ComboBox fx:id="textDistanceCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
+                    </VBox>
+                </HBox>
+
+                <HBox spacing="30" alignment="CENTER_LEFT">
+                    <VBox spacing="8">
+                        <Label text="Max Iteraciones" styleClass="clustering-label"/>
+                        <TextField fx:id="maxIterField" prefWidth="120" text="100" styleClass="clustering-text-field"/>
+                    </VBox>
+                    
+                    <VBox spacing="8">
+                        <Label text="Tolerancia" styleClass="clustering-label"/>
+                        <TextField fx:id="toleranceField" prefWidth="120" text="0.0001" styleClass="clustering-text-field"/>
+                    </VBox>
+                    
+                    <Region HBox.hgrow="ALWAYS"/>
+                    
+                    <Button text="Ejecutar Análisis" onAction="#runAnalysis" styleClass="clustering-btn-primary">
+                         <VBox.margin>
+                            <Insets top="10.0"/>
+                        </VBox.margin>
+                    </Button>
+                </HBox>
+            </VBox>
+
+            <!-- Resultados -->
+            <VBox fx:id="resultsContainer" spacing="20" visible="false" managed="false" VBox.vgrow="ALWAYS" styleClass="clustering-results-box">
+                
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <Label text="Resultados del Análisis" styleClass="clustering-section-title"/>
+                    <Region HBox.hgrow="ALWAYS"/>
+
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <VBox styleClass="metric-box">
+                            <Label fx:id="executionTimeLabel" text="-" styleClass="metric-value"/>
+                            <Label text="Tiempo" styleClass="metric-label-small"/>
+                        </VBox>
+                        <VBox styleClass="metric-box">
+                            <Label fx:id="silhouetteLabel" text="-" styleClass="metric-value"/>
+                            <Label text="Silhouette" styleClass="metric-label-small">
+                                <tooltip><Tooltip text="Rango: [-1, 1]. Mayor es mejor."/></tooltip>
+                            </Label>
+                        </VBox>
+                        <VBox styleClass="metric-box">
+                            <Label fx:id="calinskiLabel" text="-" styleClass="metric-value"/>
+                            <Label text="Calinski-H" styleClass="metric-label-small">
+                                <tooltip><Tooltip text="Rango: [0, ∞). Mayor es mejor."/></tooltip>
+                            </Label>
+                        </VBox>
+                        <VBox styleClass="metric-box">
+                            <Label fx:id="daviesLabel" text="-" styleClass="metric-value"/>
+                            <Label text="Davies-B" styleClass="metric-label-small">
+                                <tooltip><Tooltip text="Rango: [0, ∞). Menor es mejor."/></tooltip>
+                            </Label>
+                        </VBox>
+                    </HBox>
+                    <Button text="Exportar" onAction="#exportResults" styleClass="clustering-btn-secondary"/>
+                </HBox>
+
+                <!-- Charts Row -->
+                <HBox spacing="20" VBox.vgrow="SOMETIMES" minHeight="250" maxHeight="300">
+                    <!-- Bar Chart (Sizes) -->
+                    <BarChart fx:id="sizeBarChart" animated="false" legendVisible="false" HBox.hgrow="ALWAYS" title="Tamaño de Clusters">
+                        <xAxis>
+                            <CategoryAxis label="Cluster" />
+                        </xAxis>
+                        <yAxis>
+                            <NumberAxis label="Respuestas" />
+                        </yAxis>
+                    </BarChart>
+
+                    <!-- Scatter Chart with dimension selector -->
+                    <VBox HBox.hgrow="ALWAYS" spacing="5">
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Eje X:" style="-fx-font-size: 11px;"/>
+                            <ComboBox fx:id="xAxisCombo" prefWidth="150"/>
+                            <Label text="Eje Y:" style="-fx-font-size: 11px;"/>
+                            <ComboBox fx:id="yAxisCombo" prefWidth="150"/>
+                        </HBox>
+                        <ScatterChart fx:id="silhouetteScatterChart" animated="false" legendVisible="true" VBox.vgrow="ALWAYS" title="Distribución de Respuestas">
+                            <xAxis>
+                                <NumberAxis fx:id="scatterXAxis" label="Dim 1" />
+                            </xAxis>
+                            <yAxis>
+                                <NumberAxis fx:id="scatterYAxis" label="Dim 2" />
+                            </yAxis>
+                        </ScatterChart>
+                    </VBox>
+                </HBox>
+
+                <!-- List View -->
+                <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">
+                    <VBox fx:id="clustersContainer" spacing="15" style="-fx-padding: 5;">
+                        <!-- Dynamic Content -->
+                    </VBox>
+                </ScrollPane>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

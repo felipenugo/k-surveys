@@ -1,0 +1,275 @@
+/* CLUSTERING VIEW STYLES */
+
+.clustering-config-box {
+    -fx-background-color: white;
+    -fx-padding: 25;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+}
+
+.clustering-section-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+    -fx-padding: 0 0 10 0;
+    -fx-border-color: transparent transparent #eee transparent;
+    -fx-border-width: 0 0 2 0;
+}
+
+.clustering-label {
+    -fx-font-weight: bold;
+    -fx-text-fill: #555;
+    -fx-font-size: 13px;
+}
+
+.clustering-combo-box, .clustering-text-field {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8;
+    -fx-font-size: 14px;
+}
+
+.clustering-combo-box:focused, .clustering-text-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-background-color: white;
+}
+
+.clustering-btn-primary {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 25;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(30, 60, 114, 0.3), 5, 0, 0, 2);
+}
+
+.clustering-btn-primary:hover {
+    -fx-background-color: linear-gradient(to right, #2a5298, #1e3c72);
+    -fx-translate-y: -1;
+}
+
+.clustering-btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #1e3c72;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #1e3c72;
+    -fx-border-radius: 20;
+    -fx-cursor: hand;
+}
+
+.clustering-btn-secondary:hover {
+    -fx-background-color: #f0f4f8;
+}
+
+.clustering-btn-action {
+    -fx-background-color: #f0ad4e;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.clustering-btn-action:hover {
+    -fx-background-color: #ec971f;
+}
+
+.clustering-results-box {
+    -fx-background-color: white;
+    -fx-padding: 25;
+    -fx-background-radius: 12;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+}
+
+.cluster-card {
+    -fx-background-color: #f8f9fa;
+    -fx-padding: 15;
+    -fx-background-radius: 8;
+    -fx-border-color: #e9ecef;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 3, 0, 0, 1);
+}
+
+.cluster-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a5298;
+}
+
+.cluster-metric {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6c757d;
+    -fx-font-style: italic;
+}
+
+.cluster-response-item {
+    -fx-padding: 8;
+    -fx-background-color: white;
+    -fx-background-radius: 4;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 4;
+    -fx-border-width: 0 0 0 3; /* Left border accent */
+    -fx-border-insets: 0;
+    -fx-text-fill: #333; /* Fix invisible text */
+}
+
+.metric-value {
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+    -fx-font-size: 14px;
+}
+
+.metric-label-small {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6c757d;
+}
+
+.metric-box {
+    -fx-background-color: #eef2f7;
+    -fx-padding: 5 15;
+    -fx-background-radius: 10;
+    -fx-border-color: #dbe2ef;
+    -fx-border-radius: 10;
+    -fx-alignment: center;
+}
+
+/* ==================== SCATTER CHART STYLING ==================== */
+
+/* Colores para las series de datos - símbolos circulares */
+.default-color0.chart-symbol {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color1.chart-symbol {
+    -fx-background-color: #e74c3c;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color2.chart-symbol {
+    -fx-background-color: #2ecc71;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color3.chart-symbol {
+    -fx-background-color: #9b59b6;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color4.chart-symbol {
+    -fx-background-color: #f39c12;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color5.chart-symbol {
+    -fx-background-color: #1abc9c;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color6.chart-symbol {
+    -fx-background-color: #e91e63;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.default-color7.chart-symbol {
+    -fx-background-color: #00bcd4;
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+}
+
+/* Leyenda - símbolos circulares que coincidan con los puntos */
+.default-color0.chart-legend-symbol {
+    -fx-background-color: #3498db;
+    -fx-background-radius: 5px;
+}
+
+.default-color1.chart-legend-symbol {
+    -fx-background-color: #e74c3c;
+    -fx-background-radius: 5px;
+}
+
+.default-color2.chart-legend-symbol {
+    -fx-background-color: #2ecc71;
+    -fx-background-radius: 5px;
+}
+
+.default-color3.chart-legend-symbol {
+    -fx-background-color: #9b59b6;
+    -fx-background-radius: 5px;
+}
+
+.default-color4.chart-legend-symbol {
+    -fx-background-color: #f39c12;
+    -fx-background-radius: 5px;
+}
+
+.default-color5.chart-legend-symbol {
+    -fx-background-color: #1abc9c;
+    -fx-background-radius: 5px;
+}
+
+.default-color6.chart-legend-symbol {
+    -fx-background-color: #e91e63;
+    -fx-background-radius: 5px;
+}
+
+.default-color7.chart-legend-symbol {
+    -fx-background-color: #00bcd4;
+    -fx-background-radius: 5px;
+}
+
+/* Centroides - última serie, más grandes y negros */
+.centroid-symbol {
+    -fx-background-color: black;
+    -fx-background-radius: 8px;
+    -fx-padding: 8px;
+}
+
+/* ==================== BAR CHART STYLING ==================== */
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #3498db;
+}
+
+.default-color1.chart-bar {
+    -fx-bar-fill: #e74c3c;
+}
+
+.default-color2.chart-bar {
+    -fx-bar-fill: #2ecc71;
+}
+
+.default-color3.chart-bar {
+    -fx-bar-fill: #9b59b6;
+}
+
+.default-color4.chart-bar {
+    -fx-bar-fill: #f39c12;
+}
+
+.default-color5.chart-bar {
+    -fx-bar-fill: #1abc9c;
+}
+
+.default-color6.chart-bar {
+    -fx-bar-fill: #e91e63;
+}
+
+.default-color7.chart-bar {
+    -fx-bar-fill: #00bcd4;
+}

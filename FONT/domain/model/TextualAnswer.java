@@ -68,4 +68,9 @@ public class TextualAnswer extends Answer {
         this.answerText = "";
         super.setIsAnswered(false);
     }
+
+    @Override
+    public String toString() {
+        return answerText != null && !answerText.isEmpty() ? "\"" + answerText + "\"" : "(sin respuesta)";
+    }
 }

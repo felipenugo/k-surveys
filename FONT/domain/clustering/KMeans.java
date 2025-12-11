@@ -114,6 +114,11 @@ public class KMeans implements ClusteringAlgorithm {
         int numQuestions = questions.size();
 
         Set<Integer> indices = new HashSet<>();
+        // Asegurarse de que tenemos suficientes respuestas únicas para k clusters
+        if (responses.size() < k) {
+            throw new IllegalArgumentException("No hay suficientes respuestas para generar " + k + " clusters.");
+        }
+        
         while (indices.size() < k) {
             indices.add(random.nextInt(responses.size()));
         }
@@ -164,7 +169,18 @@ public class KMeans implements ClusteringAlgorithm {
      * @return Valor de la respuesta (double[] o String)
      */
     private Object getAnswerValue(Answer a, Question q) {
-        if (!isAnswered(a)) return null;
+        if (!isAnswered(a)) {
+            // Devolver un valor por defecto en lugar de null para evitar problemas en el cálculo de distancias
+            if (q instanceof MultipleChoiceQuestion) {
+                int numOptions = ((MultipleChoiceQuestion) q).getOptions().size();
+                return new double[numOptions]; // Array de ceros
+            } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
+                return ""; // Cadena vacía
+            } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+                return 0.0; // Cero
+            }
+            return null;
+        }
 
         try {
             if (q instanceof MultipleChoiceQuestion) {
@@ -240,29 +256,30 @@ public class KMeans implements ClusteringAlgorithm {
             for (int qIdx = 0; qIdx < numQuestions; qIdx++) {
                 Question q = questions.get(qIdx);
                 Answer a = r.getAnswer(q.getQuestionIndex());
-                if (!isAnswered(a)) continue;
+                // Procesar incluso si no está respondida usando el valor por defecto de getAnswerValue
+                Object val = getAnswerValue(a, q);
+                
+                if (val == null) continue;
 
                 try {
                     if (q instanceof MultipleChoiceQuestion) {
                         choiceSums.putIfAbsent(clusterIdx, new double[numQuestions][]);
-                        boolean[] val = ((MultipleChoiceAnswer) a).getSelectedOptions();
-                        int numOptions = val.length;
+                        double[] valArr = (double[]) val;
+                        int numOptions = valArr.length;
                         if (choiceSums.get(clusterIdx)[qIdx] == null) {
                             choiceSums.get(clusterIdx)[qIdx] = new double[numOptions];
                         }
                         for (int optIdx = 0; optIdx < numOptions; optIdx++) {
-                            if (val[optIdx]) {
-                                choiceSums.get(clusterIdx)[qIdx][optIdx] += 1.0;
-                            }
+                            choiceSums.get(clusterIdx)[qIdx][optIdx] += valArr[optIdx];
                         }
                     } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
                         textValues.putIfAbsent(clusterIdx, new HashMap<>());
                         textValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
-                        textValues.get(clusterIdx).get(qIdx).add(((TextualAnswer) a).getAnswerText());
+                        textValues.get(clusterIdx).get(qIdx).add((String) val);
                     } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
                         numericalValues.putIfAbsent(clusterIdx, new HashMap<>());
                         numericalValues.get(clusterIdx).putIfAbsent(qIdx, new ArrayList<>());
-                        numericalValues.get(clusterIdx).get(qIdx).add(((NumericalAnswer) a).getAnswerNum());
+                        numericalValues.get(clusterIdx).get(qIdx).add((Double) val);
                     }
                 } catch (Exception e) { /* Ignorar este dato si hay error */ }
             }
@@ -283,6 +300,10 @@ public class KMeans implements ClusteringAlgorithm {
                                 avgOptions[optIdx] = cSums[qIdx][optIdx] / size;
                             }
                             c.setComponent(qIdx, avgOptions);
+                        } else {
+                             // Si no hay datos para esta pregunta en este cluster, poner ceros
+                             int numOptions = ((MultipleChoiceQuestion)q).getOptions().size();
+                             c.setComponent(qIdx, new double[numOptions]);
                         }
                     } else if (q.getTypeQuestion() == TypeQuestion.TEXTUAL) {
                         Map<Integer, List<String>> clusterTexts = textValues.get(cIdx);
@@ -290,6 +311,8 @@ public class KMeans implements ClusteringAlgorithm {
                             List<String> texts = clusterTexts.get(qIdx);
                             String medoidText = findTextMedoid(texts, distance);
                             c.setComponent(qIdx, medoidText);
+                        } else {
+                            c.setComponent(qIdx, "");
                         }
                     } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
                         Map<Integer, List<Double>> clusterNumericals = numericalValues.get(cIdx);
@@ -297,9 +320,16 @@ public class KMeans implements ClusteringAlgorithm {
                             List<Double> numbers = clusterNumericals.get(qIdx);
                             double sum = numbers.stream().mapToDouble(Double::doubleValue).sum();
                             c.setComponent(qIdx, sum / numbers.size());
+                        } else {
+                            c.setComponent(qIdx, 0.0);
                         }
                     }
                 }
+            } else {
+                // Si el cluster está vacío, mantener el centroide anterior o reinicializarlo aleatoriamente
+                // Para simplificar, aquí lo dejamos como nulls, pero en una implementación robusta se debería manejar
+                // la reinicialización de clusters vacíos.
+                // Una estrategia común es asignar el punto más lejano de otro cluster a este cluster vacío.
             }
             newCentroids.add(c);
         }

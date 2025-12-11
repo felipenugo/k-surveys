@@ -113,4 +113,19 @@ public class MultipleChoiceAnswer extends Answer {
         }
         super.setIsAnswered(false);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder("[");
+        boolean first = true;
+        for (int i = 0; i < selectedOptions.length; i++) {
+            if (selectedOptions[i]) {
+                if (!first) sb.append(", ");
+                sb.append("Opción ").append(i + 1);
+                first = false;
+            }
+        }
+        sb.append("]");
+        return first ? "(ninguna opción)" : sb.toString();
+    }
 }
