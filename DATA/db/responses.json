@@ -191,7 +191,7 @@
       "responseStatus": "DRAFT",
       "ANSWERS": [
         {
-          "answerNum": 3.0,
+          "answerNum": 6.0,
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "2",
           "typeAnswer": "NUMERICAL",
@@ -319,9 +319,39 @@
       "responseStatus": "DRAFT",
       "ANSWERS": [
         {
-          "answerText": "g",
+          "answerText": "nada",
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "3",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "2": {
+      "RESPONSE_ID": "2",
+      "SURVEY_ID": "101",
+      "RESPONDER_USERNAME": "arnaup",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "nada",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "2",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "101",
+      "RESPONDER_USERNAME": "arnaup",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "t",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
           "typeAnswer": "TEXTUAL",
           "isAnswered": true
         }

@@ -180,10 +180,19 @@ public class Survey {
     }
 
     public void addRating(double rating) {
-        totalRating += rating;
-        ratingCount++;
+        this.totalRating += rating;
+        this.ratingCount += 1;
+        recomputeAvgRating();
     }
 
+    public void recomputeAvgRating() {
+        if (ratingCount == 0) {
+            avgRating = 0.0;
+        } else {
+            double raw = totalRating / ratingCount;
+            avgRating = Math.round(raw * 10.0) / 10.0; // ← 1 decimal
+        }
+    }
 
     /**
      * Devuelve el número de vistas de la encuesta.
@@ -254,6 +263,15 @@ public class Survey {
      */
     public void setViews (int views) { this.views = views;}
 
+    public void setTotalRating(double totalRating) {
+        this.totalRating = totalRating;
+        recomputeAvgRating();
+    }
+
+    public void setRatingCount(int ratingCount) {
+        this.ratingCount = ratingCount;
+        recomputeAvgRating();
+    }
 
     // List<Question> methods, correct usage must be ensured by the caller
     // Multiple Choice Questions methods will be implemented in the future
