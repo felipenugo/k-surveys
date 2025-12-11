@@ -32,7 +32,7 @@ public class CreateSurveyCard {
         card.getStyleClass().add("survey-card");
         switch (surveyView) {
             case HOME -> card.setOnMouseClicked(e -> sceneManager.showAnswerSurvey(s.getSURVEY_ID()));
-            case MY_SURVEYS -> card.setOnMouseClicked(e -> sceneManager.showClustering(s.getSURVEY_ID()));
+            case MY_SURVEYS -> card.setOnMouseClicked(e -> sceneManager.showViewSurvey(s.getSURVEY_ID()));
             case DRAFTS -> card.setOnMouseClicked(e -> sceneManager.showEditSurvey(s.getSURVEY_ID()));
         }
         // Crear columnas

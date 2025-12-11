@@ -1,0 +1,218 @@
+
+/* =========================================
+   HEADER DE LA ENCUESTA
+   ========================================= */
+.survey-view-header {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-padding: 30;
+    -fx-border-color: #1e3c72 transparent transparent transparent;
+    -fx-border-width: 10 0 0 0;
+    -fx-border-radius: 8 8 0 0;
+    -fx-max-width: 900;
+    -fx-pref-width: 900;
+}
+
+.survey-view-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+}
+
+.survey-view-desc {
+    -fx-font-size: 15px;
+    -fx-text-fill: #666;
+    -fx-padding: 5 0;
+}
+
+/* Badges de estado */
+.status-badge-published {
+    -fx-background-color: #27ae60;
+    -fx-text-fill: white;
+    -fx-padding: 5 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+.status-badge-closed {
+    -fx-background-color: #95a5a6;
+    -fx-text-fill: white;
+    -fx-padding: 5 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* =========================================
+   ESTADÍSTICAS
+   ========================================= */
+.stats-container {
+    -fx-padding: 20 0 10 0;
+    -fx-alignment: center-left;
+}
+
+.stat-box {
+    -fx-padding: 15 25;
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 8;
+    -fx-spacing: 5;
+}
+
+.stat-number {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a5298;
+}
+
+.stat-number-small {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a5298;
+}
+
+.stat-label {
+    -fx-font-size: 12px;
+    -fx-text-fill: #888;
+}
+
+/* =========================================
+   SEPARADOR DE SECCIÓN
+   ========================================= */
+.section-separator {
+    -fx-padding: 20 0 10 0;
+    -fx-max-width: 900;
+    -fx-pref-width: 900;
+    -fx-alignment: center-left;
+}
+
+.section-title {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #888;
+    -fx-padding: 0 0 10 0;
+    -fx-border-color: transparent transparent #ddd transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* =========================================
+   TARJETA DE PREGUNTA (SOLO LECTURA)
+   ========================================= */
+.question-view-card {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 20 25;
+    -fx-max-width: 900;
+    -fx-pref-width: 900;
+}
+
+.question-number {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a5298;
+    -fx-padding: 0 0 5 0;
+}
+
+.question-text {
+    -fx-font-size: 16px;
+    -fx-font-weight: 500;
+    -fx-text-fill: #333;
+    -fx-wrap-text: true;
+}
+
+.question-type-badge {
+    -fx-background-color: #e8f0fe;
+    -fx-text-fill: #2a5298;
+    -fx-padding: 3 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.question-required-badge {
+    -fx-background-color: #ffeaa7;
+    -fx-text-fill: #d68910;
+    -fx-padding: 3 10;
+    -fx-background-radius: 10;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* Opciones de respuesta (solo lectura) */
+.option-view-row {
+    -fx-padding: 8 0 8 20;
+    -fx-spacing: 10;
+    -fx-alignment: center-left;
+}
+
+.option-bullet {
+    -fx-min-width: 8px;
+    -fx-min-height: 8px;
+    -fx-max-width: 8px;
+    -fx-max-height: 8px;
+    -fx-background-color: #2a5298;
+    -fx-background-radius: 50;
+}
+
+.option-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #555;
+}
+
+.selection-info {
+    -fx-font-size: 12px;
+    -fx-text-fill: #888;
+    -fx-font-style: italic;
+    -fx-padding: 10 0 0 20;
+}
+
+/* =========================================
+   BARRA INFERIOR
+   ========================================= */
+.btn-back {
+    -fx-background-color: transparent;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #666;
+    -fx-font-weight: 600;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-back:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-border-color: #aaa;
+}
+
+.btn-clustering {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.btn-clustering:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(42, 82, 152, 0.7), 20, 0, 0, 5);
+}
+
+.btn-close-survey {
+    -fx-background-color: transparent;
+    -fx-border-color: #e74c3c;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #e74c3c;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-close-survey:hover {
+    -fx-background-color: #e74c3c;
+    -fx-text-fill: white;
+}
+

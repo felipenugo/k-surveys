@@ -239,6 +239,21 @@ public class SceneManager {
         }
     }
 
+    public void showViewSurvey(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/view-survey.fxml"));
+            checkLoaderAddress(loader);
+
+            ViewSurveyViewController controller = new ViewSurveyViewController(userController, surveyController, this, surveyId);
+            loader.setController(controller);
+
+            finalizeScene(loader, "VER ENCUESTA");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW VER ENCUESTA: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
     public void showClustering(String surveyId) {
         this.primaryStage.setTitle("Clustering de Encuestas con id: " + surveyId + "");
     }
