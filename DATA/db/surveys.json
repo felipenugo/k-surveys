@@ -531,5 +531,38 @@
         "isRequired": false
       }
     ]
+  },
+  "120": {
+    "SURVEY_ID": "120",
+    "title": "Segunda encuesta",
+    "description": "Segunda preugabajñlkjñasdfasdfasdf",
+    "CREATOR_USERNAME": "felipe",
+    "CREATED_AT": "2025-12-11T22:27:35.443026669",
+    "surveyStatus": "DRAFT",
+    "avgRating": 0.0,
+    "views": 0,
+    "questions": [
+      {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "120",
+            "optionText": "Opción 1sdfsdfsdf"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "120",
+            "optionText": "Opción fsdfsdfsdfsdf"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "120",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "fsdfsdfsdfsdf",
+        "isRequired": true
+      }
+    ]
   }
 }
