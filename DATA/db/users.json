@@ -18,7 +18,20 @@
     "securityQuestion": "Pregunta de seguridad por defecto",
     "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
-    "respondedSurveysId": {}
+    "respondedSurveysId": {
+      "119": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "104": [
+        "9",
+        "10"
+      ]
+    }
   },
   "felipe": {
     "USERNAME": "felipe",
