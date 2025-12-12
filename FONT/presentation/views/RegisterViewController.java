@@ -46,6 +46,7 @@ public class RegisterViewController {
             String confirmPassword = confirmPasswordField.isVisible() ? confirmPasswordField.getText() : confirmPasswordText.getText();
             if(!password.equals(confirmPassword))
                 throw new Exception("Las contraseñas no coinciden.");
+            userController.validatePasswordStrength(password);
             String question = securityQuestionField.getText();
             String answer = securityAnswerField.getText();
             userController.registerUser(username, email, password, question, answer);
