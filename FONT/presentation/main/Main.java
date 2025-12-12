@@ -4,6 +4,7 @@ import data.SurveyRepository;
 import data.UserRepository;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
+import domain.controller.ResponseController;
 import domain.service.SurveyService;
 import domain.service.UserService;
 import javafx.application.Application;
@@ -35,11 +36,13 @@ public class Main extends Application {
         UserController userController = new UserController(userService);
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         SurveyController surveyController = new SurveyController(surveyService);
-
+        ResponseController responseController = new ResponseController(
+                new domain.service.ResponseService(new data.ResponseRepository(), userController, surveyService)
+        );
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.
 
         //SceneManager.initStage();
-        SceneManager sceneManager = new SceneManager(userController, surveyController);
+        SceneManager sceneManager = new SceneManager(userController, surveyController, responseController);
         sceneManager.setPrimaryStage(primaryStage);
 
         // --- APPLICATION START ---

@@ -54,5 +54,57 @@
     "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "arnaup": {
+    "USERNAME": "arnaup",
+    "email": "arn@gmail.com",
+    "passwordHash": "9e63255e828a0342440b62b5fab96052a05132ad359f3b6d73cc3ccd4e71e45b",
+    "securityQuestion": "perro?",
+    "securityAnswer": "si",
+    "createdSurveysId": [],
+    "respondedSurveysId": {
+      "103": [
+        "1"
+      ],
+      "102": [
+        "2",
+        "4",
+        "1"
+      ],
+      "100": [
+        "3",
+        "4",
+        "5",
+        "1",
+        "2",
+        "6",
+        "7"
+      ],
+      "105": [
+        "1",
+        "2"
+      ],
+      "106": [
+        "2",
+        "3"
+      ],
+      "101": [
+        "3",
+        "2",
+        "1",
+        "0"
+      ],
+      "104": [
+        "1",
+        "2",
+        "3"
+      ],
+      "108": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
   }
 }

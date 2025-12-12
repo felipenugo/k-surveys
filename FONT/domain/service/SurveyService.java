@@ -660,4 +660,12 @@ public class SurveyService {
         survey.setViews(responseCount);
         surveyRepository.addSurvey(survey);
     }
+
+    public void addSurveyRating(String surveyId, double rating) {
+        Survey survey = getSurvey(surveyId);
+        if (survey == null) throw new SurveyException("La encuesta no existe.");
+
+        survey.addRating(rating);
+        surveyRepository.updateSurvey(surveyId, survey); // si usas repo persistente
+    }
 }

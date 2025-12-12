@@ -27,7 +27,7 @@ public class UserServiceAddSurveyCreatedTest {
     public void setUp() {
         userRepository = new UserRepository();
         userRepository.clear();  // limpiar datos de ejecuciones anteriores
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository,   null, null);
     }
 
     @Test
@@ -83,7 +83,7 @@ public class UserServiceAddSurveyCreatedTest {
         userService.addSurveyCreated(TEST_USERNAME, TEST_SURVEY_ID);
 
         // Act: Crear nuevo UserService (simulando recarga desde JSON)
-        UserService newUserService = new UserService(userRepository);
+        UserService newUserService = new UserService(userRepository, null, null);
         User reloadedUser = newUserService.getUser(TEST_USERNAME);
 
         // Assert: Verificar que la encuesta persiste después de recargar
