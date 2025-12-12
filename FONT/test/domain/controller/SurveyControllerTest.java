@@ -1,6 +1,7 @@
 package domain.controller;
 
 import data.SurveyRepository;
+import data.ResponseRepository;
 import data.UserRepository;
 import domain.model.Survey;
 import domain.model.Question;
@@ -27,14 +28,13 @@ public class SurveyControllerTest {
 
     @Before
     public void setUp() {
-        // Inicializar repositorios
-        surveyRepository = new SurveyRepository();
-        surveyRepository.clear();  // limpiar datos previos
         UserRepository userRepository = new UserRepository();
-        userRepository.clear();  // limpiar datos previos
-
-        // Inicializar servicios y controllers
-        UserService userService = new UserService(userRepository);
+        SurveyRepository surveyRepository = new SurveyRepository();
+        ResponseRepository responseRepository = new ResponseRepository();
+        userRepository.clear();
+        surveyRepository.clear();
+        responseRepository.clear();
+        UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
         userController = new UserController(userService);
         surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);

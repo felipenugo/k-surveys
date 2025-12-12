@@ -49,7 +49,21 @@ public class TestLoanData {
         data = new ArrayList<>();
 
         // Leer el archivo CSV y crear la encuesta, preguntas y respuestas
-        String csvFile = "../DATA/loan-test.csv";
+        // Buscar archivo CSV en rutas comunes (ejecución desde FONT o desde la raíz del proyecto)
+        String[] candidates = new String[]{"../DATA/loan-test.csv", "DATA/loan-test.csv", "../DATA/loan-test.csv", "../../DATA/loan-test.csv"};
+        String csvFile = null;
+        for (String c : candidates) {
+            java.io.File f = new java.io.File(c);
+            if (f.exists()) { csvFile = c; break; }
+        }
+        if (csvFile == null) {
+            // último intento: buscar en la ruta absoluta relativa al directorio de trabajo
+            String wd = System.getProperty("user.dir");
+            java.io.File alt = new java.io.File(wd + java.io.File.separator + ".." + java.io.File.separator + "DATA" + java.io.File.separator + "loan-test.csv");
+            if (alt.exists()) csvFile = alt.getPath();
+        }
+        if (csvFile == null) throw new IOException("No se pudo localizar DATA/loan-test.csv. Rutas probadas: ../DATA/loan-test.csv, DATA/loan-test.csv, ../../DATA/loan-test.csv");
+
         String line = "";
         String cvsSplitBy = ",";
 

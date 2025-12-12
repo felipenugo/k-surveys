@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import data.UserRepository;
+import data.SurveyRepository;
+import data.ResponseRepository;
 import domain.model.User;
 
 /**
@@ -18,6 +20,8 @@ import domain.model.User;
 public class UserServiceAddSurveyCreatedTest {
     private UserService userService;
     private UserRepository userRepository;
+    private SurveyRepository surveyRepository;
+    private ResponseRepository responseRepository;
     private static final String TEST_USERNAME = "testuser";
     private static final String TEST_EMAIL = "test@gmail.com";
     private static final String TEST_PASSWORD = "password123";
@@ -26,8 +30,11 @@ public class UserServiceAddSurveyCreatedTest {
     @Before
     public void setUp() {
         userRepository = new UserRepository();
+        surveyRepository = new SurveyRepository();
+        responseRepository = new ResponseRepository();
         userRepository.clear();  // limpiar datos de ejecuciones anteriores
-        userService = new UserService(userRepository);
+
+        userService = new UserService(userRepository, surveyRepository, responseRepository);
     }
 
     @Test
@@ -83,7 +90,7 @@ public class UserServiceAddSurveyCreatedTest {
         userService.addSurveyCreated(TEST_USERNAME, TEST_SURVEY_ID);
 
         // Act: Crear nuevo UserService (simulando recarga desde JSON)
-        UserService newUserService = new UserService(userRepository);
+        UserService newUserService = new UserService(userRepository, new SurveyRepository(), new ResponseRepository());
         User reloadedUser = newUserService.getUser(TEST_USERNAME);
 
         // Assert: Verificar que la encuesta persiste después de recargar
@@ -106,4 +113,3 @@ public class UserServiceAddSurveyCreatedTest {
                    user.hasCreatedSurveyId(TEST_SURVEY_ID));
     }
 }
-

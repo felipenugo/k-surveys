@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import data.UserRepository;
 import data.SurveyRepository;
+import data.ResponseRepository;
 import domain.controller.UserController;
 import domain.model.Survey;
 import domain.model.User;
@@ -24,6 +25,7 @@ public class SurveyServiceCreateSurveyRegistrationTest {
     private UserController userController;
     private UserRepository userRepository;
     private SurveyRepository surveyRepository;
+    private ResponseRepository responseRepository;
 
     private static final String TEST_USERNAME = "testuser";
     private static final String TEST_EMAIL = "test@gmail.com";
@@ -34,11 +36,12 @@ public class SurveyServiceCreateSurveyRegistrationTest {
     @Before
     public void setUp() {
         userRepository = new UserRepository();
-        userRepository.clear();  // limpiar datos de ejecuciones anteriores
         surveyRepository = new SurveyRepository();
+        responseRepository = new ResponseRepository();
+        userRepository.clear();  // limpiar datos de ejecuciones anteriores
         surveyRepository.clear();  // limpiar datos de ejecuciones anteriores
 
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, surveyRepository, responseRepository);
         userController = new UserController(userService);
         surveyService = new SurveyService(surveyRepository, userController, userService);
 
@@ -95,7 +98,7 @@ public class SurveyServiceCreateSurveyRegistrationTest {
         String surveyId = createdSurvey.getSURVEY_ID();
 
         // Act: Recargar usuario desde repositorio (simula recargar desde JSON)
-        UserService newUserService = new UserService(userRepository);
+        UserService newUserService = new UserService(userRepository, new SurveyRepository(), new ResponseRepository());
         User reloadedUser = newUserService.getUser(TEST_USERNAME);
 
         // Assert: Verificar que la encuesta persiste
@@ -134,4 +137,3 @@ public class SurveyServiceCreateSurveyRegistrationTest {
                    user.hasCreatedSurveyId(createdSurvey.getSURVEY_ID()));
     }
 }
-
