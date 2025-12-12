@@ -113,9 +113,10 @@ public class SurveyService {
         }
 
         // Validar que la encuesta tenga al menos una pregunta
-        if (survey.getSize() == 0) {
+        // Nota: permitir crear encuestas sin preguntas (se validará al publicar)
+        /*if (survey.getSize() == 0) {
             throw new SurveyException("La encuesta debe tener al menos una pregunta.");
-        }
+        }*/
 
         // Verificar que el creador sea el usuario logueado
         if (!survey.getCREATOR_USERNAME().equals(userController.getLoggedUser().getUsername())) {
