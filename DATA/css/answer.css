@@ -11,8 +11,9 @@
     -fx-text-fill: #1e3c72;
 }
 
+/* === BOTÓN ENVIAR RESPUESTAS === */
 .submit-btn {
-    -fx-background-color: #4CAF50;
+    -fx-background-color: #1e3c72;
     -fx-text-fill: white;
     -fx-font-size: 16px;
     -fx-font-weight: bold;
@@ -22,7 +23,7 @@
 }
 
 .submit-btn:hover {
-    -fx-background-color: #43a047;
+    -fx-background-color: #2a5298;
 }
 
 /* === QUESTION CARD === */
@@ -62,18 +63,4 @@
 .error-icon {
     -fx-text-fill: #d40000;
     -fx-font-size: 16px;
-}
-
-/* === SUBMIT BUTTON === */
-.create-btn {
-    -fx-background-color: #4CAF50;
-    -fx-text-fill: white;
-    -fx-font-size: 14px;
-    -fx-font-weight: bold;
-    -fx-background-radius: 6px;
-    -fx-padding: 10 25;
-}
-
-.create-btn:hover {
-    -fx-background-color: #43a047;
 }
