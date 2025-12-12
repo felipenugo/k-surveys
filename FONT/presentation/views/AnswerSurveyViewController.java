@@ -228,7 +228,7 @@ public class AnswerSurveyViewController {
     private void goToMySurveys(ActionEvent e) { sceneManager.showConfirmLeave(() -> sceneManager.showMySurveys()); }
 
     @FXML
-    private void goToMyDrafts(ActionEvent e) { sceneManager.showConfirmLeave(() -> sceneManager.showMyDrafts()); }
+    private void goToMyDrafts(ActionEvent e) { sceneManager.showConfirmLeave(() -> sceneManager.showMySurveysDrafts()); }
 
     @FXML
     private void goToCreateSurvey(ActionEvent e) { sceneManager.showConfirmLeave(() -> sceneManager.showCreateSurvey()); }

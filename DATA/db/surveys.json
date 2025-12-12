@@ -8,6 +8,8 @@
     "PUBLISHED_AT": "2025-12-10T10:00:00",
     "surveyStatus": "DRAFT",
     "avgRating": 4.5,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 150,
     "questions": [
       {
@@ -79,8 +81,10 @@
     "CREATED_AT": "2025-12-08T20:05:00",
     "PUBLISHED_AT": "2025-12-10T11:00:00",
     "surveyStatus": "PUBLISHED",
-    "avgRating": 0.0,
-    "views": 0,
+    "avgRating": 3.0,
+    "totalRating": 3.0,
+    "ratingCount": 1,
+    "views": 1,
     "questions": [
       {
         "questionIndex": 0,
@@ -100,6 +104,8 @@
     "PUBLISHED_AT": "2025-12-08T22:30:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 3.8,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 95,
     "questions": [
       {
@@ -120,6 +126,8 @@
     "PUBLISHED_AT": "2025-12-08T18:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 4.1,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 210,
     "questions": [
       {
@@ -140,6 +148,8 @@
     "PUBLISHED_AT": "2025-12-07T12:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -179,6 +189,8 @@
     "PUBLISHED_AT": "2025-12-09T10:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.9,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 300,
     "questions": [
       {
@@ -199,6 +211,8 @@
     "PUBLISHED_AT": "2025-12-08T15:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 50,
     "questions": [
       {
@@ -219,6 +233,8 @@
     "PUBLISHED_AT": "2025-12-08T09:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -239,6 +255,8 @@
     "PUBLISHED_AT": "2025-12-09T09:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.7,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 180,
     "questions": [
       {
@@ -283,6 +301,8 @@
     "PUBLISHED_AT": "2025-12-08T10:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -303,6 +323,8 @@
     "PUBLISHED_AT": "2025-12-05T10:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 5.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 500,
     "questions": [
       {
@@ -323,6 +345,8 @@
     "PUBLISHED_AT": "2025-12-01T08:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 2.5,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 100,
     "questions": [
       {
@@ -343,6 +367,8 @@
     "PUBLISHED_AT": "2025-11-29T14:30:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.2,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 75,
     "questions": [
       {
@@ -382,6 +408,8 @@
     "PUBLISHED_AT": "2025-11-20T11:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -402,6 +430,8 @@
     "PUBLISHED_AT": "2025-11-16T09:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.9,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 60,
     "questions": [
       {
@@ -422,6 +452,8 @@
     "PUBLISHED_AT": "2025-11-10T16:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 1.5,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 90,
     "questions": [
       {
@@ -442,6 +474,8 @@
     "PUBLISHED_AT": "2025-11-06T12:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.8,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 120,
     "questions": [
       {
@@ -481,6 +515,8 @@
     "PUBLISHED_AT": "2025-10-30T10:30:00",
     "surveyStatus": "CLOSED",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {
@@ -501,6 +537,8 @@
     "PUBLISHED_AT": "2025-10-25T11:00:00",
     "surveyStatus": "CLOSED",
     "avgRating": 3.2,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 41,
     "questions": [
       {
@@ -520,8 +558,10 @@
     "CREATED_AT": "2025-12-11T22:16:13.531164884",
     "PUBLISHED_AT": "2025-12-11T22:16:13.535950668",
     "surveyStatus": "PUBLISHED",
-    "avgRating": 0.0,
-    "views": 0,
+    "avgRating": 3.0,
+    "totalRating": 3.0,
+    "ratingCount": 1,
+    "views": 1,
     "questions": [
       {
         "questionIndex": 0,
@@ -540,6 +580,8 @@
     "CREATED_AT": "2025-12-11T22:27:35.443026669",
     "surveyStatus": "DRAFT",
     "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
     "views": 0,
     "questions": [
       {

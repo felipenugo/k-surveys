@@ -14,5 +14,38 @@
         }
       ]
     }
+  },
+  "119": {
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "119",
+      "RESPONDER_USERNAME": "felipe",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    }
+  },
+  "101": {
+    "2": {
+      "RESPONSE_ID": "2",
+      "SURVEY_ID": "101",
+      "RESPONDER_USERNAME": "felipe",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "hjacsnjbsaiñasb",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "2",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    }
   }
 }
