@@ -54,8 +54,7 @@ public class FullWorkflowTest {
         responseRepository.clear();
         AnswerRepository answerRepository = new AnswerRepository();
 
-        // Inicializar servicios y controladores
-        UserService userService = new UserService(userRepository, null, null);
+        UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
         userController = new UserController(userService);
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);

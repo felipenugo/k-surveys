@@ -37,24 +37,22 @@ public class AnswerControllerTest {
 
     @Before
     public void setUp() {
-        // Initialize repositories
         UserRepository userRepository = new UserRepository();
-        userRepository.clear();
         SurveyRepository surveyRepository = new SurveyRepository();
-        surveyRepository.clear();
-        QuestionRepository questionRepository = new QuestionRepository();
-        responseRepository = new ResponseRepository();
-        responseRepository.clear();
+        this.responseRepository = new ResponseRepository();
         AnswerRepository answerRepository = new AnswerRepository();
+        userRepository.clear();
+        surveyRepository.clear();
+        this.responseRepository.clear();
+        UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
 
         // Initialize services and controllers
-        UserService userService = new UserService(userRepository, null, null);
         userController = new UserController(userService);
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
-        ResponseService responseService = new ResponseService(responseRepository, userController, surveyService);
+        ResponseService responseService = new ResponseService(this.responseRepository, userController, surveyService);
         responseController = new ResponseController(responseService);
 
         AnswerService answerService = new AnswerService(answerRepository, userController);

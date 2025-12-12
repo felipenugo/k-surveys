@@ -43,24 +43,21 @@ public class CtrlDominioClusteringTest {
 
     @Before
     public void setUp() {
-        // Inicializar repositorios
         UserRepository userRepository = new UserRepository();
+        this.surveyRepository = new SurveyRepository();
+        this.responseRepository = new ResponseRepository();
         userRepository.clear();
-        surveyRepository = new SurveyRepository();
-        surveyRepository.clear();
-        QuestionRepository questionRepository = new QuestionRepository();
-        responseRepository = new ResponseRepository();
-        responseRepository.clear();
-        AnswerRepository answerRepository = new AnswerRepository();
+        this.surveyRepository.clear();
+        this.responseRepository.clear();
+        UserService userService = new UserService(userRepository, this.surveyRepository, this.responseRepository);
 
         // Inicializar servicios y controladores
-        UserService userService = new UserService(userRepository, null, null);
         userController = new UserController(userService);
 
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
         surveyController = new SurveyController(surveyService);
 
-        ResponseService responseService = new ResponseService(responseRepository, userController, surveyService);
+        ResponseService responseService = new ResponseService(this.responseRepository, userController, surveyService);
         responseController = new ResponseController(responseService);
 
         analysisController = new AnalysisController();
