@@ -204,3 +204,19 @@ task openJavadoc {
         }
     }
 }
+
+// DriverMain task: permite ejecutar cualquier driver main dentro de
+// `presentation.drivers` usando -Pdriver=DriverName. Ejemplo:
+//   ./gradlew DriverMain -Pdriver=CreateSurveyDriver
+// Por defecto ejecuta `presentation.drivers.AppDriver` si no se pasa -Pdriver.
+tasks.register('DriverMain', JavaExec) {
+    group = 'application'
+    description = 'Run a driver main class. Usage: ./gradlew DriverMain -Pdriver=CreateSurveyDriver'
+    // Recupera la propiedad -Pdriver, si no existe usa AppDriver
+    def driverProp = project.findProperty('driver') ?: 'AppDriver'
+    // mainClass es la clase principal a ejecutar
+    mainClass.set("presentation.drivers.${driverProp}")
+    classpath = sourceSets.main.runtimeClasspath
+    // permite interacción por consola si el driver la necesita
+    standardInput = System.in
+}
