@@ -38,7 +38,7 @@ public class SurveyServiceCreateSurveyRegistrationTest {
         surveyRepository = new SurveyRepository();
         surveyRepository.clear();  // limpiar datos de ejecuciones anteriores
 
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, null, null);
         userController = new UserController(userService);
         surveyService = new SurveyService(surveyRepository, userController, userService);
 
@@ -95,7 +95,7 @@ public class SurveyServiceCreateSurveyRegistrationTest {
         String surveyId = createdSurvey.getSURVEY_ID();
 
         // Act: Recargar usuario desde repositorio (simula recargar desde JSON)
-        UserService newUserService = new UserService(userRepository);
+        UserService newUserService = new UserService(userRepository, null, null);
         User reloadedUser = newUserService.getUser(TEST_USERNAME);
 
         // Assert: Verificar que la encuesta persiste

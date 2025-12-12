@@ -31,7 +31,7 @@ public class TestUserController {
     public void setUp() {
         userRepository = new UserRepository();  // repositorio real en memoria
         userRepository.clear();  // limpiar datos de ejecuciones anteriores
-        userService = new UserService(userRepository);
+        userService = new UserService(userRepository, null, null); // servicio real
         ctrl = new UserController(userService);
     }
 
@@ -125,14 +125,14 @@ public class TestUserController {
     @Test
     public void testEliminarUsuarioCorrecto() {
         ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
-        ctrl.deleteUser("arnau");
+        ctrl.deleteUserok("arnau");
 
         assertFalse(userRepository.existsUser("arnau"));
     }
 
     @Test
     public void testEliminarUsuarioInexistente() {
-        ctrl.deleteUser("ghost");
+        ctrl.deleteUserok("ghost");
 
         // Simplemente comprobamos que no lanza excepciones ni cambia el estado
         assertFalse(ctrl.isLoggedIn());
