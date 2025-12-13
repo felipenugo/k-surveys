@@ -65,13 +65,13 @@
 
             <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
                 <content>
-                    <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container">
+                    <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container" maxWidth="Infinity">
                         <padding>
                             <Insets top="40" right="40" bottom="120" left="40"/>
                         </padding>
 
                         <!-- HEADER DE LA ENCUESTA -->
-                        <VBox styleClass="survey-view-header" spacing="15">
+                        <VBox styleClass="survey-view-header" spacing="15" maxWidth="Infinity">
                             <!-- Título y estado -->
                             <HBox alignment="CENTER_LEFT" spacing="15">
                                 <Label fx:id="surveyTitleLabel" text="Título de la Encuesta" styleClass="survey-view-title"/>
