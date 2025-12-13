@@ -68,7 +68,7 @@ public abstract class SurveysViewController implements Initializable {
         this.userController = userController;
         this.surveyController = surveyController;
         this.sceneManager = sceneManager;
-        this.MAX_SURVEYS_PER_PAGE = 1;
+        this.MAX_SURVEYS_PER_PAGE = 8;
         this.numSurveys = 0;
         this.surveyView = surveyView;
     }

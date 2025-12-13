@@ -65,6 +65,8 @@ public class CreateSurveyCard {
         VBox colMain = new VBox();
         colMain.getStyleClass().add("col");
         colMain.setMinWidth(250);
+        colMain.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colMain, Priority.ALWAYS);
 
         Label title = new Label(s.getTitle());
         title.getStyleClass().add("survey-title");
@@ -88,6 +90,8 @@ public class CreateSurveyCard {
         HBox colViews = createDataCell(String.valueOf(s.getViews()), eyeSvg);
         colViews.getStyleClass().add("col");
         colViews.setMinWidth(70);
+        colViews.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colViews, Priority.ALWAYS);
         return colViews;
     }
 
@@ -100,6 +104,8 @@ public class CreateSurveyCard {
     private static HBox createRatingColumn(Survey s) {
         HBox colRating = createRatingCell(s.getAvgRating());
         colRating.setMinWidth(150);
+        colRating.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colRating, Priority.ALWAYS);
         return colRating;
     }
 
@@ -117,6 +123,8 @@ public class CreateSurveyCard {
         String calSvg = "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
         HBox colDate = createDataCell(dateStr, calSvg);
         colDate.setMinWidth(120);
+        colDate.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colDate, Priority.ALWAYS);
         return colDate;
     }
 

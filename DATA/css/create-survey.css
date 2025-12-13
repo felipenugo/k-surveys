@@ -30,8 +30,7 @@
     -fx-border-color: #1e3c72 transparent transparent transparent;
     -fx-border-width: 10 0 0 0;
     -fx-border-radius: 8 8 0 0;
-    -fx-max-width: 800;
-    -fx-pref-width: 800;
+    -fx-max-width: Infinity;
 }
 
 .title-input {
@@ -73,8 +72,7 @@
     -fx-border-color: transparent;
     -fx-border-width: 0 0 0 5;
     -fx-border-radius: 8;
-    -fx-max-width: 800;
-    -fx-pref-width: 800;
+    -fx-max-width: Infinity;
 }
 
 .question-card:hover {
@@ -300,8 +298,7 @@
     -fx-background-radius: 8;
     -fx-padding: 20;
     -fx-cursor: hand;
-    -fx-max-width: 800;
-    -fx-pref-width: 800;
+    -fx-max-width: Infinity;
 }
 .add-question-box:hover {
     -fx-background-color: #f8faff;
