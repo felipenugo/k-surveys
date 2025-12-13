@@ -89,6 +89,7 @@
     -fx-font-size: 14px;
     -fx-padding: 10 100;
     -fx-background-radius: 8;
+    -fx-cursor: hand;
 }
 .button:hover, .button:focused {
 /* dropshadow( shadowType, color, radius, spread, offsetX, offsetY )*/

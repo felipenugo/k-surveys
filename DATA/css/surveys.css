@@ -46,6 +46,7 @@
     -fx-text-fill: rgba(255, 255, 255, 0.8);
     -fx-font-size: 18px;
     -fx-padding: 10 15;
+    -fx-cursor: hand;
 }
 
 .nav-btn:hover {
@@ -67,6 +68,7 @@
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 8;
+    -fx-cursor: hand;
 }
 
 .nav-btn-danger:hover {
@@ -209,6 +211,7 @@
     -fx-min-height: 70; /* Altura mínima */
     -fx-border-color: transparent;
     -fx-border-width: 1;
+    -fx-cursor: hand;
 }
 
 .survey-card:hover {
@@ -287,6 +290,7 @@
     -fx-text-fill: #555;
     -fx-font-size: 13px;
     -fx-background-insets: 0;
+    -fx-cursor: hand;
 }
 
 /* Hover en los números */
