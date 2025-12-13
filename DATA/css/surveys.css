@@ -264,7 +264,9 @@
     -fx-scale-y: 0.7;
 }
 .star.full { -fx-fill: #ffc107; } /* Amarillo completo */
-.star.half { -fx-fill: #ffc107; -fx-opacity: 0.5; } /* Amarillo medio */
+.star.half {
+    -fx-fill: linear-gradient(to right, #ffc107 0%, #ffc107 50%, #e0e0e0 50%, #e0e0e0 100%);
+} /* Amarillo medio */
 
 /* Paginación */
 
