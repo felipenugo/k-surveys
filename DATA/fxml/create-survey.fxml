@@ -68,13 +68,13 @@
 
             <ScrollPane fx:id="scrollPane" fitToWidth="true" styleClass="scroll-pane-transparent" VBox.vgrow="ALWAYS">
                 <content>
-                    <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container">
+                    <VBox alignment="TOP_CENTER" spacing="20" styleClass="content-container" maxWidth="Infinity">
                         <padding>
                             <Insets top="40" right="40" bottom="120" left="40"/>
                         </padding>
 
                         <!-- 1. HEADER DE LA ENCUESTA -->
-                        <VBox styleClass="survey-header-card" spacing="10">
+                        <VBox styleClass="survey-header-card" spacing="10" maxWidth="Infinity">
                             <TextField fx:id="surveyTitleField"
                                        promptText="Título del Formulario"
                                        styleClass="title-input"/>
@@ -86,12 +86,12 @@
                         </VBox>
 
                         <!-- 2. LISTA DINÁMICA DE PREGUNTAS -->
-                        <VBox fx:id="questionsContainer" spacing="20" alignment="TOP_CENTER">
+                        <VBox fx:id="questionsContainer" spacing="20" alignment="TOP_CENTER" maxWidth="Infinity">
                             <!-- Las preguntas se generan dinámicamente desde Java -->
                         </VBox>
 
                         <!-- 3. BOTÓN AÑADIR PREGUNTA -->
-                        <VBox styleClass="add-question-box" alignment="CENTER" onMouseClicked="#addDefaultQuestion">
+                        <VBox styleClass="add-question-box" alignment="CENTER" onMouseClicked="#addDefaultQuestion" maxWidth="Infinity">
                             <Label text="+ AÑADIR PREGUNTA" styleClass="add-question-label"/>
                         </VBox>
 
