@@ -95,10 +95,13 @@
                     <HBox alignment="CENTER_LEFT" styleClass="table-header" maxWidth="Infinity" HBox.hgrow="ALWAYS">
                         <!-- Los HBox.hgrow y minWidth deben coincidir con las celdas de las cards -->
                         <Label text="ENCUESTA / AUTOR" styleClass="th-label"
-                               minWidth="250" maxWidth="Infinity"/>
-                        <Label text="VISTAS" styleClass="th-label" minWidth="70" alignment="CENTER"/>
-                        <Label text="VALORACIÓN" styleClass="th-label" minWidth="150" alignment="CENTER"/>
-                        <Label text="FECHA" styleClass="th-label" minWidth="120" alignment="CENTER"/>
+                               minWidth="250" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Region minWidth="2" />
+                        <Label text="VISTAS" styleClass="th-label" minWidth="70" alignment="CENTER" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Region minWidth="2" />
+                        <Label text="VALORACIÓN" styleClass="th-label" minWidth="150" alignment="CENTER" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
+                        <Region minWidth="2" />
+                        <Label text="FECHA" styleClass="th-label" minWidth="120" alignment="CENTER" maxWidth="Infinity" HBox.hgrow="ALWAYS"/>
                     </HBox>
 
                     <!-- LISTA DE ENCUESTAS (VBOX) -->
