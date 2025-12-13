@@ -119,7 +119,7 @@ public class ViewSurveyViewController implements Initializable {
 
             // Estadísticas
             viewsCountLabel.setText(String.valueOf(currentSurvey.getViews()));
-            responsesCountLabel.setText(String.valueOf(currentSurvey.getQuestions().size())); // TODO: usar contador real de respuestas
+            responsesCountLabel.setText(String.valueOf(currentSurvey.getRatingCount()));
             ratingLabel.setText(String.format("%.1f", currentSurvey.getAvgRating()));
 
             // Fechas
