@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import presentation.util.SurveyView;
 import presentation.util.SurveyViewTitle;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public class HomeViewController extends SurveysViewController {
@@ -53,5 +54,11 @@ public class HomeViewController extends SurveysViewController {
                             case "Views > 50" -> s.getViews() > 50;
                             default -> true;
                         };
+    }
+
+    @Override
+    protected List<Survey> getSelectedSurveys()
+    {
+        return surveyController.getSelectedSurveys();
     }
 }

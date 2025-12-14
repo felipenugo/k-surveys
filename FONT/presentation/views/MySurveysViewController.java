@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import presentation.util.SurveyView;
 import presentation.util.SurveyViewTitle;
 
+import java.util.List;
 import java.util.function.Predicate;
 
 public class MySurveysViewController extends SurveysViewController {
@@ -18,7 +19,6 @@ public class MySurveysViewController extends SurveysViewController {
     @FXML
     private Label centerContentTitle;
     private final SurveyViewTitle TITLE;
-    private String currentUsername;
 
     /**
      * Constructor para inyección de dependencias.
@@ -29,7 +29,6 @@ public class MySurveysViewController extends SurveysViewController {
      */
     public MySurveysViewController(UserController userController, SurveyController surveyController, SurveyView surveyView, SceneManager sceneManager) {
         super(userController, surveyController, surveyView, sceneManager);
-        currentUsername = userController.getUsernameLoggedIn();
         TITLE = SurveyViewTitle.MY_SURVEYS;
     }
 
@@ -46,8 +45,7 @@ public class MySurveysViewController extends SurveysViewController {
     @Override
     protected Predicate<Survey> getFilter(String filter, String searchText) {
         return s ->
-                s.getCREATOR_USERNAME().equals(currentUsername) &&
-                        !s.getSurveyStatus().equals(SurveyStatus.DRAFT) &&
+                !s.getSurveyStatus().equals(SurveyStatus.DRAFT) &&
                         s.getTitle().toLowerCase().contains(searchText) &&
                         switch (filter) {
                             case "Rating > 3.5" -> s.getAvgRating() > 3.5;
@@ -55,5 +53,10 @@ public class MySurveysViewController extends SurveysViewController {
                             case "Views > 50" -> s.getViews() > 50;
                             default -> true;
                         };
+    }
+
+    @Override
+    protected List<Survey> getSelectedSurveys() {
+        return surveyController.getMySurveys();
     }
 }

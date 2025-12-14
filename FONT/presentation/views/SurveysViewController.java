@@ -20,8 +20,8 @@ import java.util.ResourceBundle;
 import java.util.function.Predicate;
 
 public abstract class SurveysViewController implements Initializable {
-    private final UserController userController;
-    private final SurveyController surveyController;
+    protected final UserController userController;
+    protected final SurveyController surveyController;
     protected final SceneManager sceneManager;
     private final int MAX_SURVEYS_PER_PAGE;
     private int numSurveys;
@@ -54,8 +54,7 @@ public abstract class SurveysViewController implements Initializable {
     private Pagination pagination;
 
     // Datos
-    private List<Survey> allSurveys; // Todas las encuestas (Mock)
-    // private List<Survey> currentSurveys; // Encuestas filtradas actualmente
+    private List<Survey> allSurveys;
 
     /**
      * Constructor para inyección de dependencias.
@@ -137,6 +136,7 @@ public abstract class SurveysViewController implements Initializable {
 
     protected abstract void setViewActive();
     protected abstract void setContentTitle();
+    protected abstract List<Survey> getSelectedSurveys();
 
     /**
      * Método invocado después de que un controlador ha sido cargado en su totalidad.
@@ -159,7 +159,7 @@ public abstract class SurveysViewController implements Initializable {
         avatarLabel.setText(getInitialLetters(username));
 
         setFilters(); // definir eventos para buscar, filtrar y ordenar
-        allSurveys = surveyController.getSelectedSurveys(); // todas las encuestas
+        allSurveys = getSelectedSurveys(); // todas las encuestas
 
         // aplicar los filtros y renderizar las encuestas
         applyFilters();
