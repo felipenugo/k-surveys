@@ -41,6 +41,17 @@ public class CtrlDominioClustering {
     }
 
     /**
+     * Obtiene el número de respuestas de una encuesta.
+     *
+     * @param surveyId ID de la encuesta
+     * @return Número de respuestas
+     */
+    public int getResponseCount(String surveyId) {
+        List<Response> responses = responseRepository.getResponsesBySurveyId(surveyId);
+        return responses != null ? responses.size() : 0;
+    }
+
+    /**
      * Ejecuta un análisis de clustering sobre una encuesta.
      *
      * @param algorithmName  Nombre del algoritmo (KMeans, KMeans++, KMedoids)
@@ -297,7 +308,10 @@ public class CtrlDominioClustering {
         for (int i = 0; i < response.getSize(); i++) {
             domain.model.Answer answer = response.getAnswer(i);
             if (answer != null && answer.getIsAnswered()) {
-                sb.append("P").append(i + 1).append(": ").append(answer.toString()).append("; ");
+                sb.append("Pregunta ").append(i + 1).append(": ").append(answer.toString());
+                if (i < response.getSize() - 1) {
+                    sb.append("\n");
+                }
             }
         }
         return sb.toString();
@@ -402,6 +416,40 @@ public class CtrlDominioClustering {
         return centroids;
     }
 
+    /**
+     * Convierte cualquier tipo de respuesta a un valor numérico para visualización.
+     * - NumericalAnswer: devuelve el valor numérico directamente
+     * - MultipleChoiceAnswer: devuelve el índice de la primera opción seleccionada + 1 (0 si ninguna)
+     * - TextualAnswer: devuelve el hashCode del texto normalizado para dispersión visual
+     *
+     * @param answer La respuesta a convertir
+     * @return Valor numérico representativo de la respuesta
+     */
+    private double getVisualizationValue(domain.model.Answer answer) {
+        if (answer == null) return 0.0;
+        
+        if (answer instanceof domain.model.NumericalAnswer) {
+            Double val = ((domain.model.NumericalAnswer) answer).getAnswerNum();
+            return val != null ? val : 0.0;
+        } else if (answer instanceof domain.model.MultipleChoiceAnswer) {
+            domain.model.MultipleChoiceAnswer mca = (domain.model.MultipleChoiceAnswer) answer;
+            boolean[] selected = mca.getSelectedOptions();
+            // Contar cuántas opciones están seleccionadas y devolver el índice de la primera +1
+            for (int i = 0; i < selected.length; i++) {
+                if (selected[i]) {
+                    return i + 1; // Índice 1-based para visualización
+                }
+            }
+            return 0.0;
+        } else if (answer instanceof domain.model.TextualAnswer) {
+            String text = ((domain.model.TextualAnswer) answer).getAnswerText();
+            if (text == null || text.isEmpty()) return 0.0;
+            // Usar hash normalizado para dispersión visual (valor entre 0 y 100)
+            return Math.abs(text.toLowerCase().hashCode() % 100);
+        }
+        return 0.0;
+    }
+
     private double getNumericalValue(domain.model.Answer answer) {
         if (answer instanceof domain.model.NumericalAnswer) {
             Double val = ((domain.model.NumericalAnswer) answer).getAnswerNum();
@@ -437,7 +485,31 @@ public class CtrlDominioClustering {
     }
 
     /**
+     * Obtiene las etiquetas de TODAS las preguntas de una encuesta.
+     *
+     * @param surveyId ID de la encuesta.
+     * @return Lista de pares [índice, etiqueta] de todas las preguntas.
+     */
+    public List<Map.Entry<Integer, String>> getAllQuestionLabels(String surveyId) {
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        if (survey == null) return new ArrayList<>();
+
+        List<Map.Entry<Integer, String>> labels = new ArrayList<>();
+        List<Question> questions = survey.getQuestions();
+        
+        for (int i = 0; i < questions.size(); i++) {
+            Question q = questions.get(i);
+            final int index = i;
+            final String label = "P" + (i + 1) + ": " + q.getQuestionText();
+            labels.add(new java.util.AbstractMap.SimpleEntry<>(index, label));
+        }
+        
+        return labels;
+    }
+
+    /**
      * Obtiene las coordenadas 2D para visualizar los clusters con dimensiones específicas.
+     * Soporta todos los tipos de preguntas (numéricas, textuales, opción múltiple).
      *
      * @param analysisId ID del análisis.
      * @param surveyId ID de la encuesta.
@@ -456,8 +528,8 @@ public class CtrlDominioClustering {
             for (ClusterMembership member : c.getMembers()) {
                 Response r = responseRepository.getResponse(surveyId, member.getResponseId());
                 if (r != null) {
-                    double x = getNumericalValue(r.getAnswer(dimXIndex));
-                    double y = getNumericalValue(r.getAnswer(dimYIndex));
+                    double x = getVisualizationValue(r.getAnswer(dimXIndex));
+                    double y = getVisualizationValue(r.getAnswer(dimYIndex));
                     points.put(r.getRESPONSE_ID(), new double[]{x, y});
                 }
             }
@@ -500,5 +572,99 @@ public class CtrlDominioClustering {
         }
 
         return centroids;
+    }
+
+    /**
+     * Obtiene los datos de las respuestas para exportar a CSV.
+     * Cada fila representa una respuesta con todas sus respuestas a las preguntas y el cluster asignado.
+     *
+     * @param analysisId ID del análisis.
+     * @param surveyId ID de la encuesta.
+     * @return Mapa con "headers" (List<String>) y "rows" (List<List<String>>)
+     */
+    public Map<String, Object> getCSVExportData(String analysisId, String surveyId) {
+        Map<String, Object> result = new HashMap<>();
+        List<String> headers = new ArrayList<>();
+        List<List<String>> rows = new ArrayList<>();
+
+        ClusteringAnalysis analysis = analysisController.getAnalysis(analysisId);
+        Survey survey = surveyRepository.getSurvey(surveyId);
+        
+        if (analysis == null || survey == null) {
+            result.put("headers", headers);
+            result.put("rows", rows);
+            return result;
+        }
+
+        // Crear headers: ResponseID, Question1, Question2, ..., Cluster
+        headers.add("ResponseID");
+        List<Question> questions = survey.getQuestions();
+        for (int i = 0; i < questions.size(); i++) {
+            headers.add(questions.get(i).getQuestionText());
+        }
+        headers.add("Cluster");
+
+        // Crear filas: una por cada respuesta con sus valores y cluster
+        for (Cluster c : analysis.getClusters()) {
+            String clusterId = c.getId();
+            // Formatear cluster ID para mostrar solo el número
+            String clusterNumber = clusterId.replace("cluster_", "");
+            
+            for (ClusterMembership member : c.getMembers()) {
+                Response r = responseRepository.getResponse(surveyId, member.getResponseId());
+                if (r != null) {
+                    List<String> row = new ArrayList<>();
+                    row.add(r.getRESPONSE_ID());
+                    
+                    for (int i = 0; i < r.getSize(); i++) {
+                        domain.model.Answer answer = r.getAnswer(i);
+                        if (answer != null && answer.getIsAnswered()) {
+                            row.add(getAnswerValueForCSV(answer, questions.get(i)));
+                        } else {
+                            row.add("");
+                        }
+                    }
+                    
+                    row.add(clusterNumber);
+                    rows.add(row);
+                }
+            }
+        }
+
+        result.put("headers", headers);
+        result.put("rows", rows);
+        return result;
+    }
+
+    /**
+     * Convierte una respuesta a su representación CSV.
+     *
+     * @param answer La respuesta a convertir.
+     * @param question La pregunta correspondiente (para obtener opciones en multiple choice).
+     * @return String con el valor de la respuesta para CSV.
+     */
+    private String getAnswerValueForCSV(domain.model.Answer answer, Question question) {
+        if (answer instanceof domain.model.NumericalAnswer) {
+            Double value = ((domain.model.NumericalAnswer) answer).getAnswerNum();
+            return value != null ? String.valueOf(value) : "";
+        } else if (answer instanceof domain.model.TextualAnswer) {
+            String text = ((domain.model.TextualAnswer) answer).getAnswerText();
+            return text != null ? text : "";
+        } else if (answer instanceof domain.model.MultipleChoiceAnswer) {
+            domain.model.MultipleChoiceAnswer mcAnswer = (domain.model.MultipleChoiceAnswer) answer;
+            domain.model.MultipleChoiceQuestion mcQuestion = (domain.model.MultipleChoiceQuestion) question;
+            boolean[] selected = mcAnswer.getSelectedOptions();
+            StringBuilder sb = new StringBuilder();
+            boolean first = true;
+            for (int i = 0; i < selected.length; i++) {
+                if (selected[i]) {
+                    if (!first) sb.append("; ");
+                    sb.append(mcQuestion.getOption(i).getOptionText());
+                    first = false;
+                }
+            }
+            return sb.toString();
+        }
+        return answer.toString();
     }
 }

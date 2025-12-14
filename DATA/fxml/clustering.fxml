@@ -8,6 +8,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -86,53 +87,53 @@
             <Label text="Análisis de Clustering" styleClass="title"/>
 
             <!-- Configuración del Análisis -->
-            <VBox spacing="20" styleClass="clustering-config-box">
+            <VBox spacing="15" styleClass="clustering-config-box">
                 <Label text="Configuración del Algoritmo" styleClass="clustering-section-title"/>
                 
-                <HBox spacing="30" alignment="CENTER_LEFT">
-                    <VBox spacing="8" HBox.hgrow="ALWAYS">
+                <HBox spacing="15" alignment="CENTER_LEFT">
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
                         <Label text="Algoritmo" styleClass="clustering-label"/>
                         <ComboBox fx:id="algorithmCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
                     </VBox>
                     
-                    <VBox spacing="8" HBox.hgrow="ALWAYS">
-                        <Label text="Número de Clusters (k)" styleClass="clustering-label"/>
-                        <HBox spacing="10">
-                            <TextField fx:id="kField" prefWidth="80" promptText="Ej: 3" styleClass="clustering-text-field"/>
-                            <Button text="Auto K" onAction="#calculateOptimalK" styleClass="clustering-btn-action"/>
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Clusters (k)" styleClass="clustering-label"/>
+                        <HBox spacing="5" alignment="CENTER_LEFT">
+                            <TextField fx:id="kField" prefWidth="60" maxWidth="60" promptText="3" styleClass="clustering-text-field"/>
+                            <Button text="Auto" onAction="#calculateOptimalK" styleClass="clustering-btn-action"/>
                         </HBox>
                     </VBox>
 
-                    <VBox spacing="8" HBox.hgrow="ALWAYS">
-                        <Label text="Distancia Numérica" styleClass="clustering-label"/>
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Dist. Numérica" styleClass="clustering-label"/>
                         <ComboBox fx:id="distanceCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
                     </VBox>
 
-                    <VBox spacing="8" HBox.hgrow="ALWAYS">
-                        <Label text="Distancia Texto" styleClass="clustering-label"/>
+                    <VBox spacing="5" HBox.hgrow="ALWAYS">
+                        <Label text="Dist. Texto" styleClass="clustering-label"/>
                         <ComboBox fx:id="textDistanceCombo" maxWidth="Infinity" styleClass="clustering-combo-box"/>
                     </VBox>
-                </HBox>
 
-                <HBox spacing="30" alignment="CENTER_LEFT">
-                    <VBox spacing="8">
-                        <Label text="Max Iteraciones" styleClass="clustering-label"/>
-                        <TextField fx:id="maxIterField" prefWidth="120" text="100" styleClass="clustering-text-field"/>
+                    <VBox spacing="5" HBox.hgrow="SOMETIMES">
+                        <Label text="Max Iter." styleClass="clustering-label"/>
+                        <TextField fx:id="maxIterField" prefWidth="80" text="100" styleClass="clustering-text-field"/>
                     </VBox>
                     
-                    <VBox spacing="8">
+                    <VBox spacing="5" HBox.hgrow="SOMETIMES">
                         <Label text="Tolerancia" styleClass="clustering-label"/>
-                        <TextField fx:id="toleranceField" prefWidth="120" text="0.0001" styleClass="clustering-text-field"/>
+                        <TextField fx:id="toleranceField" prefWidth="90" text="0.0001" styleClass="clustering-text-field"/>
                     </VBox>
                     
-                    <Region HBox.hgrow="ALWAYS"/>
-                    
-                    <Button text="Ejecutar Análisis" onAction="#runAnalysis" styleClass="clustering-btn-primary">
-                         <VBox.margin>
-                            <Insets top="10.0"/>
-                        </VBox.margin>
-                    </Button>
+                    <Button fx:id="runAnalysisBtn" text="Ejecutar Análisis" onAction="#runAnalysis" styleClass="clustering-btn-primary"/>
                 </HBox>
+            </VBox>
+
+            <!-- Loading Overlay - Fuera de resultsContainer para que se vea siempre -->
+            <VBox fx:id="loadingOverlay" visible="false" managed="false" alignment="CENTER" spacing="15"
+                  style="-fx-background-color: rgba(255,255,255,0.95); -fx-padding: 40; -fx-background-radius: 12; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 4);">
+                <ProgressIndicator fx:id="loadingIndicator" prefWidth="60" prefHeight="60"/>
+                <Label text="Ejecutando análisis de clustering..." style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #1e3c72;"/>
+                <Label text="Esto puede tardar unos segundos..." style="-fx-font-size: 13px; -fx-text-fill: #666;"/>
             </VBox>
 
             <!-- Resultados -->
@@ -166,39 +167,49 @@
                             </Label>
                         </VBox>
                     </HBox>
-                    <Button text="Exportar" onAction="#exportResults" styleClass="clustering-btn-secondary"/>
+                    <HBox spacing="8">
+                        <Button text="📊 Gráfica Tamaño" onAction="#exportBarChartPNG" styleClass="clustering-btn-secondary"/>
+                        <Button text="📈 Gráfica Distribución" onAction="#exportScatterChartPNG" styleClass="clustering-btn-secondary"/>
+                        <Button text="📋 Tabla Resultados" onAction="#exportCSV" styleClass="clustering-btn-secondary"/>
+                    </HBox>
                 </HBox>
 
-                <!-- Charts Row -->
-                <HBox spacing="20" VBox.vgrow="SOMETIMES" minHeight="250" maxHeight="300">
-                    <!-- Bar Chart (Sizes) -->
-                    <BarChart fx:id="sizeBarChart" animated="false" legendVisible="false" HBox.hgrow="ALWAYS" title="Tamaño de Clusters">
-                        <xAxis>
-                            <CategoryAxis label="Cluster" />
-                        </xAxis>
-                        <yAxis>
-                            <NumberAxis label="Respuestas" />
-                        </yAxis>
-                    </BarChart>
-
-                    <!-- Scatter Chart with dimension selector -->
-                    <VBox HBox.hgrow="ALWAYS" spacing="5">
-                        <HBox spacing="10" alignment="CENTER_LEFT">
-                            <Label text="Eje X:" style="-fx-font-size: 11px;"/>
-                            <ComboBox fx:id="xAxisCombo" prefWidth="150"/>
-                            <Label text="Eje Y:" style="-fx-font-size: 11px;"/>
-                            <ComboBox fx:id="yAxisCombo" prefWidth="150"/>
-                        </HBox>
-                        <ScatterChart fx:id="silhouetteScatterChart" animated="false" legendVisible="true" VBox.vgrow="ALWAYS" title="Distribución de Respuestas">
+                <!-- Charts Row - StackPane permite overlay de carga -->
+                <StackPane fx:id="chartsStackPane" VBox.vgrow="SOMETIMES">
+                    <HBox fx:id="chartsContainer" spacing="30" alignment="CENTER">
+                        <!-- Bar Chart (Sizes) - Aspect ratio 1:1 -->
+                        <BarChart fx:id="sizeBarChart" animated="false" legendVisible="false" 
+                                  prefWidth="320" prefHeight="320" minWidth="320" minHeight="320" maxWidth="320" maxHeight="320"
+                                  title="Tamaño de Clusters">
                             <xAxis>
-                                <NumberAxis fx:id="scatterXAxis" label="Dim 1" />
+                                <CategoryAxis label="Cluster" />
                             </xAxis>
                             <yAxis>
-                                <NumberAxis fx:id="scatterYAxis" label="Dim 2" />
+                                <NumberAxis fx:id="barYAxis" label="Respuestas" tickUnit="1" minorTickVisible="false" />
                             </yAxis>
-                        </ScatterChart>
-                    </VBox>
-                </HBox>
+                        </BarChart>
+
+                        <!-- Scatter Chart with dimension selector - Aspect ratio 1:1 -->
+                        <VBox spacing="8" alignment="CENTER">
+                            <Label text="Distribución de Respuestas" style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+                            <HBox spacing="10" alignment="CENTER_LEFT">
+                                <Label text="Eje X:" style="-fx-font-size: 11px;"/>
+                                <ComboBox fx:id="xAxisCombo" prefWidth="150"/>
+                                <Label text="Eje Y:" style="-fx-font-size: 11px;"/>
+                                <ComboBox fx:id="yAxisCombo" prefWidth="150"/>
+                            </HBox>
+                            <ScatterChart fx:id="silhouetteScatterChart" animated="false" legendVisible="true" legendSide="BOTTOM"
+                                          prefWidth="300" prefHeight="340" minWidth="300" minHeight="340" maxWidth="300" maxHeight="340">
+                                <xAxis>
+                                    <NumberAxis fx:id="scatterXAxis" side="BOTTOM" />
+                                </xAxis>
+                                <yAxis>
+                                    <NumberAxis fx:id="scatterYAxis" side="LEFT" />
+                                </yAxis>
+                            </ScatterChart>
+                        </VBox>
+                    </HBox>
+                </StackPane>
 
                 <!-- List View -->
                 <ScrollPane fitToWidth="true" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent; -fx-background: transparent;">

@@ -19,7 +19,7 @@
 .clustering-label {
     -fx-font-weight: bold;
     -fx-text-fill: #555;
-    -fx-font-size: 13px;
+    -fx-font-size: 12px;
 }
 
 .clustering-combo-box, .clustering-text-field {
@@ -27,13 +27,29 @@
     -fx-border-color: #dee2e6;
     -fx-border-radius: 6;
     -fx-background-radius: 6;
-    -fx-padding: 8;
-    -fx-font-size: 14px;
+    -fx-padding: 6 8 6 8;
+    -fx-font-size: 13px;
+    -fx-pref-height: 34;
+    -fx-min-height: 34;
+}
+
+.clustering-combo-box .list-cell {
+    -fx-padding: 4 8 4 8;
+    -fx-background-insets: 0;
+}
+
+.clustering-combo-box .combo-box-popup .list-view .list-cell {
+    -fx-padding: 6 10 6 10;
 }
 
 .clustering-combo-box:focused, .clustering-text-field:focused {
     -fx-border-color: #2a5298;
     -fx-background-color: white;
+}
+
+.clustering-btn-action {
+    -fx-pref-height: 36;
+    -fx-min-height: 36;
 }
 
 .clustering-btn-primary {
@@ -81,6 +97,19 @@
     -fx-background-color: #ec971f;
 }
 
+.clustering-btn-export {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    -fx-font-size: 11px;
+    -fx-padding: 5 12;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.clustering-btn-export:hover {
+    -fx-background-color: #5a6268;
+}
+
 .clustering-results-box {
     -fx-background-color: white;
     -fx-padding: 25;
@@ -90,18 +119,68 @@
 
 .cluster-card {
     -fx-background-color: #f8f9fa;
-    -fx-padding: 15;
-    -fx-background-radius: 8;
-    -fx-border-color: #e9ecef;
-    -fx-border-radius: 8;
+    -fx-padding: 18;
+    -fx-background-radius: 10;
+    -fx-border-color: #e0e4e8;
+    -fx-border-radius: 10;
     -fx-border-width: 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.02), 3, 0, 0, 1);
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 5, 0, 0, 2);
 }
 
 .cluster-title {
-    -fx-font-size: 16px;
+    -fx-font-size: 18px;
     -fx-font-weight: bold;
-    -fx-text-fill: #2a5298;
+    -fx-text-fill: #1e3c72;
+}
+
+.cluster-elements {
+    -fx-font-size: 13px;
+    -fx-text-fill: #555;
+    -fx-font-weight: bold;
+}
+
+.cluster-metrics-box {
+    -fx-padding: 8 0 5 0;
+}
+
+.cluster-metric-item {
+    -fx-background-color: #eef2f7;
+    -fx-padding: 6 12;
+    -fx-background-radius: 6;
+    -fx-alignment: center;
+}
+
+.metric-value-small {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+}
+
+.metric-name-small {
+    -fx-font-size: 10px;
+    -fx-text-fill: #6c757d;
+}
+
+.cluster-centroid-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #1e3c72;
+    -fx-padding: 8 0 3 0;
+}
+
+.cluster-centroid {
+    -fx-font-size: 11px;
+    -fx-text-fill: #555;
+    -fx-font-family: "monospace";
+    -fx-padding: 0 0 0 10;
+    -fx-line-spacing: 2;
+}
+
+.cluster-members-title {
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-text-fill: #333;
+    -fx-padding: 5 0 5 0;
 }
 
 .cluster-metric {
@@ -111,14 +190,25 @@
 }
 
 .cluster-response-item {
-    -fx-padding: 8;
+    -fx-padding: 10;
     -fx-background-color: white;
-    -fx-background-radius: 4;
+    -fx-background-radius: 6;
     -fx-border-color: #dee2e6;
-    -fx-border-radius: 4;
-    -fx-border-width: 0 0 0 3; /* Left border accent */
+    -fx-border-radius: 6;
+    -fx-border-width: 0 0 0 4;
     -fx-border-insets: 0;
-    -fx-text-fill: #333; /* Fix invisible text */
+}
+
+.response-id {
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+    -fx-text-fill: #2a5298;
+}
+
+.response-summary {
+    -fx-font-size: 12px;
+    -fx-text-fill: #444;
+    -fx-padding: 3 0 0 0;
 }
 
 .metric-value {
@@ -143,101 +233,101 @@
 
 /* ==================== SCATTER CHART STYLING ==================== */
 
+/* Forzar área de ploteo cuadrada para aspect ratio 1:1 */
+#silhouetteScatterChart .chart-plot-background {
+    -fx-background-color: #fafafa;
+}
+
+#silhouetteScatterChart .chart-content {
+    -fx-padding: 10;
+}
+
+/* Forzar TODOS los símbolos a ser círculos (eliminar formas por defecto) */
+.chart-symbol {
+    -fx-background-radius: 5px;
+    -fx-padding: 5px;
+    -fx-shape: null;
+}
+
 /* Colores para las series de datos - símbolos circulares */
 .default-color0.chart-symbol {
     -fx-background-color: #3498db;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color1.chart-symbol {
     -fx-background-color: #e74c3c;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color2.chart-symbol {
     -fx-background-color: #2ecc71;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color3.chart-symbol {
     -fx-background-color: #9b59b6;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color4.chart-symbol {
     -fx-background-color: #f39c12;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color5.chart-symbol {
     -fx-background-color: #1abc9c;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color6.chart-symbol {
     -fx-background-color: #e91e63;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 .default-color7.chart-symbol {
     -fx-background-color: #00bcd4;
-    -fx-background-radius: 5px;
-    -fx-padding: 5px;
 }
 
 /* Leyenda - símbolos circulares que coincidan con los puntos */
+.chart-legend-symbol {
+    -fx-background-radius: 5px;
+    -fx-shape: null;
+}
+
 .default-color0.chart-legend-symbol {
     -fx-background-color: #3498db;
-    -fx-background-radius: 5px;
 }
 
 .default-color1.chart-legend-symbol {
     -fx-background-color: #e74c3c;
-    -fx-background-radius: 5px;
 }
 
 .default-color2.chart-legend-symbol {
     -fx-background-color: #2ecc71;
-    -fx-background-radius: 5px;
 }
 
 .default-color3.chart-legend-symbol {
     -fx-background-color: #9b59b6;
-    -fx-background-radius: 5px;
 }
 
 .default-color4.chart-legend-symbol {
     -fx-background-color: #f39c12;
-    -fx-background-radius: 5px;
 }
 
 .default-color5.chart-legend-symbol {
     -fx-background-color: #1abc9c;
-    -fx-background-radius: 5px;
 }
 
 .default-color6.chart-legend-symbol {
     -fx-background-color: #e91e63;
-    -fx-background-radius: 5px;
 }
 
 .default-color7.chart-legend-symbol {
     -fx-background-color: #00bcd4;
-    -fx-background-radius: 5px;
 }
 
-/* Centroides - última serie, más grandes y negros */
+/* Centroides - forma de X usando cruz rotada */
 .centroid-symbol {
-    -fx-background-color: black;
-    -fx-background-radius: 8px;
-    -fx-padding: 8px;
+    -fx-background-color: #c0392b;
+    -fx-padding: 6px;
+    -fx-shape: "M2,0 L4,0 L4,2 L6,2 L6,4 L4,4 L4,6 L2,6 L2,4 L0,4 L0,2 L2,2 Z";
+    -fx-rotate: 45;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 
 /* ==================== BAR CHART STYLING ==================== */

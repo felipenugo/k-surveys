@@ -35,6 +35,10 @@ public class SceneManager {
         return primaryStage;
     }
 
+    public CtrlDominioClustering getClusteringController() {
+        return clusteringController;
+    }
+
     private void checkLoaderAddress(FXMLLoader loader) {
         if (loader.getLocation() == null) {
             System.err.println("FATAL: No se pudo encontrar la ruta al fichero fxml.");

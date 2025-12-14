@@ -213,6 +213,12 @@ public class ViewSurveyViewController implements Initializable {
 
     @FXML
     public void handleRunClustering(ActionEvent event) {
+        int responseCount = sceneManager.getClusteringController().getResponseCount(surveyId);
+        if (responseCount == 0) {
+            showAlert(Alert.AlertType.WARNING, "Sin Respuestas", 
+                "Esta encuesta no tiene respuestas.\nNecesita al menos 1 respuesta para ejecutar el análisis de clustering.");
+            return;
+        }
         sceneManager.showClustering(surveyId);
     }
 

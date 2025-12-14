@@ -4,130 +4,420 @@
       "RESPONSE_ID": "301",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "ana",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 25.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "301", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "301", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Ingeniera de Software" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "301", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más flexibilidad horaria" }
+        {
+          "answerNum": 25.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "301",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "301",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "301",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Ingeniera de Software",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "301",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más flexibilidad horaria",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "301",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "302": {
       "RESPONSE_ID": "302",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "carlos",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 28.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "302", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "302", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Desarrollador Backend" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "302", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Mejor salario" }
+        {
+          "answerNum": 28.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "302",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "302",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "302",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Desarrollador Backend",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "302",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Mejor salario",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "302",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "303": {
       "RESPONSE_ID": "303",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "elena",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 24.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "303", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "303", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Diseñadora UX" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "303", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Proyectos más creativos" }
+        {
+          "answerNum": 24.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "303",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "303",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "303",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Diseñadora UX",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "303",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Proyectos más creativos",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "303",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "304": {
       "RESPONSE_ID": "304",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "pedro",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 45.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 10.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "304", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "304", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Director de Proyecto" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "304", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Menos reuniones" }
+        {
+          "answerNum": 45.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "304",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 10.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "304",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "304",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Director de Proyecto",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "304",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Menos reuniones",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "304",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "305": {
       "RESPONSE_ID": "305",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "maria",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 50.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 11.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "305", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 4.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "305", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "CEO" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "305", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más tiempo libre" }
+        {
+          "answerNum": 50.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "305",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 11.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "305",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "305",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "CEO",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "305",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más tiempo libre",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "305",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "306": {
       "RESPONSE_ID": "306",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "luis",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 22.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "306", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "306", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Estudiante" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "306", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Encontrar trabajo" }
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "306",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "306",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "306",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Estudiante",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "306",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Encontrar trabajo",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "306",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "307": {
       "RESPONSE_ID": "307",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "sofia",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 23.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "307", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "307", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Becaria" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "307", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Aprender más" }
+        {
+          "answerNum": 23.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "307",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "307",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "307",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Becaria",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "307",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Aprender más",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "307",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "308": {
       "RESPONSE_ID": "308",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "jorge",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 42.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "308", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "308", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Gerente de Ventas" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "308", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Viajar menos" }
+        {
+          "answerNum": 42.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "308",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "308",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "308",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Gerente de Ventas",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "308",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Viajar menos",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "308",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "309": {
       "RESPONSE_ID": "309",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "carmen",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 35.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "309", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "309", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Médica" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "309", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Turnos más cortos" }
+        {
+          "answerNum": 35.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "309",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "309",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "309",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Médica",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "309",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Turnos más cortos",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "309",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     },
     "310": {
       "RESPONSE_ID": "310",
       "SURVEY_ID": "300",
       "RESPONDER_USERNAME": "raul",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 30.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.0 },
-        { "QUESTION_INDEX": 2, "RESPONSE_ID": "310", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 },
-        { "QUESTION_INDEX": 3, "RESPONSE_ID": "310", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Arquitecto" },
-        { "QUESTION_INDEX": 4, "RESPONSE_ID": "310", "typeAnswer": "TEXTUAL", "isAnswered": true, "answerText": "Más reconocimiento" }
+        {
+          "answerNum": 30.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "310",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "310",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "310",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Arquitecto",
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "310",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más reconocimiento",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "310",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
       ]
     }
   },
@@ -136,50 +426,105 @@
       "RESPONSE_ID": "1",
       "SURVEY_ID": "200",
       "RESPONDER_USERNAME": "user1",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "1", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 20.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "1", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 8.0 }
+        {
+          "answerNum": 20.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
       ]
     },
     "2": {
       "RESPONSE_ID": "2",
       "SURVEY_ID": "200",
       "RESPONDER_USERNAME": "user2",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "2", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 22.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "2", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 7.5 }
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "2",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.5,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "2",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
       ]
     },
     "3": {
       "RESPONSE_ID": "3",
       "SURVEY_ID": "200",
       "RESPONDER_USERNAME": "user3",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "3", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 50.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "3", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 6.0 }
+        {
+          "answerNum": 50.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "3",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "3",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
       ]
     },
     "4": {
       "RESPONSE_ID": "4",
       "SURVEY_ID": "200",
       "RESPONDER_USERNAME": "user4",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "4", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 55.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "4", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 5.5 }
+        {
+          "answerNum": 55.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "4",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.5,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "4",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
       ]
     },
     "5": {
       "RESPONSE_ID": "5",
       "SURVEY_ID": "200",
       "RESPONDER_USERNAME": "user5",
-      "responseStatus": "COMPLETED",
       "ANSWERS": [
-        { "QUESTION_INDEX": 0, "RESPONSE_ID": "5", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 21.0 },
-        { "QUESTION_INDEX": 1, "RESPONSE_ID": "5", "typeAnswer": "NUMERICAL", "isAnswered": true, "answerNum": 9.0 }
+        {
+          "answerNum": 21.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "5",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "5",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
       ]
     }
   },
@@ -195,6 +540,1426 @@
           "RESPONSE_ID": "1",
           "typeAnswer": "NUMERICAL",
           "isAnswered": false
+        }
+      ]
+    }
+  },
+  "201": {
+    "101": {
+      "RESPONSE_ID": "101",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user01",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "101",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "101",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "101",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "101",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más días de teletrabajo",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "101",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "102": {
+      "RESPONSE_ID": "102",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user02",
+      "ANSWERS": [
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "102",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "102",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "102",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "102",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Mejor comunicación con el equipo",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "102",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "103": {
+      "RESPONSE_ID": "103",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user03",
+      "ANSWERS": [
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "103",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "103",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "103",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "103",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Subida de salario",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "103",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "104": {
+      "RESPONSE_ID": "104",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user04",
+      "ANSWERS": [
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "104",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "104",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "104",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            true,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "104",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Menos reuniones innecesarias",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "104",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "105": {
+      "RESPONSE_ID": "105",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user05",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "105",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 10.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "105",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "105",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "105",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Todo está bien",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "105",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "106": {
+      "RESPONSE_ID": "106",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user06",
+      "ANSWERS": [
+        {
+          "answerNum": 10.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "106",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "106",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "106",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "106",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Necesito mejor salario urgente",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "106",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "107": {
+      "RESPONSE_ID": "107",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user07",
+      "ANSWERS": [
+        {
+          "answerNum": 0.5,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "107",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "107",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "107",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "107",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Mejor onboarding",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "107",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "108": {
+      "RESPONSE_ID": "108",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user08",
+      "ANSWERS": [
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "108",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "108",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "108",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "108",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más oportunidades de formación",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "108",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "109": {
+      "RESPONSE_ID": "109",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user09",
+      "ANSWERS": [
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "109",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "109",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "109",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            true,
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "109",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Nada, estoy muy contento",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "109",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "110": {
+      "RESPONSE_ID": "110",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user10",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "110",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "110",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "110",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "110",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Cambiar de jefe",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "110",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "111": {
+      "RESPONSE_ID": "111",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user11",
+      "ANSWERS": [
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "111",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "111",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "111",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "111",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más vacaciones",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "111",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "112": {
+      "RESPONSE_ID": "112",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user12",
+      "ANSWERS": [
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "112",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "112",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "112",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            false,
+            true,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "112",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Mejor equipamiento",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "112",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "113": {
+      "RESPONSE_ID": "113",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user13",
+      "ANSWERS": [
+        {
+          "answerNum": 12.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "113",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "113",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "113",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "113",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Plan de carrera más claro",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "113",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "114": {
+      "RESPONSE_ID": "114",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user14",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "114",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 10.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "114",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "114",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            true,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "114",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Parking gratuito",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "114",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "115": {
+      "RESPONSE_ID": "115",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user15",
+      "ANSWERS": [
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "115",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "115",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "115",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "115",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Aumento salarial significativo",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "115",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "116": {
+      "RESPONSE_ID": "116",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user16",
+      "ANSWERS": [
+        {
+          "answerNum": 0.3,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "116",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "116",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "116",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "116",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más mentoría",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "116",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "117": {
+      "RESPONSE_ID": "117",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user17",
+      "ANSWERS": [
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "117",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "117",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "117",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "117",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Renovar las oficinas",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "117",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "118": {
+      "RESPONSE_ID": "118",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user18",
+      "ANSWERS": [
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "118",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "118",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "118",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            true,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "118",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más team buildings",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "118",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "119": {
+      "RESPONSE_ID": "119",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user19",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "119",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "119",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "119",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "119",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Procesos más ágiles",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "119",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "120": {
+      "RESPONSE_ID": "120",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user20",
+      "ANSWERS": [
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "120",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "120",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "120",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "120",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Café gratis de mejor calidad",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "120",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "121": {
+      "RESPONSE_ID": "121",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user21",
+      "ANSWERS": [
+        {
+          "answerNum": 15.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "121",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "121",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "121",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "121",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Jubilación anticipada",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "121",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "122": {
+      "RESPONSE_ID": "122",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user22",
+      "ANSWERS": [
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "122",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "122",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "122",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            true,
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "122",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Más proyectos internacionales",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "122",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "123": {
+      "RESPONSE_ID": "123",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user23",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "123",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "123",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 6.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "123",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            true,
+            false,
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "123",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Gimnasio en la oficina",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "123",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "124": {
+      "RESPONSE_ID": "124",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user24",
+      "ANSWERS": [
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "124",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "124",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "124",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            true,
+            true,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "124",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Mejor seguro médico",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "124",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "125": {
+      "RESPONSE_ID": "125",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "user25",
+      "ANSWERS": [
+        {
+          "answerNum": 5.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "125",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 10.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "125",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "125",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            true,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "125",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "Estoy muy satisfecho",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "125",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "11": {
+      "RESPONSE_ID": "11",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "12": {
+      "RESPONSE_ID": "12",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "13": {
+      "RESPONSE_ID": "13",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "14": {
+      "RESPONSE_ID": "14",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 1.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "asddas",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
         }
       ]
     }
