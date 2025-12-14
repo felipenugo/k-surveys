@@ -414,7 +414,7 @@ public class CtrlDominioClusteringTest {
         // Probar el método runAnalysis de CtrlDominioClustering
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         assertNotNull(analysisId);
         assertNotNull(ctrlClustering.obtenerResultadosAnalisis(analysisId));
@@ -434,7 +434,7 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         String filePath = "build/test_reports/clustering_export_test.txt";
         String savedPath = ctrlClustering.exportarAnalisis(analysisId, filePath);
@@ -457,7 +457,7 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         String metrics = ctrlClustering.obtenerMetricasCalidad(analysisId);
 
@@ -503,8 +503,8 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
-        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 3, 100, 0.001, "EUCLIDEAN");
+        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 3, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         List<String> analysisList = ctrlClustering.listarAnalisis();
 
@@ -528,7 +528,7 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         List<String> before = ctrlClustering.listarAnalisis();
         assertTrue(before.contains(analysisId));
@@ -553,7 +553,7 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String analysisId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         String results = ctrlClustering.obtenerResultadosAnalisis(analysisId);
 
@@ -576,9 +576,9 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Prueba con diferentes algoritmos
-        String kmId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
-        String kmIdPlus = ctrlClustering.runAnalysis("KMeansPlusPlus", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
-        String kmedId = ctrlClustering.runAnalysis("KMedoids", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
+        String kmId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String kmIdPlus = ctrlClustering.runAnalysis("KMeansPlusPlus", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String kmedId = ctrlClustering.runAnalysis("KMedoids", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         assertNotNull(kmId);
         assertNotNull(kmIdPlus);
@@ -602,8 +602,8 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Prueba con diferentes métricas de distancia
-        String eucId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
-        String manhId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "MANHATTAN");
+        String eucId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String manhId = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "MANHATTAN", "LEVENSHTEIN");
 
         assertNotNull(eucId);
         assertNotNull(manhId);
@@ -624,8 +624,8 @@ public class CtrlDominioClusteringTest {
 
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
-        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN");
-        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 3, 100, 0.001, "EUCLIDEAN");
+        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 3, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         List<String> before = ctrlClustering.listarAnalisis();
         assertTrue(before.size() >= 2);
@@ -648,7 +648,7 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Intenta con k > número de respuestas (debe lanzar excepción)
-        ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 10, 100, 0.001, "EUCLIDEAN");
+        ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 10, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -660,7 +660,7 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Intenta con survey ID inválido (debe lanzar excepción)
-        ctrlClustering.runAnalysis("KMeans", "invalid-survey-id", 2, 100, 0.001, "EUCLIDEAN");
+        ctrlClustering.runAnalysis("KMeans", "invalid-survey-id", 2, 100, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -691,8 +691,8 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Prueba con diferentes números de iteraciones
-        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 50, 0.001, "EUCLIDEAN");
-        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 200, 0.001, "EUCLIDEAN");
+        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 50, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
+        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 200, 0.001, "EUCLIDEAN", "LEVENSHTEIN");
 
         assertNotNull(id1);
         assertNotNull(id2);
@@ -710,8 +710,8 @@ public class CtrlDominioClusteringTest {
         CtrlDominioClustering ctrlClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 
         // Prueba con diferentes tolerancias
-        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.0001, "EUCLIDEAN");
-        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.01, "EUCLIDEAN");
+        String id1 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.0001, "EUCLIDEAN", "LEVENSHTEIN");
+        String id2 = ctrlClustering.runAnalysis("KMeans", survey.getSURVEY_ID(), 2, 100, 0.01, "EUCLIDEAN", "LEVENSHTEIN");
 
         assertNotNull(id1);
         assertNotNull(id2);
