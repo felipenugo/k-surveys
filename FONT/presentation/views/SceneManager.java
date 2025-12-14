@@ -1,11 +1,15 @@
 package presentation.views;
 
+import javafx.scene.Parent;
+import domain.model.Survey;
+import domain.controller.ResponseController;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
 import domain.controller.CtrlDominioClustering;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Modality;
 import javafx.stage.StageStyle;
 import presentation.util.SurveyView;
 
@@ -13,12 +17,14 @@ public class SceneManager {
     private final UserController userController;
     private final SurveyController surveyController;
     private final CtrlDominioClustering clusteringController;
+    private final ResponseController responseController;
     private Stage primaryStage;
 
-    public SceneManager(UserController userController, SurveyController surveyController, CtrlDominioClustering clusteringController) {
+    public SceneManager(UserController userController, SurveyController surveyController, CtrlDominioClustering clusteringController, ResponseController responseController) {
         this.userController = userController;
         this.surveyController = surveyController;
         this.clusteringController = clusteringController;
+        this.responseController = responseController;
     }
 
     public void setPrimaryStage(Stage stage) {
@@ -81,12 +87,11 @@ public class SceneManager {
 
     public void showRegister() {
         try {
-            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
-            checkLoaderAddress(loader); // verifica que la carga se ha hecho correctamente
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml"));
+            checkLoaderAddress(loader);
 
-            // Inicializa el controlador de la vista
             RegisterViewController registerViewController = new RegisterViewController(userController, this);
-            loader.setController(registerViewController); // asigna el controlador de la vista al fichero fxml
+            loader.setController(registerViewController);
 
             finalizeScene(loader, "REGISTRO");
         } catch (Exception e) {
@@ -187,15 +192,19 @@ public class SceneManager {
         }
     }
 
-
     public void showCreateSurvey() {
-        this.primaryStage.setTitle("Crear Encuesta");
-    }
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/create-survey.fxml"));
+            checkLoaderAddress(loader);
 
+            CreateSurveyViewController controller = new CreateSurveyViewController(userController, surveyController, this);
+            loader.setController(controller);
 
-    public void showAnswerSurvey(String surveyId)
-    {
-        this.primaryStage.setTitle("Responder Encuesta con id: " + surveyId + "");
+            finalizeScene(loader, "CREAR ENCUESTA");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW CREAR ENCUESTA: " + e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void showDeleteAccountConfirm() {
@@ -218,9 +227,97 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
-public void showEditSurvey(String surveyId) {
-    this.primaryStage.setTitle("Editar Encuesta con id: " + surveyId + "");
-}
+
+    public void showAnswerSurvey(String surveyId) {
+        try {
+            Survey survey = surveyController.getSurvey(surveyId);
+
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/answer_survey.fxml"));
+            AnswerSurveyViewController controller =
+                    new AnswerSurveyViewController(responseController, this, userController, surveyController);
+            loader.setController(controller);
+
+            Parent root = loader.load();
+            controller.loadSurvey(survey);
+
+            primaryStage.getScene().setRoot(root);
+
+        } catch (Exception e) {
+            System.err.println("ERROR cargando vista de responder encuesta: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showConfirmLeave(Runnable onConfirm) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/confirm_leave.fxml"));
+            Parent root = loader.load();
+
+            ConfirmLeaveController controller = loader.getController();
+            controller.setOnConfirm(onConfirm);
+
+            Stage popup = new Stage();
+            popup.initStyle(StageStyle.UNDECORATED);
+            popup.initOwner(primaryStage);
+            popup.setScene(new Scene(root));
+            popup.show();
+
+        } catch (Exception e) {
+            System.err.println("ERROR cargando confirm_leave.fxml: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showRatingPopup(RatingPopupController.RatingListener listener) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/rating_popup.fxml"));
+            Parent root = loader.load();
+
+            RatingPopupController controller = loader.getController();
+            controller.setListener(listener);
+
+            Stage popup = new Stage();
+            popup.initModality(Modality.APPLICATION_MODAL);
+            popup.setTitle("Valoración");
+            popup.setScene(new Scene(root));
+            popup.setResizable(false);
+            popup.show();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.err.println("Error cargando popup de valoración: " + e.getMessage());
+        }
+    }
+
+    public void showEditSurvey(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/edit-survey.fxml"));
+            checkLoaderAddress(loader);
+
+            EditSurveyViewController controller = new EditSurveyViewController(userController, surveyController, this, surveyId);
+            loader.setController(controller);
+
+            finalizeScene(loader, "EDITAR ENCUESTA");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW EDITAR ENCUESTA: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showViewSurvey(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/view-survey.fxml"));
+            checkLoaderAddress(loader);
+
+            ViewSurveyViewController controller = new ViewSurveyViewController(userController, surveyController, this, surveyId);
+            loader.setController(controller);
+
+            finalizeScene(loader, "VER ENCUESTA");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW VER ENCUESTA: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 
     public void showClustering(String surveyId) {
         try {
@@ -228,7 +325,7 @@ public void showEditSurvey(String surveyId) {
             checkLoaderAddress(loader);
 
             ClusteringViewController controller = new ClusteringViewController(
-                userController, surveyController, clusteringController, this, surveyId
+                    userController, surveyController, clusteringController, this, surveyId
             );
             loader.setController(controller);
 

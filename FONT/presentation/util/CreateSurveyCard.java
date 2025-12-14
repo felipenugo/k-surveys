@@ -32,7 +32,7 @@ public class CreateSurveyCard {
         card.getStyleClass().add("survey-card");
         switch (surveyView) {
             case HOME -> card.setOnMouseClicked(e -> sceneManager.showAnswerSurvey(s.getSURVEY_ID()));
-            case MY_SURVEYS -> card.setOnMouseClicked(e -> sceneManager.showClustering(s.getSURVEY_ID()));
+            case MY_SURVEYS -> card.setOnMouseClicked(e -> sceneManager.showViewSurvey(s.getSURVEY_ID()));
             case DRAFTS -> card.setOnMouseClicked(e -> sceneManager.showEditSurvey(s.getSURVEY_ID()));
         }
         // Crear columnas
@@ -65,6 +65,8 @@ public class CreateSurveyCard {
         VBox colMain = new VBox();
         colMain.getStyleClass().add("col");
         colMain.setMinWidth(250);
+        colMain.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colMain, Priority.ALWAYS);
 
         Label title = new Label(s.getTitle());
         title.getStyleClass().add("survey-title");
@@ -88,6 +90,8 @@ public class CreateSurveyCard {
         HBox colViews = createDataCell(String.valueOf(s.getViews()), eyeSvg);
         colViews.getStyleClass().add("col");
         colViews.setMinWidth(70);
+        colViews.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colViews, Priority.ALWAYS);
         return colViews;
     }
 
@@ -100,20 +104,27 @@ public class CreateSurveyCard {
     private static HBox createRatingColumn(Survey s) {
         HBox colRating = createRatingCell(s.getAvgRating());
         colRating.setMinWidth(150);
+        colRating.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colRating, Priority.ALWAYS);
         return colRating;
     }
 
     /**
      * Crea la columna que muestra la fecha de publicación de la encuesta.
+     * Si no está publicada (borrador), muestra la fecha de creación.
      *
      * @param s La encuesta.
      * @return Un HBox con el ícono de calendario y la fecha.
      */
     private static HBox createDateColumn(Survey s) {
-        String dateStr = s.getPUBLISHED_AT().format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        // Usar PUBLISHED_AT si existe, sino usar CREATED_AT
+        java.time.LocalDateTime dateTime = s.getPUBLISHED_AT() != null ? s.getPUBLISHED_AT() : s.getCREATED_AT();
+        String dateStr = dateTime != null ? dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) : "Sin fecha";
         String calSvg = "M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z";
         HBox colDate = createDataCell(dateStr, calSvg);
         colDate.setMinWidth(120);
+        colDate.setMaxWidth(Double.MAX_VALUE);
+        HBox.setHgrow(colDate, Priority.ALWAYS);
         return colDate;
     }
 

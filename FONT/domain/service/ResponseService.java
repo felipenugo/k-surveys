@@ -3,6 +3,7 @@ package domain.service;
 import java.util.List;
 import java.util.TreeSet;
 
+import data.IdCounterRepository;
 import data.ResponseRepository;
 import domain.controller.UserController;
 import domain.exception.ResponseException;
@@ -36,6 +37,9 @@ public class ResponseService {
     /** Repositorio encargado de almacenar todas las respuestas del sistema. */
     private final ResponseRepository responseRepository;
 
+    private final IdCounterRepository idCounterRepository;
+
+
     /** Controlador de usuario para validar sesión y recuperar el usuario actual. */
     private final UserController userController;
 
@@ -49,11 +53,16 @@ public class ResponseService {
      * @param userController controlador responsable del estado de sesión
      * @param surveyService servicio de encuestas para validación de estructura
      */
-    public ResponseService(ResponseRepository responseRepository, UserController userController, SurveyService surveyService) {
+    public ResponseService(ResponseRepository responseRepository,
+                        UserController userController,
+                        SurveyService surveyService) {
         this.responseRepository = responseRepository;
         this.userController = userController;
         this.surveyService = surveyService;
+
+        this.idCounterRepository = new IdCounterRepository(0); // empezamos en 0
     }
+
     
      // ───────────────────────────────────────────────
     // Validación de entradas
@@ -145,11 +154,12 @@ public class ResponseService {
      * Devuelve un nuevo identificador válidos para respuestas,
      * generados incrementando el último ID almacenado.
      */
-    public String getValidResponseId() {
-        String lastResponseId = responseRepository.getLastResponseId();
-        Integer responseId = Integer.parseInt(lastResponseId) + 1;
-        return responseId.toString();
+        public String getValidResponseId() {
+        // Pide el ID actual y lo incrementa y guarda en disco automáticamente
+        return idCounterRepository.getNextIdAndIncrement();
     }
+
+    
 
     /**
      * Inicia una nueva respuesta para una encuesta:

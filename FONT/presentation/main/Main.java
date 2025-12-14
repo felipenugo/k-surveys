@@ -5,6 +5,7 @@ import data.UserRepository;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
 import domain.controller.CtrlDominioClustering;
+import domain.controller.ResponseController;
 import domain.service.SurveyService;
 import domain.service.UserService;
 import javafx.application.Application;
@@ -31,7 +32,7 @@ public class Main extends Application {
         
         // 2. Service: Contains the business logic.
         UserService userService = new UserService(userRepository, surveyRepository, new data.ResponseRepository());
-
+        
         // 3. Controller: Connects the UI to the business logic.
         UserController userController = new UserController(userService);
         SurveyService surveyService = new SurveyService(surveyRepository, userController, userService);
@@ -39,13 +40,17 @@ public class Main extends Application {
         
         // Clustering Controller
         CtrlDominioClustering clusteringController = new CtrlDominioClustering(new data.ResponseRepository(), surveyRepository);
-
+        
+        // Response Controller
+        ResponseController responseController = new ResponseController(
+                new domain.service.ResponseService(new data.ResponseRepository(), userController, surveyService)
+        );
+        
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.
-
         //SceneManager.initStage();
-        SceneManager sceneManager = new SceneManager(userController, surveyController, clusteringController);
+        SceneManager sceneManager = new SceneManager(userController, surveyController, clusteringController, responseController);
         sceneManager.setPrimaryStage(primaryStage);
-
+        
         // --- APPLICATION START ---
         // Initialize the stage and show the first scene
         sceneManager.initStage();

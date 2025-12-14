@@ -12,7 +12,7 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        usuario = new User("arnau", "arnau@fib.upc.edu", "1234");
+        usuario = new User("arnau", "arnau@fib.upc.edu", "Arnau13.");
     }
 
     @Test
@@ -27,29 +27,29 @@ public class UserTest {
     public void constructorConParametrosValidos() {
         assertEquals("arnau", usuario.getUsername());
         assertEquals("arnau@fib.upc.edu", usuario.getEmail());
-        assertEquals("1234", usuario.getPasswordHash());
+        assertEquals("Arnau13.", usuario.getPasswordHash());
     }
 
     public void constructorNombreNull() {
-        User u = new User(null, "arnau@fib.upc.edu", "1302");
+        User u = new User(null, "arnau@fib.upc.edu", "Arnau13.");
         assertNull(u.getUsername());
     }
     
     @Test
     public void constructorNombreVacio() {
-        User u = new User("",  "arnau@fib.upc.edu", "1302");
+        User u = new User("",  "arnau@fib.upc.edu", "Arnau13.");
         assertEquals("", u.getUsername());
     }
     
     @Test
     public void constructorEmailNull() {
-        User u = new User("Arnau", null, "1302");
+        User u = new User("Arnau", null, "Arnau13.");
         assertNull(u.getEmail());
     }
     
     @Test
     public void constructorEmailVacio() {
-        User u = new User("Arnau", "", "1302");
+        User u = new User("Arnau", "", "Arnau13.");
         assertEquals("", u.getEmail());
     }
     
@@ -69,21 +69,21 @@ public class UserTest {
     public void settersValidos() {
         usuario = new User("Prueba", usuario.getEmail(), usuario.getPasswordHash());
         usuario.setEmail("prueba@fib.upc.edu");
-        usuario.setPasswordHash("1302");
+        usuario.setPasswordHash("Arnau13.");
 
         assertEquals("Prueba", usuario.getUsername());
         assertEquals("prueba@fib.upc.edu", usuario.getEmail());
-        assertEquals("1302", usuario.getPasswordHash());
+        assertEquals("Arnau13.", usuario.getPasswordHash());
     }
     @Test
     public void setNombreNull() {
-        User u = new User(null, "arnau@fib.upc.edu", "1234");
+        User u = new User(null, "arnau@fib.upc.edu", "Arnau13.");
         assertNull(u.getUsername());
     }
 
     @Test
     public void setNombreVacio() {
-        User u = new User("", "arnau@fib.upc.edu", "1234");
+        User u = new User("", "arnau@fib.upc.edu", "Arnau13.");
         assertEquals("", u.getUsername());
     }
 

@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import data.UserRepository;
+import data.SurveyRepository;
+import data.ResponseRepository;
 import domain.controller.UserController;
 import domain.exception.LogInException;
 import domain.exception.RegisterException;
@@ -29,9 +31,13 @@ public class TestUserController {
 
     @Before
     public void setUp() {
-        userRepository = new UserRepository();  // repositorio real en memoria
-        userRepository.clear();  // limpiar datos de ejecuciones anteriores
-        userService = new UserService(userRepository);
+        this.userRepository = new UserRepository();
+        SurveyRepository surveyRepository = new SurveyRepository();
+        ResponseRepository responseRepository = new ResponseRepository();
+        this.userRepository.clear();
+        surveyRepository.clear();
+        responseRepository.clear();
+        userService = new UserService(this.userRepository, surveyRepository, responseRepository);
         ctrl = new UserController(userService);
     }
 
@@ -125,14 +131,14 @@ public class TestUserController {
     @Test
     public void testEliminarUsuarioCorrecto() {
         ctrl.registerUser("arnau", "arnau@fib.upc.edu", "1234", "What is your pet's name?", "Fluffy");
-        ctrl.deleteUser("arnau");
+        userService.deleteUserok("arnau");
 
         assertFalse(userRepository.existsUser("arnau"));
     }
 
     @Test
     public void testEliminarUsuarioInexistente() {
-        ctrl.deleteUser("ghost");
+        userService.deleteUserok("ghost");
 
         // Simplemente comprobamos que no lanza excepciones ni cambia el estado
         assertFalse(ctrl.isLoggedIn());

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            styleClass="main-container"
+            stylesheets="/css/surveys.css, /css/answer.css">
+
+    <!-- =======================
+         SIDEBAR (COPIADO DEL HOME)
+         ======================= -->
+    <left>
+        <VBox styleClass="side-bar">
+
+            <!-- Perfil -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
+            </HBox>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
+                <VBox.margin><Insets top="35.0"/></VBox.margin>
+
+                <Button fx:id="home" styleClass="nav-btn, icon, icon-home"
+                        text="Inicio" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#goToHome"/>
+
+                <Button fx:id="mySurveys" styleClass="nav-btn, icon, icon-survey"
+                        text="Mis Encuestas" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#goToMySurveys"/>
+
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft"
+                        text="Mis Borradores" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#goToMyDrafts"/>
+
+                <Button styleClass="nav-btn, create-btn, icon, icon-create"
+                        text="Crear Encuesta" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#goToCreateSurvey">
+                    <VBox.margin><Insets bottom="15.0"/></VBox.margin>
+                </Button>
+
+                <Region VBox.vgrow="ALWAYS"/>
+                <Button styleClass="nav-btn, icon, icon-logout"
+                        text="Cerrar Sesión" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT"
+                        onAction="#handleLogout"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- =======================
+         CONTENIDO CENTRAL
+         ======================= -->
+    <center>
+        <VBox styleClass="content-area" spacing="20" BorderPane.alignment="CENTER">
+
+            <!-- Título encuesta -->
+            <Label fx:id="surveyTitle" styleClass="survey-title"/>
+
+            <!-- Contenedor de preguntas -->
+            <ScrollPane fitToWidth="true" styleClass="scroll-pane" VBox.vgrow="ALWAYS">
+                <VBox fx:id="questionsBox" spacing="30"/>
+            </ScrollPane>
+
+            <!-- Error card -->
+            <HBox fx:id="errorCard" alignment="CENTER_LEFT" spacing="10"
+                  styleClass="error-card" visible="false" managed="false">
+                <Label styleClass="error-icon" text="⚠"/>
+                <Label fx:id="errorLabel" styleClass="error-label" wrapText="true"/>
+            </HBox>
+
+            <!-- Botón enviar -->
+            <HBox alignment="CENTER">
+                <Button fx:id="submitButton" text="Enviar respuestas"
+                        onAction="#handleSubmit" styleClass="submit-btn"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

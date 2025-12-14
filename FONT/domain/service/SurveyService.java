@@ -113,9 +113,10 @@ public class SurveyService {
         }
 
         // Validar que la encuesta tenga al menos una pregunta
-        if (survey.getSize() == 0) {
+        // Nota: permitir crear encuestas sin preguntas (se validará al publicar)
+        /*if (survey.getSize() == 0) {
             throw new SurveyException("La encuesta debe tener al menos una pregunta.");
-        }
+        }*/
 
         // Verificar que el creador sea el usuario logueado
         if (!survey.getCREATOR_USERNAME().equals(userController.getLoggedUser().getUsername())) {
@@ -659,5 +660,13 @@ public class SurveyService {
         int responseCount = survey.getViews() + 1;
         survey.setViews(responseCount);
         surveyRepository.addSurvey(survey);
+    }
+
+    public void addSurveyRating(String surveyId, double rating) {
+        Survey survey = getSurvey(surveyId);
+        if (survey == null) throw new SurveyException("La encuesta no existe.");
+
+        survey.addRating(rating);
+        surveyRepository.updateSurvey(surveyId, survey); // si usas repo persistente
     }
 }

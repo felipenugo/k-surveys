@@ -17,10 +17,21 @@
     "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
     "securityQuestion": "Pregunta de seguridad por defecto",
     "securityAnswer": "Respuesta de seguridad por defecto",
-    "createdSurveysId": [
-      "200"
-    ],
-    "respondedSurveysId": {}
+    "createdSurveysId": [],
+    "respondedSurveysId": {
+      "119": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "104": [
+        "9",
+        "10"
+      ]
+    }
   },
   "felipe": {
     "USERNAME": "felipe",
@@ -38,11 +49,19 @@
       "106",
       "107",
       "108",
-      "109"
+      "109",
+      "119",
+      "120"
     ],
     "respondedSurveysId": {
       "118": [
         "1"
+      ],
+      "119": [
+        "1"
+      ],
+      "101": [
+        "2"
       ]
     }
   },
@@ -54,5 +73,57 @@
     "securityAnswer": "Respuesta de seguridad por defecto",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "arnaup": {
+    "USERNAME": "arnaup",
+    "email": "arn@gmail.com",
+    "passwordHash": "9e63255e828a0342440b62b5fab96052a05132ad359f3b6d73cc3ccd4e71e45b",
+    "securityQuestion": "perro?",
+    "securityAnswer": "si",
+    "createdSurveysId": [],
+    "respondedSurveysId": {
+      "103": [
+        "1"
+      ],
+      "102": [
+        "2",
+        "4",
+        "1"
+      ],
+      "100": [
+        "3",
+        "4",
+        "5",
+        "1",
+        "2",
+        "6",
+        "7"
+      ],
+      "105": [
+        "1",
+        "2"
+      ],
+      "106": [
+        "2",
+        "3"
+      ],
+      "101": [
+        "3",
+        "2",
+        "1",
+        "0"
+      ],
+      "104": [
+        "1",
+        "2",
+        "3"
+      ],
+      "108": [
+        "1",
+        "2",
+        "3",
+        "4"
+      ]
+    }
   }
 }
