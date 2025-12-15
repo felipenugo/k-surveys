@@ -662,6 +662,15 @@ public class SurveyService {
         surveyRepository.addSurvey(survey);
     }
 
+    /**
+     * Añade una valoración a una encuesta.
+     * 
+     * Este método depende de que la clase {@link Survey} implemente el método
+     * {@code addRating(double)}.
+     * 
+     * @param surveyId identificador de la encuesta
+     * @param rating valoración a añadir
+     */
     public void addSurveyRating(String surveyId, double rating) {
         Survey survey = getSurvey(surveyId);
         if (survey == null) throw new SurveyException("La encuesta no existe.");

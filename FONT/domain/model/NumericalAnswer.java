@@ -56,6 +56,11 @@ public class NumericalAnswer extends Answer {
         super.setIsAnswered(false);
     }
 
+    /**
+     * Devuelve una representación en cadena de la respuesta.
+     *
+     * @return representación en cadena del valor numérico o indicación de no respuesta
+     */
     @Override
     public String toString() {
         return answerNum != null ? String.valueOf(answerNum) : "(sin respuesta)";

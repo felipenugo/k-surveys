@@ -193,17 +193,36 @@ public class UserController {
         return ok;
     }
     
+    /**
+     * Inicia el proceso de recuperación de contraseña para un usuario específico.
+     *
+     * @param username nombre del usuario que desea recuperar su contraseña
+     * @return la pregunta de seguridad asociada al usuario
+     */
     public String startPasswordRecovery(String username) {
         username = username.trim();
         return userService.startPasswordRecovery(username);
     }
 
+    /**
+     * Verifica la respuesta a la pregunta de seguridad de un usuario.
+     *
+     * @param username nombre del usuario
+     * @param answer   respuesta proporcionada por el usuario
+     * @return {@code true} si la respuesta es correcta, {@code false} en caso contrario
+     */
     public boolean verifySecurityAnswer(String username, String answer) {
         username = username.trim();
         answer = answer.trim();
         return userService.verifySecurityAnswer(username, answer);
     }
 
+    /**
+     * Restablece la contraseña de un usuario específico.
+     *
+     * @param username    nombre del usuario
+     * @param newPassword nueva contraseña a establecer
+     */
     public void resetPassword(String username, String newPassword) {
         username = username.trim();
         newPassword = newPassword.trim();
@@ -211,6 +230,12 @@ public class UserController {
         userService.resetPassword(username, newPassword);
     }
 
+    /**
+     * Valida la fortaleza de una contraseña según los criterios definidos.
+     *
+     * @param password contraseña a validar
+     * @throws domain.exception.InvalidPasswordException si la contraseña no cumple con los requisitos
+     */
     public void validatePasswordStrength(String password) {
         // Normalize before validating
         password = password == null ? null : password.replaceAll("\\s+", "");

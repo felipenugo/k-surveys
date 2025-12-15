@@ -24,8 +24,11 @@ import java.util.stream.Collectors;
  */
 public class CtrlDominioClustering {
 
+    /** Controlador de análisis de clustering. */
     private final AnalysisController analysisController;
+    /** Repositorio de respuestas. */
     private final ResponseRepository responseRepository;
+    /** Repositorio de encuestas. */
     private final SurveyRepository surveyRepository;
 
     /**
@@ -450,6 +453,12 @@ public class CtrlDominioClustering {
         return 0.0;
     }
 
+    /**
+     * Extrae el valor numérico de una NumericalAnswer.
+     *
+     * @param answer La respuesta a evaluar.
+     * @return El valor numérico, o 0.0 si no es una NumericalAnswer o está vacía.
+     */
     private double getNumericalValue(domain.model.Answer answer) {
         if (answer instanceof domain.model.NumericalAnswer) {
             Double val = ((domain.model.NumericalAnswer) answer).getAnswerNum();

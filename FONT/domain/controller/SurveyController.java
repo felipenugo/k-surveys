@@ -192,6 +192,12 @@ public class SurveyController {
         return surveyService.generateUniqueSurveyId();
     }
 
+    /**
+     * Añade una valoración a una encuesta específica.
+     *
+     * @param surveyId identificador único de la encuesta
+     * @param rating valoración a añadir
+     */
     public void addRating(String surveyId, double rating) {
         surveyService.addSurveyRating(surveyId, rating);
     }

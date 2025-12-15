@@ -114,6 +114,11 @@ public class MultipleChoiceAnswer extends Answer {
         super.setIsAnswered(false);
     }
 
+    /**
+     * Devuelve una representación en cadena de la respuesta.
+     *
+     * @return representación en cadena de las opciones seleccionadas
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("[");

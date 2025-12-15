@@ -28,8 +28,9 @@ public class User {
     private String email; // could allow changing email in the future
     /** Contraseña del usuario. */
     private String passwordHash;
-    // Campos nuevos para recuperación de contraseña
+    /** Campos nuevos para recuperación de contraseña */
     private String securityQuestion;
+    /** Respuesta a la pregunta de seguridad del usuario. */
     private String securityAnswer;
     /** Conjunto con los identificadores de las encuestas creadas por el usuario. */
     private final Set<String> createdSurveysId; // allows accessing surveys almost directly with the username in database
@@ -128,10 +129,20 @@ public class User {
     }
 
     // Getters para recuperación de contraseña
+    /**
+     * Devuelve la pregunta de seguridad del usuario.
+     * 
+     * @return la pregunta de seguridad
+     */
     public String getSecurityQuestion() {
         return securityQuestion;
     }
 
+    /**
+     * Devuelve la respuesta de seguridad del usuario.
+     * 
+     * @return la respuesta de seguridad
+     */
     public String getSecurityAnswer() {
         return securityAnswer;
     }
@@ -158,10 +169,20 @@ public class User {
     }
 
     // Setters para recuperación de contraseña
+    /**
+     * Actualiza la pregunta de seguridad del usuario.
+     * 
+     * @param securityQuestion nueva pregunta de seguridad
+     */
     public void setSecurityQuestion(String securityQuestion) {
         this.securityQuestion = securityQuestion;
     }
 
+    /**
+     * Actualiza la respuesta de seguridad del usuario.
+     * 
+     * @param securityAnswer nueva respuesta de seguridad
+     */
     public void setSecurityAnswer(String securityAnswer) {
         this.securityAnswer = securityAnswer;
     }
@@ -281,6 +302,11 @@ public class User {
         return this.respondedSurveysId.containsKey(surveyId) && this.respondedSurveysId.get(surveyId).contains(responseId);
     }
 
+    /**
+     * Devuelve el conjunto de identificadores de encuestas respondidas por el usuario.
+     * 
+     * @return conjunto de identificadores de encuestas respondidas
+     */
     public Set<String> getRespondedSurveysIds() {
         return this.respondedSurveysId.keySet();
     }

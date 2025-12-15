@@ -69,6 +69,11 @@ public class TextualAnswer extends Answer {
         super.setIsAnswered(false);
     }
 
+    /**
+     * Devuelve una representación en cadena de la respuesta.
+     *
+     * @return representación en cadena del texto de la respuesta o indicación de no respuesta
+     */
     @Override
     public String toString() {
         return answerText != null && !answerText.isEmpty() ? "\"" + answerText + "\"" : "(sin respuesta)";

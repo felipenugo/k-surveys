@@ -26,7 +26,9 @@ import domain.utils.PasswordHasher;
 public class UserService {
     /** Repositorio encargado de almacenar y gestionar los usuarios. */
     private final UserRepository userRepository;
+    /** Repositorio encargado de almacenar las encuestas del sistema. */
     private final SurveyRepository surveyRepository;
+    /** Repositorio encargado de almacenar las respuestas del sistema. */
     private final ResponseRepository responseRepository;
 
     /**
@@ -294,6 +296,20 @@ public class UserService {
         return userRepository.getUser(username);
     }
 
+    // ───────────────────────────────────────────────
+    // Recuperación de contraseña
+    // ───────────────────────────────────────────────
+    /**
+     * Inicia el proceso de recuperación de contraseña para un usuario.
+     * 
+     * Este método verifica que el nombre de usuario no esté vacío y que
+     * el usuario exista en el sistema. Si todo es correcto, devuelve la
+     * pregunta de seguridad asociada al usuario.
+     *
+     * @param username nombre de usuario
+     * @return la pregunta de seguridad del usuario
+     * @throws LogInException si el nombre de usuario es inválido o no existe
+     */
     public String startPasswordRecovery(String username) {
         if (isInputBlank(username))
             throw new LogInException("El campo nombre de usuario no puede estar vacío.");
@@ -305,6 +321,17 @@ public class UserService {
         return userRepository.getUser(username).getSecurityQuestion();
     }
 
+    /**
+     * Verifica la respuesta a la pregunta de seguridad de un usuario.
+     * 
+     * Este método comprueba que la respuesta proporcionada no esté vacía
+     * y que coincida con la almacenada para el usuario (ignorando mayúsculas).
+     *
+     * @param username nombre de usuario
+     * @param answer   respuesta proporcionada por el usuario
+     * @return {@code true} si la respuesta es correcta, {@code false} en caso contrario
+     * @throws LogInException si el nombre de usuario es inválido o no existe
+     */
     public boolean verifySecurityAnswer(String username, String answer) {
         if (isInputBlank(answer))
             throw new LogInException("La respuesta no puede estar vacía.");
@@ -317,6 +344,17 @@ public class UserService {
         return user.getSecurityAnswer().equalsIgnoreCase(answer.trim());
     }
 
+    /**
+     * Restablece la contraseña de un usuario tras verificar su identidad.
+     * 
+     * Este método valida que la nueva contraseña no esté vacía y que el
+     * usuario exista. Luego actualiza la contraseña almacenada con el
+     * hash de la nueva contraseña.
+     *
+     * @param username    nombre de usuario
+     * @param newPassword nueva contraseña a establecer
+     * @throws LogInException si los datos son inválidos o el usuario no existe
+     */
     public void resetPassword(String username, String newPassword) {
         if (isInputBlank(newPassword))
             throw new LogInException("La nueva contraseña no puede estar vacía.");
@@ -331,6 +369,12 @@ public class UserService {
         userRepository.updateUser(username, user);
     }
 
+    /**
+     * Valida la fortaleza de una contraseña según los criterios definidos.
+     *
+     * @param password contraseña a validar
+     * @throws RegisterException si la contraseña no cumple con los requisitos
+     */
     public void validatePasswordStrength(String password) {
     StringBuilder errors = new StringBuilder();
 

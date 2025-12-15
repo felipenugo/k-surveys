@@ -34,7 +34,9 @@ public class Survey {
     private SurveyStatus surveyStatus;
     /** Calificación promedio de la encuesta basada en las respuestas recibidas. */
     private double avgRating;
+    /** Suma total de las valoraciones recibidas. */
     private double totalRating = 0.0;
+    /** Número de valoraciones recibidas. */
     private int ratingCount = 0;
     /** Número de veces que la encuesta ha sido vista. */
     private int views;
@@ -166,25 +168,48 @@ public class Survey {
         return avgRating;
     }
 
+    /**
+     * Devuelve la suma total de las valoraciones recibidas.
+     * 
+     * @return suma total de valoraciones
+     */
     public double getTotalRating() {
         return totalRating;
     }
 
+    /**
+     * Devuelve el número de valoraciones recibidas.
+     * 
+     * @return número de valoraciones
+     */
     public int getRatingCount() {
         return ratingCount;
     }
     
+    /**
+     * Calcula y devuelve la calificación promedio basada en las valoraciones recibidas.
+     * 
+     * @return calificación promedio calculada
+     */
     public double getAverageRating() {
         if (ratingCount == 0) return 0.0;
         return totalRating / ratingCount;
     }
 
+    /**
+     * Añade una nueva valoración a la encuesta y actualiza la calificación promedio.
+     * 
+     * @param rating nueva valoración a añadir
+     */
     public void addRating(double rating) {
         this.totalRating += rating;
         this.ratingCount += 1;
         recomputeAvgRating();
     }
 
+    /**
+     * Recalcula la calificación promedio de la encuesta.
+     */
     public void recomputeAvgRating() {
         if (ratingCount == 0) {
             avgRating = 0.0;

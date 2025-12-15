@@ -37,6 +37,7 @@ public class ResponseService {
     /** Repositorio encargado de almacenar todas las respuestas del sistema. */
     private final ResponseRepository responseRepository;
 
+    /** Repositorio para gestionar el contador de IDs de respuestas. */
     private final IdCounterRepository idCounterRepository;
 
 
