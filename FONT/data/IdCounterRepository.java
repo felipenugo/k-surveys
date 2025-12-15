@@ -10,8 +10,10 @@ import java.io.*;
  */
 public class IdCounterRepository {
 
+    /** Ruta del fichero JSON donde se almacena el contador. */
     private static final String FILE_PATH = "./../DATA/db/response_id_counter.json";
     
+    /** Objeto Gson para serialización/deserialización JSON. */
     private final Gson gson;
     
     /** El contador interno, almacenado como un entero. */

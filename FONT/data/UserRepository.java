@@ -31,6 +31,9 @@ public class UserRepository {
      * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
      */
     private final Type mapType;
+    /**
+     * Objeto Gson para serialización/deserialización JSON.
+     */
     private final Gson gson;
 
     // cargar mapa users desde el fichero DATA/db/users.json
@@ -48,6 +51,9 @@ public class UserRepository {
         }
     }
 
+    /** Guarda los usuarios en el fichero JSON.
+     * Crea el directorio padre si no existe.
+     */
     private void saveUsersToJson() {
         File file = new File(FILE_PATH);
         File parentDir = file.getParentFile();

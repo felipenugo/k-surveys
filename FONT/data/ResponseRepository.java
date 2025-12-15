@@ -30,9 +30,14 @@ public class ResponseRepository {
      * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
      */
     private final Type mapType;
+    /** Objeto Gson para serialización/deserialización JSON. */
     private final Gson gson;
     /** Último identificador asignado para respuestas. */
     private String lastResponseId;
+    /** Carga las respuestas desde el fichero JSON.
+     *
+     * @return mapa de respuestas cargadas
+     */
 
     private Map<String, Map<String, Response>>loadResponsesFromJson() {
         File file = new File(FILE_PATH);
@@ -77,6 +82,9 @@ public class ResponseRepository {
         responses.clear();
         saveResponsesToJson();
     }
+    /** Guarda las respuestas en el fichero JSON.
+     * Crea el directorio padre si no existe.
+     */
 
     private void saveResponsesToJson() {
         File file = new File(FILE_PATH);
@@ -268,6 +276,10 @@ public class ResponseRepository {
     public List<Answer> getAllAnswers(String surveyId, String responseId) {
         return Arrays.asList(responses.get(surveyId).get(responseId).getANSWERS());
     }
+    /** Elimina todas las respuestas asociadas a una encuesta.
+     *
+     * @param surveyId ID de la encuesta
+     */
 
     public void deleteResponsesBySurvey(String surveyId) {
         responses.remove(surveyId);

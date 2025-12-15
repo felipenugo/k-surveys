@@ -43,6 +43,9 @@ public class SurveyRepository {
      * Tipo de mapa que se utiliza para cargar y guardar los usuarios.
      */
     private final Type mapType;
+    /**
+     * Objeto Gson para serialización/deserialización JSON.
+     */
     private final Gson gson;
 
     /**
@@ -69,7 +72,11 @@ public class SurveyRepository {
         }
     }
 
-
+    /** Calcula el siguiente ID de encuesta basado en las claves existentes en el mapa.
+     *
+     * @param map mapa de encuestas cargadas
+     * @return siguiente ID disponible
+     */
     private int calculateNextSurveyId(Map<String, Survey> map) {
         int maxId = -1;
         for (String k : map.keySet()) {
@@ -81,6 +88,9 @@ public class SurveyRepository {
         return maxId + 1;
     }
 
+    /** Guarda las encuestas en el fichero JSON.
+     * Crea el directorio padre si no existe.
+     */
     private void saveSurveysToJson() {
         File file = new File(FILE_PATH);
         File parentDir = file.getParentFile();

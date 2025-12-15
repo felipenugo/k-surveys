@@ -13,10 +13,13 @@ import java.util.Objects;
  * (Responses) que pertenecen a este clúster.
  */
 public class Cluster {
-
+    /** Identificador único del clúster. */
     private final String id;
+    /** Etiqueta legible por humanos del clúster. */
     private String label;
+    /** Centroide (el centro) de este clúster. */
     private Centroid centroid;
+    /** Lista de miembros (Responses) que pertenecen a este clúster. */
     private final List<ClusterMembership> members;
 
     /**
@@ -149,6 +152,12 @@ public class Cluster {
 
     // --- Métodos de utilidad (equals/hashCode) ---
 
+    /**
+     * Dos clústeres son iguales si tienen el mismo ID.
+     *
+     * @param o El objeto a comparar.
+     * @return true si son iguales, false en caso contrario.
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -157,6 +166,11 @@ public class Cluster {
         return id.equals(cluster.id);
     }
 
+    /**
+     * Genera un código hash basado en el ID del clúster.
+     *
+     * @return El código hash.
+     */
     @Override
     public int hashCode() {
         return Objects.hash(id);

@@ -15,6 +15,7 @@ public class Centroid implements Cloneable {
     // Lista de valores que componen el centroide.
     // Puede contener Double, double[], o String.
     private List<Object> components;
+    // Número de dimensiones (preguntas) del centroide.
     private final int numDimensions;
 
     /**
@@ -96,6 +97,11 @@ public class Centroid implements Cloneable {
         }
     }
 
+    /**
+     * Representación en cadena del centroide para depuración.
+     *
+     * @return Una cadena que representa el centroide.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
