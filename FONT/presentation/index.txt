@@ -1,5 +1,0 @@
-Capa de presentación: controladores y drivers interactivos y punto de entrada principal.
-
-Subcarpetas:
-- driverMain: Contiene el controlador principal que configura y lanza la aplicación.
-- drivers: Controladores individuales que sirven como interfaces de línea de comandos para funcionalidades (encuestas, respuestas, usuarios, etc.).

@@ -1,8 +1,0 @@
-Servicios de dominio: Implementan la lógica de negocio y validaciones para las entidades del dominio.
-
-Archivos:
-- UserService.java: Gestiona reglas de negocio relacionadas con usuarios (login, registro, edición de perfil).
-- SurveyService.java: Reglas para crear y gestionar encuestas.
-- QuestionService.java: Reglas para añadir y validar preguntas.
-- AnswerService.java: Lógica para manejar distintos tipos de respuestas.
-- ResponseService.java: Gestiona creación y validación de respuestas.

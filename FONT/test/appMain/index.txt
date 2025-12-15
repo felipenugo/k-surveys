@@ -1,6 +1,0 @@
-Tests de la aplicación principal.
-Pruebas de integración y flujo completo de la aplicación.
-
-Archivos:
-- FullWorkflowTest.java: Test del flujo completo de trabajo
-- MainTest.java: Test del main de la aplicación

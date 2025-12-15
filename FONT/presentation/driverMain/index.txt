@@ -1,4 +1,0 @@
-Entrada principal del controlador que inicia la aplicación.
-
-Archivos:
-- DriverMain.java: Clase principal del controlador que arranca y configura la presentación de la aplicación.

@@ -1,6 +1,0 @@
-Enumeraciones utilizadas por las clases del modelo de dominio.
-
-Archivos:
-- TypeQuestion.java: Enumeración para el tipo de pregunta (MULTIPLE_CHOICE, TEXTUAL, NUMERIC, etc.).
-- SurveyStatus.java: Enumeración para el estado de vida de una encuesta (DRAFT, PUBLISHED, CLOSED, etc.).
-- ResponseStatus.java: Enumeración para estados de respuesta (SAVED, SUBMITTED, INVALID, etc.).

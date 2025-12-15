@@ -1,3 +1,0 @@
-El directorio DATA contiene datos de entrada y archivos usados en pruebas.
-
-Los archivos como loan-test.csv, input.txt y output.txt han sido copiados aquí desde la raíz para seguir la estructura del proyecto plantilla.

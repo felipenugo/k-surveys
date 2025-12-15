@@ -1,1 +1,0 @@
-El directorio adapter contiene clases que implementan las interfaces de serializar y deserializar para que no haya problemas de incompatibilidad con json.

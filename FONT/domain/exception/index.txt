@@ -1,7 +1,0 @@
-Excepciones utilizadas en servicios y controladores del dominio.
-
-Archivos:
-- LogInException.java: Lanzada en errores relacionados con el inicio de sesión.
-- RegisterException.java: Lanzada en errores de registro/validación.
-- ResponseException.java: Lanzada en problemas de creación/validación de respuestas.
-- SurveyException.java: Lanzada cuando la creación o manipulación de encuestas falla.
