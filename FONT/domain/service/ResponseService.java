@@ -20,7 +20,7 @@ import domain.model.enums.TypeQuestion;
 /**
  * Servicio encargado de gestionar toda la lógica de negocio relacionada con las
  * respuestas de los usuarios a las encuestas del sistema.
- *
+ * <p>
  * Este servicio garantiza:
  * <ul>
  *     <li>Que el usuario esté autenticado antes de responder.</li>
@@ -28,44 +28,45 @@ import domain.model.enums.TypeQuestion;
  *     <li>Que las respuestas se creen, actualicen y validen siguiendo las reglas definidas.</li>
  *     <li>Coherencia entre el registro de respuestas en el repositorio y el usuario que las emite.</li>
  * </ul>
- *
+ * <p>
  * Las excepciones asociadas a errores de validación o de acceso se gestionan mediante
  * {@link ResponseException} y {@link SurveyException}.
  */
 public class ResponseService {
 
-    /** Repositorio encargado de almacenar todas las respuestas del sistema. */
+    /**
+     * Repositorio encargado de almacenar todas las respuestas del sistema.
+     */
     private final ResponseRepository responseRepository;
 
-    /** Repositorio para gestionar el contador de IDs de respuestas. */
-    private final IdCounterRepository idCounterRepository;
 
-
-    /** Controlador de usuario para validar sesión y recuperar el usuario actual. */
+    /**
+     * Controlador de usuario para validar sesión y recuperar el usuario actual.
+     */
     private final UserController userController;
 
-    /** Servicio de encuestas utilizado para validar estructura y recuperar preguntas. */
+    /**
+     * Servicio de encuestas utilizado para validar estructura y recuperar preguntas.
+     */
     public final SurveyService surveyService;
 
     /**
      * Construye el servicio de respuestas.
      *
      * @param responseRepository repositorio de respuestas
-     * @param userController controlador responsable del estado de sesión
-     * @param surveyService servicio de encuestas para validación de estructura
+     * @param userController     controlador responsable del estado de sesión
+     * @param surveyService      servicio de encuestas para validación de estructura
      */
     public ResponseService(ResponseRepository responseRepository,
-                        UserController userController,
-                        SurveyService surveyService) {
+                           UserController userController,
+                           SurveyService surveyService) {
         this.responseRepository = responseRepository;
         this.userController = userController;
         this.surveyService = surveyService;
-
-        this.idCounterRepository = new IdCounterRepository(0); // empezamos en 0
     }
 
-    
-     // ───────────────────────────────────────────────
+
+    // ───────────────────────────────────────────────
     // Validación de entradas
     // ───────────────────────────────────────────────
 
@@ -96,10 +97,10 @@ public class ResponseService {
      *     <li>Que las opciones existan</li>
      * </ul>
      *
-     * @param input cadena con los índices seleccionados
+     * @param input         cadena con los índices seleccionados
      * @param minSelections mínimo permitido
      * @param maxSelections máximo permitido
-     * @param numOptions número total de opciones de la pregunta
+     * @param numOptions    número total de opciones de la pregunta
      * @return array booleano indicando qué opciones se han seleccionado
      */
     public boolean[] getOptionsSelected(String input, int minSelections, int maxSelections, int numOptions) {
@@ -151,16 +152,6 @@ public class ResponseService {
     // Creación de respuestas
     // ───────────────────────────────────────────────
 
-    /**
-     * Devuelve un nuevo identificador válidos para respuestas,
-     * generados incrementando el último ID almacenado.
-     */
-        public String getValidResponseId() {
-        // Pide el ID actual y lo incrementa y guarda en disco automáticamente
-        return idCounterRepository.getNextIdAndIncrement();
-    }
-
-    
 
     /**
      * Inicia una nueva respuesta para una encuesta:
@@ -179,7 +170,7 @@ public class ResponseService {
     public String startResponse(String surveyId) {
         checkUserLoggedin();
         List<Question> questions = surveyService.getQuestions(surveyId); // this method verify that the survey exists
-        String responseId = getValidResponseId();
+        String responseId = responseRepository.getValidResponseId();
         String responderUsername = userController.getUsernameLoggedIn();
         Response response = new Response(responseId, surveyId, responderUsername, questions);
         if (!responseRepository.existsSurveyEntry(surveyId))

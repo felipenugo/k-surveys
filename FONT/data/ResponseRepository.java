@@ -32,8 +32,8 @@ public class ResponseRepository {
     private final Type mapType;
     /** Objeto Gson para serialización/deserialización JSON. */
     private final Gson gson;
-    /** Último identificador asignado para respuestas. */
-    private String lastResponseId;
+    /** Repositorio para gestionar el contador de IDs de respuestas. */
+    private final IdCounterRepository idCounterRepository;
     /** Carga las respuestas desde el fichero JSON.
      *
      * @return mapa de respuestas cargadas
@@ -72,7 +72,7 @@ public class ResponseRepository {
                 .registerTypeAdapter(Answer.class, new AnswerAdapter())
                 .setPrettyPrinting().create();
         this.responses = loadResponsesFromJson();
-        this.lastResponseId = "0";
+        this.idCounterRepository = new IdCounterRepository(0); // empezamos en 0
     }
 
     /**
@@ -120,22 +120,14 @@ public class ResponseRepository {
     // Gestión del identificador de respuesta
     // ───────────────────────────────────────────────
 
-    /** Obtiene el último identificador de respuesta asignado.
-     *
-     * @return último ID de respuesta
+    /**
+     * Devuelve un nuevo identificador válidos para respuestas,
+     * generados incrementando el último ID almacenado.
      */
-    public String getLastResponseId() {
-        return lastResponseId;
+    public String getValidResponseId() {
+        // Pide el ID actual y lo incrementa y guarda en disco automáticamente
+        return idCounterRepository.getNextIdAndIncrement();
     }
-
-    /** Actualiza el último identificador de respuesta asignado.
-     *
-     * @param lastResponseId nuevo último ID de respuesta
-     */
-    public void setLastResponseId(String lastResponseId) {
-        this.lastResponseId = lastResponseId;
-    }
-
     // ───────────────────────────────────────────────
     // Gestión de entradas de encuestas y respuestas
     // ───────────────────────────────────────────────
@@ -179,7 +171,6 @@ public class ResponseRepository {
     public void addResponse(String surveyId, Response response) {
         addSurveyEntry(surveyId);
         responses.get(surveyId).putIfAbsent(response.getRESPONSE_ID(), response);
-        setLastResponseId(response.getRESPONSE_ID());
         saveResponsesToJson();
     }
 
