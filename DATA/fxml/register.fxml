@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <StackPane styleClass="root-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-           stylesheets="/css/register.css">
+           stylesheets="/css/shared.css, /css/auth.css">
 
     <!-- Contenedor para centrar el contenido y el espacio entre los elementos -->
     <!-- El ancho lo definirán los hijos, espacio de 20 vertical entre ellos -->
@@ -20,9 +20,9 @@
         </HBox>
 
         <!-- CARD DE REGISTRO -->
-        <VBox alignment="CENTER" spacing="15" styleClass="register-card">
-            <Label styleClass="titulo" text="K-SURVEYS"/>
-            <Label styleClass="subtitulo" text="Introduce tus datos para registrarte">
+        <VBox alignment="CENTER" spacing="15" styleClass="auth-card">
+            <Label styleClass="title" text="K-SURVEYS"/>
+            <Label styleClass="subtitle" text="Introduce tus datos para registrarte">
                 <VBox.margin>
                     <Insets bottom="20.0"/>
                 </VBox.margin>
@@ -33,6 +33,16 @@
 
             <!-- Email -->
             <TextField fx:id="emailField" promptText="Introduce tu correo electrónico" styleClass="input-field, icon-email"/>
+
+            <!-- Pregunta de Seguridad -->
+            <TextField fx:id="securityQuestionField"
+                       promptText="Introduce tu pregunta de seguridad"
+                       styleClass="input-field, icon-question"/>
+
+            <!-- Respuesta de Seguridad -->
+            <TextField fx:id="securityAnswerField"
+                       promptText="Introduce la respuesta de seguridad"
+                       styleClass="input-field, icon-answer"/>
 
             <!-- Contraseña -->
             <StackPane>
@@ -55,18 +65,8 @@
                 <CheckBox fx:id="showPasswordCheck" text="Mostrar contraseñas" onAction="#toggleRegisterPasswords" textFill="gray"/>
             </HBox>
 
-            <!-- Pregunta de Seguridad -->
-            <TextField fx:id="securityQuestionField"
-                    promptText="Introduce tu pregunta de seguridad"
-                    styleClass="input-field"/>
-
-            <!-- Respuesta de Seguridad -->
-            <TextField fx:id="securityAnswerField"
-                    promptText="Introduce la respuesta de seguridad"
-                    styleClass="input-field"/>
-
             <!-- Botón Registro -->
-            <Button onAction="#handleRegister" styleClass="register-button" text="REGISTRARSE">
+            <Button onAction="#handleRegister" styleClass="auth-button" text="REGISTRARSE">
                 <VBox.margin>
                     <Insets top="15.0"/>
                 </VBox.margin>
