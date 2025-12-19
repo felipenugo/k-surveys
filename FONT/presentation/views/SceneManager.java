@@ -201,7 +201,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/create-survey.fxml"));
             checkLoaderAddress(loader);
 
-            CreateSurveyViewController controller = new CreateSurveyViewController(userController, surveyController, this);
+            CreateSurveyViewController controller = new CreateSurveyViewController(userController, surveyController, responseController, this);
             loader.setController(controller);
 
             finalizeScene(loader, "CREAR ENCUESTA");
@@ -313,7 +313,7 @@ public class SceneManager {
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/view-survey.fxml"));
             checkLoaderAddress(loader);
 
-            ViewSurveyViewController controller = new ViewSurveyViewController(userController, surveyController, this, surveyId);
+            ViewSurveyViewController controller = new ViewSurveyViewController(userController, surveyController, responseController, this, surveyId);
             loader.setController(controller);
 
             finalizeScene(loader, "VER ENCUESTA");

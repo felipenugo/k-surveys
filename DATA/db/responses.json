@@ -1963,5 +1963,502 @@
         }
       ]
     }
+  },
+  "202": {
+    "15": {
+      "RESPONSE_ID": "15",
+      "SURVEY_ID": "202",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Juan Pérez",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 25.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "16": {
+      "RESPONSE_ID": "16",
+      "SURVEY_ID": "202",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "María García",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 30.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "17": {
+      "RESPONSE_ID": "17",
+      "SURVEY_ID": "202",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Carlos López",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    }
+  },
+  "203": {
+    "18": {
+      "RESPONSE_ID": "18",
+      "SURVEY_ID": "203",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Juan Pérez",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "18",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 25.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "18",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "18",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "18",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "19": {
+      "RESPONSE_ID": "19",
+      "SURVEY_ID": "203",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "María García",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "19",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 30.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "19",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "19",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "19",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "20": {
+      "RESPONSE_ID": "20",
+      "SURVEY_ID": "203",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Carlos López",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "20",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "20",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "20",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "20",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    }
+  },
+  "204": {
+    "22": {
+      "RESPONSE_ID": "22",
+      "SURVEY_ID": "204",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "María García",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 30.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "23": {
+      "RESPONSE_ID": "23",
+      "SURVEY_ID": "204",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Carlos López",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "23",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "23",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "23",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "23",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "21": {
+      "RESPONSE_ID": "21",
+      "SURVEY_ID": "204",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Juan Pérez",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "21",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 25.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "21",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 4,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "21",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "21",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
+    }
+  },
+  "205": {
+    "24": {
+      "RESPONSE_ID": "24",
+      "SURVEY_ID": "205",
+      "RESPONDER_USERNAME": "juan_perez",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Juan Pérez",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 25.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 2,
+          "selectedOptions": [
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 8.0,
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "25": {
+      "RESPONSE_ID": "25",
+      "SURVEY_ID": "205",
+      "RESPONDER_USERNAME": "maria_garcia",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "María García",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 30.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 2,
+          "selectedOptions": [
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 9.0,
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "26": {
+      "RESPONSE_ID": "26",
+      "SURVEY_ID": "205",
+      "RESPONDER_USERNAME": "carlos_lopez",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Carlos López",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "26",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 22.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "26",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 2,
+          "selectedOptions": [
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "26",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "26",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        }
+      ]
+    }
   }
 }

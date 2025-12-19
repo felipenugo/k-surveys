@@ -427,3 +427,38 @@
     -fx-effect: dropshadow(three-pass-box, rgba(255, 71, 87, 0.4), 10, 0, 0, 3);
 }
 
+/* Botón Importar CSV */
+.btn-import {
+    -fx-background-color: transparent;
+    -fx-border-color: #17a2b8;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #17a2b8;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-import:hover {
+    -fx-background-color: #17a2b8;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(23, 162, 184, 0.4), 10, 0, 0, 3);
+}
+
+/* Botón Exportar CSV */
+.btn-export {
+    -fx-background-color: transparent;
+    -fx-border-color: #28a745;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-text-fill: #28a745;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20;
+    -fx-cursor: hand;
+}
+.btn-export:hover {
+    -fx-background-color: #28a745;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow(three-pass-box, rgba(40, 167, 69, 0.4), 10, 0, 0, 3);
+}

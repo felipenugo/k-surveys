@@ -49,6 +49,18 @@ public class ResponseController {
     public String startResponse(String surveyId) {
         return responseService.startResponse(surveyId);
     }
+    
+    /**
+     * Inicia una nueva respuesta asociada a una encuesta con un username específico.
+     * Usado para importar respuestas desde CSV.
+     *
+     * @param surveyId identificador de la encuesta a la que pertenece la respuesta
+     * @param responderUsername nombre de usuario del respondedor
+     * @return identificador único de la nueva respuesta
+     */
+    public String startResponse(String surveyId, String responderUsername) {
+        return responseService.startResponse(surveyId, responderUsername);
+    }
 
     /**
      * Devuelve la lista completa de preguntas asociadas a una encuesta.

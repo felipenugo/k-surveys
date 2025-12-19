@@ -356,5 +356,273 @@
         "isRequired": true
       }
     ]
+  },
+  "202": {
+    "SURVEY_ID": "202",
+    "title": "title",
+    "description": "xd",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T11:17:59.625055453",
+    "PUBLISHED_AT": "2025-12-19T11:17:59.635576287",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "202",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu nombre?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "202",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuál es tu edad?",
+        "isRequired": true
+      },
+      {
+        "minSelections": 1,
+        "maxSelections": 1,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "202",
+            "optionText": "ROJO"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "202",
+            "optionText": "AZUL"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "202",
+            "optionText": "VERDE"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "202",
+            "optionText": "AMARILLO"
+          }
+        ],
+        "questionIndex": 2,
+        "SURVEY_ID": "202",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Cuál es tu color favorito?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 3,
+        "SURVEY_ID": "202",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Nivel de satisfacción (1-10)?",
+        "isRequired": true
+      }
+    ]
+  },
+  "203": {
+    "SURVEY_ID": "203",
+    "title": "asdasd",
+    "description": "asdasdasd123",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T11:28:12.386167034",
+    "PUBLISHED_AT": "2025-12-19T11:28:12.408531156",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "203",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu nombre?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "203",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuál es tu edad?",
+        "isRequired": true
+      },
+      {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "203",
+            "optionText": "Rojo"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "203",
+            "optionText": "Azul"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "203",
+            "optionText": "Verde"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "203",
+            "optionText": "Amarillo"
+          }
+        ],
+        "questionIndex": 2,
+        "SURVEY_ID": "203",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Cuál es tu color favorito?",
+        "isRequired": false
+      },
+      {
+        "questionIndex": 3,
+        "SURVEY_ID": "203",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Nivel de satisfacción (1-10)?",
+        "isRequired": true
+      }
+    ]
+  },
+  "204": {
+    "SURVEY_ID": "204",
+    "title": "Encuesta de Ejemplo",
+    "description": "Plantilla CSV",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T11:42:29.295176907",
+    "PUBLISHED_AT": "2025-12-19T11:42:29.326212686",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "204",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu nombre?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "204",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuál es tu edad?",
+        "isRequired": true
+      },
+      {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "204",
+            "optionText": "Rojo"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "204",
+            "optionText": "Azul"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "204",
+            "optionText": "Verde"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "204",
+            "optionText": "Amarillo"
+          }
+        ],
+        "questionIndex": 2,
+        "SURVEY_ID": "204",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Cuál es tu color favorito?",
+        "isRequired": false
+      },
+      {
+        "questionIndex": 3,
+        "SURVEY_ID": "204",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Nivel de satisfacción (1-10)?",
+        "isRequired": true
+      }
+    ]
+  },
+  "205": {
+    "SURVEY_ID": "205",
+    "title": "Encuesta de Ejemplo",
+    "description": "Plantilla CSV",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T11:48:26.303259723",
+    "PUBLISHED_AT": "2025-12-19T11:48:26.330106268",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 3,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "205",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Cuál es tu nombre?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "205",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuál es tu edad?",
+        "isRequired": true
+      },
+      {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "205",
+            "optionText": "Rojo"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "205",
+            "optionText": "Azul"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "205",
+            "optionText": "Verde"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "205",
+            "optionText": "Amarillo"
+          }
+        ],
+        "questionIndex": 2,
+        "SURVEY_ID": "205",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Cuál es tu color favorito?",
+        "isRequired": false
+      },
+      {
+        "questionIndex": 3,
+        "SURVEY_ID": "205",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Nivel de satisfacción (1-10)?",
+        "isRequired": true
+      }
+    ]
   }
 }

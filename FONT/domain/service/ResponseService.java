@@ -169,14 +169,27 @@ public class ResponseService {
      */
     public String startResponse(String surveyId) {
         checkUserLoggedin();
+        String responderUsername = userController.getUsernameLoggedIn();
+        return startResponse(surveyId, responderUsername);
+    }
+    
+    /**
+     * Inicia una nueva respuesta para una encuesta con un username específico.
+     * Usado para importar respuestas desde CSV.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param responderUsername nombre de usuario del respondedor
+     * @return identificador de la nueva respuesta
+     */
+    public String startResponse(String surveyId, String responderUsername) {
+        checkUserLoggedin();
         List<Question> questions = surveyService.getQuestions(surveyId); // this method verify that the survey exists
         String responseId = responseRepository.getValidResponseId();
-        String responderUsername = userController.getUsernameLoggedIn();
         Response response = new Response(responseId, surveyId, responderUsername, questions);
         if (!responseRepository.existsSurveyEntry(surveyId))
             responseRepository.addSurveyEntry(surveyId);
         responseRepository.addResponse(surveyId, response);
-        userController.addResponseId(responderUsername, surveyId, responseId); // this keeps the coherence with the double index
+        // No añadir al índice del usuario si es importado (el username puede no existir en el sistema)
         return responseId;
     }
 
