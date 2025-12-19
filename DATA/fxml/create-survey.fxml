@@ -13,9 +13,9 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/surveys.css, /css/create-survey.css">
+            stylesheets="/css/side-bar.css, /css/create-survey.css">
 
-    <!-- SIDEBAR (mismo estilo que surveys.fxml) -->
+    <!-- SIDEBAR (compartido por todas las vistas) -->
     <left>
         <VBox styleClass="side-bar">
 

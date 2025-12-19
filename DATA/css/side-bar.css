@@ -1,0 +1,123 @@
+/* --------------- */
+/* --- SIDEBAR --- */
+/* --------------- */
+.side-bar {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+    -fx-min-width: 300px;
+}
+
+/* Contenedor del icono y nombre del usuario */
+.user-profile {
+    -fx-border-color: transparent transparent rgba(255, 255, 255, 0.2) transparent;
+    -fx-border-width: 0 0 1 0;
+    /* Width solo al border inferior para separar el contenido horizontalmente */
+    -fx-padding: 30 20 20 20;
+    /* Arriba, derecha, abajo, izquierda */
+}
+
+/* icono con la inicial del usuario */
+.avatar-circle {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-background-radius: 50%;
+    -fx-min-width: 45px;
+    -fx-min-height: 45px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.username-text {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+/* BOTONES NAV */
+.nav-bar {
+    -fx-padding: 20;
+}
+
+.nav-btn {
+    -fx-background-color: transparent;
+    -fx-text-fill: rgba(255, 255, 255, 0.8);
+    -fx-font-size: 18px;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+}
+
+.nav-btn:hover {
+    -fx-background-color: rgba(255, 255, 255, 0.1);
+    -fx-text-fill: white;
+    -fx-translate-y: -2;
+}
+
+.nav-btn-active {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-color: white;
+    -fx-border-width: 0 0 0 3;
+}
+
+.nav-btn-danger {
+    -fx-background-color: #c82424;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+
+.nav-btn-danger:hover {
+    -fx-background-color: rgb(228, 37, 37);
+}
+
+
+/* BOTÓN CREAR */
+.create-btn {
+    -fx-background-color: white;
+    -fx-text-fill: #1e3c72;
+    -fx-font-weight: bold;
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.create-btn:hover {
+    -fx-background-color: #f0f0f0;
+    -fx-text-fill: #1e3c72;
+}
+
+
+/* ICONOS */
+.icon {
+    -fx-padding: 10 20 10 40;
+    -fx-background-repeat: no-repeat;
+    /* para que no repita la imagen intentado rellenar el espacio */
+    -fx-background-size: 18px;
+    -fx-background-position: 12px center;
+}
+
+.icon-home {
+    -fx-background-image: url("../img/icon/home.png");
+}
+
+.icon-survey {
+    /* Antes icon-list */
+    -fx-background-image: url("../img/icon/survey.png");
+}
+
+.icon-draft {
+    -fx-background-image: url("../img/icon/draft.png");
+}
+
+.icon-logout {
+    -fx-background-image: url("../img/icon/logout.png");
+}
+
+.icon-create {
+    /* Antes icon-plus */
+    -fx-background-image: url("../img/icon/create.png");
+}
+
+/* ------------------- */
+/* --- FIN SIDEBAR --- */
+/* ------------------- */
