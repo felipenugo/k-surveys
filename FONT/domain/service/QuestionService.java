@@ -1,6 +1,5 @@
 package domain.service;
 
-import data.QuestionRepository;
 import domain.controller.UserController;
 import domain.exception.SurveyException;
 import domain.model.Question;
@@ -24,19 +23,15 @@ import java.util.List;
  * manipula objetos {@link Question} y {@link MultipleChoiceQuestion}.
  */
 public class QuestionService {
-    /** Repositorio para almacenar preguntas. */
-    private final QuestionRepository questionRepository;
     /** Controlador del usuario para futuras validaciones de permisos. */
     private final UserController userController;
 
       /**
      * Crea una instancia del servicio de preguntas.
      *
-     * @param questionRepository repositorio de preguntas
      * @param userController controlador de usuario (por si se requieren permisos)
      */
-    public QuestionService(QuestionRepository questionRepository, UserController userController) {
-        this.questionRepository = questionRepository;
+    public QuestionService(  UserController userController) {
         this.userController = userController;
     }
 
