@@ -95,3 +95,44 @@
     -fx-font-style: italic;
 }
 
+/* =========================================
+   DESPLEGABLE DE RESPUESTAS (TitledPane)
+   ========================================= */
+.responses-dropdown {
+    -fx-background-color: transparent;
+}
+
+.responses-dropdown > .title {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-background-radius: 6;
+    -fx-padding: 12 15;
+}
+
+.responses-dropdown > .title > .text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.responses-dropdown > .title > .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.responses-dropdown > .title > .arrow-button > .arrow {
+    -fx-background-color: white;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+.responses-dropdown:expanded > .title {
+    -fx-background-color: linear-gradient(to right, #27ae60, #2ecc71);
+    -fx-background-radius: 6 6 0 0;
+}
+
+.responses-dropdown > *.content {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 0 0 6 6;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 1 1;
+    -fx-border-radius: 0 0 6 6;
+    -fx-padding: 10;
+}
