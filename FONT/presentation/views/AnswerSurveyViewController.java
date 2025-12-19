@@ -23,6 +23,7 @@ public class AnswerSurveyViewController {
     @FXML private Label avatarLabel;
 
     private Survey survey;
+    private Response currentResponse;
     private final ResponseController responseController;
     private final UserController userController;
     private final SurveyController surveyController;
@@ -126,7 +127,8 @@ public class AnswerSurveyViewController {
 
         try {
             // 1 — Crear nueva respuesta
-            String responseId = responseController.startResponse(survey.getSURVEY_ID());
+            Response response = responseController.startResponse(survey.getSURVEY_ID());
+            this.currentResponse = response;
 
             // 2 — Procesar preguntas
             for (Question q : survey.getQuestions()) {
@@ -194,13 +196,15 @@ public class AnswerSurveyViewController {
             }
 
             // 4 — Incrementar contador
-            responseController.incrementResponseCount(survey.getSURVEY_ID());
 
              //  5 — MOSTRAR POPUP DE RATING
             sceneManager.showRatingPopup(rating -> {
 
                 // Guardar rating en la encuesta
                 surveyController.addRating(survey.getSURVEY_ID(), rating);
+
+                responseController.incrementResponseCount(survey.getSURVEY_ID());
+                responseController.publishResponse(survey.getSURVEY_ID(), responseId);
 
                 // Volver al home
                 sceneManager.showHome();

@@ -3,7 +3,6 @@ package domain.service;
 import java.util.List;
 import java.util.TreeSet;
 
-import data.IdCounterRepository;
 import data.ResponseRepository;
 import domain.controller.UserController;
 import domain.exception.ResponseException;
@@ -15,6 +14,7 @@ import domain.model.NumericalAnswer;
 import domain.model.Question;
 import domain.model.Response;
 import domain.model.TextualAnswer;
+import domain.model.enums.ResponseStatus;
 import domain.model.enums.TypeQuestion;
 
 /**
@@ -168,17 +168,43 @@ public class ResponseService {
      * @return identificador de la nueva respuesta
      */
     public String startResponse(String surveyId) {
+
         checkUserLoggedin();
-        List<Question> questions = surveyService.getQuestions(surveyId); // this method verify that the survey exists
-        String responseId = responseRepository.getValidResponseId();
+
         String responderUsername = userController.getUsernameLoggedIn();
-        Response response = new Response(responseId, surveyId, responderUsername, questions);
-        if (!responseRepository.existsSurveyEntry(surveyId))
+
+        // 1️⃣ BUSCAR si ya existe un DRAFT para este usuario y encuesta
+        Response draftResponse =
+                responseRepository.getDraftResponse(surveyId, responderUsername);
+
+        if (draftResponse != null) {
+            // Ya existe → reutilizamos
+            return draftResponse.getRESPONSE_ID();
+        }
+
+        // 2️⃣ NO existe → crear una nueva response
+        List<Question> questions = surveyService.getQuestions(surveyId);
+
+        String responseId = responseRepository.getValidResponseId();
+
+        Response response = new Response(
+                responseId,
+                surveyId,
+                responderUsername,
+                questions
+        );
+
+        if (!responseRepository.existsSurveyEntry(surveyId)) {
             responseRepository.addSurveyEntry(surveyId);
+        }
+
         responseRepository.addResponse(surveyId, response);
-        userController.addResponseId(responderUsername, surveyId, responseId); // this keeps the coherence with the double index
+
+        userController.addResponseId(responderUsername, surveyId, responseId);
+
         return responseId;
     }
+
 
     // ───────────────────────────────────────────────
     // Recuperación de preguntas y respuestas
@@ -306,4 +332,20 @@ public class ResponseService {
     public void incrementResponseCount(String surveyId) {
         surveyService.incrementResponseCount(surveyId);
     }
+
+    /**
+     * Publica una respuesta, cambiando su estado a SUBMITTED.
+     *
+     * @param surveyId   identificador de la encuesta
+     * @param responseId identificador de la respuesta
+     */
+    public void publishResponse(String surveyId, String responseId) {
+        checkResponseExists(surveyId, responseId);
+
+        Response response = responseRepository.getResponse(surveyId, responseId);
+        response.setResponseStatus(ResponseStatus.SUBMITTED);
+
+        responseRepository.updateResponse(surveyId, response);
+    }
+
 }

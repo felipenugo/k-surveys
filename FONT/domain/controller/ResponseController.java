@@ -46,7 +46,7 @@ public class ResponseController {
      * @param surveyId identificador de la encuesta a la que pertenece la respuesta
      * @return identificador único de la nueva respuesta
      */
-    public String startResponse(String surveyId) {
+    public Response startResponse(String surveyId) {
         return responseService.startResponse(surveyId);
     }
 
@@ -128,5 +128,16 @@ public class ResponseController {
     {
         responseService.incrementResponseCount(surveyid);
     }
+
+    /**
+     * Publica una respuesta específica de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param responseId identificador de la respuesta
+     */
+    public void publishResponse(String surveyId, String responseId) {
+        responseService.publishResponse(surveyId, responseId);
+    }
+
 }
 

@@ -1962,6 +1962,150 @@
           "isAnswered": true
         }
       ]
+    },
+    "15": {
+      "RESPONSE_ID": "15",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 2.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            false,
+            true
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "2",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "16": {
+      "RESPONSE_ID": "16",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "3",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "16",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "17": {
+      "RESPONSE_ID": "17",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "3",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "17",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
     }
   }
 }

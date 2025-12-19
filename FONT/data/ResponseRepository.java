@@ -6,6 +6,7 @@ import data.adapter.AnswerAdapter;
 import data.adapter.LocalDateTimeAdapter;
 import domain.model.Answer;
 import domain.model.Response;
+import domain.model.enums.ResponseStatus;
 
 import java.io.*;
 import java.lang.reflect.Type;
@@ -276,4 +277,23 @@ public class ResponseRepository {
         responses.remove(surveyId);
         saveResponsesToJson();
     }
+
+    /** Obtiene la respuesta en estado Borrador (DRAFT) de un usuario para una encuesta.
+     *
+     * @param surveyId ID de la encuesta
+     * @param username nombre del usuario
+     * @return respuesta en estado DRAFT, o null si no existe
+     */
+    public Response getDraftResponse(String surveyId, String username) {
+        if (!responses.containsKey(surveyId)) return null;
+
+        for (Response r : responses.get(surveyId).values()) {
+            if (r.getResponderUsername().equals(username)
+                && r.getResponseStatus() == ResponseStatus.DRAFT) {
+                return r;
+            }
+        }
+        return null;
+    }
+
 }
