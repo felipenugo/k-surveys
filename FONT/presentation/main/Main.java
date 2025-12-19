@@ -1,5 +1,6 @@
 package presentation.main;
 
+import data.ResponseRepository;
 import data.SurveyRepository;
 import data.UserRepository;
 import domain.controller.SurveyController;
@@ -29,9 +30,10 @@ public class Main extends Application {
         // 1. Repository: Handles data storage and retrieval.
         UserRepository userRepository = new UserRepository();
         SurveyRepository surveyRepository = new SurveyRepository();
+        ResponseRepository responseRepository = new ResponseRepository(); // Instancia única
         
         // 2. Service: Contains the business logic.
-        UserService userService = new UserService(userRepository, surveyRepository, new data.ResponseRepository());
+        UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
         
         // 3. Controller: Connects the UI to the business logic.
         UserController userController = new UserController(userService);
@@ -39,11 +41,11 @@ public class Main extends Application {
         SurveyController surveyController = new SurveyController(surveyService);
         
         // Clustering Controller
-        CtrlDominioClustering clusteringController = new CtrlDominioClustering(new data.ResponseRepository(), surveyRepository);
+        CtrlDominioClustering clusteringController = new CtrlDominioClustering(responseRepository, surveyRepository);
         
         // Response Controller
         ResponseController responseController = new ResponseController(
-                new domain.service.ResponseService(new data.ResponseRepository(), userController, surveyService)
+                new domain.service.ResponseService(responseRepository, userController, surveyService)
         );
         
         // 4. SceneManager: Manages scene transitions and passes dependencies to view controllers.

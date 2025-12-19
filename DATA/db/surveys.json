@@ -624,5 +624,128 @@
         "isRequired": true
       }
     ]
+  },
+  "206": {
+    "SURVEY_ID": "206",
+    "title": "Encuesta de Satisfacción Laboral",
+    "description": "Evalúa tu satisfacción en diferentes aspectos del trabajo ambiente salario crecimiento y equilibrio vidatrabajo",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T12:09:35.846197165",
+    "PUBLISHED_AT": "2025-12-19T12:09:35.880045301",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 28,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "206",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "¿Cuántos años llevas trabajando en tu empresa actual?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 1,
+        "SURVEY_ID": "206",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "Del 1 al 10, ¿cómo calificarías el ambiente laboral?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 2,
+        "SURVEY_ID": "206",
+        "typeQuestion": "NUMERICAL",
+        "questionText": "Del 1 al 10, ¿qué tan satisfecho estás con tu salario?",
+        "isRequired": true
+      },
+      {
+        "minSelections": 1,
+        "maxSelections": 3,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "206",
+            "optionText": "Teletrabajo"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "206",
+            "optionText": "Horario flexible"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "206",
+            "optionText": "Buen salario"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "206",
+            "optionText": "Crecimiento profesional"
+          },
+          {
+            "questionIndex": 4,
+            "surveyId": "206",
+            "optionText": "Buen ambiente"
+          }
+        ],
+        "questionIndex": 3,
+        "SURVEY_ID": "206",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "¿Qué aspectos valoras más de un trabajo?",
+        "isRequired": true
+      },
+      {
+        "questionIndex": 4,
+        "SURVEY_ID": "206",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "¿Qué mejorarías de tu trabajo actual?",
+        "isRequired": true
+      }
+    ]
+  },
+  "208": {
+    "SURVEY_ID": "208",
+    "title": "Encuesta Test",
+    "description": "asdfhj",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T12:15:39.345995614",
+    "PUBLISHED_AT": "2025-12-19T12:15:39.357978768",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 4.0,
+    "totalRating": 4.0,
+    "ratingCount": 1,
+    "views": 1,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "208",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "test",
+        "isRequired": true
+      }
+    ]
+  },
+  "209": {
+    "SURVEY_ID": "209",
+    "title": "ENCUESTA TEST",
+    "description": "TEST",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T12:22:58.615436491",
+    "PUBLISHED_AT": "2025-12-19T12:22:58.634432545",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 3.5,
+    "totalRating": 3.5,
+    "ratingCount": 1,
+    "views": 1,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "209",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "ASDADS",
+        "isRequired": true
+      }
+    ]
   }
 }
