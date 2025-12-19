@@ -212,6 +212,11 @@ public class ViewSurveyViewController implements Initializable {
     }
 
     @FXML
+    public void handleViewResponses(ActionEvent event) {
+        sceneManager.showViewResponses(surveyId);
+    }
+
+    @FXML
     public void handleRunClustering(ActionEvent event) {
         int responseCount = sceneManager.getClusteringController().getResponseCount(surveyId);
         if (responseCount == 0) {
@@ -239,9 +244,8 @@ public class ViewSurveyViewController implements Initializable {
         }
 
         try {
-            // Cambiar estado a CLOSED
-            currentSurvey.setSurveyStatus(SurveyStatus.CLOSED);
-            surveyController.updateSurvey(surveyId, currentSurvey);
+            // Usar el nuevo método closeSurvey
+            currentSurvey = surveyController.closeSurvey(surveyId);
 
             updateStatusBadge();
             showAlert(Alert.AlertType.INFORMATION, "Encuesta Cerrada",

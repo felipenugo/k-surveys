@@ -339,4 +339,21 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+    public void showViewResponses(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/view-responses.fxml"));
+            checkLoaderAddress(loader);
+
+            ViewResponsesViewController controller = new ViewResponsesViewController(
+                    userController, surveyController, responseController, this, surveyId
+            );
+            loader.setController(controller);
+
+            finalizeScene(loader, "RESPUESTAS - Encuesta");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW RESPONSES: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

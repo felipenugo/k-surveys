@@ -213,3 +213,16 @@
     -fx-text-fill: white;
 }
 
+.btn-view-responses {
+    -fx-background-color: linear-gradient(to right, #27ae60, #2ecc71);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.btn-view-responses:hover {
+    -fx-effect: dropshadow(three-pass-box, rgba(39, 174, 96, 0.7), 20, 0, 0, 5);
+}
+

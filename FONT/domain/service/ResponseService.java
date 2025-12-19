@@ -306,4 +306,14 @@ public class ResponseService {
     public void incrementResponseCount(String surveyId) {
         surveyService.incrementResponseCount(surveyId);
     }
+
+    /**
+     * Devuelve todas las respuestas enviadas de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @return lista de objetos {@link Response} correspondientes a la encuesta
+     */
+    public List<Response> getAllResponses(String surveyId) {
+        return responseRepository.getResponsesBySurveyId(surveyId);
+    }
 }
