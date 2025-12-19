@@ -224,6 +224,14 @@ public class SceneManager {
             Stage popup = new Stage();
             popup.initStyle(StageStyle.TRANSPARENT);
             popup.setScene(scene);
+
+            // Cerrar si pierde el foco
+            popup.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    popup.close();
+                }
+            });
+
             popup.show();
 
         } catch (Exception e) {
@@ -264,6 +272,14 @@ public class SceneManager {
             popup.initStyle(StageStyle.UNDECORATED);
             popup.initOwner(primaryStage);
             popup.setScene(new Scene(root));
+
+            // Cerrar si pierde el foco
+            popup.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    popup.close();
+                }
+            });
+
             popup.show();
 
         } catch (Exception e) {
