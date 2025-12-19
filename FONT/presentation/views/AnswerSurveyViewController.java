@@ -135,24 +135,35 @@ public class AnswerSurveyViewController {
     private void handleSubmit(ActionEvent event) {
 
         try {
-            // 1 — Crear nueva respuesta
+            // 1 — VALIDAR PRIMERO todas las preguntas obligatorias ANTES de crear la respuesta
+            for (Question q : survey.getQuestions()) {
+                if (!q.isRequired()) continue; // Solo validar obligatorias
+
+                int qIndex = q.getQuestionIndex();
+                Object raw = answersMap.get(qIndex);
+
+                boolean isEmpty = isAnswerEmpty(raw);
+
+                if (isEmpty) {
+                    throw new RuntimeException("Debes responder la pregunta obligatoria: " + q.getQuestionText());
+                }
+            }
+
+            // 2 — Crear nueva respuesta (solo después de validar)
             String responseId = responseController.startResponse(survey.getSURVEY_ID());
 
-            // 2 — Procesar preguntas
+            // 3 — Procesar y guardar cada pregunta
             for (Question q : survey.getQuestions()) {
 
                 int qIndex = q.getQuestionIndex();
                 Object raw = answersMap.get(qIndex);
 
-                // Validación REQUERIDA
-                if (raw == null || raw.toString().isBlank()) {
-                    if (q.isRequired())
-                        throw new RuntimeException("Debes responder la pregunta: " + q.getQuestionText());
-                    else
-                        continue; // no requerida → saltamos
+                // Si la respuesta está vacía, saltar (ya validamos las obligatorias arriba)
+                if (isAnswerEmpty(raw)) {
+                    continue;
                 }
 
-                // 3 — Enviar según tipo
+                // Enviar según tipo
                 switch (q.getTypeQuestion()) {
 
                     // -------- TEXTUAL --------
@@ -182,10 +193,8 @@ public class AnswerSurveyViewController {
 
                     // -------- MULTIPLE CHOICE --------
                     case MULTIPLE_CHOICE -> {
+                        @SuppressWarnings("unchecked")
                         List<Integer> selected = (List<Integer>) raw;
-
-                        if (selected.isEmpty() && q.isRequired())
-                            throw new RuntimeException("Debes seleccionar alguna opción en: " + q.getQuestionText());
 
                         // Convertimos [0,2,3] → "0 2 3"
                         String joined = selected.stream()
@@ -219,6 +228,22 @@ public class AnswerSurveyViewController {
         } catch (Exception e) {
             showError(e.getMessage());
         }
+    }
+
+    /**
+     * Determina si una respuesta está vacía según su tipo.
+     */
+    private boolean isAnswerEmpty(Object raw) {
+        if (raw == null) {
+            return true;
+        }
+        if (raw instanceof String) {
+            return ((String) raw).isBlank();
+        }
+        if (raw instanceof List) {
+            return ((List<?>) raw).isEmpty();
+        }
+        return false;
     }
 
     private void showError(String message) {

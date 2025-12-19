@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/surveys.css, /css/create-survey.css, /css/view-survey.css">
+            stylesheets="/css/surveys.css, /css/create-survey.css, /css/view-survey.css, /css/view-responses.css">
 
     <!-- SIDEBAR -->
     <left>
@@ -70,51 +70,33 @@
                             <Insets top="40" right="40" bottom="120" left="40"/>
                         </padding>
 
-                        <!-- HEADER DE LA ENCUESTA -->
-                        <VBox styleClass="survey-view-header" spacing="15" maxWidth="Infinity">
-                            <!-- Título y estado -->
+                        <!-- HEADER -->
+                        <VBox styleClass="responses-header" spacing="15" maxWidth="Infinity">
+                            <!-- Título y contador -->
                             <HBox alignment="CENTER_LEFT" spacing="15">
-                                <Label fx:id="surveyTitleLabel" text="Título de la Encuesta" styleClass="survey-view-title"/>
-                                <Label fx:id="statusBadge" text="PUBLICADA" styleClass="status-badge-published"/>
+                                <Label text="📊 Respuestas de la Encuesta" styleClass="responses-main-title"/>
                             </HBox>
 
-                            <!-- Descripción -->
-                            <Label fx:id="surveyDescLabel" text="Descripción de la encuesta"
-                                   styleClass="survey-view-desc" wrapText="true"/>
+                            <!-- Nombre de la encuesta -->
+                            <Label fx:id="surveyTitleLabel" text="Título de la Encuesta" styleClass="survey-view-title"/>
 
                             <!-- Estadísticas -->
                             <HBox styleClass="stats-container" spacing="30">
                                 <VBox alignment="CENTER" styleClass="stat-box">
-                                    <Label fx:id="viewsCountLabel" text="0" styleClass="stat-number"/>
-                                    <Label text="Vistas" styleClass="stat-label"/>
-                                </VBox>
-                                <VBox alignment="CENTER" styleClass="stat-box">
                                     <Label fx:id="responsesCountLabel" text="0" styleClass="stat-number"/>
-                                    <Label text="Respuestas" styleClass="stat-label"/>
-                                </VBox>
-                                <VBox alignment="CENTER" styleClass="stat-box">
-                                    <Label fx:id="ratingLabel" text="0.0" styleClass="stat-number"/>
-                                    <Label text="Valoración" styleClass="stat-label"/>
-                                </VBox>
-                                <VBox alignment="CENTER" styleClass="stat-box">
-                                    <Label fx:id="createdDateLabel" text="--/--/----" styleClass="stat-number-small"/>
-                                    <Label text="Creada" styleClass="stat-label"/>
-                                </VBox>
-                                <VBox alignment="CENTER" styleClass="stat-box">
-                                    <Label fx:id="publishedDateLabel" text="--/--/----" styleClass="stat-number-small"/>
-                                    <Label text="Publicada" styleClass="stat-label"/>
+                                    <Label text="Respuestas Totales" styleClass="stat-label"/>
                                 </VBox>
                             </HBox>
                         </VBox>
 
                         <!-- SEPARADOR -->
                         <HBox styleClass="section-separator">
-                            <Label text="PREGUNTAS DE LA ENCUESTA" styleClass="section-title"/>
+                            <Label text="RESPUESTAS POR PREGUNTA" styleClass="section-title"/>
                         </HBox>
 
-                        <!-- LISTA DE PREGUNTAS (Solo lectura) -->
-                        <VBox fx:id="questionsContainer" spacing="15" alignment="TOP_CENTER">
-                            <!-- Las preguntas se generan dinámicamente desde Java -->
+                        <!-- LISTA DE RESPUESTAS -->
+                        <VBox fx:id="responsesContainer" spacing="25" alignment="TOP_CENTER">
+                            <!-- Las respuestas se generan dinámicamente desde Java -->
                         </VBox>
 
                         <!-- Espacio extra al final -->
@@ -129,11 +111,8 @@
     <!-- BARRA INFERIOR -->
     <bottom>
         <HBox styleClass="bottom-bar" alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
-            <Button text="← Volver a Mis Encuestas" styleClass="btn-back" onAction="#handleBack"/>
+            <Button text="← Volver a la Encuesta" styleClass="btn-back" onAction="#handleBack"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Ver Respuestas" styleClass="btn-view-responses" onAction="#handleViewResponses"/>
-            <Button text="Ejecutar Clustering" styleClass="btn-clustering" onAction="#handleRunClustering"/>
-            <Button text="Cerrar Encuesta" styleClass="btn-close-survey" onAction="#handleCloseSurvey"/>
         </HBox>
     </bottom>
 
