@@ -4,7 +4,7 @@
     -fx-background-color: white;
     -fx-padding: 25;
     -fx-background-radius: 12;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 10, 0, 0, 4);
 }
 
 .clustering-section-title {
@@ -22,7 +22,8 @@
     -fx-font-size: 12px;
 }
 
-.clustering-combo-box, .clustering-text-field {
+.clustering-combo-box,
+.clustering-text-field {
     -fx-background-color: #f8f9fa;
     -fx-border-color: #dee2e6;
     -fx-border-radius: 6;
@@ -42,7 +43,8 @@
     -fx-padding: 6 10 6 10;
 }
 
-.clustering-combo-box:focused, .clustering-text-field:focused {
+.clustering-combo-box:focused,
+.clustering-text-field:focused {
     -fx-border-color: #2a5298;
     -fx-background-color: white;
 }
@@ -85,7 +87,7 @@
 }
 
 .clustering-btn-action {
-    -fx-background-color: #f0ad4e;
+    -fx-background-color: #966622;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-padding: 8 15;
@@ -94,7 +96,7 @@
 }
 
 .clustering-btn-action:hover {
-    -fx-background-color: #ec971f;
+    -fx-background-color: #996317;
 }
 
 .clustering-btn-export {
@@ -114,7 +116,7 @@
     -fx-background-color: white;
     -fx-padding: 25;
     -fx-background-radius: 12;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 10, 0, 0, 4);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 10, 0, 0, 4);
 }
 
 .cluster-card {
@@ -124,7 +126,7 @@
     -fx-border-color: #e0e4e8;
     -fx-border-radius: 10;
     -fx-border-width: 1;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.04), 5, 0, 0, 2);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.04), 5, 0, 0, 2);
 }
 
 .cluster-title {
@@ -255,7 +257,7 @@
 }
 
 .default-color1.chart-symbol {
-    -fx-background-color: #e74c3c;
+    -fx-background-color: #ce3a2aff;
 }
 
 .default-color2.chart-symbol {
@@ -293,7 +295,7 @@
 }
 
 .default-color1.chart-legend-symbol {
-    -fx-background-color: #e74c3c;
+    -fx-background-color: #ce3a2aff;
 }
 
 .default-color2.chart-legend-symbol {
@@ -337,7 +339,7 @@
 }
 
 .default-color1.chart-bar {
-    -fx-bar-fill: #e74c3c;
+    -fx-bar-fill: #ce3a2aff;
 }
 
 .default-color2.chart-bar {

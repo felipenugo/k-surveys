@@ -64,7 +64,7 @@
 }
 
 .nav-btn-danger {
-    -fx-background-color: #ff4b4b;
+    -fx-background-color: #c82424;
     -fx-text-fill: white;
     -fx-font-weight: bold;
     -fx-background-radius: 8;
@@ -72,7 +72,7 @@
 }
 
 .nav-btn-danger:hover {
-    -fx-background-color: #e63939;
+    -fx-background-color: rgb(228, 37, 37);
 }
 
 
@@ -94,7 +94,8 @@
 /* ICONOS */
 .icon {
     -fx-padding: 10 20 10 40;
-    -fx-background-repeat: no-repeat; /* para que no repita la imagen intentado rellenar el espacio */
+    -fx-background-repeat: no-repeat;
+    /* para que no repita la imagen intentado rellenar el espacio */
     -fx-background-size: 18px;
     -fx-background-position: 12px center;
 }
@@ -120,6 +121,7 @@
     /* Antes icon-plus */
     -fx-background-image: url("../img/icon/create.png");
 }
+
 /* ------------------- */
 /* --- FIN SIDEBAR --- */
 /* ------------------- */
@@ -130,11 +132,11 @@
 }
 
 /* CONTENIDO CENTRAL */
-.title{
+.title {
     -fx-font-size: 34px;
     -fx-text-fill: #1e3c72;
-    -fx-font-weight:bold;
-     /* Arriba, derecha, abajo, izquierda */
+    -fx-font-weight: bold;
+    /* Arriba, derecha, abajo, izquierda */
 
 }
 
@@ -169,9 +171,10 @@
 }
 
 /* SCROLL PANE DE ENCUESTAS */
-.scroll-pane{
+.scroll-pane {
     -fx-padding: 30;
 }
+
 /* CABECERA DE TABLA */
 .table-header {
     -fx-padding: 0 20;
@@ -188,9 +191,10 @@
 }
 
 
-.empty-state-box{
+.empty-state-box {
     -fx-padding: 100 80
 }
+
 .empty-title {
     -fx-font-size: 28px;
     -fx-font-weight: bold;
@@ -206,17 +210,20 @@
 .survey-card {
     -fx-background-color: white;
     -fx-background-radius: 8;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.03), 5, 0, 0, 2);
-    -fx-padding: 15 20; /* Padding interno */
-    -fx-min-height: 70; /* Altura mínima */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.03), 5, 0, 0, 2);
+    -fx-padding: 15 20;
+    /* Padding interno */
+    -fx-min-height: 70;
+    /* Altura mínima */
     -fx-border-color: transparent;
     -fx-border-width: 1;
     -fx-cursor: hand;
 }
 
 .survey-card:hover {
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 2, 2);
-    -fx-border-color: #2a5298; /* Borde azul al pasar el mouse */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 10, 0, 2, 2);
+    -fx-border-color: #2a5298;
+    /* Borde azul al pasar el mouse */
     -fx-background-radius: 8;
     -fx-border-radius: 8;
 }
@@ -236,12 +243,13 @@
     -fx-wrap-text: true;
 }
 
-.col-text{
--fx-text-fill: #666; -fx-font-size: 13px;
--fx-wrap-text: true;
+.col-text {
+    -fx-text-fill: #666;
+    -fx-font-size: 13px;
+    -fx-wrap-text: true;
 }
 
-.col{
+.col {
     -fx-padding: 0 5;
 }
 
@@ -262,20 +270,29 @@
 
 /* Estrellas de Valoración */
 .star {
-    -fx-fill: #ddd; /* Gris (vacía) */
+    -fx-fill: #ddd;
+    /* Gris (vacía) */
     -fx-scale-x: 0.7;
     -fx-scale-y: 0.7;
 }
-.star.full { -fx-fill: #ffc107; } /* Amarillo completo */
+
+.star.full {
+    -fx-fill: #ffc107;
+}
+
+/* Amarillo completo */
 .star.half {
     -fx-fill: linear-gradient(to right, #ffc107 0%, #ffc107 50%, #e0e0e0 50%, #e0e0e0 100%);
-} /* Amarillo medio */
+}
+
+/* Amarillo medio */
 
 /* Paginación */
 
 
 .pagination {
-    -fx-padding: 20 0 0 0; /* Espacio arriba */
+    -fx-padding: 20 0 0 0;
+    /* Espacio arriba */
 }
 
 
@@ -315,8 +332,9 @@
     -fx-background-radius: 4;
     -fx-min-width: 30px;
     -fx-min-height: 30px;
-    -fx-background-insets: 0; /* Quita el borde interno */
-    }
+    -fx-background-insets: 0;
+    /* Quita el borde interno */
+}
 
 .pagination .left-arrow-button:hover,
 .pagination .right-arrow-button:hover {
@@ -327,8 +345,8 @@
 /* Iconos de las flechas (son regiones internas) */
 .pagination .left-arrow,
 .pagination .right-arrow {
-    -fx-background-color: #555; /* Color de la flecha */
+    -fx-background-color: #555;
+    /* Color de la flecha */
     -fx-max-width: 8px;
     -fx-max-height: 8px;
 }
-

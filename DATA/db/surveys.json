@@ -356,5 +356,51 @@
         "isRequired": true
       }
     ]
+  },
+  "203": {
+    "SURVEY_ID": "203",
+    "title": "hola",
+    "description": "ss",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-19T11:19:45.5539516",
+    "PUBLISHED_AT": "2025-12-19T11:19:59.1345534",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "minSelections": 1,
+        "maxSelections": 4,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "203",
+            "optionText": "Opción 1"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "203",
+            "optionText": "Opción 2"
+          },
+          {
+            "questionIndex": 2,
+            "surveyId": "203",
+            "optionText": "Opción 3"
+          },
+          {
+            "questionIndex": 3,
+            "surveyId": "203",
+            "optionText": "Opción 4"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "203",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "ansíocnas",
+        "isRequired": true
+      }
+    ]
   }
 }

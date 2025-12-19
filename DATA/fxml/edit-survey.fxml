@@ -83,7 +83,7 @@
                                        promptText="Título del Formulario"
                                        styleClass="title-input"/>
                             <TextArea fx:id="surveyDescField"
-                                      promptText="Descripción del formulario (opcional)"
+                                      promptText="Descripción del formulario"
                                       styleClass="desc-input"
                                       prefRowCount="2"
                                       wrapText="true"/>

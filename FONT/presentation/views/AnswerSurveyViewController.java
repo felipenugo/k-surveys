@@ -82,10 +82,20 @@ public class AnswerSurveyViewController {
                     TextField numberField = new TextField();
                     numberField.setPromptText("Introduce un número");
 
-                    numberField.textProperty().addListener((obs, old, val) -> {
-                        if (val.matches("-?\\d*(\\.\\d+)?")) {
-                            answersMap.put(qIndex, val);
+                    // Force the field to be numeric only
+                    TextFormatter<String> formatter = new TextFormatter<>(change -> {
+                        String newText = change.getControlNewText();
+                        if (newText.matches("-?(\\d*|\\d+\\.\\d*)?")) {
+                            return change;
                         }
+                        return null;
+                    });
+
+                    numberField.setTextFormatter(formatter);
+
+                    numberField.textProperty().addListener((obs, old, val) -> {
+                        // We can be sure it's a valid number or empty
+                        answersMap.put(qIndex, val);
                     });
 
                     card.getChildren().add(numberField);
