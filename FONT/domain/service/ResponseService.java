@@ -167,7 +167,7 @@ public class ResponseService {
      * @param surveyId identificador de la encuesta
      * @return identificador de la nueva respuesta
      */
-    public String startResponse(String surveyId) {
+    public Response startResponse(String surveyId) {
 
         checkUserLoggedin();
 

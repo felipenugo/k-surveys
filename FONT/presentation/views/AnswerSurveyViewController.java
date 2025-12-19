@@ -1,18 +1,27 @@
 package presentation.views;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 import domain.controller.ResponseController;
-import domain.controller.UserController;
 import domain.controller.SurveyController;
-import domain.model.*;
+import domain.controller.UserController;
+import domain.model.Answer;
+import domain.model.MultipleChoiceAnswer;
+import domain.model.MultipleChoiceQuestion;
+import domain.model.NumericalAnswer;
+import domain.model.Question;
+import domain.model.Response;
+import domain.model.Survey;
+import domain.model.TextualAnswer;
 import domain.model.enums.TypeQuestion;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 public class AnswerSurveyViewController {
 
@@ -48,7 +57,6 @@ public class AnswerSurveyViewController {
         renderQuestions();
     }
 
-    /** Renderizado dinámico de todas las preguntas */
     private void renderQuestions() {
         questionsBox.getChildren().clear();
 
@@ -63,6 +71,9 @@ public class AnswerSurveyViewController {
 
             int qIndex = q.getQuestionIndex();
 
+            // Recuperamos la respuesta si existe (draft)
+            Answer existingAnswer = currentResponse.getAnswer(qIndex);
+
             switch (q.getTypeQuestion()) {
 
                 // ---------------- TEXTUAL ----------------
@@ -70,6 +81,12 @@ public class AnswerSurveyViewController {
                     TextArea area = new TextArea();
                     area.setPromptText("Escribe tu respuesta...");
                     area.setWrapText(true);
+
+                    // 🟢 Cargar draft
+                    if (existingAnswer instanceof TextualAnswer ta && ta.getIsAnswered()) {
+                        area.setText(ta.getAnswerText());
+                        answersMap.put(qIndex, ta.getAnswerText());
+                    }
 
                     area.textProperty().addListener((obs, old, val) ->
                             answersMap.put(qIndex, val)
@@ -83,6 +100,12 @@ public class AnswerSurveyViewController {
                     TextField numberField = new TextField();
                     numberField.setPromptText("Introduce un número");
 
+                    // 🟢 Cargar draft
+                    if (existingAnswer instanceof NumericalAnswer na && na.getIsAnswered()) {
+                        numberField.setText(String.valueOf(na.getAnswerNum()));
+                        answersMap.put(qIndex, na.getAnswerNum());
+                    }
+
                     numberField.textProperty().addListener((obs, old, val) -> {
                         if (val.matches("-?\\d*(\\.\\d+)?")) {
                             answersMap.put(qIndex, val);
@@ -95,15 +118,27 @@ public class AnswerSurveyViewController {
                 // ------------- MULTIPLE CHOICE -------------
                 case MULTIPLE_CHOICE -> {
                     MultipleChoiceQuestion mcq = (MultipleChoiceQuestion) q;
-
                     VBox optionsBox = new VBox(5);
 
                     List<Integer> selectedIndexes = new ArrayList<>();
                     answersMap.put(qIndex, selectedIndexes);
 
+                    boolean[] selectedFromDraft = null;
+
+                    // 🟢 Cargar draft
+                    if (existingAnswer instanceof MultipleChoiceAnswer ma && ma.getIsAnswered()) {
+                        selectedFromDraft = ma.getSelectedOptions();
+                    }
+
                     for (int i = 0; i < mcq.getOptionsSize(); i++) {
                         CheckBox cb = new CheckBox(mcq.getOptions().get(i).getOptionText());
                         int optionIndex = i;
+
+                        // Marcar seleccionadas del draft
+                        if (selectedFromDraft != null && selectedFromDraft[i]) {
+                            cb.setSelected(true);
+                            selectedIndexes.add(optionIndex);
+                        }
 
                         cb.selectedProperty().addListener((obs, old, val) -> {
                             if (val) selectedIndexes.add(optionIndex);
@@ -120,6 +155,7 @@ public class AnswerSurveyViewController {
             questionsBox.getChildren().add(card);
         }
     }
+
 
     /** Manejar envío de encuesta */
     @FXML
