@@ -51,9 +51,6 @@ public class DriverMain {
                 new ResponseService(responseRepository, userController, surveyService)
         );
 
-        AnswerController answerController = new AnswerController(
-                new AnswerService(answerRepository, userController)
-        );
 
         CtrlDominioClustering ctrlDominioClustering = new CtrlDominioClustering(responseRepository, surveyRepository);
 

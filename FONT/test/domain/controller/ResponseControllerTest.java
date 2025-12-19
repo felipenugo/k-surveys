@@ -53,7 +53,6 @@ public class ResponseControllerTest {
         ResponseService responseService = new ResponseService(this.responseRepository, userController, surveyService);
         responseController = new ResponseController(responseService);
 
-        AnswerService answerService = new AnswerService(new AnswerRepository(), userController);
     }
 
     private void createTestSurvey() {

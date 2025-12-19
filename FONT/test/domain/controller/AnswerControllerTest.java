@@ -28,7 +28,6 @@ public class AnswerControllerTest {
     private UserController userController;
     private SurveyController surveyController;
     private ResponseController responseController;
-    private AnswerController answerController;
     private ResponseRepository responseRepository;
 
     private Survey survey;
@@ -40,7 +39,6 @@ public class AnswerControllerTest {
         UserRepository userRepository = new UserRepository();
         SurveyRepository surveyRepository = new SurveyRepository();
         this.responseRepository = new ResponseRepository();
-        AnswerRepository answerRepository = new AnswerRepository();
         userRepository.clear();
         surveyRepository.clear();
         this.responseRepository.clear();
@@ -55,8 +53,6 @@ public class AnswerControllerTest {
         ResponseService responseService = new ResponseService(this.responseRepository, userController, surveyService);
         responseController = new ResponseController(responseService);
 
-        AnswerService answerService = new AnswerService(answerRepository, userController);
-        answerController = new AnswerController(answerService);
     }
 
     private void createTestSurvey() {
@@ -102,10 +98,6 @@ public class AnswerControllerTest {
         userController.loginUser(mainUsername, "password");
     }
 
-    @Test
-    public void testAnswerControllerCreation() {
-        assertNotNull(answerController);
-    }
 
     @Test
     public void testUpdateTextualAnswer() {
