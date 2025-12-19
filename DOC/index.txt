@@ -8,5 +8,6 @@ Diagrama_Casos_de_Uso.png               Diagrama de casos de uso en formato PNG
 Descripcion_Casos_de_Uso.pdf            Descripción de los casos de uso
 Descripcion_Clases.pdf                  Descripción de las clases
 Estructura_Drivers.pdf                  Descripción de la estructura de drivers de prueba
-Estructuras_Datos_y_Algoritmos.pdf      Documentación de estructuras de datos y algoritmos implementados
+Estructuras_Datos_y_Algoritmos.pdf      Documentación de estructuras de datos y algoritmos (Primera Entrega)
+Documentación_2a_entrega.pdf            Documentación de la segunda entrega
 Reparto_Clases.pdf                      Reparto de clases entre los miembros del equipo
