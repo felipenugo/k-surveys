@@ -156,5 +156,14 @@
         "4"
       ]
     }
+  },
+  "Yeray": {
+    "USERNAME": "Yeray",
+    "email": "yeray.llagostera@gmail.com",
+    "passwordHash": "2ea2f90e08d0940761dfef984df77d5e2fb10f2dc798ba482beb93fd204e24ee",
+    "securityQuestion": "s",
+    "securityAnswer": "s",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }

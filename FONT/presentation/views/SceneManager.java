@@ -224,6 +224,14 @@ public class SceneManager {
             Stage popup = new Stage();
             popup.initStyle(StageStyle.TRANSPARENT);
             popup.setScene(scene);
+
+            // Cerrar si pierde el foco
+            popup.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    popup.close();
+                }
+            });
+
             popup.show();
 
         } catch (Exception e) {
@@ -264,6 +272,14 @@ public class SceneManager {
             popup.initStyle(StageStyle.UNDECORATED);
             popup.initOwner(primaryStage);
             popup.setScene(new Scene(root));
+
+            // Cerrar si pierde el foco
+            popup.focusedProperty().addListener((obs, wasFocused, isNowFocused) -> {
+                if (!isNowFocused) {
+                    popup.close();
+                }
+            });
+
             popup.show();
 
         } catch (Exception e) {
@@ -336,6 +352,23 @@ public class SceneManager {
             finalizeScene(loader, "CLUSTERING - Encuesta " + surveyId);
         } catch (Exception e) {
             System.err.println("ERROR FATAL CLUSTERING: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void showViewResponses(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/view-responses.fxml"));
+            checkLoaderAddress(loader);
+
+            ViewResponsesViewController controller = new ViewResponsesViewController(
+                    userController, surveyController, responseController, this, surveyId
+            );
+            loader.setController(controller);
+
+            finalizeScene(loader, "RESPUESTAS - Encuesta");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL VIEW RESPONSES: " + e.getMessage());
             e.printStackTrace();
         }
     }

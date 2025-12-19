@@ -1,125 +1,16 @@
------------------------------------
---- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÓN
-2. REGISTRARSE
-3. SALIR
-Opción: 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: --- registrándose ---
-El usuario TestUserResponse8 se ha registrado con éxito.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---- INICIO DE SESIÓN ---
-Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
-Inicio de sesión correcto!
-Bienvenido TestUserResponse8
---- K-SURVEY ---
-1. RESPONDER O ANALIZAR ENCUESTAS
-2. CREAR ENCUESTA
-3. CERRAR SESIÓN
-Opcion: --- CERRANDO SESIÓN ---
-Sesión cerrada, hasta pronto TestUserResponse8.
------------------------------------
---- BIENVENIDO A K-SURVEY ---
-1. INICIAR SESIÓN
-2. REGISTRARSE
-3. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
------------------------------------
+Exception in thread "main" java.lang.NoClassDefFoundError: javafx/application/Application
+	at java.base/java.lang.ClassLoader.defineClass1(Native Method)
+	at java.base/java.lang.ClassLoader.defineClass(ClassLoader.java:1027)
+	at java.base/java.security.SecureClassLoader.defineClass(SecureClassLoader.java:150)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.defineClass(BuiltinClassLoader.java:862)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.findClassOnClassPathOrNull(BuiltinClassLoader.java:760)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClassOrNull(BuiltinClassLoader.java:681)
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:639)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	at presentation.main.MainLauncher.main(MainLauncher.java:5)
+Caused by: java.lang.ClassNotFoundException: javafx.application.Application
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:526)
+	... 10 more

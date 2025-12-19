@@ -633,6 +633,15 @@ public class EditSurveyViewController implements Initializable {
         Spinner<Integer> minSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMinSelections());
         minSpinner.getStyleClass().add("selection-spinner");
         minSpinner.setEditable(true);
+
+        // Filter to allow only integer input
+        minSpinner.getEditor().setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("\\d*")) {
+                return change;
+            }
+            return null;
+        }));
+
         minSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
             try {
                 if (newVal <= mcq.getMaxSelections() && newVal <= mcq.getOptions().size()) {
@@ -652,6 +661,15 @@ public class EditSurveyViewController implements Initializable {
         Spinner<Integer> maxSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMaxSelections());
         maxSpinner.getStyleClass().add("selection-spinner");
         maxSpinner.setEditable(true);
+
+        // Filter to allow only integer input
+        maxSpinner.getEditor().setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("\\d*")) {
+                return change;
+            }
+            return null;
+        }));
+
         maxSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
             try {
                 if (newVal >= mcq.getMinSelections() && newVal <= mcq.getOptions().size()) {

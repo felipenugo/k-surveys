@@ -155,6 +155,16 @@ public class SurveyController {
     }
 
     /**
+     * Cierra una encuesta (cambia de PUBLISHED a CLOSED).
+     *
+     * @param surveyId identificador de la encuesta
+     * @return encuesta cerrada
+     */
+    public Survey closeSurvey(String surveyId) {
+        return surveyService.closeSurvey(surveyId);
+    }
+
+    /**
      * Elimina una encuesta (solo si está en estado DRAFT).
      *
      * @param surveyId identificador de la encuesta

@@ -1,13 +1,10 @@
 package domain.controller;
 
-import data.AnswerRepository;
-import data.QuestionRepository;
 import data.ResponseRepository;
 import data.SurveyRepository;
 import data.UserRepository;
 import domain.model.*;
 import domain.model.enums.TypeQuestion;
-import domain.service.AnswerService;
 import domain.service.ResponseService;
 import domain.service.SurveyService;
 import domain.service.UserService;
@@ -53,7 +50,6 @@ public class ResponseControllerTest {
         ResponseService responseService = new ResponseService(this.responseRepository, userController, surveyService);
         responseController = new ResponseController(responseService);
 
-        AnswerService answerService = new AnswerService(new AnswerRepository(), userController);
     }
 
     private void createTestSurvey() {

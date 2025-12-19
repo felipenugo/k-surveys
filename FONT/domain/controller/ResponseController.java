@@ -140,5 +140,15 @@ public class ResponseController {
     {
         responseService.incrementResponseCount(surveyid);
     }
+
+    /**
+     * Devuelve todas las respuestas enviadas de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @return lista de objetos {@link Response} correspondientes a la encuesta
+     */
+    public List<Response> getAllResponses(String surveyId) {
+        return responseService.getAllResponses(surveyId);
+    }
 }
 

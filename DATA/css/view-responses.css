@@ -1,0 +1,138 @@
+/* =========================================
+   VIEW RESPONSES - ESTILOS
+   ========================================= */
+
+/* Header principal */
+.responses-header {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.08), 8, 0, 0, 2);
+    -fx-padding: 30;
+    -fx-border-color: #27ae60 transparent transparent transparent;
+    -fx-border-width: 10 0 0 0;
+    -fx-border-radius: 8 8 0 0;
+    -fx-max-width: Infinity;
+}
+
+.responses-main-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27ae60;
+}
+
+/* =========================================
+   SECCIÓN DE PREGUNTA
+   ========================================= */
+.response-question-section {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 5, 0, 0, 2);
+    -fx-padding: 25;
+    -fx-max-width: Infinity;
+}
+
+.response-question-header {
+    -fx-padding: 0 0 15 0;
+    -fx-border-color: transparent transparent #eee transparent;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* =========================================
+   CONTENEDOR DE RESPUESTAS
+   ========================================= */
+.answers-container {
+    -fx-padding: 15 0 0 0;
+}
+
+/* =========================================
+   FILA DE RESPUESTA INDIVIDUAL
+   ========================================= */
+.answer-row {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 8;
+    -fx-border-color: #e9ecef;
+    -fx-border-radius: 8;
+    -fx-border-width: 1;
+}
+
+.answer-row:hover {
+    -fx-background-color: #e8f4fd;
+    -fx-border-color: #2a5298;
+}
+
+/* Avatar del usuario */
+.answer-avatar {
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-color: linear-gradient(to bottom right, #1e3c72, #2a5298);
+    -fx-background-radius: 50;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-alignment: center;
+}
+
+/* Nombre del usuario */
+.answer-username {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+}
+
+/* Texto de la respuesta */
+.answer-text {
+    -fx-font-size: 14px;
+    -fx-text-fill: #444;
+}
+
+/* =========================================
+   ESTADOS ESPECIALES
+   ========================================= */
+.no-response-text {
+    -fx-text-fill: #999;
+    -fx-font-style: italic;
+}
+
+/* =========================================
+   DESPLEGABLE DE RESPUESTAS (TitledPane)
+   ========================================= */
+.responses-dropdown {
+    -fx-background-color: transparent;
+}
+
+.responses-dropdown > .title {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-background-radius: 6;
+    -fx-padding: 12 15;
+}
+
+.responses-dropdown > .title > .text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-fill: white;
+}
+
+.responses-dropdown > .title > .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.responses-dropdown > .title > .arrow-button > .arrow {
+    -fx-background-color: white;
+    -fx-shape: "M 0 0 L 4 4 L 8 0 Z";
+}
+
+.responses-dropdown:expanded > .title {
+    -fx-background-color: linear-gradient(to right, #27ae60, #2ecc71);
+    -fx-background-radius: 6 6 0 0;
+}
+
+.responses-dropdown > *.content {
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 0 0 6 6;
+    -fx-border-color: #e0e0e0;
+    -fx-border-width: 0 1 1 1;
+    -fx-border-radius: 0 0 6 6;
+    -fx-padding: 10;
+}
