@@ -53,8 +53,8 @@ public class ViewResponsesViewController implements Initializable {
     private List<Response> responses;
 
     public ViewResponsesViewController(UserController userController, SurveyController surveyController,
-                                        ResponseController responseController, SceneManager sceneManager,
-                                        String surveyId) {
+                                       ResponseController responseController, SceneManager sceneManager,
+                                       String surveyId) {
         this.userController = userController;
         this.surveyController = surveyController;
         this.responseController = responseController;
@@ -173,10 +173,10 @@ public class ViewResponsesViewController implements Initializable {
         questionHeader.getChildren().addAll(headerRow, questionText);
         section.getChildren().add(questionHeader);
 
-        // --- RESPUESTAS DE LOS USUARIOS ---
+        // --- RESPUESTAS DE LOS USUARIOS EN DESPLEGABLE ---
         VBox answersBox = new VBox(10);
         answersBox.getStyleClass().add("answers-container");
-        answersBox.setPadding(new Insets(10, 0, 0, 20));
+        answersBox.setPadding(new Insets(10, 15, 10, 15));
 
         for (Response response : responses) {
             Answer[] answers = response.getANSWERS();
@@ -193,7 +193,16 @@ public class ViewResponsesViewController implements Initializable {
             answersBox.getChildren().add(noAnswers);
         }
 
-        section.getChildren().add(answersBox);
+        // Crear TitledPane (desplegable) para las respuestas
+        int responseCount = (int) responses.stream()
+                .filter(r -> questionIndex < r.getANSWERS().length)
+                .count();
+        TitledPane titledPane = new TitledPane("Respuestas (" + responseCount + ")", answersBox);
+        titledPane.setExpanded(false);
+        titledPane.getStyleClass().add("responses-dropdown");
+        titledPane.setAnimated(true);
+
+        section.getChildren().add(titledPane);
 
         return section;
     }
