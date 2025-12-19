@@ -74,7 +74,7 @@
                         <VBox styleClass="responses-header" spacing="15" maxWidth="Infinity">
                             <!-- Título y contador -->
                             <HBox alignment="CENTER_LEFT" spacing="15">
-                                <Label text="📊 Respuestas de la Encuesta" styleClass="responses-main-title"/>
+                                <Label text="Respuestas de la Encuesta" styleClass="responses-main-title"/>
                             </HBox>
 
                             <!-- Nombre de la encuesta -->
