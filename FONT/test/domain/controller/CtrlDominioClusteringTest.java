@@ -1,7 +1,5 @@
 package domain.controller;
 
-import data.AnswerRepository;
-import data.QuestionRepository;
 import data.ResponseRepository;
 import data.SurveyRepository;
 import data.UserRepository;

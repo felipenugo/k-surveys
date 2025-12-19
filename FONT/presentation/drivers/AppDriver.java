@@ -67,7 +67,6 @@ public class AppDriver {
         data.UserRepository userRepository = new data.UserRepository();
         data.SurveyRepository surveyRepository = new data.SurveyRepository();
         data.ResponseRepository responseRepository = new data.ResponseRepository();
-        data.QuestionRepository questionRepository = new data.QuestionRepository();
 
         // Inicializar controladores básicos
         domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, responseRepository);
@@ -75,7 +74,7 @@ public class AppDriver {
 
         // Inicializar servicios (necesitan UserController)
         domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
-        domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
+        domain.service.QuestionService questionService = new domain.service.QuestionService( userController);
         domain.service.ResponseService responseService = new domain.service.ResponseService(responseRepository, userController, surveyService);
 
         // Inicializar controladores de dominio
