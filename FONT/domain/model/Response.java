@@ -140,11 +140,15 @@ public class Response {
 
     /**
      * Devuelve el estado actual de la respuesta.
+     * 
+     * Por compatibilidad con respuestas antiguas en la BD que no tengan RESPONSE_STATUS,
+     * devuelve DRAFT por defecto si el estado es null.
      *
      * @return estado de la respuesta
      */
     public ResponseStatus getResponseStatus() {
-        return responseStatus;
+        // Para compatibilidad: respuestas antiguas pueden tener responseStatus = null
+        return responseStatus != null ? responseStatus : ResponseStatus.DRAFT;
     }
 
     /**

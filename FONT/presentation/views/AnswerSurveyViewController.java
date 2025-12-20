@@ -139,7 +139,8 @@ public class AnswerSurveyViewController {
                         int optionIndex = i;
 
                         // Marcar seleccionadas del draft
-                        if (selectedFromDraft != null && selectedFromDraft[i]) {
+                        // Verificar que el índice exista en el array del draft (por compatibilidad con cambios en opciones)
+                        if (selectedFromDraft != null && i < selectedFromDraft.length && selectedFromDraft[i]) {
                             cb.setSelected(true);
                             selectedIndexes.add(optionIndex);
                         }

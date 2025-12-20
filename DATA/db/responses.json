@@ -1773,6 +1773,7 @@
       "RESPONSE_ID": "11",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 7.0,
@@ -1820,6 +1821,7 @@
       "RESPONSE_ID": "12",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1855,11 +1857,11 @@
           "isAnswered": true
         },
         {
-          "answerText": "",
+          "answerText": "d",
           "QUESTION_INDEX": 4,
           "RESPONSE_ID": "12",
           "typeAnswer": "TEXTUAL",
-          "isAnswered": false
+          "isAnswered": true
         }
       ]
     },
@@ -1867,6 +1869,7 @@
       "RESPONSE_ID": "13",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1902,11 +1905,11 @@
           "isAnswered": true
         },
         {
-          "answerText": "",
+          "answerText": "s",
           "QUESTION_INDEX": 4,
           "RESPONSE_ID": "13",
           "typeAnswer": "TEXTUAL",
-          "isAnswered": false
+          "isAnswered": true
         }
       ]
     },
@@ -1914,6 +1917,7 @@
       "RESPONSE_ID": "14",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1961,6 +1965,7 @@
       "RESPONSE_ID": "15",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -2008,6 +2013,7 @@
       "RESPONSE_ID": "16",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 3.0,
@@ -2055,6 +2061,7 @@
       "RESPONSE_ID": "17",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 3.0,
@@ -2150,13 +2157,14 @@
       "RESPONSE_ID": "28",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "RESPONSE_STATUS": "DRAFT",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
+          "answerNum": 2.0,
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "28",
           "typeAnswer": "NUMERICAL",
-          "isAnswered": false
+          "isAnswered": true
         },
         {
           "answerNum": 3.0,
@@ -2166,8 +2174,54 @@
           "isAnswered": true
         },
         {
+          "answerNum": 1.0,
           "QUESTION_INDEX": 2,
           "RESPONSE_ID": "28",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            true,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "q",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "31": {
+      "RESPONSE_ID": "31",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "31",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "31",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "31",
           "typeAnswer": "NUMERICAL",
           "isAnswered": false
         },
@@ -2181,14 +2235,14 @@
             false
           ],
           "QUESTION_INDEX": 3,
-          "RESPONSE_ID": "28",
+          "RESPONSE_ID": "31",
           "typeAnswer": "MULTIPLE_CHOICE",
           "isAnswered": false
         },
         {
           "answerText": "",
           "QUESTION_INDEX": 4,
-          "RESPONSE_ID": "28",
+          "RESPONSE_ID": "31",
           "typeAnswer": "TEXTUAL",
           "isAnswered": false
         }
@@ -2323,6 +2377,7 @@
       "RESPONSE_ID": "22",
       "SURVEY_ID": "119",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerText": "rt",
@@ -2347,7 +2402,7 @@
       "RESPONSE_ID": "25",
       "SURVEY_ID": "119",
       "RESPONDER_USERNAME": "test",
-      "RESPONSE_STATUS": "DRAFT",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerText": "hola",
@@ -2367,6 +2422,32 @@
           "isAnswered": true
         }
       ]
+    },
+    "32": {
+      "RESPONSE_ID": "32",
+      "SURVEY_ID": "119",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "32",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        },
+        {
+          "maxOptions": 2,
+          "selectedOptions": [
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "32",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        }
+      ]
     }
   },
   "110": {
@@ -2374,13 +2455,14 @@
       "RESPONSE_ID": "23",
       "SURVEY_ID": "110",
       "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
-          "answerText": "",
+          "answerText": "ddd",
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "23",
           "typeAnswer": "TEXTUAL",
-          "isAnswered": false
+          "isAnswered": true
         }
       ]
     },
