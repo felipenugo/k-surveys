@@ -254,6 +254,78 @@ public class AnswerSurveyViewController {
         }
     }
 
+    /**
+     * Guarda las respuestas actuales en el DRAFT y vuelve al home.
+     * No requiere validación ni rating.
+     */
+    @FXML
+    private void handleSave(ActionEvent event) {
+        try {
+            // 1 — Usar la respuesta DRAFT cargada en loadSurvey
+            String responseId = currentResponse.getRESPONSE_ID();
+
+            // 2 — Procesar y guardar preguntas
+            for (Question q : survey.getQuestions()) {
+                int qIndex = q.getQuestionIndex();
+                Object raw = answersMap.get(qIndex);
+
+                // Solo guardar si hay algo respondido
+                if (raw == null) {
+                    continue;
+                }
+
+                // 3 — Enviar según tipo
+                switch (q.getTypeQuestion()) {
+                    case TEXTUAL -> {
+                        String text = raw.toString();
+                        responseController.updateAnswer(
+                                survey.getSURVEY_ID(),
+                                responseId,
+                                qIndex,
+                                text,
+                                TypeQuestion.TEXTUAL
+                        );
+                    }
+
+                    case NUMERICAL -> {
+                        String numberStr = raw.toString();
+                        double num = Double.parseDouble(numberStr);
+                        responseController.updateAnswer(
+                                survey.getSURVEY_ID(),
+                                responseId,
+                                qIndex,
+                                num
+                        );
+                    }
+
+                    case MULTIPLE_CHOICE -> {
+                        List<Integer> selected = (List<Integer>) raw;
+                        if (!selected.isEmpty()) {
+                            String joined = selected.stream()
+                                    .map(String::valueOf)
+                                    .collect(Collectors.joining(" "));
+
+                            responseController.updateAnswer(
+                                    survey.getSURVEY_ID(),
+                                    responseId,
+                                    qIndex,
+                                    joined,
+                                    TypeQuestion.MULTIPLE_CHOICE
+                            );
+                        }
+                    }
+                }
+            }
+
+            // Las respuestas se han guardado en el DRAFT
+            // Volver al home sin necesidad de rating
+            sceneManager.showHome();
+
+        } catch (Exception e) {
+            showError(e.getMessage());
+        }
+    }
+
     private void showError(String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error al enviar");

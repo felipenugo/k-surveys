@@ -3,6 +3,7 @@ package domain.model;
 import domain.model.enums.ResponseStatus;
 import domain.model.enums.TypeQuestion;
 import org.w3c.dom.Text;
+import com.google.gson.annotations.SerializedName;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -27,6 +28,7 @@ public class Response {
     /** Nombre de usuario del que responde. */
     private final String RESPONDER_USERNAME; // identifies the user that response
     /** Estado actual de la respuesta (borrador o enviada). */
+    @SerializedName("RESPONSE_STATUS")
     private ResponseStatus responseStatus;
     /** Fecha y hora en que se envió la respuesta (puede ser null si no se ha enviado). */
     private LocalDateTime SUBMITTED_AT;

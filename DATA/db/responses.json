@@ -533,7 +533,6 @@
       "RESPONSE_ID": "1",
       "SURVEY_ID": "118",
       "RESPONDER_USERNAME": "felipe",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "QUESTION_INDEX": 0,
@@ -1774,7 +1773,6 @@
       "RESPONSE_ID": "11",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 7.0,
@@ -1822,7 +1820,6 @@
       "RESPONSE_ID": "12",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1846,10 +1843,8 @@
           "isAnswered": true
         },
         {
-          "maxOptions": 5,
+          "maxOptions": 3,
           "selectedOptions": [
-            false,
-            false,
             false,
             false,
             false
@@ -1857,7 +1852,7 @@
           "QUESTION_INDEX": 3,
           "RESPONSE_ID": "12",
           "typeAnswer": "MULTIPLE_CHOICE",
-          "isAnswered": false
+          "isAnswered": true
         },
         {
           "answerText": "",
@@ -1872,7 +1867,6 @@
       "RESPONSE_ID": "13",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1920,7 +1914,6 @@
       "RESPONSE_ID": "14",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -1968,7 +1961,6 @@
       "RESPONSE_ID": "15",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "SUBMITTED",
       "ANSWERS": [
         {
           "answerNum": 2.0,
@@ -2016,7 +2008,6 @@
       "RESPONSE_ID": "16",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 3.0,
@@ -2064,7 +2055,6 @@
       "RESPONSE_ID": "17",
       "SURVEY_ID": "201",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 3.0,
@@ -2107,6 +2097,102 @@
           "isAnswered": true
         }
       ]
+    },
+    "24": {
+      "RESPONSE_ID": "24",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 4.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "answerNum": 7.0,
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            true,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        },
+        {
+          "answerText": "todo",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "24",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "28": {
+      "RESPONSE_ID": "28",
+      "SURVEY_ID": "201",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "answerNum": 3.0,
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": true
+        },
+        {
+          "QUESTION_INDEX": 2,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        },
+        {
+          "maxOptions": 5,
+          "selectedOptions": [
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 3,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        },
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 4,
+          "RESPONSE_ID": "28",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        }
+      ]
     }
   },
   "112": {
@@ -2114,7 +2200,6 @@
       "RESPONSE_ID": "18",
       "SURVEY_ID": "112",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "maxOptions": 3,
@@ -2129,6 +2214,46 @@
           "isAnswered": true
         }
       ]
+    },
+    "26": {
+      "RESPONSE_ID": "26",
+      "SURVEY_ID": "112",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            true,
+            true
+          ],
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "26",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        }
+      ]
+    },
+    "27": {
+      "RESPONSE_ID": "27",
+      "SURVEY_ID": "112",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "maxOptions": 3,
+          "selectedOptions": [
+            false,
+            false,
+            false
+          ],
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "27",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": false
+        }
+      ]
     }
   },
   "111": {
@@ -2136,7 +2261,6 @@
       "RESPONSE_ID": "19",
       "SURVEY_ID": "111",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerNum": 5.0,
@@ -2146,6 +2270,20 @@
           "isAnswered": true
         }
       ]
+    },
+    "30": {
+      "RESPONSE_ID": "30",
+      "SURVEY_ID": "111",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "30",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
     }
   },
   "113": {
@@ -2153,7 +2291,6 @@
       "RESPONSE_ID": "20",
       "SURVEY_ID": "113",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerText": "",
@@ -2170,7 +2307,6 @@
       "RESPONSE_ID": "21",
       "SURVEY_ID": "115",
       "RESPONDER_USERNAME": "test",
-      "responseStatus": "DRAFT",
       "ANSWERS": [
         {
           "answerText": "fdhsd",
@@ -2178,6 +2314,88 @@
           "RESPONSE_ID": "21",
           "typeAnswer": "TEXTUAL",
           "isAnswered": true
+        }
+      ]
+    }
+  },
+  "119": {
+    "22": {
+      "RESPONSE_ID": "22",
+      "SURVEY_ID": "119",
+      "RESPONDER_USERNAME": "test",
+      "ANSWERS": [
+        {
+          "answerText": "rt",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 1,
+          "selectedOptions": [
+            true
+          ],
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "22",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        }
+      ]
+    },
+    "25": {
+      "RESPONSE_ID": "25",
+      "SURVEY_ID": "119",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "hola",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        },
+        {
+          "maxOptions": 1,
+          "selectedOptions": [
+            true
+          ],
+          "QUESTION_INDEX": 1,
+          "RESPONSE_ID": "25",
+          "typeAnswer": "MULTIPLE_CHOICE",
+          "isAnswered": true
+        }
+      ]
+    }
+  },
+  "110": {
+    "23": {
+      "RESPONSE_ID": "23",
+      "SURVEY_ID": "110",
+      "RESPONDER_USERNAME": "test",
+      "ANSWERS": [
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "23",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
+        }
+      ]
+    },
+    "29": {
+      "RESPONSE_ID": "29",
+      "SURVEY_ID": "110",
+      "RESPONDER_USERNAME": "test",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "29",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": false
         }
       ]
     }

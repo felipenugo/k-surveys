@@ -51,10 +51,10 @@
     "CREATED_AT": "2025-11-28T14:30:00",
     "PUBLISHED_AT": "2025-11-29T14:30:00",
     "surveyStatus": "PUBLISHED",
-    "avgRating": 4.2,
-    "totalRating": 0.0,
-    "ratingCount": 0,
-    "views": 75,
+    "avgRating": 2.5,
+    "totalRating": 2.5,
+    "ratingCount": 1,
+    "views": 76,
     "questions": [
       {
         "minSelections": 1,
@@ -287,9 +287,9 @@
     "PUBLISHED_AT": "2025-12-14T16:00:00",
     "surveyStatus": "PUBLISHED",
     "avgRating": 4.1,
-    "totalRating": 114.0,
-    "ratingCount": 28,
-    "views": 153,
+    "totalRating": 117.5,
+    "ratingCount": 29,
+    "views": 154,
     "questions": [
       {
         "questionIndex": 0,

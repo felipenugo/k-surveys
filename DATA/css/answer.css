@@ -11,7 +11,21 @@
     -fx-text-fill: #1e3c72;
 }
 
-/* === BOTÓN ENVIAR RESPUESTAS === */
+/* === BOTONES DE ACCIÓN === */
+.save-btn {
+    -fx-background-color: #6c757d;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-padding: 12 30;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.save-btn:hover {
+    -fx-background-color: #5a6268;
+}
+
 .submit-btn {
     -fx-background-color: #1e3c72;
     -fx-text-fill: white;
