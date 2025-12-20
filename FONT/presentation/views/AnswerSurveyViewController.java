@@ -54,6 +54,10 @@ public class AnswerSurveyViewController {
         usernameLabel.setText(userController.getUsernameLoggedIn());
         avatarLabel.setText(userController.getUsernameLoggedIn().substring(0,1).toUpperCase());
         surveyTitle.setText("Encuesta: " + survey.getTitle());
+        
+        // Cargar o crear DRAFT de esta encuesta
+        this.currentResponse = responseController.startResponse(survey.getSURVEY_ID());
+        
         renderQuestions();
     }
 
@@ -162,9 +166,8 @@ public class AnswerSurveyViewController {
     private void handleSubmit(ActionEvent event) {
 
         try {
-            // 1 — Crear nueva respuesta
-            Response response = responseController.startResponse(survey.getSURVEY_ID());
-            this.currentResponse = response;
+            // 1 — Usar la respuesta DRAFT cargada en loadSurvey
+            String responseId = currentResponse.getRESPONSE_ID();
 
             // 2 — Procesar preguntas
             for (Question q : survey.getQuestions()) {

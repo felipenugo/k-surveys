@@ -168,42 +168,32 @@ public class ResponseService {
      * @return identificador de la nueva respuesta
      */
     public Response startResponse(String surveyId) {
-
         checkUserLoggedin();
 
-        String responderUsername = userController.getUsernameLoggedIn();
+        String username = userController.getUsernameLoggedIn();
 
-        // 1️⃣ BUSCAR si ya existe un DRAFT para este usuario y encuesta
-        Response draftResponse =
-                responseRepository.getDraftResponse(surveyId, responderUsername);
-
-        if (draftResponse != null) {
-            // Ya existe → reutilizamos
-            return draftResponse.getRESPONSE_ID();
+        // 1️⃣ Buscar draft existente
+        Response draft = responseRepository.getDraftResponse(surveyId, username);
+        if (draft != null) {
+            return draft;
         }
 
-        // 2️⃣ NO existe → crear una nueva response
+        // 2️⃣ Crear nueva response DRAFT
         List<Question> questions = surveyService.getQuestions(surveyId);
-
         String responseId = responseRepository.getValidResponseId();
 
-        Response response = new Response(
-                responseId,
-                surveyId,
-                responderUsername,
-                questions
-        );
+        Response response = new Response(responseId, surveyId, username, questions);
 
         if (!responseRepository.existsSurveyEntry(surveyId)) {
             responseRepository.addSurveyEntry(surveyId);
         }
 
         responseRepository.addResponse(surveyId, response);
+        userController.addResponseId(username, surveyId, responseId);
 
-        userController.addResponseId(responderUsername, surveyId, responseId);
-
-        return responseId;
+        return response;
     }
+
 
 
     // ───────────────────────────────────────────────

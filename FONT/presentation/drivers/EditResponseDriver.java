@@ -106,7 +106,8 @@ public class EditResponseDriver {
 
     public void showAnswers(String surveyId, String responseId) {
         try {
-            List<Answer> answers = responseController.getAnswers(surveyId, responseId);
+            List<Answer> answers = responseController.getAnswers(surveyId, responseId
+            );
             System.out.println();
             for (Answer answer : answers) {
                 System.out.print("Índice de la pregunta: " + answer.getQUESTION_INDEX());

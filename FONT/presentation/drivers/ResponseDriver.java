@@ -9,6 +9,7 @@ import domain.exception.ResponseException;
 import domain.exception.SurveyException;
 
 import domain.controller.SurveyController;
+import domain.model.Response;
 import domain.model.Survey;
 import presentation.driverMain.DriverMain;
 
@@ -60,8 +61,8 @@ public class ResponseDriver {
                 showSurveys(surveys);
                 System.out.print("Selecciona el id de una encuesta: ");
                 String surveyIdSelected = sc.nextLine();
-                String responseId = responseController.startResponse(surveyIdSelected);
-                editResponseDriver.editResponseMenu(surveyIdSelected, responseId);
+                Response response = responseController.startResponse(surveyIdSelected);
+                editResponseDriver.editResponseMenu(surveyIdSelected, response.getRESPONSE_ID());
                 exit = true;
             } catch ( SurveyException | ResponseException e) {
                 System.out.println("Error: " + e.getMessage());

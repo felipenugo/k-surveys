@@ -49,7 +49,7 @@ public class ResponseController {
     public Response startResponse(String surveyId) {
         return responseService.startResponse(surveyId);
     }
-
+    
     /**
      * Devuelve la lista completa de preguntas asociadas a una encuesta.
      *
