@@ -200,8 +200,10 @@ public class ResponseRepository {
      * @param responseId ID de la respuesta
      */
     public void deleteResponse(String surveyId, String responseId) {
-        responses.get(surveyId).remove(responseId);
-        saveResponsesToJson();
+        if (responses.containsKey(surveyId)) {
+            responses.get(surveyId).remove(responseId);
+            saveResponsesToJson();
+        }
     }
 
     /** Actualiza una respuesta existente de una encuesta.

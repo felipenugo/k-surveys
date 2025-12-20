@@ -258,30 +258,51 @@ public class UserService {
             return false;
 
         User user = userRepository.getUser(username);
+        
+        if (user == null) {
+            System.err.println("[ERROR] Usuario " + username + " no encontrado durante eliminación");
+            return false;
+        }
 
         // 1. Eliminar todas las encuestas creadas
-        for (String surveyId : user.getCreatedSurveysId()) {
-            // eliminar respuestas asociadas a esa encuesta
-            responseRepository.deleteResponsesBySurvey(surveyId);
-
-            // eliminar la encuesta en sí
-            surveyRepository.deleteSurvey(surveyId);
+        Set<String> createdSurveys = user.getCreatedSurveysId();
+        if (createdSurveys != null) {
+            for (String surveyId : createdSurveys) {
+                try {
+                    // eliminar respuestas asociadas a esa encuesta
+                    responseRepository.deleteResponsesBySurvey(surveyId);
+                    // eliminar la encuesta en sí
+                    surveyRepository.deleteSurvey(surveyId);
+                } catch (Exception e) {
+                    System.err.println("[WARNING] Error al eliminar encuesta " + surveyId + ": " + e.getMessage());
+                }
+            }
         }
 
         // 2. Eliminar todas las respuestas emitidas por el usuario
-        for (String surveyId : user.getRespondedSurveysIds()) {
-
-            Set<String> responseIds = user.getResponseIdsForSurvey(surveyId);
-
-            if (responseIds != null) {
-                for (String responseId : responseIds) {
-                    responseRepository.deleteResponse(responseId, surveyId);
+        Set<String> respondedSurveys = user.getRespondedSurveysIds();
+        if (respondedSurveys != null) {
+            for (String surveyId : respondedSurveys) {
+                try {
+                    Set<String> responseIds = user.getResponseIdsForSurvey(surveyId);
+                    if (responseIds != null) {
+                        for (String responseId : responseIds) {
+                            responseRepository.deleteResponse(responseId, surveyId);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.err.println("[WARNING] Error al eliminar respuestas de encuesta " + surveyId + ": " + e.getMessage());
                 }
             }
         }
 
         // 3. Eliminar usuario de la persistencia
-        userRepository.deleteUser(username);
+        try {
+            userRepository.deleteUser(username);
+        } catch (Exception e) {
+            System.err.println("[ERROR] Error al eliminar usuario " + username + " del repositorio: " + e.getMessage());
+            return false;
+        }
 
         return true;
     }
