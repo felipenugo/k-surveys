@@ -106,10 +106,10 @@
 
     <!-- BARRA INFERIOR FLOTANTE -->
     <bottom>
-        <HBox styleClass="bottom-bar" alignment="CENTER_RIGHT" spacing="15" BorderPane.alignment="CENTER">
-            <Button text="Importar CSV" styleClass="btn-import" onAction="#handleImportCSV"/>
-            <Region HBox.hgrow="ALWAYS"/>
+        <HBox styleClass="bottom-bar" alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
             <Button text="Cancelar" styleClass="btn-cancel" onAction="#handleCancel"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Importar CSV" styleClass="btn-import" onAction="#handleImportCSV"/>
             <Button text="Guardar Borrador" styleClass="btn-draft" onAction="#handleSaveDraft"/>
             <Button text="PUBLICAR" styleClass="btn-publish" onAction="#handlePublish"/>
         </HBox>

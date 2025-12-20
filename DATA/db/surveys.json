@@ -734,10 +734,10 @@
     "CREATED_AT": "2025-12-19T12:22:58.615436491",
     "PUBLISHED_AT": "2025-12-19T12:22:58.634432545",
     "surveyStatus": "PUBLISHED",
-    "avgRating": 3.5,
-    "totalRating": 3.5,
-    "ratingCount": 1,
-    "views": 1,
+    "avgRating": 3.0,
+    "totalRating": 6.0,
+    "ratingCount": 2,
+    "views": 2,
     "questions": [
       {
         "questionIndex": 0,

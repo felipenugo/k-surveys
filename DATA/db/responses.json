@@ -3841,6 +3841,21 @@
           "isAnswered": true
         }
       ]
+    },
+    "57": {
+      "RESPONSE_ID": "57",
+      "SURVEY_ID": "209",
+      "RESPONDER_USERNAME": "test",
+      "responseStatus": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "asdsfdgf",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "57",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
     }
   }
 }
