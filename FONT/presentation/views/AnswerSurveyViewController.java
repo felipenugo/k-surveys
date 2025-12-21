@@ -212,10 +212,13 @@ public class AnswerSurveyViewController {
                 }
             }
 
-            // 4 — Incrementar contador
+            // 4 — Marcar respuesta como enviada (establece fecha y estado)
+            responseController.submitResponse(survey.getSURVEY_ID(), responseId);
+
+            // 5 — Incrementar contador
             responseController.incrementResponseCount(survey.getSURVEY_ID());
 
-             //  5 — MOSTRAR POPUP DE RATING
+             //  6 — MOSTRAR POPUP DE RATING
             sceneManager.showRatingPopup(rating -> {
 
                 // Guardar rating en la encuesta

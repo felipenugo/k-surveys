@@ -769,5 +769,27 @@
         "isRequired": true
       }
     ]
+  },
+  "211": {
+    "SURVEY_ID": "211",
+    "title": "sdasda",
+    "description": "sadsda",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-21T11:22:48.476259695",
+    "PUBLISHED_AT": "2025-12-21T11:22:48.482992397",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 2.5,
+    "totalRating": 5.0,
+    "ratingCount": 2,
+    "views": 2,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "211",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "asdsda",
+        "isRequired": true
+      }
+    ]
   }
 }

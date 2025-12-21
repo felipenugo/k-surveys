@@ -329,4 +329,19 @@ public class ResponseService {
     public List<Response> getAllResponses(String surveyId) {
         return responseRepository.getResponsesBySurveyId(surveyId);
     }
+
+    /**
+     * Marca una respuesta como enviada, estableciendo la fecha y hora de envío
+     * y cambiando su estado a SUBMITTED.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param responseId identificador de la respuesta
+     */
+    public void submitResponse(String surveyId, String responseId) {
+        checkResponseExists(surveyId, responseId);
+        Response response = responseRepository.getResponse(surveyId, responseId);
+        response.setSUBMITTED_AT(java.time.LocalDateTime.now());
+        response.setResponseStatus(domain.model.enums.ResponseStatus.SUBMITTED);
+        responseRepository.updateResponse(surveyId, response);
+    }
 }

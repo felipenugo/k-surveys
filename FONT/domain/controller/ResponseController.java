@@ -150,5 +150,15 @@ public class ResponseController {
     public List<Response> getAllResponses(String surveyId) {
         return responseService.getAllResponses(surveyId);
     }
+
+    /**
+     * Marca una respuesta como enviada, estableciendo la fecha y hora de envío.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param responseId identificador de la respuesta
+     */
+    public void submitResponse(String surveyId, String responseId) {
+        responseService.submitResponse(surveyId, responseId);
+    }
 }
 
