@@ -6,7 +6,7 @@
 <!-- Contenedor raíz -->
 <?import javafx.geometry.Insets?>
 <StackPane styleClass="root-pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-           stylesheets="/css/shared.css, /css/auth.css">
+           stylesheets="/css/login.css">
     <!-- Contenedor para centrar el contenido y el espacio entre los elementos -->
     <!-- El ancho lo definirán los hijos, espacio de 20 vertical entre ellos -->
     <VBox alignment="CENTER" fillWidth="false" spacing="20">
@@ -20,9 +20,9 @@
         </HBox>
 
         <!-- CARD DE LOGIN -->
-        <VBox alignment="CENTER" spacing="15" styleClass="auth-card">
-            <Label styleClass="title" text="K-SURVEYS"/>
-            <Label styleClass="subtitle" text="Introduce tus datos para iniciar sesión">
+        <VBox alignment="CENTER" spacing="15" styleClass="login-card">
+            <Label styleClass="titulo" text="K-SURVEYS"/>
+            <Label styleClass="subtitulo" text="Introduce tus datos para iniciar sesión">
                 <VBox.margin>
                     <Insets bottom="20.0"/>
                 </VBox.margin>
@@ -56,7 +56,7 @@
             </HBox>
 
             <!-- Botón Registro -->
-            <Button onAction="#handleLogin" styleClass="auth-button" text="INICIAR SESIÓN">
+            <Button onAction="#handleLogin" styleClass="login-button" text="INICIAR SESIÓN">
                 <VBox.margin>
                     <Insets top="15.0"/>
                 </VBox.margin>

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/side-bar.css, /css/create-survey.css, /css/view-survey.css, /css/view-responses.css">
+            stylesheets="/css/surveys.css, /css/create-survey.css, /css/view-survey.css, /css/view-responses.css">
 
     <!-- SIDEBAR -->
     <left>
@@ -113,6 +113,7 @@
         <HBox styleClass="bottom-bar" alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
             <Button text="← Volver a la Encuesta" styleClass="btn-back" onAction="#handleBack"/>
             <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Vista Tabla" styleClass="btn-view-table" onAction="#handleViewTable"/>
         </HBox>
     </bottom>
 

@@ -223,6 +223,11 @@ public class ViewSurveyViewController implements Initializable {
     }
 
     @FXML
+    public void handleViewResponsesTable(ActionEvent event) {
+        sceneManager.showResponsesTable(surveyId);
+    }
+
+    @FXML
     public void handleRunClustering(ActionEvent event) {
         int responseCount = sceneManager.getClusteringController().getResponseCount(surveyId);
         if (responseCount == 0) {

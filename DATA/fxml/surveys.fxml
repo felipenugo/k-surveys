@@ -13,7 +13,7 @@
 
 <?import javafx.scene.control.Pagination?>
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/side-bar.css, /css/surveys.css">
+            stylesheets="/css/surveys.css">
 
     <!--SIDEBAR -->
     <left>

@@ -747,5 +747,27 @@
         "isRequired": true
       }
     ]
+  },
+  "210": {
+    "SURVEY_ID": "210",
+    "title": "Titulo",
+    "description": "Descripcion",
+    "CREATOR_USERNAME": "test",
+    "CREATED_AT": "2025-12-21T10:34:55.906642991",
+    "PUBLISHED_AT": "2025-12-21T10:34:55.911101275",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 3.8,
+    "totalRating": 7.5,
+    "ratingCount": 2,
+    "views": 2,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "210",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "asddsadsa",
+        "isRequired": true
+      }
+    ]
   }
 }

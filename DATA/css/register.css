@@ -1,0 +1,107 @@
+/* Color de fondo degradado hacia abajo a la derecha */
+.root-pane {
+    -fx-background-color: linear-gradient(to bottom right, #1e3c72ff, #2a5298);
+}
+
+/* Contenedor del registro */
+.register-card {
+    -fx-background-color: white;
+    -fx-background-radius: 15;
+    /* sombra -> blur-type, color, blur, spread, offsetX, offsetY */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 30, 0, 0, 15);
+    -fx-padding: 50px;
+    -fx-min-width: 350px;
+    -fx-min-height: 300px;
+}
+
+.titulo {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+.subtitulo {
+    -fx-font-size: 14px;
+    -fx-text-fill: grey;
+}
+
+/* Contenedor que muestra los mensajes de error */
+.error-card {
+    -fx-background-color: #ff4757; /* Rojo */
+    -fx-background-radius: 8;
+    -fx-padding: 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 10, 0, 0, 5);
+    -fx-max-width: 500px;
+}
+.error-icon {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 18px;
+}
+
+.error-label{
+    -fx-text-fill: white;
+}
+
+/* Inputs de usuario y contraseña de normal y cuándo se interactua con ellos */
+.input-field {
+    -fx-background-color: #f8f9fa; /* gris*/
+    -fx-border-color: #dddddd; /* gris fuerte */
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-padding: 12 12 12 35; /* 35px a la izq para el icono */
+    -fx-font-size: 14px;
+}
+
+.input-field:focused {
+    -fx-background-color: white;
+    -fx-border-color: #2a5298; /* morado */
+}
+
+
+/* Icono Usuario */
+.icon-user {
+    -fx-background-image: url("../img/icon/user.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-background-size: 18px 18px;
+}
+
+/* Icono Email */
+.icon-email {
+    -fx-background-image: url("../img/icon/email.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-background-size: 18px 18px;
+}
+
+/* Icono Candado */
+.icon-lock {
+    -fx-background-image: url("../img/icon/lock.png");
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: 10px center;
+    -fx-background-size: 18px 18px;
+}
+
+/* Botón de registro */
+.register-button {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 100;
+    -fx-background-radius: 8;
+    -fx-cursor: hand;
+}
+.button:hover, .button:focused {
+/* dropshadow( shadowType, color, radius, spread, offsetX, offsetY )*/
+    -fx-effect: dropshadow(three-pass-box, rgba(42, 82, 152, 0.7), 20, 0, 0,5);
+}
+
+/* Estilo de los Hyperlinks */
+.hyperlink {
+    -fx-text-fill: #2a5298; /* azul */
+    -fx-border-color: transparent;
+}
+.hyperlink:focused, .hyperlink:hover{
+    -fx-font-weight: bold;
+    -fx-border-width: 0 0 2 0;
+}

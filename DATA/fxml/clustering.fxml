@@ -22,7 +22,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
-            stylesheets="/css/side-bar.css, /css/clustering.css">
+            stylesheets="/css/surveys.css, /css/clustering.css">
 
     <!--SIDEBAR -->
     <left>

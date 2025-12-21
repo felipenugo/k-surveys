@@ -372,4 +372,21 @@ public class SceneManager {
             e.printStackTrace();
         }
     }
+
+    public void showResponsesTable(String surveyId) {
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/responses-table.fxml"));
+            checkLoaderAddress(loader);
+
+            ResponsesTableViewController controller = new ResponsesTableViewController(
+                    userController, surveyController, responseController, this, surveyId
+            );
+            loader.setController(controller);
+
+            finalizeScene(loader, "TABLA DE RESPUESTAS - Encuesta");
+        } catch (Exception e) {
+            System.err.println("ERROR FATAL RESPONSES TABLE: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
 }

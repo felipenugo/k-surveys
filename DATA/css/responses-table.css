@@ -1,0 +1,392 @@
+/* =========================================
+   RESPONSES TABLE VIEW - CSS STYLES
+   Coherente con el resto de la aplicación
+   ========================================= */
+
+/* =========================================
+   HEADER DE LA VISTA
+   ========================================= */
+.responses-table-header {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 8, 0, 0, 2);
+    -fx-padding: 25 30;
+    -fx-border-color: #1e3c72 transparent transparent transparent;
+    -fx-border-width: 10 0 0 0;
+    -fx-border-radius: 8 8 0 0;
+}
+
+.responses-table-title {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e3c72;
+}
+
+.view-mode-badge {
+    -fx-background-color: #2a5298;
+    -fx-text-fill: white;
+    -fx-padding: 5 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+/* =========================================
+   ESTADÍSTICAS (usa clases de surveys.css)
+   ========================================= */
+.stats-container {
+    -fx-padding: 15 0 5 0;
+    -fx-alignment: center-left;
+}
+
+.stat-box {
+    -fx-padding: 12 20;
+    -fx-background-color: #f8f9fa;
+    -fx-background-radius: 8;
+    -fx-spacing: 3;
+}
+
+.stat-number {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2a5298;
+}
+
+.stat-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #888;
+}
+
+.active-filters-indicator {
+    -fx-font-size: 13px;
+    -fx-text-fill: #27ae60;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-color: #e8f8f0;
+    -fx-background-radius: 15;
+}
+
+/* =========================================
+   HINT DE FILTROS
+   ========================================= */
+.filter-hint-box {
+    -fx-background-color: #e8f0fe;
+    -fx-background-radius: 6;
+    -fx-padding: 10 15;
+}
+
+.filter-hint-text {
+    -fx-font-size: 12px;
+    -fx-text-fill: #2a5298;
+}
+
+/* =========================================
+   CONTENEDOR DE TABLA
+   ========================================= */
+.table-container {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.08), 8, 0, 0, 2);
+    -fx-padding: 0;
+}
+
+.scroll-pane-transparent {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane-transparent > .viewport {
+    -fx-background-color: transparent;
+}
+
+/* =========================================
+   TABLA DE RESPUESTAS
+   ========================================= */
+.responses-table {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-padding: 0;
+}
+
+.responses-table .filler {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+.responses-table .column-header-background {
+    -fx-background-color: linear-gradient(to bottom, #1e3c72, #2a5298);
+}
+
+.responses-table .column-header {
+    -fx-background-color: transparent;
+    -fx-padding: 12 8;
+    -fx-border-color: rgba(255,255,255,0.15);
+    -fx-border-width: 0 1 0 0;
+}
+
+.responses-table .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 12px;
+}
+
+.responses-table .column-header .arrow {
+    -fx-background-color: white;
+}
+
+.responses-table .table-cell {
+    -fx-padding: 10 8;
+    -fx-border-color: #f0f0f0;
+    -fx-border-width: 0 0 1 0;
+    -fx-font-size: 13px;
+    -fx-alignment: TOP_LEFT;
+    -fx-text-fill: #333;
+}
+
+.responses-table .table-row-cell {
+    -fx-background-color: white;
+}
+
+.responses-table .table-row-cell:odd {
+    -fx-background-color: #fafbfc;
+}
+
+.responses-table .table-row-cell:selected {
+    -fx-background-color: #e8f0fe;
+}
+
+.responses-table .table-row-cell:selected .table-cell {
+    -fx-text-fill: #1e3c72;
+}
+
+.responses-table .table-row-cell:hover {
+    -fx-background-color: #f5f7fa;
+}
+
+.responses-table .placeholder {
+    -fx-background-color: transparent;
+}
+
+.responses-table .placeholder .label {
+    -fx-text-fill: #999;
+    -fx-font-size: 14px;
+    -fx-font-style: italic;
+}
+
+/* =========================================
+   BOTÓN DE FILTRO EN COLUMNA
+   ========================================= */
+.filter-icon-btn {
+    -fx-background-color: rgba(255,255,255,0.2);
+    -fx-text-fill: white;
+    -fx-font-size: 10px;
+    -fx-padding: 2 5;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+    -fx-min-width: 22;
+    -fx-min-height: 18;
+}
+
+.filter-icon-btn:hover {
+    -fx-background-color: rgba(255,255,255,0.4);
+}
+
+/* =========================================
+   POPUP DE FILTRO
+   ========================================= */
+.filter-popup {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 15, 0, 0, 3);
+    -fx-padding: 0;
+}
+
+.filter-popup .context-menu {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+}
+
+.filter-popup .menu-item {
+    -fx-background-color: white;
+    -fx-padding: 0;
+}
+
+.filter-popup .menu-item:focused {
+    -fx-background-color: white;
+}
+
+/* =========================================
+   INPUTS DE FILTRO
+   ========================================= */
+.filter-text-field {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #dee2e6;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 8 10;
+    -fx-font-size: 13px;
+}
+
+.filter-text-field:focused {
+    -fx-border-color: #2a5298;
+    -fx-background-color: white;
+}
+
+.filter-checkbox {
+    -fx-font-size: 12px;
+    -fx-text-fill: #333;
+}
+
+.filter-checkbox .box {
+    -fx-background-color: white;
+    -fx-border-color: #ccc;
+    -fx-border-radius: 3;
+    -fx-background-radius: 3;
+}
+
+.filter-checkbox:selected .box {
+    -fx-background-color: #2a5298;
+    -fx-border-color: #2a5298;
+}
+
+.filter-checkbox:selected .mark {
+    -fx-background-color: white;
+}
+
+/* =========================================
+   BOTONES DE FILTRO POPUP
+   ========================================= */
+.filter-apply-btn {
+    -fx-background-color: linear-gradient(to right, #1e3c72, #2a5298);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+}
+
+.filter-apply-btn:hover {
+    -fx-background-color: linear-gradient(to right, #2a5298, #1e3c72);
+}
+
+.filter-clear-btn {
+    -fx-background-color: #f5f5f5;
+    -fx-text-fill: #666;
+    -fx-font-size: 12px;
+    -fx-padding: 8 15;
+    -fx-background-radius: 5;
+    -fx-cursor: hand;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 5;
+}
+
+.filter-clear-btn:hover {
+    -fx-background-color: #eee;
+}
+
+/* =========================================
+   BARRA INFERIOR
+   ========================================= */
+.bottom-bar {
+    -fx-background-color: white;
+    -fx-padding: 15 40;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, -2);
+}
+
+.btn-back {
+    -fx-background-color: transparent;
+    -fx-text-fill: #1e3c72;
+    -fx-font-size: 14px;
+    -fx-cursor: hand;
+    -fx-padding: 10 15;
+}
+
+.btn-back:hover {
+    -fx-background-color: #f0f4f8;
+    -fx-background-radius: 5;
+}
+
+.btn-secondary {
+    -fx-background-color: white;
+    -fx-text-fill: #666;
+    -fx-font-size: 13px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #ddd;
+    -fx-border-radius: 20;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #f5f5f5;
+    -fx-border-color: #ccc;
+}
+
+.btn-view-mode {
+    -fx-background-color: white;
+    -fx-text-fill: #2a5298;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 10 20;
+    -fx-background-radius: 20;
+    -fx-border-color: #2a5298;
+    -fx-border-radius: 20;
+    -fx-cursor: hand;
+}
+
+.btn-view-mode:hover {
+    -fx-background-color: #e8f0fe;
+}
+
+.btn-export {
+    -fx-background-color: linear-gradient(to right, #27ae60, #2ecc71);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 10 25;
+    -fx-background-radius: 20;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(39, 174, 96, 0.3), 5, 0, 0, 2);
+}
+
+.btn-export:hover {
+    -fx-background-color: linear-gradient(to right, #2ecc71, #27ae60);
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+.scroll-bar:vertical {
+    -fx-background-color: transparent;
+    -fx-pref-width: 10px;
+}
+
+.scroll-bar:horizontal {
+    -fx-background-color: transparent;
+    -fx-pref-height: 10px;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: rgba(30,60,114,0.3);
+    -fx-background-radius: 5;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: rgba(30,60,114,0.5);
+}
+
+.scroll-bar .track {
+    -fx-background-color: #f0f0f0;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape: "";
+    -fx-padding: 0;
+}

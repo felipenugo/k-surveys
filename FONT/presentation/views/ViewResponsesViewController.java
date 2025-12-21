@@ -338,6 +338,11 @@ public class ViewResponsesViewController implements Initializable {
         sceneManager.showViewSurvey(surveyId);
     }
 
+    @FXML
+    public void handleViewTable(ActionEvent event) {
+        sceneManager.showResponsesTable(surveyId);
+    }
+
     private void showAlert(Alert.AlertType type, String title, String content) {
         Alert alert = new Alert(type);
         alert.setTitle(title);
