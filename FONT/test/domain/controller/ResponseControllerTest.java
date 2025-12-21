@@ -104,7 +104,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder1@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response.getRESPONSE_ID();
 
         assertNotNull(responseId);
         assertFalse(responseId.isEmpty());
@@ -128,7 +129,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder2@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response2 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response2.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "John Doe", TypeQuestion.TEXTUAL);
 
         Response response = responseRepository.getResponse(survey.getSURVEY_ID(), responseId);
@@ -156,7 +158,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder3@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response3 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response3.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 1, 25.5);
 
         Response response = responseRepository.getResponse(survey.getSURVEY_ID(), responseId);
@@ -184,7 +187,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder4@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response4 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response4.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 2, "1", TypeQuestion.MULTIPLE_CHOICE);
 
         Response response = responseRepository.getResponse(survey.getSURVEY_ID(), responseId);
@@ -212,7 +216,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder5@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response5 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response5.getRESPONSE_ID();
 
         // Update all answers
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Alice", TypeQuestion.TEXTUAL);
@@ -250,7 +255,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder6@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response6 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response6.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Bob", TypeQuestion.TEXTUAL);
 
         Response response = responseRepository.getResponse(survey.getSURVEY_ID(), responseId);
@@ -278,7 +284,8 @@ public class ResponseControllerTest {
         userController.loginUser(responderUsername, "password");
 
         // Create multiple responses
-        String responseId1 = responseController.startResponse(survey.getSURVEY_ID());
+        Response response7 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId1 = response7.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId1, 0, "Response 1", TypeQuestion.TEXTUAL);
 
         userController.logoutUser();
@@ -305,7 +312,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder8@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response8 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response8.getRESPONSE_ID();
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Persistent", TypeQuestion.TEXTUAL);
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 1, 35.0);
 
@@ -339,7 +347,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder9@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response9 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response9.getRESPONSE_ID();
 
         // Initial answer
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Initial", TypeQuestion.TEXTUAL);
@@ -375,7 +384,8 @@ public class ResponseControllerTest {
             userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password" , "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
 
-            String responseId = responseController.startResponse(survey.getSURVEY_ID());
+            Response responseMulti = responseController.startResponse(survey.getSURVEY_ID());
+            String responseId = responseMulti.getRESPONSE_ID();
             responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Response " + i, TypeQuestion.TEXTUAL);
         }
 
@@ -405,7 +415,8 @@ public class ResponseControllerTest {
         userController.registerUser(responderUsername, "responder11@gmail.com", "password" , "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
+        Response response11 = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response11.getRESPONSE_ID();
 
         // Add all answer types
         responseController.updateAnswer(survey.getSURVEY_ID(), responseId, 0, "Complete", TypeQuestion.TEXTUAL);

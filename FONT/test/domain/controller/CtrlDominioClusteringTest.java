@@ -371,7 +371,8 @@ public class CtrlDominioClusteringTest {
             userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password", "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
 
-            String responseId = responseController.startResponse(surveyId);
+            Response response = responseController.startResponse(surveyId);
+            String responseId = response.getRESPONSE_ID();
 
             // Respuesta para P1: Opción Múltiple
             String mcAnswer = String.valueOf(random.nextInt(3));

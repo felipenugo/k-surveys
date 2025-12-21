@@ -95,8 +95,8 @@ public class AnswerControllerTest {
         userController.registerUser(responderUsername, "responder@gmail.com", "password", "What is your pet's name?", "Fluffy");
         userController.loginUser(responderUsername, "password");
 
-        String responseId = responseController.startResponse(survey.getSURVEY_ID());
-        response = responseRepository.getResponse(survey.getSURVEY_ID(), responseId);
+        response = responseController.startResponse(survey.getSURVEY_ID());
+        String responseId = response.getRESPONSE_ID();
 
         userController.logoutUser();
         userController.loginUser(mainUsername, "password");

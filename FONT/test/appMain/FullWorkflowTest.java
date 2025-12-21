@@ -137,7 +137,8 @@ public class FullWorkflowTest {
             userController.registerUser(responderUsername, responderUsername + "@gmail.com", "password", "What is your pet's name?", "Fluffy");
             userController.loginUser(responderUsername, "password");
             
-            String responseId = responseController.startResponse(surveyId);
+            Response response = responseController.startResponse(surveyId);
+            String responseId = response.getRESPONSE_ID();
 
             // Answer for Q1: Multiple Choice
             String mcAnswer = String.valueOf(random.nextInt(3));
