@@ -54,10 +54,10 @@ public class AnswerSurveyViewController {
         usernameLabel.setText(userController.getUsernameLoggedIn());
         avatarLabel.setText(userController.getUsernameLoggedIn().substring(0,1).toUpperCase());
         surveyTitle.setText("Encuesta: " + survey.getTitle());
-        
+
         // Cargar o crear DRAFT de esta encuesta
         this.currentResponse = responseController.startResponse(survey.getSURVEY_ID());
-        
+
         renderQuestions();
     }
 
@@ -237,7 +237,7 @@ public class AnswerSurveyViewController {
 
             // 4 — Incrementar contador
 
-             //  5 — MOSTRAR POPUP DE RATING
+            //  5 — MOSTRAR POPUP DE RATING
             sceneManager.showRatingPopup(rating -> {
 
                 // Guardar rating en la encuesta
@@ -335,7 +335,7 @@ public class AnswerSurveyViewController {
         alert.showAndWait();
     }
 
-   @FXML
+    @FXML
     public void goToHome(ActionEvent e) {
         sceneManager.showConfirmLeave(() -> sceneManager.showHome());
     }

@@ -1,0 +1,6 @@
+Question,¿Cuál es tu nombre?,¿Cuál es tu edad?,¿Cuál es tu color favorito?,¿Nivel de satisfacción (1-10)?
+Type,TEXTUAL,NUMERICAL,MULTIPLE_CHOICE[Rojo|Azul|Verde|Amarillo](min=1;max=2),NUMERICAL
+Required,true,true,false,true
+juan_perez,Juan Pérez,25,Azul|Verde,8
+maria_garcia,María García,30,Rojo,9
+carlos_lopez,Carlos López,22,Verde,7

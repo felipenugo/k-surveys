@@ -1,11 +1,9 @@
 package presentation.views;
 
+import domain.controller.ResponseController;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
-import domain.model.MultipleChoiceQuestion;
-import domain.model.OptionQuestion;
-import domain.model.Question;
-import domain.model.Survey;
+import domain.model.*;
 import domain.model.enums.SurveyStatus;
 import domain.model.enums.TypeQuestion;
 import javafx.event.ActionEvent;
@@ -16,9 +14,15 @@ import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 import java.util.ResourceBundle;
 
 /**
@@ -29,6 +33,7 @@ public class ViewSurveyViewController implements Initializable {
 
     private final UserController userController;
     private final SurveyController surveyController;
+    private final ResponseController responseController;
     private final SceneManager sceneManager;
     private final String surveyId;
 
@@ -58,9 +63,10 @@ public class ViewSurveyViewController implements Initializable {
     private Survey currentSurvey;
 
     public ViewSurveyViewController(UserController userController, SurveyController surveyController,
-                                     SceneManager sceneManager, String surveyId) {
+                                     ResponseController responseController, SceneManager sceneManager, String surveyId) {
         this.userController = userController;
         this.surveyController = surveyController;
+        this.responseController = responseController;
         this.sceneManager = sceneManager;
         this.surveyId = surveyId;
     }
@@ -212,6 +218,16 @@ public class ViewSurveyViewController implements Initializable {
     }
 
     @FXML
+    public void handleViewResponses(ActionEvent event) {
+        sceneManager.showViewResponses(surveyId);
+    }
+
+    @FXML
+    public void handleViewResponsesTable(ActionEvent event) {
+        sceneManager.showResponsesTable(surveyId);
+    }
+
+    @FXML
     public void handleRunClustering(ActionEvent event) {
         int responseCount = sceneManager.getClusteringController().getResponseCount(surveyId);
         if (responseCount == 0) {
@@ -239,9 +255,8 @@ public class ViewSurveyViewController implements Initializable {
         }
 
         try {
-            // Cambiar estado a CLOSED
-            currentSurvey.setSurveyStatus(SurveyStatus.CLOSED);
-            surveyController.updateSurvey(surveyId, currentSurvey);
+            // Usar el nuevo método closeSurvey
+            currentSurvey = surveyController.closeSurvey(surveyId);
 
             updateStatusBadge();
             showAlert(Alert.AlertType.INFORMATION, "Encuesta Cerrada",
@@ -252,6 +267,162 @@ public class ViewSurveyViewController implements Initializable {
                     "No se pudo cerrar la encuesta: " + e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    public void handleExportCSV(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Exportar Encuesta a CSV");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivos CSV", "*.csv"));
+        
+        // Nombre de archivo: Titulo-Descripcion.csv
+        String title = currentSurvey.getTitle().replaceAll("[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\\s]", "").trim().replaceAll("\\s+", "_");
+        String description = currentSurvey.getDescription() != null 
+                ? currentSurvey.getDescription().replaceAll("[^a-zA-Z0-9áéíóúÁÉÍÓÚñÑ\\s]", "").trim().replaceAll("\\s+", "_")
+                : "";
+        String fileName = title + (description.isEmpty() ? "" : "-" + description) + ".csv";
+        fileChooser.setInitialFileName(fileName);
+        
+        File file = fileChooser.showSaveDialog(questionsContainer.getScene().getWindow());
+        if (file == null) return;
+
+        try {
+            int responsesExported = exportSurveyToCSV(file);
+            showAlert(Alert.AlertType.INFORMATION, "Exportación Exitosa",
+                    "La encuesta se ha exportado correctamente a:\n" + file.getAbsolutePath() +
+                    "\n\nRespuestas exportadas: " + responsesExported);
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error de Exportación",
+                    "No se pudo exportar el CSV: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Exporta la encuesta a un archivo CSV con el formato:
+     * Fila 1 (Question): Textos de las preguntas
+     * Fila 2 (Type): Tipos de pregunta (TEXTUAL, NUMERICAL, MULTIPLE_CHOICE[op1|op2|...](min=X;max=Y))
+     * Fila 3 (Required): Si cada pregunta es obligatoria (true/false)
+     * Filas 4+: Respuestas existentes - primera columna es username/ID del respondedor
+     * 
+     * @return número de respuestas exportadas
+     */
+    private int exportSurveyToCSV(File file) throws IOException {
+        List<Question> questions = currentSurvey.getQuestions();
+        int responsesExported = 0;
+        
+        try (PrintWriter writer = new PrintWriter(new FileWriter(file))) {
+            // Fila 1: Question (textos de las preguntas)
+            StringBuilder questionRow = new StringBuilder("Question");
+            for (Question q : questions) {
+                questionRow.append(",").append(escapeCSV(q.getQuestionText()));
+            }
+            writer.println(questionRow);
+
+            // Fila 2: Type (tipos de pregunta con min/max para multiple choice)
+            StringBuilder typeRow = new StringBuilder("Type");
+            for (Question q : questions) {
+                typeRow.append(",").append(getTypeString(q));
+            }
+            writer.println(typeRow);
+
+            // Fila 3: Required (si cada pregunta es obligatoria)
+            StringBuilder requiredRow = new StringBuilder("Required");
+            for (Question q : questions) {
+                requiredRow.append(",").append(q.isRequired() ? "true" : "false");
+            }
+            writer.println(requiredRow);
+
+            // Filas 4+: Respuestas (si las hay)
+            // Obtener todas las respuestas de la encuesta usando el ID de currentSurvey
+            String currentSurveyId = currentSurvey.getSURVEY_ID();
+            List<Response> responses = sceneManager.getClusteringController().getResponses(currentSurveyId);
+            
+            if (responses != null && !responses.isEmpty()) {
+                for (Response response : responses) {
+                    // Primera columna: username o ID del respondedor
+                    String responderInfo = response.getResponderUsername();
+                    if (responderInfo == null || responderInfo.isEmpty()) {
+                        responderInfo = response.getRESPONSE_ID();
+                    }
+                    StringBuilder responseRow = new StringBuilder(escapeCSV(responderInfo));
+                    
+                    Answer[] answers = response.getANSWERS();
+                    for (int i = 0; i < questions.size(); i++) {
+                        String answerValue = "";
+                        if (i < answers.length && answers[i] != null) {
+                            answerValue = getAnswerValue(answers[i], questions.get(i));
+                        }
+                        responseRow.append(",").append(escapeCSV(answerValue));
+                    }
+                    writer.println(responseRow);
+                    responsesExported++;
+                }
+            }
+        }
+        return responsesExported;
+    }
+
+    /**
+     * Convierte el tipo de pregunta a string para CSV.
+     * Formato: MULTIPLE_CHOICE[op1|op2|op3](min=1;max=2)
+     */
+    private String getTypeString(Question q) {
+        if (q instanceof MultipleChoiceQuestion mcq) {
+            StringBuilder sb = new StringBuilder("MULTIPLE_CHOICE[");
+            List<OptionQuestion> options = mcq.getOptions();
+            for (int i = 0; i < options.size(); i++) {
+                if (i > 0) sb.append("|");
+                sb.append(options.get(i).getOptionText());
+            }
+            sb.append("](min=").append(mcq.getMinSelections())
+              .append(";max=").append(mcq.getMaxSelections()).append(")");
+            return sb.toString();
+        } else if (q.getTypeQuestion() == TypeQuestion.NUMERICAL) {
+            return "NUMERICAL";
+        } else {
+            return "TEXTUAL";
+        }
+    }
+
+    /**
+     * Obtiene el valor de una respuesta como string.
+     */
+    private String getAnswerValue(Answer answer, Question question) {
+        if (answer instanceof TextualAnswer ta) {
+            return ta.getAnswerText() != null ? ta.getAnswerText() : "";
+        } else if (answer instanceof NumericalAnswer na) {
+            return na.getAnswerNum() != null ? String.valueOf(na.getAnswerNum()) : "";
+        } else if (answer instanceof MultipleChoiceAnswer mca) {
+            // Para opción múltiple, devolver los índices seleccionados separados por |
+            boolean[] selections = mca.getSelectedOptions();
+            if (selections == null) return "";
+            
+            StringBuilder sb = new StringBuilder();
+            if (question instanceof MultipleChoiceQuestion mcq) {
+                List<OptionQuestion> options = mcq.getOptions();
+                for (int i = 0; i < selections.length && i < options.size(); i++) {
+                    if (selections[i]) {
+                        if (sb.length() > 0) sb.append("|");
+                        sb.append(options.get(i).getOptionText());
+                    }
+                }
+            }
+            return sb.toString();
+        }
+        return "";
+    }
+
+    /**
+     * Escapa un valor para CSV (maneja comas y comillas).
+     */
+    private String escapeCSV(String value) {
+        if (value == null) return "";
+        if (value.contains(",") || value.contains("\"") || value.contains("\n") || value.contains("[") || value.contains("]")) {
+            return "\"" + value.replace("\"", "\"\"") + "\"";
+        }
+        return value;
     }
 
     private void showAlert(Alert.AlertType type, String title, String content) {

@@ -131,6 +131,8 @@
         <HBox styleClass="bottom-bar" alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
             <Button text="← Volver a Mis Encuestas" styleClass="btn-back" onAction="#handleBack"/>
             <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Exportar CSV" styleClass="btn-export" onAction="#handleExportCSV"/>
+            <Button text="Ver Respuestas" styleClass="btn-view-responses" onAction="#handleViewResponses"/>
             <Button text="Ejecutar Clustering" styleClass="btn-clustering" onAction="#handleRunClustering"/>
             <Button text="Cerrar Encuesta" styleClass="btn-close-survey" onAction="#handleCloseSurvey"/>
         </HBox>

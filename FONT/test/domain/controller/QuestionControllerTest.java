@@ -4,7 +4,6 @@ import domain.model.Question;
 import domain.model.MultipleChoiceQuestion;
 import domain.model.enums.TypeQuestion;
 import domain.service.QuestionService;
-import data.QuestionRepository;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +15,6 @@ import static org.junit.Assert.*;
 public class QuestionControllerTest {
 
     private QuestionController questionController;
-    private QuestionRepository questionRepository;
     private QuestionService questionService;
 
     private static final int TEST_QUESTION_INDEX = 0;
@@ -26,8 +24,6 @@ public class QuestionControllerTest {
 
     @Before
     public void setUp() {
-        questionRepository = new QuestionRepository();
-        questionService = new QuestionService(questionRepository, null); // null porque no necesitamos UserController para estos tests
         questionController = new QuestionController(questionService);
     }
 

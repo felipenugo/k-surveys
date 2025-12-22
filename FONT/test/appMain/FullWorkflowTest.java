@@ -12,8 +12,6 @@ import domain.clustering.TextDistanceType;
 import data.ResponseRepository;
 import data.UserRepository;
 import data.SurveyRepository;
-import data.QuestionRepository;
-import data.AnswerRepository;
 import domain.clustering.DistanceType;
 import domain.clustering.QualityMetricType;
 import domain.clustering.ClusteringAnalysis;
@@ -49,10 +47,8 @@ public class FullWorkflowTest {
         userRepository.clear();
         SurveyRepository surveyRepository = new SurveyRepository();
         surveyRepository.clear();
-        QuestionRepository questionRepository = new QuestionRepository();
         responseRepository = new ResponseRepository();
         responseRepository.clear();
-        AnswerRepository answerRepository = new AnswerRepository();
 
         UserService userService = new UserService(userRepository, surveyRepository, responseRepository);
         userController = new UserController(userService);

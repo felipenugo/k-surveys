@@ -33,9 +33,8 @@ public class AppDriver {
         return option;
     }
 
-    public void clearTerminal()
-    {
-        for(int i =0;i< 50; i++)
+    public void clearTerminal() {
+        for (int i = 0; i < 50; i++)
             System.out.println();
     }
 
@@ -47,14 +46,9 @@ public class AppDriver {
                     case 1 -> surveyDriver.surveyMenu();
                     case 2 -> createsurveyDriver.createSurveyMenu();
                     case 3 -> editSurveysDriver.editSurveysMenu();
-                    case 4 -> {
-                        sessionDriver.logout();
-                        exitApp = true;
-                    }
-                    case 5 -> {
-                        sessionDriver.driverDeleteAccount();
-                        exitApp = true;
-                    }
+                    case 4 ->  sessionDriver.logout();
+                    case 5 -> sessionDriver.driverDeleteAccount();
+
                     default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
                 }
             } catch (java.util.NoSuchElementException e) {
@@ -72,23 +66,22 @@ public class AppDriver {
         data.UserRepository userRepository = new data.UserRepository();
         data.SurveyRepository surveyRepository = new data.SurveyRepository();
         data.ResponseRepository responseRepository = new data.ResponseRepository();
-        data.QuestionRepository questionRepository = new data.QuestionRepository();
-        
+
         // Inicializar controladores básicos
         domain.service.UserService userService = new domain.service.UserService(userRepository, surveyRepository, responseRepository);
         domain.controller.UserController userController = new domain.controller.UserController(userService);
-        
+
         // Inicializar servicios (necesitan UserController)
         domain.service.SurveyService surveyService = new domain.service.SurveyService(surveyRepository, userController, userService);
-        domain.service.QuestionService questionService = new domain.service.QuestionService(questionRepository, userController);
+        domain.service.QuestionService questionService = new domain.service.QuestionService( userController);
         domain.service.ResponseService responseService = new domain.service.ResponseService(responseRepository, userController, surveyService);
-        
+
         // Inicializar controladores de dominio
         domain.controller.SurveyController surveyController = new domain.controller.SurveyController(surveyService);
         domain.controller.ResponseController responseController = new domain.controller.ResponseController(responseService);
         domain.controller.QuestionController questionController = new domain.controller.QuestionController(questionService);
         domain.controller.CtrlDominioClustering clusteringController = new domain.controller.CtrlDominioClustering(responseRepository, surveyRepository);
-        
+
         // Inicializar drivers auxiliares
         EditorQuestionDriver editorQuestionDriver = new EditorQuestionDriver(questionController);
         EditResponseDriver editResponseDriver = new EditResponseDriver(responseController);
@@ -104,10 +97,10 @@ public class AppDriver {
 
         // Conectar drivers
         sessionDriver.setAppDriver(appDriver);
-        
+
         System.out.println("=== PRUEBA APPDRIVER ===");
         System.out.println("Para probar este driver, primero debes iniciar sesión.");
-        
+
         // Simular login para poder probar el menú
         sessionDriver.driverLogin();
     }

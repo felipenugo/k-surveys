@@ -647,6 +647,20 @@
           "isAnswered": true
         }
       ]
+    },
+    "40": {
+      "RESPONSE_ID": "40",
+      "SURVEY_ID": "111",
+      "RESPONDER_USERNAME": "arnau",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "40",
+          "typeAnswer": "NUMERICAL",
+          "isAnswered": false
+        }
+      ]
     }
   },
   "113": {
@@ -734,11 +748,11 @@
       "RESPONSE_STATUS": "DRAFT",
       "ANSWERS": [
         {
-          "answerText": "",
+          "answerText": "hola",
           "QUESTION_INDEX": 0,
           "RESPONSE_ID": "37",
           "typeAnswer": "TEXTUAL",
-          "isAnswered": false
+          "isAnswered": true
         }
       ]
     }

@@ -1,5 +1,6 @@
 package presentation.views;
 
+import domain.controller.ResponseController;
 import domain.controller.SurveyController;
 import domain.controller.UserController;
 import domain.model.MultipleChoiceQuestion;
@@ -21,7 +22,12 @@ import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.SVGPath;
+import javafx.stage.FileChooser;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +41,7 @@ public class CreateSurveyViewController implements Initializable {
 
     private final UserController userController;
     private final SurveyController surveyController;
+    private final ResponseController responseController;
     private final SceneManager sceneManager;
 
     // --- CAMPOS FXML SIDEBAR ---
@@ -55,12 +62,17 @@ public class CreateSurveyViewController implements Initializable {
     private final List<Question> questionList = new ArrayList<>();
     private String currentSurveyId = null; // null = nueva encuesta
 
+    // Respuestas importadas desde CSV (se guardarán al publicar)
+    private List<List<String>> importedResponses = new ArrayList<>();
+
     // Variable temporal para Drag & Drop
     private int draggingIndex = -1;
 
-    public CreateSurveyViewController(UserController userController, SurveyController surveyController, SceneManager sceneManager) {
+    public CreateSurveyViewController(UserController userController, SurveyController surveyController, 
+                                       ResponseController responseController, SceneManager sceneManager) {
         this.userController = userController;
         this.surveyController = surveyController;
+        this.responseController = responseController;
         this.sceneManager = sceneManager;
     }
 
@@ -246,19 +258,28 @@ public class CreateSurveyViewController implements Initializable {
 
         try {
             Survey survey = buildSurvey();
+            String publishedSurveyId;
 
             if (currentSurveyId == null) {
                 // Crear y publicar nueva encuesta
                 Survey created = surveyController.createSurvey(survey);
                 surveyController.publishSurvey(created.getSURVEY_ID());
+                publishedSurveyId = created.getSURVEY_ID();
             } else {
                 // Actualizar y publicar existente
                 surveyController.updateSurvey(currentSurveyId, survey);
                 surveyController.publishSurvey(currentSurveyId);
+                publishedSurveyId = currentSurveyId;
+            }
+
+            // Guardar respuestas importadas desde CSV
+            if (!importedResponses.isEmpty()) {
+                saveImportedResponses(publishedSurveyId);
             }
 
             showAlert(Alert.AlertType.INFORMATION, "Encuesta Publicada",
-                    "La encuesta ha sido publicada exitosamente.");
+                    "La encuesta ha sido publicada exitosamente." +
+                    (importedResponses.isEmpty() ? "" : "\nSe guardaron " + importedResponses.size() + " respuestas importadas."));
             sceneManager.showHome();
 
         } catch (Exception e) {
@@ -283,6 +304,352 @@ public class CreateSurveyViewController implements Initializable {
             }
         }
         sceneManager.showHome();
+    }
+
+    @FXML
+    public void handleImportCSV() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Importar Encuesta desde CSV");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivos CSV", "*.csv"));
+        
+        File file = fileChooser.showOpenDialog(questionsContainer.getScene().getWindow());
+        if (file == null) return;
+
+        try {
+            // Extraer título y descripción del nombre del archivo (formato: Titulo-Descripcion.csv)
+            extractTitleAndDescriptionFromFileName(file.getName());
+            
+            importSurveyFromCSV(file);
+            showAlert(Alert.AlertType.INFORMATION, "Importación Exitosa",
+                    "La encuesta se ha importado correctamente desde el CSV." +
+                    (importedResponses.isEmpty() ? "" : "\nSe importaron " + importedResponses.size() + " respuestas que se guardarán al publicar."));
+        } catch (Exception e) {
+            showAlert(Alert.AlertType.ERROR, "Error de Importación",
+                    "No se pudo importar el CSV: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+    
+    /**
+     * Extrae el título y descripción del nombre del archivo CSV.
+     * Formato esperado: Titulo-Descripcion.csv o Titulo.csv
+     * Los guiones bajos se convierten a espacios.
+     */
+    private void extractTitleAndDescriptionFromFileName(String fileName) {
+        // Remover la extensión .csv
+        String nameWithoutExtension = fileName;
+        if (fileName.toLowerCase().endsWith(".csv")) {
+            nameWithoutExtension = fileName.substring(0, fileName.length() - 4);
+        }
+        
+        // Buscar el primer guion '-' como separador entre título y descripción
+        int separatorIndex = nameWithoutExtension.indexOf('-');
+        
+        String title;
+        String description;
+        
+        if (separatorIndex > 0) {
+            // Hay separador: título antes del guion, descripción después
+            title = nameWithoutExtension.substring(0, separatorIndex);
+            description = nameWithoutExtension.substring(separatorIndex + 1);
+        } else {
+            // No hay separador: todo es el título
+            title = nameWithoutExtension;
+            description = "";
+        }
+        
+        // Convertir guiones bajos a espacios
+        title = title.replace('_', ' ').trim();
+        description = description.replace('_', ' ').trim();
+        
+        // Actualizar los campos si no están vacíos
+        if (!title.isEmpty()) {
+            surveyTitleField.setText(title);
+        }
+        if (!description.isEmpty()) {
+            surveyDescField.setText(description);
+        }
+    }
+
+    // Lista para almacenar los usernames de las respuestas importadas
+    private List<String> importedResponseUsernames = new ArrayList<>();
+
+    /**
+     * Importa una encuesta desde un archivo CSV con el formato:
+     * Fila 1 (Question): Textos de las preguntas
+     * Fila 2 (Type): Tipos de pregunta (TEXTUAL, NUMERICAL, MULTIPLE_CHOICE[op1|op2|...](min=X;max=Y))
+     * Fila 3 (Required): Si cada pregunta es obligatoria (true/false)
+     * Filas 4+: Respuestas (opcionales) - primera columna es username/ID del respondedor
+     */
+    private void importSurveyFromCSV(File file) throws IOException {
+        List<String[]> rows = new ArrayList<>();
+        
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Parsear CSV respetando comas dentro de corchetes y paréntesis
+                rows.add(parseCSVLine(line));
+            }
+        }
+
+        if (rows.size() < 3) {
+            throw new IOException("El archivo CSV debe tener al menos 3 filas (Question, Type y Required).");
+        }
+
+        String[] questionRow = rows.get(0);
+        String[] typeRow = rows.get(1);
+        String[] requiredRow = rows.get(2);
+
+        // Validar que las filas comiencen correctamente
+        if (questionRow.length == 0 || !questionRow[0].equalsIgnoreCase("Question")) {
+            throw new IOException("La primera fila debe comenzar con 'Question'.");
+        }
+        if (typeRow.length == 0 || !typeRow[0].equalsIgnoreCase("Type")) {
+            throw new IOException("La segunda fila debe comenzar con 'Type'.");
+        }
+        if (requiredRow.length == 0 || !requiredRow[0].equalsIgnoreCase("Required")) {
+            throw new IOException("La tercera fila debe comenzar con 'Required'.");
+        }
+
+        // Limpiar preguntas existentes
+        questionList.clear();
+        importedResponses.clear();
+        importedResponseUsernames.clear();
+
+        // Procesar cada columna (desde la columna 1, la 0 es el identificador de fila)
+        int numQuestions = Math.min(questionRow.length, Math.min(typeRow.length, requiredRow.length)) - 1;
+        
+        for (int i = 1; i <= numQuestions; i++) {
+            String questionText = i < questionRow.length ? questionRow[i].trim() : "";
+            String typeStr = i < typeRow.length ? typeRow[i].trim() : "TEXTUAL";
+            String requiredStr = i < requiredRow.length ? requiredRow[i].trim() : "true";
+
+            Question question = createQuestionFromType(questionList.size(), typeStr);
+            question.setQuestionText(questionText);
+            question.setRequired(requiredStr.equalsIgnoreCase("true") || requiredStr.equals("1"));
+            questionList.add(question);
+        }
+
+        // Procesar respuestas (filas 4 en adelante)
+        for (int rowIdx = 3; rowIdx < rows.size(); rowIdx++) {
+            String[] responseRow = rows.get(rowIdx);
+            if (responseRow.length == 0) continue;
+            
+            // Primera columna es el username/ID del respondedor
+            String responderUsername = responseRow[0].trim();
+            if (responderUsername.isEmpty()) {
+                responderUsername = "imported_user_" + (rowIdx - 2);
+            }
+            
+            List<String> responseAnswers = new ArrayList<>();
+            for (int i = 1; i <= numQuestions && i < responseRow.length; i++) {
+                responseAnswers.add(responseRow[i].trim());
+            }
+            
+            // Rellenar respuestas faltantes con cadenas vacías
+            while (responseAnswers.size() < numQuestions) {
+                responseAnswers.add("");
+            }
+            
+            if (!responseAnswers.stream().allMatch(String::isEmpty)) {
+                importedResponses.add(responseAnswers);
+                importedResponseUsernames.add(responderUsername);
+            }
+        }
+
+        renderQuestions();
+    }
+
+    /**
+     * Parsea una línea CSV respetando comas dentro de corchetes, paréntesis y comillas.
+     */
+    private String[] parseCSVLine(String line) {
+        List<String> result = new ArrayList<>();
+        StringBuilder current = new StringBuilder();
+        boolean inBrackets = false;
+        boolean inParens = false;
+        boolean inQuotes = false;
+
+        for (int i = 0; i < line.length(); i++) {
+            char c = line.charAt(i);
+
+            if (c == '"' && !inBrackets && !inParens) {
+                inQuotes = !inQuotes;
+            } else if (c == '[' && !inQuotes) {
+                inBrackets = true;
+                current.append(c);
+            } else if (c == ']' && !inQuotes) {
+                inBrackets = false;
+                current.append(c);
+            } else if (c == '(' && !inQuotes) {
+                inParens = true;
+                current.append(c);
+            } else if (c == ')' && !inQuotes) {
+                inParens = false;
+                current.append(c);
+            } else if (c == ',' && !inBrackets && !inParens && !inQuotes) {
+                result.add(current.toString());
+                current = new StringBuilder();
+            } else {
+                current.append(c);
+            }
+        }
+        result.add(current.toString());
+
+        return result.toArray(new String[0]);
+    }
+
+    /**
+     * Crea una pregunta a partir de la cadena de tipo del CSV.
+     * Formato: MULTIPLE_CHOICE[op1|op2|op3](min=1;max=2)
+     */
+    private Question createQuestionFromType(int index, String typeStr) {
+        String originalTypeStr = typeStr;
+        typeStr = typeStr.trim().toUpperCase();
+
+        if (typeStr.startsWith("MULTIPLE_CHOICE")) {
+            MultipleChoiceQuestion mcq = new MultipleChoiceQuestion(index, "TEMP_ID");
+            
+            // Extraer opciones si existen: MULTIPLE_CHOICE[op1|op2|op3]
+            int bracketStart = originalTypeStr.indexOf('[');
+            int bracketEnd = originalTypeStr.indexOf(']');
+            
+            if (bracketStart != -1 && bracketEnd != -1 && bracketEnd > bracketStart) {
+                String optionsStr = originalTypeStr.substring(bracketStart + 1, bracketEnd);
+                String[] options = optionsStr.split("\\|");
+                
+                // Limpiar opciones por defecto
+                while (mcq.getOptions().size() > 0) {
+                    mcq.removeOption(0);
+                }
+                
+                for (int i = 0; i < options.length; i++) {
+                    OptionQuestion opt = new OptionQuestion(i, "TEMP_ID");
+                    opt.setOptionText(options[i].trim());
+                    mcq.addOption(opt);
+                }
+            } else {
+                // Sin opciones especificadas, crear 2 por defecto
+                OptionQuestion opt1 = new OptionQuestion(0, "TEMP_ID");
+                opt1.setOptionText("Opción 1");
+                OptionQuestion opt2 = new OptionQuestion(1, "TEMP_ID");
+                opt2.setOptionText("Opción 2");
+                mcq.addOption(opt1);
+                mcq.addOption(opt2);
+            }
+            
+            // Extraer min/max si existen: (min=1;max=2)
+            int parenStart = originalTypeStr.indexOf('(');
+            int parenEnd = originalTypeStr.indexOf(')');
+            if (parenStart != -1 && parenEnd != -1 && parenEnd > parenStart) {
+                String configStr = originalTypeStr.substring(parenStart + 1, parenEnd).toLowerCase();
+                // Parsear min=X;max=Y
+                for (String part : configStr.split(";")) {
+                    part = part.trim();
+                    if (part.startsWith("min=")) {
+                        try {
+                            int minVal = Integer.parseInt(part.substring(4).trim());
+                            mcq.setMinSelections(Math.max(1, Math.min(minVal, mcq.getOptions().size())));
+                        } catch (NumberFormatException ignored) {}
+                    } else if (part.startsWith("max=")) {
+                        try {
+                            int maxVal = Integer.parseInt(part.substring(4).trim());
+                            mcq.setMaxSelections(Math.max(1, Math.min(maxVal, mcq.getOptions().size())));
+                        } catch (NumberFormatException ignored) {}
+                    }
+                }
+            }
+            
+            return mcq;
+        } else if (typeStr.equals("NUMERICAL") || typeStr.equals("NUMERICA") || typeStr.equals("NUMÉRICA")) {
+            Question q = new Question(index, "TEMP_ID");
+            q.setTypeQuestion(TypeQuestion.NUMERICAL);
+            return q;
+        } else {
+            // Por defecto: TEXTUAL
+            Question q = new Question(index, "TEMP_ID");
+            q.setTypeQuestion(TypeQuestion.TEXTUAL);
+            return q;
+        }
+    }
+
+    /**
+     * Guarda las respuestas importadas como respuestas reales de la encuesta.
+     */
+    private void saveImportedResponses(String surveyId) {
+        if (importedResponses.isEmpty()) return;
+
+        for (int respIdx = 0; respIdx < importedResponses.size(); respIdx++) {
+            List<String> responseAnswers = importedResponses.get(respIdx);
+            String username = respIdx < importedResponseUsernames.size() 
+                    ? importedResponseUsernames.get(respIdx) 
+                    : "imported_user_" + respIdx;
+            
+            try {
+                String responseId = responseController.startResponseAndGetId(surveyId, username);
+                
+                for (int qIdx = 0; qIdx < responseAnswers.size() && qIdx < questionList.size(); qIdx++) {
+                    String answerValue = responseAnswers.get(qIdx);
+                    if (answerValue == null || answerValue.isEmpty()) continue;
+
+                    Question q = questionList.get(qIdx);
+                    TypeQuestion type = q.getTypeQuestion();
+
+                    if (type == TypeQuestion.NUMERICAL) {
+                        try {
+                            Double numValue = Double.parseDouble(answerValue);
+                            responseController.updateAnswer(surveyId, responseId, qIdx, numValue);
+                        } catch (NumberFormatException e) {
+                            // Ignorar respuestas numéricas inválidas
+                        }
+                    } else if (type == TypeQuestion.MULTIPLE_CHOICE) {
+                        // Convertir nombres de opciones a índices numéricos
+                        String indices = convertOptionsToIndices(answerValue, q);
+                        responseController.updateAnswer(surveyId, responseId, qIdx, indices, type);
+                    } else {
+                        // TEXTUAL
+                        responseController.updateAnswer(surveyId, responseId, qIdx, answerValue, type);
+                    }
+                }
+                
+                responseController.incrementResponseCount(surveyId);
+            } catch (Exception e) {
+                System.err.println("Error al guardar respuesta importada: " + e.getMessage());
+            }
+        }
+    }
+    
+    /**
+     * Convierte los nombres de opciones (separados por |) a índices numéricos (separados por espacios).
+     * Ejemplo: "Azul|Verde" -> "1 2" (si Azul es índice 1 y Verde es índice 2)
+     */
+    private String convertOptionsToIndices(String optionNames, Question question) {
+        if (!(question instanceof MultipleChoiceQuestion mcq)) {
+            return optionNames;
+        }
+        
+        // Si ya son índices numéricos separados por espacios, devolverlos directamente
+        if (optionNames.matches("[0-9\\s]+")) {
+            return optionNames;
+        }
+        
+        List<OptionQuestion> options = mcq.getOptions();
+        String[] selectedNames = optionNames.split("\\|");
+        StringBuilder indices = new StringBuilder();
+        
+        for (String name : selectedNames) {
+            String trimmedName = name.trim();
+            for (int i = 0; i < options.size(); i++) {
+                if (options.get(i).getOptionText().equalsIgnoreCase(trimmedName)) {
+                    if (indices.length() > 0) indices.append(" ");
+                    indices.append(i);
+                    break;
+                }
+            }
+        }
+        
+        return indices.toString();
     }
 
     // =========================================
@@ -575,6 +942,15 @@ public class CreateSurveyViewController implements Initializable {
         Spinner<Integer> minSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMinSelections());
         minSpinner.getStyleClass().add("selection-spinner");
         minSpinner.setEditable(true);
+
+        // Filter to allow only integer input
+        minSpinner.getEditor().setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("\\d*")) {
+                return change;
+            }
+            return null;
+        }));
+
         minSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
             try {
                 if (newVal <= mcq.getMaxSelections() && newVal <= mcq.getOptions().size()) {
@@ -594,6 +970,15 @@ public class CreateSurveyViewController implements Initializable {
         Spinner<Integer> maxSpinner = new Spinner<>(1, mcq.getOptions().size(), mcq.getMaxSelections());
         maxSpinner.getStyleClass().add("selection-spinner");
         maxSpinner.setEditable(true);
+
+        // Filter to allow only integer input
+        maxSpinner.getEditor().setTextFormatter(new TextFormatter<>(change -> {
+            if (change.getControlNewText().matches("\\d*")) {
+                return change;
+            }
+            return null;
+        }));
+
         maxSpinner.valueProperty().addListener((obs, oldVal, newVal) -> {
             try {
                 if (newVal >= mcq.getMinSelections() && newVal <= mcq.getOptions().size()) {

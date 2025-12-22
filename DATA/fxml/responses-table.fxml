@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane styleClass="main-container" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            stylesheets="/css/surveys.css, /css/responses-table.css">
+
+    <!-- SIDEBAR -->
+    <left>
+        <VBox styleClass="side-bar">
+
+            <!-- Perfil -->
+            <HBox alignment="CENTER_LEFT" spacing="15.0" styleClass="user-profile">
+                <Label fx:id="avatarLabel" alignment="CENTER" text="" styleClass="avatar-circle"/>
+                <Label fx:id="usernameLabel" text="" styleClass="username-text"/>
+            </HBox>
+
+            <!-- Navegación -->
+            <VBox styleClass="nav-bar" spacing="15.0" VBox.vgrow="ALWAYS">
+                <VBox.margin>
+                    <Insets top="35.0"/>
+                </VBox.margin>
+
+                <!-- Botón de Inicio -->
+                <Button fx:id="home" styleClass="nav-btn, icon, icon-home" text="Inicio" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToHome"/>
+
+                <!-- Botón de Mis Encuestas -->
+                <Button fx:id="mySurveys" styleClass="nav-btn, nav-btn-active, icon, icon-survey" text="Mis Encuestas"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMySurveys"/>
+
+                <!-- Botón de Mis Borradores -->
+                <Button fx:id="myDrafts" styleClass="nav-btn, icon, icon-draft" text="Mis Borradores"
+                        maxWidth="Infinity" alignment="BASELINE_LEFT" onAction="#goToMyDrafts"/>
+
+                <!-- Botón de Crear Encuesta -->
+                <Button fx:id="createSurvey" styleClass="nav-btn, create-btn, icon, icon-create"
+                        text="Crear Encuesta" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#goToCreateSurvey">
+                    <VBox.margin>
+                        <Insets bottom="15.0"/>
+                    </VBox.margin>
+                </Button>
+
+                <!-- Empujar contenido abajo -->
+                <Region VBox.vgrow="ALWAYS"/>
+
+                <!-- Botón de Cerrar Sesión -->
+                <Button styleClass="nav-btn, icon, icon-logout" text="Cerrar Sesión" maxWidth="Infinity"
+                        alignment="BASELINE_LEFT" onAction="#handleLogout"/>
+            </VBox>
+        </VBox>
+    </left>
+
+    <!-- CONTENIDO CENTRAL -->
+    <center>
+        <VBox alignment="TOP_CENTER" styleClass="content-area" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="30" right="40" bottom="30" left="40"/>
+            </padding>
+
+            <!-- HEADER -->
+            <VBox styleClass="responses-table-header" spacing="15" maxWidth="Infinity">
+                <!-- Título y estado -->
+                <HBox alignment="CENTER_LEFT" spacing="15">
+                    <Label fx:id="surveyTitleLabel" text="Respuestas de la Encuesta" styleClass="responses-table-title"/>
+                    <Label text="VISTA TABLA" styleClass="view-mode-badge"/>
+                </HBox>
+
+                <!-- Estadísticas -->
+                <HBox styleClass="stats-container" spacing="20">
+                    <VBox alignment="CENTER" styleClass="stat-box">
+                        <Label fx:id="responsesCountLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Total Respuestas" styleClass="stat-label"/>
+                    </VBox>
+                    <VBox alignment="CENTER" styleClass="stat-box">
+                        <Label fx:id="filteredCountLabel" text="0" styleClass="stat-number"/>
+                        <Label text="Mostrando" styleClass="stat-label"/>
+                    </VBox>
+                    <Region HBox.hgrow="ALWAYS"/>
+                    <Label fx:id="activeFiltersLabel" text="" styleClass="active-filters-indicator"/>
+                </HBox>
+
+                <!-- Info de filtros -->
+                <HBox alignment="CENTER_LEFT" styleClass="filter-hint-box">
+                    <Label text="💡 Haz clic en 🔍 en cada columna para filtrar. Haz clic en el encabezado para ordenar." 
+                           styleClass="filter-hint-text"/>
+                </HBox>
+            </VBox>
+
+            <!-- TABLA -->
+            <VBox VBox.vgrow="ALWAYS" styleClass="table-container">
+                <VBox.margin>
+                    <Insets top="20"/>
+                </VBox.margin>
+                
+                <ScrollPane fx:id="scrollPane" fitToWidth="true" fitToHeight="true" VBox.vgrow="ALWAYS"
+                            styleClass="scroll-pane-transparent">
+                    <TableView fx:id="responsesTable" styleClass="responses-table" VBox.vgrow="ALWAYS">
+                        <columnResizePolicy>
+                            <TableView fx:constant="UNCONSTRAINED_RESIZE_POLICY"/>
+                        </columnResizePolicy>
+                    </TableView>
+                </ScrollPane>
+            </VBox>
+
+        </VBox>
+    </center>
+
+    <!-- BARRA INFERIOR -->
+    <bottom>
+        <HBox styleClass="bottom-bar" alignment="CENTER" spacing="15" BorderPane.alignment="CENTER">
+            <Button text="← Volver a Encuesta" styleClass="btn-back" onAction="#handleBack"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Limpiar Filtros" styleClass="btn-secondary" onAction="#handleClearAllFilters"/>
+            <Button text="Vista Por Pregunta" styleClass="btn-view-mode" onAction="#handleViewByQuestions"/>
+            <Button text="📥 Exportar CSV" styleClass="btn-export" onAction="#handleExportCSV"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>

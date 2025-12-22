@@ -610,6 +610,44 @@ public class SurveyService {
         return survey;
     }
 
+    /**
+     * Cierra una encuesta publicada (cambia de PUBLISHED a CLOSED).
+     *
+     * @param surveyId identificador de la encuesta a cerrar
+     * @return encuesta cerrada
+     * @throws SurveyException si la encuesta no puede cerrarse
+     */
+    public Survey closeSurvey(String surveyId) {
+        checkUserLoggedin();
+        checkSurveyExists(surveyId);
+
+        Survey survey = surveyRepository.getSurvey(surveyId);
+
+        // Validar que el usuario es el propietario
+        if (!survey.getCREATOR_USERNAME().equals(userController.getUsernameLoggedIn())) {
+            throw new SurveyException("No tienes permisos para cerrar esta encuesta.");
+        }
+
+        // Validar que está en PUBLISHED
+        if (survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.CLOSED)) {
+            throw new SurveyException("La encuesta ya está cerrada.");
+        }
+
+        if (survey.getSurveyStatus().equals(domain.model.enums.SurveyStatus.DRAFT)) {
+            throw new SurveyException("No se puede cerrar una encuesta en borrador. Primero debes publicarla.");
+        }
+
+        // Cambiar estado a CLOSED
+        survey.setSurveyStatus(domain.model.enums.SurveyStatus.CLOSED);
+
+        // Guardar cambios
+        surveyRepository.addSurvey(survey);
+
+        System.out.println("[LOG] Encuesta " + surveyId + " cerrada por usuario " + userController.getUsernameLoggedIn());
+
+        return survey;
+    }
+
     // ───────────────────────────────────────────────
     // Manipulación de preguntas
     // ───────────────────────────────────────────────

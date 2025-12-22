@@ -193,6 +193,26 @@ public class ResponseService {
 
         return response;
     }
+    /**
+     * Inicia una nueva respuesta para una encuesta con un username específico.
+     * Usado para importar respuestas desde CSV.
+     *
+     * @param surveyId identificador de la encuesta
+     * @param responderUsername nombre de usuario del respondedor
+     * @return identificador de la nueva respuesta
+     */
+    public String startResponseAndGetId(String surveyId, String responderUsername) {
+        checkUserLoggedin();
+        List<Question> questions = surveyService.getQuestions(surveyId); // this method verify that the survey exists
+        String responseId = responseRepository.getValidResponseId();
+        Response response = new Response(responseId, surveyId, responderUsername, questions);
+        if (!responseRepository.existsSurveyEntry(surveyId))
+            responseRepository.addSurveyEntry(surveyId);
+        responseRepository.addResponse(surveyId, response);
+        // No añadir al índice del usuario si es importado (el username puede no existir en el sistema)
+        return responseId;
+    }
+
 
 
 
@@ -337,5 +357,16 @@ public class ResponseService {
 
         responseRepository.updateResponse(surveyId, response);
     }
+
+    /**
+     * Devuelve todas las respuestas enviadas de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @return lista de objetos {@link Response} correspondientes a la encuesta
+     */
+    public List<Response> getAllResponses(String surveyId) {
+        return responseRepository.getResponsesBySurveyId(surveyId);
+    }
+
 
 }

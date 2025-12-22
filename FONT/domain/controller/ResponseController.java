@@ -8,11 +8,11 @@ import java.util.List;
 
 /**
  * Controlador responsable de gestionar las respuestas de los usuarios a las encuestas.
- * 
+ *
  * Actúa como intermediario entre la capa de presentación y la lógica de negocio
  * implementada en {@link ResponseService}, encargándose de iniciar, consultar y
  * actualizar las respuestas asociadas a cada encuesta.
- * 
+ *
  * Permite acceder a las preguntas de una encuesta, iniciar nuevas respuestas,
  * recuperar respuestas existentes y actualizar sus valores según el tipo de pregunta.
  */
@@ -39,7 +39,7 @@ public class ResponseController {
 
     /**
      * Inicia una nueva respuesta asociada a una encuesta.
-     * 
+     *
      * Este método crea una nueva instancia de {@link Response} y devuelve
      * el identificador único generado para dicha respuesta.
      *
@@ -49,7 +49,21 @@ public class ResponseController {
     public Response startResponse(String surveyId) {
         return responseService.startResponse(surveyId);
     }
-    
+
+    /**
+     * Inicia una nueva respuesta asociada a una encuesta.
+     *
+     * Este método crea una nueva instancia de {@link Response} y devuelve
+     * el identificador único generado para dicha respuesta.
+     *
+     * @param surveyId identificador de la encuesta a la que pertenece la respuesta
+     * @return identificador único de la nueva respuesta
+     */
+    public String startResponseAndGetId(String surveyId, String responderUsername) {
+        return responseService.startResponseAndGetId(surveyId, responderUsername);
+    }
+
+
     /**
      * Devuelve la lista completa de preguntas asociadas a una encuesta.
      *
@@ -131,6 +145,18 @@ public class ResponseController {
 
     /**
      * Publica una respuesta específica de una encuesta.
+     * Devuelve todas las respuestas enviadas de una encuesta.
+     *
+     * @param surveyId identificador de la encuesta
+     * @return lista de objetos {@link Response} correspondientes a la encuesta
+     */
+    public List<Response> getAllResponses(String surveyId) {
+        return responseService.getAllResponses(surveyId);
+    }
+
+    /**
+     * Marca una respuesta como enviada, estableciendo la fecha y hora de envío.
+>>>>>>> main
      *
      * @param surveyId identificador de la encuesta
      * @param responseId identificador de la respuesta

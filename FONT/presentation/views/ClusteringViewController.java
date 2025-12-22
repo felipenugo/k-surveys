@@ -71,7 +71,7 @@ public class ClusteringViewController implements Initializable {
 
     // Colores compartidos para clusters (barras y puntos)
     private static final String[] CLUSTER_COLORS = {
-        "#3498db", "#e74c3c", "#2ecc71", "#9b59b6", "#f39c12", "#1abc9c", "#e91e63", "#00bcd4"
+        "#3498db", "#ce3a2aff", "#2ecc71", "#9b59b6", "#f39c12", "#1abc9c", "#e91e63", "#00bcd4"
     };
 
     private String currentAnalysisId;

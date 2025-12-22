@@ -55,6 +55,16 @@ public class CtrlDominioClustering {
     }
 
     /**
+     * Obtiene todas las respuestas de una encuesta.
+     *
+     * @param surveyId ID de la encuesta
+     * @return Lista de respuestas de la encuesta
+     */
+    public List<Response> getResponses(String surveyId) {
+        return responseRepository.getResponsesBySurveyId(surveyId);
+    }
+
+    /**
      * Ejecuta un análisis de clustering sobre una encuesta.
      *
      * @param algorithmName  Nombre del algoritmo (KMeans, KMeans++, KMedoids)
