@@ -2,11 +2,37 @@ plugins {
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.1.0'
+    id 'edu.sc.seis.launch4j' version '3.0.5'
 }
 
 javafx {
     version = "21.0.2"
     modules = [ 'javafx.controls', 'javafx.fxml' ]
+}
+
+// Configuración de Launch4j para crear .exe de Windows
+launch4j {
+    mainClassName = 'presentation.main.MainLauncher'
+    icon = "${projectDir}/../DATA/img/icon/logo.ico"
+    outfile = 'K-SURVEYS.exe'
+    outputDir = "${projectDir}/../EXE"
+    jarTask = project.tasks.jar
+    
+    // Configuración del JRE
+    bundledJrePath = 'jre'
+    requires64Bit = true
+    jreMinVersion = '21'
+    
+    // Información del ejecutable
+    headerType = 'gui'
+    
+    // Metadatos del archivo
+    fileDescription = 'K-SURVEYS - Aplicación de Encuestas'
+    productName = 'K-SURVEYS'
+    companyName = 'PROP UPC'
+    copyright = '2025'
+    version = '1.0.0'
+    textVersion = '1.0.0'
 }
 
 group = 'presentation.main'
