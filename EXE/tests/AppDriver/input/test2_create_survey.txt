@@ -8,8 +8,9 @@ Descripcion encuesta 2
 4
 Pregunta textual 0
 S
+1
 4
-MultipleChoice
+MultipleChoice 1
 S
 2
 3

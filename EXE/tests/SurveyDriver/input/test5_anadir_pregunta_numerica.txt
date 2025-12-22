@@ -1,22 +1,31 @@
+1
+usuario_test1
+Password123!
 2
-TestUser1
-testuser1@gmail.com
-1234
-TestUser1
-1234
-2
-Prueba
-Prueba
+Título encuesta 2
+Descripcion encuesta 2
+1
 4
-Prueba Num
+Pregunta textual 0
+S
+1
+4
+MultipleChoice 1
+S
+2
+3
+Opcion 1
+Opcion 2
+Opcion 3
+1
+1
+4
+Pregunta numerica 2
 S
 3
-4
-Prueba NUM
-S
-4
+8
 9
+2
 S
-3
-3
-3
+4
+4
