@@ -5,6 +5,9 @@ REM Los scripts generados ejecutaran todos los inputs definidos en tests/DRIVER/
 set DRIVERS=SessionDriver ClusteringDriver SurveyDriver ResponseDriver MySurveysDriver AppDriver
 set LIB_DIR=..\lib
 
+REM Definir explicitamente los JARs de JavaFX para Windows
+set JAVAFX_PATH=%LIB_DIR%\javafx-base-21.0.2-win.jar;%LIB_DIR%\javafx-controls-21.0.2-win.jar;%LIB_DIR%\javafx-fxml-21.0.2-win.jar;%LIB_DIR%\javafx-graphics-21.0.2-win.jar
+
 if not exist "executables" mkdir "executables"
 
 for %%D in (%DRIVERS%) do (
@@ -22,7 +25,7 @@ for %%D in (%DRIVERS%) do (
         echo if exist "%%INPUT_DIR%%" ^(
         echo     for %%%%f in ^("%%INPUT_DIR%%\*.txt"^) do ^(
         echo         echo Ejecutando test: %%%%~nxf
-        echo         java --module-path "..\lib" --add-modules javafx.controls,javafx.fxml -cp "..\FormsApp.jar" presentation.driverMain.DriverMain ^< "%%%%f" ^> "%%OUTPUT_DIR%%\%%%%~nf.txt" 2^>^&1
+        echo         java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -cp "..\FormsApp.jar" presentation.driverMain.DriverMain ^< "%%%%f" ^> "%%OUTPUT_DIR%%\%%%%~nf.txt" 2^>^&1
         echo     ^)
         echo     echo.
         echo     echo Resultados guardados en %%OUTPUT_DIR%%

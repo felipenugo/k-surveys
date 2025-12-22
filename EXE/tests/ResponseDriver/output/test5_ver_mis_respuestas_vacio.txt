@@ -146,6 +146,24 @@ descripción: Descripcion encuesta 0, número de respuestas: 0
 id: 134, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
 descripción: Descripcion encuesta 1, número de respuestas: 0
 
+id: 135, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 136, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
+id: 137, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 138, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
+id: 139, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 140, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
 Selecciona el id de una encuesta: Error: La encuesta con id 0 no existe.
 1. Intentar de nuevo
 2. Volver atrás
@@ -225,6 +243,24 @@ id: 133, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
 descripción: Descripcion encuesta 0, número de respuestas: 0
 
 id: 134, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
+id: 135, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 136, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
+id: 137, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 138, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 1, número de respuestas: 0
+
+id: 139, título: Título encuesta 0, autor: usuario_test1, número de preguntas: 1
+descripción: Descripcion encuesta 0, número de respuestas: 0
+
+id: 140, título: Título encuesta 1, autor: usuario_test1, número de preguntas: 1
 descripción: Descripcion encuesta 1, número de respuestas: 0
 
 Selecciona el id de una encuesta: Error: La encuesta con id 2 no existe.

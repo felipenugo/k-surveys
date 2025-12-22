@@ -23,8 +23,10 @@ if [ ! -d "$LIB_DIR" ]; then
     exit 1
 fi
 
-# Ejecutar con JavaFX en el module-path
+# Ejecutar con JavaFX en el module-path (Apuntando explicitamente a las versiones de Linux)
 echo "Ejecutando FormsApp..."
-java --module-path "$LIB_DIR" \
+JAVAFX_PATH="$LIB_DIR/javafx-base-21.0.2-linux.jar:$LIB_DIR/javafx-controls-21.0.2-linux.jar:$LIB_DIR/javafx-fxml-21.0.2-linux.jar:$LIB_DIR/javafx-graphics-21.0.2-linux.jar"
+
+java --module-path "$JAVAFX_PATH" \
      --add-modules javafx.controls,javafx.fxml \
      -jar "$JAR_FILE"

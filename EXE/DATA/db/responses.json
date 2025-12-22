@@ -4,7 +4,7 @@
       "RESPONSE_ID": "0",
       "SURVEY_ID": "0",
       "RESPONDER_USERNAME": "usuario_test1",
-      "RESPONSE_STATUS": "DRAFT",
+      "RESPONSE_STATUS": "SUBMITTED",
       "ANSWERS": [
         {
           "answerText": "Respuesta textual 0",

@@ -90,7 +90,7 @@ Descripción: Descripcion encuesta 1
 Creador: usuario_test1
 Estado: DRAFT
 Número de preguntas: 0
-Fecha de creación: 2025-12-22T19:45:35.528128
+Fecha de creación: 2025-12-22T19:56:51.391394600
 ========================================
 
 --- CREAR ENCUESTA ---
@@ -164,13 +164,13 @@ Número de preguntas: 1
 ========================================
 
 ¿Estás seguro de que deseas PUBLICAR esta encuesta? Una vez publicada, no podrá editarse.
-Confirma (S/N): [LOG] Encuesta 134 registrada para usuario usuario_test1
-[LOG] Encuesta 134 publicada por usuario usuario_test1
+Confirma (S/N): [LOG] Encuesta 140 registrada para usuario usuario_test1
+[LOG] Encuesta 140 publicada por usuario usuario_test1
 
 ? Encuesta guardada y publicada correctamente
-ID: 134
+ID: 140
 Estado: PUBLICADA
-Fecha de publicación: 2025-12-22T19:45:35.564543
+Fecha de publicación: 2025-12-22T19:56:51.434005500
 --- K-SURVEY ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA

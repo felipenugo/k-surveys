@@ -5,6 +5,9 @@ REM Simula el comportamiento de gradlew jocs_proba
 set JAR_FILE=FormsApp.jar
 set LIB_DIR=%~dp0lib
 
+REM Definir explicitamente los JARs de JavaFX para Windows para evitar conflictos con los de Linux
+set JAVAFX_PATH=%LIB_DIR%\javafx-base-21.0.2-win.jar;%LIB_DIR%\javafx-controls-21.0.2-win.jar;%LIB_DIR%\javafx-fxml-21.0.2-win.jar;%LIB_DIR%\javafx-graphics-21.0.2-win.jar
+
 echo Ejecutando todos los tests usando presentation.driverMain.DriverMain...
 echo.
 
@@ -27,9 +30,9 @@ for /d %%D in (tests\*) do (
             
             REM Ejecutar DriverMain con el input actual y redirigir al output
             REM Se usa FormsApp.jar que contiene todas las dependencias (excepto JavaFX)
-            REM Se incluye el module-path para JavaFX
+            REM Se incluye el module-path apuntando a los JARs de Windows
             
-            java --module-path "%LIB_DIR%" --add-modules javafx.controls,javafx.fxml -cp "%JAR_FILE%" presentation.driverMain.DriverMain < "%%I" > "%%D\output\%%~nI.txt" 2>&1
+            java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -cp "%JAR_FILE%" presentation.driverMain.DriverMain < "%%I" > "%%D\output\%%~nI.txt" 2>&1
         )
     ) else (
         echo No se encontro carpeta 'input' en %%~nxD
