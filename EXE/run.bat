@@ -23,6 +23,9 @@ if not exist "%LIB_DIR%" (
     exit /b 1
 )
 
+REM Definir explicitamente los JARs de JavaFX para Windows para evitar conflictos con los de Linux
+set JAVAFX_PATH=%LIB_DIR%\javafx-base-21.0.2-win.jar;%LIB_DIR%\javafx-controls-21.0.2-win.jar;%LIB_DIR%\javafx-fxml-21.0.2-win.jar;%LIB_DIR%\javafx-graphics-21.0.2-win.jar
+
 REM Ejecutar con JavaFX en el module-path
 echo Ejecutando FormsApp...
-java --module-path "%LIB_DIR%" --add-modules javafx.controls,javafx.fxml -jar "%JAR_FILE%"
+java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -jar "%JAR_FILE%"
