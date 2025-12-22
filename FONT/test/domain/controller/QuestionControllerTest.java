@@ -24,6 +24,7 @@ public class QuestionControllerTest {
 
     @Before
     public void setUp() {
+        questionService = new QuestionService(null);
         questionController = new QuestionController(questionService);
     }
 

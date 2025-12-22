@@ -110,7 +110,9 @@
     "passwordHash": "f12ea00ca2c7f8d4bcb61786fa44d416525cb9b0a77990701b2175e653fb8517",
     "securityQuestion": "h",
     "securityAnswer": "hj",
-    "createdSurveysId": [],
+    "createdSurveysId": [
+      "119"
+    ],
     "respondedSurveysId": {
       "110": [
         "37"

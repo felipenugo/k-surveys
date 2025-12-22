@@ -234,5 +234,41 @@
         "isRequired": true
       }
     ]
+  },
+  "119": {
+    "SURVEY_ID": "119",
+    "title": "fadsf",
+    "description": "asfdasf",
+    "CREATOR_USERNAME": "arnau",
+    "CREATED_AT": "2025-12-22T18:06:42.6292587",
+    "PUBLISHED_AT": "2025-12-22T18:06:42.6327784",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "minSelections": 1,
+        "maxSelections": 2,
+        "options": [
+          {
+            "questionIndex": 0,
+            "surveyId": "119",
+            "optionText": "Opción 1dfasdf"
+          },
+          {
+            "questionIndex": 1,
+            "surveyId": "119",
+            "optionText": "Opción 2dfsfdf"
+          }
+        ],
+        "questionIndex": 0,
+        "SURVEY_ID": "119",
+        "typeQuestion": "MULTIPLE_CHOICE",
+        "questionText": "pregunta opciones",
+        "isRequired": true
+      }
+    ]
   }
 }
