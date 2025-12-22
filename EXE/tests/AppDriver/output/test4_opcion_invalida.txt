@@ -1,0 +1,15 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: Opción no válida.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

@@ -1,0 +1,77 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: Error: El usuario dm_user3 ya existe. Por favor escoge otro nombre de usuario.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: Opción no válida. Selecciona una opcion del menu.
+1. Intentar registrarse de nuevo.
+2. Volver al menú principal.
+Opción: -----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

@@ -1,0 +1,114 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido usuario_test1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: 120 - Título encuesta 0
+121 - Título encuesta 1
+123 - Título encuesta 0
+124 - Título encuesta 1
+125 - Título encuesta 0
+126 - Título encuesta 1
+127 - Título encuesta 0
+128 - Título encuesta 1
+129 - Título encuesta 0
+130 - Título encuesta 1
+131 - Título encuesta 0
+132 - Título encuesta 1
+133 - Título encuesta 0
+134 - Título encuesta 1
+--- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- SALIENDO DE MIS ENCUESTAS ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto usuario_test1.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

@@ -1,0 +1,27 @@
+{
+  "usuario_test1": {
+    "USERNAME": "usuario_test1",
+    "email": "test1@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [
+      "0",
+      "1"
+    ],
+    "respondedSurveysId": {
+      "0": [
+        "0"
+      ]
+    }
+  },
+  "TestUserManual1": {
+    "USERNAME": "TestUserManual1",
+    "email": "testuserManual1@gmail.com",
+    "passwordHash": "d35c9a635ec8ab75ceab0ea6105a96968f6c276a82471242a0bc204a138596c1",
+    "securityQuestion": "1234",
+    "securityAnswer": "TestUserManual2",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  }
+}

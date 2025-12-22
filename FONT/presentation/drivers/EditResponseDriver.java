@@ -197,7 +197,7 @@ public class EditResponseDriver {
             }
         } while (!exit);
         responseController.incrementResponseCount(surveyId);
-        responseController.submitResponse(surveyId, responseId);
+        responseController.publishResponse(surveyId, responseId);
         System.out.println("--- enviando respuesta ---");
     }
 }

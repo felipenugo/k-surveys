@@ -125,5 +125,103 @@
         "39"
       ]
     }
+  },
+  "usuario_test1": {
+    "USERNAME": "usuario_test1",
+    "email": "test1@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [
+      "120",
+      "121",
+      "123",
+      "124",
+      "125",
+      "126",
+      "127",
+      "128",
+      "129",
+      "130",
+      "131",
+      "132",
+      "133",
+      "134"
+    ],
+    "respondedSurveysId": {}
+  },
+  "TestUserManual1": {
+    "USERNAME": "TestUserManual1",
+    "email": "testuserManual1@gmail.com",
+    "passwordHash": "d35c9a635ec8ab75ceab0ea6105a96968f6c276a82471242a0bc204a138596c1",
+    "securityQuestion": "1234",
+    "securityAnswer": "TestUserManual2",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "dm_user1": {
+    "USERNAME": "dm_user1",
+    "email": "dm1@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "dm_user2": {
+    "USERNAME": "dm_user2",
+    "email": "dm2@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "dm_creator": {
+    "USERNAME": "dm_creator",
+    "email": "creator@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [
+      "122"
+    ],
+    "respondedSurveysId": {}
+  },
+  "dm_user3": {
+    "USERNAME": "dm_user3",
+    "email": "dm3@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "dm_user4": {
+    "USERNAME": "dm_user4",
+    "email": "dm4@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "sd_user1": {
+    "USERNAME": "sd_user1",
+    "email": "sd1@gmail.com",
+    "passwordHash": "a109e36947ad56de1dca1cc49f0ef8ac9ad9a7b1aa0df41fb3c4cb73c1ff01ea",
+    "securityQuestion": "Pregunta de seguridad?",
+    "securityAnswer": "Respuesta seguridad",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
+  },
+  "TestUser1": {
+    "USERNAME": "TestUser1",
+    "email": "testuser1@gmail.com",
+    "passwordHash": "23265dd1ebd4afa261b2a9e0950e7a58fa12ff74e9380b819ab25e27d8544457",
+    "securityQuestion": "4",
+    "securityAnswer": "Prueba",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }

@@ -1,0 +1,308 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una minúscula
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una minúscula
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una minúscula
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una minúscula
+- Debe contener al menos un número
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: La contraseña no es segura:
+- Debe tener al menos 8 caracteres
+- Debe contener al menos una MAYÚSCULA
+- Debe contener al menos una minúscula
+- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+
+Por favor, vuelve a intentarlo.
+
+Introduce tu contraseña: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

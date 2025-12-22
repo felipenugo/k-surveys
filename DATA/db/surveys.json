@@ -270,5 +270,335 @@
         "isRequired": true
       }
     ]
+  },
+  "120": {
+    "SURVEY_ID": "120",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:02:28.429998",
+    "PUBLISHED_AT": "2025-12-22T19:02:28.4381543",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "120",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "121": {
+    "SURVEY_ID": "121",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:02:28.8180599",
+    "PUBLISHED_AT": "2025-12-22T19:02:28.8272794",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "121",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "122": {
+    "SURVEY_ID": "122",
+    "title": "Encuesta Simple",
+    "description": "Descripción de prueba",
+    "CREATOR_USERNAME": "dm_creator",
+    "CREATED_AT": "2025-12-22T19:02:32.2412203",
+    "PUBLISHED_AT": "2025-12-22T19:02:32.2516027",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "122",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta de prueba?",
+        "isRequired": true
+      }
+    ]
+  },
+  "123": {
+    "SURVEY_ID": "123",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:13:33.999404",
+    "PUBLISHED_AT": "2025-12-22T19:13:34.0083088",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "123",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "124": {
+    "SURVEY_ID": "124",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:13:34.3729783",
+    "PUBLISHED_AT": "2025-12-22T19:13:34.3832393",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "124",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "125": {
+    "SURVEY_ID": "125",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:14:52.0140258",
+    "PUBLISHED_AT": "2025-12-22T19:14:52.0240551",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "125",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "126": {
+    "SURVEY_ID": "126",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:14:52.397394",
+    "PUBLISHED_AT": "2025-12-22T19:14:52.4058675",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "126",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "127": {
+    "SURVEY_ID": "127",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:17:02.1083717",
+    "PUBLISHED_AT": "2025-12-22T19:17:02.1173217",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "127",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "128": {
+    "SURVEY_ID": "128",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:17:02.5107708",
+    "PUBLISHED_AT": "2025-12-22T19:17:02.5198392",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "128",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "129": {
+    "SURVEY_ID": "129",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:31:05.5538027",
+    "PUBLISHED_AT": "2025-12-22T19:31:05.5643923",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "129",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "130": {
+    "SURVEY_ID": "130",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:31:05.9747889",
+    "PUBLISHED_AT": "2025-12-22T19:31:05.9835485",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "130",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "131": {
+    "SURVEY_ID": "131",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:44:53.2846938",
+    "PUBLISHED_AT": "2025-12-22T19:44:53.2936062",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "131",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "132": {
+    "SURVEY_ID": "132",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:44:53.6739354",
+    "PUBLISHED_AT": "2025-12-22T19:44:53.6830345",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "132",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "133": {
+    "SURVEY_ID": "133",
+    "title": "Título encuesta 0",
+    "description": "Descripcion encuesta 0",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:45:35.1460477",
+    "PUBLISHED_AT": "2025-12-22T19:45:35.1560633",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "133",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
+  },
+  "134": {
+    "SURVEY_ID": "134",
+    "title": "Título encuesta 1",
+    "description": "Descripcion encuesta 1",
+    "CREATOR_USERNAME": "usuario_test1",
+    "CREATED_AT": "2025-12-22T19:45:35.5560196",
+    "PUBLISHED_AT": "2025-12-22T19:45:35.564543",
+    "surveyStatus": "PUBLISHED",
+    "avgRating": 0.0,
+    "totalRating": 0.0,
+    "ratingCount": 0,
+    "views": 0,
+    "questions": [
+      {
+        "questionIndex": 0,
+        "SURVEY_ID": "134",
+        "typeQuestion": "TEXTUAL",
+        "questionText": "Pregunta textual 0",
+        "isRequired": true
+      }
+    ]
   }
 }

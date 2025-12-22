@@ -1,0 +1,145 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido usuario_test1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: 
+Encuesta inicializada correctamente.
+(El ID será asignado al publicar)
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR COMO BORRADOR O PUBLICAR
+Opción: 
+========================================
+ID: (Se asignará automáticamente al publicar)
+Título: Título encuesta 2
+Descripción: Descripcion encuesta 2
+Creador: usuario_test1
+Estado: DRAFT
+Número de preguntas: 0
+Fecha de creación: 2025-12-22T19:45:35.906117600
+========================================
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR COMO BORRADOR O PUBLICAR
+Opción: 
+========================================
+       CREAR NUEVA PREGUNTA
+========================================
+Introduce el texto de la pregunta: ¿Esta pregunta es obligatoria? (S/N, por defecto S): 
+--- TIPO DE PREGUNTA ---
+1. PREGUNTA TEXTUAL
+2. PREGUNTA DE OPCIÓN MÚLTIPLE
+3. PREGUNTA NUMÉRICA
+4. CANCELAR
+Opción: 
+Creación cancelada.
+No se añadió ninguna pregunta.
+
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR COMO BORRADOR O PUBLICAR
+Opción: 
+Se ha llegado al final de la entrada de datos.
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: -----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

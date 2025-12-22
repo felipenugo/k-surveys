@@ -1,0 +1,158 @@
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido usuario_test1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: 120 - Título encuesta 0
+121 - Título encuesta 1
+123 - Título encuesta 0
+124 - Título encuesta 1
+125 - Título encuesta 0
+126 - Título encuesta 1
+127 - Título encuesta 0
+128 - Título encuesta 1
+129 - Título encuesta 0
+130 - Título encuesta 1
+131 - Título encuesta 0
+132 - Título encuesta 1
+133 - Título encuesta 0
+134 - Título encuesta 1
+--- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ejecutar Nuevo Análisis ---
+Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
+Opción: Ejecutando análisis... Esto puede tardar un momento.
+Ha ocurrido un error: Survey with ID 2 not found.
+--- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ejecutar Nuevo Análisis ---
+Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
+Opción: Métrica no válida.
+--- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Encontrar K Óptima ---
+Introduce el ID de la encuesta: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Algoritmo no válido.
+--- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ver Resultados de Análisis ---
+No hay análisis guardados para ver.
+--- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: Error de entrada/salida: No line found
+--- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- SALIENDO DE MIS ENCUESTAS ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: -----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
+-----------------------------------

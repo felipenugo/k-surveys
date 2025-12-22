@@ -1,0 +1,19 @@
+{
+  "0": {
+    "0": {
+      "RESPONSE_ID": "0",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "usuario_test1",
+      "RESPONSE_STATUS": "DRAFT",
+      "ANSWERS": [
+        {
+          "answerText": "Respuesta textual 0",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "0",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    }
+  }
+}

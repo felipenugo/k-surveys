@@ -1,40 +1,41 @@
 @echo off
 REM Script para ejecutar todos los tests en Windows
+REM Simula el comportamiento de gradlew jocs_proba
 
 set JAR_FILE=FormsApp.jar
-set JAVA=java
+set LIB_DIR=%~dp0lib
 
-REM Verificar si el JAR existe
-if not exist %JAR_FILE% (
-    echo ERROR: %JAR_FILE% no encontrado.
-    echo Por favor, compila primero el proyecto:
-    echo   cd ..\FONT
-    echo   gradlew.bat jar
-    exit /b 1
-)
-
-echo Ejecutando todos los tests:
+echo Ejecutando todos los tests usando presentation.driverMain.DriverMain...
 echo.
 
-REM Lista de drivers
-set DRIVERS=SessionDriver ClusteringDriver SurveyDriver ResponseDriver MySurveysDriver AppDriver
+if not exist "tests" (
+    echo El directorio 'tests' no existe.
+    pause
+    exit /b
+)
 
-for %%D in (%DRIVERS%) do (
+REM Iterar sobre todos los subdirectorios en 'tests'
+for /d %%D in (tests\*) do (
     echo.
-    echo --- Tests de %%D ---
+    echo --- Procesando directorio: %%~nxD ---
     
-    if exist tests\%%D\input (
-        for %%I in (tests\%%D\input\*.txt) do (
-            set INPUT_FILE=%%I
-            set TEST_NAME=%%~nI
-            set OUTPUT_FILE=tests\%%D\output\%%~nI_output.txt
+    if exist "%%D\input" (
+        if not exist "%%D\output" mkdir "%%D\output"
+        
+        for %%I in ("%%D\input\*.txt") do (
+            echo Ejecutando test: %%~nxI
             
-            echo Ejecutando %%~nI...
-            %JAVA% -jar %JAR_FILE% < "%%I" > "tests\%%D\output\%%~nI_output.txt" 2>&1
+            REM Ejecutar DriverMain con el input actual y redirigir al output
+            REM Se usa FormsApp.jar que contiene todas las dependencias (excepto JavaFX)
+            REM Se incluye el module-path para JavaFX
+            
+            java --module-path "%LIB_DIR%" --add-modules javafx.controls,javafx.fxml -cp "%JAR_FILE%" presentation.driverMain.DriverMain < "%%I" > "%%D\output\%%~nI.txt" 2>&1
         )
+    ) else (
+        echo No se encontro carpeta 'input' en %%~nxD
     )
 )
 
 echo.
-echo Tests completados.
+echo Todos los tests completados.
 pause
