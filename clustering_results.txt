@@ -2,7 +2,7 @@ Clustering Analysis Results
 =============================
 
 Configuration:
-- Analysis ID: f4e5d96a-7523-48e0-b00b-8dd7aefbe369
+- Analysis ID: f4b103c4-64e6-4199-a5c4-7b60c074a4c4
 - Survey ID: null
 - Algorithm: K-Medoids
 - K: 2
@@ -11,7 +11,7 @@ Configuration:
 Execution Stats:
 - Converged: Yes
 - Iterations: 4
-- Execution Time: 9 ms
+- Execution Time: 11 ms
 
 Overall Quality Metrics:
 - Silhouette Score: 0,1105

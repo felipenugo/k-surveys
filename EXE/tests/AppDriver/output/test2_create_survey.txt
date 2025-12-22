@@ -90,7 +90,7 @@ Descripción: Descripcion encuesta 2
 Creador: usuario_test1
 Estado: DRAFT
 Número de preguntas: 0
-Fecha de creación: 2025-12-22T19:56:51.807578600
+Fecha de creación: 2025-12-22T20:07:48.358945200
 ========================================
 
 --- CREAR ENCUESTA ---

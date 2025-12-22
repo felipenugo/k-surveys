@@ -92,6 +92,8 @@ Opción: 120 - Título encuesta 0
 138 - Título encuesta 1
 139 - Título encuesta 0
 140 - Título encuesta 1
+141 - Título encuesta 0
+142 - Título encuesta 1
 --- MIS ENCUESTAS ---
 1. Listar mis encuestas
 2. Ejecutar algoritmo de clustering
