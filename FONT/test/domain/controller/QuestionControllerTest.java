@@ -25,6 +25,8 @@ public class QuestionControllerTest {
 
     @Before
     public void setUp() {
+        // QuestionService no usa userController en los métodos de creación/modificación de preguntas
+        questionService = new QuestionService(null);
         questionController = new QuestionController(questionService);
     }
 
