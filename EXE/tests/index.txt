@@ -5,3 +5,7 @@ MySurveysDriver
 ResponseDriver
 SessionDriver
 SurveyDriver
+//Nota:En estos juegos de pueba se crean usuarios
+//asumiendo que la BD esta vacia. Si no es asi
+// Algunos de los tests pueden fallar.
+//Por favor, limpiar la BD antes de correr los tests.

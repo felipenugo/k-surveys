@@ -46,9 +46,14 @@ public class AppDriver {
                     case 1 -> surveyDriver.surveyMenu();
                     case 2 -> createsurveyDriver.createSurveyMenu();
                     case 3 -> editSurveysDriver.editSurveysMenu();
-                    case 4 ->  sessionDriver.logout();
-                    case 5 -> sessionDriver.driverDeleteAccount();
-
+                    case 4 -> {
+                        sessionDriver.logout();
+                        exitApp = true; // Volver al menú de bienvenida
+                    }
+                    case 5 -> {
+                        sessionDriver.driverDeleteAccount();
+                        exitApp = true; // Volver al menú de bienvenida
+                    }
                     default -> System.out.println("Opción no válida. Seleccióna una opción del menú.");
                 }
             } catch (java.util.NoSuchElementException e) {

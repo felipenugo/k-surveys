@@ -1,22 +1,30 @@
 1
-usuario_test2
-password_test
+usuario_test1
+Password123!
 2
-usuario_test2
-test2@gmail.com
-password_test
-usuario_test2
-password_test
-2
-Mi Primera Encuesta
-Descripción de prueba
-4
-¿Pregunta de prueba?
-S
+Título encuesta 2
+Descripcion encuesta 2
 1
+4
+Pregunta textual 0
+S
+4
+MultipleChoice
+S
+2
 3
-Editar DescripcionS
-9
+Opcion 1
+Opcion 2
+Opcion 3
+1
+1
+4
+Pregunta numerica 2
 S
 3
-3
+8
+9
+2
+S
+4
+4
