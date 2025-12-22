@@ -1,9 +1,14 @@
 data
+data.adapter
 domain.clustering
 domain.controller
 domain.exception
 domain.model
 domain.model.enums
 domain.service
+domain.utils
 presentation.driverMain
 presentation.drivers
+presentation.main
+presentation.util
+presentation.views

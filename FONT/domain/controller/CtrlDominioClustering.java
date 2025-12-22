@@ -599,7 +599,7 @@ public class CtrlDominioClustering {
      *
      * @param analysisId ID del análisis.
      * @param surveyId ID de la encuesta.
-     * @return Mapa con "headers" (List<String>) y "rows" (List<List<String>>)
+     * @return Mapa con "headers" (List&lt;String&gt;) y "rows" (List&lt;List&lt;String&gt;&gt;)
      */
     public Map<String, Object> getCSVExportData(String analysisId, String surveyId) {
         Map<String, Object> result = new HashMap<>();

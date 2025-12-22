@@ -234,7 +234,7 @@ public class UserController {
      * Valida la fortaleza de una contraseña según los criterios definidos.
      *
      * @param password contraseña a validar
-     * @throws domain.exception.InvalidPasswordException si la contraseña no cumple con los requisitos
+     * @throws domain.exception.RegisterException si la contraseña no cumple con los requisitos
      */
     public void validatePasswordStrength(String password) {
         // Normalize before validating

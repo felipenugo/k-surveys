@@ -30,7 +30,6 @@ loadScripts(document, 'script');</script>
 <li><a href="index.html">Overview</a></li>
 <li>Package</li>
 <li>Class</li>
-<li>Use</li>
 <li class="nav-bar-cell1-rev">Tree</li>
 <li><a href="index-all.html">Index</a></li>
 <li><a href="help-doc.html#tree">Help</a></li>
@@ -54,14 +53,19 @@ loadScripts(document, 'script');</script>
 <span class="package-hierarchy-label">Package Hierarchies:</span>
 <ul class="horizontal contents-list">
 <li><a href="data/package-tree.html">data</a>, </li>
+<li><a href="data/adapter/package-tree.html">data.adapter</a>, </li>
 <li><a href="domain/clustering/package-tree.html">domain.clustering</a>, </li>
 <li><a href="domain/controller/package-tree.html">domain.controller</a>, </li>
 <li><a href="domain/exception/package-tree.html">domain.exception</a>, </li>
 <li><a href="domain/model/package-tree.html">domain.model</a>, </li>
 <li><a href="domain/model/enums/package-tree.html">domain.model.enums</a>, </li>
 <li><a href="domain/service/package-tree.html">domain.service</a>, </li>
+<li><a href="domain/utils/package-tree.html">domain.utils</a>, </li>
 <li><a href="presentation/driverMain/package-tree.html">presentation.driverMain</a>, </li>
-<li><a href="presentation/drivers/package-tree.html">presentation.drivers</a></li>
+<li><a href="presentation/drivers/package-tree.html">presentation.drivers</a>, </li>
+<li><a href="presentation/main/package-tree.html">presentation.main</a>, </li>
+<li><a href="presentation/util/package-tree.html">presentation.util</a>, </li>
+<li><a href="presentation/views/package-tree.html">presentation.views</a></li>
 </ul>
 <section class="hierarchy">
 <h2 title="Class Hierarchy">Class Hierarchy</h2>
@@ -76,48 +80,81 @@ loadScripts(document, 'script');</script>
 <li class="circle">domain.model.<a href="domain/model/TextualAnswer.html" class="type-name-link" title="class in domain.model">TextualAnswer</a></li>
 </ul>
 </li>
-<li class="circle">domain.controller.<a href="domain/controller/AnswerController.html" class="type-name-link" title="class in domain.controller">AnswerController</a></li>
-<li class="circle">data.<a href="data/AnswerRepository.html" class="type-name-link" title="class in data">AnswerRepository</a></li>
-<li class="circle">domain.service.<a href="domain/service/AnswerService.html" class="type-name-link" title="class in domain.service">AnswerService</a></li>
+<li class="circle">data.adapter.<a href="data/adapter/AnswerAdapter.html" class="type-name-link" title="class in data.adapter">AnswerAdapter</a> (implements com.google.gson.JsonDeserializer&lt;T&gt;)</li>
+<li class="circle">presentation.views.<a href="presentation/views/AnswerSurveyViewController.html" class="type-name-link" title="class in presentation.views">AnswerSurveyViewController</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/AppDriver.html" class="type-name-link" title="class in presentation.drivers">AppDriver</a></li>
+<li class="circle">javafx.application.Application
+<ul>
+<li class="circle">presentation.views.<a href="presentation/views/App.html" class="type-name-link" title="class in presentation.views">App</a></li>
+<li class="circle">presentation.main.<a href="presentation/main/Main.html" class="type-name-link" title="class in presentation.main">Main</a></li>
+</ul>
+</li>
 <li class="circle">domain.clustering.<a href="domain/clustering/Centroid.html" class="type-name-link" title="class in domain.clustering">Centroid</a> (implements java.lang.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Cloneable.html" title="class or interface in java.lang" class="external-link">Cloneable</a>)</li>
 <li class="circle">domain.clustering.<a href="domain/clustering/Cluster.html" class="type-name-link" title="class in domain.clustering">Cluster</a></li>
 <li class="circle">domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" class="type-name-link" title="class in domain.clustering">ClusteringAnalysis</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/ClusteringDriver.html" class="type-name-link" title="class in presentation.drivers">ClusteringDriver</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ClusteringViewController.html" class="type-name-link" title="class in presentation.views">ClusteringViewController</a> (implements javafx.fxml.Initializable)</li>
 <li class="circle">domain.clustering.<a href="domain/clustering/ClusterMembership.html" class="type-name-link" title="class in domain.clustering">ClusterMembership</a></li>
 <li class="circle">domain.clustering.<a href="domain/clustering/ClusterResults.html" class="type-name-link" title="class in domain.clustering">ClusterResults</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ConfirmLeaveController.html" class="type-name-link" title="class in presentation.views">ConfirmLeaveController</a></li>
+<li class="circle">presentation.util.<a href="presentation/util/CreateSurveyCard.html" class="type-name-link" title="class in presentation.util">CreateSurveyCard</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/CreateSurveyDriver.html" class="type-name-link" title="class in presentation.drivers">CreateSurveyDriver</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/CreateSurveyViewController.html" class="type-name-link" title="class in presentation.views">CreateSurveyViewController</a> (implements javafx.fxml.Initializable)</li>
 <li class="circle">domain.controller.<a href="domain/controller/CtrlDominioClustering.html" class="type-name-link" title="class in domain.controller">CtrlDominioClustering</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/DeleteAccountViewController.html" class="type-name-link" title="class in presentation.views">DeleteAccountViewController</a></li>
 <li class="circle">domain.clustering.<a href="domain/clustering/DistanceCalculator.html" class="type-name-link" title="class in domain.clustering">DistanceCalculator</a></li>
 <li class="circle">presentation.driverMain.<a href="presentation/driverMain/DriverMain.html" class="type-name-link" title="class in presentation.driverMain">DriverMain</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/EditorMultipleChoiceOptionsDriver.html" class="type-name-link" title="class in presentation.drivers">EditorMultipleChoiceOptionsDriver</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/EditorQuestionDriver.html" class="type-name-link" title="class in presentation.drivers">EditorQuestionDriver</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" class="type-name-link" title="class in presentation.drivers">EditResponseDriver</a></li>
+<li class="circle">presentation.drivers.<a href="presentation/drivers/EditSurveysDriver.html" class="type-name-link" title="class in presentation.drivers">EditSurveysDriver</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/EditSurveyViewController.html" class="type-name-link" title="class in presentation.views">EditSurveyViewController</a> (implements javafx.fxml.Initializable)</li>
+<li class="circle">data.<a href="data/IdCounterRepository.html" class="type-name-link" title="class in data">IdCounterRepository</a></li>
 <li class="circle">domain.clustering.<a href="domain/clustering/KMeans.html" class="type-name-link" title="class in domain.clustering">KMeans</a> (implements domain.clustering.<a href="domain/clustering/ClusteringAlgorithm.html" title="interface in domain.clustering">ClusteringAlgorithm</a>)</li>
 <li class="circle">domain.clustering.<a href="domain/clustering/KMeansPlusPlus.html" class="type-name-link" title="class in domain.clustering">KMeansPlusPlus</a> (implements domain.clustering.<a href="domain/clustering/ClusteringAlgorithm.html" title="interface in domain.clustering">ClusteringAlgorithm</a>)</li>
 <li class="circle">domain.clustering.<a href="domain/clustering/KMedoids.html" class="type-name-link" title="class in domain.clustering">KMedoids</a> (implements domain.clustering.<a href="domain/clustering/ClusteringAlgorithm.html" title="interface in domain.clustering">ClusteringAlgorithm</a>)</li>
+<li class="circle">data.adapter.<a href="data/adapter/LocalDateTimeAdapter.html" class="type-name-link" title="class in data.adapter">LocalDateTimeAdapter</a> (implements com.google.gson.JsonDeserializer&lt;T&gt;, com.google.gson.JsonSerializer&lt;T&gt;)</li>
+<li class="circle">presentation.views.<a href="presentation/views/LoginViewController.html" class="type-name-link" title="class in presentation.views">LoginViewController</a></li>
+<li class="circle">presentation.main.<a href="presentation/main/MainLauncher.html" class="type-name-link" title="class in presentation.main">MainLauncher</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/MySurveysDriver.html" class="type-name-link" title="class in presentation.drivers">MySurveysDriver</a></li>
 <li class="circle">domain.model.<a href="domain/model/OptionQuestion.html" class="type-name-link" title="class in domain.model">OptionQuestion</a></li>
+<li class="circle">domain.utils.<a href="domain/utils/PasswordHasher.html" class="type-name-link" title="class in domain.utils">PasswordHasher</a></li>
+<li class="circle">presentation.drivers.<a href="presentation/drivers/PasswordRecoveryDriver.html" class="type-name-link" title="class in presentation.drivers">PasswordRecoveryDriver</a></li>
 <li class="circle">domain.clustering.<a href="domain/clustering/QualityMetricCalculator.html" class="type-name-link" title="class in domain.clustering">QualityMetricCalculator</a></li>
 <li class="circle">domain.model.<a href="domain/model/Question.html" class="type-name-link" title="class in domain.model">Question</a>
 <ul>
 <li class="circle">domain.model.<a href="domain/model/MultipleChoiceQuestion.html" class="type-name-link" title="class in domain.model">MultipleChoiceQuestion</a></li>
 </ul>
 </li>
+<li class="circle">data.adapter.<a href="data/adapter/QuestionAdapter.html" class="type-name-link" title="class in data.adapter">QuestionAdapter</a> (implements com.google.gson.JsonDeserializer&lt;T&gt;)</li>
 <li class="circle">domain.controller.<a href="domain/controller/QuestionController.html" class="type-name-link" title="class in domain.controller">QuestionController</a></li>
-<li class="circle">data.<a href="data/QuestionRepository.html" class="type-name-link" title="class in data">QuestionRepository</a></li>
 <li class="circle">domain.service.<a href="domain/service/QuestionService.html" class="type-name-link" title="class in domain.service">QuestionService</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/RatingPopupController.html" class="type-name-link" title="class in presentation.views">RatingPopupController</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/RegisterViewController.html" class="type-name-link" title="class in presentation.views">RegisterViewController</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ResetPasswordStep1Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep1Controller</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ResetPasswordStep2Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep2Controller</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ResetPasswordStep3Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep3Controller</a></li>
 <li class="circle">domain.model.<a href="domain/model/Response.html" class="type-name-link" title="class in domain.model">Response</a></li>
 <li class="circle">domain.controller.<a href="domain/controller/ResponseController.html" class="type-name-link" title="class in domain.controller">ResponseController</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/ResponseDriver.html" class="type-name-link" title="class in presentation.drivers">ResponseDriver</a></li>
 <li class="circle">data.<a href="data/ResponseRepository.html" class="type-name-link" title="class in data">ResponseRepository</a></li>
 <li class="circle">domain.service.<a href="domain/service/ResponseService.html" class="type-name-link" title="class in domain.service">ResponseService</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ResponsesTableViewController.html" class="type-name-link" title="class in presentation.views">ResponsesTableViewController</a> (implements javafx.fxml.Initializable)</li>
+<li class="circle">presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" class="type-name-link" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/SceneManager.html" class="type-name-link" title="class in presentation.views">SceneManager</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/SessionDriver.html" class="type-name-link" title="class in presentation.drivers">SessionDriver</a></li>
 <li class="circle">domain.model.<a href="domain/model/Survey.html" class="type-name-link" title="class in domain.model">Survey</a></li>
 <li class="circle">domain.controller.<a href="domain/controller/SurveyController.html" class="type-name-link" title="class in domain.controller">SurveyController</a></li>
 <li class="circle">presentation.drivers.<a href="presentation/drivers/SurveyDriver.html" class="type-name-link" title="class in presentation.drivers">SurveyDriver</a></li>
 <li class="circle">data.<a href="data/SurveyRepository.html" class="type-name-link" title="class in data">SurveyRepository</a></li>
 <li class="circle">domain.service.<a href="domain/service/SurveyService.html" class="type-name-link" title="class in domain.service">SurveyService</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/SurveysViewController.html" class="type-name-link" title="class in presentation.views">SurveysViewController</a> (implements javafx.fxml.Initializable)
+<ul>
+<li class="circle">presentation.views.<a href="presentation/views/HomeViewController.html" class="type-name-link" title="class in presentation.views">HomeViewController</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" class="type-name-link" title="class in presentation.views">MySurveyDraftsViewController</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/MySurveysViewController.html" class="type-name-link" title="class in presentation.views">MySurveysViewController</a></li>
+</ul>
+</li>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Throwable.html" class="type-name-link external-link" title="class or interface in java.lang">Throwable</a> (implements java.io.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/21/docs/api/java.base/java/lang/Exception.html" class="type-name-link external-link" title="class or interface in java.lang">Exception</a>
@@ -138,6 +175,8 @@ loadScripts(document, 'script');</script>
 <li class="circle">domain.controller.<a href="domain/controller/UserController.html" class="type-name-link" title="class in domain.controller">UserController</a></li>
 <li class="circle">data.<a href="data/UserRepository.html" class="type-name-link" title="class in data">UserRepository</a></li>
 <li class="circle">domain.service.<a href="domain/service/UserService.html" class="type-name-link" title="class in domain.service">UserService</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/ViewResponsesViewController.html" class="type-name-link" title="class in presentation.views">ViewResponsesViewController</a> (implements javafx.fxml.Initializable)</li>
+<li class="circle">presentation.views.<a href="presentation/views/ViewSurveyViewController.html" class="type-name-link" title="class in presentation.views">ViewSurveyViewController</a> (implements javafx.fxml.Initializable)</li>
 </ul>
 </li>
 </ul>
@@ -146,6 +185,7 @@ loadScripts(document, 'script');</script>
 <h2 title="Interface Hierarchy">Interface Hierarchy</h2>
 <ul>
 <li class="circle">domain.clustering.<a href="domain/clustering/ClusteringAlgorithm.html" class="type-name-link" title="interface in domain.clustering">ClusteringAlgorithm</a></li>
+<li class="circle">presentation.views.<a href="presentation/views/RatingPopupController.RatingListener.html" class="type-name-link" title="interface in presentation.views">RatingPopupController.RatingListener</a></li>
 </ul>
 </section>
 <section class="hierarchy">
@@ -159,6 +199,9 @@ loadScripts(document, 'script');</script>
 <li class="circle">domain.clustering.<a href="domain/clustering/QualityMetricType.html" class="type-name-link" title="enum class in domain.clustering">QualityMetricType</a></li>
 <li class="circle">domain.model.enums.<a href="domain/model/enums/ResponseStatus.html" class="type-name-link" title="enum class in domain.model.enums">ResponseStatus</a></li>
 <li class="circle">domain.model.enums.<a href="domain/model/enums/SurveyStatus.html" class="type-name-link" title="enum class in domain.model.enums">SurveyStatus</a></li>
+<li class="circle">presentation.util.<a href="presentation/util/SurveyView.html" class="type-name-link" title="enum class in presentation.util">SurveyView</a></li>
+<li class="circle">presentation.util.<a href="presentation/util/SurveyViewTitle.html" class="type-name-link" title="enum class in presentation.util">SurveyViewTitle</a></li>
+<li class="circle">domain.clustering.<a href="domain/clustering/TextDistanceType.html" class="type-name-link" title="enum class in domain.clustering">TextDistanceType</a></li>
 <li class="circle">domain.model.enums.<a href="domain/model/enums/TypeQuestion.html" class="type-name-link" title="enum class in domain.model.enums">TypeQuestion</a></li>
 </ul>
 </li>

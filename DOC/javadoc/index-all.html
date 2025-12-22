@@ -30,7 +30,6 @@ loadScripts(document, 'script');</script>
 <li><a href="index.html">Overview</a></li>
 <li>Package</li>
 <li>Class</li>
-<li>Use</li>
 <li><a href="overview-tree.html">Tree</a></li>
 <li class="nav-bar-cell1-rev">Index</li>
 <li><a href="help-doc.html#index">Help</a></li>
@@ -58,6 +57,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Añade una nueva encuesta creada por el usuario.</div>
 </dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#addDefaultQuestion()" class="member-name-link">addDefaultQuestion()</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#addDefaultQuestion()" class="member-name-link">addDefaultQuestion()</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/Cluster.html#addMember(domain.model.Response,double)" class="member-name-link">addMember(Response, double)</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
 <dd>
 <div class="block">Añade un nuevo miembro a este clúster.</div>
@@ -82,6 +85,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="data/SurveyRepository.html#addQuestion(java.lang.String,domain.model.Question)" class="member-name-link">addQuestion(String, Question)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Añade una pregunta a una encuesta específica.</div>
+</dd>
+<dt><a href="domain/model/Survey.html#addRating(double)" class="member-name-link">addRating(double)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>
+<div class="block">Añade una nueva valoración a la encuesta y actualiza la calificación promedio.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#addRating(java.lang.String,double)" class="member-name-link">addRating(String, double)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Añade una valoración a una encuesta específica.</div>
 </dd>
 <dt><a href="domain/model/User.html#addRespondedSurveyIdEntry(java.lang.String)" class="member-name-link">addRespondedSurveyIdEntry(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
@@ -115,6 +126,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Añade una nueva encuesta al repositorio.</div>
 </dd>
+<dt><a href="domain/service/UserService.html#addSurveyCreated(java.lang.String,java.lang.String)" class="member-name-link">addSurveyCreated(String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Registra una encuesta creada por un usuario en su perfil.</div>
+</dd>
 <dt><a href="data/ResponseRepository.html#addSurveyEntry(java.lang.String)" class="member-name-link">addSurveyEntry(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Añade una nueva entrada para una encuesta en el repositorio.</div>
@@ -122,6 +137,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="data/UserRepository.html#addSurveyId(java.lang.String,java.lang.String)" class="member-name-link">addSurveyId(String, String)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
 <div class="block">Añade una encuesta al listado de encuestas creadas por un usuario.</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#addSurveyRating(java.lang.String,double)" class="member-name-link">addSurveyRating(String, double)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Añade una valoración a una encuesta.</div>
 </dd>
 <dt><a href="data/UserRepository.html#addUser(domain.model.User)" class="member-name-link">addUser(User)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
@@ -144,35 +163,23 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva respuesta genérica asociada a una pregunta concreta.</div>
 </dd>
-<dt><a href="domain/controller/AnswerController.html" class="type-name-link" title="class in domain.controller">AnswerController</a> - Class in <a href="domain/controller/package-summary.html">domain.controller</a></dt>
-<dd>
-<div class="block">Controlador responsable de gestionar las operaciones relacionadas con las respuestas
- individuales de una encuesta.</div>
-</dd>
-<dt><a href="domain/controller/AnswerController.html#%3Cinit%3E(domain.service.AnswerService)" class="member-name-link">AnswerController(AnswerService)</a> - Constructor for class domain.controller.<a href="domain/controller/AnswerController.html" title="class in domain.controller">AnswerController</a></dt>
-<dd>
-<div class="block">Crea una nueva instancia del controlador de respuestas.</div>
-</dd>
+<dt><a href="data/adapter/AnswerAdapter.html" class="type-name-link" title="class in data.adapter">AnswerAdapter</a> - Class in <a href="data/adapter/package-summary.html">data.adapter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/AnswerAdapter.html#%3Cinit%3E()" class="member-name-link">AnswerAdapter()</a> - Constructor for class data.adapter.<a href="data/adapter/AnswerAdapter.html" title="class in data.adapter">AnswerAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#answerQuestion(java.lang.String,java.lang.String,int)" class="member-name-link">answerQuestion(String, String, int)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="data/AnswerRepository.html" class="type-name-link" title="class in data">AnswerRepository</a> - Class in <a href="data/package-summary.html">data</a></dt>
-<dd>
-<div class="block">Repositorio para almacenar respuestas (Answers) en memoria.</div>
-</dd>
-<dt><a href="data/AnswerRepository.html#%3Cinit%3E()" class="member-name-link">AnswerRepository()</a> - Constructor for class data.<a href="data/AnswerRepository.html" title="class in data">AnswerRepository</a></dt>
+<dt><a href="presentation/views/AnswerSurveyViewController.html" class="type-name-link" title="class in presentation.views">AnswerSurveyViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="domain/service/AnswerService.html" class="type-name-link" title="class in domain.service">AnswerService</a> - Class in <a href="domain/service/package-summary.html">domain.service</a></dt>
-<dd>
-<div class="block">Servicio encargado de gestionar la lógica de negocio relacionada con
- las respuestas individuales de las encuestas.</div>
-</dd>
-<dt><a href="domain/service/AnswerService.html#%3Cinit%3E(data.AnswerRepository,domain.controller.UserController)" class="member-name-link">AnswerService(AnswerRepository, UserController)</a> - Constructor for class domain.service.<a href="domain/service/AnswerService.html" title="class in domain.service">AnswerService</a></dt>
-<dd>
-<div class="block">Construye el servicio de respuestas individuales.</div>
-</dd>
+<dt><a href="presentation/views/AnswerSurveyViewController.html#%3Cinit%3E(domain.controller.ResponseController,presentation.views.SceneManager,domain.controller.UserController,domain.controller.SurveyController)" class="member-name-link">AnswerSurveyViewController(ResponseController, SceneManager, UserController, SurveyController)</a> - Constructor for class presentation.views.<a href="presentation/views/AnswerSurveyViewController.html" title="class in presentation.views">AnswerSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/App.html" class="type-name-link" title="class in presentation.views">App</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/App.html#%3Cinit%3E()" class="member-name-link">App()</a> - Constructor for class presentation.views.<a href="presentation/views/App.html" title="class in presentation.views">App</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/AppDriver.html" class="type-name-link" title="class in presentation.drivers">AppDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="presentation/drivers/AppDriver.html#%3Cinit%3E(presentation.drivers.SurveyDriver,presentation.drivers.SessionDriver,presentation.drivers.CreateSurveyDriver)" class="member-name-link">AppDriver(SurveyDriver, SessionDriver, CreateSurveyDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/AppDriver.html" title="class in presentation.drivers">AppDriver</a></dt>
+<dt><a href="presentation/drivers/AppDriver.html#%3Cinit%3E(presentation.drivers.SurveyDriver,presentation.drivers.SessionDriver,presentation.drivers.CreateSurveyDriver,presentation.drivers.EditSurveysDriver)" class="member-name-link">AppDriver(SurveyDriver, SessionDriver, CreateSurveyDriver, EditSurveysDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/AppDriver.html" title="class in presentation.drivers">AppDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/AppDriver.html#appMenu()" class="member-name-link">appMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/AppDriver.html" title="class in presentation.drivers">AppDriver</a></dt>
 <dd>&nbsp;</dd>
@@ -195,6 +202,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Calculates the Davies-Bouldin Index for a clustering analysis.</div>
 </dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#calculateOptimalK(java.lang.String,int)" class="member-name-link">calculateOptimalK(String, int)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Calcula el número óptimo de clusters (k) utilizando el método del codo (Elbow Method).</div>
+</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#calculateOptimalK(javafx.event.ActionEvent)" class="member-name-link">calculateOptimalK(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/ClusteringAnalysis.html#calculateQuality(domain.clustering.QualityMetricType)" class="member-name-link">calculateQuality(QualityMetricType)</a> - Method in class domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" title="class in domain.clustering">ClusteringAnalysis</a></dt>
 <dd>
 <div class="block">Calcula una métrica de calidad del clustering.</div>
@@ -206,6 +219,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/clustering/QualityMetricCalculator.html#calculateSilhouette(domain.clustering.ClusteringAnalysis,domain.clustering.DistanceCalculator)" class="member-name-link">calculateSilhouette(ClusteringAnalysis, DistanceCalculator)</a> - Method in class domain.clustering.<a href="domain/clustering/QualityMetricCalculator.html" title="class in domain.clustering">QualityMetricCalculator</a></dt>
 <dd>
 <div class="block">Calculates the Silhouette Coefficient for a clustering analysis.</div>
+</dd>
+<dt><a href="domain/controller/AnalysisController.html#calculateSilhouette(java.lang.String,domain.clustering.DistanceCalculator)" class="member-name-link">calculateSilhouette(String, DistanceCalculator)</a> - Method in class domain.controller.<a href="domain/controller/AnalysisController.html" title="class in domain.controller">AnalysisController</a></dt>
+<dd>
+<div class="block">Calcula el coeficiente de silueta para un análisis dado.</div>
 </dd>
 <dt><a href="domain/clustering/QualityMetricCalculator.html#calculateSilhouetteForCluster(domain.clustering.Cluster,domain.clustering.ClusteringAnalysis,domain.clustering.DistanceCalculator)" class="member-name-link">calculateSilhouetteForCluster(Cluster, ClusteringAnalysis, DistanceCalculator)</a> - Method in class domain.clustering.<a href="domain/clustering/QualityMetricCalculator.html" title="class in domain.clustering">QualityMetricCalculator</a></dt>
 <dd>
@@ -243,18 +260,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor.</div>
 </dd>
-<dt><a href="domain/controller/UserController.html#changePassword(java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">changePassword(String, String, String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="domain/service/UserService.html#changePassword(java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">changePassword(String, String, String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
-<dd>
-<div class="block">Cambia la contraseña de un usuario tras validar:
- 
-   existencia del usuario,
-   coincidencia del email,
-   coincidencia de la contraseña antigua,
-   que la nueva contraseña no sea igual a la anterior.
- </div>
-</dd>
 <dt><a href="domain/service/SurveyService.html#checkQuestionExists(java.lang.String,int)" class="member-name-link">checkQuestionExists(String, int)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
 <dd>
 <div class="block">Comprueba que una pregunta concreta existe dentro de una encuesta.</div>
@@ -274,6 +279,18 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/service/SurveyService.html#checkUserLoggedin()" class="member-name-link">checkUserLoggedin()</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
 <dd>
 <div class="block">Verifica que el usuario actual ha iniciado sesión.</div>
+</dd>
+<dt><a href="data/ResponseRepository.html#clear()" class="member-name-link">clear()</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
+<dd>
+<div class="block">Elimina todas las respuestas del repositorio.</div>
+</dd>
+<dt><a href="data/SurveyRepository.html#clear()" class="member-name-link">clear()</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
+<dd>
+<div class="block">Elimina todas las encuestas del repositorio.</div>
+</dd>
+<dt><a href="data/UserRepository.html#clear()" class="member-name-link">clear()</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
+<dd>
+<div class="block">Elimina todos los usuarios del repositorio.</div>
 </dd>
 <dt><a href="domain/controller/AnalysisController.html#clearAnalyses()" class="member-name-link">clearAnalyses()</a> - Method in class domain.controller.<a href="domain/controller/AnalysisController.html" title="class in domain.controller">AnalysisController</a></dt>
 <dd>
@@ -317,6 +334,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="domain/model/enums/SurveyStatus.html#CLOSED" class="member-name-link">CLOSED</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/SurveyStatus.html" title="enum class in domain.model.enums">SurveyStatus</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="domain/controller/SurveyController.html#closeSurvey(java.lang.String)" class="member-name-link">closeSurvey(String)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Cierra una encuesta (cambia de PUBLISHED a CLOSED).</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#closeSurvey(java.lang.String)" class="member-name-link">closeSurvey(String)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Cierra una encuesta publicada (cambia de PUBLISHED a CLOSED).</div>
+</dd>
 <dt><a href="domain/clustering/Cluster.html" class="type-name-link" title="class in domain.clustering">Cluster</a> - Class in <a href="domain/clustering/package-summary.html">domain.clustering</a></dt>
 <dd>
 <div class="block">Representa un clúster de datos.</div>
@@ -345,6 +370,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor del driver.</div>
 </dd>
+<dt><a href="presentation/views/ClusteringViewController.html" class="type-name-link" title="class in presentation.views">ClusteringViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.CtrlDominioClustering,presentation.views.SceneManager,java.lang.String)" class="member-name-link">ClusteringViewController(UserController, SurveyController, CtrlDominioClustering, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/ClusterMembership.html" class="type-name-link" title="class in domain.clustering">ClusterMembership</a> - Class in <a href="domain/clustering/package-summary.html">domain.clustering</a></dt>
 <dd>
 <div class="block">Representa la membresía de un Response a un Cluster.</div>
@@ -363,6 +392,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#confirmExit()" class="member-name-link">confirmExit()</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/views/ConfirmLeaveController.html" class="type-name-link" title="class in presentation.views">ConfirmLeaveController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ConfirmLeaveController.html#%3Cinit%3E()" class="member-name-link">ConfirmLeaveController()</a> - Constructor for class presentation.views.<a href="presentation/views/ConfirmLeaveController.html" title="class in presentation.views">ConfirmLeaveController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/Cluster.html#contains(java.lang.String)" class="member-name-link">contains(String)</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
 <dd>
 <div class="block">Comprueba si un Response (por ID) es miembro de este clúster.</div>
@@ -374,6 +407,10 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="domain/model/Question.html#copy()" class="member-name-link">copy()</a> - Method in class domain.model.<a href="domain/model/Question.html" title="class in domain.model">Question</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="domain/clustering/DistanceType.html#COSINE" class="member-name-link">COSINE</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/DistanceType.html" title="enum class in domain.clustering">DistanceType</a></dt>
+<dd>
+<div class="block">Distancia del Coseno: 1 - (A·B / (||A|| * ||B||))</div>
+</dd>
 <dt><a href="domain/controller/AnalysisController.html#createAlgorithm(java.lang.String,java.util.Map)" class="member-name-link">createAlgorithm(String, Map&lt;String, Object&gt;)</a> - Method in class domain.controller.<a href="domain/controller/AnalysisController.html" title="class in domain.controller">AnalysisController</a></dt>
 <dd>
 <div class="block">Crea un algoritmo de clustering según el tipo y configuración especificados.</div>
@@ -418,11 +455,23 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una encuesta después de validar permisos, titularidad y contenido.</div>
 </dd>
+<dt><a href="presentation/util/CreateSurveyCard.html" class="type-name-link" title="class in presentation.util">CreateSurveyCard</a> - Class in <a href="presentation/util/package-summary.html">presentation.util</a></dt>
+<dd>
+<div class="block">Clase de utilidad responsable de la construcción de una Card de una Encuesta con JavaFX</div>
+</dd>
+<dt><a href="presentation/util/CreateSurveyCard.html#%3Cinit%3E()" class="member-name-link">CreateSurveyCard()</a> - Constructor for class presentation.util.<a href="presentation/util/CreateSurveyCard.html" title="class in presentation.util">CreateSurveyCard</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/CreateSurveyDriver.html" class="type-name-link" title="class in presentation.drivers">CreateSurveyDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/CreateSurveyDriver.html#%3Cinit%3E(domain.controller.SurveyController,domain.controller.UserController,presentation.drivers.EditorQuestionDriver)" class="member-name-link">CreateSurveyDriver(SurveyController, UserController, EditorQuestionDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/CreateSurveyDriver.html" title="class in presentation.drivers">CreateSurveyDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/CreateSurveyDriver.html#createSurveyMenu()" class="member-name-link">createSurveyMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/CreateSurveyDriver.html" title="class in presentation.drivers">CreateSurveyDriver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html" class="type-name-link" title="class in presentation.views">CreateSurveyViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>
+<div class="block">Controlador para la vista de creación de encuestas.</div>
+</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.ResponseController,presentation.views.SceneManager)" class="member-name-link">CreateSurveyViewController(UserController, SurveyController, ResponseController, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/controller/QuestionController.html#createTextualQuestion(int,java.lang.String,java.lang.String,boolean)" class="member-name-link">createTextualQuestion(int, String, String, boolean)</a> - Method in class domain.controller.<a href="domain/controller/QuestionController.html" title="class in domain.controller">QuestionController</a></dt>
 <dd>
@@ -445,10 +494,16 @@ loadScripts(document, 'script');</script>
 <dl class="index">
 <dt><a href="data/package-summary.html">data</a> - package data</dt>
 <dd>&nbsp;</dd>
+<dt><a href="data/adapter/package-summary.html">data.adapter</a> - package data.adapter</dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/QualityMetricType.html#DAVIES_BOULDIN" class="member-name-link">DAVIES_BOULDIN</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/QualityMetricType.html" title="enum class in domain.clustering">QualityMetricType</a></dt>
 <dd>
 <div class="block">Índice de Davies-Bouldin: ratio de similitud intra/inter clusters (menor es mejor)</div>
 </dd>
+<dt><a href="presentation/views/DeleteAccountViewController.html" class="type-name-link" title="class in presentation.views">DeleteAccountViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/DeleteAccountViewController.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager)" class="member-name-link">DeleteAccountViewController(UserController, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/DeleteAccountViewController.html" title="class in presentation.views">DeleteAccountViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/SurveyRepository.html#deleteAllQuestions(java.lang.String)" class="member-name-link">deleteAllQuestions(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Elimina todas las preguntas de una encuesta específica.</div>
@@ -461,9 +516,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Elimina un análisis específico.</div>
 </dd>
+<dt><a href="domain/controller/UserController.html#deleteCurrentUser()" class="member-name-link">deleteCurrentUser()</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dd>
+<div class="block">Elimina la cuenta del usuario actualmente autenticado.</div>
+</dd>
 <dt><a href="data/SurveyRepository.html#deleteQuestion(java.lang.String,int)" class="member-name-link">deleteQuestion(String, int)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Elimina una pregunta de una encuesta específica.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#deleteQuestion(java.lang.String,int)" class="member-name-link">deleteQuestion(String, int)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Elimina una pregunta de una encuesta.</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#deleteQuestion(java.lang.String,int)" class="member-name-link">deleteQuestion(String, int)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Elimina una pregunta de una encuesta.</div>
 </dd>
 <dt><a href="data/UserRepository.html#deleteRespondedSurveyIdEntry(java.lang.String,java.lang.String)" class="member-name-link">deleteRespondedSurveyIdEntry(String, String)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
@@ -477,9 +544,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Elimina un responseId de las respuestas de un usuario para una encuesta específica.</div>
 </dd>
+<dt><a href="data/ResponseRepository.html#deleteResponsesBySurvey(java.lang.String)" class="member-name-link">deleteResponsesBySurvey(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
+<dd>
+<div class="block">Elimina todas las respuestas asociadas a una encuesta.</div>
+</dd>
 <dt><a href="data/SurveyRepository.html#deleteSurvey(java.lang.String)" class="member-name-link">deleteSurvey(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Elimina una encuesta del repositorio.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#deleteSurvey(java.lang.String)" class="member-name-link">deleteSurvey(String)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Elimina una encuesta (solo si está en estado DRAFT).</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#deleteSurvey(java.lang.String)" class="member-name-link">deleteSurvey(String)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Elimina una encuesta (solo si es borrador).</div>
 </dd>
 <dt><a href="data/ResponseRepository.html#deleteSurveyEntry(java.lang.String)" class="member-name-link">deleteSurveyEntry(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
@@ -493,14 +572,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Elimina un usuario del repositorio.</div>
 </dd>
-<dt><a href="domain/controller/UserController.html#deleteUser(java.lang.String)" class="member-name-link">deleteUser(String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dt><a href="domain/controller/UserController.html#deleteUserok(java.lang.String)" class="member-name-link">deleteUserok(String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
 <dd>
 <div class="block">Elimina un usuario del sistema.</div>
 </dd>
-<dt><a href="domain/service/UserService.html#deleteUser(java.lang.String)" class="member-name-link">deleteUser(String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dt><a href="domain/service/UserService.html#deleteUserok(java.lang.String)" class="member-name-link">deleteUserok(String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
 <dd>
-<div class="block">Elimina un usuario si existe en el repositorio.</div>
+<div class="block">Elimina completamente un usuario del sistema, junto con:
+ - Todas las encuestas que ha creado</div>
 </dd>
+<dt><a href="data/adapter/AnswerAdapter.html#deserialize(com.google.gson.JsonElement,java.lang.reflect.Type,com.google.gson.JsonDeserializationContext)" class="member-name-link">deserialize(JsonElement, Type, JsonDeserializationContext)</a> - Method in class data.adapter.<a href="data/adapter/AnswerAdapter.html" title="class in data.adapter">AnswerAdapter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/LocalDateTimeAdapter.html#deserialize(com.google.gson.JsonElement,java.lang.reflect.Type,com.google.gson.JsonDeserializationContext)" class="member-name-link">deserialize(JsonElement, Type, JsonDeserializationContext)</a> - Method in class data.adapter.<a href="data/adapter/LocalDateTimeAdapter.html" title="class in data.adapter">LocalDateTimeAdapter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/QuestionAdapter.html#deserialize(com.google.gson.JsonElement,java.lang.reflect.Type,com.google.gson.JsonDeserializationContext)" class="member-name-link">deserialize(JsonElement, Type, JsonDeserializationContext)</a> - Method in class data.adapter.<a href="data/adapter/QuestionAdapter.html" title="class in data.adapter">QuestionAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/AnalysisController.html#determineOptimalK(java.util.List,java.util.List,domain.model.Survey,java.lang.Integer,java.lang.Integer)" class="member-name-link">determineOptimalK(List&lt;Response&gt;, List&lt;Question&gt;, Survey, Integer, Integer)</a> - Method in class domain.controller.<a href="domain/controller/AnalysisController.html" title="class in domain.controller">AnalysisController</a></dt>
 <dd>
 <div class="block">Determina el número óptimo de clusters (K) para un análisis de clustering dado.</div>
@@ -509,7 +595,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Calculadora de distancias entre respuestas y centroides.</div>
 </dd>
-<dt><a href="domain/clustering/DistanceCalculator.html#%3Cinit%3E(domain.clustering.DistanceType)" class="member-name-link">DistanceCalculator(DistanceType)</a> - Constructor for class domain.clustering.<a href="domain/clustering/DistanceCalculator.html" title="class in domain.clustering">DistanceCalculator</a></dt>
+<dt><a href="domain/clustering/DistanceCalculator.html#%3Cinit%3E(domain.clustering.DistanceType,domain.clustering.TextDistanceType)" class="member-name-link">DistanceCalculator(DistanceType, TextDistanceType)</a> - Constructor for class domain.clustering.<a href="domain/clustering/DistanceCalculator.html" title="class in domain.clustering">DistanceCalculator</a></dt>
 <dd>
 <div class="block">Constructor que establece el tipo de distancia.</div>
 </dd>
@@ -529,9 +615,17 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="domain/service/package-summary.html">domain.service</a> - package domain.service</dt>
 <dd>&nbsp;</dd>
+<dt><a href="domain/utils/package-summary.html">domain.utils</a> - package domain.utils</dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/enums/ResponseStatus.html#DRAFT" class="member-name-link">DRAFT</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/ResponseStatus.html" title="enum class in domain.model.enums">ResponseStatus</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/model/enums/SurveyStatus.html#DRAFT" class="member-name-link">DRAFT</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/SurveyStatus.html" title="enum class in domain.model.enums">SurveyStatus</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/SurveyView.html#DRAFTS" class="member-name-link">DRAFTS</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyView.html" title="enum class in presentation.util">SurveyView</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#DRAFTS" class="member-name-link">DRAFTS</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/drivers/SessionDriver.html#driverDeleteAccount()" class="member-name-link">driverDeleteAccount()</a> - Method in class presentation.drivers.<a href="presentation/drivers/SessionDriver.html" title="class in presentation.drivers">SessionDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/SessionDriver.html#driverLogin()" class="member-name-link">driverLogin()</a> - Method in class presentation.drivers.<a href="presentation/drivers/SessionDriver.html" title="class in presentation.drivers">SessionDriver</a></dt>
 <dd>&nbsp;</dd>
@@ -566,12 +660,32 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#editResponseMenu(java.lang.String,java.lang.String)" class="member-name-link">editResponseMenu(String, String)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/drivers/EditSurveysDriver.html" class="type-name-link" title="class in presentation.drivers">EditSurveysDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
+<dd>
+<div class="block">Driver para editar encuestas en estado DRAFT.</div>
+</dd>
+<dt><a href="presentation/drivers/EditSurveysDriver.html#%3Cinit%3E(domain.controller.SurveyController,domain.controller.UserController,presentation.drivers.EditorQuestionDriver)" class="member-name-link">EditSurveysDriver(SurveyController, UserController, EditorQuestionDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/EditSurveysDriver.html" title="class in presentation.drivers">EditSurveysDriver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/drivers/EditSurveysDriver.html#editSurveysMenu()" class="member-name-link">editSurveysMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditSurveysDriver.html" title="class in presentation.drivers">EditSurveysDriver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html" class="type-name-link" title="class in presentation.views">EditSurveyViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>
+<div class="block">Controlador para la vista de edición de encuestas (borradores).</div>
+</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,presentation.views.SceneManager,java.lang.String)" class="member-name-link">EditSurveyViewController(UserController, SurveyController, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="domain/clustering/TextDistanceType.html#EMBEDDING" class="member-name-link">EMBEDDING</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/TextDistanceType.html" title="enum class in domain.clustering">TextDistanceType</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#emptyStateBox" class="member-name-link">emptyStateBox</a> - Variable in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/CtrlDominioClustering.html#encontrarKOptima(java.lang.String,java.lang.String,int,double,java.lang.String)" class="member-name-link">encontrarKOptima(String, String, int, double, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
 <dd>
 <div class="block">Encuentra el valor óptimo de 'k' para un algoritmo y encuesta dados.</div>
 </dd>
 <dt><a href="domain/clustering/Cluster.html#equals(java.lang.Object)" class="member-name-link">equals(Object)</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Dos clústeres son iguales si tienen el mismo ID.</div>
+</dd>
 <dt><a href="domain/clustering/DistanceType.html#EUCLIDEAN" class="member-name-link">EUCLIDEAN</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/DistanceType.html" title="enum class in domain.clustering">DistanceType</a></dt>
 <dd>
 <div class="block">Distancia Euclídea: sqrt(sum( (d_i)^2 ))</div>
@@ -646,16 +760,26 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Exporta los resultados de un análisis a un archivo.</div>
 </dd>
+<dt><a href="presentation/views/ClusteringViewController.html#exportBarChartPNG(javafx.event.ActionEvent)" class="member-name-link">exportBarChartPNG(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#exportCSV(javafx.event.ActionEvent)" class="member-name-link">exportCSV(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/ClusteringAnalysis.html#exportResults()" class="member-name-link">exportResults()</a> - Method in class domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" title="class in domain.clustering">ClusteringAnalysis</a></dt>
 <dd>
 <div class="block">Exporta los resultados a un archivo de texto.</div>
 </dd>
+<dt><a href="presentation/views/ClusteringViewController.html#exportScatterChartPNG(javafx.event.ActionEvent)" class="member-name-link">exportScatterChartPNG(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:G">G</h2>
 <dl class="index">
 <dt><a href="data/SurveyRepository.html#generateNextSurveyId()" class="member-name-link">generateNextSurveyId()</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Genera y devuelve el siguiente ID de encuesta disponible.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#generateUniqueSurveyId()" class="member-name-link">generateUniqueSurveyId()</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Genera un identificador único para una nueva encuesta delegando al servicio.</div>
 </dd>
 <dt><a href="domain/service/SurveyService.html#generateUniqueSurveyId()" class="member-name-link">generateUniqueSurveyId()</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
 <dd>
@@ -665,9 +789,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene todas las respuestas de una respuesta específica de una encuesta.</div>
 </dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getAllQuestionLabels(java.lang.String)" class="member-name-link">getAllQuestionLabels(String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las etiquetas de TODAS las preguntas de una encuesta.</div>
+</dd>
 <dt><a href="data/SurveyRepository.html#getAllQuestions(java.lang.String)" class="member-name-link">getAllQuestions(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Obtiene todas las preguntas de una encuesta específica.</div>
+</dd>
+<dt><a href="data/UserRepository.html#getAllRespondedSurveyIds(java.lang.String)" class="member-name-link">getAllRespondedSurveyIds(String)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
+<dd>
+<div class="block">Obtiene todos los IDs de encuestas respondidas por un usuario.</div>
 </dd>
 <dt><a href="data/UserRepository.html#getAllResponseIdsFromSurvey(java.lang.String,java.lang.String)" class="member-name-link">getAllResponseIdsFromSurvey(String, String)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
@@ -676,6 +808,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="data/ResponseRepository.html#getAllResponses(java.lang.String)" class="member-name-link">getAllResponses(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Obtiene todas las respuestas de una encuesta.</div>
+</dd>
+<dt><a href="domain/controller/ResponseController.html#getAllResponses(java.lang.String)" class="member-name-link">getAllResponses(String)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
+<dd>
+<div class="block">Publica una respuesta específica de una encuesta.</div>
+</dd>
+<dt><a href="domain/service/ResponseService.html#getAllResponses(java.lang.String)" class="member-name-link">getAllResponses(String)</a> - Method in class domain.service.<a href="domain/service/ResponseService.html" title="class in domain.service">ResponseService</a></dt>
+<dd>
+<div class="block">Devuelve todas las respuestas enviadas de una encuesta.</div>
 </dd>
 <dt><a href="data/SurveyRepository.html#getAllSurveys()" class="member-name-link">getAllSurveys()</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
@@ -709,6 +849,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve la respuesta en la posición especificada del array de respuestas.</div>
 </dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html#getAnswer(int)" class="member-name-link">getAnswer(int)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/ResponseRepository.html#getAnswer(java.lang.String,java.lang.String,int)" class="member-name-link">getAnswer(String, String, int)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Obtiene una respuesta específica de una encuesta.</div>
@@ -745,6 +887,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Calcula la distancia promedio de todos los miembros al centroide del clúster.</div>
 </dd>
+<dt><a href="domain/model/Survey.html#getAverageRating()" class="member-name-link">getAverageRating()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>
+<div class="block">Calcula y devuelve la calificación promedio basada en las valoraciones recibidas.</div>
+</dd>
 <dt><a href="domain/model/Survey.html#getAvgRating()" class="member-name-link">getAvgRating()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Devuelve la calificación promedio de la encuesta.</div>
@@ -752,6 +898,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/clustering/Cluster.html#getCentroid()" class="member-name-link">getCentroid()</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
 <dd>
 <div class="block">Obtiene el centroide (el centro) de este clúster.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getCentroidsVisualizationData(java.lang.String)" class="member-name-link">getCentroidsVisualizationData(String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las coordenadas de los centroides para visualización.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getCentroidsVisualizationDataWithDims(java.lang.String,int,int)" class="member-name-link">getCentroidsVisualizationDataWithDims(String, int, int)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las coordenadas de los centroides para dimensiones específicas.</div>
 </dd>
 <dt><a href="domain/clustering/ClusterResults.html#getCluster(int)" class="member-name-link">getCluster(int)</a> - Method in class domain.clustering.<a href="domain/clustering/ClusterResults.html" title="class in domain.clustering">ClusterResults</a></dt>
 <dd>
@@ -767,6 +921,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene el ID del clúster.</div>
 </dd>
+<dt><a href="presentation/views/SceneManager.html#getClusteringController()" class="member-name-link">getClusteringController()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/ClusteringAnalysis.html#getClusterQuality(domain.clustering.Cluster,domain.clustering.QualityMetricType)" class="member-name-link">getClusterQuality(Cluster, QualityMetricType)</a> - Method in class domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" title="class in domain.clustering">ClusteringAnalysis</a></dt>
 <dd>
 <div class="block">Calculates a quality metric for a specific cluster.</div>
@@ -778,6 +934,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/clustering/ClusterResults.html#getClusters()" class="member-name-link">getClusters()</a> - Method in class domain.clustering.<a href="domain/clustering/ClusterResults.html" title="class in domain.clustering">ClusterResults</a></dt>
 <dd>
 <div class="block">Obtiene la lista de clusters.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getClusterVisualizationData(java.lang.String,java.lang.String)" class="member-name-link">getClusterVisualizationData(String, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las coordenadas 2D para visualizar los clusters.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getClusterVisualizationDataWithDims(java.lang.String,java.lang.String,int,int)" class="member-name-link">getClusterVisualizationDataWithDims(String, String, int, int)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las coordenadas 2D para visualizar los clusters con dimensiones específicas.</div>
 </dd>
 <dt><a href="domain/clustering/Centroid.html#getComponent(int)" class="member-name-link">getComponent(int)</a> - Method in class domain.clustering.<a href="domain/clustering/Centroid.html" title="class in domain.clustering">Centroid</a></dt>
 <dd>
@@ -798,6 +962,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/model/Survey.html#getCREATOR_USERNAME()" class="member-name-link">getCREATOR_USERNAME()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Devuelve el nombre de usuario del creador de la encuesta.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getCSVExportData(java.lang.String,java.lang.String)" class="member-name-link">getCSVExportData(String, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene los datos de las respuestas para exportar a CSV.</div>
 </dd>
 <dt><a href="domain/clustering/ClusteringAlgorithm.html#getDescription()" class="member-name-link">getDescription()</a> - Method in interface domain.clustering.<a href="domain/clustering/ClusteringAlgorithm.html" title="interface in domain.clustering">ClusteringAlgorithm</a></dt>
 <dd>
@@ -821,6 +989,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene el tipo de distancia configurado.</div>
 </dd>
+<dt><a href="data/ResponseRepository.html#getDraftResponse(java.lang.String,java.lang.String)" class="member-name-link">getDraftResponse(String, String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
+<dd>
+<div class="block">Obtiene la respuesta en estado Borrador (DRAFT) de un usuario para una encuesta.</div>
+</dd>
 <dt><a href="domain/model/User.html#getEmail()" class="member-name-link">getEmail()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Devuelve el correo electrónico del usuario.</div>
@@ -829,6 +1001,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene el tiempo de ejecución en milisegundos.</div>
 </dd>
+<dt><a href="presentation/views/HomeViewController.html#getFilter(java.lang.String,java.lang.String)" class="member-name-link">getFilter(String, String)</a> - Method in class presentation.views.<a href="presentation/views/HomeViewController.html" title="class in presentation.views">HomeViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html#getFilter(java.lang.String,java.lang.String)" class="member-name-link">getFilter(String, String)</a> - Method in class presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" title="class in presentation.views">MySurveyDraftsViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html#getFilter(java.lang.String,java.lang.String)" class="member-name-link">getFilter(String, String)</a> - Method in class presentation.views.<a href="presentation/views/MySurveysViewController.html" title="class in presentation.views">MySurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#getFilter(java.lang.String,java.lang.String)" class="member-name-link">getFilter(String, String)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/UserRepository.html#getGetAllSurveyIds(java.lang.String)" class="member-name-link">getGetAllSurveyIds(String)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
 <div class="block">Obtiene todos los IDs de encuestas creadas por un usuario.</div>
@@ -864,10 +1044,6 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/clustering/Cluster.html#getLabel()" class="member-name-link">getLabel()</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
 <dd>
 <div class="block">Obtiene la etiqueta legible por humanos del clúster.</div>
-</dd>
-<dt><a href="data/ResponseRepository.html#getLastResponseId()" class="member-name-link">getLastResponseId()</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
-<dd>
-<div class="block">Obtiene el último identificador de respuesta asignado.</div>
 </dd>
 <dt><a href="domain/controller/UserController.html#getLoggedUser()" class="member-name-link">getLoggedUser()</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
 <dd>
@@ -907,6 +1083,10 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="domain/clustering/KMedoids.html#getName()" class="member-name-link">getName()</a> - Method in class domain.clustering.<a href="domain/clustering/KMedoids.html" title="class in domain.clustering">KMedoids</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="data/IdCounterRepository.html#getNextIdAndIncrement()" class="member-name-link">getNextIdAndIncrement()</a> - Method in class data.<a href="data/IdCounterRepository.html" title="class in data">IdCounterRepository</a></dt>
+<dd>
+<div class="block">Retorna el ID actual (como String) y luego lo incrementa, guardándolo inmediatamente.</div>
+</dd>
 <dt><a href="data/SurveyRepository.html#getNextSurveyIdValue()" class="member-name-link">getNextSurveyIdValue()</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Obtiene el valor numérico del siguiente ID de encuesta.</div>
@@ -922,6 +1102,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/clustering/Centroid.html#getNumDimensions()" class="member-name-link">getNumDimensions()</a> - Method in class domain.clustering.<a href="domain/clustering/Centroid.html" title="class in domain.clustering">Centroid</a></dt>
 <dd>
 <div class="block">Obtiene el número de dimensiones del centroide.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getNumericalQuestionLabels(java.lang.String)" class="member-name-link">getNumericalQuestionLabels(String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene las etiquetas de las preguntas numéricas de una encuesta.</div>
 </dd>
 <dt><a href="data/SurveyRepository.html#getNumQuestions(java.lang.String)" class="member-name-link">getNumQuestions(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
@@ -957,10 +1141,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el texto de la opción.</div>
 </dd>
-<dt><a href="domain/model/User.html#getPassword()" class="member-name-link">getPassword()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dt><a href="domain/model/User.html#getPasswordHash()" class="member-name-link">getPasswordHash()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Devuelve la contraseña del usuario.</div>
 </dd>
+<dt><a href="presentation/views/SceneManager.html#getPrimaryStage()" class="member-name-link">getPrimaryStage()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Survey.html#getPUBLISHED_AT()" class="member-name-link">getPUBLISHED_AT()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Devuelve la fecha y hora de publicación de la encuesta.</div>
@@ -1021,14 +1207,24 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el texto o enunciado de la pregunta.</div>
 </dd>
+<dt><a href="domain/model/Survey.html#getRatingCount()" class="member-name-link">getRatingCount()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>
+<div class="block">Devuelve el número de valoraciones recibidas.</div>
+</dd>
 <dt><a href="domain/model/User.html#getRespondedSurveysId()" class="member-name-link">getRespondedSurveysId()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Devuelve el mapa de encuestas respondidas por el usuario.</div>
+</dd>
+<dt><a href="domain/model/User.html#getRespondedSurveysIds()" class="member-name-link">getRespondedSurveysIds()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Devuelve el conjunto de identificadores de encuestas respondidas por el usuario.</div>
 </dd>
 <dt><a href="domain/model/Response.html#getResponderUsername()" class="member-name-link">getResponderUsername()</a> - Method in class domain.model.<a href="domain/model/Response.html" title="class in domain.model">Response</a></dt>
 <dd>
 <div class="block">Devuelve el nombre de usuario del que responde.</div>
 </dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html#getResponse()" class="member-name-link">getResponse()</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/ResponseRepository.html#getResponse(java.lang.String,java.lang.String)" class="member-name-link">getResponse(String, String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Obtiene una respuesta específica de una encuesta.</div>
@@ -1036,6 +1232,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/model/Response.html#getRESPONSE_ID()" class="member-name-link">getRESPONSE_ID()</a> - Method in class domain.model.<a href="domain/model/Response.html" title="class in domain.model">Response</a></dt>
 <dd>
 <div class="block">Devuelve el identificador único de la respuesta.</div>
+</dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getResponseCount(java.lang.String)" class="member-name-link">getResponseCount(String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene el número de respuestas de una encuesta.</div>
 </dd>
 <dt><a href="domain/clustering/ClusterMembership.html#getResponseId()" class="member-name-link">getResponseId()</a> - Method in class domain.clustering.<a href="domain/clustering/ClusterMembership.html" title="class in domain.clustering">ClusterMembership</a></dt>
 <dd>
@@ -1053,6 +1253,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene las respuestas analizadas.</div>
 </dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getResponses(java.lang.String)" class="member-name-link">getResponses(String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene todas las respuestas de una encuesta.</div>
+</dd>
 <dt><a href="data/ResponseRepository.html#getResponsesBySurveyId(java.lang.String)" class="member-name-link">getResponsesBySurveyId(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Obtiene todas las respuestas de una encuesta.</div>
@@ -1061,8 +1265,20 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el estado actual de la respuesta.</div>
 </dd>
+<dt><a href="domain/controller/CtrlDominioClustering.html#getResponseSummary(java.lang.String,java.lang.String)" class="member-name-link">getResponseSummary(String, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dd>
+<div class="block">Obtiene una representación textual de las respuestas de un usuario.</div>
+</dd>
 <dt><a href="presentation/driverMain/DriverMain.html#getScanner()" class="member-name-link">getScanner()</a> - Static method in class presentation.driverMain.<a href="presentation/driverMain/DriverMain.html" title="class in presentation.driverMain">DriverMain</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="domain/model/User.html#getSecurityAnswer()" class="member-name-link">getSecurityAnswer()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Devuelve la respuesta de seguridad del usuario.</div>
+</dd>
+<dt><a href="domain/model/User.html#getSecurityQuestion()" class="member-name-link">getSecurityQuestion()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Devuelve la pregunta de seguridad del usuario.</div>
+</dd>
 <dt><a href="domain/model/MultipleChoiceAnswer.html#getSelectedOptions()" class="member-name-link">getSelectedOptions()</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceAnswer.html" title="class in domain.model">MultipleChoiceAnswer</a></dt>
 <dd>
 <div class="block">Devuelve el array que indica qué opciones han sido seleccionadas.</div>
@@ -1075,9 +1291,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve todas las encuestas disponibles en el sistema.</div>
 </dd>
+<dt><a href="presentation/views/HomeViewController.html#getSelectedSurveys()" class="member-name-link">getSelectedSurveys()</a> - Method in class presentation.views.<a href="presentation/views/HomeViewController.html" title="class in presentation.views">HomeViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html#getSelectedSurveys()" class="member-name-link">getSelectedSurveys()</a> - Method in class presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" title="class in presentation.views">MySurveyDraftsViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html#getSelectedSurveys()" class="member-name-link">getSelectedSurveys()</a> - Method in class presentation.views.<a href="presentation/views/MySurveysViewController.html" title="class in presentation.views">MySurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#getSelectedSurveys()" class="member-name-link">getSelectedSurveys()</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/Cluster.html#getSize()" class="member-name-link">getSize()</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
 <dd>
 <div class="block">Obtiene el número de miembros en este clúster.</div>
+</dd>
+<dt><a href="domain/model/Response.html#getSize()" class="member-name-link">getSize()</a> - Method in class domain.model.<a href="domain/model/Response.html" title="class in domain.model">Response</a></dt>
+<dd>
+<div class="block">Devuelve el tamaño del array de respuestas (número de preguntas de la encuesta).</div>
 </dd>
 <dt><a href="domain/model/Survey.html#getSize()" class="member-name-link">getSize()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
@@ -1087,6 +1315,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve la fecha y hora en que se envió la respuesta.</div>
 </dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html#getSubmittedDate()" class="member-name-link">getSubmittedDate()</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/SurveyRepository.html#getSurvey(java.lang.String)" class="member-name-link">getSurvey(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Recupera una encuesta por su ID.</div>
@@ -1107,6 +1337,11 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el identificador único de la encuesta.</div>
 </dd>
+<dt><a href="presentation/util/CreateSurveyCard.html#getSurveyCard(presentation.views.SceneManager,domain.model.Survey,presentation.util.SurveyView)" class="member-name-link">getSurveyCard(SceneManager, Survey, SurveyView)</a> - Static method in class presentation.util.<a href="presentation/util/CreateSurveyCard.html" title="class in presentation.util">CreateSurveyCard</a></dt>
+<dd>
+<div class="block">Construye y devuelve el componente principal (HBox) que representa
+ una Card de Encuesta completa, lista para ser añadida a un contenedor</div>
+</dd>
 <dt><a href="domain/clustering/ClusteringAnalysis.html#getSurveyId()" class="member-name-link">getSurveyId()</a> - Method in class domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" title="class in domain.clustering">ClusteringAnalysis</a></dt>
 <dd>
 <div class="block">Obtiene el ID de la encuesta analizada.</div>
@@ -1118,6 +1353,14 @@ loadScripts(document, 'script');</script>
 <dt><a href="domain/model/Response.html#getSurveyId()" class="member-name-link">getSurveyId()</a> - Method in class domain.model.<a href="domain/model/Response.html" title="class in domain.model">Response</a></dt>
 <dd>
 <div class="block">Devuelve el identificador de la encuesta asociada a la respuesta.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#getSurveysByUser(java.lang.String)" class="member-name-link">getSurveysByUser(String)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Obtiene todas las encuestas creadas por un usuario específico.</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#getSurveysByUser(java.lang.String)" class="member-name-link">getSurveysByUser(String)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Obtiene todas las encuestas creadas por un usuario específico.</div>
 </dd>
 <dt><a href="data/SurveyRepository.html#getSurveysByUsername(java.lang.String)" class="member-name-link">getSurveysByUsername(String)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
@@ -1135,9 +1378,19 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el estado de la encuesta.</div>
 </dd>
+<dt><a href="domain/clustering/DistanceCalculator.html#getTextDistanceType()" class="member-name-link">getTextDistanceType()</a> - Method in class domain.clustering.<a href="domain/clustering/DistanceCalculator.html" title="class in domain.clustering">DistanceCalculator</a></dt>
+<dd>
+<div class="block">Obtiene el tipo de distancia textual configurado.</div>
+</dd>
 <dt><a href="domain/model/Survey.html#getTitle()" class="member-name-link">getTitle()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Devuelve el título de la encuesta.</div>
+</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#getTitle()" class="member-name-link">getTitle()</a> - Method in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="domain/model/Survey.html#getTotalRating()" class="member-name-link">getTotalRating()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>
+<div class="block">Devuelve la suma total de las valoraciones recibidas.</div>
 </dd>
 <dt><a href="domain/model/User.html#getTotalSurveysCreated()" class="member-name-link">getTotalSurveysCreated()</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
@@ -1163,11 +1416,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Devuelve el nombre de usuario.</div>
 </dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html#getUsername()" class="member-name-link">getUsername()</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/UserController.html#getUsernameLoggedIn()" class="member-name-link">getUsernameLoggedIn()</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
 <dd>
 <div class="block">Devuelve el nombre del usuario actualmente logueado.</div>
 </dd>
-<dt><a href="domain/service/ResponseService.html#getValidResponseId()" class="member-name-link">getValidResponseId()</a> - Method in class domain.service.<a href="domain/service/ResponseService.html" title="class in domain.service">ResponseService</a></dt>
+<dt><a href="data/ResponseRepository.html#getValidResponseId()" class="member-name-link">getValidResponseId()</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
 <dd>
 <div class="block">Devuelve un nuevo identificador válidos para respuestas,
  generados incrementando el último ID almacenado.</div>
@@ -1180,9 +1435,161 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene todos los pesos configurados.</div>
 </dd>
+<dt><a href="presentation/views/ResetPasswordStep1Controller.html#goBack()" class="member-name-link">goBack()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep1Controller.html" title="class in presentation.views">ResetPasswordStep1Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep2Controller.html#goBack()" class="member-name-link">goBack()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep2Controller.html" title="class in presentation.views">ResetPasswordStep2Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep3Controller.html#goBack()" class="member-name-link">goBack()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep3Controller.html" title="class in presentation.views">ResetPasswordStep3Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Navega a la vista de Creación de Encuesta (funcionalidad no implementada en este fragmento).</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#goToCreateSurvey(javafx.event.ActionEvent)" class="member-name-link">goToCreateSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/AnswerSurveyViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/AnswerSurveyViewController.html" title="class in presentation.views">AnswerSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Navega a la vista principal (Home) al hacer clic en el botón.</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#goToHome(javafx.event.ActionEvent)" class="member-name-link">goToHome(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RegisterViewController.html#goToLogin(javafx.event.ActionEvent)" class="member-name-link">goToLogin(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/RegisterViewController.html" title="class in presentation.views">RegisterViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Navega a la vista de Borradores (funcionalidad no implementada en este fragmento).</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#goToMyDrafts(javafx.event.ActionEvent)" class="member-name-link">goToMyDrafts(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Navega a la vista de Mis Encuestas (funcionalidad no implementada en este fragmento).</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#goToMySurveys(javafx.event.ActionEvent)" class="member-name-link">goToMySurveys(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/LoginViewController.html#goToRegister(javafx.event.ActionEvent)" class="member-name-link">goToRegister(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/LoginViewController.html" title="class in presentation.views">LoginViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/LoginViewController.html#goToResetPassword(javafx.event.ActionEvent)" class="member-name-link">goToResetPassword(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/LoginViewController.html" title="class in presentation.views">LoginViewController</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:H">H</h2>
 <dl class="index">
+<dt><a href="presentation/views/ResponsesTableViewController.html#handleBack(javafx.event.ActionEvent)" class="member-name-link">handleBack(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#handleBack(javafx.event.ActionEvent)" class="member-name-link">handleBack(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleBack(javafx.event.ActionEvent)" class="member-name-link">handleBack(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#handleCancel()" class="member-name-link">handleCancel()</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#handleCancel()" class="member-name-link">handleCancel()</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/DeleteAccountViewController.html#handleCancel(javafx.event.ActionEvent)" class="member-name-link">handleCancel(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/DeleteAccountViewController.html" title="class in presentation.views">DeleteAccountViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#handleClearAllFilters(javafx.event.ActionEvent)" class="member-name-link">handleClearAllFilters(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleCloseSurvey(javafx.event.ActionEvent)" class="member-name-link">handleCloseSurvey(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep1Controller.html#handleContinue()" class="member-name-link">handleContinue()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep1Controller.html" title="class in presentation.views">ResetPasswordStep1Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#handleDeleteAccount(javafx.event.ActionEvent)" class="member-name-link">handleDeleteAccount(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#handleDeleteAccount(javafx.event.ActionEvent)" class="member-name-link">handleDeleteAccount(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#handleDeleteSurvey()" class="member-name-link">handleDeleteSurvey()</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#handleExportCSV(javafx.event.ActionEvent)" class="member-name-link">handleExportCSV(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleExportCSV(javafx.event.ActionEvent)" class="member-name-link">handleExportCSV(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#handleImportCSV()" class="member-name-link">handleImportCSV()</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/LoginViewController.html#handleLogin(javafx.event.ActionEvent)" class="member-name-link">handleLogin(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/LoginViewController.html" title="class in presentation.views">LoginViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/AnswerSurveyViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/AnswerSurveyViewController.html" title="class in presentation.views">AnswerSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Cierra la sesión del usuario actual y navega a la vista de Login.</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleLogout(javafx.event.ActionEvent)" class="member-name-link">handleLogout(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#handlePublish()" class="member-name-link">handlePublish()</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#handlePublish()" class="member-name-link">handlePublish()</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RegisterViewController.html#handleRegister(javafx.event.ActionEvent)" class="member-name-link">handleRegister(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/RegisterViewController.html" title="class in presentation.views">RegisterViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleRunClustering(javafx.event.ActionEvent)" class="member-name-link">handleRunClustering(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep3Controller.html#handleSave()" class="member-name-link">handleSave()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep3Controller.html" title="class in presentation.views">ResetPasswordStep3Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#handleSaveChanges()" class="member-name-link">handleSaveChanges()</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#handleSaveDraft()" class="member-name-link">handleSaveDraft()</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep2Controller.html#handleValidate()" class="member-name-link">handleValidate()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep2Controller.html" title="class in presentation.views">ResetPasswordStep2Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#handleViewByQuestions(javafx.event.ActionEvent)" class="member-name-link">handleViewByQuestions(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleViewResponses(javafx.event.ActionEvent)" class="member-name-link">handleViewResponses(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#handleViewResponsesTable(javafx.event.ActionEvent)" class="member-name-link">handleViewResponsesTable(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#handleViewTable(javafx.event.ActionEvent)" class="member-name-link">handleViewTable(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/ClusteringAnalysis.html#hasConverged()" class="member-name-link">hasConverged()</a> - Method in class domain.clustering.<a href="domain/clustering/ClusteringAnalysis.html" title="class in domain.clustering">ClusteringAnalysis</a></dt>
 <dd>
 <div class="block">Indica si el algoritmo alcanzó convergencia.</div>
@@ -1195,15 +1602,40 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Comprueba si el usuario ha creado una encuesta específica.</div>
 </dd>
+<dt><a href="domain/utils/PasswordHasher.html#hash(java.lang.String)" class="member-name-link">hash(String)</a> - Static method in class domain.utils.<a href="domain/utils/PasswordHasher.html" title="class in domain.utils">PasswordHasher</a></dt>
+<dd>
+<div class="block">Genera un hash de la contraseña utilizando el algoritmo seleccionado en ALGORITHM</div>
+</dd>
 <dt><a href="domain/clustering/Cluster.html#hashCode()" class="member-name-link">hashCode()</a> - Method in class domain.clustering.<a href="domain/clustering/Cluster.html" title="class in domain.clustering">Cluster</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Genera un código hash basado en el ID del clúster.</div>
+</dd>
 <dt><a href="domain/model/User.html#hasResponseId(java.lang.String,java.lang.String)" class="member-name-link">hasResponseId(String, String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Comprueba si un identificador de respuesta existe para una encuesta respondida por el usuario.</div>
 </dd>
+<dt><a href="presentation/util/SurveyView.html#HOME" class="member-name-link">HOME</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyView.html" title="enum class in presentation.util">SurveyView</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#HOME" class="member-name-link">HOME</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/HomeViewController.html" class="type-name-link" title="class in presentation.views">HomeViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/HomeViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,presentation.util.SurveyView,presentation.views.SceneManager)" class="member-name-link">HomeViewController(UserController, SurveyController, SurveyView, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/HomeViewController.html" title="class in presentation.views">HomeViewController</a></dt>
+<dd>
+<div class="block">Constructor para inyección de dependencias.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
+<dt><a href="data/IdCounterRepository.html" class="type-name-link" title="class in data">IdCounterRepository</a> - Class in <a href="data/package-summary.html">data</a></dt>
+<dd>
+<div class="block">Repositorio dedicado a la persistencia de un único valor: el contador
+ del siguiente ID de Respuesta disponible.</div>
+</dd>
+<dt><a href="data/IdCounterRepository.html#%3Cinit%3E(int)" class="member-name-link">IdCounterRepository(int)</a> - Constructor for class data.<a href="data/IdCounterRepository.html" title="class in data">IdCounterRepository</a></dt>
+<dd>
+<div class="block">Inicializa el repositorio y carga el contador desde el archivo.</div>
+</dd>
 <dt><a href="domain/controller/ResponseController.html#incrementResponseCount(java.lang.String)" class="member-name-link">incrementResponseCount(String)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
 <dd>
 <div class="block">Incrementa el contador de respuestas de una encuesta.</div>
@@ -1221,6 +1653,26 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Incrementa el contador de visualizaciones o respuestas de una encuesta.</div>
 </dd>
+<dt><a href="presentation/views/RatingPopupController.html#initialize()" class="member-name-link">initialize()</a> - Method in class presentation.views.<a href="presentation/views/RatingPopupController.html" title="class in presentation.views">RatingPopupController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep2Controller.html#initialize()" class="member-name-link">initialize()</a> - Method in class presentation.views.<a href="presentation/views/ResetPasswordStep2Controller.html" title="class in presentation.views">ResetPasswordStep2Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ClusteringViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/CreateSurveyViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/CreateSurveyViewController.html" title="class in presentation.views">CreateSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/EditSurveyViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/EditSurveyViewController.html" title="class in presentation.views">EditSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Método invocado después de que un controlador ha sido cargado en su totalidad.</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#initialize(java.net.URL,java.util.ResourceBundle)" class="member-name-link">initialize(URL, ResourceBundle)</a> - Method in class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/SurveyController.html#initializeNewSurvey(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">initializeNewSurvey(String, String, String)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
 <dd>
 <div class="block">Inicializa una nueva encuesta con los datos básicos proporcionados.</div>
@@ -1229,6 +1681,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Inicializa una nueva encuesta sin asignarle un ID todavía.</div>
 </dd>
+<dt><a href="presentation/views/SceneManager.html#initStage()" class="member-name-link">initStage()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/MultipleChoiceAnswer.html#inRange(int)" class="member-name-link">inRange(int)</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceAnswer.html" title="class in domain.model">MultipleChoiceAnswer</a></dt>
 <dd>
 <div class="block">Comprueba si un índice dado está dentro del rango válido de opciones.</div>
@@ -1303,6 +1757,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:L">L</h2>
 <dl class="index">
+<dt><a href="domain/clustering/TextDistanceType.html#LEVENSHTEIN" class="member-name-link">LEVENSHTEIN</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/TextDistanceType.html" title="enum class in domain.clustering">TextDistanceType</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/CtrlDominioClustering.html#limpiarAnalisis()" class="member-name-link">limpiarAnalisis()</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
 <dd>
 <div class="block">Limpia todos los análisis almacenados.</div>
@@ -1311,6 +1767,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Lista todos los IDs de análisis almacenados, ordenados del más reciente al más antiguo.</div>
 </dd>
+<dt><a href="presentation/views/AnswerSurveyViewController.html#loadSurvey(domain.model.Survey)" class="member-name-link">loadSurvey(Survey)</a> - Method in class presentation.views.<a href="presentation/views/AnswerSurveyViewController.html" title="class in presentation.views">AnswerSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/LocalDateTimeAdapter.html" class="type-name-link" title="class in data.adapter">LocalDateTimeAdapter</a> - Class in <a href="data/adapter/package-summary.html">data.adapter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/LocalDateTimeAdapter.html#%3Cinit%3E()" class="member-name-link">LocalDateTimeAdapter()</a> - Constructor for class data.adapter.<a href="data/adapter/LocalDateTimeAdapter.html" title="class in data.adapter">LocalDateTimeAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/exception/LogInException.html" class="type-name-link" title="class in domain.exception">LogInException</a> - Exception Class in <a href="domain/exception/package-summary.html">domain.exception</a></dt>
 <dd>
 <div class="block">Excepción lanzada cuando ocurre un error durante el inicio de sesión.</div>
@@ -1325,6 +1787,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Método obsoleto no utilizado por el sistema.</div>
 </dd>
+<dt><a href="presentation/views/LoginViewController.html" class="type-name-link" title="class in presentation.views">LoginViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/LoginViewController.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager)" class="member-name-link">LoginViewController(UserController, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/LoginViewController.html" title="class in presentation.views">LoginViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/SessionDriver.html#logout()" class="member-name-link">logout()</a> - Method in class presentation.drivers.<a href="presentation/drivers/SessionDriver.html" title="class in presentation.drivers">SessionDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/controller/UserController.html#logoutUser()" class="member-name-link">logoutUser()</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
@@ -1372,6 +1838,20 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Método main para pruebas independientes del SurveyDriver.</div>
 </dd>
+<dt><a href="presentation/main/Main.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class presentation.main.<a href="presentation/main/Main.html" title="class in presentation.main">Main</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/main/MainLauncher.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class presentation.main.<a href="presentation/main/MainLauncher.html" title="class in presentation.main">MainLauncher</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/App.html#main(java.lang.String%5B%5D)" class="member-name-link">main(String[])</a> - Static method in class presentation.views.<a href="presentation/views/App.html" title="class in presentation.views">App</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/main/Main.html" class="type-name-link" title="class in presentation.main">Main</a> - Class in <a href="presentation/main/package-summary.html">presentation.main</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/main/Main.html#%3Cinit%3E()" class="member-name-link">Main()</a> - Constructor for class presentation.main.<a href="presentation/main/Main.html" title="class in presentation.main">Main</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/main/MainLauncher.html" class="type-name-link" title="class in presentation.main">MainLauncher</a> - Class in <a href="presentation/main/package-summary.html">presentation.main</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/main/MainLauncher.html#%3Cinit%3E()" class="member-name-link">MainLauncher()</a> - Constructor for class presentation.main.<a href="presentation/main/MainLauncher.html" title="class in presentation.main">MainLauncher</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/clustering/DistanceType.html#MANHATTAN" class="member-name-link">MANHATTAN</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/DistanceType.html" title="enum class in domain.clustering">DistanceType</a></dt>
 <dd>
 <div class="block">Distancia de Manhattan: sum( |d_i| )</div>
@@ -1394,12 +1874,28 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva pregunta de tipo elección múltiple.</div>
 </dd>
+<dt><a href="presentation/util/SurveyView.html#MY_SURVEYS" class="member-name-link">MY_SURVEYS</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyView.html" title="enum class in presentation.util">SurveyView</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#MY_SURVEYS" class="member-name-link">MY_SURVEYS</a> - Enum constant in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html" class="type-name-link" title="class in presentation.views">MySurveyDraftsViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,presentation.util.SurveyView,presentation.views.SceneManager)" class="member-name-link">MySurveyDraftsViewController(UserController, SurveyController, SurveyView, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" title="class in presentation.views">MySurveyDraftsViewController</a></dt>
+<dd>
+<div class="block">Constructor para inyección de dependencias.</div>
+</dd>
 <dt><a href="presentation/drivers/MySurveysDriver.html" class="type-name-link" title="class in presentation.drivers">MySurveysDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/MySurveysDriver.html#%3Cinit%3E(domain.controller.SurveyController,presentation.drivers.ClusteringDriver)" class="member-name-link">MySurveysDriver(SurveyController, ClusteringDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/MySurveysDriver.html" title="class in presentation.drivers">MySurveysDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/MySurveysDriver.html#mySurveysMenu()" class="member-name-link">mySurveysMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/MySurveysDriver.html" title="class in presentation.drivers">MySurveysDriver</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html" class="type-name-link" title="class in presentation.views">MySurveysViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,presentation.util.SurveyView,presentation.views.SceneManager)" class="member-name-link">MySurveysViewController(UserController, SurveyController, SurveyView, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/MySurveysViewController.html" title="class in presentation.views">MySurveysViewController</a></dt>
+<dd>
+<div class="block">Constructor para inyección de dependencias.</div>
+</dd>
 </dl>
 <h2 class="title" id="I:N">N</h2>
 <dl class="index">
@@ -1424,6 +1920,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Obtiene los resultados completos de un análisis en formato de texto.</div>
 </dd>
+<dt><a href="presentation/views/RatingPopupController.RatingListener.html#onRatingSelected(double)" class="member-name-link">onRatingSelected(double)</a> - Method in interface presentation.views.<a href="presentation/views/RatingPopupController.RatingListener.html" title="interface in presentation.views">RatingPopupController.RatingListener</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/OptionQuestion.html" class="type-name-link" title="class in domain.model">OptionQuestion</a> - Class in <a href="domain/model/package-summary.html">domain.model</a></dt>
 <dd>
 <div class="block">Representa una opción dentro de una pregunta de tipo elección múltiple.</div>
@@ -1435,12 +1933,45 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:P">P</h2>
 <dl class="index">
+<dt><a href="domain/utils/PasswordHasher.html" class="type-name-link" title="class in domain.utils">PasswordHasher</a> - Class in <a href="domain/utils/package-summary.html">domain.utils</a></dt>
+<dd>
+<div class="block">Clase de Utilidad encargada de generar hashes a las contraseñas en texto plano.</div>
+</dd>
+<dt><a href="domain/utils/PasswordHasher.html#%3Cinit%3E()" class="member-name-link">PasswordHasher()</a> - Constructor for class domain.utils.<a href="domain/utils/PasswordHasher.html" title="class in domain.utils">PasswordHasher</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/drivers/PasswordRecoveryDriver.html" class="type-name-link" title="class in presentation.drivers">PasswordRecoveryDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/drivers/PasswordRecoveryDriver.html#%3Cinit%3E(domain.controller.UserController)" class="member-name-link">PasswordRecoveryDriver(UserController)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/PasswordRecoveryDriver.html" title="class in presentation.drivers">PasswordRecoveryDriver</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/driverMain/package-summary.html">presentation.driverMain</a> - package presentation.driverMain</dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/package-summary.html">presentation.drivers</a> - package presentation.drivers</dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/main/package-summary.html">presentation.main</a> - package presentation.main</dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/package-summary.html">presentation.util</a> - package presentation.util</dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/package-summary.html">presentation.views</a> - package presentation.views</dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/enums/SurveyStatus.html#PUBLISHED" class="member-name-link">PUBLISHED</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/SurveyStatus.html" title="enum class in domain.model.enums">SurveyStatus</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="domain/controller/ResponseController.html#publishResponse(java.lang.String,java.lang.String)" class="member-name-link">publishResponse(String, String)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
+<dd>
+<div class="block">Marca una respuesta como enviada, estableciendo la fecha y hora de envío.
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; main</div>
+</dd>
+<dt><a href="domain/service/ResponseService.html#publishResponse(java.lang.String,java.lang.String)" class="member-name-link">publishResponse(String, String)</a> - Method in class domain.service.<a href="domain/service/ResponseService.html" title="class in domain.service">ResponseService</a></dt>
+<dd>
+<div class="block">Publica una respuesta, cambiando su estado a SUBMITTED.</div>
+</dd>
+<dt><a href="domain/controller/SurveyController.html#publishSurvey(java.lang.String)" class="member-name-link">publishSurvey(String)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Publica una encuesta (cambia de DRAFT a PUBLISHED).</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#publishSurvey(java.lang.String)" class="member-name-link">publishSurvey(String)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Publica una encuesta (cambia de DRAFT a PUBLISHED).</div>
+</dd>
 </dl>
 <h2 class="title" id="I:Q">Q</h2>
 <dl class="index">
@@ -1462,6 +1993,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva pregunta asociada a una encuesta.</div>
 </dd>
+<dt><a href="data/adapter/QuestionAdapter.html" class="type-name-link" title="class in data.adapter">QuestionAdapter</a> - Class in <a href="data/adapter/package-summary.html">data.adapter</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/adapter/QuestionAdapter.html#%3Cinit%3E()" class="member-name-link">QuestionAdapter()</a> - Constructor for class data.adapter.<a href="data/adapter/QuestionAdapter.html" title="class in data.adapter">QuestionAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/QuestionController.html" class="type-name-link" title="class in domain.controller">QuestionController</a> - Class in <a href="domain/controller/package-summary.html">domain.controller</a></dt>
 <dd>
 <div class="block">Controlador responsable de gestionar las preguntas asociadas a las encuestas.</div>
@@ -1470,38 +2005,48 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva instancia del controlador de preguntas.</div>
 </dd>
-<dt><a href="data/QuestionRepository.html" class="type-name-link" title="class in data">QuestionRepository</a> - Class in <a href="data/package-summary.html">data</a></dt>
-<dd>
-<div class="block">Repositorio para almacenar preguntas (Questions) en memoria.</div>
-</dd>
-<dt><a href="data/QuestionRepository.html#%3Cinit%3E()" class="member-name-link">QuestionRepository()</a> - Constructor for class data.<a href="data/QuestionRepository.html" title="class in data">QuestionRepository</a></dt>
-<dd>&nbsp;</dd>
 <dt><a href="domain/service/QuestionService.html" class="type-name-link" title="class in domain.service">QuestionService</a> - Class in <a href="domain/service/package-summary.html">domain.service</a></dt>
 <dd>
 <div class="block">Servicio responsable de gestionar la lógica de negocio relacionada con la creación
  y modificación de preguntas dentro de una encuesta.</div>
 </dd>
-<dt><a href="domain/service/QuestionService.html#%3Cinit%3E(data.QuestionRepository,domain.controller.UserController)" class="member-name-link">QuestionService(QuestionRepository, UserController)</a> - Constructor for class domain.service.<a href="domain/service/QuestionService.html" title="class in domain.service">QuestionService</a></dt>
+<dt><a href="domain/service/QuestionService.html#%3Cinit%3E(domain.controller.UserController)" class="member-name-link">QuestionService(UserController)</a> - Constructor for class domain.service.<a href="domain/service/QuestionService.html" title="class in domain.service">QuestionService</a></dt>
 <dd>
 <div class="block">Crea una instancia del servicio de preguntas.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="presentation/views/RatingPopupController.html" class="type-name-link" title="class in presentation.views">RatingPopupController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RatingPopupController.html#%3Cinit%3E()" class="member-name-link">RatingPopupController()</a> - Constructor for class presentation.views.<a href="presentation/views/RatingPopupController.html" title="class in presentation.views">RatingPopupController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RatingPopupController.RatingListener.html" class="type-name-link" title="interface in presentation.views">RatingPopupController.RatingListener</a> - Interface in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="domain/model/Survey.html#recomputeAvgRating()" class="member-name-link">recomputeAvgRating()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>
+<div class="block">Recalcula la calificación promedio de la encuesta.</div>
+</dd>
+<dt><a href="presentation/drivers/PasswordRecoveryDriver.html#recoveryMenu()" class="member-name-link">recoveryMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/PasswordRecoveryDriver.html" title="class in presentation.drivers">PasswordRecoveryDriver</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/exception/RegisterException.html" class="type-name-link" title="class in domain.exception">RegisterException</a> - Exception Class in <a href="domain/exception/package-summary.html">domain.exception</a></dt>
 <dd>
 <div class="block">Excepción lanzada cuando ocurre un error durante el registro de usuario.</div>
 </dd>
 <dt><a href="domain/exception/RegisterException.html#%3Cinit%3E(java.lang.String)" class="member-name-link">RegisterException(String)</a> - Constructor for exception class domain.exception.<a href="domain/exception/RegisterException.html" title="class in domain.exception">RegisterException</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="domain/controller/UserController.html#registerUser(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">registerUser(String, String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dt><a href="domain/controller/UserController.html#registerUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">registerUser(String, String, String, String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
 <dd>
 <div class="block">Registra un nuevo usuario en el sistema.</div>
 </dd>
-<dt><a href="domain/service/UserService.html#registerUser(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">registerUser(String, String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dt><a href="domain/service/UserService.html#registerUser(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">registerUser(String, String, String, String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
 <dd>
 <div class="block">Registra un nuevo usuario en el sistema tras validar sus datos.</div>
 </dd>
+<dt><a href="presentation/views/RegisterViewController.html" class="type-name-link" title="class in presentation.views">RegisterViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RegisterViewController.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager)" class="member-name-link">RegisterViewController(UserController, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/RegisterViewController.html" title="class in presentation.views">RegisterViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/User.html#removeCreatedSurveyId(java.lang.String)" class="member-name-link">removeCreatedSurveyId(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Elimina una encuesta creada por el usuario.</div>
@@ -1534,6 +2079,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Elimina un identificador de respuesta de una encuesta respondida por el usuario.</div>
 </dd>
+<dt><a href="domain/service/UserService.html#removeSurveyCreated(java.lang.String,java.lang.String)" class="member-name-link">removeSurveyCreated(String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Elimina una encuesta creada del perfil del usuario.</div>
+</dd>
+<dt><a href="presentation/views/SurveysViewController.html#renderSurveyList(java.util.List)" class="member-name-link">renderSurveyList(List&lt;Survey&gt;)</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Limpia el contenedor de encuestas y lo repuebla con las cards de las encuestas proporcionadas.</div>
+</dd>
 <dt><a href="domain/model/MultipleChoiceQuestion.html#reorderOption(int,int)" class="member-name-link">reorderOption(int, int)</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceQuestion.html" title="class in domain.model">MultipleChoiceQuestion</a></dt>
 <dd>
 <div class="block">Reordena una opción dentro de la lista de opciones de la pregunta.</div>
@@ -1542,6 +2095,34 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Reordena una pregunta en la encuesta.</div>
 </dd>
+<dt><a href="domain/controller/SurveyController.html#reorderQuestion(java.lang.String,int,int)" class="member-name-link">reorderQuestion(String, int, int)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Reordena las preguntas de una encuesta.</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#reorderQuestion(java.lang.String,int,int)" class="member-name-link">reorderQuestion(String, int, int)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Reordena una pregunta en una encuesta.</div>
+</dd>
+<dt><a href="domain/controller/UserController.html#resetPassword(java.lang.String,java.lang.String)" class="member-name-link">resetPassword(String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dd>
+<div class="block">Restablece la contraseña de un usuario específico.</div>
+</dd>
+<dt><a href="domain/service/UserService.html#resetPassword(java.lang.String,java.lang.String)" class="member-name-link">resetPassword(String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Restablece la contraseña de un usuario tras verificar su identidad.</div>
+</dd>
+<dt><a href="presentation/views/ResetPasswordStep1Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep1Controller</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep1Controller.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager)" class="member-name-link">ResetPasswordStep1Controller(UserController, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/ResetPasswordStep1Controller.html" title="class in presentation.views">ResetPasswordStep1Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep2Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep2Controller</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep2Controller.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager,java.lang.String,java.lang.String)" class="member-name-link">ResetPasswordStep2Controller(UserController, SceneManager, String, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ResetPasswordStep2Controller.html" title="class in presentation.views">ResetPasswordStep2Controller</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep3Controller.html" class="type-name-link" title="class in presentation.views">ResetPasswordStep3Controller</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResetPasswordStep3Controller.html#%3Cinit%3E(domain.controller.UserController,presentation.views.SceneManager,java.lang.String)" class="member-name-link">ResetPasswordStep3Controller(UserController, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ResetPasswordStep3Controller.html" title="class in presentation.views">ResetPasswordStep3Controller</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Response.html" class="type-name-link" title="class in domain.model">Response</a> - Class in <a href="domain/model/package-summary.html">domain.model</a></dt>
 <dd>
 <div class="block">Representa una respuesta completa a una encuesta realizada por un usuario.</div>
@@ -1582,6 +2163,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea un repositorio vacío para almacenar respuestas.</div>
 </dd>
+<dt><a href="data/ResponseRepository.html#%3Cinit%3E(java.lang.String)" class="member-name-link">ResponseRepository(String)</a> - Constructor for class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
+<dd>
+<div class="block">Crea un repositorio de respuestas con un path personalizado.</div>
+</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html#%3Cinit%3E(domain.model.Response,java.util.List,java.time.format.DateTimeFormatter)" class="member-name-link">ResponseRow(Response, List&lt;Question&gt;, DateTimeFormatter)</a> - Constructor for class presentation.views.<a href="presentation/views/ResponsesTableViewController.ResponseRow.html" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/service/ResponseService.html" class="type-name-link" title="class in domain.service">ResponseService</a> - Class in <a href="domain/service/package-summary.html">domain.service</a></dt>
 <dd>
 <div class="block">Servicio encargado de gestionar toda la lógica de negocio relacionada con las
@@ -1591,6 +2178,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Construye el servicio de respuestas.</div>
 </dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html" class="type-name-link" title="class in presentation.views">ResponsesTableViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>
+<div class="block">Controlador para la vista de tabla de respuestas de una encuesta.</div>
+</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.ResponseController,presentation.views.SceneManager,java.lang.String)" class="member-name-link">ResponsesTableViewController(UserController, SurveyController, ResponseController, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ResponsesTableViewController.html" title="class in presentation.views">ResponsesTableViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ResponsesTableViewController.ResponseRow.html" class="type-name-link" title="class in presentation.views">ResponsesTableViewController.ResponseRow</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/enums/ResponseStatus.html" class="type-name-link" title="enum class in domain.model.enums">ResponseStatus</a> - Enum Class in <a href="domain/model/enums/package-summary.html">domain.model.enums</a></dt>
 <dd>
 <div class="block">Estados posibles de una respuesta: borrador o enviada.</div>
@@ -1599,13 +2194,25 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Inicia el menú principal del driver de clustering.</div>
 </dd>
-<dt><a href="domain/controller/CtrlDominioClustering.html#runAnalysis(java.lang.String,java.lang.String,int,int,double,java.lang.String)" class="member-name-link">runAnalysis(String, String, int, int, double, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
+<dt><a href="domain/controller/CtrlDominioClustering.html#runAnalysis(java.lang.String,java.lang.String,int,int,double,java.lang.String,java.lang.String)" class="member-name-link">runAnalysis(String, String, int, int, double, String, String)</a> - Method in class domain.controller.<a href="domain/controller/CtrlDominioClustering.html" title="class in domain.controller">CtrlDominioClustering</a></dt>
 <dd>
 <div class="block">Ejecuta un análisis de clustering sobre una encuesta.</div>
 </dd>
+<dt><a href="presentation/views/ClusteringViewController.html#runAnalysis(javafx.event.ActionEvent)" class="member-name-link">runAnalysis(ActionEvent)</a> - Method in class presentation.views.<a href="presentation/views/ClusteringViewController.html" title="class in presentation.views">ClusteringViewController</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:S">S</h2>
 <dl class="index">
+<dt><a href="data/IdCounterRepository.html#saveId()" class="member-name-link">saveId()</a> - Method in class data.<a href="data/IdCounterRepository.html" title="class in data">IdCounterRepository</a></dt>
+<dd>
+<div class="block">Guarda el contador actual en el fichero JSON.</div>
+</dd>
+<dt><a href="presentation/views/SurveysViewController.html#sceneManager" class="member-name-link">sceneManager</a> - Variable in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html" class="type-name-link" title="class in presentation.views">SceneManager</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.CtrlDominioClustering,domain.controller.ResponseController)" class="member-name-link">SceneManager(UserController, SurveyController, CtrlDominioClustering, ResponseController)</a> - Constructor for class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#selectAnswer(java.lang.String,java.lang.String)" class="member-name-link">selectAnswer(String, String)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#selectAnswerErrorMenu()" class="member-name-link">selectAnswerErrorMenu()</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
@@ -1618,9 +2225,11 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/driverMain/DriverMain.html#selectWelcomeMenuOption()" class="member-name-link">selectWelcomeMenuOption()</a> - Static method in class presentation.driverMain.<a href="presentation/driverMain/DriverMain.html" title="class in presentation.driverMain">DriverMain</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="data/adapter/LocalDateTimeAdapter.html#serialize(java.time.LocalDateTime,java.lang.reflect.Type,com.google.gson.JsonSerializationContext)" class="member-name-link">serialize(LocalDateTime, Type, JsonSerializationContext)</a> - Method in class data.adapter.<a href="data/adapter/LocalDateTimeAdapter.html" title="class in data.adapter">LocalDateTimeAdapter</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/SessionDriver.html" class="type-name-link" title="class in presentation.drivers">SessionDriver</a> - Class in <a href="presentation/drivers/package-summary.html">presentation.drivers</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="presentation/drivers/SessionDriver.html#%3Cinit%3E(domain.controller.UserController)" class="member-name-link">SessionDriver(UserController)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/SessionDriver.html" title="class in presentation.drivers">SessionDriver</a></dt>
+<dt><a href="presentation/drivers/SessionDriver.html#%3Cinit%3E(domain.controller.UserController,presentation.drivers.PasswordRecoveryDriver)" class="member-name-link">SessionDriver(UserController, PasswordRecoveryDriver)</a> - Constructor for class presentation.drivers.<a href="presentation/drivers/SessionDriver.html" title="class in presentation.drivers">SessionDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/model/NumericalAnswer.html#setAnswerNum(java.lang.Double)" class="member-name-link">setAnswerNum(Double)</a> - Method in class domain.model.<a href="domain/model/NumericalAnswer.html" title="class in domain.model">NumericalAnswer</a></dt>
 <dd>
@@ -1644,6 +2253,14 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece el componente (valor) en un índice específico.</div>
 </dd>
+<dt><a href="presentation/views/HomeViewController.html#setContentTitle()" class="member-name-link">setContentTitle()</a> - Method in class presentation.views.<a href="presentation/views/HomeViewController.html" title="class in presentation.views">HomeViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html#setContentTitle()" class="member-name-link">setContentTitle()</a> - Method in class presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" title="class in presentation.views">MySurveyDraftsViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html#setContentTitle()" class="member-name-link">setContentTitle()</a> - Method in class presentation.views.<a href="presentation/views/MySurveysViewController.html" title="class in presentation.views">MySurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#setContentTitle()" class="member-name-link">setContentTitle()</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Survey.html#setDescription(java.lang.String)" class="member-name-link">setDescription(String)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Establece la descripción de la encuesta.</div>
@@ -1656,6 +2273,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Actualiza el correo electrónico del usuario.</div>
 </dd>
+<dt><a href="presentation/views/App.html#setGlobalSceneManager(presentation.views.SceneManager)" class="member-name-link">setGlobalSceneManager(SceneManager)</a> - Static method in class presentation.views.<a href="presentation/views/App.html" title="class in presentation.views">App</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Answer.html#setIsAnswered(boolean)" class="member-name-link">setIsAnswered(boolean)</a> - Method in class domain.model.<a href="domain/model/Answer.html" title="class in domain.model">Answer</a></dt>
 <dd>
 <div class="block">Establece si la respuesta ha sido contestada o no.</div>
@@ -1664,10 +2283,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece la etiqueta legible por humanos del clúster.</div>
 </dd>
-<dt><a href="data/ResponseRepository.html#setLastResponseId(java.lang.String)" class="member-name-link">setLastResponseId(String)</a> - Method in class data.<a href="data/ResponseRepository.html" title="class in data">ResponseRepository</a></dt>
-<dd>
-<div class="block">Actualiza el último identificador de respuesta asignado.</div>
-</dd>
+<dt><a href="presentation/views/RatingPopupController.html#setListener(presentation.views.RatingPopupController.RatingListener)" class="member-name-link">setListener(RatingPopupController.RatingListener)</a> - Method in class presentation.views.<a href="presentation/views/RatingPopupController.html" title="class in presentation.views">RatingPopupController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/MultipleChoiceQuestion.html#setMaxSelections(int)" class="member-name-link">setMaxSelections(int)</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceQuestion.html" title="class in domain.model">MultipleChoiceQuestion</a></dt>
 <dd>
 <div class="block">Establece el número máximo de opciones que el usuario puede seleccionar.</div>
@@ -1676,6 +2293,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece el número mínimo de opciones que el usuario puede seleccionar.</div>
 </dd>
+<dt><a href="presentation/views/ConfirmLeaveController.html#setOnConfirm(java.lang.Runnable)" class="member-name-link">setOnConfirm(Runnable)</a> - Method in class presentation.views.<a href="presentation/views/ConfirmLeaveController.html" title="class in presentation.views">ConfirmLeaveController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/MultipleChoiceAnswer.html#setOption(int,boolean)" class="member-name-link">setOption(int, boolean)</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceAnswer.html" title="class in domain.model">MultipleChoiceAnswer</a></dt>
 <dd>
 <div class="block">Establece el estado de selección de una opción específica.</div>
@@ -1688,10 +2307,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece un nuevo texto para la opción.</div>
 </dd>
-<dt><a href="domain/model/User.html#setPassword(java.lang.String)" class="member-name-link">setPassword(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dt><a href="domain/model/User.html#setPasswordHash(java.lang.String)" class="member-name-link">setPasswordHash(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
 <dd>
 <div class="block">Actualiza la contraseña del usuario.</div>
 </dd>
+<dt><a href="presentation/views/SceneManager.html#setPrimaryStage(javafx.stage.Stage)" class="member-name-link">setPrimaryStage(Stage)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Survey.html#setPUBLISHED_AT()" class="member-name-link">setPUBLISHED_AT()</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Establece la fecha y hora de publicación de la encuesta.</div>
@@ -1720,6 +2341,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece la semilla aleatoria para reproducibilidad.</div>
 </dd>
+<dt><a href="domain/model/Survey.html#setRatingCount(int)" class="member-name-link">setRatingCount(int)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Question.html#setRequired(boolean)" class="member-name-link">setRequired(boolean)</a> - Method in class domain.model.<a href="domain/model/Question.html" title="class in domain.model">Question</a></dt>
 <dd>
 <div class="block">Establece si la pregunta es obligatoria.</div>
@@ -1728,9 +2351,21 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Cambia el estado actual de la respuesta.</div>
 </dd>
+<dt><a href="domain/model/User.html#setSecurityAnswer(java.lang.String)" class="member-name-link">setSecurityAnswer(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Actualiza la respuesta de seguridad del usuario.</div>
+</dd>
+<dt><a href="domain/model/User.html#setSecurityQuestion(java.lang.String)" class="member-name-link">setSecurityQuestion(String)</a> - Method in class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Actualiza la pregunta de seguridad del usuario.</div>
+</dd>
 <dt><a href="domain/model/Response.html#setSUBMITTED_AT(java.time.LocalDateTime)" class="member-name-link">setSUBMITTED_AT(LocalDateTime)</a> - Method in class domain.model.<a href="domain/model/Response.html" title="class in domain.model">Response</a></dt>
 <dd>
 <div class="block">Establece la fecha y hora en que se envió la respuesta.</div>
+</dd>
+<dt><a href="domain/model/Question.html#setSURVEY_ID(java.lang.String)" class="member-name-link">setSURVEY_ID(String)</a> - Method in class domain.model.<a href="domain/model/Question.html" title="class in domain.model">Question</a></dt>
+<dd>
+<div class="block">Estable el identificador de la encuesta a la que pertenece la pregunta.</div>
 </dd>
 <dt><a href="domain/model/Survey.html#setSurveyStatus(domain.model.enums.SurveyStatus)" class="member-name-link">setSurveyStatus(SurveyStatus)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
@@ -1740,10 +2375,20 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Establece el título de la encuesta.</div>
 </dd>
+<dt><a href="domain/model/Survey.html#setTotalRating(double)" class="member-name-link">setTotalRating(double)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Question.html#setTypeQuestion(domain.model.enums.TypeQuestion)" class="member-name-link">setTypeQuestion(TypeQuestion)</a> - Method in class domain.model.<a href="domain/model/Question.html" title="class in domain.model">Question</a></dt>
 <dd>
 <div class="block">Establece un nuevo tipo para la pregunta.</div>
 </dd>
+<dt><a href="presentation/views/HomeViewController.html#setViewActive()" class="member-name-link">setViewActive()</a> - Method in class presentation.views.<a href="presentation/views/HomeViewController.html" title="class in presentation.views">HomeViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveyDraftsViewController.html#setViewActive()" class="member-name-link">setViewActive()</a> - Method in class presentation.views.<a href="presentation/views/MySurveyDraftsViewController.html" title="class in presentation.views">MySurveyDraftsViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/MySurveysViewController.html#setViewActive()" class="member-name-link">setViewActive()</a> - Method in class presentation.views.<a href="presentation/views/MySurveysViewController.html" title="class in presentation.views">MySurveysViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#setViewActive()" class="member-name-link">setViewActive()</a> - Method in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/Survey.html#setViews(int)" class="member-name-link">setViews(int)</a> - Method in class domain.model.<a href="domain/model/Survey.html" title="class in domain.model">Survey</a></dt>
 <dd>
 <div class="block">Establece el número de vistas de la encuesta.</div>
@@ -1754,16 +2399,56 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#showAnswers(java.lang.String,java.lang.String)" class="member-name-link">showAnswers(String, String)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showAnswerSurvey(java.lang.String)" class="member-name-link">showAnswerSurvey(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showClustering(java.lang.String)" class="member-name-link">showClustering(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showConfirmLeave(java.lang.Runnable)" class="member-name-link">showConfirmLeave(Runnable)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showCreateSurvey()" class="member-name-link">showCreateSurvey()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showDeleteAccountConfirm()" class="member-name-link">showDeleteAccountConfirm()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showEditSurvey(java.lang.String)" class="member-name-link">showEditSurvey(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showHome()" class="member-name-link">showHome()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showLogin()" class="member-name-link">showLogin()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showMySurveys()" class="member-name-link">showMySurveys()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showMySurveysDrafts()" class="member-name-link">showMySurveysDrafts()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showPasswordRecovery()" class="member-name-link">showPasswordRecovery()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showPasswordRecoveryStep2(java.lang.String,java.lang.String)" class="member-name-link">showPasswordRecoveryStep2(String, String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showPasswordRecoveryStep3(java.lang.String)" class="member-name-link">showPasswordRecoveryStep3(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#showQuestion(domain.model.Question)" class="member-name-link">showQuestion(Question)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/EditResponseDriver.html#showQuestions(java.lang.String)" class="member-name-link">showQuestions(String)</a> - Method in class presentation.drivers.<a href="presentation/drivers/EditResponseDriver.html" title="class in presentation.drivers">EditResponseDriver</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showRatingPopup(presentation.views.RatingPopupController.RatingListener)" class="member-name-link">showRatingPopup(RatingPopupController.RatingListener)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showRegister()" class="member-name-link">showRegister()</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showResponsesTable(java.lang.String)" class="member-name-link">showResponsesTable(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="presentation/drivers/ResponseDriver.html#showSurveys(java.util.List)" class="member-name-link">showSurveys(List&lt;Survey&gt;)</a> - Method in class presentation.drivers.<a href="presentation/drivers/ResponseDriver.html" title="class in presentation.drivers">ResponseDriver</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showViewResponses(java.lang.String)" class="member-name-link">showViewResponses(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SceneManager.html#showViewSurvey(java.lang.String)" class="member-name-link">showViewSurvey(String)</a> - Method in class presentation.views.<a href="presentation/views/SceneManager.html" title="class in presentation.views">SceneManager</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/clustering/QualityMetricType.html#SILHOUETTE" class="member-name-link">SILHOUETTE</a> - Enum constant in enum class domain.clustering.<a href="domain/clustering/QualityMetricType.html" title="enum class in domain.clustering">QualityMetricType</a></dt>
 <dd>
 <div class="block">Coeficiente de Silhouette: mide cohesión y separación (-1 a 1, mayor es mejor)</div>
 </dd>
+<dt><a href="presentation/main/Main.html#start(javafx.stage.Stage)" class="member-name-link">start(Stage)</a> - Method in class presentation.main.<a href="presentation/main/Main.html" title="class in presentation.main">Main</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/App.html#start(javafx.stage.Stage)" class="member-name-link">start(Stage)</a> - Method in class presentation.views.<a href="presentation/views/App.html" title="class in presentation.views">App</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/ResponseController.html#startAnswer(java.lang.String,java.lang.String,int)" class="member-name-link">startAnswer(String, String, int)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
 <dd>
 <div class="block">Inicia la respuesta a una pregunta específica dentro de una encuesta.</div>
@@ -1776,6 +2461,14 @@ loadScripts(document, 'script');</script>
      TextualAnswer
      NumericalAnswer
  </div>
+</dd>
+<dt><a href="domain/controller/UserController.html#startPasswordRecovery(java.lang.String)" class="member-name-link">startPasswordRecovery(String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dd>
+<div class="block">Inicia el proceso de recuperación de contraseña para un usuario específico.</div>
+</dd>
+<dt><a href="domain/service/UserService.html#startPasswordRecovery(java.lang.String)" class="member-name-link">startPasswordRecovery(String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Inicia el proceso de recuperación de contraseña para un usuario.</div>
 </dd>
 <dt><a href="domain/controller/ResponseController.html#startResponse(java.lang.String)" class="member-name-link">startResponse(String)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
 <dd>
@@ -1793,6 +2486,14 @@ loadScripts(document, 'script');</script>
      Mantiene la coherencia con el índice del usuario.
  </div>
 </dd>
+<dt><a href="domain/controller/ResponseController.html#startResponseAndGetId(java.lang.String,java.lang.String)" class="member-name-link">startResponseAndGetId(String, String)</a> - Method in class domain.controller.<a href="domain/controller/ResponseController.html" title="class in domain.controller">ResponseController</a></dt>
+<dd>
+<div class="block">Inicia una nueva respuesta asociada a una encuesta.</div>
+</dd>
+<dt><a href="domain/service/ResponseService.html#startResponseAndGetId(java.lang.String,java.lang.String)" class="member-name-link">startResponseAndGetId(String, String)</a> - Method in class domain.service.<a href="domain/service/ResponseService.html" title="class in domain.service">ResponseService</a></dt>
+<dd>
+<div class="block">Inicia una nueva respuesta para una encuesta con un username específico.</div>
+</dd>
 <dt><a href="domain/model/enums/ResponseStatus.html#SUBMITTED" class="member-name-link">SUBMITTED</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/ResponseStatus.html" title="enum class in domain.model.enums">ResponseStatus</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/model/Survey.html" class="type-name-link" title="class in domain.model">Survey</a> - Class in <a href="domain/model/package-summary.html">domain.model</a></dt>
@@ -1808,6 +2509,8 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva encuesta con un identificador ya asignado (por ejemplo, desde la base de datos).</div>
 </dd>
+<dt><a href="presentation/views/SurveysViewController.html#surveyController" class="member-name-link">surveyController</a> - Variable in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/SurveyController.html" class="type-name-link" title="class in domain.controller">SurveyController</a> - Class in <a href="domain/controller/package-summary.html">domain.controller</a></dt>
 <dd>
 <div class="block">Controlador responsable de gestionar las operaciones relacionadas con las encuestas.</div>
@@ -1833,9 +2536,13 @@ loadScripts(document, 'script');</script>
 <div class="block">Repositorio encargado de almacenar y gestionar en memoria todas las encuestas del sistema.</div>
 </dd>
 <dt><a href="data/SurveyRepository.html#%3Cinit%3E()" class="member-name-link">SurveyRepository()</a> - Constructor for class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="data/SurveyRepository.html#%3Cinit%3E(java.lang.String)" class="member-name-link">SurveyRepository(String)</a> - Constructor for class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
-<div class="block">Crea un nuevo repositorio de encuestas en memoria.</div>
+<div class="block">Crea un nuevo repositorio de encuestas con un path personalizado.</div>
 </dd>
+<dt><a href="presentation/views/SurveysViewController.html#surveysContainer" class="member-name-link">surveysContainer</a> - Variable in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/service/ResponseService.html#surveyService" class="member-name-link">surveyService</a> - Variable in class domain.service.<a href="domain/service/ResponseService.html" title="class in domain.service">ResponseService</a></dt>
 <dd>
 <div class="block">Servicio de encuestas utilizado para validar estructura y recuperar preguntas.</div>
@@ -1844,7 +2551,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Servicio encargado de gestionar toda la lógica de negocio relacionada con las encuestas.</div>
 </dd>
-<dt><a href="domain/service/SurveyService.html#%3Cinit%3E(data.SurveyRepository,domain.controller.UserController)" class="member-name-link">SurveyService(SurveyRepository, UserController)</a> - Constructor for class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dt><a href="domain/service/SurveyService.html#%3Cinit%3E(data.SurveyRepository,domain.controller.UserController,domain.service.UserService)" class="member-name-link">SurveyService(SurveyRepository, UserController, UserService)</a> - Constructor for class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
 <dd>
 <div class="block">Crea una nueva instancia del servicio de encuestas.</div>
 </dd>
@@ -1852,6 +2559,16 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Estados posibles de una encuesta: borrador, publicada o cerrada.</div>
 </dd>
+<dt><a href="presentation/views/SurveysViewController.html" class="type-name-link" title="class in presentation.views">SurveysViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/SurveysViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,presentation.util.SurveyView,presentation.views.SceneManager)" class="member-name-link">SurveysViewController(UserController, SurveyController, SurveyView, SceneManager)</a> - Constructor for class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>
+<div class="block">Constructor para inyección de dependencias.</div>
+</dd>
+<dt><a href="presentation/util/SurveyView.html" class="type-name-link" title="enum class in presentation.util">SurveyView</a> - Enum Class in <a href="presentation/util/package-summary.html">presentation.util</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html" class="type-name-link" title="enum class in presentation.util">SurveyViewTitle</a> - Enum Class in <a href="presentation/util/package-summary.html">presentation.util</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="data/SurveyRepository.html#swapQuestions(java.lang.String,int,int)" class="member-name-link">swapQuestions(String, int, int)</a> - Method in class data.<a href="data/SurveyRepository.html" title="class in data">SurveyRepository</a></dt>
 <dd>
 <div class="block">Intercambia la posición de dos preguntas en una encuesta específica.</div>
@@ -1859,6 +2576,8 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:T">T</h2>
 <dl class="index">
+<dt><a href="domain/clustering/TextDistanceType.html" class="type-name-link" title="enum class in domain.clustering">TextDistanceType</a> - Enum Class in <a href="domain/clustering/package-summary.html">domain.clustering</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/model/enums/TypeQuestion.html#TEXTUAL" class="member-name-link">TEXTUAL</a> - Enum constant in enum class domain.model.enums.<a href="domain/model/enums/TypeQuestion.html" title="enum class in domain.model.enums">TypeQuestion</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="domain/model/TextualAnswer.html" class="type-name-link" title="class in domain.model">TextualAnswer</a> - Class in <a href="domain/model/package-summary.html">domain.model</a></dt>
@@ -1869,6 +2588,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea una nueva respuesta textual asociada a una pregunta concreta.</div>
 </dd>
+<dt><a href="presentation/views/LoginViewController.html#togglePassword()" class="member-name-link">togglePassword()</a> - Method in class presentation.views.<a href="presentation/views/LoginViewController.html" title="class in presentation.views">LoginViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/RegisterViewController.html#toggleRegisterPasswords()" class="member-name-link">toggleRegisterPasswords()</a> - Method in class presentation.views.<a href="presentation/views/RegisterViewController.html" title="class in presentation.views">RegisterViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/QuestionController.html#toggleRequiredStatus(domain.model.Question)" class="member-name-link">toggleRequiredStatus(Question)</a> - Method in class domain.controller.<a href="domain/controller/QuestionController.html" title="class in domain.controller">QuestionController</a></dt>
 <dd>
 <div class="block">Cambia el estado de obligatoriedad de una pregunta.</div>
@@ -1878,7 +2601,21 @@ loadScripts(document, 'script');</script>
 <div class="block">Alterna el estado de obligatoriedad de una pregunta.</div>
 </dd>
 <dt><a href="domain/clustering/Centroid.html#toString()" class="member-name-link">toString()</a> - Method in class domain.clustering.<a href="domain/clustering/Centroid.html" title="class in domain.clustering">Centroid</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Representación en cadena del centroide para depuración.</div>
+</dd>
+<dt><a href="domain/model/MultipleChoiceAnswer.html#toString()" class="member-name-link">toString()</a> - Method in class domain.model.<a href="domain/model/MultipleChoiceAnswer.html" title="class in domain.model">MultipleChoiceAnswer</a></dt>
+<dd>
+<div class="block">Devuelve una representación en cadena de la respuesta.</div>
+</dd>
+<dt><a href="domain/model/NumericalAnswer.html#toString()" class="member-name-link">toString()</a> - Method in class domain.model.<a href="domain/model/NumericalAnswer.html" title="class in domain.model">NumericalAnswer</a></dt>
+<dd>
+<div class="block">Devuelve una representación en cadena de la respuesta.</div>
+</dd>
+<dt><a href="domain/model/TextualAnswer.html#toString()" class="member-name-link">toString()</a> - Method in class domain.model.<a href="domain/model/TextualAnswer.html" title="class in domain.model">TextualAnswer</a></dt>
+<dd>
+<div class="block">Devuelve una representación en cadena de la respuesta.</div>
+</dd>
 <dt><a href="domain/model/enums/TypeQuestion.html" class="type-name-link" title="enum class in domain.model.enums">TypeQuestion</a> - Enum Class in <a href="domain/model/enums/package-summary.html">domain.model.enums</a></dt>
 <dd>
 <div class="block">Tipos de preguntas disponibles: opción múltiple, textual o numérica.</div>
@@ -1962,20 +2699,17 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Actualiza una encuesta existente.</div>
 </dd>
+<dt><a href="domain/controller/SurveyController.html#updateSurvey(java.lang.String,domain.model.Survey)" class="member-name-link">updateSurvey(String, Survey)</a> - Method in class domain.controller.<a href="domain/controller/SurveyController.html" title="class in domain.controller">SurveyController</a></dt>
+<dd>
+<div class="block">Actualiza una encuesta existente (solo en estado DRAFT).</div>
+</dd>
+<dt><a href="domain/service/SurveyService.html#updateSurvey(java.lang.String,domain.model.Survey)" class="member-name-link">updateSurvey(String, Survey)</a> - Method in class domain.service.<a href="domain/service/SurveyService.html" title="class in domain.service">SurveyService</a></dt>
+<dd>
+<div class="block">Actualiza una encuesta existente (solo si es borrador).</div>
+</dd>
 <dt><a href="data/UserRepository.html#updateUser(java.lang.String,domain.model.User)" class="member-name-link">updateUser(String, User)</a> - Method in class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
 <dd>
 <div class="block">Actualiza un usuario en el repositorio.</div>
-</dd>
-<dt><a href="domain/controller/UserController.html#updateUserEmail(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">updateUserEmail(String, String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="domain/service/UserService.html#updateUserEmail(java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">updateUserEmail(String, String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
-<dd>
-<div class="block">Actualiza el email de un usuario tras validar:
- 
-   que el usuario existe,
-   que el email anterior coincide,
-   que el nuevo email no es igual al anterior.
- </div>
 </dd>
 <dt><a href="domain/model/User.html" class="type-name-link" title="class in domain.model">User</a> - Class in <a href="domain/model/package-summary.html">domain.model</a></dt>
 <dd>
@@ -1985,6 +2719,12 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea un nuevo usuario con los parámetros especificados.</div>
 </dd>
+<dt><a href="domain/model/User.html#%3Cinit%3E(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String)" class="member-name-link">User(String, String, String, String, String)</a> - Constructor for class domain.model.<a href="domain/model/User.html" title="class in domain.model">User</a></dt>
+<dd>
+<div class="block">Constructor con pregunta y respuesta de seguridad.</div>
+</dd>
+<dt><a href="presentation/views/SurveysViewController.html#userController" class="member-name-link">userController</a> - Variable in class presentation.views.<a href="presentation/views/SurveysViewController.html" title="class in presentation.views">SurveysViewController</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="domain/controller/UserController.html" class="type-name-link" title="class in domain.controller">UserController</a> - Class in <a href="domain/controller/package-summary.html">domain.controller</a></dt>
 <dd>
 <div class="block">Controlador responsable de gestionar las acciones relacionadas con los usuarios.</div>
@@ -2001,22 +2741,38 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Crea un nuevo repositorio de usuarios en memoria.</div>
 </dd>
+<dt><a href="data/UserRepository.html#%3Cinit%3E(java.lang.String)" class="member-name-link">UserRepository(String)</a> - Constructor for class data.<a href="data/UserRepository.html" title="class in data">UserRepository</a></dt>
+<dd>
+<div class="block">Crea un nuevo repositorio de usuarios con un path personalizado.</div>
+</dd>
 <dt><a href="domain/service/UserService.html" class="type-name-link" title="class in domain.service">UserService</a> - Class in <a href="domain/service/package-summary.html">domain.service</a></dt>
 <dd>
 <div class="block">Servicio encargado de gestionar la lógica de negocio asociada a los usuarios.</div>
 </dd>
-<dt><a href="domain/service/UserService.html#%3Cinit%3E(data.UserRepository)" class="member-name-link">UserService(UserRepository)</a> - Constructor for class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dt><a href="domain/service/UserService.html#%3Cinit%3E(data.UserRepository,data.SurveyRepository,data.ResponseRepository)" class="member-name-link">UserService(UserRepository, SurveyRepository, ResponseRepository)</a> - Constructor for class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
 <dd>
 <div class="block">Crea una nueva instancia del servicio de usuarios.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">
+<dt><a href="domain/controller/UserController.html#validatePasswordStrength(java.lang.String)" class="member-name-link">validatePasswordStrength(String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dd>
+<div class="block">Valida la fortaleza de una contraseña según los criterios definidos.</div>
+</dd>
+<dt><a href="domain/service/UserService.html#validatePasswordStrength(java.lang.String)" class="member-name-link">validatePasswordStrength(String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Valida la fortaleza de una contraseña según los criterios definidos.</div>
+</dd>
 <dt><a href="domain/clustering/DistanceType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class domain.clustering.<a href="domain/clustering/DistanceType.html" title="enum class in domain.clustering">DistanceType</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
 <dt><a href="domain/clustering/QualityMetricType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class domain.clustering.<a href="domain/clustering/QualityMetricType.html" title="enum class in domain.clustering">QualityMetricType</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
+<dt><a href="domain/clustering/TextDistanceType.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class domain.clustering.<a href="domain/clustering/TextDistanceType.html" title="enum class in domain.clustering">TextDistanceType</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
@@ -2032,12 +2788,25 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns the enum constant of this class with the specified name.</div>
 </dd>
+<dt><a href="presentation/util/SurveyView.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class presentation.util.<a href="presentation/util/SurveyView.html" title="enum class in presentation.util">SurveyView</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#valueOf(java.lang.String)" class="member-name-link">valueOf(String)</a> - Static method in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this class with the specified name.</div>
+</dd>
 <dt><a href="domain/clustering/DistanceType.html#values()" class="member-name-link">values()</a> - Static method in enum class domain.clustering.<a href="domain/clustering/DistanceType.html" title="enum class in domain.clustering">DistanceType</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
 <dt><a href="domain/clustering/QualityMetricType.html#values()" class="member-name-link">values()</a> - Static method in enum class domain.clustering.<a href="domain/clustering/QualityMetricType.html" title="enum class in domain.clustering">QualityMetricType</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
+<dt><a href="domain/clustering/TextDistanceType.html#values()" class="member-name-link">values()</a> - Static method in enum class domain.clustering.<a href="domain/clustering/TextDistanceType.html" title="enum class in domain.clustering">TextDistanceType</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
@@ -2057,6 +2826,16 @@ the order they are declared.</div>
 <div class="block">Returns an array containing the constants of this enum class, in
 the order they are declared.</div>
 </dd>
+<dt><a href="presentation/util/SurveyView.html#values()" class="member-name-link">values()</a> - Static method in enum class presentation.util.<a href="presentation/util/SurveyView.html" title="enum class in presentation.util">SurveyView</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
+<dt><a href="presentation/util/SurveyViewTitle.html#values()" class="member-name-link">values()</a> - Static method in enum class presentation.util.<a href="presentation/util/SurveyViewTitle.html" title="enum class in presentation.util">SurveyViewTitle</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum class, in
+the order they are declared.</div>
+</dd>
 <dt><a href="domain/service/UserService.html#verifyCredentials(java.lang.String,java.lang.String)" class="member-name-link">verifyCredentials(String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
 <dd>
 <div class="block">Verifica las credenciales de un usuario comprobando:
@@ -2067,6 +2846,26 @@ the order they are declared.</div>
    que la contraseña coincide.
  </div>
 </dd>
+<dt><a href="domain/controller/UserController.html#verifySecurityAnswer(java.lang.String,java.lang.String)" class="member-name-link">verifySecurityAnswer(String, String)</a> - Method in class domain.controller.<a href="domain/controller/UserController.html" title="class in domain.controller">UserController</a></dt>
+<dd>
+<div class="block">Verifica la respuesta a la pregunta de seguridad de un usuario.</div>
+</dd>
+<dt><a href="domain/service/UserService.html#verifySecurityAnswer(java.lang.String,java.lang.String)" class="member-name-link">verifySecurityAnswer(String, String)</a> - Method in class domain.service.<a href="domain/service/UserService.html" title="class in domain.service">UserService</a></dt>
+<dd>
+<div class="block">Verifica la respuesta a la pregunta de seguridad de un usuario.</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html" class="type-name-link" title="class in presentation.views">ViewResponsesViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>
+<div class="block">Controlador para la vista de visualización de respuestas de una encuesta.</div>
+</dd>
+<dt><a href="presentation/views/ViewResponsesViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.ResponseController,presentation.views.SceneManager,java.lang.String)" class="member-name-link">ViewResponsesViewController(UserController, SurveyController, ResponseController, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ViewResponsesViewController.html" title="class in presentation.views">ViewResponsesViewController</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html" class="type-name-link" title="class in presentation.views">ViewSurveyViewController</a> - Class in <a href="presentation/views/package-summary.html">presentation.views</a></dt>
+<dd>
+<div class="block">Controlador para la vista de visualización de encuestas publicadas.</div>
+</dd>
+<dt><a href="presentation/views/ViewSurveyViewController.html#%3Cinit%3E(domain.controller.UserController,domain.controller.SurveyController,domain.controller.ResponseController,presentation.views.SceneManager,java.lang.String)" class="member-name-link">ViewSurveyViewController(UserController, SurveyController, ResponseController, SceneManager, String)</a> - Constructor for class presentation.views.<a href="presentation/views/ViewSurveyViewController.html" title="class in presentation.views">ViewSurveyViewController</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:H">H</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:K">K</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:Q">Q</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:U">U</a>&nbsp;<a href="#I:V">V</a>&nbsp;<br><a href="allclasses-index.html">All&nbsp;Classes&nbsp;and&nbsp;Interfaces</a><span class="vertical-separator">|</span><a href="allpackages-index.html">All&nbsp;Packages</a><span class="vertical-separator">|</span><a href="serialized-form.html">Serialized&nbsp;Form</a></main>
 </div>
