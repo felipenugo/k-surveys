@@ -1,8 +1,18 @@
+1
+usuario_test1
+Password123!
+1
+1
+1
+0
+1
 2
-TestUserResponse7
-testuserresponse7@gmail.com
-1234
-TestUserResponse7
-1234
+0
+Respuesta textual 0
 3
+4
+1
+2
 3
+4
+4
