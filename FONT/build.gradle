@@ -205,18 +205,92 @@ task openJavadoc {
     }
 }
 
-// DriverMain task: permite ejecutar cualquier driver main dentro de
-// `presentation.drivers` usando -Pdriver=DriverName. Ejemplo:
-//   ./gradlew DriverMain -Pdriver=CreateSurveyDriver
-// Por defecto ejecuta `presentation.drivers.AppDriver` si no se pasa -Pdriver.
+// DriverMain task: ejecuta el menú principal de la aplicación en modo consola.
+// Uso: ./gradlew DriverMain
+// También se puede especificar otro driver: ./gradlew DriverMain -Pdriver=CreateSurveyDriver
 tasks.register('DriverMain', JavaExec) {
     group = 'application'
-    description = 'Run a driver main class. Usage: ./gradlew DriverMain -Pdriver=CreateSurveyDriver'
-    // Recupera la propiedad -Pdriver, si no existe usa AppDriver
-    def driverProp = project.findProperty('driver') ?: 'AppDriver'
-    // mainClass es la clase principal a ejecutar
-    mainClass.set("presentation.drivers.${driverProp}")
+    description = 'Run the main driver menu (K-SURVEY console application)'
+
+    // Por defecto ejecuta presentation.driverMain.DriverMain
+    // Si se pasa -Pdriver, ejecuta ese driver específico de presentation.drivers
+    def driverProp = project.findProperty('driver')
+    if (driverProp) {
+        mainClass.set("presentation.drivers.${driverProp}")
+    } else {
+        mainClass.set("presentation.driverMain.DriverMain")
+    }
+
     classpath = sourceSets.main.runtimeClasspath
-    // permite interacción por consola si el driver la necesita
+    // permite interacción por consola
     standardInput = System.in
+}
+
+// Hacer que 'build' también compile todo correctamente para DriverMain
+build.dependsOn compileJava
+build.dependsOn 'jocs_proba'
+
+// Tarea para ejecutar los juegos de prueba del DriverMain
+tasks.register('jocs_proba') {
+    group = 'verification'
+    description = 'Ejecuta los juegos de prueba de todas las carpetas en EXE/tests usando DriverMain'
+    dependsOn compileJava
+
+    doLast {
+        def testsDir = file('../EXE/tests')
+
+        if (testsDir.exists()) {
+            testsDir.eachDir { driverDir ->
+                def inputDir = new File(driverDir, 'input')
+                def outputDir = new File(driverDir, 'output')
+
+                if (inputDir.exists()) {
+                    // Crear directorio de salida si no existe
+                    if (!outputDir.exists()) {
+                        outputDir.mkdirs()
+                    }
+
+                    println "Procesando pruebas en: ${driverDir.name}"
+
+                    inputDir.listFiles().each { inputFile ->
+                        if (inputFile.name.endsWith('.txt')) {
+                            def testName = inputFile.name
+                            def outputFile = new File(outputDir, testName)
+
+                            // Si el archivo de salida ya existe, lo eliminamos para asegurar que se reescribe
+                            if (outputFile.exists()) {
+                                outputFile.delete()
+                            }
+
+                            println "  Ejecutando test: ${testName}..."
+
+                            javaexec {
+                                mainClass = 'presentation.driverMain.DriverMain'
+                                classpath = sourceSets.main.runtimeClasspath
+                                standardInput = new FileInputStream(inputFile)
+                                standardOutput = new FileOutputStream(outputFile)
+                            }
+                        }
+                    }
+                }
+            }
+            println "Todos los juegos de prueba han sido ejecutados."
+        } else {
+            println "No se encontró el directorio de tests: ${testsDir.path}"
+        }
+    }
+}
+
+// Configurar clean para eliminar también los outputs de los tests
+clean.doLast {
+    def testsDir = file('../EXE/tests')
+    if (testsDir.exists()) {
+        testsDir.eachDir { driverDir ->
+            def outputDir = new File(driverDir, 'output')
+            if (outputDir.exists()) {
+                println "Eliminando outputs en: ${driverDir.name}"
+                delete outputDir
+            }
+        }
+    }
 }
