@@ -1,0 +1,44 @@
+Clustering Analysis Results
+=============================
+
+Configuration:
+- Analysis ID: 3e970c26-e15f-4cb3-8997-9198e9108132
+- Survey ID: 0
+- Algorithm: K-Means
+- K: 1
+- Distance Type: MANHATTAN
+
+Execution Stats:
+- Converged: Yes
+- Iterations: 2
+- Execution Time: 2 ms
+
+Overall Quality Metrics:
+- Silhouette Score: 0,0000
+- Calinski-Harabasz Score: 0,0000
+- Davies-Bouldin Score: 0,0000
+
+Clusters (1):
+-----------------------------
+
+Cluster cluster_1 (Size: 16)
+----------
+Silhouette Score: 0,0000
+Centroid: Centroid{components=[10]}
+Member Response IDs:
+- 0
+- 1
+- 2
+- 3
+- 4
+- 5
+- 6
+- 7
+- 8
+- 9
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15

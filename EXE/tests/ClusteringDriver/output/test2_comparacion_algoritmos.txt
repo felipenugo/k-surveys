@@ -55,878 +55,1337 @@ Opción:
 
 
 --- REGISTRO DE USUARIO ---
-Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: --- registrándose ---
+El usuario TestUserComp1 se ha registrado con éxito.
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un número
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un número
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos un número
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos un número
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+========================================
+       CREANDO NUEVA ENCUESTA
+========================================
+Introduce el título de la encuesta: Introduce la descripción de la encuesta: 
+Encuesta inicializada correctamente.
+(El ID será asignado al publicar)
 
-Por favor, vuelve a intentarlo.
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR COMO BORRADOR O PUBLICAR
+Opción: 
+========================================
+       CREAR NUEVA PREGUNTA
+========================================
+Introduce el texto de la pregunta: ¿Esta pregunta es obligatoria? (S/N, por defecto S): 
+--- TIPO DE PREGUNTA ---
+1. PREGUNTA TEXTUAL
+2. PREGUNTA DE OPCIÓN MÚLTIPLE
+3. PREGUNTA NUMÉRICA
+4. CANCELAR
+Opción: 
+Pregunta numérica creada.
+Los usuarios deberán responder con un número válido.
+Pregunta añadida correctamente en posición 0.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+--- CREAR ENCUESTA ---
+1. VER INFO ENCUESTA CREADA
+2. EDITAR TÍTULO
+3. EDITAR DESCRIPCIÓN
+4. AÑADIR PREGUNTA
+5. EDITAR PREGUNTA
+6. ELIMINAR PREGUNTA
+7. REORDENAR PREGUNTAS
+8. VER TODAS LAS PREGUNTAS
+9. GUARDAR COMO BORRADOR O PUBLICAR
+Opción: 
+========================================
+       OPCIONES DE GUARDADO
+========================================
+1. GUARDAR COMO BORRADOR (sin publicar)
+2. PUBLICAR AHORA
+3. CANCELAR
+Opción: 
+========================================
+       PUBLICAR ENCUESTA
+========================================
+Título: Encuesta comparacion algoritmos
+Descripción: Encuesta para comparar algoritmos de clustering
+Número de preguntas: 1
+========================================
 
-Por favor, vuelve a intentarlo.
+¿Estás seguro de que deseas PUBLICAR esta encuesta? Una vez publicada, no podrá editarse.
+Confirma (S/N): [LOG] Encuesta 4 registrada para usuario TestUserComp1
+[LOG] Encuesta 4 publicada por usuario TestUserComp1
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+? Encuesta guardada y publicada correctamente
+ID: 4
+Estado: PUBLICADA
+Fecha de publicación: 2025-12-22T21:29:42.729229300
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp1.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
 
-Por favor, vuelve a intentarlo.
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: --- registrándose ---
+El usuario TestUserComp2 se ha registrado con éxito.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp2
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp2.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos un número
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: --- registrándose ---
+El usuario TestUserComp3 se ha registrado con éxito.
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos un número
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos un número
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: La contraseña no es segura:
-- Debe tener al menos 8 caracteres
-- Debe contener al menos una MAYÚSCULA
-- Debe contener al menos una minúscula
-- Debe contener al menos un carácter especial (@#$%^&+=!?.*()[]{}_-)
 
-Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: --- SALIENDO DE K-SURVEY ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp3
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp3.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: --- registrándose ---
+El usuario TestUserComp4 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp4
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp4.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- REGISTRO DE USUARIO ---
+Introduce tu nombre de usuario: Introduce tu email: Introduce tu contraseña: Introduce tu pregunta de seguridad: Introduce tu respuesta de seguridad: --- registrándose ---
+El usuario TestUserComp5 se ha registrado con éxito.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp5
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: Opción no válida. Selecciona una opción del menú
+--- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: Opción no válida. Selecciona una opción del menú.
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- RESPONDER ENCUESTAS ---
+1. SELECCIONAR UNA ENCUESTA PARA RESPONDER
+2. VOLVER ATRÁS
+Opción: --- saliendo de responder encuesta ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp5.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ejecutar Nuevo Análisis ---
+Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
+Opción: Ejecutando análisis... Esto puede tardar un momento.
+Análisis ejecutado con éxito. ID del análisis: c558e58a-fe2e-4525-86cf-f47affed5535
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_1.txt
+
+--- ¿Qué deseas hacer con el nuevo análisis? ---
+1. Ver métricas de calidad
+2. Volver al menú principal
+Elige una opción: --- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ejecutar Nuevo Análisis ---
+Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
+Opción: Ejecutando análisis... Esto puede tardar un momento.
+Análisis ejecutado con éxito. ID del análisis: e12bc3e6-a668-4742-84cc-37c6e01c6e31
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_2.txt
+
+--- ¿Qué deseas hacer con el nuevo análisis? ---
+1. Ver métricas de calidad
+2. Volver al menú principal
+Elige una opción: --- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: 
+--- Ejecutar Nuevo Análisis ---
+Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2: KMeans++, 3: KMedoids):
+Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
+Opción: Ejecutando análisis... Esto puede tardar un momento.
+Análisis ejecutado con éxito. ID del análisis: e8775633-3d00-478f-b6ea-d7d19cee9773
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_3.txt
+
+--- ¿Qué deseas hacer con el nuevo análisis? ---
+1. Ver métricas de calidad
+2. Volver al menú principal
+Elige una opción: --- Menú Principal de Clustering ---
+1. Ejecutar un nuevo análisis
+2. Evaluar un análisis existente
+3. Encontrar la K óptima para una encuesta
+4. Ver resultados de un análisis
+5. Salir
+Elige una opción: Saliendo del menú de clustering...
+--- MIS ENCUESTAS ---
+1. Listar mis encuestas
+2. Ejecutar algoritmo de clustering
+3. Atrás
+Opción: --- SALIENDO DE MIS ENCUESTAS ---
+--- ENCUESTAS ---
+1. RESPONDER ENCUESTAS
+2. ANALIZAR MIS ENCUESTAS
+3. VOLVER AL MENÚ PRINCIPAL
+Opción: --- volviendo al menú principal ---
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: --- CERRANDO SESIÓN ---
+Sesión cerrada, hasta pronto TestUserComp1.
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp1
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+--- ELIMINAR CUENTA ---
+¿Estás seguro de que quieres eliminar tu cuenta 'TestUserComp1'? (s/n): Tu cuenta ha sido eliminada correctamente.
+Cerrar sesión...
+Regresando al menú principal...
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp2
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+--- ELIMINAR CUENTA ---
+¿Estás seguro de que quieres eliminar tu cuenta 'TestUserComp2'? (s/n): Tu cuenta ha sido eliminada correctamente.
+Cerrar sesión...
+Regresando al menú principal...
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp3
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+--- ELIMINAR CUENTA ---
+¿Estás seguro de que quieres eliminar tu cuenta 'TestUserComp3'? (s/n): Tu cuenta ha sido eliminada correctamente.
+Cerrar sesión...
+Regresando al menú principal...
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp4
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+--- ELIMINAR CUENTA ---
+¿Estás seguro de que quieres eliminar tu cuenta 'TestUserComp4'? (s/n): Tu cuenta ha sido eliminada correctamente.
+Cerrar sesión...
+Regresando al menú principal...
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--- INICIO DE SESIÓN ---
+Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
+Inicio de sesión correcto!
+Bienvenido TestUserComp5
+--- K-SURVEY ---
+1. RESPONDER O ANALIZAR ENCUESTAS
+2. CREAR ENCUESTA
+3. EDITAR ENCUESTAS BORRADOR
+4. CERRAR SESIÓN
+5. ELIMINAR CUENTA
+Opción: 
+--- ELIMINAR CUENTA ---
+¿Estás seguro de que quieres eliminar tu cuenta 'TestUserComp5'? (s/n): Tu cuenta ha sido eliminada correctamente.
+Cerrar sesión...
+Regresando al menú principal...
+-----------------------------------
+--- BIENVENIDO A K-SURVEY ---
+1. INICIAR SESIÓN
+2. REGISTRARSE
+3. RECUPERAR CONTRASEÑA
+4. SALIR
+Opción: --- SALIENDO DE K-SURVEY ---
 -----------------------------------

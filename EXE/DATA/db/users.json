@@ -25,5 +25,14 @@
     "securityAnswer": "TestUserManual2",
     "createdSurveysId": [],
     "respondedSurveysId": {}
+  },
+  "TestUserMix1": {
+    "USERNAME": "TestUserMix1",
+    "email": "mix1@gmail.com",
+    "passwordHash": "a2d679bed5c2f57e3540f88caa01d559c26a0df07df451b9d099d0a84bd5cf05",
+    "securityQuestion": "TestUserMix1",
+    "securityAnswer": "1234",
+    "createdSurveysId": [],
+    "respondedSurveysId": {}
   }
 }

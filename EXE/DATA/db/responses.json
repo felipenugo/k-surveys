@@ -14,6 +14,231 @@
           "isAnswered": true
         }
       ]
+    },
+    "1": {
+      "RESPONSE_ID": "1",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering2",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "1",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "2": {
+      "RESPONSE_ID": "2",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering3",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "1",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "2",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "3": {
+      "RESPONSE_ID": "3",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering4",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "3",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "4": {
+      "RESPONSE_ID": "4",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering5",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "18",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "4",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "5": {
+      "RESPONSE_ID": "5",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering6",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "20",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "5",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "6": {
+      "RESPONSE_ID": "6",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering2",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "6",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "7": {
+      "RESPONSE_ID": "7",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering3",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "1",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "7",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "8": {
+      "RESPONSE_ID": "8",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering4",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "8",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "9": {
+      "RESPONSE_ID": "9",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering5",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "18",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "9",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "10": {
+      "RESPONSE_ID": "10",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering6",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "20",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "10",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "11": {
+      "RESPONSE_ID": "11",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering2",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "11",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "12": {
+      "RESPONSE_ID": "12",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering3",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "1",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "12",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "13": {
+      "RESPONSE_ID": "13",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering4",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "10",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "13",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "14": {
+      "RESPONSE_ID": "14",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering5",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "18",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "14",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
+    },
+    "15": {
+      "RESPONSE_ID": "15",
+      "SURVEY_ID": "0",
+      "RESPONDER_USERNAME": "TestUserClustering6",
+      "RESPONSE_STATUS": "SUBMITTED",
+      "ANSWERS": [
+        {
+          "answerText": "20",
+          "QUESTION_INDEX": 0,
+          "RESPONSE_ID": "15",
+          "typeAnswer": "TEXTUAL",
+          "isAnswered": true
+        }
+      ]
     }
   }
 }
