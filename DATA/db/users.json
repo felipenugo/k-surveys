@@ -11,69 +11,6 @@
     ],
     "respondedSurveysId": {}
   },
-  "test": {
-    "USERNAME": "test",
-    "email": "test@gmail.com",
-    "passwordHash": "a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3",
-    "securityQuestion": "Pregunta de seguridad por defecto",
-    "securityAnswer": "Respuesta de seguridad por defecto",
-    "createdSurveysId": [
-      "119",
-      "201"
-    ],
-    "respondedSurveysId": {
-      "119": [
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "22",
-        "25",
-        "32"
-      ],
-      "104": [
-        "9",
-        "10"
-      ],
-      "201": [
-        "11",
-        "12",
-        "13",
-        "14",
-        "15",
-        "16",
-        "17",
-        "24",
-        "28",
-        "31"
-      ],
-      "112": [
-        "18",
-        "26",
-        "27"
-      ],
-      "111": [
-        "19",
-        "30"
-      ],
-      "113": [
-        "20"
-      ],
-      "115": [
-        "21"
-      ],
-      "110": [
-        "23",
-        "29"
-      ],
-      "203": [
-        "35",
-        "36"
-      ]
-    }
-  },
   "felipe": {
     "USERNAME": "felipe",
     "email": "felipe@gmail.com",
@@ -164,6 +101,25 @@
         "2",
         "3",
         "4"
+      ]
+    }
+  },
+  "arnau": {
+    "USERNAME": "arnau",
+    "email": "a@gmail.com",
+    "passwordHash": "f12ea00ca2c7f8d4bcb61786fa44d416525cb9b0a77990701b2175e653fb8517",
+    "securityQuestion": "h",
+    "securityAnswer": "hj",
+    "createdSurveysId": [],
+    "respondedSurveysId": {
+      "110": [
+        "37"
+      ],
+      "111": [
+        "38"
+      ],
+      "113": [
+        "39"
       ]
     }
   }
