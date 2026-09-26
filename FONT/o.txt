@@ -1,250 +1,250 @@
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:6: error: package javafx.application does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:6: error: package javafx.application does not exist
 import javafx.application.Application;
                          ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:7: error: package javafx.stage does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:7: error: package javafx.stage does not exist
 import javafx.stage.Stage;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:12: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:12: error: cannot find symbol
 public class Main extends Application {
                           ^
   symbol: class Application
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:15: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:15: error: cannot find symbol
     public void start(Stage primaryStage) throws IOException {
                       ^
   symbol:   class Stage
   location: class Main
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\MainView.java:3: error: package javafx.application does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\MainView.java:3: error: package javafx.application does not exist
 import javafx.application.Application;
                          ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:3: error: package javafx.application does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:3: error: package javafx.application does not exist
 import javafx.application.Application;
                          ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:4: error: package javafx.stage does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:4: error: package javafx.stage does not exist
 import javafx.stage.Stage;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:6: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:6: error: cannot find symbol
 public class App extends Application {
                          ^
   symbol: class Application
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:4: error: package javafx.fxml does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:4: error: package javafx.fxml does not exist
 import javafx.fxml.FXMLLoader;
                   ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:5: error: package javafx.scene does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:5: error: package javafx.scene does not exist
 import javafx.scene.Scene;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:6: error: package javafx.stage does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:6: error: package javafx.stage does not exist
 import javafx.stage.Stage;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:15: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:15: error: cannot find symbol
     public void start(Stage stage) {
                       ^
   symbol:   class Stage
   location: class App
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:12: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:12: error: cannot find symbol
     private Stage primaryStage;
             ^
   symbol:   class Stage
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:18: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:18: error: cannot find symbol
     public void setPrimaryStage(Stage stage) {
                                 ^
   symbol:   class Stage
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:22: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:22: error: cannot find symbol
     private void checkLoaderAddress(FXMLLoader loader) {
                                     ^
   symbol:   class FXMLLoader
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:30: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:30: error: cannot find symbol
     private void finalizeScene(FXMLLoader loader, String title) throws Exception {
                                ^
   symbol:   class FXMLLoader
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:4: error: package javafx.fxml does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:4: error: package javafx.fxml does not exist
 import javafx.fxml.FXML;
                   ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:6: error: package javafx.event does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:6: error: package javafx.event does not exist
 import javafx.event.ActionEvent;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:11: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:11: error: cannot find symbol
     private TextField usernameField;
             ^
   symbol:   class TextField
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:13: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:13: error: cannot find symbol
     private PasswordField passwordField;
             ^
   symbol:   class PasswordField
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:15: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:15: error: cannot find symbol
     private Button loginButton;
             ^
   symbol:   class Button
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:17: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:17: error: cannot find symbol
     private Label statusLabel;
             ^
   symbol:   class Label
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:28: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:28: error: cannot find symbol
     public void handleLoginClick(ActionEvent event) {
                                  ^
   symbol:   class ActionEvent
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:42: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:42: error: cannot find symbol
     public void handleRegisterClick(ActionEvent event) {
                                     ^
   symbol:   class ActionEvent
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:5: error: package javafx.scene.control does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:5: error: package javafx.scene.control does not exist
 import javafx.scene.control.*;
 ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:5: error: package javafx.fxml does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:5: error: package javafx.fxml does not exist
 import javafx.fxml.FXML;
                   ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:7: error: package javafx.event does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:7: error: package javafx.event does not exist
 import javafx.event.ActionEvent;
                    ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:12: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:12: error: cannot find symbol
     private TextField usernameField;
             ^
   symbol:   class TextField
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:14: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:14: error: cannot find symbol
     private TextField emailField;
             ^
   symbol:   class TextField
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:16: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:16: error: cannot find symbol
     private PasswordField passwordField;
             ^
   symbol:   class PasswordField
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:18: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:18: error: cannot find symbol
     private Button registerButton;
             ^
   symbol:   class Button
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:20: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:20: error: cannot find symbol
     private Label statusLabel;
             ^
   symbol:   class Label
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:32: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:32: error: cannot find symbol
     public void handleRegisterClick(ActionEvent event)
                                     ^
   symbol:   class ActionEvent
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:6: error: package javafx.scene.control does not exist
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:6: error: package javafx.scene.control does not exist
 import javafx.scene.control.*;
 ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:10: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:10: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:12: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:12: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:14: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:14: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:16: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:16: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:27: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:27: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\LoginViewController.java:41: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\LoginViewController.java:41: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class LoginViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:11: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:11: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:13: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:13: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:15: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:15: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:17: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:17: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:19: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:19: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\RegisterViewController.java:31: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\RegisterViewController.java:31: error: cannot find symbol
     @FXML
      ^
   symbol:   class FXML
   location: class RegisterViewController
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:14: error: method does not override or implement a method from a supertype
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:14: error: method does not override or implement a method from a supertype
     @Override
     ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\Main.java:39: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\Main.java:39: error: cannot find symbol
         launch(args);
         ^
   symbol:   method launch(String[])
   location: class Main
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\main\MainView.java:39: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\main\MainView.java:39: error: cannot find symbol
         Application.launch(App.class, args);
         ^
   symbol:   variable Application
   location: class MainView
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:14: error: method does not override or implement a method from a supertype
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:14: error: method does not override or implement a method from a supertype
     @Override
     ^
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\App.java:28: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\App.java:28: error: cannot find symbol
         launch(args);
         ^
   symbol:   method launch(String[])
   location: class App
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:31: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:31: error: cannot find symbol
         Scene currentScene = primaryStage.getScene();
         ^
   symbol:   class Scene
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:34: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:34: error: cannot find symbol
             currentScene = new Scene(loader.load());
                                ^
   symbol:   class Scene
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/login.fxml"));
             ^
   symbol:   class FXMLLoader
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:64: error: cannot find symbol
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/login.fxml"));
                                     ^
   symbol:   class FXMLLoader
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
             ^
   symbol:   class FXMLLoader
   location: class SceneManager
-C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\FormsApp\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
+C:\Users\yeray\Documents\Uni\3er a├▒o\PROP\k-surveys\FONT\presentation\views\SceneManager.java:78: error: cannot find symbol
             FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/register.fxml")); // carga el fichero fxml
                                     ^
   symbol:   class FXMLLoader

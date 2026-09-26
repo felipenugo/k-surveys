@@ -1,5 +1,5 @@
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -111,7 +111,7 @@ El usuario TestUserComp1 se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp1
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -184,7 +184,7 @@ Confirma (S/N): [LOG] Encuesta 4 registrada para usuario TestUserComp1
 ID: 4
 Estado: PUBLICADA
 Fecha de publicación: 2025-12-22T21:29:42.729229300
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -193,7 +193,7 @@ Fecha de publicación: 2025-12-22T21:29:42.729229300
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp1.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -305,7 +305,7 @@ El usuario TestUserComp2 se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp2
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -355,7 +355,7 @@ Opción: --- saliendo de responder encuesta ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -364,7 +364,7 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp2.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -476,7 +476,7 @@ El usuario TestUserComp3 se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp3
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -526,7 +526,7 @@ Opción: --- saliendo de responder encuesta ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -535,7 +535,7 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp3.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -647,7 +647,7 @@ El usuario TestUserComp4 se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp4
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -697,7 +697,7 @@ Opción: --- saliendo de responder encuesta ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -706,7 +706,7 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp4.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -818,7 +818,7 @@ El usuario TestUserComp5 se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp5
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -868,7 +868,7 @@ Opción: --- saliendo de responder encuesta ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -877,7 +877,7 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp5.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -936,7 +936,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp1
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -962,7 +962,7 @@ Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2
 Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
 Opción: Ejecutando análisis... Esto puede tardar un momento.
 Análisis ejecutado con éxito. ID del análisis: c558e58a-fe2e-4525-86cf-f47affed5535
-Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_1.txt
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\k-surveys\EXE\executables\..\exports\analysis_test2_1.txt
 
 --- ¿Qué deseas hacer con el nuevo análisis? ---
 1. Ver métricas de calidad
@@ -979,7 +979,7 @@ Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2
 Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
 Opción: Ejecutando análisis... Esto puede tardar un momento.
 Análisis ejecutado con éxito. ID del análisis: e12bc3e6-a668-4742-84cc-37c6e01c6e31
-Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_2.txt
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\k-surveys\EXE\executables\..\exports\analysis_test2_2.txt
 
 --- ¿Qué deseas hacer con el nuevo análisis? ---
 1. Ver métricas de calidad
@@ -996,7 +996,7 @@ Introduce el ID de la encuesta a analizar: Selecciona un algoritmo (1: KMeans, 2
 Opción: Introduce el número de clusters (k): Selecciona una métrica de distancia (1: Euclidea, 2: Manhattan):
 Opción: Ejecutando análisis... Esto puede tardar un momento.
 Análisis ejecutado con éxito. ID del análisis: e8775633-3d00-478f-b6ea-d7d19cee9773
-Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\FormsApp\EXE\executables\..\exports\analysis_test2_3.txt
+Introduce la ruta del archivo para exportar los resultados (p.ej., ./exports/analysis.txt): Resultados exportados automáticamente a: C:\Users\yeray\Documents\k-surveys\EXE\executables\..\exports\analysis_test2_3.txt
 
 --- ¿Qué deseas hacer con el nuevo análisis? ---
 1. Ver métricas de calidad
@@ -1018,7 +1018,7 @@ Opción: --- SALIENDO DE MIS ENCUESTAS ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1027,7 +1027,7 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto TestUserComp1.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -1086,7 +1086,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp1
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1098,7 +1098,7 @@ Opción:
 Cerrar sesión...
 Regresando al menú principal...
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -1157,7 +1157,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp2
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1169,7 +1169,7 @@ Opción:
 Cerrar sesión...
 Regresando al menú principal...
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -1228,7 +1228,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp3
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1240,7 +1240,7 @@ Opción:
 Cerrar sesión...
 Regresando al menú principal...
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -1299,7 +1299,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp4
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1311,7 +1311,7 @@ Opción:
 Cerrar sesión...
 Regresando al menú principal...
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -1370,7 +1370,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido TestUserComp5
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -1382,10 +1382,10 @@ Opción:
 Cerrar sesión...
 Regresando al menú principal...
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
 4. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEYS ---
 -----------------------------------

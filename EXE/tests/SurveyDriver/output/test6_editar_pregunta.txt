@@ -1,5 +1,5 @@
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -96,7 +96,7 @@ Opción: Opción no válida. Selecciona una opcion del menu.
 1. Intentar registrarse de nuevo.
 2. Volver al menú principal.
 Opción: -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -391,5 +391,5 @@ Introduce tu contraseña: La contraseña no es segura:
 
 Por favor, vuelve a intentarlo.
 
-Introduce tu contraseña: --- SALIENDO DE K-SURVEY ---
+Introduce tu contraseña: --- SALIENDO DE K-SURVEYS ---
 -----------------------------------

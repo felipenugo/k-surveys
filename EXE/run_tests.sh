@@ -3,7 +3,7 @@
 # Simula el comportamiento de gradlew jocs_proba
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-JAR_FILE="$SCRIPT_DIR/FormsApp.jar"
+JAR_FILE="$SCRIPT_DIR/K-SURVEYS.jar"
 LIB_DIR="$SCRIPT_DIR/lib"
 
 # Definir explícitamente los JARs de JavaFX para Linux

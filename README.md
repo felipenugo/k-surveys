@@ -1,16 +1,16 @@
-./
-# PROP Grupo 32.1
-Proyecto de Programación, Grupo 32.1.
+# K-SURVEYS
+
+PROP Grupo 32.1. Proyecto de Programación.
 
 Profesor: Ignasi Gómez-Sebastià.
 
 ## Miembros del grupo
 
-- Huertes Montes, Víctor ([victor.huertes@estudiantat.upc.edu]())
-- Llagostera Garcia, Yeray ([yeray.llagostera@estudiantat.upc.edu]())
-- Nuñez Gomez, Felipe Arturo ([felipe.arturo.nunez@estudiantat.upc.edu]())
-- Pons Cardet, Arnau ([arnau.pons.cardet@estudiantat.upc.edu]())
-- Rodriguez Uribe, Kiara Kristin ([kiara.kristin.rodriguez@estudiantat.upc.edu]())
+- Huertes Montes, Víctor
+- Llagostera Garcia, Yeray
+- Nuñez Gomez, Felipe Arturo
+- Pons Cardet, Arnau
+- Rodriguez Uribe, Kiara Kristin
 
 ## Descripción del proyecto
 
@@ -20,7 +20,7 @@ Sistema de gestión de encuestas con funcionalidades avanzadas de clustering y p
 
 - **DATA**: Archivos de datos de prueba
 - **DOC**: Documentación y diagramas
-- **EXE**: Archivos ejecutables y Makefile
+- **EXE**: Scripts de ejecución y juegos de prueba. Los binarios se generan en local y no se versionan
 - **FONT**: Código fuente y configuración de Gradle
 
 ## Compilar y ejecutar
@@ -28,12 +28,12 @@ Sistema de gestión de encuestas con funcionalidades avanzadas de clustering y p
 ### Compilación
 ```bash
 cd FONT
-./gradlew jar    # Compilar el proyecto y generar FormsApp.jar
+./gradlew jar    # Compilar el proyecto y generar K-SURVEYS.jar y K-SURVEYS.exe
 ```
 
 ### Ejecutar la aplicación principal
 
-Una vez compilado el proyecto, puedes ejecutar la aplicación principal `FormsApp.jar` desde el directorio `EXE` utilizando los siguientes scripts:
+Una vez compilado el proyecto, puedes ejecutar `K-SURVEYS.jar` desde el directorio `EXE` utilizando los siguientes scripts:
 
 **En Windows:**
 ```bash

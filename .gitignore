@@ -1,4 +1,3 @@
-build
 build/
 *.class
 *.bin
@@ -11,8 +10,18 @@ caches/
 .idea/
 .gradle/
 bin/
-!EXE/**
+
+# El wrapper de Gradle sí se versiona.
 !FONT/gradle/wrapper/
 !FONT/gradle/wrapper/**
+
+# Binarios generados por Gradle y Launch4j.
+# Se reconstruyen en local: cd FONT && ./gradlew jar
+*.exe
+*.jar
+!FONT/gradle/wrapper/gradle-wrapper.jar
+
+EXE/classes/
+EXE/lib/
 
 /exports

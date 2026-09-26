@@ -1,13 +1,13 @@
 #!/bin/bash
-# Script para ejecutar FormsApp en Linux/macOS
+# Script para ejecutar K-SURVEYS en Linux/macOS
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-JAR_FILE="$SCRIPT_DIR/FormsApp.jar"
+JAR_FILE="$SCRIPT_DIR/K-SURVEYS.jar"
 LIB_DIR="$SCRIPT_DIR/lib"
 
 # Verificar si el JAR existe
 if [ ! -f "$JAR_FILE" ]; then
-    echo "ERROR: FormsApp.jar no encontrado."
+    echo "ERROR: K-SURVEYS.jar no encontrado."
     echo "Por favor, compila primero el proyecto:"
     echo "  cd ../FONT"
     echo "  ./gradlew jar"
@@ -24,7 +24,7 @@ if [ ! -d "$LIB_DIR" ]; then
 fi
 
 # Ejecutar con JavaFX en el module-path (Apuntando explicitamente a las versiones de Linux)
-echo "Ejecutando FormsApp..."
+echo "Ejecutando K-SURVEYS..."
 JAVAFX_PATH="$LIB_DIR/javafx-base-21.0.2-linux.jar:$LIB_DIR/javafx-controls-21.0.2-linux.jar:$LIB_DIR/javafx-fxml-21.0.2-linux.jar:$LIB_DIR/javafx-graphics-21.0.2-linux.jar"
 
 java --module-path "$JAVAFX_PATH" \

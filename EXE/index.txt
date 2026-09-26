@@ -3,7 +3,7 @@ EXE - Directorio de ejecutables
 Este directorio contiene:
 - Makefile: Archivo para EJECUTAR la aplicación (no compila)
 - classes/: Clases compiladas (.class) generadas por Gradle
-- FormsApp.jar: JAR ejecutable generado por Gradle
+- K-SURVEYS.jar: JAR ejecutable generado por Gradle (no se versiona)
 - tmp_*.txt: Archivos temporales de entrada/salida para pruebas
 
 IMPORTANTE: Este Makefile solo ejecuta la aplicación.

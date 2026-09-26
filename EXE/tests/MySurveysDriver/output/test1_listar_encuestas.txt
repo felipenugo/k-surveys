@@ -1,5 +1,5 @@
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
@@ -58,7 +58,7 @@ Opción:
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido usuario_test1
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -104,7 +104,7 @@ Opción: --- SALIENDO DE MIS ENCUESTAS ---
 2. ANALIZAR MIS ENCUESTAS
 3. VOLVER AL MENÚ PRINCIPAL
 Opción: --- volviendo al menú principal ---
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. EDITAR ENCUESTAS BORRADOR
@@ -113,10 +113,10 @@ Opción: --- volviendo al menú principal ---
 Opción: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto usuario_test1.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. RECUPERAR CONTRASEÑA
 4. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEYS ---
 -----------------------------------

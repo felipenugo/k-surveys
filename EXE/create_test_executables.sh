@@ -22,7 +22,7 @@ $(cd "$(dirname "$0")" && pwd)"
 # Rutas relativas desde 'executables/'
 INPUT_DIR="$SCRIPT_DIR/../tests/$driver/input"
 OUTPUT_DIR="$SCRIPT_DIR/../tests/$driver/output"
-JAR_FILE="$SCRIPT_DIR/../FormsApp.jar"
+JAR_FILE="$SCRIPT_DIR/../K-SURVEYS.jar"
 LIB_DIR="$SCRIPT_DIR/../lib"
 
 # Definir explícitamente los JARs de JavaFX para Linux

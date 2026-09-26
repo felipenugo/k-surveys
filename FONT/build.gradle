@@ -62,7 +62,7 @@ jar {
         }.collect { it.isDirectory() ? it : zipTree(it) }
     }
     destinationDirectory = file('../EXE')
-    archiveFileName = 'FormsApp.jar'
+    archiveFileName = 'K-SURVEYS.jar'
 }
 
 // Copiar JARs de JavaFX a EXE/lib
@@ -173,7 +173,7 @@ distributions {
     main {
         contents {
             from('../EXE') {
-                include 'FormsApp.jar'
+                include 'K-SURVEYS.jar'
             }
             from('../DATA') {
                 into 'DATA'
@@ -184,6 +184,7 @@ distributions {
 
 // JavaDoc configuration
 javadoc {
+    dependsOn compileJava, processResources
     source = sourceSets.main.allJava
     classpath = configurations.compileClasspath
     destinationDir = file('../DOC/javadoc')
@@ -197,9 +198,9 @@ javadoc {
             'https://docs.oracle.com/en/java/javase/21/docs/api/'
         ]
         addStringOption('Xdoclint:none', '-quiet')
-        windowTitle = 'FormsApp Documentation'
-        docTitle = 'FormsApp API Documentation'
-        header = '<b>FormsApp</b>'
+        windowTitle = 'K-SURVEYS Documentation'
+        docTitle = 'K-SURVEYS API Documentation'
+        header = '<b>K-SURVEYS</b>'
         
         // Configuración UMLDoclet para generar diagramas UML
         doclet = 'nl.talsmasoftware.umldoclet.UMLDoclet'
@@ -236,7 +237,7 @@ task openJavadoc {
 // También se puede especificar otro driver: ./gradlew DriverMain -Pdriver=CreateSurveyDriver
 tasks.register('DriverMain', JavaExec) {
     group = 'application'
-    description = 'Run the main driver menu (K-SURVEY console application)'
+    description = 'Run the main driver menu (K-SURVEYS console application)'
 
     // Por defecto ejecuta presentation.driverMain.DriverMain
     // Si se pasa -Pdriver, ejecuta ese driver específico de presentation.drivers

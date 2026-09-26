@@ -2,7 +2,7 @@
 # Compilar antes de ejecutar: cd ../FONT && ./gradlew jar
 
 JAVA := java
-JAR_FILE := FormsApp.jar
+JAR_FILE := K-SURVEYS.jar
 
 # Driver principal (DriverMain)
 run:

@@ -25,7 +25,7 @@ for %%D in (%DRIVERS%) do (
         echo if exist "%%INPUT_DIR%%" ^(
         echo     for %%%%f in ^("%%INPUT_DIR%%\*.txt"^) do ^(
         echo         echo Ejecutando test: %%%%~nxf
-        echo         java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -cp "..\FormsApp.jar" presentation.driverMain.DriverMain ^< "%%%%f" ^> "%%OUTPUT_DIR%%\%%%%~nf.txt" 2^>^&1
+        echo         java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -cp "..\K-SURVEYS.jar" presentation.driverMain.DriverMain ^< "%%%%f" ^> "%%OUTPUT_DIR%%\%%%%~nf.txt" 2^>^&1
         echo     ^)
         echo     echo.
         echo     echo Resultados guardados en %%OUTPUT_DIR%%

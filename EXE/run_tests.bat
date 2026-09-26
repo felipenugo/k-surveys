@@ -2,7 +2,7 @@
 REM Script para ejecutar todos los tests en Windows
 REM Simula el comportamiento de gradlew jocs_proba
 
-set JAR_FILE=FormsApp.jar
+set JAR_FILE=K-SURVEYS.jar
 set LIB_DIR=%~dp0lib
 
 REM Definir explicitamente los JARs de JavaFX para Windows para evitar conflictos con los de Linux
@@ -29,7 +29,7 @@ for /d %%D in (tests\*) do (
             echo Ejecutando test: %%~nxI
             
             REM Ejecutar DriverMain con el input actual y redirigir al output
-            REM Se usa FormsApp.jar que contiene todas las dependencias (excepto JavaFX)
+            REM Se usa K-SURVEYS.jar que contiene todas las dependencias (excepto JavaFX)
             REM Se incluye el module-path apuntando a los JARs de Windows
             
             java --module-path "%JAVAFX_PATH%" --add-modules javafx.controls,javafx.fxml -cp "%JAR_FILE%" presentation.driverMain.DriverMain < "%%I" > "%%D\output\%%~nI.txt" 2>&1

@@ -21,7 +21,7 @@ public class AppDriver {
 
 
     private int selectAppMenuOption() {
-        System.out.println("--- K-SURVEY ---");
+        System.out.println("--- K-SURVEYS ---");
         System.out.println("1. RESPONDER O ANALIZAR ENCUESTAS");
         System.out.println("2. CREAR ENCUESTA");
         System.out.println("3. EDITAR ENCUESTAS BORRADOR");

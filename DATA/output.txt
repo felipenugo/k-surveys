@@ -1,5 +1,5 @@
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
@@ -110,16 +110,16 @@ El usuario user se ha registrado con éxito.
 Introduce tu nombre de usuario:Introduce tu contraseña:--- iniciando sesión ---
 Inicio de sesión correcto!
 Bienvenido user
---- K-SURVEY ---
+--- K-SURVEYS ---
 1. RESPONDER O ANALIZAR ENCUESTAS
 2. CREAR ENCUESTA
 3. CERRAR SESIÓN
 Opcion: --- CERRANDO SESIÓN ---
 Sesión cerrada, hasta pronto user.
 -----------------------------------
---- BIENVENIDO A K-SURVEY ---
+--- BIENVENIDO A K-SURVEYS ---
 1. INICIAR SESIÓN
 2. REGISTRARSE
 3. SALIR
-Opción: --- SALIENDO DE K-SURVEY ---
+Opción: --- SALIENDO DE K-SURVEYS ---
 -----------------------------------

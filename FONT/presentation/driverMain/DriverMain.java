@@ -18,7 +18,7 @@ public class DriverMain {
 
     public static int selectWelcomeMenuOption() {
         System.out.println("-----------------------------------");
-        System.out.println("--- BIENVENIDO A K-SURVEY ---");
+        System.out.println("--- BIENVENIDO A K-SURVEYS ---");
         System.out.println("1. INICIAR SESIÓN");
         System.out.println("2. REGISTRARSE");
         System.out.println("3. RECUPERAR CONTRASEÑA");
@@ -93,7 +93,7 @@ public class DriverMain {
                 exit = true;
             }
         }
-        System.out.println("--- SALIENDO DE K-SURVEY ---");
+        System.out.println("--- SALIENDO DE K-SURVEYS ---");
         System.out.println("-----------------------------------");
     }
 }
