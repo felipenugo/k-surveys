@@ -25,3 +25,6 @@ EXE/classes/
 EXE/lib/
 
 /exports
+
+# Salidas de `make test`. Los juegos de prueba versionados siguen en output/*.txt
+EXE/tests/**/output/*_output.txt
