@@ -125,7 +125,7 @@ compileJava.dependsOn processResources
 
 test {
     enabled = true
-    workingDir = file('..')
+    workingDir = file('../EXE')
 }
 
 // Copy compiled classes to EXE/classes
